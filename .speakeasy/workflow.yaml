@@ -3,7 +3,7 @@ speakeasyVersion: latest
 sources:
     Authlete API Explorer:
         inputs:
-            - location: /specs/onefixlast.yaml
+            - location: ./specs/onefixlast.yaml
         overlays:
             - location: .speakeasy/speakeasy-modifications-overlay.yaml
         transformations:
