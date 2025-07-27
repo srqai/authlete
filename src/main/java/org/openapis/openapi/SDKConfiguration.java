@@ -16,7 +16,7 @@ public class SDKConfiguration {
 
     private static final String LANGUAGE = "java";
     public static final String OPENAPI_DOC_VERSION = "3.0.0";
-    public static final String SDK_VERSION = "0.1.0";
+    public static final String SDK_VERSION = "0.1.1";
     public static final String GEN_VERSION = "2.666.0";
     private static final String BASE_PACKAGE = "org.openapis.openapi";
     public static final String USER_AGENT = 

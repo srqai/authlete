@@ -137,7 +137,7 @@ The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'org.openapis:openapi:0.1.0'
+implementation 'org.openapis:openapi:0.1.1'
 ```
 
 Maven:
@@ -145,7 +145,7 @@ Maven:
 <dependency>
     <groupId>org.openapis</groupId>
     <artifactId>openapi</artifactId>
-    <version>0.1.0</version>
+    <version>0.1.1</version>
 </dependency>
 ```
 
