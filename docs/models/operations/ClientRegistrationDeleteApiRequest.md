@@ -1,0 +1,9 @@
+# ClientRegistrationDeleteApiRequest
+
+
+## Fields
+
+| Field                                                                                                       | Type                                                                                                        | Required                                                                                                    | Description                                                                                                 |
+| ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `serviceId`                                                                                                 | *String*                                                                                                    | :heavy_check_mark:                                                                                          | A service ID.                                                                                               |
+| `requestBody`                                                                                               | [ClientRegistrationDeleteApiRequestBody](../../models/operations/ClientRegistrationDeleteApiRequestBody.md) | :heavy_check_mark:                                                                                          | N/A                                                                                                         |

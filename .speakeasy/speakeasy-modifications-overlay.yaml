@@ -1,0 +1,760 @@
+overlay: 1.0.0
+x-speakeasy-jsonpath: rfc9535
+info:
+  title: Speakeasy Modifications
+  version: 0.0.2
+  x-speakeasy-metadata:
+    after: ""
+    before: ""
+    type: speakeasy-modifications
+actions:
+  - target: $["paths"]["/api/{serviceId}/vci/single/issue"]["post"]
+    update:
+      x-speakeasy-group: verifiableCredentialIssuer
+      x-speakeasy-name-override: issueSingle
+    x-speakeasy-metadata:
+      after: sdk.verifiableCredentialIssuer.issueSingle()
+      before: sdk.Verifiable Credential Issuer.vci_single_issue_api()
+      created_at: 1753640047729
+      reviewed_at: 1753640069026
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/backchannel/authentication/issue"]["post"]
+    update:
+      x-speakeasy-group: ciba
+      x-speakeasy-name-override: issue
+    x-speakeasy-metadata:
+      after: sdk.ciba.issue()
+      before: sdk.CIBA.backchannel_authentication_issue_api()
+      created_at: 1753640047729
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/auth/authorization/ticket/update"]["post"]
+    update:
+      x-speakeasy-group: authorizationEndpoint
+      x-speakeasy-name-override: updateTicket
+    x-speakeasy-metadata:
+      after: sdk.authorizationEndpoint.updateTicket()
+      before: sdk.Authorization Endpoint.post_/api/{serviceId}/auth/authorization/ticket/update()
+      created_at: 1753640047729
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/client/registration/delete"]["post"]
+    update:
+      x-speakeasy-group: dynamicClientRegistration
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.dynamicClientRegistration.delete()
+      before: sdk.Dynamic Client Registration.client_registration_delete_api()
+      created_at: 1753640047729
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/client/secret/refresh/{clientIdentifier}"]["get"]
+    update:
+      x-speakeasy-group: clients
+      x-speakeasy-name-override: refreshSecret
+    x-speakeasy-metadata:
+      after: sdk.clients.refreshSecret()
+      before: sdk.Client Management.client_secret_refresh_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/service/create"]["post"]
+    update:
+      x-speakeasy-group: services
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.services.create()
+      before: sdk.Service Management.service_create_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/client/registration"]["post"]
+    update:
+      x-speakeasy-group: clients
+      x-speakeasy-name-override: register
+    x-speakeasy-metadata:
+      after: sdk.clients.register()
+      before: sdk.Dynamic Client Registration.client_registration_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/auth/authorization/ticket/info"]["get"]
+    update:
+      x-speakeasy-group: authorization
+      x-speakeasy-name-override: getTicketInfo
+    x-speakeasy-metadata:
+      after: sdk.authorization.getTicketInfo()
+      before: sdk.Authorization Endpoint.get_/api/{serviceId}/auth/authorization/ticket/info()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/backchannel/authentication/complete"]["post"]
+    update:
+      x-speakeasy-group: ciba
+      x-speakeasy-name-override: completeBackchannelAuth
+    x-speakeasy-metadata:
+      after: sdk.ciba.completeBackchannelAuth()
+      before: sdk.CIBA.backchannel_authentication_complete_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/service/update"]["post"]
+    update:
+      x-speakeasy-group: services
+      x-speakeasy-name-override: update
+    x-speakeasy-metadata:
+      after: sdk.services.update()
+      before: sdk.Service Management.service_update_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/auth/authorization"]["post"]
+    update:
+      x-speakeasy-group: authorizationEndpoint
+      x-speakeasy-name-override: process
+    x-speakeasy-metadata:
+      after: sdk.authorizationEndpoint.process()
+      before: sdk.Authorization Endpoint.auth_authorization_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/idtoken/reissue"]["post"]
+    update:
+      x-speakeasy-group: tokens
+      x-speakeasy-name-override: reissueId
+    x-speakeasy-metadata:
+      after: sdk.tokens.reissueId()
+      before: sdk.Token Endpoint.idtoken_reissue_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/hsk/delete/{handle}"]["delete"]
+    update:
+      x-speakeasy-group: hardwareSecurityKey
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.hardwareSecurityKey.delete()
+      before: sdk.Hardware Security Key.hsk_delete_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/client/granted_scopes/delete/{clientId}"]["delete"]
+    update:
+      x-speakeasy-group: clients
+      x-speakeasy-name-override: deleteGrantedScopes
+    x-speakeasy-metadata:
+      after: sdk.clients.deleteGrantedScopes()
+      before: sdk.Client Management.client_granted_scopes_delete_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/auth/token/create"]["post"]
+    update:
+      x-speakeasy-group: tokens
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.tokens.create()
+      before: sdk.Token Operations.auth_token_create_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/gm"]["post"]
+    update:
+      x-speakeasy-group: grantManagementEndpoints
+      x-speakeasy-name-override: processRequest
+    x-speakeasy-metadata:
+      after: sdk.grantManagementEndpoints.processRequest()
+      before: sdk.Grant Management Endpoint.grant_m_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/federation/configuration"]["post"]
+    update:
+      x-speakeasy-group: federations
+      x-speakeasy-name-override: postConfiguration
+    x-speakeasy-metadata:
+      after: sdk.federations.postConfiguration()
+      before: sdk.Federation Endpoint.federation_configuration_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/auth/authorization/fail"]["post"]
+    update:
+      x-speakeasy-group: authorizationEndpoints
+      x-speakeasy-name-override: failAuthRequest
+    x-speakeasy-metadata:
+      after: sdk.authorizationEndpoints.failAuthRequest()
+      before: sdk.Authorization Endpoint.auth_authorization_fail_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/backchannel/authentication"]["post"]
+    update:
+      x-speakeasy-group: ciba
+      x-speakeasy-name-override: process
+    x-speakeasy-metadata:
+      after: sdk.ciba.process()
+      before: sdk.CIBA.backchannel_authentication_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/client/authorization/update/{clientId}"]["post"]
+    update:
+      x-speakeasy-group: clients
+      x-speakeasy-name-override: updateAuthorization
+    x-speakeasy-metadata:
+      after: sdk.clients.updateAuthorization()
+      before: sdk.Client Management.client_authorization_update_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/auth/authorization/issue"]["post"]
+    update:
+      x-speakeasy-group: authorization
+      x-speakeasy-name-override: issue
+    x-speakeasy-metadata:
+      after: sdk.authorization.issue()
+      before: sdk.Authorization Endpoint.auth_authorization_issue_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/client/authorization/delete/{clientId}"]["delete"]
+    update:
+      x-speakeasy-group: clients
+      x-speakeasy-name-override: deleteAuthorization
+    x-speakeasy-metadata:
+      after: sdk.clients.deleteAuthorization()
+      before: sdk.Client Management.client_authorization_delete_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/auth/token/update"]["post"]
+    update:
+      x-speakeasy-group: tokens
+      x-speakeasy-name-override: update
+    x-speakeasy-metadata:
+      after: sdk.tokens.update()
+      before: sdk.Token Operations.auth_token_update_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/client/delete/{clientId}"]["delete"]
+    update:
+      x-speakeasy-group: clientManagement
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.clientManagement.delete()
+      before: sdk.Client Management.client_delete_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/vci/metadata"]["post"]
+    update:
+      x-speakeasy-group: verifiableCredentialIssuer
+      x-speakeasy-name-override: getMetadata
+    x-speakeasy-metadata:
+      after: sdk.verifiableCredentialIssuer.getMetadata()
+      before: sdk.Verifiable Credential Issuer.vci_metadata_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/auth/token"]["post"]
+    update:
+      x-speakeasy-group: tokenEndpoint
+      x-speakeasy-name-override: process
+    x-speakeasy-metadata:
+      after: sdk.tokenEndpoint.process()
+      before: sdk.Token Endpoint.auth_token_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/vci/batch/parse"]["post"]
+    update:
+      x-speakeasy-group: verifiableCredentialIssuer
+      x-speakeasy-name-override: batchParse
+    x-speakeasy-metadata:
+      after: sdk.verifiableCredentialIssuer.batchParse()
+      before: sdk.Verifiable Credential Issuer.vci_batch_parse_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/auth/token/delete/{accessTokenIdentifier}"]["delete"]
+    update:
+      x-speakeasy-group: tokenOperations
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.tokenOperations.delete()
+      before: sdk.Token Operations.auth_token_delete_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/device/complete"]["post"]
+    update:
+      x-speakeasy-group: deviceFlow
+      x-speakeasy-name-override: complete
+    x-speakeasy-metadata:
+      after: sdk.deviceFlow.complete()
+      before: sdk.Device Flow.device_complete_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/client/get/list"]["get"]
+    update:
+      x-speakeasy-group: clientManagement
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.clientManagement.list()
+      before: sdk.Client Management.client_get_list_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/pushed_auth_req"]["post"]
+    update:
+      x-speakeasy-group: authorization
+      x-speakeasy-name-override: processPushedRequest
+    x-speakeasy-metadata:
+      after: sdk.authorization.processPushedRequest()
+      before: sdk.Pushed Authorization Endpoint.pushed_auth_req_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/client/authorization/get/list"]["get"]
+    update:
+      x-speakeasy-group: clients
+      x-speakeasy-name-override: getAuthorizedApplications
+    x-speakeasy-metadata:
+      after: sdk.clients.getAuthorizedApplications()
+      before: sdk.Client Management.client_authorization_get_list_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/client/get/{clientId}"]["get"]
+    update:
+      x-speakeasy-group: clients
+      x-speakeasy-name-override: getById
+    x-speakeasy-metadata:
+      after: sdk.clients.getById()
+      before: sdk.Client Management.client_get_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/auth/introspection/standard"]["post"]
+    update:
+      x-speakeasy-group: introspections
+      x-speakeasy-name-override: process
+    x-speakeasy-metadata:
+      after: sdk.introspections.process()
+      before: sdk.Introspection Endpoint.auth_introspection_standard_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/auth/token/issue"]["post"]
+    update:
+      x-speakeasy-group: tokenEndpoint
+      x-speakeasy-name-override: issue
+    x-speakeasy-metadata:
+      after: sdk.tokenEndpoint.issue()
+      before: sdk.Token Endpoint.auth_token_issue_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/client/registration/get"]["post"]
+    update:
+      x-speakeasy-group: clients
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.clients.get()
+      before: sdk.Dynamic Client Registration.client_registration_get_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/client/lock_flag/update/{clientIdentifier}"]["post"]
+    update:
+      x-speakeasy-group: clients
+      x-speakeasy-name-override: updateLock
+    x-speakeasy-metadata:
+      after: sdk.clients.updateLock()
+      before: sdk.Client Management.client_flag_update_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/vci/deferred/parse"]["post"]
+    update:
+      x-speakeasy-group: verifiableCredentialIssuer
+      x-speakeasy-name-override: parseDeferred
+    x-speakeasy-metadata:
+      after: sdk.verifiableCredentialIssuer.parseDeferred()
+      before: sdk.Verifiable Credential Issuer.vci_deferred_parse_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/device/verification"]["post"]
+    update:
+      x-speakeasy-group: deviceFlow
+      x-speakeasy-name-override: verify
+    x-speakeasy-metadata:
+      after: sdk.deviceFlow.verify()
+      before: sdk.Device Flow.device_verification_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/vci/offer/info"]["post"]
+    update:
+      x-speakeasy-group: verifiableCredentialIssuer
+      x-speakeasy-name-override: getOfferInfo
+    x-speakeasy-metadata:
+      after: sdk.verifiableCredentialIssuer.getOfferInfo()
+      before: sdk.Verifiable Credential Issuer.vci_offer_info_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/backchannel/authentication/fail"]["post"]
+    update:
+      x-speakeasy-group: ciba
+      x-speakeasy-name-override: fail
+    x-speakeasy-metadata:
+      after: sdk.ciba.fail()
+      before: sdk.CIBA.backchannel_authentication_fail_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/client/extension/requestable_scopes/update/{clientId}"]["put"]
+    update:
+      x-speakeasy-group: clients
+      x-speakeasy-name-override: updateRequestableScopes
+    x-speakeasy-metadata:
+      after: sdk.clients.updateRequestableScopes()
+      before: sdk.Client Management.client_extension_requestables_scopes_update_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/hsk/get/list"]["get"]
+    update:
+      x-speakeasy-group: hardwareSecurityKeys
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.hardwareSecurityKeys.list()
+      before: sdk.Hardware Security Key.hsk_get_list_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/jose/verify"]["post"]
+    update:
+      x-speakeasy-group: joseObject
+      x-speakeasy-name-override: verify
+    x-speakeasy-metadata:
+      after: sdk.joseObject.verify()
+      before: sdk.Jose Object.jose_verify_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/vci/jwks"]["post"]
+    update:
+      x-speakeasy-group: verifiableCredentialIssuer
+      x-speakeasy-name-override: postJwks
+    x-speakeasy-metadata:
+      after: sdk.verifiableCredentialIssuer.postJwks()
+      before: sdk.Verifiable Credential Issuer.vci_jwks_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/client/create"]["post"]
+    update:
+      x-speakeasy-group: clientManagement
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.clientManagement.create()
+      before: sdk.Client Management.client_create_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/auth/userinfo/issue"]["post"]
+    update:
+      x-speakeasy-group: userinfo
+      x-speakeasy-name-override: issue
+    x-speakeasy-metadata:
+      after: sdk.userinfo.issue()
+      before: sdk.UserInfo Endpoint.auth_userinfo_issue_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/misc/echo"]["get"]
+    update:
+      x-speakeasy-group: utilityEndpoints
+      x-speakeasy-name-override: echo
+    x-speakeasy-metadata:
+      after: sdk.utilityEndpoints.echo()
+      before: sdk.Utility Endpoints.misc_echo_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/auth/token/revoke"]["post"]
+    update:
+      x-speakeasy-group: tokenOperations
+      x-speakeasy-name-override: revoke
+    x-speakeasy-metadata:
+      after: sdk.tokenOperations.revoke()
+      before: sdk.Token Operations.auth_token_revoke_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/vci/jwtissuer"]["post"]
+    update:
+      x-speakeasy-group: credentials
+      x-speakeasy-name-override: issueJwt
+    x-speakeasy-metadata:
+      after: sdk.credentials.issueJwt()
+      before: sdk.Verifiable Credential Issuer.vci_jwtissuer_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/federation/registration"]["post"]
+    update:
+      x-speakeasy-group: federation
+      x-speakeasy-name-override: register
+    x-speakeasy-metadata:
+      after: sdk.federation.register()
+      before: sdk.Federation Endpoint.federation_registration_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/service/delete"]["delete"]
+    update:
+      x-speakeasy-group: services
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.services.delete()
+      before: sdk.Service Management.service_delete_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/auth/revocation"]["post"]
+    update:
+      x-speakeasy-group: tokens
+      x-speakeasy-name-override: revoke
+    x-speakeasy-metadata:
+      after: sdk.tokens.revoke()
+      before: sdk.Revocation Endpoint.auth_revocation_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/hsk/create"]["post"]
+    update:
+      x-speakeasy-group: hardwareSecurityKeys
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.hardwareSecurityKeys.create()
+      before: sdk.Hardware Security Key.hsk_create_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/service/configuration"]["get"]
+    update:
+      x-speakeasy-group: serviceManagement
+      x-speakeasy-name-override: getConfiguration
+    x-speakeasy-metadata:
+      after: sdk.serviceManagement.getConfiguration()
+      before: sdk.Service Management.service_configuration_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/client/registration/update"]["post"]
+    update:
+      x-speakeasy-group: clients
+      x-speakeasy-name-override: updateRegistration
+    x-speakeasy-metadata:
+      after: sdk.clients.updateRegistration()
+      before: sdk.Dynamic Client Registration.client_registration_update_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/service/get/list"]["get"]
+    update:
+      x-speakeasy-group: serviceManagement
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.serviceManagement.list()
+      before: sdk.Service Management.service_get_list_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/client/extension/requestable_scopes/get/{clientId}"]["get"]
+    update:
+      x-speakeasy-group: clients
+      x-speakeasy-name-override: getRequestableScopes
+    x-speakeasy-metadata:
+      after: sdk.clients.getRequestableScopes()
+      before: sdk.Client Management.client_extension_requestables_scopes_get_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/device/authorization"]["post"]
+    update:
+      x-speakeasy-group: devices
+      x-speakeasy-name-override: authorize
+    x-speakeasy-metadata:
+      after: sdk.devices.authorize()
+      before: sdk.Device Flow.device_authorization_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/client/granted_scopes/get/{clientId}"]["get"]
+    update:
+      x-speakeasy-group: clients
+      x-speakeasy-name-override: getGrantedScopes
+    x-speakeasy-metadata:
+      after: sdk.clients.getGrantedScopes()
+      before: sdk.Client Management.client_granted_scopes_get_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/info"]["get"]
+    update:
+      x-speakeasy-group: utilityEndpoints
+      x-speakeasy-name-override: getInfo
+    x-speakeasy-metadata:
+      after: sdk.utilityEndpoints.getInfo()
+      before: sdk.Utility Endpoints.info_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/auth/token/fail"]["post"]
+    update:
+      x-speakeasy-group: tokens
+      x-speakeasy-name-override: fail
+    x-speakeasy-metadata:
+      after: sdk.tokens.fail()
+      before: sdk.Token Endpoint.auth_token_fail_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/client/extension/requestable_scopes/delete/{clientId}"]["delete"]
+    update:
+      x-speakeasy-group: clients
+      x-speakeasy-name-override: deleteRequestableScopes
+    x-speakeasy-metadata:
+      after: sdk.clients.deleteRequestableScopes()
+      before: sdk.Client Management.client_extension_requestables_scopes_delete_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/client/secret/update/{clientIdentifier}"]["post"]
+    update:
+      x-speakeasy-group: clients
+      x-speakeasy-name-override: updateSecret
+    x-speakeasy-metadata:
+      after: sdk.clients.updateSecret()
+      before: sdk.Client Management.client_secret_update_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/vci/batch/issue"]["post"]
+    update:
+      x-speakeasy-group: credentials
+      x-speakeasy-name-override: issueBatch
+    x-speakeasy-metadata:
+      after: sdk.credentials.issueBatch()
+      before: sdk.Verifiable Credential Issuer.vci_batch_issue_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/service/jwks/get"]["get"]
+    update:
+      x-speakeasy-group: jwkSetEndpoint
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.jwkSetEndpoint.get()
+      before: sdk.JWK Set Endpoint.service_jwks_get_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/client/update/{clientId}"]["post"]
+    update:
+      x-speakeasy-group: clientManagement
+      x-speakeasy-name-override: update
+    x-speakeasy-metadata:
+      after: sdk.clientManagement.update()
+      before: sdk.Client Management.client_update_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/vci/single/parse"]["post"]
+    update:
+      x-speakeasy-group: vci
+      x-speakeasy-name-override: parseSingle
+    x-speakeasy-metadata:
+      after: sdk.vci.parseSingle()
+      before: sdk.Verifiable Credential Issuer.vci_single_parse_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/auth/userinfo"]["post"]
+    update:
+      x-speakeasy-group: userinfo
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.userinfo.get()
+      before: sdk.UserInfo Endpoint.auth_userinfo_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/auth/token/get/list"]["get"]
+    update:
+      x-speakeasy-group: tokens
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.tokens.list()
+      before: sdk.Token Operations.auth_token_get_list_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/vci/deferred/issue"]["post"]
+    update:
+      x-speakeasy-group: verifiableCredentialIssuer
+      x-speakeasy-name-override: issueDeferred
+    x-speakeasy-metadata:
+      after: sdk.verifiableCredentialIssuer.issueDeferred()
+      before: sdk.Verifiable Credential Issuer.vci_deferred_issue_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/service/get"]["get"]
+    update:
+      x-speakeasy-group: serviceManagement
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.serviceManagement.get()
+      before: sdk.Service Management.service_get_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/vci/offer/create"]["post"]
+    update:
+      x-speakeasy-group: verifiableCredentialIssuer
+      x-speakeasy-name-override: createOffer
+    x-speakeasy-metadata:
+      after: sdk.verifiableCredentialIssuer.createOffer()
+      before: sdk.Verifiable Credential Issuer.vci_offer_create_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/auth/introspection"]["post"]
+    update:
+      x-speakeasy-group: introspectionEndpoint
+      x-speakeasy-name-override: process
+    x-speakeasy-metadata:
+      after: sdk.introspectionEndpoint.process()
+      before: sdk.Introspection Endpoint.auth_introspection_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name
+  - target: $["paths"]["/api/{serviceId}/hsk/get/{handle}"]["get"]
+    update:
+      x-speakeasy-group: securityKeys
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.securityKeys.get()
+      before: sdk.Hardware Security Key.hsk_get_api()
+      created_at: 1753640047730
+      reviewed_at: 1753640069027
+      type: method-name

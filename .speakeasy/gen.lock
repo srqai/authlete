@@ -1,0 +1,3327 @@
+lockVersion: 2.0.0
+id: b633433c-c2d5-4eb2-912e-de46d126199e
+management:
+  docChecksum: ebe7b60df53329a390782fedd1e98887
+  docVersion: 3.0.0
+  speakeasyVersion: 1.590.0
+  generationVersion: 2.666.0
+  releaseVersion: 0.1.0
+  configChecksum: a6568827beb59b452650aefb370cb2c4
+features:
+  java:
+    additionalDependencies: 0.1.0
+    core: 3.45.1
+    flattening: 2.81.1
+    getRequestBodies: 2.81.1
+    globalSecurity: 2.83.0
+    globalSecurityCallbacks: 0.1.0
+    globalServerURLs: 2.82.2
+    groups: 2.81.2
+    inputOutputModels: 2.83.0
+    nameOverrides: 2.81.3
+    sdkHooks: 1.1.0
+generatedFiles:
+  - .gitattributes
+  - USAGE.md
+  - build.gradle
+  - docs/models/components/AccessToken.md
+  - docs/models/components/Action.md
+  - docs/models/components/ApplicationType.md
+  - docs/models/components/AuthorizationDetails.md
+  - docs/models/components/AuthorizationDetailsElement.md
+  - docs/models/components/ClaimType.md
+  - docs/models/components/Client.md
+  - docs/models/components/ClientAuthenticationMethod.md
+  - docs/models/components/ClientClientType.md
+  - docs/models/components/ClientExtension.md
+  - docs/models/components/ClientInput.md
+  - docs/models/components/ClientRegistrationType.md
+  - docs/models/components/ClientTypeProperties.md
+  - docs/models/components/CredentialIssuanceOrder.md
+  - docs/models/components/CredentialIssuerMetadata.md
+  - docs/models/components/CredentialOfferInfo.md
+  - docs/models/components/CredentialRequestInfo.md
+  - docs/models/components/DeliveryMode.md
+  - docs/models/components/Display.md
+  - docs/models/components/DynamicScope.md
+  - docs/models/components/FapiMode.md
+  - docs/models/components/GrantType.md
+  - docs/models/components/Hsk.md
+  - docs/models/components/ItemsClientRegistrationTypes.md
+  - docs/models/components/ItemsFapiModes.md
+  - docs/models/components/JweAlg.md
+  - docs/models/components/JweEnc.md
+  - docs/models/components/JwsAlg.md
+  - docs/models/components/NamedUri.md
+  - docs/models/components/Oneapi1Percent7BserviceIdPercent7D1auth1authorization1failPostRequestBodyContentApplication1jsonSchema.md
+  - docs/models/components/Oneapi1Percent7BserviceIdPercent7D1auth1authorization1failPostRequestBodyContentApplication1jsonSchemaReason.md
+  - docs/models/components/Oneapi1Percent7BserviceIdPercent7D1auth1authorization1issuePostRequestBodyContentApplication1jsonSchema.md
+  - docs/models/components/Oneapi1Percent7BserviceIdPercent7D1auth1authorization1ticket1infoGetRequestBodyContentApplication1jsonSchema.md
+  - docs/models/components/Oneapi1Percent7BserviceIdPercent7D1auth1authorization1ticket1updatePostRequestBodyContentApplication1jsonSchema.md
+  - docs/models/components/Oneapi1Percent7BserviceIdPercent7D1auth1authorizationPostRequestBodyContentApplication1jsonSchema.md
+  - docs/models/components/Oneapi1Percent7BserviceIdPercent7D1auth1authorizationPostResponses200ContentApplication1jsonSchemaPropertiesGrant.md
+  - docs/models/components/Oneapi1Percent7BserviceIdPercent7D1auth1introspection1standardPostRequestBodyContentApplication1jsonSchema.md
+  - docs/models/components/Oneapi1Percent7BserviceIdPercent7D1auth1introspectionPostRequestBodyContentApplication1jsonSchema.md
+  - docs/models/components/Oneapi1Percent7BserviceIdPercent7D1auth1revocationPostRequestBodyContentApplication1jsonSchema.md
+  - docs/models/components/Oneapi1Percent7BserviceIdPercent7D1auth1token1createPostRequestBodyContentApplication1jsonSchema.md
+  - docs/models/components/Oneapi1Percent7BserviceIdPercent7D1auth1token1failPostRequestBodyContentApplication1jsonSchema.md
+  - docs/models/components/Oneapi1Percent7BserviceIdPercent7D1auth1token1failPostRequestBodyContentApplication1jsonSchemaReason.md
+  - docs/models/components/Oneapi1Percent7BserviceIdPercent7D1auth1token1get1listGetResponses200ContentApplication1jsonSchemaPropertiesClient.md
+  - docs/models/components/Oneapi1Percent7BserviceIdPercent7D1auth1token1issuePostRequestBodyContentApplication1jsonSchema.md
+  - docs/models/components/Oneapi1Percent7BserviceIdPercent7D1auth1token1updatePostRequestBodyContentApplication1jsonSchema.md
+  - docs/models/components/Oneapi1Percent7BserviceIdPercent7D1auth1tokenPostRequestBodyContentApplication1jsonSchema.md
+  - docs/models/components/Oneapi1Percent7BserviceIdPercent7D1auth1tokenPostResponses200ContentApplication1jsonSchemaPropertiesActorTokenInfo.md
+  - docs/models/components/Oneapi1Percent7BserviceIdPercent7D1auth1tokenPostResponses200ContentApplication1jsonSchemaPropertiesActorTokenType.md
+  - docs/models/components/Oneapi1Percent7BserviceIdPercent7D1auth1userinfo1issuePostRequestBodyContentApplication1jsonSchema.md
+  - docs/models/components/Oneapi1Percent7BserviceIdPercent7D1auth1userinfoPostRequestBodyContentApplication1jsonSchema.md
+  - docs/models/components/Oneapi1Percent7BserviceIdPercent7D1backchannel1authentication1completePostRequestBodyContentApplication1jsonSchema.md
+  - docs/models/components/Oneapi1Percent7BserviceIdPercent7D1backchannel1authentication1completePostRequestBodyContentApplication1jsonSchemaResult.md
+  - docs/models/components/Oneapi1Percent7BserviceIdPercent7D1backchannel1authentication1failPostRequestBodyContentApplication1jsonSchema.md
+  - docs/models/components/Oneapi1Percent7BserviceIdPercent7D1backchannel1authentication1failPostRequestBodyContentApplication1jsonSchemaReason.md
+  - docs/models/components/Oneapi1Percent7BserviceIdPercent7D1backchannel1authentication1issuePostRequestBodyContentApplication1jsonSchema.md
+  - docs/models/components/Oneapi1Percent7BserviceIdPercent7D1backchannel1authenticationPostRequestBodyContentApplication1jsonSchema.md
+  - docs/models/components/Oneapi1Percent7BserviceIdPercent7D1client1authorization1update1Percent7BclientIdPercent7DPostRequestBodyContentApplication1jsonSchema.md
+  - docs/models/components/Oneapi1Percent7BserviceIdPercent7D1client1grantedScopes1get1Percent7BclientIdPercent7DGetResponses200ContentApplication1jsonSchema.md
+  - docs/models/components/Oneapi1Percent7BserviceIdPercent7D1client1lockFlag1update1Percent7BclientIdentifierPercent7DPostRequestBodyContentApplication1jsonSchema.md
+  - docs/models/components/Oneapi1Percent7BserviceIdPercent7D1client1registration1deletePostRequestBodyContentApplication1jsonSchema.md
+  - docs/models/components/Oneapi1Percent7BserviceIdPercent7D1client1registration1updatePostRequestBodyContentApplication1jsonSchema.md
+  - docs/models/components/Oneapi1Percent7BserviceIdPercent7D1client1registrationPostRequestBodyContentApplication1jsonSchema.md
+  - docs/models/components/Oneapi1Percent7BserviceIdPercent7D1client1registrationPostResponses200ContentApplication1jsonSchema.md
+  - docs/models/components/Oneapi1Percent7BserviceIdPercent7D1client1secret1update1Percent7BclientIdentifierPercent7DPostRequestBodyContentApplication1jsonSchema.md
+  - docs/models/components/Oneapi1Percent7BserviceIdPercent7D1device1authorizationPostRequestBodyContentApplication1jsonSchema.md
+  - docs/models/components/Oneapi1Percent7BserviceIdPercent7D1device1completePostRequestBodyContentApplication1jsonSchema.md
+  - docs/models/components/Oneapi1Percent7BserviceIdPercent7D1device1completePostRequestBodyContentApplication1jsonSchemaResult.md
+  - docs/models/components/Oneapi1Percent7BserviceIdPercent7D1device1verificationPostRequestBodyContentApplication1jsonSchema.md
+  - docs/models/components/Oneapi1Percent7BserviceIdPercent7D1federation1registrationPostRequestBodyContentApplication1jsonSchema.md
+  - docs/models/components/Oneapi1Percent7BserviceIdPercent7D1gmPostRequestBodyContentApplication1jsonSchemaPropertiesGmAction.md
+  - docs/models/components/Oneapi1Percent7BserviceIdPercent7D1hsk1createPostRequestBodyContentApplication1jsonSchema.md
+  - docs/models/components/Oneapi1Percent7BserviceIdPercent7D1jose1verifyPostRequestBodyContentApplication1jsonSchema.md
+  - docs/models/components/Oneapi1Percent7BserviceIdPercent7D1pushedAuthReqPostRequestBodyContentApplication1jsonSchema.md
+  - docs/models/components/Oneapi1Percent7BserviceIdPercent7D1vci1batch1parsePostRequestBodyContentApplication1jsonSchema.md
+  - docs/models/components/Oneapi1Percent7BserviceIdPercent7D1vci1deferred1parsePostRequestBodyContentApplication1jsonSchema.md
+  - docs/models/components/Oneapi1Percent7BserviceIdPercent7D1vci1jwksPostRequestBodyContentApplication1jsonSchema.md
+  - docs/models/components/Oneapi1Percent7BserviceIdPercent7D1vci1jwtissuerPostRequestBodyContentApplication1jsonSchema.md
+  - docs/models/components/Oneapi1Percent7BserviceIdPercent7D1vci1metadataPostRequestBodyContentApplication1jsonSchema.md
+  - docs/models/components/Oneapi1Percent7BserviceIdPercent7D1vci1offer1createPostRequestBodyContentApplication1jsonSchema.md
+  - docs/models/components/Oneapi1Percent7BserviceIdPercent7D1vci1offer1infoPostRequestBodyContentApplication1jsonSchema.md
+  - docs/models/components/Oneapi1Percent7BserviceIdPercent7D1vci1single1parsePostRequestBodyContentApplication1jsonSchema.md
+  - docs/models/components/Pair.md
+  - docs/models/components/Prompt.md
+  - docs/models/components/Property.md
+  - docs/models/components/ResponseMode.md
+  - docs/models/components/ResponseType.md
+  - docs/models/components/Scope.md
+  - docs/models/components/ScopePath.md
+  - docs/models/components/Security.md
+  - docs/models/components/Service.md
+  - docs/models/components/ServiceInput.md
+  - docs/models/components/ServiceProfile.md
+  - docs/models/components/SubjectType.md
+  - docs/models/components/SupportedAttachment.md
+  - docs/models/components/TaggedValue.md
+  - docs/models/components/TrustAnchor.md
+  - docs/models/components/UserCodeCharset.md
+  - docs/models/components/VerifiedClaimsValidationSchemaSet.md
+  - docs/models/errors/BadRequestException.md
+  - docs/models/errors/Oneapi1infoGetResponses400ContentApplication1jsonSchemaException.md
+  - docs/models/errors/Oneapi1infoGetResponses400Exception.md
+  - docs/models/operations/AuthAuthorizationApiAction.md
+  - docs/models/operations/AuthAuthorizationApiClient.md
+  - docs/models/operations/AuthAuthorizationApiFormAction.md
+  - docs/models/operations/AuthAuthorizationApiFormClient.md
+  - docs/models/operations/AuthAuthorizationApiFormGrant.md
+  - docs/models/operations/AuthAuthorizationApiFormRequest.md
+  - docs/models/operations/AuthAuthorizationApiFormResponse.md
+  - docs/models/operations/AuthAuthorizationApiFormResponseBody.md
+  - docs/models/operations/AuthAuthorizationApiFormScope.md
+  - docs/models/operations/AuthAuthorizationApiGrant.md
+  - docs/models/operations/AuthAuthorizationApiRequest.md
+  - docs/models/operations/AuthAuthorizationApiRequestBody.md
+  - docs/models/operations/AuthAuthorizationApiResponse.md
+  - docs/models/operations/AuthAuthorizationApiResponseBody.md
+  - docs/models/operations/AuthAuthorizationApiScope.md
+  - docs/models/operations/AuthAuthorizationFailApiAction.md
+  - docs/models/operations/AuthAuthorizationFailApiFormAction.md
+  - docs/models/operations/AuthAuthorizationFailApiFormRequest.md
+  - docs/models/operations/AuthAuthorizationFailApiFormResponse.md
+  - docs/models/operations/AuthAuthorizationFailApiFormResponseBody.md
+  - docs/models/operations/AuthAuthorizationFailApiReason.md
+  - docs/models/operations/AuthAuthorizationFailApiRequest.md
+  - docs/models/operations/AuthAuthorizationFailApiRequestBody.md
+  - docs/models/operations/AuthAuthorizationFailApiResponse.md
+  - docs/models/operations/AuthAuthorizationFailApiResponseBody.md
+  - docs/models/operations/AuthAuthorizationIssueApiAction.md
+  - docs/models/operations/AuthAuthorizationIssueApiFormAction.md
+  - docs/models/operations/AuthAuthorizationIssueApiFormRequest.md
+  - docs/models/operations/AuthAuthorizationIssueApiFormResponse.md
+  - docs/models/operations/AuthAuthorizationIssueApiFormResponseBody.md
+  - docs/models/operations/AuthAuthorizationIssueApiRequest.md
+  - docs/models/operations/AuthAuthorizationIssueApiRequestBody.md
+  - docs/models/operations/AuthAuthorizationIssueApiResponse.md
+  - docs/models/operations/AuthAuthorizationIssueApiResponseBody.md
+  - docs/models/operations/AuthIntrospectionApiAction.md
+  - docs/models/operations/AuthIntrospectionApiFormAction.md
+  - docs/models/operations/AuthIntrospectionApiFormRequest.md
+  - docs/models/operations/AuthIntrospectionApiFormResponse.md
+  - docs/models/operations/AuthIntrospectionApiFormResponseBody.md
+  - docs/models/operations/AuthIntrospectionApiRequest.md
+  - docs/models/operations/AuthIntrospectionApiRequestBody.md
+  - docs/models/operations/AuthIntrospectionApiResponse.md
+  - docs/models/operations/AuthIntrospectionApiResponseBody.md
+  - docs/models/operations/AuthIntrospectionStandardApiAction.md
+  - docs/models/operations/AuthIntrospectionStandardApiFormAction.md
+  - docs/models/operations/AuthIntrospectionStandardApiFormRequest.md
+  - docs/models/operations/AuthIntrospectionStandardApiFormResponse.md
+  - docs/models/operations/AuthIntrospectionStandardApiFormResponseBody.md
+  - docs/models/operations/AuthIntrospectionStandardApiRequest.md
+  - docs/models/operations/AuthIntrospectionStandardApiRequestBody.md
+  - docs/models/operations/AuthIntrospectionStandardApiResponse.md
+  - docs/models/operations/AuthIntrospectionStandardApiResponseBody.md
+  - docs/models/operations/AuthRevocationApiAction.md
+  - docs/models/operations/AuthRevocationApiFormAction.md
+  - docs/models/operations/AuthRevocationApiFormRequest.md
+  - docs/models/operations/AuthRevocationApiFormResponse.md
+  - docs/models/operations/AuthRevocationApiFormResponseBody.md
+  - docs/models/operations/AuthRevocationApiRequest.md
+  - docs/models/operations/AuthRevocationApiRequestBody.md
+  - docs/models/operations/AuthRevocationApiResponse.md
+  - docs/models/operations/AuthRevocationApiResponseBody.md
+  - docs/models/operations/AuthTokenApiAction.md
+  - docs/models/operations/AuthTokenApiActorTokenInfo.md
+  - docs/models/operations/AuthTokenApiActorTokenType.md
+  - docs/models/operations/AuthTokenApiFormAction.md
+  - docs/models/operations/AuthTokenApiFormActorTokenInfo.md
+  - docs/models/operations/AuthTokenApiFormActorTokenType.md
+  - docs/models/operations/AuthTokenApiFormRequest.md
+  - docs/models/operations/AuthTokenApiFormResponse.md
+  - docs/models/operations/AuthTokenApiFormResponseBody.md
+  - docs/models/operations/AuthTokenApiRequest.md
+  - docs/models/operations/AuthTokenApiRequestBody.md
+  - docs/models/operations/AuthTokenApiResponse.md
+  - docs/models/operations/AuthTokenApiResponseBody.md
+  - docs/models/operations/AuthTokenCreateApiAction.md
+  - docs/models/operations/AuthTokenCreateApiFormAction.md
+  - docs/models/operations/AuthTokenCreateApiFormRequest.md
+  - docs/models/operations/AuthTokenCreateApiFormResponse.md
+  - docs/models/operations/AuthTokenCreateApiFormResponseBody.md
+  - docs/models/operations/AuthTokenCreateApiRequest.md
+  - docs/models/operations/AuthTokenCreateApiRequestBody.md
+  - docs/models/operations/AuthTokenCreateApiResponse.md
+  - docs/models/operations/AuthTokenCreateApiResponseBody.md
+  - docs/models/operations/AuthTokenDeleteApiRequest.md
+  - docs/models/operations/AuthTokenDeleteApiResponse.md
+  - docs/models/operations/AuthTokenFailApiAction.md
+  - docs/models/operations/AuthTokenFailApiFormAction.md
+  - docs/models/operations/AuthTokenFailApiFormRequest.md
+  - docs/models/operations/AuthTokenFailApiFormResponse.md
+  - docs/models/operations/AuthTokenFailApiFormResponseBody.md
+  - docs/models/operations/AuthTokenFailApiReason.md
+  - docs/models/operations/AuthTokenFailApiRequest.md
+  - docs/models/operations/AuthTokenFailApiRequestBody.md
+  - docs/models/operations/AuthTokenFailApiResponse.md
+  - docs/models/operations/AuthTokenFailApiResponseBody.md
+  - docs/models/operations/AuthTokenGetListApiClient.md
+  - docs/models/operations/AuthTokenGetListApiRequest.md
+  - docs/models/operations/AuthTokenGetListApiResponse.md
+  - docs/models/operations/AuthTokenGetListApiResponseBody.md
+  - docs/models/operations/AuthTokenIssueApiAction.md
+  - docs/models/operations/AuthTokenIssueApiFormAction.md
+  - docs/models/operations/AuthTokenIssueApiFormRequest.md
+  - docs/models/operations/AuthTokenIssueApiFormResponse.md
+  - docs/models/operations/AuthTokenIssueApiFormResponseBody.md
+  - docs/models/operations/AuthTokenIssueApiRequest.md
+  - docs/models/operations/AuthTokenIssueApiRequestBody.md
+  - docs/models/operations/AuthTokenIssueApiResponse.md
+  - docs/models/operations/AuthTokenIssueApiResponseBody.md
+  - docs/models/operations/AuthTokenRevokeApiFormRequest.md
+  - docs/models/operations/AuthTokenRevokeApiFormResponse.md
+  - docs/models/operations/AuthTokenRevokeApiFormResponseBody.md
+  - docs/models/operations/AuthTokenRevokeApiRequest.md
+  - docs/models/operations/AuthTokenRevokeApiRequestBody.md
+  - docs/models/operations/AuthTokenRevokeApiResponse.md
+  - docs/models/operations/AuthTokenRevokeApiResponseBody.md
+  - docs/models/operations/AuthTokenRevokeForm.md
+  - docs/models/operations/AuthTokenUpdateApiAction.md
+  - docs/models/operations/AuthTokenUpdateApiFormAction.md
+  - docs/models/operations/AuthTokenUpdateApiFormRequest.md
+  - docs/models/operations/AuthTokenUpdateApiFormResponse.md
+  - docs/models/operations/AuthTokenUpdateApiFormResponseBody.md
+  - docs/models/operations/AuthTokenUpdateApiRequest.md
+  - docs/models/operations/AuthTokenUpdateApiRequestBody.md
+  - docs/models/operations/AuthTokenUpdateApiResponse.md
+  - docs/models/operations/AuthTokenUpdateApiResponseBody.md
+  - docs/models/operations/AuthUserinfoApiAction.md
+  - docs/models/operations/AuthUserinfoApiFormAction.md
+  - docs/models/operations/AuthUserinfoApiFormRequest.md
+  - docs/models/operations/AuthUserinfoApiFormResponse.md
+  - docs/models/operations/AuthUserinfoApiFormResponseBody.md
+  - docs/models/operations/AuthUserinfoApiRequest.md
+  - docs/models/operations/AuthUserinfoApiRequestBody.md
+  - docs/models/operations/AuthUserinfoApiResponse.md
+  - docs/models/operations/AuthUserinfoApiResponseBody.md
+  - docs/models/operations/AuthUserinfoIssueApiAction.md
+  - docs/models/operations/AuthUserinfoIssueApiFormAction.md
+  - docs/models/operations/AuthUserinfoIssueApiFormRequest.md
+  - docs/models/operations/AuthUserinfoIssueApiFormResponse.md
+  - docs/models/operations/AuthUserinfoIssueApiFormResponseBody.md
+  - docs/models/operations/AuthUserinfoIssueApiRequest.md
+  - docs/models/operations/AuthUserinfoIssueApiRequestBody.md
+  - docs/models/operations/AuthUserinfoIssueApiResponse.md
+  - docs/models/operations/AuthUserinfoIssueApiResponseBody.md
+  - docs/models/operations/BackchannelAuthenticationApiAction.md
+  - docs/models/operations/BackchannelAuthenticationApiFormAction.md
+  - docs/models/operations/BackchannelAuthenticationApiFormRequest.md
+  - docs/models/operations/BackchannelAuthenticationApiFormResponse.md
+  - docs/models/operations/BackchannelAuthenticationApiFormResponseBody.md
+  - docs/models/operations/BackchannelAuthenticationApiRequest.md
+  - docs/models/operations/BackchannelAuthenticationApiRequestBody.md
+  - docs/models/operations/BackchannelAuthenticationApiResponse.md
+  - docs/models/operations/BackchannelAuthenticationApiResponseBody.md
+  - docs/models/operations/BackchannelAuthenticationCompleteApiAction.md
+  - docs/models/operations/BackchannelAuthenticationCompleteApiFormAction.md
+  - docs/models/operations/BackchannelAuthenticationCompleteApiFormRequest.md
+  - docs/models/operations/BackchannelAuthenticationCompleteApiFormResponse.md
+  - docs/models/operations/BackchannelAuthenticationCompleteApiFormResponseBody.md
+  - docs/models/operations/BackchannelAuthenticationCompleteApiRequest.md
+  - docs/models/operations/BackchannelAuthenticationCompleteApiRequestBody.md
+  - docs/models/operations/BackchannelAuthenticationCompleteApiResponse.md
+  - docs/models/operations/BackchannelAuthenticationCompleteApiResponseBody.md
+  - docs/models/operations/BackchannelAuthenticationCompleteApiResult.md
+  - docs/models/operations/BackchannelAuthenticationFailApiAction.md
+  - docs/models/operations/BackchannelAuthenticationFailApiFormAction.md
+  - docs/models/operations/BackchannelAuthenticationFailApiFormRequest.md
+  - docs/models/operations/BackchannelAuthenticationFailApiFormResponse.md
+  - docs/models/operations/BackchannelAuthenticationFailApiFormResponseBody.md
+  - docs/models/operations/BackchannelAuthenticationFailApiReason.md
+  - docs/models/operations/BackchannelAuthenticationFailApiRequest.md
+  - docs/models/operations/BackchannelAuthenticationFailApiRequestBody.md
+  - docs/models/operations/BackchannelAuthenticationFailApiResponse.md
+  - docs/models/operations/BackchannelAuthenticationFailApiResponseBody.md
+  - docs/models/operations/BackchannelAuthenticationIssueApiAction.md
+  - docs/models/operations/BackchannelAuthenticationIssueApiFormAction.md
+  - docs/models/operations/BackchannelAuthenticationIssueApiFormRequest.md
+  - docs/models/operations/BackchannelAuthenticationIssueApiFormResponse.md
+  - docs/models/operations/BackchannelAuthenticationIssueApiFormResponseBody.md
+  - docs/models/operations/BackchannelAuthenticationIssueApiRequest.md
+  - docs/models/operations/BackchannelAuthenticationIssueApiRequestBody.md
+  - docs/models/operations/BackchannelAuthenticationIssueApiResponse.md
+  - docs/models/operations/BackchannelAuthenticationIssueApiResponseBody.md
+  - docs/models/operations/ClientAuthorizationDeleteApiRequest.md
+  - docs/models/operations/ClientAuthorizationDeleteApiResponse.md
+  - docs/models/operations/ClientAuthorizationGetListApiRequest.md
+  - docs/models/operations/ClientAuthorizationGetListApiResponse.md
+  - docs/models/operations/ClientAuthorizationGetListApiResponseBody.md
+  - docs/models/operations/ClientAuthorizationUpdateApiFormRequest.md
+  - docs/models/operations/ClientAuthorizationUpdateApiFormResponse.md
+  - docs/models/operations/ClientAuthorizationUpdateApiFormResponseBody.md
+  - docs/models/operations/ClientAuthorizationUpdateApiRequest.md
+  - docs/models/operations/ClientAuthorizationUpdateApiRequestBody.md
+  - docs/models/operations/ClientAuthorizationUpdateApiResponse.md
+  - docs/models/operations/ClientAuthorizationUpdateApiResponseBody.md
+  - docs/models/operations/ClientCreateApiRequest.md
+  - docs/models/operations/ClientCreateApiResponse.md
+  - docs/models/operations/ClientDeleteApiRequest.md
+  - docs/models/operations/ClientDeleteApiResponse.md
+  - docs/models/operations/ClientExtensionRequestablesScopesDeleteApiRequest.md
+  - docs/models/operations/ClientExtensionRequestablesScopesDeleteApiResponse.md
+  - docs/models/operations/ClientExtensionRequestablesScopesGetApiRequest.md
+  - docs/models/operations/ClientExtensionRequestablesScopesGetApiResponse.md
+  - docs/models/operations/ClientExtensionRequestablesScopesGetApiResponseBody.md
+  - docs/models/operations/ClientExtensionRequestablesScopesUpdateApiRequest.md
+  - docs/models/operations/ClientExtensionRequestablesScopesUpdateApiRequestBody.md
+  - docs/models/operations/ClientExtensionRequestablesScopesUpdateApiResponse.md
+  - docs/models/operations/ClientExtensionRequestablesScopesUpdateApiResponseBody.md
+  - docs/models/operations/ClientFlagUpdateApiFormRequest.md
+  - docs/models/operations/ClientFlagUpdateApiFormResponse.md
+  - docs/models/operations/ClientFlagUpdateApiFormResponseBody.md
+  - docs/models/operations/ClientFlagUpdateApiRequest.md
+  - docs/models/operations/ClientFlagUpdateApiRequestBody.md
+  - docs/models/operations/ClientFlagUpdateApiResponse.md
+  - docs/models/operations/ClientFlagUpdateApiResponseBody.md
+  - docs/models/operations/ClientGetApiRequest.md
+  - docs/models/operations/ClientGetApiResponse.md
+  - docs/models/operations/ClientGetListApiRequest.md
+  - docs/models/operations/ClientGetListApiResponse.md
+  - docs/models/operations/ClientGetListApiResponseBody.md
+  - docs/models/operations/ClientGrantedScopesDeleteApiRequest.md
+  - docs/models/operations/ClientGrantedScopesDeleteApiResponse.md
+  - docs/models/operations/ClientGrantedScopesDeleteApiResponseBody.md
+  - docs/models/operations/ClientGrantedScopesGetApiRequest.md
+  - docs/models/operations/ClientGrantedScopesGetApiResponse.md
+  - docs/models/operations/ClientGrantedScopesGetApiResponseBody.md
+  - docs/models/operations/ClientRegistrationApiAction.md
+  - docs/models/operations/ClientRegistrationApiFormAction.md
+  - docs/models/operations/ClientRegistrationApiFormRequest.md
+  - docs/models/operations/ClientRegistrationApiFormResponse.md
+  - docs/models/operations/ClientRegistrationApiFormResponseBody.md
+  - docs/models/operations/ClientRegistrationApiRequest.md
+  - docs/models/operations/ClientRegistrationApiRequestBody.md
+  - docs/models/operations/ClientRegistrationApiResponse.md
+  - docs/models/operations/ClientRegistrationApiResponseBody.md
+  - docs/models/operations/ClientRegistrationDeleteApiAction.md
+  - docs/models/operations/ClientRegistrationDeleteApiFormAction.md
+  - docs/models/operations/ClientRegistrationDeleteApiFormRequest.md
+  - docs/models/operations/ClientRegistrationDeleteApiFormResponse.md
+  - docs/models/operations/ClientRegistrationDeleteApiFormResponseBody.md
+  - docs/models/operations/ClientRegistrationDeleteApiRequest.md
+  - docs/models/operations/ClientRegistrationDeleteApiRequestBody.md
+  - docs/models/operations/ClientRegistrationDeleteApiResponse.md
+  - docs/models/operations/ClientRegistrationDeleteApiResponseBody.md
+  - docs/models/operations/ClientRegistrationGetApiRequest.md
+  - docs/models/operations/ClientRegistrationGetApiResponse.md
+  - docs/models/operations/ClientRegistrationUpdateApiAction.md
+  - docs/models/operations/ClientRegistrationUpdateApiFormAction.md
+  - docs/models/operations/ClientRegistrationUpdateApiFormRequest.md
+  - docs/models/operations/ClientRegistrationUpdateApiFormResponse.md
+  - docs/models/operations/ClientRegistrationUpdateApiFormResponseBody.md
+  - docs/models/operations/ClientRegistrationUpdateApiRequest.md
+  - docs/models/operations/ClientRegistrationUpdateApiRequestBody.md
+  - docs/models/operations/ClientRegistrationUpdateApiResponse.md
+  - docs/models/operations/ClientRegistrationUpdateApiResponseBody.md
+  - docs/models/operations/ClientSecretRefreshApiRequest.md
+  - docs/models/operations/ClientSecretRefreshApiResponse.md
+  - docs/models/operations/ClientSecretRefreshApiResponseBody.md
+  - docs/models/operations/ClientSecretUpdateApiFormRequest.md
+  - docs/models/operations/ClientSecretUpdateApiFormResponse.md
+  - docs/models/operations/ClientSecretUpdateApiFormResponseBody.md
+  - docs/models/operations/ClientSecretUpdateApiRequest.md
+  - docs/models/operations/ClientSecretUpdateApiRequestBody.md
+  - docs/models/operations/ClientSecretUpdateApiResponse.md
+  - docs/models/operations/ClientSecretUpdateApiResponseBody.md
+  - docs/models/operations/ClientUpdateApiRequest.md
+  - docs/models/operations/ClientUpdateApiResponse.md
+  - docs/models/operations/DeviceAuthorizationApiAction.md
+  - docs/models/operations/DeviceAuthorizationApiFormAction.md
+  - docs/models/operations/DeviceAuthorizationApiFormRequest.md
+  - docs/models/operations/DeviceAuthorizationApiFormResponse.md
+  - docs/models/operations/DeviceAuthorizationApiFormResponseBody.md
+  - docs/models/operations/DeviceAuthorizationApiRequest.md
+  - docs/models/operations/DeviceAuthorizationApiRequestBody.md
+  - docs/models/operations/DeviceAuthorizationApiResponse.md
+  - docs/models/operations/DeviceAuthorizationApiResponseBody.md
+  - docs/models/operations/DeviceCompleteApiAction.md
+  - docs/models/operations/DeviceCompleteApiFormAction.md
+  - docs/models/operations/DeviceCompleteApiFormRequest.md
+  - docs/models/operations/DeviceCompleteApiFormResponse.md
+  - docs/models/operations/DeviceCompleteApiFormResponseBody.md
+  - docs/models/operations/DeviceCompleteApiRequest.md
+  - docs/models/operations/DeviceCompleteApiRequestBody.md
+  - docs/models/operations/DeviceCompleteApiResponse.md
+  - docs/models/operations/DeviceCompleteApiResponseBody.md
+  - docs/models/operations/DeviceCompleteApiResult.md
+  - docs/models/operations/DeviceVerificationApiAction.md
+  - docs/models/operations/DeviceVerificationApiFormAction.md
+  - docs/models/operations/DeviceVerificationApiFormRequest.md
+  - docs/models/operations/DeviceVerificationApiFormResponse.md
+  - docs/models/operations/DeviceVerificationApiFormResponseBody.md
+  - docs/models/operations/DeviceVerificationApiRequest.md
+  - docs/models/operations/DeviceVerificationApiRequestBody.md
+  - docs/models/operations/DeviceVerificationApiResponse.md
+  - docs/models/operations/DeviceVerificationApiResponseBody.md
+  - docs/models/operations/FederationConfigurationApiAction.md
+  - docs/models/operations/FederationConfigurationApiRequest.md
+  - docs/models/operations/FederationConfigurationApiRequestBody.md
+  - docs/models/operations/FederationConfigurationApiResponse.md
+  - docs/models/operations/FederationConfigurationApiResponseBody.md
+  - docs/models/operations/FederationRegistrationApiAction.md
+  - docs/models/operations/FederationRegistrationApiFormAction.md
+  - docs/models/operations/FederationRegistrationApiFormRequest.md
+  - docs/models/operations/FederationRegistrationApiFormResponse.md
+  - docs/models/operations/FederationRegistrationApiFormResponseBody.md
+  - docs/models/operations/FederationRegistrationApiRequest.md
+  - docs/models/operations/FederationRegistrationApiRequestBody.md
+  - docs/models/operations/FederationRegistrationApiResponse.md
+  - docs/models/operations/FederationRegistrationApiResponseBody.md
+  - docs/models/operations/GetApiServiceIdAuthAuthorizationTicketInfoAction.md
+  - docs/models/operations/GetApiServiceIdAuthAuthorizationTicketInfoFormAction.md
+  - docs/models/operations/GetApiServiceIdAuthAuthorizationTicketInfoFormRequest.md
+  - docs/models/operations/GetApiServiceIdAuthAuthorizationTicketInfoFormResponse.md
+  - docs/models/operations/GetApiServiceIdAuthAuthorizationTicketInfoFormResponseBody.md
+  - docs/models/operations/GetApiServiceIdAuthAuthorizationTicketInfoRequest.md
+  - docs/models/operations/GetApiServiceIdAuthAuthorizationTicketInfoRequestBody.md
+  - docs/models/operations/GetApiServiceIdAuthAuthorizationTicketInfoResponse.md
+  - docs/models/operations/GetApiServiceIdAuthAuthorizationTicketInfoResponseBody.md
+  - docs/models/operations/GmAction.md
+  - docs/models/operations/GrantMApiAction.md
+  - docs/models/operations/GrantMApiRequest.md
+  - docs/models/operations/GrantMApiRequestBody.md
+  - docs/models/operations/GrantMApiResponse.md
+  - docs/models/operations/GrantMApiResponseBody.md
+  - docs/models/operations/HskCreateApiAction.md
+  - docs/models/operations/HskCreateApiFormAction.md
+  - docs/models/operations/HskCreateApiFormRequest.md
+  - docs/models/operations/HskCreateApiFormResponse.md
+  - docs/models/operations/HskCreateApiFormResponseBody.md
+  - docs/models/operations/HskCreateApiRequest.md
+  - docs/models/operations/HskCreateApiRequestBody.md
+  - docs/models/operations/HskCreateApiResponse.md
+  - docs/models/operations/HskCreateApiResponseBody.md
+  - docs/models/operations/HskDeleteApiAction.md
+  - docs/models/operations/HskDeleteApiRequest.md
+  - docs/models/operations/HskDeleteApiResponse.md
+  - docs/models/operations/HskDeleteApiResponseBody.md
+  - docs/models/operations/HskGetApiAction.md
+  - docs/models/operations/HskGetApiRequest.md
+  - docs/models/operations/HskGetApiResponse.md
+  - docs/models/operations/HskGetApiResponseBody.md
+  - docs/models/operations/HskGetListApiAction.md
+  - docs/models/operations/HskGetListApiRequest.md
+  - docs/models/operations/HskGetListApiResponse.md
+  - docs/models/operations/HskGetListApiResponseBody.md
+  - docs/models/operations/IdtokenReissueApiAction.md
+  - docs/models/operations/IdtokenReissueApiRequest.md
+  - docs/models/operations/IdtokenReissueApiRequestBody.md
+  - docs/models/operations/IdtokenReissueApiResponse.md
+  - docs/models/operations/IdtokenReissueApiResponseBody.md
+  - docs/models/operations/InfoApiResponse.md
+  - docs/models/operations/InfoApiResponseBody.md
+  - docs/models/operations/JoseVerifyApiFormRequest.md
+  - docs/models/operations/JoseVerifyApiFormResponse.md
+  - docs/models/operations/JoseVerifyApiFormResponseBody.md
+  - docs/models/operations/JoseVerifyApiRequest.md
+  - docs/models/operations/JoseVerifyApiRequestBody.md
+  - docs/models/operations/JoseVerifyApiResponse.md
+  - docs/models/operations/JoseVerifyApiResponseBody.md
+  - docs/models/operations/Key.md
+  - docs/models/operations/MiscEchoApiResponse.md
+  - docs/models/operations/PostApiServiceIdAuthAuthorizationTicketUpdateAction.md
+  - docs/models/operations/PostApiServiceIdAuthAuthorizationTicketUpdateFormAction.md
+  - docs/models/operations/PostApiServiceIdAuthAuthorizationTicketUpdateFormRequest.md
+  - docs/models/operations/PostApiServiceIdAuthAuthorizationTicketUpdateFormResponse.md
+  - docs/models/operations/PostApiServiceIdAuthAuthorizationTicketUpdateFormResponseBody.md
+  - docs/models/operations/PostApiServiceIdAuthAuthorizationTicketUpdateRequest.md
+  - docs/models/operations/PostApiServiceIdAuthAuthorizationTicketUpdateRequestBody.md
+  - docs/models/operations/PostApiServiceIdAuthAuthorizationTicketUpdateResponse.md
+  - docs/models/operations/PostApiServiceIdAuthAuthorizationTicketUpdateResponseBody.md
+  - docs/models/operations/PushedAuthReqApiAction.md
+  - docs/models/operations/PushedAuthReqApiClientAuthMethod.md
+  - docs/models/operations/PushedAuthReqApiFormAction.md
+  - docs/models/operations/PushedAuthReqApiFormClientAuthMethod.md
+  - docs/models/operations/PushedAuthReqApiFormRequest.md
+  - docs/models/operations/PushedAuthReqApiFormResponse.md
+  - docs/models/operations/PushedAuthReqApiFormResponseBody.md
+  - docs/models/operations/PushedAuthReqApiRequest.md
+  - docs/models/operations/PushedAuthReqApiRequestBody.md
+  - docs/models/operations/PushedAuthReqApiResponse.md
+  - docs/models/operations/PushedAuthReqApiResponseBody.md
+  - docs/models/operations/ServiceConfigurationApiRequest.md
+  - docs/models/operations/ServiceConfigurationApiResponse.md
+  - docs/models/operations/ServiceConfigurationApiResponseBody.md
+  - docs/models/operations/ServiceCreateApiResponse.md
+  - docs/models/operations/ServiceDeleteApiRequest.md
+  - docs/models/operations/ServiceDeleteApiResponse.md
+  - docs/models/operations/ServiceGetApiRequest.md
+  - docs/models/operations/ServiceGetApiResponse.md
+  - docs/models/operations/ServiceGetListApiRequest.md
+  - docs/models/operations/ServiceGetListApiResponse.md
+  - docs/models/operations/ServiceGetListApiResponseBody.md
+  - docs/models/operations/ServiceJwksGetApiRequest.md
+  - docs/models/operations/ServiceJwksGetApiResponse.md
+  - docs/models/operations/ServiceJwksGetApiResponseBody.md
+  - docs/models/operations/ServiceUpdateApiRequest.md
+  - docs/models/operations/ServiceUpdateApiResponse.md
+  - docs/models/operations/VciBatchIssueApiAction.md
+  - docs/models/operations/VciBatchIssueApiRequest.md
+  - docs/models/operations/VciBatchIssueApiRequestBody.md
+  - docs/models/operations/VciBatchIssueApiResponse.md
+  - docs/models/operations/VciBatchIssueApiResponseBody.md
+  - docs/models/operations/VciBatchParseApiAction.md
+  - docs/models/operations/VciBatchParseApiFormAction.md
+  - docs/models/operations/VciBatchParseApiFormRequest.md
+  - docs/models/operations/VciBatchParseApiFormResponse.md
+  - docs/models/operations/VciBatchParseApiFormResponseBody.md
+  - docs/models/operations/VciBatchParseApiRequest.md
+  - docs/models/operations/VciBatchParseApiRequestBody.md
+  - docs/models/operations/VciBatchParseApiResponse.md
+  - docs/models/operations/VciBatchParseApiResponseBody.md
+  - docs/models/operations/VciDeferredIssueApiAction.md
+  - docs/models/operations/VciDeferredIssueApiRequest.md
+  - docs/models/operations/VciDeferredIssueApiRequestBody.md
+  - docs/models/operations/VciDeferredIssueApiResponse.md
+  - docs/models/operations/VciDeferredIssueApiResponseBody.md
+  - docs/models/operations/VciDeferredParseApiAction.md
+  - docs/models/operations/VciDeferredParseApiFormAction.md
+  - docs/models/operations/VciDeferredParseApiFormRequest.md
+  - docs/models/operations/VciDeferredParseApiFormResponse.md
+  - docs/models/operations/VciDeferredParseApiFormResponseBody.md
+  - docs/models/operations/VciDeferredParseApiRequest.md
+  - docs/models/operations/VciDeferredParseApiRequestBody.md
+  - docs/models/operations/VciDeferredParseApiResponse.md
+  - docs/models/operations/VciDeferredParseApiResponseBody.md
+  - docs/models/operations/VciJwksApiAction.md
+  - docs/models/operations/VciJwksApiFormAction.md
+  - docs/models/operations/VciJwksApiFormRequest.md
+  - docs/models/operations/VciJwksApiFormResponse.md
+  - docs/models/operations/VciJwksApiFormResponseBody.md
+  - docs/models/operations/VciJwksApiRequest.md
+  - docs/models/operations/VciJwksApiRequestBody.md
+  - docs/models/operations/VciJwksApiResponse.md
+  - docs/models/operations/VciJwksApiResponseBody.md
+  - docs/models/operations/VciJwtissuerApiAction.md
+  - docs/models/operations/VciJwtissuerApiFormAction.md
+  - docs/models/operations/VciJwtissuerApiFormRequest.md
+  - docs/models/operations/VciJwtissuerApiFormResponse.md
+  - docs/models/operations/VciJwtissuerApiFormResponseBody.md
+  - docs/models/operations/VciJwtissuerApiRequest.md
+  - docs/models/operations/VciJwtissuerApiRequestBody.md
+  - docs/models/operations/VciJwtissuerApiResponse.md
+  - docs/models/operations/VciJwtissuerApiResponseBody.md
+  - docs/models/operations/VciMetadataApiAction.md
+  - docs/models/operations/VciMetadataApiFormAction.md
+  - docs/models/operations/VciMetadataApiFormRequest.md
+  - docs/models/operations/VciMetadataApiFormResponse.md
+  - docs/models/operations/VciMetadataApiFormResponseBody.md
+  - docs/models/operations/VciMetadataApiRequest.md
+  - docs/models/operations/VciMetadataApiRequestBody.md
+  - docs/models/operations/VciMetadataApiResponse.md
+  - docs/models/operations/VciMetadataApiResponseBody.md
+  - docs/models/operations/VciOfferCreateApiAction.md
+  - docs/models/operations/VciOfferCreateApiFormAction.md
+  - docs/models/operations/VciOfferCreateApiFormRequest.md
+  - docs/models/operations/VciOfferCreateApiFormResponse.md
+  - docs/models/operations/VciOfferCreateApiFormResponseBody.md
+  - docs/models/operations/VciOfferCreateApiRequest.md
+  - docs/models/operations/VciOfferCreateApiRequestBody.md
+  - docs/models/operations/VciOfferCreateApiResponse.md
+  - docs/models/operations/VciOfferCreateApiResponseBody.md
+  - docs/models/operations/VciOfferInfoApiAction.md
+  - docs/models/operations/VciOfferInfoApiFormAction.md
+  - docs/models/operations/VciOfferInfoApiFormRequest.md
+  - docs/models/operations/VciOfferInfoApiFormResponse.md
+  - docs/models/operations/VciOfferInfoApiFormResponseBody.md
+  - docs/models/operations/VciOfferInfoApiRequest.md
+  - docs/models/operations/VciOfferInfoApiRequestBody.md
+  - docs/models/operations/VciOfferInfoApiResponse.md
+  - docs/models/operations/VciOfferInfoApiResponseBody.md
+  - docs/models/operations/VciSingleIssueApiAction.md
+  - docs/models/operations/VciSingleIssueApiRequest.md
+  - docs/models/operations/VciSingleIssueApiRequestBody.md
+  - docs/models/operations/VciSingleIssueApiResponse.md
+  - docs/models/operations/VciSingleIssueApiResponseBody.md
+  - docs/models/operations/VciSingleParseApiAction.md
+  - docs/models/operations/VciSingleParseApiFormAction.md
+  - docs/models/operations/VciSingleParseApiFormRequest.md
+  - docs/models/operations/VciSingleParseApiFormResponse.md
+  - docs/models/operations/VciSingleParseApiFormResponseBody.md
+  - docs/models/operations/VciSingleParseApiRequest.md
+  - docs/models/operations/VciSingleParseApiRequestBody.md
+  - docs/models/operations/VciSingleParseApiResponse.md
+  - docs/models/operations/VciSingleParseApiResponseBody.md
+  - docs/sdks/authelete/README.md
+  - docs/sdks/authorization/README.md
+  - docs/sdks/authorizationendpoint/README.md
+  - docs/sdks/authorizationendpoints/README.md
+  - docs/sdks/ciba/README.md
+  - docs/sdks/clientmanagement/README.md
+  - docs/sdks/clients/README.md
+  - docs/sdks/credentials/README.md
+  - docs/sdks/deviceflow/README.md
+  - docs/sdks/devices/README.md
+  - docs/sdks/dynamicclientregistration/README.md
+  - docs/sdks/federation/README.md
+  - docs/sdks/federations/README.md
+  - docs/sdks/grantmanagementendpoints/README.md
+  - docs/sdks/hardwaresecuritykey/README.md
+  - docs/sdks/hardwaresecuritykeys/README.md
+  - docs/sdks/introspectionendpoint/README.md
+  - docs/sdks/introspections/README.md
+  - docs/sdks/joseobject/README.md
+  - docs/sdks/jwksetendpoint/README.md
+  - docs/sdks/securitykeys/README.md
+  - docs/sdks/servicemanagement/README.md
+  - docs/sdks/services/README.md
+  - docs/sdks/tokenendpoint/README.md
+  - docs/sdks/tokenoperations/README.md
+  - docs/sdks/tokens/README.md
+  - docs/sdks/userinfo/README.md
+  - docs/sdks/utilityendpoints/README.md
+  - docs/sdks/vci/README.md
+  - docs/sdks/verifiablecredentialissuer/README.md
+  - gradle.properties
+  - gradle/wrapper/gradle-wrapper.jar
+  - gradle/wrapper/gradle-wrapper.properties
+  - gradlew
+  - gradlew.bat
+  - settings.gradle
+  - src/main/java/org/openapis/openapi/Authelete.java
+  - src/main/java/org/openapis/openapi/Authorization.java
+  - src/main/java/org/openapis/openapi/AuthorizationEndpoint.java
+  - src/main/java/org/openapis/openapi/AuthorizationEndpoints.java
+  - src/main/java/org/openapis/openapi/Ciba.java
+  - src/main/java/org/openapis/openapi/ClientManagement.java
+  - src/main/java/org/openapis/openapi/Clients.java
+  - src/main/java/org/openapis/openapi/Credentials.java
+  - src/main/java/org/openapis/openapi/DeviceFlow.java
+  - src/main/java/org/openapis/openapi/Devices.java
+  - src/main/java/org/openapis/openapi/DynamicClientRegistration.java
+  - src/main/java/org/openapis/openapi/Federation.java
+  - src/main/java/org/openapis/openapi/Federations.java
+  - src/main/java/org/openapis/openapi/GrantManagementEndpoints.java
+  - src/main/java/org/openapis/openapi/HardwareSecurityKey.java
+  - src/main/java/org/openapis/openapi/HardwareSecurityKeys.java
+  - src/main/java/org/openapis/openapi/IntrospectionEndpoint.java
+  - src/main/java/org/openapis/openapi/Introspections.java
+  - src/main/java/org/openapis/openapi/JoseObject.java
+  - src/main/java/org/openapis/openapi/JwkSetEndpoint.java
+  - src/main/java/org/openapis/openapi/SDKConfiguration.java
+  - src/main/java/org/openapis/openapi/SecurityKeys.java
+  - src/main/java/org/openapis/openapi/SecuritySource.java
+  - src/main/java/org/openapis/openapi/ServiceManagement.java
+  - src/main/java/org/openapis/openapi/Services.java
+  - src/main/java/org/openapis/openapi/TokenEndpoint.java
+  - src/main/java/org/openapis/openapi/TokenOperations.java
+  - src/main/java/org/openapis/openapi/Tokens.java
+  - src/main/java/org/openapis/openapi/Userinfo.java
+  - src/main/java/org/openapis/openapi/UtilityEndpoints.java
+  - src/main/java/org/openapis/openapi/Vci.java
+  - src/main/java/org/openapis/openapi/VerifiableCredentialIssuer.java
+  - src/main/java/org/openapis/openapi/models/components/AccessToken.java
+  - src/main/java/org/openapis/openapi/models/components/Action.java
+  - src/main/java/org/openapis/openapi/models/components/ApplicationType.java
+  - src/main/java/org/openapis/openapi/models/components/AuthorizationDetails.java
+  - src/main/java/org/openapis/openapi/models/components/AuthorizationDetailsElement.java
+  - src/main/java/org/openapis/openapi/models/components/ClaimType.java
+  - src/main/java/org/openapis/openapi/models/components/Client.java
+  - src/main/java/org/openapis/openapi/models/components/ClientAuthenticationMethod.java
+  - src/main/java/org/openapis/openapi/models/components/ClientClientType.java
+  - src/main/java/org/openapis/openapi/models/components/ClientExtension.java
+  - src/main/java/org/openapis/openapi/models/components/ClientInput.java
+  - src/main/java/org/openapis/openapi/models/components/ClientRegistrationType.java
+  - src/main/java/org/openapis/openapi/models/components/ClientTypeProperties.java
+  - src/main/java/org/openapis/openapi/models/components/CredentialIssuanceOrder.java
+  - src/main/java/org/openapis/openapi/models/components/CredentialIssuerMetadata.java
+  - src/main/java/org/openapis/openapi/models/components/CredentialOfferInfo.java
+  - src/main/java/org/openapis/openapi/models/components/CredentialRequestInfo.java
+  - src/main/java/org/openapis/openapi/models/components/DeliveryMode.java
+  - src/main/java/org/openapis/openapi/models/components/Display.java
+  - src/main/java/org/openapis/openapi/models/components/DynamicScope.java
+  - src/main/java/org/openapis/openapi/models/components/FapiMode.java
+  - src/main/java/org/openapis/openapi/models/components/GrantType.java
+  - src/main/java/org/openapis/openapi/models/components/Hsk.java
+  - src/main/java/org/openapis/openapi/models/components/ItemsClientRegistrationTypes.java
+  - src/main/java/org/openapis/openapi/models/components/ItemsFapiModes.java
+  - src/main/java/org/openapis/openapi/models/components/JweAlg.java
+  - src/main/java/org/openapis/openapi/models/components/JweEnc.java
+  - src/main/java/org/openapis/openapi/models/components/JwsAlg.java
+  - src/main/java/org/openapis/openapi/models/components/NamedUri.java
+  - src/main/java/org/openapis/openapi/models/components/Pair.java
+  - src/main/java/org/openapis/openapi/models/components/Prompt.java
+  - src/main/java/org/openapis/openapi/models/components/Property.java
+  - src/main/java/org/openapis/openapi/models/components/ResponseMode.java
+  - src/main/java/org/openapis/openapi/models/components/ResponseType.java
+  - src/main/java/org/openapis/openapi/models/components/Scope.java
+  - src/main/java/org/openapis/openapi/models/components/ScopePath.java
+  - src/main/java/org/openapis/openapi/models/components/Security.java
+  - src/main/java/org/openapis/openapi/models/components/Service.java
+  - src/main/java/org/openapis/openapi/models/components/ServiceInput.java
+  - src/main/java/org/openapis/openapi/models/components/ServiceProfile.java
+  - src/main/java/org/openapis/openapi/models/components/SubjectType.java
+  - src/main/java/org/openapis/openapi/models/components/SupportedAttachment.java
+  - src/main/java/org/openapis/openapi/models/components/TaggedValue.java
+  - src/main/java/org/openapis/openapi/models/components/TrustAnchor.java
+  - src/main/java/org/openapis/openapi/models/components/UserCodeCharset.java
+  - src/main/java/org/openapis/openapi/models/components/VerifiedClaimsValidationSchemaSet.java
+  - src/main/java/org/openapis/openapi/models/components/oneapi1Percent7BserviceIdPercent7D1auth1authorization1failPostRequestBodyContentApplication1jsonSchema.java
+  - src/main/java/org/openapis/openapi/models/components/oneapi1Percent7BserviceIdPercent7D1auth1authorization1failPostRequestBodyContentApplication1jsonSchemaReason.java
+  - src/main/java/org/openapis/openapi/models/components/oneapi1Percent7BserviceIdPercent7D1auth1authorization1issuePostRequestBodyContentApplication1jsonSchema.java
+  - src/main/java/org/openapis/openapi/models/components/oneapi1Percent7BserviceIdPercent7D1auth1authorization1ticket1infoGetRequestBodyContentApplication1jsonSchema.java
+  - src/main/java/org/openapis/openapi/models/components/oneapi1Percent7BserviceIdPercent7D1auth1authorization1ticket1updatePostRequestBodyContentApplication1jsonSchema.java
+  - src/main/java/org/openapis/openapi/models/components/oneapi1Percent7BserviceIdPercent7D1auth1authorizationPostRequestBodyContentApplication1jsonSchema.java
+  - src/main/java/org/openapis/openapi/models/components/oneapi1Percent7BserviceIdPercent7D1auth1authorizationPostResponses200ContentApplication1jsonSchemaPropertiesGrant.java
+  - src/main/java/org/openapis/openapi/models/components/oneapi1Percent7BserviceIdPercent7D1auth1introspection1standardPostRequestBodyContentApplication1jsonSchema.java
+  - src/main/java/org/openapis/openapi/models/components/oneapi1Percent7BserviceIdPercent7D1auth1introspectionPostRequestBodyContentApplication1jsonSchema.java
+  - src/main/java/org/openapis/openapi/models/components/oneapi1Percent7BserviceIdPercent7D1auth1revocationPostRequestBodyContentApplication1jsonSchema.java
+  - src/main/java/org/openapis/openapi/models/components/oneapi1Percent7BserviceIdPercent7D1auth1token1createPostRequestBodyContentApplication1jsonSchema.java
+  - src/main/java/org/openapis/openapi/models/components/oneapi1Percent7BserviceIdPercent7D1auth1token1failPostRequestBodyContentApplication1jsonSchema.java
+  - src/main/java/org/openapis/openapi/models/components/oneapi1Percent7BserviceIdPercent7D1auth1token1failPostRequestBodyContentApplication1jsonSchemaReason.java
+  - src/main/java/org/openapis/openapi/models/components/oneapi1Percent7BserviceIdPercent7D1auth1token1get1listGetResponses200ContentApplication1jsonSchemaPropertiesClient.java
+  - src/main/java/org/openapis/openapi/models/components/oneapi1Percent7BserviceIdPercent7D1auth1token1issuePostRequestBodyContentApplication1jsonSchema.java
+  - src/main/java/org/openapis/openapi/models/components/oneapi1Percent7BserviceIdPercent7D1auth1token1updatePostRequestBodyContentApplication1jsonSchema.java
+  - src/main/java/org/openapis/openapi/models/components/oneapi1Percent7BserviceIdPercent7D1auth1tokenPostRequestBodyContentApplication1jsonSchema.java
+  - src/main/java/org/openapis/openapi/models/components/oneapi1Percent7BserviceIdPercent7D1auth1tokenPostResponses200ContentApplication1jsonSchemaPropertiesActorTokenInfo.java
+  - src/main/java/org/openapis/openapi/models/components/oneapi1Percent7BserviceIdPercent7D1auth1tokenPostResponses200ContentApplication1jsonSchemaPropertiesActorTokenType.java
+  - src/main/java/org/openapis/openapi/models/components/oneapi1Percent7BserviceIdPercent7D1auth1userinfo1issuePostRequestBodyContentApplication1jsonSchema.java
+  - src/main/java/org/openapis/openapi/models/components/oneapi1Percent7BserviceIdPercent7D1auth1userinfoPostRequestBodyContentApplication1jsonSchema.java
+  - src/main/java/org/openapis/openapi/models/components/oneapi1Percent7BserviceIdPercent7D1backchannel1authentication1completePostRequestBodyContentApplication1jsonSchema.java
+  - src/main/java/org/openapis/openapi/models/components/oneapi1Percent7BserviceIdPercent7D1backchannel1authentication1completePostRequestBodyContentApplication1jsonSchemaResult.java
+  - src/main/java/org/openapis/openapi/models/components/oneapi1Percent7BserviceIdPercent7D1backchannel1authentication1failPostRequestBodyContentApplication1jsonSchema.java
+  - src/main/java/org/openapis/openapi/models/components/oneapi1Percent7BserviceIdPercent7D1backchannel1authentication1failPostRequestBodyContentApplication1jsonSchemaReason.java
+  - src/main/java/org/openapis/openapi/models/components/oneapi1Percent7BserviceIdPercent7D1backchannel1authentication1issuePostRequestBodyContentApplication1jsonSchema.java
+  - src/main/java/org/openapis/openapi/models/components/oneapi1Percent7BserviceIdPercent7D1backchannel1authenticationPostRequestBodyContentApplication1jsonSchema.java
+  - src/main/java/org/openapis/openapi/models/components/oneapi1Percent7BserviceIdPercent7D1client1authorization1update1Percent7BclientIdPercent7DPostRequestBodyContentApplication1jsonSchema.java
+  - src/main/java/org/openapis/openapi/models/components/oneapi1Percent7BserviceIdPercent7D1client1grantedScopes1get1Percent7BclientIdPercent7DGetResponses200ContentApplication1jsonSchema.java
+  - src/main/java/org/openapis/openapi/models/components/oneapi1Percent7BserviceIdPercent7D1client1lockFlag1update1Percent7BclientIdentifierPercent7DPostRequestBodyContentApplication1jsonSchema.java
+  - src/main/java/org/openapis/openapi/models/components/oneapi1Percent7BserviceIdPercent7D1client1registration1deletePostRequestBodyContentApplication1jsonSchema.java
+  - src/main/java/org/openapis/openapi/models/components/oneapi1Percent7BserviceIdPercent7D1client1registration1updatePostRequestBodyContentApplication1jsonSchema.java
+  - src/main/java/org/openapis/openapi/models/components/oneapi1Percent7BserviceIdPercent7D1client1registrationPostRequestBodyContentApplication1jsonSchema.java
+  - src/main/java/org/openapis/openapi/models/components/oneapi1Percent7BserviceIdPercent7D1client1registrationPostResponses200ContentApplication1jsonSchema.java
+  - src/main/java/org/openapis/openapi/models/components/oneapi1Percent7BserviceIdPercent7D1client1secret1update1Percent7BclientIdentifierPercent7DPostRequestBodyContentApplication1jsonSchema.java
+  - src/main/java/org/openapis/openapi/models/components/oneapi1Percent7BserviceIdPercent7D1device1authorizationPostRequestBodyContentApplication1jsonSchema.java
+  - src/main/java/org/openapis/openapi/models/components/oneapi1Percent7BserviceIdPercent7D1device1completePostRequestBodyContentApplication1jsonSchema.java
+  - src/main/java/org/openapis/openapi/models/components/oneapi1Percent7BserviceIdPercent7D1device1completePostRequestBodyContentApplication1jsonSchemaResult.java
+  - src/main/java/org/openapis/openapi/models/components/oneapi1Percent7BserviceIdPercent7D1device1verificationPostRequestBodyContentApplication1jsonSchema.java
+  - src/main/java/org/openapis/openapi/models/components/oneapi1Percent7BserviceIdPercent7D1federation1registrationPostRequestBodyContentApplication1jsonSchema.java
+  - src/main/java/org/openapis/openapi/models/components/oneapi1Percent7BserviceIdPercent7D1gmPostRequestBodyContentApplication1jsonSchemaPropertiesGmAction.java
+  - src/main/java/org/openapis/openapi/models/components/oneapi1Percent7BserviceIdPercent7D1hsk1createPostRequestBodyContentApplication1jsonSchema.java
+  - src/main/java/org/openapis/openapi/models/components/oneapi1Percent7BserviceIdPercent7D1jose1verifyPostRequestBodyContentApplication1jsonSchema.java
+  - src/main/java/org/openapis/openapi/models/components/oneapi1Percent7BserviceIdPercent7D1pushedAuthReqPostRequestBodyContentApplication1jsonSchema.java
+  - src/main/java/org/openapis/openapi/models/components/oneapi1Percent7BserviceIdPercent7D1vci1batch1parsePostRequestBodyContentApplication1jsonSchema.java
+  - src/main/java/org/openapis/openapi/models/components/oneapi1Percent7BserviceIdPercent7D1vci1deferred1parsePostRequestBodyContentApplication1jsonSchema.java
+  - src/main/java/org/openapis/openapi/models/components/oneapi1Percent7BserviceIdPercent7D1vci1jwksPostRequestBodyContentApplication1jsonSchema.java
+  - src/main/java/org/openapis/openapi/models/components/oneapi1Percent7BserviceIdPercent7D1vci1jwtissuerPostRequestBodyContentApplication1jsonSchema.java
+  - src/main/java/org/openapis/openapi/models/components/oneapi1Percent7BserviceIdPercent7D1vci1metadataPostRequestBodyContentApplication1jsonSchema.java
+  - src/main/java/org/openapis/openapi/models/components/oneapi1Percent7BserviceIdPercent7D1vci1offer1createPostRequestBodyContentApplication1jsonSchema.java
+  - src/main/java/org/openapis/openapi/models/components/oneapi1Percent7BserviceIdPercent7D1vci1offer1infoPostRequestBodyContentApplication1jsonSchema.java
+  - src/main/java/org/openapis/openapi/models/components/oneapi1Percent7BserviceIdPercent7D1vci1single1parsePostRequestBodyContentApplication1jsonSchema.java
+  - src/main/java/org/openapis/openapi/models/errors/APIException.java
+  - src/main/java/org/openapis/openapi/models/errors/AuthException.java
+  - src/main/java/org/openapis/openapi/models/errors/BadRequestException.java
+  - src/main/java/org/openapis/openapi/models/errors/oneapi1infoGetResponses400ContentApplication1jsonSchemaException.java
+  - src/main/java/org/openapis/openapi/models/errors/oneapi1infoGetResponses400Exception.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthAuthorizationApiAction.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthAuthorizationApiClient.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthAuthorizationApiFormAction.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthAuthorizationApiFormClient.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthAuthorizationApiFormGrant.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthAuthorizationApiFormRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthAuthorizationApiFormRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthAuthorizationApiFormResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthAuthorizationApiFormResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthAuthorizationApiFormScope.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthAuthorizationApiGrant.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthAuthorizationApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthAuthorizationApiRequestBody.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthAuthorizationApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthAuthorizationApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthAuthorizationApiResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthAuthorizationApiScope.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthAuthorizationFailApiAction.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthAuthorizationFailApiFormAction.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthAuthorizationFailApiFormRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthAuthorizationFailApiFormRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthAuthorizationFailApiFormResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthAuthorizationFailApiFormResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthAuthorizationFailApiReason.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthAuthorizationFailApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthAuthorizationFailApiRequestBody.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthAuthorizationFailApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthAuthorizationFailApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthAuthorizationFailApiResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthAuthorizationIssueApiAction.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthAuthorizationIssueApiFormAction.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthAuthorizationIssueApiFormRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthAuthorizationIssueApiFormRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthAuthorizationIssueApiFormResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthAuthorizationIssueApiFormResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthAuthorizationIssueApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthAuthorizationIssueApiRequestBody.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthAuthorizationIssueApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthAuthorizationIssueApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthAuthorizationIssueApiResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthIntrospectionApiAction.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthIntrospectionApiFormAction.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthIntrospectionApiFormRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthIntrospectionApiFormRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthIntrospectionApiFormResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthIntrospectionApiFormResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthIntrospectionApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthIntrospectionApiRequestBody.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthIntrospectionApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthIntrospectionApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthIntrospectionApiResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthIntrospectionStandardApiAction.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthIntrospectionStandardApiFormAction.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthIntrospectionStandardApiFormRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthIntrospectionStandardApiFormRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthIntrospectionStandardApiFormResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthIntrospectionStandardApiFormResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthIntrospectionStandardApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthIntrospectionStandardApiRequestBody.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthIntrospectionStandardApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthIntrospectionStandardApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthIntrospectionStandardApiResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthRevocationApiAction.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthRevocationApiFormAction.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthRevocationApiFormRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthRevocationApiFormRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthRevocationApiFormResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthRevocationApiFormResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthRevocationApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthRevocationApiRequestBody.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthRevocationApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthRevocationApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthRevocationApiResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenApiAction.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenApiActorTokenInfo.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenApiActorTokenType.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenApiFormAction.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenApiFormActorTokenInfo.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenApiFormActorTokenType.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenApiFormRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenApiFormRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenApiFormResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenApiFormResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenApiRequestBody.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenApiResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenCreateApiAction.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenCreateApiFormAction.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenCreateApiFormRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenCreateApiFormRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenCreateApiFormResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenCreateApiFormResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenCreateApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenCreateApiRequestBody.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenCreateApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenCreateApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenCreateApiResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenDeleteApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenDeleteApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenDeleteApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenFailApiAction.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenFailApiFormAction.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenFailApiFormRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenFailApiFormRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenFailApiFormResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenFailApiFormResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenFailApiReason.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenFailApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenFailApiRequestBody.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenFailApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenFailApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenFailApiResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenGetListApiClient.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenGetListApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenGetListApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenGetListApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenGetListApiResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenIssueApiAction.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenIssueApiFormAction.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenIssueApiFormRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenIssueApiFormRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenIssueApiFormResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenIssueApiFormResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenIssueApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenIssueApiRequestBody.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenIssueApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenIssueApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenIssueApiResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenRevokeApiFormRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenRevokeApiFormRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenRevokeApiFormResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenRevokeApiFormResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenRevokeApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenRevokeApiRequestBody.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenRevokeApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenRevokeApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenRevokeApiResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenRevokeForm.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenUpdateApiAction.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenUpdateApiFormAction.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenUpdateApiFormRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenUpdateApiFormRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenUpdateApiFormResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenUpdateApiFormResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenUpdateApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenUpdateApiRequestBody.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenUpdateApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenUpdateApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthTokenUpdateApiResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthUserinfoApiAction.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthUserinfoApiFormAction.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthUserinfoApiFormRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthUserinfoApiFormRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthUserinfoApiFormResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthUserinfoApiFormResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthUserinfoApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthUserinfoApiRequestBody.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthUserinfoApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthUserinfoApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthUserinfoApiResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthUserinfoIssueApiAction.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthUserinfoIssueApiFormAction.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthUserinfoIssueApiFormRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthUserinfoIssueApiFormRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthUserinfoIssueApiFormResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthUserinfoIssueApiFormResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthUserinfoIssueApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthUserinfoIssueApiRequestBody.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthUserinfoIssueApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthUserinfoIssueApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/AuthUserinfoIssueApiResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/BackchannelAuthenticationApiAction.java
+  - src/main/java/org/openapis/openapi/models/operations/BackchannelAuthenticationApiFormAction.java
+  - src/main/java/org/openapis/openapi/models/operations/BackchannelAuthenticationApiFormRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/BackchannelAuthenticationApiFormRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/BackchannelAuthenticationApiFormResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/BackchannelAuthenticationApiFormResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/BackchannelAuthenticationApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/BackchannelAuthenticationApiRequestBody.java
+  - src/main/java/org/openapis/openapi/models/operations/BackchannelAuthenticationApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/BackchannelAuthenticationApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/BackchannelAuthenticationApiResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/BackchannelAuthenticationCompleteApiAction.java
+  - src/main/java/org/openapis/openapi/models/operations/BackchannelAuthenticationCompleteApiFormAction.java
+  - src/main/java/org/openapis/openapi/models/operations/BackchannelAuthenticationCompleteApiFormRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/BackchannelAuthenticationCompleteApiFormRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/BackchannelAuthenticationCompleteApiFormResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/BackchannelAuthenticationCompleteApiFormResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/BackchannelAuthenticationCompleteApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/BackchannelAuthenticationCompleteApiRequestBody.java
+  - src/main/java/org/openapis/openapi/models/operations/BackchannelAuthenticationCompleteApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/BackchannelAuthenticationCompleteApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/BackchannelAuthenticationCompleteApiResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/BackchannelAuthenticationCompleteApiResult.java
+  - src/main/java/org/openapis/openapi/models/operations/BackchannelAuthenticationFailApiAction.java
+  - src/main/java/org/openapis/openapi/models/operations/BackchannelAuthenticationFailApiFormAction.java
+  - src/main/java/org/openapis/openapi/models/operations/BackchannelAuthenticationFailApiFormRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/BackchannelAuthenticationFailApiFormRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/BackchannelAuthenticationFailApiFormResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/BackchannelAuthenticationFailApiFormResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/BackchannelAuthenticationFailApiReason.java
+  - src/main/java/org/openapis/openapi/models/operations/BackchannelAuthenticationFailApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/BackchannelAuthenticationFailApiRequestBody.java
+  - src/main/java/org/openapis/openapi/models/operations/BackchannelAuthenticationFailApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/BackchannelAuthenticationFailApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/BackchannelAuthenticationFailApiResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/BackchannelAuthenticationIssueApiAction.java
+  - src/main/java/org/openapis/openapi/models/operations/BackchannelAuthenticationIssueApiFormAction.java
+  - src/main/java/org/openapis/openapi/models/operations/BackchannelAuthenticationIssueApiFormRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/BackchannelAuthenticationIssueApiFormRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/BackchannelAuthenticationIssueApiFormResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/BackchannelAuthenticationIssueApiFormResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/BackchannelAuthenticationIssueApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/BackchannelAuthenticationIssueApiRequestBody.java
+  - src/main/java/org/openapis/openapi/models/operations/BackchannelAuthenticationIssueApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/BackchannelAuthenticationIssueApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/BackchannelAuthenticationIssueApiResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientAuthorizationDeleteApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientAuthorizationDeleteApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientAuthorizationDeleteApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientAuthorizationGetListApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientAuthorizationGetListApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientAuthorizationGetListApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientAuthorizationGetListApiResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientAuthorizationUpdateApiFormRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientAuthorizationUpdateApiFormRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientAuthorizationUpdateApiFormResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientAuthorizationUpdateApiFormResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientAuthorizationUpdateApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientAuthorizationUpdateApiRequestBody.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientAuthorizationUpdateApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientAuthorizationUpdateApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientAuthorizationUpdateApiResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientCreateApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientCreateApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientCreateApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientDeleteApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientDeleteApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientDeleteApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientExtensionRequestablesScopesDeleteApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientExtensionRequestablesScopesDeleteApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientExtensionRequestablesScopesDeleteApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientExtensionRequestablesScopesGetApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientExtensionRequestablesScopesGetApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientExtensionRequestablesScopesGetApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientExtensionRequestablesScopesGetApiResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientExtensionRequestablesScopesUpdateApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientExtensionRequestablesScopesUpdateApiRequestBody.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientExtensionRequestablesScopesUpdateApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientExtensionRequestablesScopesUpdateApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientExtensionRequestablesScopesUpdateApiResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientFlagUpdateApiFormRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientFlagUpdateApiFormRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientFlagUpdateApiFormResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientFlagUpdateApiFormResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientFlagUpdateApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientFlagUpdateApiRequestBody.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientFlagUpdateApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientFlagUpdateApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientFlagUpdateApiResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientGetApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientGetApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientGetApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientGetListApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientGetListApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientGetListApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientGetListApiResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientGrantedScopesDeleteApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientGrantedScopesDeleteApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientGrantedScopesDeleteApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientGrantedScopesDeleteApiResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientGrantedScopesGetApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientGrantedScopesGetApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientGrantedScopesGetApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientGrantedScopesGetApiResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientRegistrationApiAction.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientRegistrationApiFormAction.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientRegistrationApiFormRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientRegistrationApiFormRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientRegistrationApiFormResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientRegistrationApiFormResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientRegistrationApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientRegistrationApiRequestBody.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientRegistrationApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientRegistrationApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientRegistrationApiResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientRegistrationDeleteApiAction.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientRegistrationDeleteApiFormAction.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientRegistrationDeleteApiFormRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientRegistrationDeleteApiFormRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientRegistrationDeleteApiFormResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientRegistrationDeleteApiFormResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientRegistrationDeleteApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientRegistrationDeleteApiRequestBody.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientRegistrationDeleteApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientRegistrationDeleteApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientRegistrationDeleteApiResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientRegistrationGetApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientRegistrationGetApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientRegistrationGetApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientRegistrationUpdateApiAction.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientRegistrationUpdateApiFormAction.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientRegistrationUpdateApiFormRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientRegistrationUpdateApiFormRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientRegistrationUpdateApiFormResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientRegistrationUpdateApiFormResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientRegistrationUpdateApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientRegistrationUpdateApiRequestBody.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientRegistrationUpdateApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientRegistrationUpdateApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientRegistrationUpdateApiResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientSecretRefreshApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientSecretRefreshApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientSecretRefreshApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientSecretRefreshApiResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientSecretUpdateApiFormRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientSecretUpdateApiFormRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientSecretUpdateApiFormResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientSecretUpdateApiFormResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientSecretUpdateApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientSecretUpdateApiRequestBody.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientSecretUpdateApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientSecretUpdateApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientSecretUpdateApiResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientUpdateApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientUpdateApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/ClientUpdateApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/DeviceAuthorizationApiAction.java
+  - src/main/java/org/openapis/openapi/models/operations/DeviceAuthorizationApiFormAction.java
+  - src/main/java/org/openapis/openapi/models/operations/DeviceAuthorizationApiFormRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/DeviceAuthorizationApiFormRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/DeviceAuthorizationApiFormResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/DeviceAuthorizationApiFormResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/DeviceAuthorizationApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/DeviceAuthorizationApiRequestBody.java
+  - src/main/java/org/openapis/openapi/models/operations/DeviceAuthorizationApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/DeviceAuthorizationApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/DeviceAuthorizationApiResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/DeviceCompleteApiAction.java
+  - src/main/java/org/openapis/openapi/models/operations/DeviceCompleteApiFormAction.java
+  - src/main/java/org/openapis/openapi/models/operations/DeviceCompleteApiFormRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/DeviceCompleteApiFormRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/DeviceCompleteApiFormResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/DeviceCompleteApiFormResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/DeviceCompleteApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/DeviceCompleteApiRequestBody.java
+  - src/main/java/org/openapis/openapi/models/operations/DeviceCompleteApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/DeviceCompleteApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/DeviceCompleteApiResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/DeviceCompleteApiResult.java
+  - src/main/java/org/openapis/openapi/models/operations/DeviceVerificationApiAction.java
+  - src/main/java/org/openapis/openapi/models/operations/DeviceVerificationApiFormAction.java
+  - src/main/java/org/openapis/openapi/models/operations/DeviceVerificationApiFormRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/DeviceVerificationApiFormRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/DeviceVerificationApiFormResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/DeviceVerificationApiFormResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/DeviceVerificationApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/DeviceVerificationApiRequestBody.java
+  - src/main/java/org/openapis/openapi/models/operations/DeviceVerificationApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/DeviceVerificationApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/DeviceVerificationApiResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/FederationConfigurationApiAction.java
+  - src/main/java/org/openapis/openapi/models/operations/FederationConfigurationApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/FederationConfigurationApiRequestBody.java
+  - src/main/java/org/openapis/openapi/models/operations/FederationConfigurationApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/FederationConfigurationApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/FederationConfigurationApiResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/FederationRegistrationApiAction.java
+  - src/main/java/org/openapis/openapi/models/operations/FederationRegistrationApiFormAction.java
+  - src/main/java/org/openapis/openapi/models/operations/FederationRegistrationApiFormRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/FederationRegistrationApiFormRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/FederationRegistrationApiFormResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/FederationRegistrationApiFormResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/FederationRegistrationApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/FederationRegistrationApiRequestBody.java
+  - src/main/java/org/openapis/openapi/models/operations/FederationRegistrationApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/FederationRegistrationApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/FederationRegistrationApiResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/GetApiServiceIdAuthAuthorizationTicketInfoAction.java
+  - src/main/java/org/openapis/openapi/models/operations/GetApiServiceIdAuthAuthorizationTicketInfoFormAction.java
+  - src/main/java/org/openapis/openapi/models/operations/GetApiServiceIdAuthAuthorizationTicketInfoFormRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/GetApiServiceIdAuthAuthorizationTicketInfoFormRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/GetApiServiceIdAuthAuthorizationTicketInfoFormResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/GetApiServiceIdAuthAuthorizationTicketInfoFormResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/GetApiServiceIdAuthAuthorizationTicketInfoRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/GetApiServiceIdAuthAuthorizationTicketInfoRequestBody.java
+  - src/main/java/org/openapis/openapi/models/operations/GetApiServiceIdAuthAuthorizationTicketInfoRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/GetApiServiceIdAuthAuthorizationTicketInfoResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/GetApiServiceIdAuthAuthorizationTicketInfoResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/GmAction.java
+  - src/main/java/org/openapis/openapi/models/operations/GrantMApiAction.java
+  - src/main/java/org/openapis/openapi/models/operations/GrantMApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/GrantMApiRequestBody.java
+  - src/main/java/org/openapis/openapi/models/operations/GrantMApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/GrantMApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/GrantMApiResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/HskCreateApiAction.java
+  - src/main/java/org/openapis/openapi/models/operations/HskCreateApiFormAction.java
+  - src/main/java/org/openapis/openapi/models/operations/HskCreateApiFormRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/HskCreateApiFormRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/HskCreateApiFormResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/HskCreateApiFormResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/HskCreateApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/HskCreateApiRequestBody.java
+  - src/main/java/org/openapis/openapi/models/operations/HskCreateApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/HskCreateApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/HskCreateApiResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/HskDeleteApiAction.java
+  - src/main/java/org/openapis/openapi/models/operations/HskDeleteApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/HskDeleteApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/HskDeleteApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/HskDeleteApiResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/HskGetApiAction.java
+  - src/main/java/org/openapis/openapi/models/operations/HskGetApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/HskGetApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/HskGetApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/HskGetApiResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/HskGetListApiAction.java
+  - src/main/java/org/openapis/openapi/models/operations/HskGetListApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/HskGetListApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/HskGetListApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/HskGetListApiResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/IdtokenReissueApiAction.java
+  - src/main/java/org/openapis/openapi/models/operations/IdtokenReissueApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/IdtokenReissueApiRequestBody.java
+  - src/main/java/org/openapis/openapi/models/operations/IdtokenReissueApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/IdtokenReissueApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/IdtokenReissueApiResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/InfoApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/InfoApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/InfoApiResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/JoseVerifyApiFormRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/JoseVerifyApiFormRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/JoseVerifyApiFormResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/JoseVerifyApiFormResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/JoseVerifyApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/JoseVerifyApiRequestBody.java
+  - src/main/java/org/openapis/openapi/models/operations/JoseVerifyApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/JoseVerifyApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/JoseVerifyApiResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/Key.java
+  - src/main/java/org/openapis/openapi/models/operations/MiscEchoApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/MiscEchoApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/PostApiServiceIdAuthAuthorizationTicketUpdateAction.java
+  - src/main/java/org/openapis/openapi/models/operations/PostApiServiceIdAuthAuthorizationTicketUpdateFormAction.java
+  - src/main/java/org/openapis/openapi/models/operations/PostApiServiceIdAuthAuthorizationTicketUpdateFormRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/PostApiServiceIdAuthAuthorizationTicketUpdateFormRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/PostApiServiceIdAuthAuthorizationTicketUpdateFormResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/PostApiServiceIdAuthAuthorizationTicketUpdateFormResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/PostApiServiceIdAuthAuthorizationTicketUpdateRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/PostApiServiceIdAuthAuthorizationTicketUpdateRequestBody.java
+  - src/main/java/org/openapis/openapi/models/operations/PostApiServiceIdAuthAuthorizationTicketUpdateRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/PostApiServiceIdAuthAuthorizationTicketUpdateResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/PostApiServiceIdAuthAuthorizationTicketUpdateResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/PushedAuthReqApiAction.java
+  - src/main/java/org/openapis/openapi/models/operations/PushedAuthReqApiClientAuthMethod.java
+  - src/main/java/org/openapis/openapi/models/operations/PushedAuthReqApiFormAction.java
+  - src/main/java/org/openapis/openapi/models/operations/PushedAuthReqApiFormClientAuthMethod.java
+  - src/main/java/org/openapis/openapi/models/operations/PushedAuthReqApiFormRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/PushedAuthReqApiFormRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/PushedAuthReqApiFormResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/PushedAuthReqApiFormResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/PushedAuthReqApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/PushedAuthReqApiRequestBody.java
+  - src/main/java/org/openapis/openapi/models/operations/PushedAuthReqApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/PushedAuthReqApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/PushedAuthReqApiResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/ServiceConfigurationApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/ServiceConfigurationApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/ServiceConfigurationApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/ServiceConfigurationApiResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/ServiceCreateApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/ServiceCreateApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/ServiceDeleteApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/ServiceDeleteApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/ServiceDeleteApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/ServiceGetApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/ServiceGetApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/ServiceGetApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/ServiceGetListApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/ServiceGetListApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/ServiceGetListApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/ServiceGetListApiResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/ServiceJwksGetApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/ServiceJwksGetApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/ServiceJwksGetApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/ServiceJwksGetApiResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/ServiceUpdateApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/ServiceUpdateApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/ServiceUpdateApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/VciBatchIssueApiAction.java
+  - src/main/java/org/openapis/openapi/models/operations/VciBatchIssueApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/VciBatchIssueApiRequestBody.java
+  - src/main/java/org/openapis/openapi/models/operations/VciBatchIssueApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/VciBatchIssueApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/VciBatchIssueApiResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/VciBatchParseApiAction.java
+  - src/main/java/org/openapis/openapi/models/operations/VciBatchParseApiFormAction.java
+  - src/main/java/org/openapis/openapi/models/operations/VciBatchParseApiFormRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/VciBatchParseApiFormRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/VciBatchParseApiFormResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/VciBatchParseApiFormResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/VciBatchParseApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/VciBatchParseApiRequestBody.java
+  - src/main/java/org/openapis/openapi/models/operations/VciBatchParseApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/VciBatchParseApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/VciBatchParseApiResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/VciDeferredIssueApiAction.java
+  - src/main/java/org/openapis/openapi/models/operations/VciDeferredIssueApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/VciDeferredIssueApiRequestBody.java
+  - src/main/java/org/openapis/openapi/models/operations/VciDeferredIssueApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/VciDeferredIssueApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/VciDeferredIssueApiResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/VciDeferredParseApiAction.java
+  - src/main/java/org/openapis/openapi/models/operations/VciDeferredParseApiFormAction.java
+  - src/main/java/org/openapis/openapi/models/operations/VciDeferredParseApiFormRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/VciDeferredParseApiFormRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/VciDeferredParseApiFormResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/VciDeferredParseApiFormResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/VciDeferredParseApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/VciDeferredParseApiRequestBody.java
+  - src/main/java/org/openapis/openapi/models/operations/VciDeferredParseApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/VciDeferredParseApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/VciDeferredParseApiResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/VciJwksApiAction.java
+  - src/main/java/org/openapis/openapi/models/operations/VciJwksApiFormAction.java
+  - src/main/java/org/openapis/openapi/models/operations/VciJwksApiFormRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/VciJwksApiFormRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/VciJwksApiFormResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/VciJwksApiFormResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/VciJwksApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/VciJwksApiRequestBody.java
+  - src/main/java/org/openapis/openapi/models/operations/VciJwksApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/VciJwksApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/VciJwksApiResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/VciJwtissuerApiAction.java
+  - src/main/java/org/openapis/openapi/models/operations/VciJwtissuerApiFormAction.java
+  - src/main/java/org/openapis/openapi/models/operations/VciJwtissuerApiFormRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/VciJwtissuerApiFormRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/VciJwtissuerApiFormResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/VciJwtissuerApiFormResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/VciJwtissuerApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/VciJwtissuerApiRequestBody.java
+  - src/main/java/org/openapis/openapi/models/operations/VciJwtissuerApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/VciJwtissuerApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/VciJwtissuerApiResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/VciMetadataApiAction.java
+  - src/main/java/org/openapis/openapi/models/operations/VciMetadataApiFormAction.java
+  - src/main/java/org/openapis/openapi/models/operations/VciMetadataApiFormRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/VciMetadataApiFormRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/VciMetadataApiFormResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/VciMetadataApiFormResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/VciMetadataApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/VciMetadataApiRequestBody.java
+  - src/main/java/org/openapis/openapi/models/operations/VciMetadataApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/VciMetadataApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/VciMetadataApiResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/VciOfferCreateApiAction.java
+  - src/main/java/org/openapis/openapi/models/operations/VciOfferCreateApiFormAction.java
+  - src/main/java/org/openapis/openapi/models/operations/VciOfferCreateApiFormRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/VciOfferCreateApiFormRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/VciOfferCreateApiFormResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/VciOfferCreateApiFormResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/VciOfferCreateApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/VciOfferCreateApiRequestBody.java
+  - src/main/java/org/openapis/openapi/models/operations/VciOfferCreateApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/VciOfferCreateApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/VciOfferCreateApiResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/VciOfferInfoApiAction.java
+  - src/main/java/org/openapis/openapi/models/operations/VciOfferInfoApiFormAction.java
+  - src/main/java/org/openapis/openapi/models/operations/VciOfferInfoApiFormRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/VciOfferInfoApiFormRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/VciOfferInfoApiFormResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/VciOfferInfoApiFormResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/VciOfferInfoApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/VciOfferInfoApiRequestBody.java
+  - src/main/java/org/openapis/openapi/models/operations/VciOfferInfoApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/VciOfferInfoApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/VciOfferInfoApiResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/VciSingleIssueApiAction.java
+  - src/main/java/org/openapis/openapi/models/operations/VciSingleIssueApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/VciSingleIssueApiRequestBody.java
+  - src/main/java/org/openapis/openapi/models/operations/VciSingleIssueApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/VciSingleIssueApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/VciSingleIssueApiResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/VciSingleParseApiAction.java
+  - src/main/java/org/openapis/openapi/models/operations/VciSingleParseApiFormAction.java
+  - src/main/java/org/openapis/openapi/models/operations/VciSingleParseApiFormRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/VciSingleParseApiFormRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/VciSingleParseApiFormResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/VciSingleParseApiFormResponseBody.java
+  - src/main/java/org/openapis/openapi/models/operations/VciSingleParseApiRequest.java
+  - src/main/java/org/openapis/openapi/models/operations/VciSingleParseApiRequestBody.java
+  - src/main/java/org/openapis/openapi/models/operations/VciSingleParseApiRequestBuilder.java
+  - src/main/java/org/openapis/openapi/models/operations/VciSingleParseApiResponse.java
+  - src/main/java/org/openapis/openapi/models/operations/VciSingleParseApiResponseBody.java
+  - src/main/java/org/openapis/openapi/operations/AuthAuthorizationApiFormOperation.java
+  - src/main/java/org/openapis/openapi/operations/AuthAuthorizationApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/AuthAuthorizationFailApiFormOperation.java
+  - src/main/java/org/openapis/openapi/operations/AuthAuthorizationFailApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/AuthAuthorizationIssueApiFormOperation.java
+  - src/main/java/org/openapis/openapi/operations/AuthAuthorizationIssueApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/AuthIntrospectionApiFormOperation.java
+  - src/main/java/org/openapis/openapi/operations/AuthIntrospectionApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/AuthIntrospectionStandardApiFormOperation.java
+  - src/main/java/org/openapis/openapi/operations/AuthIntrospectionStandardApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/AuthRevocationApiFormOperation.java
+  - src/main/java/org/openapis/openapi/operations/AuthRevocationApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/AuthTokenApiFormOperation.java
+  - src/main/java/org/openapis/openapi/operations/AuthTokenApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/AuthTokenCreateApiFormOperation.java
+  - src/main/java/org/openapis/openapi/operations/AuthTokenCreateApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/AuthTokenDeleteApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/AuthTokenFailApiFormOperation.java
+  - src/main/java/org/openapis/openapi/operations/AuthTokenFailApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/AuthTokenGetListApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/AuthTokenIssueApiFormOperation.java
+  - src/main/java/org/openapis/openapi/operations/AuthTokenIssueApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/AuthTokenRevokeApiFormOperation.java
+  - src/main/java/org/openapis/openapi/operations/AuthTokenRevokeApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/AuthTokenUpdateApiFormOperation.java
+  - src/main/java/org/openapis/openapi/operations/AuthTokenUpdateApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/AuthUserinfoApiFormOperation.java
+  - src/main/java/org/openapis/openapi/operations/AuthUserinfoApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/AuthUserinfoIssueApiFormOperation.java
+  - src/main/java/org/openapis/openapi/operations/AuthUserinfoIssueApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/BackchannelAuthenticationApiFormOperation.java
+  - src/main/java/org/openapis/openapi/operations/BackchannelAuthenticationApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/BackchannelAuthenticationCompleteApiFormOperation.java
+  - src/main/java/org/openapis/openapi/operations/BackchannelAuthenticationCompleteApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/BackchannelAuthenticationFailApiFormOperation.java
+  - src/main/java/org/openapis/openapi/operations/BackchannelAuthenticationFailApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/BackchannelAuthenticationIssueApiFormOperation.java
+  - src/main/java/org/openapis/openapi/operations/BackchannelAuthenticationIssueApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/ClientAuthorizationDeleteApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/ClientAuthorizationGetListApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/ClientAuthorizationUpdateApiFormOperation.java
+  - src/main/java/org/openapis/openapi/operations/ClientAuthorizationUpdateApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/ClientCreateApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/ClientDeleteApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/ClientExtensionRequestablesScopesDeleteApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/ClientExtensionRequestablesScopesGetApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/ClientExtensionRequestablesScopesUpdateApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/ClientFlagUpdateApiFormOperation.java
+  - src/main/java/org/openapis/openapi/operations/ClientFlagUpdateApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/ClientGetApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/ClientGetListApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/ClientGrantedScopesDeleteApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/ClientGrantedScopesGetApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/ClientRegistrationApiFormOperation.java
+  - src/main/java/org/openapis/openapi/operations/ClientRegistrationApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/ClientRegistrationDeleteApiFormOperation.java
+  - src/main/java/org/openapis/openapi/operations/ClientRegistrationDeleteApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/ClientRegistrationGetApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/ClientRegistrationUpdateApiFormOperation.java
+  - src/main/java/org/openapis/openapi/operations/ClientRegistrationUpdateApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/ClientSecretRefreshApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/ClientSecretUpdateApiFormOperation.java
+  - src/main/java/org/openapis/openapi/operations/ClientSecretUpdateApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/ClientUpdateApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/DeviceAuthorizationApiFormOperation.java
+  - src/main/java/org/openapis/openapi/operations/DeviceAuthorizationApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/DeviceCompleteApiFormOperation.java
+  - src/main/java/org/openapis/openapi/operations/DeviceCompleteApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/DeviceVerificationApiFormOperation.java
+  - src/main/java/org/openapis/openapi/operations/DeviceVerificationApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/FederationConfigurationApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/FederationRegistrationApiFormOperation.java
+  - src/main/java/org/openapis/openapi/operations/FederationRegistrationApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/GetApiServiceIdAuthAuthorizationTicketInfoFormOperation.java
+  - src/main/java/org/openapis/openapi/operations/GetApiServiceIdAuthAuthorizationTicketInfoOperation.java
+  - src/main/java/org/openapis/openapi/operations/GrantMApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/HskCreateApiFormOperation.java
+  - src/main/java/org/openapis/openapi/operations/HskCreateApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/HskDeleteApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/HskGetApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/HskGetListApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/IdtokenReissueApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/InfoApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/JoseVerifyApiFormOperation.java
+  - src/main/java/org/openapis/openapi/operations/JoseVerifyApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/MiscEchoApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/Operations.java
+  - src/main/java/org/openapis/openapi/operations/PostApiServiceIdAuthAuthorizationTicketUpdateFormOperation.java
+  - src/main/java/org/openapis/openapi/operations/PostApiServiceIdAuthAuthorizationTicketUpdateOperation.java
+  - src/main/java/org/openapis/openapi/operations/PushedAuthReqApiFormOperation.java
+  - src/main/java/org/openapis/openapi/operations/PushedAuthReqApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/ServiceConfigurationApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/ServiceCreateApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/ServiceDeleteApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/ServiceGetApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/ServiceGetListApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/ServiceJwksGetApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/ServiceUpdateApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/VciBatchIssueApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/VciBatchParseApiFormOperation.java
+  - src/main/java/org/openapis/openapi/operations/VciBatchParseApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/VciDeferredIssueApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/VciDeferredParseApiFormOperation.java
+  - src/main/java/org/openapis/openapi/operations/VciDeferredParseApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/VciJwksApiFormOperation.java
+  - src/main/java/org/openapis/openapi/operations/VciJwksApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/VciJwtissuerApiFormOperation.java
+  - src/main/java/org/openapis/openapi/operations/VciJwtissuerApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/VciMetadataApiFormOperation.java
+  - src/main/java/org/openapis/openapi/operations/VciMetadataApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/VciOfferCreateApiFormOperation.java
+  - src/main/java/org/openapis/openapi/operations/VciOfferCreateApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/VciOfferInfoApiFormOperation.java
+  - src/main/java/org/openapis/openapi/operations/VciOfferInfoApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/VciSingleIssueApiOperation.java
+  - src/main/java/org/openapis/openapi/operations/VciSingleParseApiFormOperation.java
+  - src/main/java/org/openapis/openapi/operations/VciSingleParseApiOperation.java
+  - src/main/java/org/openapis/openapi/utils/BackoffStrategy.java
+  - src/main/java/org/openapis/openapi/utils/BigDecimalString.java
+  - src/main/java/org/openapis/openapi/utils/BigIntegerString.java
+  - src/main/java/org/openapis/openapi/utils/Constants.java
+  - src/main/java/org/openapis/openapi/utils/CopiableInputStream.java
+  - src/main/java/org/openapis/openapi/utils/Deserializers.java
+  - src/main/java/org/openapis/openapi/utils/EventStream.java
+  - src/main/java/org/openapis/openapi/utils/EventStreamLineReader.java
+  - src/main/java/org/openapis/openapi/utils/EventStreamMessage.java
+  - src/main/java/org/openapis/openapi/utils/EventStreamReader.java
+  - src/main/java/org/openapis/openapi/utils/Exceptions.java
+  - src/main/java/org/openapis/openapi/utils/FormMetadata.java
+  - src/main/java/org/openapis/openapi/utils/Globals.java
+  - src/main/java/org/openapis/openapi/utils/HTTPClient.java
+  - src/main/java/org/openapis/openapi/utils/HTTPRequest.java
+  - src/main/java/org/openapis/openapi/utils/HasSecurity.java
+  - src/main/java/org/openapis/openapi/utils/HeaderMetadata.java
+  - src/main/java/org/openapis/openapi/utils/Helpers.java
+  - src/main/java/org/openapis/openapi/utils/Hook.java
+  - src/main/java/org/openapis/openapi/utils/Hooks.java
+  - src/main/java/org/openapis/openapi/utils/JSON.java
+  - src/main/java/org/openapis/openapi/utils/LazySingletonValue.java
+  - src/main/java/org/openapis/openapi/utils/Metadata.java
+  - src/main/java/org/openapis/openapi/utils/Multipart.java
+  - src/main/java/org/openapis/openapi/utils/MultipartFormMetadata.java
+  - src/main/java/org/openapis/openapi/utils/NameValue.java
+  - src/main/java/org/openapis/openapi/utils/OneOfDeserializer.java
+  - src/main/java/org/openapis/openapi/utils/Options.java
+  - src/main/java/org/openapis/openapi/utils/PathParamsMetadata.java
+  - src/main/java/org/openapis/openapi/utils/QueryEncoding.java
+  - src/main/java/org/openapis/openapi/utils/QueryParameter.java
+  - src/main/java/org/openapis/openapi/utils/QueryParameters.java
+  - src/main/java/org/openapis/openapi/utils/QueryParamsMetadata.java
+  - src/main/java/org/openapis/openapi/utils/RecordingClient.java
+  - src/main/java/org/openapis/openapi/utils/RequestBody.java
+  - src/main/java/org/openapis/openapi/utils/RequestMetadata.java
+  - src/main/java/org/openapis/openapi/utils/Response.java
+  - src/main/java/org/openapis/openapi/utils/Retries.java
+  - src/main/java/org/openapis/openapi/utils/RetryConfig.java
+  - src/main/java/org/openapis/openapi/utils/Security.java
+  - src/main/java/org/openapis/openapi/utils/SecurityMetadata.java
+  - src/main/java/org/openapis/openapi/utils/SerializedBody.java
+  - src/main/java/org/openapis/openapi/utils/SessionManager.java
+  - src/main/java/org/openapis/openapi/utils/SpeakeasyHTTPClient.java
+  - src/main/java/org/openapis/openapi/utils/SpeakeasyMetadata.java
+  - src/main/java/org/openapis/openapi/utils/TypedObject.java
+  - src/main/java/org/openapis/openapi/utils/Types.java
+  - src/main/java/org/openapis/openapi/utils/Utf8UrlEncoder.java
+  - src/main/java/org/openapis/openapi/utils/Utils.java
+examples:
+  service_get_api:
+    full:
+      parameters:
+        path:
+          serviceId: "<id>"
+      responses:
+        "200":
+          application/json: {"number": 5041, "serviceName": "My service", "issuer": "https://my-service.example.com", "apiKey": 21653835348762, "clientIdAliasEnabled": true, "metadata": [{"key": "clientCount", "value": "1"}], "createdAt": 1639373421000, "modifiedAt": 1639373421000, "supportedGrantTypes": ["AUTHORIZATION_CODE", "REFRESH_TOKEN"], "supportedResponseTypes": ["CODE"], "errorDescriptionOmitted": false, "errorUriOmitted": false, "authorizationEndpoint": "https://my-service.example.com/authz", "directAuthorizationEndpointEnabled": false, "supportedDisplays": ["PAGE"], "pkceRequired": true, "pkceS256Required": false, "authorizationResponseDuration": 0, "tokenEndpoint": "https://my-service.example.com/token", "directTokenEndpointEnabled": false, "supportedTokenAuthMethods": ["CLIENT_SECRET_BASIC"], "missingClientIdAllowed": false, "revocationEndpoint": "https://my-service.example.com/revocation", "directRevocationEndpointEnabled": false, "supportedRevocationAuthMethods": ["CLIENT_SECRET_BASIC"], "introspectionEndpoint": "https://my-service.example.com/introspection", "directIntrospectionEndpointEnabled": false, "supportedIntrospectionAuthMethods": ["CLIENT_SECRET_BASIC"], "pushedAuthReqDuration": 0, "parRequired": false, "requestObjectRequired": false, "traditionalRequestObjectProcessingApplied": false, "mutualTlsValidatePkiCertChain": false, "accessTokenType": "Bearer", "tlsClientCertificateBoundAccessTokens": false, "accessTokenDuration": 3600, "singleAccessTokenPerSubject": false, "refreshTokenDuration": 3600, "refreshTokenDurationKept": false, "refreshTokenDurationReset": false, "refreshTokenKept": false, "supportedScopes": [{"name": "history.read", "defaultEntry": false, "description": "A permission to read your history."}, {"name": "timeline.read", "defaultEntry": false, "description": "A permission to read your timeline."}], "scopeRequired": false, "idTokenDuration": 0, "allowableClockSkew": 0, "supportedClaimTypes": ["NORMAL"], "claimShortcutRestrictive": false, "directJwksEndpointEnabled": false, "directUserInfoEndpointEnabled": false, "dynamicRegistrationSupported": false, "backchannelAuthReqIdDuration": 0, "backchannelPollingInterval": 0, "backchannelUserCodeParameterSupported": false, "backchannelBindingMessageRequiredInFapi": false, "deviceFlowCodeDuration": 0, "deviceFlowPollingInterval": 0, "userCodeLength": 0, "attributes": [{"key": "attribute1-key", "value": "attribute1-value"}, {"key": "attribute2-key", "value": "attribute2-value"}], "nbfOptional": false, "issSuppressed": false, "tokenExpirationLinked": false, "frontChannelRequestObjectEncryptionRequired": false, "requestObjectEncryptionAlgMatchRequired": false, "requestObjectEncryptionEncMatchRequired": false, "hsmEnabled": false, "grantManagementActionRequired": false, "unauthorizedOnClientConfigSupported": false, "dcrScopeUsedAsRequestable": false}
+    limited:
+      parameters:
+        path:
+          serviceId: "<id>"
+      responses:
+        "200":
+          application/json: {"number": 5041, "serviceName": "My service", "description": "This Service.", "apiKey": 21653835348762}
+    speakeasy-default-service-get-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  service_get_list_api:
+    full:
+      responses:
+        "200":
+          application/json: {"start": 0, "end": 5, "totalCount": 1, "services": [{"number": 5041, "serviceName": "My service", "issuer": "https://my-service.example.com", "apiKey": 21653835348762, "clientIdAliasEnabled": true, "metadata": [{"key": "clientCount", "value": "1"}], "createdAt": 1639373421000, "modifiedAt": 1639373421000, "supportedGrantTypes": ["AUTHORIZATION_CODE", "REFRESH_TOKEN"], "supportedResponseTypes": ["CODE"], "errorDescriptionOmitted": false, "errorUriOmitted": false, "authorizationEndpoint": "https://as.example.com/authz", "directAuthorizationEndpointEnabled": false, "supportedDisplays": ["PAGE"], "pkceRequired": true, "pkceS256Required": false, "authorizationResponseDuration": 0, "tokenEndpoint": "https://my-service.example.com/token", "directTokenEndpointEnabled": false, "supportedTokenAuthMethods": ["CLIENT_SECRET_BASIC"], "missingClientIdAllowed": false, "revocationEndpoint": "https://my-service.example.com/revocation", "directRevocationEndpointEnabled": false, "supportedRevocationAuthMethods": ["CLIENT_SECRET_BASIC"], "introspectionEndpoint": "https://my-service.example.com/introspection", "directIntrospectionEndpointEnabled": false, "supportedIntrospectionAuthMethods": ["CLIENT_SECRET_BASIC"], "pushedAuthReqDuration": 0, "parRequired": false, "requestObjectRequired": false, "traditionalRequestObjectProcessingApplied": false, "mutualTlsValidatePkiCertChain": false, "accessTokenType": "Bearer", "tlsClientCertificateBoundAccessTokens": false, "accessTokenDuration": 3600, "singleAccessTokenPerSubject": false, "refreshTokenDuration": 3600, "refreshTokenDurationKept": false, "refreshTokenDurationReset": false, "refreshTokenKept": false, "supportedScopes": [{"name": "history.read", "defaultEntry": false, "description": "A permission to read your history."}, {"name": "timeline.read", "defaultEntry": false, "description": "A permission to read your timeline."}], "scopeRequired": false, "idTokenDuration": 0, "allowableClockSkew": 0, "supportedClaimTypes": ["NORMAL"], "claimShortcutRestrictive": false, "directJwksEndpointEnabled": false, "directUserInfoEndpointEnabled": false, "dynamicRegistrationSupported": false, "backchannelAuthReqIdDuration": 0, "backchannelPollingInterval": 0, "backchannelUserCodeParameterSupported": false, "backchannelBindingMessageRequiredInFapi": false, "deviceFlowCodeDuration": 0, "deviceFlowPollingInterval": 0, "userCodeLength": 0, "attributes": [{"key": "attribute1-key", "value": "attribute1-value"}, {"key": "attribute2-key", "value": "attribute2-value"}], "nbfOptional": false, "issSuppressed": false, "tokenExpirationLinked": false, "frontChannelRequestObjectEncryptionRequired": false, "requestObjectEncryptionAlgMatchRequired": false, "requestObjectEncryptionEncMatchRequired": false, "hsmEnabled": false, "grantManagementActionRequired": false, "unauthorizedOnClientConfigSupported": false, "dcrScopeUsedAsRequestable": false}]}
+    limited:
+      responses:
+        "200":
+          application/json: {"start": 0, "end": 5, "totalCount": 1, "services": [{"number": 5041, "serviceName": "My service", "apiKey": 21653835348762, "clientIdAliasEnabled": true}]}
+    speakeasy-default-service-get-list-api:
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  service_create_api:
+    speakeasy-default-service-create-api:
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  service_update_api:
+    speakeasy-default-service-update-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  service_delete_api:
+    speakeasy-default-service-delete-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      responses:
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  service_configuration_api:
+    speakeasy-default-service-configuration-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  client_get_api:
+    speakeasy-default-client-get-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+          clientId: "<id>"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  client_get_list_api:
+    full:
+      parameters:
+        path:
+          serviceId: "<id>"
+      responses:
+        "200":
+          application/json: {"start": 0, "end": 3, "totalCount": 1, "clients": [{"number": 6164, "serviceNumber": 5041, "clientName": "My client", "clientId": 26478243745571, "clientSecret": "gXz97ISgLs4HuXwOZWch8GEmgL4YMvUJwu3er_kDVVGcA0UOhA9avLPbEmoeZdagi9yC_-tEiT2BdRyH9dbrQQ", "clientIdAlias": "my-client", "clientIdAliasEnabled": true, "clientType": "CONFIDENTIAL", "applicationType": "WEB", "tlsClientCertificateBoundAccessTokens": false, "dynamicallyRegistered": false, "createdAt": 1639468356000, "modifiedAt": 1639468356000, "grantTypes": ["AUTHORIZATION_CODE", "REFRESH_TOKEN"], "responseTypes": ["CODE", "TOKEN"], "redirectUris": ["https://my-client.example.com/cb1", "https://my-client.example.com/cb2"], "tokenAuthMethod": "CLIENT_SECRET_BASIC", "parRequired": false, "requestObjectRequired": false, "defaultMaxAge": 0, "idTokenSignAlg": "RS256", "authTimeRequired": false, "subjectType": "PUBLIC", "derivedSectorIdentifier": "my-client.example.com", "bcUserCodeRequired": false, "attributes": [{"key": "attribute1-key", "value": "attribute1-value"}, {"key": "attribute2-key", "value": "attribute2-value"}], "frontChannelRequestObjectEncryptionRequired": false, "requestObjectEncryptionAlgMatchRequired": false, "requestObjectEncryptionEncMatchRequired": false}]}
+    limited:
+      parameters:
+        path:
+          serviceId: "<id>"
+      responses:
+        "200":
+          application/json: {"start": 0, "end": 3, "totalCount": 1, "clients": [{"number": 6164, "clientName": "My client", "clientId": 26478243745571, "clientIdAlias": "my-client", "clientIdAliasEnabled": true, "clientType": "CONFIDENTIAL"}]}
+    speakeasy-default-client-get-list-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  client_create_api:
+    speakeasy-default-client-create-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  client_update_api:
+    speakeasy-default-client-update-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+          clientId: "<id>"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  client_delete_api:
+    speakeasy-default-client-delete-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+          clientId: "<id>"
+      responses:
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  client_flag_update_api:
+    speakeasy-default-client-flag-update-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+          clientIdentifier: "<value>"
+      responses:
+        "200":
+          application/json: {"resultCode": "<value>", "resultMessage": "<value>"}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+    speakeasy-default-client-flag-update-api-form:
+      parameters:
+        path:
+          serviceId: "<id>"
+          clientIdentifier: "<value>"
+      responses:
+        "200":
+          application/json: {"resultCode": "<value>", "resultMessage": "<value>"}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  client_secret_refresh_api:
+    speakeasy-default-client-secret-refresh-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+          clientIdentifier: "<value>"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  client_secret_update_api:
+    speakeasy-default-client-secret-update-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+          clientIdentifier: "<value>"
+      requestBody:
+        application/json: {"clientSecret": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+    speakeasy-default-client-secret-update-api-form:
+      parameters:
+        path:
+          serviceId: "<id>"
+          clientIdentifier: "<value>"
+      requestBody:
+        application/x-www-form-urlencoded: {"clientSecret": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  client_authorization_get_list_api:
+    speakeasy-default-client-authorization-get-list-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+        query:
+          subject: "<value>"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  client_authorization_update_api:
+    speakeasy-default-client-authorization-update-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+          clientId: "<id>"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+    speakeasy-default-client-authorization-update-api-form:
+      parameters:
+        path:
+          serviceId: "<id>"
+          clientId: "<id>"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  client_authorization_delete_api:
+    speakeasy-default-client-authorization-delete-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+          clientId: "<id>"
+        query:
+          subject: "<value>"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  client_granted_scopes_get_api:
+    speakeasy-default-client-granted-scopes-get-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+          clientId: "<id>"
+        query:
+          subject: "<value>"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  client_granted_scopes_delete_api:
+    speakeasy-default-client-granted-scopes-delete-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+          clientId: "<id>"
+        query:
+          subject: "<value>"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  client_extension_requestables_scopes_get_api:
+    speakeasy-default-client-extension-requestables-scopes-get-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+          clientId: "<id>"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  client_extension_requestables_scopes_update_api:
+    speakeasy-default-client-extension-requestables-scopes-update-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+          clientId: "<id>"
+      requestBody:
+        application/json: {}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  client_extension_requestables_scopes_delete_api:
+    speakeasy-default-client-extension-requestables-scopes-delete-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+          clientId: "<id>"
+      responses:
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  auth_authorization_api:
+    speakeasy-default-auth-authorization-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"parameters": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+    speakeasy-default-auth-authorization-api-form:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/x-www-form-urlencoded: {"parameters": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  auth_authorization_fail_api:
+    speakeasy-default-auth-authorization-fail-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"ticket": "<value>", "reason": "NOT_AUTHENTICATED"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+    speakeasy-default-auth-authorization-fail-api-form:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/x-www-form-urlencoded: {"ticket": "<value>", "reason": "NOT_AUTHENTICATED"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  auth_authorization_issue_api:
+    speakeasy-default-auth-authorization-issue-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"ticket": "<value>", "subject": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+    speakeasy-default-auth-authorization-issue-api-form:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/x-www-form-urlencoded: {"ticket": "<value>", "subject": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  get_/api/{serviceId}/auth/authorization/ticket/info:
+    speakeasy-default-get-/api/{service-id}/auth/authorization/ticket/info:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"ticket": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+    speakeasy-default-get-/api/{service-id}/auth/authorization/ticket/info-form:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/x-www-form-urlencoded: {"ticket": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  post_/api/{serviceId}/auth/authorization/ticket/update:
+    speakeasy-default-post-/api/{service-id}/auth/authorization/ticket/update:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"ticket": "<value>", "info": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+    speakeasy-default-post-/api/{service-id}/auth/authorization/ticket/update-form:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/x-www-form-urlencoded: {"ticket": "<value>", "info": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  pushed_auth_req_api:
+    speakeasy-default-pushed-auth-req-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"parameters": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+    speakeasy-default-pushed-auth-req-api-form:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/x-www-form-urlencoded: {"parameters": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  auth_token_api:
+    speakeasy-default-auth-token-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"parameters": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+    speakeasy-default-auth-token-api-form:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/x-www-form-urlencoded: {"parameters": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  auth_token_fail_api:
+    speakeasy-default-auth-token-fail-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"ticket": "<value>", "reason": "UNKNOWN"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+    speakeasy-default-auth-token-fail-api-form:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/x-www-form-urlencoded: {"ticket": "<value>", "reason": "UNKNOWN"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  auth_token_issue_api:
+    speakeasy-default-auth-token-issue-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"ticket": "<value>", "subject": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+    speakeasy-default-auth-token-issue-api-form:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/x-www-form-urlencoded: {"ticket": "<value>", "subject": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  idtoken_reissue_api:
+    speakeasy-default-idtoken-reissue-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  auth_introspection_api:
+    speakeasy-default-auth-introspection-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"token": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+    speakeasy-default-auth-introspection-api-form:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/x-www-form-urlencoded: {"token": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  auth_introspection_standard_api:
+    speakeasy-default-auth-introspection-standard-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"parameters": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+    speakeasy-default-auth-introspection-standard-api-form:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/x-www-form-urlencoded: {"parameters": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  auth_revocation_api:
+    speakeasy-default-auth-revocation-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"parameters": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+    speakeasy-default-auth-revocation-api-form:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/x-www-form-urlencoded: {"parameters": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  auth_userinfo_api:
+    speakeasy-default-auth-userinfo-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"token": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+    speakeasy-default-auth-userinfo-api-form:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/x-www-form-urlencoded: {"token": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  auth_userinfo_issue_api:
+    speakeasy-default-auth-userinfo-issue-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"token": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+    speakeasy-default-auth-userinfo-issue-api-form:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/x-www-form-urlencoded: {"token": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  grant_m_api:
+    speakeasy-default-grant-m-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  service_jwks_get_api:
+    speakeasy-default-service-jwks-get-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  client_registration_api:
+    speakeasy-default-client-registration-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"json": "{key: 6995014930124193, key1: null, key2: \"<value>\"}"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+    speakeasy-default-client-registration-api-form:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/x-www-form-urlencoded: {"json": "{key: 6995014930124193, key1: null, key2: \"<value>\"}"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  client_registration_get_api:
+    speakeasy-default-client-registration-get-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"json": "{key: 8153909118751747, key1: null, key2: \"<value>\"}"}
+        application/x-www-form-urlencoded: {"json": "{key: 8153909118751747, key1: null, key2: \"<value>\"}"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  client_registration_update_api:
+    speakeasy-default-client-registration-update-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"clientId": "<id>", "token": "<value>", "json": "{key: 7278695057340839, key1: null, key2: \"<value>\"}"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+    speakeasy-default-client-registration-update-api-form:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/x-www-form-urlencoded: {"clientId": "<id>", "token": "<value>", "json": "{key: 7278695057340839, key1: null, key2: \"<value>\"}"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  client_registration_delete_api:
+    speakeasy-default-client-registration-delete-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"clientId": "<id>", "token": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+    speakeasy-default-client-registration-delete-api-form:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/x-www-form-urlencoded: {"clientId": "<id>", "token": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  backchannel_authentication_api:
+    speakeasy-default-backchannel-authentication-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"parameters": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+    speakeasy-default-backchannel-authentication-api-form:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/x-www-form-urlencoded: {"parameters": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  backchannel_authentication_issue_api:
+    speakeasy-default-backchannel-authentication-issue-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"ticket": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+    speakeasy-default-backchannel-authentication-issue-api-form:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/x-www-form-urlencoded: {"ticket": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  backchannel_authentication_fail_api:
+    speakeasy-default-backchannel-authentication-fail-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"ticket": "<value>", "reason": "MISSING_USER_CODE"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+    speakeasy-default-backchannel-authentication-fail-api-form:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/x-www-form-urlencoded: {"ticket": "<value>", "reason": "MISSING_USER_CODE"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  backchannel_authentication_complete_api:
+    speakeasy-default-backchannel-authentication-complete-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"ticket": "<value>", "result": "TRANSACTION_FAILED", "subject": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+    speakeasy-default-backchannel-authentication-complete-api-form:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/x-www-form-urlencoded: {"ticket": "<value>", "result": "TRANSACTION_FAILED", "subject": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  device_authorization_api:
+    speakeasy-default-device-authorization-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"parameters": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+    speakeasy-default-device-authorization-api-form:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/x-www-form-urlencoded: {"parameters": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  device_verification_api:
+    speakeasy-default-device-verification-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"userCode": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+    speakeasy-default-device-verification-api-form:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/x-www-form-urlencoded: {"userCode": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  device_complete_api:
+    speakeasy-default-device-complete-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"userCode": "<value>", "result": "AUTHORIZED", "subject": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+    speakeasy-default-device-complete-api-form:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/x-www-form-urlencoded: {"userCode": "<value>", "result": "AUTHORIZED", "subject": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  auth_token_get_list_api:
+    speakeasy-default-auth-token-get-list-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  auth_token_create_api:
+    speakeasy-default-auth-token-create-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"grantType": "REFRESH_TOKEN", "clientId": 987169}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+    speakeasy-default-auth-token-create-api-form:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/x-www-form-urlencoded: {"grantType": "REFRESH_TOKEN", "clientId": 987169}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  auth_token_update_api:
+    speakeasy-default-auth-token-update-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"accessToken": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+    speakeasy-default-auth-token-update-api-form:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/x-www-form-urlencoded: {"accessToken": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  auth_token_delete_api:
+    speakeasy-default-auth-token-delete-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+          accessTokenIdentifier: "<value>"
+      responses:
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  auth_token_revoke_api:
+    speakeasy-default-auth-token-revoke-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+    speakeasy-default-auth-token-revoke-api-form:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/x-www-form-urlencoded: {"token": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  jose_verify_api:
+    speakeasy-default-jose-verify-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+    speakeasy-default-jose-verify-api-form:
+      parameters:
+        path:
+          serviceId: "<id>"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  federation_configuration_api:
+    speakeasy-default-federation-configuration-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  federation_registration_api:
+    speakeasy-default-federation-registration-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+    speakeasy-default-federation-registration-api-form:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/x-www-form-urlencoded: {}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  info_api:
+    speakeasy-default-info-api:
+      responses:
+        "200":
+          application/json: {"version": "<value>", "features": ["<value 1>", "<value 2>", "<value 3>"]}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  misc_echo_api: {}
+  hsk_create_api:
+    speakeasy-default-hsk-create-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+    speakeasy-default-hsk-create-api-form:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/x-www-form-urlencoded: {}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  hsk_delete_api:
+    speakeasy-default-hsk-delete-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+          handle: "<value>"
+      responses:
+        "204":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  hsk_get_api:
+    speakeasy-default-hsk-get-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+          handle: "<value>"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  hsk_get_list_api:
+    speakeasy-default-hsk-get-list-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  vci_metadata_api:
+    speakeasy-default-vci-metadata-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"pretty": true}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+    speakeasy-default-vci-metadata-api-form:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/x-www-form-urlencoded: {"pretty": true}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  vci_jwtissuer_api:
+    speakeasy-default-vci-jwtissuer-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"pretty": true}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+    speakeasy-default-vci-jwtissuer-api-form:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/x-www-form-urlencoded: {"pretty": true}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  vci_jwks_api:
+    speakeasy-default-vci-jwks-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"pretty": false}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+    speakeasy-default-vci-jwks-api-form:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/x-www-form-urlencoded: {"pretty": false}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  vci_offer_create_api:
+    speakeasy-default-vci-offer-create-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+    speakeasy-default-vci-offer-create-api-form:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/x-www-form-urlencoded: {}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  vci_offer_info_api:
+    speakeasy-default-vci-offer-info-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+    speakeasy-default-vci-offer-info-api-form:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/x-www-form-urlencoded: {}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  vci_single_parse_api:
+    speakeasy-default-vci-single-parse-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+    speakeasy-default-vci-single-parse-api-form:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/x-www-form-urlencoded: {}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  vci_single_issue_api:
+    speakeasy-default-vci-single-issue-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  vci_batch_parse_api:
+    speakeasy-default-vci-batch-parse-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+    speakeasy-default-vci-batch-parse-api-form:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/x-www-form-urlencoded: {}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  vci_batch_issue_api:
+    speakeasy-default-vci-batch-issue-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  vci_deferred_parse_api:
+    speakeasy-default-vci-deferred-parse-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+    speakeasy-default-vci-deferred-parse-api-form:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/x-www-form-urlencoded: {}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  vci_deferred_issue_api:
+    speakeasy-default-vci-deferred-issue-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+examplesVersion: 1.0.2

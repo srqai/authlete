@@ -1,0 +1,11 @@
+# HskGetListApiResponseBody
+
+
+## Fields
+
+| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `resultCode`                                                                     | *Optional\<String>*                                                              | :heavy_minus_sign:                                                               | The code which represents the result of the API call.                            |
+| `resultMessage`                                                                  | *Optional\<String>*                                                              | :heavy_minus_sign:                                                               | A short message which explains the result of the API call.                       |
+| `action`                                                                         | [Optional\<HskGetListApiAction>](../../models/operations/HskGetListApiAction.md) | :heavy_minus_sign:                                                               | Result of the API call                                                           |
+| `hsks`                                                                           | List\<[Hsk](../../models/components/Hsk.md)>                                     | :heavy_minus_sign:                                                               | List of HSK                                                                      |

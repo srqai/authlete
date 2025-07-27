@@ -1,0 +1,41 @@
+speakeasyVersion: 1.590.0
+sources:
+    Authlete API Explorer:
+        sourceNamespace: authlete-api-explorer
+        sourceRevisionDigest: sha256:6757c39170ee483750c380b2fd956cd67109b88f1847a7089affed450fa58928
+        sourceBlobDigest: sha256:85b296507bbef9975fd60ef1416aa1d93ca46b66eee0114f5d3388d639a40df2
+        tags:
+            - latest
+            - 3.0.0
+targets:
+    authelete:
+        source: Authlete API Explorer
+        sourceNamespace: authlete-api-explorer
+        sourceRevisionDigest: sha256:6757c39170ee483750c380b2fd956cd67109b88f1847a7089affed450fa58928
+        sourceBlobDigest: sha256:85b296507bbef9975fd60ef1416aa1d93ca46b66eee0114f5d3388d639a40df2
+        codeSamplesNamespace: authlete-api-explorer-java-code-samples
+        codeSamplesRevisionDigest: sha256:f2502ffcfe778ad11ff0cb7b8c981a1f25362cb179b2ca32f2f4c1ccc513eb70
+workflow:
+    workflowVersion: 1.0.0
+    speakeasyVersion: latest
+    sources:
+        Authlete API Explorer:
+            inputs:
+                - location: ../Downloads/onefixlast.yaml
+            overlays:
+                - location: .speakeasy/speakeasy-modifications-overlay.yaml
+            transformations:
+                - removeUnused: true
+            output: .speakeasy/out.openapi.yaml
+            registry:
+                location: registry.speakeasyapi.dev/vartana/qwerty/authlete-api-explorer
+    targets:
+        authelete:
+            target: java
+            source: Authlete API Explorer
+            codeSamples:
+                registry:
+                    location: registry.speakeasyapi.dev/vartana/qwerty/authlete-api-explorer-java-code-samples
+                labelOverride:
+                    fixedValue: Java (SDK)
+                blocking: false

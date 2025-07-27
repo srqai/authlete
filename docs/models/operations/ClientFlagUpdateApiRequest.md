@@ -1,0 +1,10 @@
+# ClientFlagUpdateApiRequest
+
+
+## Fields
+
+| Field                                                                                                  | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
+| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| `serviceId`                                                                                            | *String*                                                                                               | :heavy_check_mark:                                                                                     | A service ID.                                                                                          |
+| `clientIdentifier`                                                                                     | *String*                                                                                               | :heavy_check_mark:                                                                                     | A client ID.                                                                                           |
+| `requestBody`                                                                                          | [Optional\<ClientFlagUpdateApiRequestBody>](../../models/operations/ClientFlagUpdateApiRequestBody.md) | :heavy_minus_sign:                                                                                     | N/A                                                                                                    |

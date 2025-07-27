@@ -1,0 +1,9 @@
+# BackchannelAuthenticationApiRequest
+
+
+## Fields
+
+| Field                                                                                                         | Type                                                                                                          | Required                                                                                                      | Description                                                                                                   |
+| ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| `serviceId`                                                                                                   | *String*                                                                                                      | :heavy_check_mark:                                                                                            | A service ID.                                                                                                 |
+| `requestBody`                                                                                                 | [BackchannelAuthenticationApiRequestBody](../../models/operations/BackchannelAuthenticationApiRequestBody.md) | :heavy_check_mark:                                                                                            | N/A                                                                                                           |

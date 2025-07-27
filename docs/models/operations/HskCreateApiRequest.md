@@ -1,0 +1,9 @@
+# HskCreateApiRequest
+
+
+## Fields
+
+| Field                                                                         | Type                                                                          | Required                                                                      | Description                                                                   |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `serviceId`                                                                   | *String*                                                                      | :heavy_check_mark:                                                            | A service ID.                                                                 |
+| `requestBody`                                                                 | [HskCreateApiRequestBody](../../models/operations/HskCreateApiRequestBody.md) | :heavy_check_mark:                                                            | N/A                                                                           |

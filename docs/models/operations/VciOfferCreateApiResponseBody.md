@@ -1,0 +1,11 @@
+# VciOfferCreateApiResponseBody
+
+
+## Fields
+
+| Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `resultCode`                                                                             | *Optional\<String>*                                                                      | :heavy_minus_sign:                                                                       | The code which represents the result of the API call.                                    |
+| `resultMessage`                                                                          | *Optional\<String>*                                                                      | :heavy_minus_sign:                                                                       | A short message which explains the result of the API call.                               |
+| `action`                                                                                 | [Optional\<VciOfferCreateApiAction>](../../models/operations/VciOfferCreateApiAction.md) | :heavy_minus_sign:                                                                       | The result of the `/vci/offer/create` API call.                                          |
+| `info`                                                                                   | [Optional\<CredentialOfferInfo>](../../models/components/CredentialOfferInfo.md)         | :heavy_minus_sign:                                                                       | N/A                                                                                      |

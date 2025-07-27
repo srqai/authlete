@@ -1,0 +1,23 @@
+workflowVersion: 1.0.0
+speakeasyVersion: latest
+sources:
+    Authlete API Explorer:
+        inputs:
+            - location: ../Downloads/onefixlast.yaml
+        overlays:
+            - location: .speakeasy/speakeasy-modifications-overlay.yaml
+        transformations:
+            - removeUnused: true
+        output: .speakeasy/out.openapi.yaml
+        registry:
+            location: registry.speakeasyapi.dev/vartana/qwerty/authlete-api-explorer
+targets:
+    authelete:
+        target: java
+        source: Authlete API Explorer
+        codeSamples:
+            registry:
+                location: registry.speakeasyapi.dev/vartana/qwerty/authlete-api-explorer-java-code-samples
+            labelOverride:
+                fixedValue: Java (SDK)
+            blocking: false

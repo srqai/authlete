@@ -1,0 +1,9 @@
+# DeviceVerificationApiRequest
+
+
+## Fields
+
+| Field                                                                                           | Type                                                                                            | Required                                                                                        | Description                                                                                     |
+| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `serviceId`                                                                                     | *String*                                                                                        | :heavy_check_mark:                                                                              | A service ID.                                                                                   |
+| `requestBody`                                                                                   | [DeviceVerificationApiRequestBody](../../models/operations/DeviceVerificationApiRequestBody.md) | :heavy_check_mark:                                                                              | N/A                                                                                             |
