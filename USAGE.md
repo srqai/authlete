@@ -1,32 +1,16 @@
 <!-- Start SDK Example Usage [usage] -->
-```java
-package hello.world;
+```typescript
+import { ScalarGalaxyTypescript } from "@shariqnzr-gmail-com-team/scalar-galaxy-typescript";
 
-import java.lang.Exception;
-import org.openapis.openapi.Authelete;
-import org.openapis.openapi.models.components.Security;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400ContentApplication1jsonSchemaException;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400Exception;
-import org.openapis.openapi.models.operations.ServiceGetApiResponse;
+const scalarGalaxyTypescript = new ScalarGalaxyTypescript();
 
-public class Application {
+async function run() {
+  const result = await scalarGalaxyTypescript.planets.getAllData({});
 
-    public static void main(String[] args) throws 1api1infoGetResponses400Exception, 1api1infoGetResponses400ContentApplication1jsonSchemaException, 1api1infoGetResponses400ContentApplication1jsonSchemaException, Exception {
-
-        Authelete sdk = Authelete.builder()
-                .security(Security.builder()
-                    .authlete(System.getenv().getOrDefault("AUTHLETE", ""))
-                    .build())
-            .build();
-
-        ServiceGetApiResponse res = sdk.serviceManagement().get()
-                .serviceId("<id>")
-                .call();
-
-        if (res.service().isPresent()) {
-            // handle response
-        }
-    }
+  console.log(result);
 }
+
+run();
+
 ```
 <!-- End SDK Example Usage [usage] -->

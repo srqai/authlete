@@ -1,125 +1,77 @@
-# openapi
+# scalar-galaxy-typescript
 
-Developer-friendly & type-safe Java SDK specifically catered to leverage *openapi* API.
+Developer-friendly, idiomatic Typescript SDK for the *scalar-galaxy-typescript* API.
 
 <div align="left">
-    <a href="https://www.speakeasy.com/?utm_source=openapi&utm_campaign=java"><img src="https://custom-icon-badges.demolab.com/badge/-Built%20By%20Speakeasy-212015?style=for-the-badge&logoColor=FBE331&logo=speakeasy&labelColor=545454" /></a>
-    <a href="https://mit-license.org/">
+    <a href="https://www.scalar.com/?utm_source=scalar-galaxy-typescript&utm_campaign=typescript"><img src="https://custom-icon-badges.demolab.com/badge/-Built%20By%20scalar+speakeasy-212015?style=for-the-badge&logo=scalar&labelColor=252525" /></a>
+    <a href="https://opensource.org/licenses/MIT">
         <img src="https://img.shields.io/badge/License-MIT-blue.svg" style="width: 100px; height: 28px;" />
     </a>
 </div>
 
+<br />
 
-<br /><br />
-> [!IMPORTANT]
-> This SDK is not yet ready for production use. To complete setup please follow the steps outlined in your [workspace](https://app.speakeasy.com/org/vartana/qwerty). Delete this section before > publishing to a package manager.
-
-<!-- Start Summary [summary] -->
 ## Summary
 
-Authlete API Explorer: <div class="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-6">
-  <div class="flex justify-end mb-4">
-    <label for="theme-toggle" class="flex items-center cursor-pointer">
-      <div class="relative">Dark mode:
-        <input type="checkbox" id="theme-toggle" class="sr-only" onchange="toggleTheme()">
-        <div class="block bg-gray-600 w-14 h-8 rounded-full"></div>
-        <div class="dot absolute left-1 top-1 bg-white w-6 h-6 rounded-full transition"></div>
-      </div>
-    </label>
-  </div>
-  <header class="bg-green-500 dark:bg-green-700 p-4 rounded-lg text-white text-center">
-    <p>
-      Welcome to the <strong>Authlete API documentation</strong>. Authlete is an <strong>API-first service</strong>
-      where every aspect of the platform is configurable via API. This explorer provides a convenient way to
-      authenticate and interact with the API, allowing you to see Authlete in action quickly. 🚀
-    </p>
-    <p>
-      At a high level, the Authlete API is grouped into two categories:
-    </p>
-    <ul class="list-disc list-inside">
-      <li><strong>Management APIs</strong>: Enable you to manage services and clients. 🔧</li>
-      <li><strong>Runtime APIs</strong>: Allow you to build your own Authorization Servers or Verifiable Credential (VC)
-        issuers. 🔐</li>
-    </ul>
-    <p>All API endpoints are secured using access tokens issued by Authlete's Identity Provider (IdP). If you already
-      have an Authlete account, simply use the <em>Get Token</em> option on the Authentication page to log in and obtain
-      an access token for API usage. If you don't have an account yet, <a href="https://console.authlete.com/register">sign up
-        here</a> to get started.</p>
-  </header>
-  <main>
-    <section id="api-servers" class="mb-10">
-      <h2 class="text-2xl font-semibold mb-4">🌐 API Servers</h2>
-      <p>Authlete is a global service with clusters available in multiple regions across the world.</p>
-      <p>Currently, our service is available in the following regions:</p>
-      <div class="grid grid-cols-2 gap-4">
-        <div class="p-4 bg-white dark:bg-gray-800 rounded-lg shadow">
-          <p class="text-center font-semibold">🇺🇸 US</p>
-        </div>
-        <div class="p-4 bg-white dark:bg-gray-800 rounded-lg shadow">
-          <p class="text-center font-semibold">🇯🇵 JP</p>
-        </div>
-        <div class="p-4 bg-white dark:bg-gray-800 rounded-lg shadow">
-          <p class="text-center font-semibold">🇪🇺 EU</p>
-        </div>
-        <div class="p-4 bg-white dark:bg-gray-800 rounded-lg shadow">
-          <p class="text-center font-semibold">🇧🇷 Brazil</p>
-        </div>
-      </div>
-      <p>Our customers can host their data in the region that best meets their requirements.</p>
-      <a href="#servers" class="block mt-4 text-green-500 dark:text-green-300 hover:underline text-center">Select your
-        preferred server</a>
-    </section>
-    <section id="authentication" class="mb-10">
-      <h2 class="text-2xl font-semibold mb-4">🔑 Authentication</h2>
-      <p>The API Explorer requires an access token to call the API.</p>
-      <p>You can create the access token from the <a href="https://console.authlete.com">Authlete Management Console</a> and set it in the HTTP Bearer section of Authentication page.</p>
-      <p>Alternatively, if you have an Authlete account, the API Explorer can log you in with your Authlete account and
-        automatically acquire the required access token.</p>
-      <div class="theme-admonition theme-admonition-warning admonition_o5H7 alert alert--warning">
-        <div class="admonitionContent_Knsx">
-          <p>⚠️ <strong>Important Note:</strong> When the API Explorer acquires the token after login, the access tokens
-            will have the same permissions as the user who logs in as part of this flow.</p>
-        </div>
-      </div>
-      <a href="#auth" class="block mt-4 text-green-500 dark:text-green-300 hover:underline text-center">Setup your
-        access token</a>
-    </section>
-    <section id="tutorials" class="mb-10">
-      <h2 class="text-2xl font-semibold mb-4">🎓 Tutorials</h2>
-      <p>If you have successfully tested the API from the API Console and want to take the next step of integrating the
-        API into your application, or if you want to see a sample using Authlete APIs, follow the links below. These
-        resources will help you understand key concepts and how to integrate Authlete API into your applications.</p>
-      <div class="mt-4">
-        <a href="https://www.authlete.com/developers/getting_started/"
-          class="block text-green-500 dark:text-green-300 font-bold hover:underline mb-2">🚀 Getting Started with
-          Authlete</a>
-          </br>
-        <a href="https://www.authlete.com/developers/tutorial/signup/"
-          class="block text-green-500 dark:text-green-300 font-bold hover:underline">🔑 From Sign-Up to the First API
-          Request</a>
-      </div>
-    </section>
-    <section id="support" class="mb-10">
-      <h2 class="text-2xl font-semibold mb-4">🛠 Contact Us</h2>
-      <p>If you have any questions or need assistance, our team is here to help.</p>
-      <a href="https://www.authlete.com/contact/"
-        class="block mt-4 text-green-500 dark:text-green-300 font-bold hover:underline">Contact Page</a>
-    </section>
-  </main>
-</div>
+Scalar Galaxy: The Scalar Galaxy is an example OpenAPI specification to test OpenAPI tools and libraries. It’s a fictional universe with fictional planets and fictional data. Get all the data for [all planets](#tag/planets/GET/planets).
+
+## Resources
+
+* https://github.com/scalar/scalar
+* https://github.com/OAI/OpenAPI-Specification
+* https://scalar.com
+
+## Markdown Support
+
+All descriptions *can* contain ~~tons of text~~ **Markdown**. [If GitHub supports the syntax](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax), chances are we’re supporting it, too. You can even create [internal links to reference endpoints](#tag/authentication/POST/user/signup).
+
+<details>
+  <summary>Examples</summary>
+
+  **Blockquotes**
+
+  > I love OpenAPI. <3
+
+  **Tables**
+
+  | Feature          | Availability |
+  | ---------------- | ------------ |
+  | Markdown Support | ✓            |
+
+  **Accordion**
+
+  ```html
+  <details>
+    <summary>Using Details Tags</summary>
+    <p>HTML Example</p>
+  </details>
+  ```
+
+  **Images**
+
+  Yes, there’s support for images, too!
+
+  ![Empty placeholder image showing the width/height](https://images.placeholders.dev/?width=1280&height=720)
+
+  **Alerts**
+
+  > [!tip]
+  > You can now use markdown alerts in your descriptions.
+
+</details>
+
+
+For more information about the API: [Documentation](https://github.com/scalar/scalar)
 <!-- End Summary [summary] -->
 
 <!-- Start Table of Contents [toc] -->
 ## Table of Contents
 <!-- $toc-max-depth=2 -->
-* [openapi](#openapi)
-  * [SDK Installation](#sdk-installation)
-  * [SDK Example Usage](#sdk-example-usage)
-  * [Authentication](#authentication)
-  * [Available Resources and Operations](#available-resources-and-operations)
-  * [Error Handling](#error-handling)
-  * [Server Selection](#server-selection)
-  * [Debugging](#debugging)
+* [@shariqnzr-gmail-com-team/scalar-galaxy-typescript](#shariqnzr-gmail-com-teamscalar-galaxy-typescript)
+  * [Resources](#resources)
+  * [Markdown Support](#markdown-support)
+* [Note that Yarn does not install peer dependencies automatically. You will need](#note-that-yarn-does-not-install-peer-dependencies-automatically-you-will-need)
+* [to install zod as shown above.](#to-install-zod-as-shown-above)
 * [Development](#development)
   * [Maturity](#maturity)
   * [Contributions](#contributions)
@@ -129,75 +81,63 @@ Authlete API Explorer: <div class="min-h-screen bg-gray-100 dark:bg-gray-900 tex
 <!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
-### Getting started
+The SDK can be installed with either [npm](https://www.npmjs.com/), [pnpm](https://pnpm.io/), [bun](https://bun.sh/) or [yarn](https://classic.yarnpkg.com/en/) package managers.
 
-JDK 11 or later is required.
+### NPM
 
-The samples below show how a published SDK artifact is used:
-
-Gradle:
-```groovy
-implementation 'org.openapis:openapi:0.1.1'
-```
-
-Maven:
-```xml
-<dependency>
-    <groupId>org.openapis</groupId>
-    <artifactId>openapi</artifactId>
-    <version>0.1.1</version>
-</dependency>
-```
-
-### How to build
-After cloning the git repository to your file system you can build the SDK artifact from source to the `build` directory by running `./gradlew build` on *nix systems or `gradlew.bat` on Windows systems.
-
-If you wish to build from source and publish the SDK artifact to your local Maven repository (on your filesystem) then use the following command (after cloning the git repo locally):
-
-On *nix:
 ```bash
-./gradlew publishToMavenLocal -Pskip.signing
+npm add @shariqnzr-gmail-com-team/scalar-galaxy-typescript
 ```
-On Windows:
+
+### PNPM
+
 ```bash
-gradlew.bat publishToMavenLocal -Pskip.signing
+pnpm add @shariqnzr-gmail-com-team/scalar-galaxy-typescript
 ```
+
+### Bun
+
+```bash
+bun add @shariqnzr-gmail-com-team/scalar-galaxy-typescript
+```
+
+### Yarn
+
+```bash
+yarn add @shariqnzr-gmail-com-team/scalar-galaxy-typescript zod
+
+# Note that Yarn does not install peer dependencies automatically. You will need
+# to install zod as shown above.
+```
+
+> [!NOTE]
+> This package is published with CommonJS and ES Modules (ESM) support.
 <!-- End SDK Installation [installation] -->
+
+<!-- Start Requirements [requirements] -->
+## Requirements
+
+For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
+<!-- End Requirements [requirements] -->
 
 <!-- Start SDK Example Usage [usage] -->
 ## SDK Example Usage
 
 ### Example
 
-```java
-package hello.world;
+```typescript
+import { ScalarGalaxyTypescript } from "@shariqnzr-gmail-com-team/scalar-galaxy-typescript";
 
-import java.lang.Exception;
-import org.openapis.openapi.Authelete;
-import org.openapis.openapi.models.components.Security;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400ContentApplication1jsonSchemaException;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400Exception;
-import org.openapis.openapi.models.operations.ServiceGetApiResponse;
+const scalarGalaxyTypescript = new ScalarGalaxyTypescript();
 
-public class Application {
+async function run() {
+  const result = await scalarGalaxyTypescript.planets.getAllData({});
 
-    public static void main(String[] args) throws 1api1infoGetResponses400Exception, 1api1infoGetResponses400ContentApplication1jsonSchemaException, 1api1infoGetResponses400ContentApplication1jsonSchemaException, Exception {
-
-        Authelete sdk = Authelete.builder()
-                .security(Security.builder()
-                    .authlete(System.getenv().getOrDefault("AUTHLETE", ""))
-                    .build())
-            .build();
-
-        ServiceGetApiResponse res = sdk.serviceManagement().get()
-                .serviceId("<id>")
-                .call();
-
-        if (res.service().isPresent()) {
-            // handle response
-        }
-    }
+  console.log(result);
 }
+
+run();
+
 ```
 <!-- End SDK Example Usage [usage] -->
 
@@ -208,41 +148,34 @@ public class Application {
 
 This SDK supports the following security schemes globally:
 
-| Name       | Type   | Scheme       |
-| ---------- | ------ | ------------ |
-| `authlete` | oauth2 | OAuth2 token |
-| `bearer`   | http   | HTTP Bearer  |
+| Name            | Type          | Scheme                   |
+| --------------- | ------------- | ------------------------ |
+| `bearerAuth`    | http          | HTTP Bearer              |
+| `basicAuth`     | http          | HTTP Basic               |
+| `apiKeyQuery`   | apiKey        | API key                  |
+| `apiKeyHeader`  | apiKey        | API key                  |
+| `apiKeyCookie`  | apiKey        | API key                  |
+| `oAuth2`        | oauth2        | OAuth2 token             |
+| `openIdConnect` | openIdConnect | OpenID Connect Discovery |
 
-You can set the security parameters through the `security` builder method when initializing the SDK client instance. The selected scheme will be used by default to authenticate with the API for all operations that support it. For example:
-```java
-package hello.world;
+You can set the security parameters through the `security` optional parameter when initializing the SDK client instance. The selected scheme will be used by default to authenticate with the API for all operations that support it. For example:
+```typescript
+import { ScalarGalaxyTypescript } from "@shariqnzr-gmail-com-team/scalar-galaxy-typescript";
 
-import java.lang.Exception;
-import org.openapis.openapi.Authelete;
-import org.openapis.openapi.models.components.Security;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400ContentApplication1jsonSchemaException;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400Exception;
-import org.openapis.openapi.models.operations.ServiceGetApiResponse;
+const scalarGalaxyTypescript = new ScalarGalaxyTypescript({
+  security: {
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  },
+});
 
-public class Application {
+async function run() {
+  const result = await scalarGalaxyTypescript.planets.getAllData({});
 
-    public static void main(String[] args) throws 1api1infoGetResponses400Exception, 1api1infoGetResponses400ContentApplication1jsonSchemaException, 1api1infoGetResponses400ContentApplication1jsonSchemaException, Exception {
-
-        Authelete sdk = Authelete.builder()
-                .security(Security.builder()
-                    .authlete(System.getenv().getOrDefault("AUTHLETE", ""))
-                    .build())
-            .build();
-
-        ServiceGetApiResponse res = sdk.serviceManagement().get()
-                .serviceId("<id>")
-                .call();
-
-        if (res.service().isPresent()) {
-            // handle response
-        }
-    }
+  console.log(result);
 }
+
+run();
+
 ```
 <!-- End Authentication [security] -->
 
@@ -252,259 +185,216 @@ public class Application {
 <details open>
 <summary>Available methods</summary>
 
+### [authentication](docs/sdks/authentication/README.md)
 
-### [authorization()](docs/sdks/authorization/README.md)
+* [createUserJson](docs/sdks/authentication/README.md#createuserjson) - Create a user
+* [createUserRaw](docs/sdks/authentication/README.md#createuserraw) - Create a user
+* [getTokenJson](docs/sdks/authentication/README.md#gettokenjson) - Get a token
+* [getTokenRaw](docs/sdks/authentication/README.md#gettokenraw) - Get a token
+* [getMe](docs/sdks/authentication/README.md#getme) - Get authenticated user
 
-* [issue](docs/sdks/authorization/README.md#issue) - Issue Authorization Response
-* [issueForm](docs/sdks/authorization/README.md#issueform) - Issue Authorization Response
-* [processPushedRequest](docs/sdks/authorization/README.md#processpushedrequest) - Process Pushed Authorization Request
-* [processPushedRequestForm](docs/sdks/authorization/README.md#processpushedrequestform) - Process Pushed Authorization Request
-* [getTicketInfo](docs/sdks/authorization/README.md#getticketinfo) - Get Ticket Information
-* [getTicketInfoForm](docs/sdks/authorization/README.md#getticketinfoform) - Get Ticket Information
+### [planets](docs/sdks/planets/README.md)
 
-### [authorizationEndpoint()](docs/sdks/authorizationendpoint/README.md)
+* [getAllData](docs/sdks/planets/README.md#getalldata) - Get all planets
+* [createPlanetJson](docs/sdks/planets/README.md#createplanetjson) - Create a planet
+* [createPlanetRaw](docs/sdks/planets/README.md#createplanetraw) - Create a planet
+* [getPlanet](docs/sdks/planets/README.md#getplanet) - Get a planet
+* [updatePlanetJson](docs/sdks/planets/README.md#updateplanetjson) - Update a planet
+* [updatePlanetRaw](docs/sdks/planets/README.md#updateplanetraw) - Update a planet
+* [deletePlanet](docs/sdks/planets/README.md#deleteplanet) - Delete a planet
+* [uploadImage](docs/sdks/planets/README.md#uploadimage) - Upload an image to a planet
 
-* [process](docs/sdks/authorizationendpoint/README.md#process) - Process Authorization Request
-* [processForm](docs/sdks/authorizationendpoint/README.md#processform) - Process Authorization Request
-* [updateTicket](docs/sdks/authorizationendpoint/README.md#updateticket) - Update Ticket Information
-* [updateTicketForm](docs/sdks/authorizationendpoint/README.md#updateticketform) - Update Ticket Information
-
-### [authorizationEndpoints()](docs/sdks/authorizationendpoints/README.md)
-
-* [failAuthRequest](docs/sdks/authorizationendpoints/README.md#failauthrequest) - Fail Authorization Request
-* [failAuthRequestForm](docs/sdks/authorizationendpoints/README.md#failauthrequestform) - Fail Authorization Request
-
-### [ciba()](docs/sdks/ciba/README.md)
-
-* [process](docs/sdks/ciba/README.md#process) - Process Backchannel Authentication Request
-* [processForm](docs/sdks/ciba/README.md#processform) - Process Backchannel Authentication Request
-* [issue](docs/sdks/ciba/README.md#issue) - Issue Backchannel Authentication Response
-* [issueForm](docs/sdks/ciba/README.md#issueform) - Issue Backchannel Authentication Response
-* [fail](docs/sdks/ciba/README.md#fail) - Fail Backchannel Authentication Request
-* [failForm](docs/sdks/ciba/README.md#failform) - Fail Backchannel Authentication Request
-* [completeBackchannelAuth](docs/sdks/ciba/README.md#completebackchannelauth) - Complete Backchannel Authentication
-* [completeBackchannelAuthForm](docs/sdks/ciba/README.md#completebackchannelauthform) - Complete Backchannel Authentication
-
-### [clientManagement()](docs/sdks/clientmanagement/README.md)
-
-* [list](docs/sdks/clientmanagement/README.md#list) - List Clients
-* [create](docs/sdks/clientmanagement/README.md#create) - Create Client
-* [update](docs/sdks/clientmanagement/README.md#update) - Update Client
-* [delete](docs/sdks/clientmanagement/README.md#delete) - Delete Client ⚡
-
-### [clients()](docs/sdks/clients/README.md)
-
-* [getById](docs/sdks/clients/README.md#getbyid) - Get Client
-* [updateLock](docs/sdks/clients/README.md#updatelock) - Update Client Lock
-* [updateLockForm](docs/sdks/clients/README.md#updatelockform) - Update Client Lock
-* [refreshSecret](docs/sdks/clients/README.md#refreshsecret) - Rotate Client Secret
-* [updateSecret](docs/sdks/clients/README.md#updatesecret) - Update Client Secret
-* [updateSecretForm](docs/sdks/clients/README.md#updatesecretform) - Update Client Secret
-* [getAuthorizedApplications](docs/sdks/clients/README.md#getauthorizedapplications) - Get Authorized Applications
-* [updateAuthorization](docs/sdks/clients/README.md#updateauthorization) - Update Client Tokens
-* [updateAuthorizationForm](docs/sdks/clients/README.md#updateauthorizationform) - Update Client Tokens
-* [deleteAuthorization](docs/sdks/clients/README.md#deleteauthorization) - Delete Client Tokens
-* [getGrantedScopes](docs/sdks/clients/README.md#getgrantedscopes) - Get Granted Scopes
-* [deleteGrantedScopes](docs/sdks/clients/README.md#deletegrantedscopes) - Delete Granted Scopes
-* [register](docs/sdks/clients/README.md#register) - Register Client
-* [registerForm](docs/sdks/clients/README.md#registerform) - Register Client
-* [get](docs/sdks/clients/README.md#get) - Get Client
-* [updateRegistration](docs/sdks/clients/README.md#updateregistration) - Update Client
-* [updateRegistrationForm](docs/sdks/clients/README.md#updateregistrationform) - Update Client
-* [getRequestableScopes](docs/sdks/clients/README.md#getrequestablescopes) - Get Requestable Scopes
-* [updateRequestableScopes](docs/sdks/clients/README.md#updaterequestablescopes) - Update Requestable Scopes
-* [deleteRequestableScopes](docs/sdks/clients/README.md#deleterequestablescopes) - Delete Requestable Scopes
-
-### [credentials()](docs/sdks/credentials/README.md)
-
-* [issueJwt](docs/sdks/credentials/README.md#issuejwt) - /api/{serviceId}/vci/jwtissuer API
-* [issueJwtForm](docs/sdks/credentials/README.md#issuejwtform) - /api/{serviceId}/vci/jwtissuer API
-* [issueBatch](docs/sdks/credentials/README.md#issuebatch) - /api/{serviceId}/vci/batch/issue API
-
-### [deviceFlow()](docs/sdks/deviceflow/README.md)
-
-* [verify](docs/sdks/deviceflow/README.md#verify) - Process Device Verification Request
-* [verifyForm](docs/sdks/deviceflow/README.md#verifyform) - Process Device Verification Request
-* [complete](docs/sdks/deviceflow/README.md#complete) - Complete Device Authorization
-* [completeForm](docs/sdks/deviceflow/README.md#completeform) - Complete Device Authorization
-
-### [devices()](docs/sdks/devices/README.md)
-
-* [authorize](docs/sdks/devices/README.md#authorize) - Process Device Authorization Request
-* [authorizeForm](docs/sdks/devices/README.md#authorizeform) - Process Device Authorization Request
-
-### [dynamicClientRegistration()](docs/sdks/dynamicclientregistration/README.md)
-
-* [delete](docs/sdks/dynamicclientregistration/README.md#delete) - Delete Client
-* [deleteForm](docs/sdks/dynamicclientregistration/README.md#deleteform) - Delete Client
-
-### [federation()](docs/sdks/federation/README.md)
-
-* [register](docs/sdks/federation/README.md#register) - Process Federation Registration Request
-* [registerForm](docs/sdks/federation/README.md#registerform) - Process Federation Registration Request
-
-### [federations()](docs/sdks/federations/README.md)
-
-* [postConfiguration](docs/sdks/federations/README.md#postconfiguration) - Process Entity Configuration Request
-
-### [grantManagementEndpoints()](docs/sdks/grantmanagementendpoints/README.md)
-
-* [processRequest](docs/sdks/grantmanagementendpoints/README.md#processrequest) - Process Grant Management Request
-
-### [hardwareSecurityKey()](docs/sdks/hardwaresecuritykey/README.md)
-
-* [delete](docs/sdks/hardwaresecuritykey/README.md#delete) - Delete Security Key
-
-### [hardwareSecurityKeys()](docs/sdks/hardwaresecuritykeys/README.md)
-
-* [create](docs/sdks/hardwaresecuritykeys/README.md#create) - Create Security Key
-* [createForm](docs/sdks/hardwaresecuritykeys/README.md#createform) - Create Security Key
-* [list](docs/sdks/hardwaresecuritykeys/README.md#list) - List Security Keys
-
-### [introspectionEndpoint()](docs/sdks/introspectionendpoint/README.md)
-
-* [process](docs/sdks/introspectionendpoint/README.md#process) - Process Introspection Request
-* [processForm](docs/sdks/introspectionendpoint/README.md#processform) - Process Introspection Request
-
-### [introspections()](docs/sdks/introspections/README.md)
-
-* [process](docs/sdks/introspections/README.md#process) - Process OAuth 2.0 Introspection Request
-* [processForm](docs/sdks/introspections/README.md#processform) - Process OAuth 2.0 Introspection Request
-
-### [joseObject()](docs/sdks/joseobject/README.md)
-
-* [verify](docs/sdks/joseobject/README.md#verify) - Verify JOSE
-* [verifyForm](docs/sdks/joseobject/README.md#verifyform) - Verify JOSE
-
-### [jwkSetEndpoint()](docs/sdks/jwksetendpoint/README.md)
-
-* [get](docs/sdks/jwksetendpoint/README.md#get) - Get JWK Set
-
-### [securityKeys()](docs/sdks/securitykeys/README.md)
-
-* [get](docs/sdks/securitykeys/README.md#get) - Get Security Key
-
-### [serviceManagement()](docs/sdks/servicemanagement/README.md)
-
-* [get](docs/sdks/servicemanagement/README.md#get) - Get Service
-* [list](docs/sdks/servicemanagement/README.md#list) - List Services
-* [getConfiguration](docs/sdks/servicemanagement/README.md#getconfiguration) - Get Service Configuration
-
-### [services()](docs/sdks/services/README.md)
-
-* [create](docs/sdks/services/README.md#create) - Create Service
-* [update](docs/sdks/services/README.md#update) - Update Service
-* [delete](docs/sdks/services/README.md#delete) - Delete Service ⚡
-
-### [tokenEndpoint()](docs/sdks/tokenendpoint/README.md)
-
-* [process](docs/sdks/tokenendpoint/README.md#process) - Process Token Request
-* [processForm](docs/sdks/tokenendpoint/README.md#processform) - Process Token Request
-* [issue](docs/sdks/tokenendpoint/README.md#issue) - Issue Token Response
-* [issueForm](docs/sdks/tokenendpoint/README.md#issueform) - Issue Token Response
-
-### [tokenOperations()](docs/sdks/tokenoperations/README.md)
-
-* [delete](docs/sdks/tokenoperations/README.md#delete) - Delete Access Token
-* [revoke](docs/sdks/tokenoperations/README.md#revoke) - Revoke Access Token
-* [revokeForm](docs/sdks/tokenoperations/README.md#revokeform) - Revoke Access Token
-
-### [tokens()](docs/sdks/tokens/README.md)
-
-* [fail](docs/sdks/tokens/README.md#fail) - Fail Token Request
-* [failForm](docs/sdks/tokens/README.md#failform) - Fail Token Request
-* [revoke](docs/sdks/tokens/README.md#revoke) - Process Revocation Request
-* [revokeForm](docs/sdks/tokens/README.md#revokeform) - Process Revocation Request
-* [reissueId](docs/sdks/tokens/README.md#reissueid) - Reissue ID Token
-* [list](docs/sdks/tokens/README.md#list) - List Issued Tokens
-* [create](docs/sdks/tokens/README.md#create) - Create Access Token
-* [createForm](docs/sdks/tokens/README.md#createform) - Create Access Token
-* [update](docs/sdks/tokens/README.md#update) - Update Access Token
-* [updateForm](docs/sdks/tokens/README.md#updateform) - Update Access Token
-
-### [userinfo()](docs/sdks/userinfo/README.md)
-
-* [get](docs/sdks/userinfo/README.md#get) - Process UserInfo Request
-* [getForm](docs/sdks/userinfo/README.md#getform) - Process UserInfo Request
-* [issue](docs/sdks/userinfo/README.md#issue) - Issue UserInfo Response
-* [issueForm](docs/sdks/userinfo/README.md#issueform) - Issue UserInfo Response
-
-### [utilityEndpoints()](docs/sdks/utilityendpoints/README.md)
-
-* [getInfo](docs/sdks/utilityendpoints/README.md#getinfo) - Get Server Metadata
-* [echo](docs/sdks/utilityendpoints/README.md#echo) - Echo
-
-### [vci()](docs/sdks/vci/README.md)
-
-* [parseSingle](docs/sdks/vci/README.md#parsesingle) - /api/{serviceId}/vci/single/parse API
-* [parseSingleForm](docs/sdks/vci/README.md#parsesingleform) - /api/{serviceId}/vci/single/parse API
-
-### [verifiableCredentialIssuer()](docs/sdks/verifiablecredentialissuer/README.md)
-
-* [getMetadata](docs/sdks/verifiablecredentialissuer/README.md#getmetadata) - /api/{serviceId}/vci/metadata API
-* [getMetadataForm](docs/sdks/verifiablecredentialissuer/README.md#getmetadataform) - /api/{serviceId}/vci/metadata API
-* [postJwks](docs/sdks/verifiablecredentialissuer/README.md#postjwks) - /api/{serviceId}/vci/jwks API
-* [postJwksForm](docs/sdks/verifiablecredentialissuer/README.md#postjwksform) - /api/{serviceId}/vci/jwks API
-* [createOffer](docs/sdks/verifiablecredentialissuer/README.md#createoffer) - /api/{serviceId}/vci/offer/create API
-* [createOfferForm](docs/sdks/verifiablecredentialissuer/README.md#createofferform) - /api/{serviceId}/vci/offer/create API
-* [getOfferInfo](docs/sdks/verifiablecredentialissuer/README.md#getofferinfo) - /api/{serviceId}/vci/offer/info API
-* [getOfferInfoForm](docs/sdks/verifiablecredentialissuer/README.md#getofferinfoform) - /api/{serviceId}/vci/offer/info API
-* [issueSingle](docs/sdks/verifiablecredentialissuer/README.md#issuesingle) - /api/{serviceId}/vci/single/issue API
-* [batchParse](docs/sdks/verifiablecredentialissuer/README.md#batchparse) - /api/{serviceId}/vci/batch/parse API
-* [batchParseForm](docs/sdks/verifiablecredentialissuer/README.md#batchparseform) - /api/{serviceId}/vci/batch/parse API
-* [parseDeferred](docs/sdks/verifiablecredentialissuer/README.md#parsedeferred) - /api/{serviceId}/vci/deferred/parse API
-* [parseDeferredForm](docs/sdks/verifiablecredentialissuer/README.md#parsedeferredform) - /api/{serviceId}/vci/deferred/parse API
-* [issueDeferred](docs/sdks/verifiablecredentialissuer/README.md#issuedeferred) - /api/{serviceId}/vci/deferred/issue API
 
 </details>
 <!-- End Available Resources and Operations [operations] -->
 
+<!-- Start Standalone functions [standalone-funcs] -->
+## Standalone functions
+
+All the methods listed above are available as standalone functions. These
+functions are ideal for use in applications running in the browser, serverless
+runtimes or other environments where application bundle size is a primary
+concern. When using a bundler to build your application, all unused
+functionality will be either excluded from the final bundle or tree-shaken away.
+
+To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
+
+<details>
+
+<summary>Available standalone functions</summary>
+
+- [`authenticationCreateUserJson`](docs/sdks/authentication/README.md#createuserjson) - Create a user
+- [`authenticationCreateUserRaw`](docs/sdks/authentication/README.md#createuserraw) - Create a user
+- [`authenticationGetMe`](docs/sdks/authentication/README.md#getme) - Get authenticated user
+- [`authenticationGetTokenJson`](docs/sdks/authentication/README.md#gettokenjson) - Get a token
+- [`authenticationGetTokenRaw`](docs/sdks/authentication/README.md#gettokenraw) - Get a token
+- [`planetsCreatePlanetJson`](docs/sdks/planets/README.md#createplanetjson) - Create a planet
+- [`planetsCreatePlanetRaw`](docs/sdks/planets/README.md#createplanetraw) - Create a planet
+- [`planetsDeletePlanet`](docs/sdks/planets/README.md#deleteplanet) - Delete a planet
+- [`planetsGetAllData`](docs/sdks/planets/README.md#getalldata) - Get all planets
+- [`planetsGetPlanet`](docs/sdks/planets/README.md#getplanet) - Get a planet
+- [`planetsUpdatePlanetJson`](docs/sdks/planets/README.md#updateplanetjson) - Update a planet
+- [`planetsUpdatePlanetRaw`](docs/sdks/planets/README.md#updateplanetraw) - Update a planet
+- [`planetsUploadImage`](docs/sdks/planets/README.md#uploadimage) - Upload an image to a planet
+
+</details>
+<!-- End Standalone functions [standalone-funcs] -->
+
+<!-- Start File uploads [file-upload] -->
+## File uploads
+
+Certain SDK methods accept files as part of a multi-part request. It is possible and typically recommended to upload files as a stream rather than reading the entire contents into memory. This avoids excessive memory consumption and potentially crashing with out-of-memory errors when working with very large files. The following example demonstrates how to attach a file stream to a request.
+
+> [!TIP]
+>
+> Depending on your JavaScript runtime, there are convenient utilities that return a handle to a file without reading the entire contents into memory:
+>
+> - **Node.js v20+:** Since v20, Node.js comes with a native `openAsBlob` function in [`node:fs`](https://nodejs.org/docs/latest-v20.x/api/fs.html#fsopenasblobpath-options).
+> - **Bun:** The native [`Bun.file`](https://bun.sh/docs/api/file-io#reading-files-bun-file) function produces a file handle that can be used for streaming file uploads.
+> - **Browsers:** All supported browsers return an instance to a [`File`](https://developer.mozilla.org/en-US/docs/Web/API/File) when reading the value from an `<input type="file">` element.
+> - **Node.js v18:** A file stream can be created using the `fileFrom` helper from [`fetch-blob/from.js`](https://www.npmjs.com/package/fetch-blob).
+
+```typescript
+import { ScalarGalaxyTypescript } from "@shariqnzr-gmail-com-team/scalar-galaxy-typescript";
+
+const scalarGalaxyTypescript = new ScalarGalaxyTypescript();
+
+async function run() {
+  const result = await scalarGalaxyTypescript.planets.createPlanetRaw(
+    bytesToStream(
+      new TextEncoder().encode(
+        "{\"name\":\"Mars\",\"description\":\"The red planet\",\"type\":\"terrestrial\",\"habitabilityIndex\":0.68,\"physicalProperties\":{\"mass\":0.107,\"radius\":0.532,\"gravity\":0.378,\"temperature\":{\"min\":130,\"max\":308,\"average\":210}},\"atmosphere\":[{\"compound\":\"CO2\",\"percentage\":95.3}],\"discoveredAt\":\"1610-01-07T00:00:00Z\",\"image\":\"https://cdn.scalar.com/photos/mars.jpg\",\"satellites\":[{\"name\":\"Phobos\",\"diameter\":22.2}],\"creator\":{\"name\":\"Marc\"},\"tags\":[\"solar-system\",\"rocky\",\"explored\"],\"callbackUrl\":\"https://example.com/webhook\"}",
+      ),
+    ),
+  );
+
+  console.log(result);
+}
+
+run();
+
+```
+<!-- End File uploads [file-upload] -->
+
+<!-- Start Retries [retries] -->
+## Retries
+
+Some of the endpoints in this SDK support retries.  If you use the SDK without any configuration, it will fall back to the default retry strategy provided by the API.  However, the default retry strategy can be overridden on a per-operation basis, or across the entire SDK.
+
+To change the default retry strategy for a single API call, simply provide a retryConfig object to the call:
+```typescript
+import { ScalarGalaxyTypescript } from "@shariqnzr-gmail-com-team/scalar-galaxy-typescript";
+
+const scalarGalaxyTypescript = new ScalarGalaxyTypescript();
+
+async function run() {
+  const result = await scalarGalaxyTypescript.planets.getAllData({}, {
+    retries: {
+      strategy: "backoff",
+      backoff: {
+        initialInterval: 1,
+        maxInterval: 50,
+        exponent: 1.1,
+        maxElapsedTime: 100,
+      },
+      retryConnectionErrors: false,
+    },
+  });
+
+  console.log(result);
+}
+
+run();
+
+```
+
+If you'd like to override the default retry strategy for all operations that support retries, you can provide a retryConfig at SDK initialization:
+```typescript
+import { ScalarGalaxyTypescript } from "@shariqnzr-gmail-com-team/scalar-galaxy-typescript";
+
+const scalarGalaxyTypescript = new ScalarGalaxyTypescript({
+  retryConfig: {
+    strategy: "backoff",
+    backoff: {
+      initialInterval: 1,
+      maxInterval: 50,
+      exponent: 1.1,
+      maxElapsedTime: 100,
+    },
+    retryConnectionErrors: false,
+  },
+});
+
+async function run() {
+  const result = await scalarGalaxyTypescript.planets.getAllData({});
+
+  console.log(result);
+}
+
+run();
+
+```
+<!-- End Retries [retries] -->
+
 <!-- Start Error Handling [errors] -->
 ## Error Handling
 
-Handling errors in this SDK should largely match your expectations. All operations return a response object or raise an exception.
+[`ScalarGalaxyTypescriptError`](./src/models/errors/scalargalaxytypescripterror.ts) is the base class for all HTTP error responses. It has the following properties:
 
-By default, an API error will throw a `models/errors/APIException` exception. When custom error responses are specified for an operation, the SDK may also throw their associated exception. You can refer to respective *Errors* tables in SDK docs for more details on possible exception types for each operation. For example, the `get` method throws the following exceptions:
-
-| Error Type                                                                   | Status Code | Content Type     |
-| ---------------------------------------------------------------------------- | ----------- | ---------------- |
-| models/errors/1api1infoGetResponses400Exception                              | 400         | application/json |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 401, 403    | application/json |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 500         | application/json |
-| models/errors/APIException                                                   | 4XX, 5XX    | \*/\*            |
+| Property            | Type       | Description                                            |
+| ------------------- | ---------- | ------------------------------------------------------ |
+| `error.message`     | `string`   | Error message                                          |
+| `error.statusCode`  | `number`   | HTTP response status code eg `404`                     |
+| `error.headers`     | `Headers`  | HTTP response headers                                  |
+| `error.body`        | `string`   | HTTP body. Can be empty string if no body is returned. |
+| `error.rawResponse` | `Response` | Raw HTTP response                                      |
 
 ### Example
+```typescript
+import { ScalarGalaxyTypescript } from "@shariqnzr-gmail-com-team/scalar-galaxy-typescript";
+import * as errors from "@shariqnzr-gmail-com-team/scalar-galaxy-typescript/models/errors";
 
-```java
-package hello.world;
+const scalarGalaxyTypescript = new ScalarGalaxyTypescript();
 
-import java.lang.Exception;
-import org.openapis.openapi.Authelete;
-import org.openapis.openapi.models.components.Security;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400ContentApplication1jsonSchemaException;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400Exception;
-import org.openapis.openapi.models.operations.ServiceGetApiResponse;
+async function run() {
+  try {
+    const result = await scalarGalaxyTypescript.planets.getAllData({});
 
-public class Application {
-
-    public static void main(String[] args) throws 1api1infoGetResponses400Exception, 1api1infoGetResponses400ContentApplication1jsonSchemaException, 1api1infoGetResponses400ContentApplication1jsonSchemaException, Exception {
-
-        Authelete sdk = Authelete.builder()
-                .security(Security.builder()
-                    .authlete(System.getenv().getOrDefault("AUTHLETE", ""))
-                    .build())
-            .build();
-
-        ServiceGetApiResponse res = sdk.serviceManagement().get()
-                .serviceId("<id>")
-                .call();
-
-        if (res.service().isPresent()) {
-            // handle response
-        }
+    console.log(result);
+  } catch (error) {
+    if (error instanceof errors.ScalarGalaxyTypescriptError) {
+      console.log(error.message);
+      console.log(error.statusCode);
+      console.log(error.body);
+      console.log(error.headers);
     }
+  }
 }
+
+run();
+
 ```
+
+### Error Classes
+**Primary error:**
+* [`ScalarGalaxyTypescriptError`](./src/models/errors/scalargalaxytypescripterror.ts): The base class for HTTP error responses.
+
+<details><summary>Less common errors (6)</summary>
+
+<br />
+
+**Network errors:**
+* [`ConnectionError`](./src/models/errors/httpclienterrors.ts): HTTP client was unable to make a request to a server.
+* [`RequestTimeoutError`](./src/models/errors/httpclienterrors.ts): HTTP request timed out due to an AbortSignal signal.
+* [`RequestAbortedError`](./src/models/errors/httpclienterrors.ts): HTTP request was aborted by the client.
+* [`InvalidRequestError`](./src/models/errors/httpclienterrors.ts): Any input used to create a request is invalid.
+* [`UnexpectedClientError`](./src/models/errors/httpclienterrors.ts): Unrecognised or unexpected error.
+
+
+**Inherit from [`ScalarGalaxyTypescriptError`](./src/models/errors/scalargalaxytypescripterror.ts)**:
+* [`ResponseValidationError`](./src/models/errors/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
+
+</details>
 <!-- End Error Handling [errors] -->
 
 <!-- Start Server Selection [server] -->
@@ -512,129 +402,131 @@ public class Application {
 
 ### Select Server by Index
 
-You can override the default server globally using the `.serverIndex(int serverIdx)` builder method when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
+You can override the default server globally by passing a server index to the `serverIdx: number` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
 
-| #   | Server                    | Description         |
-| --- | ------------------------- | ------------------- |
-| 0   | `https://us.authlete.com` | 🇺🇸 US Cluster     |
-| 1   | `https://jp.authlete.com` | 🇯🇵 Japan Cluster  |
-| 2   | `https://eu.authlete.com` | 🇪🇺 Europe Cluster |
-| 3   | `https://br.authlete.com` | 🇧🇷 Brazil Cluster |
+| #   | Server                                | Variables             | Description                     |
+| --- | ------------------------------------- | --------------------- | ------------------------------- |
+| 0   | `https://galaxy.scalar.com`           |                       |                                 |
+| 1   | `{protocol}://void.scalar.com/{path}` | `protocol`<br/>`path` | Responds with your request data |
+
+If the selected server has variables, you may override its default values through the additional parameters made available in the SDK constructor:
+
+| Variable   | Parameter                         | Supported Values | Default   | Description |
+| ---------- | --------------------------------- | ---------------- | --------- | ----------- |
+| `protocol` | `protocol: models.ServerProtocol` | - `"https"`      | `"https"` |             |
+| `path`     | `path: string`                    | string           | `""`      |             |
 
 #### Example
 
-```java
-package hello.world;
+```typescript
+import { ScalarGalaxyTypescript } from "@shariqnzr-gmail-com-team/scalar-galaxy-typescript";
 
-import java.lang.Exception;
-import org.openapis.openapi.Authelete;
-import org.openapis.openapi.models.components.Security;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400ContentApplication1jsonSchemaException;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400Exception;
-import org.openapis.openapi.models.operations.ServiceGetApiResponse;
+const scalarGalaxyTypescript = new ScalarGalaxyTypescript({
+  serverIdx: 1,
+  protocol: "https",
+  path: "18258",
+});
 
-public class Application {
+async function run() {
+  const result = await scalarGalaxyTypescript.planets.getAllData({});
 
-    public static void main(String[] args) throws 1api1infoGetResponses400Exception, 1api1infoGetResponses400ContentApplication1jsonSchemaException, 1api1infoGetResponses400ContentApplication1jsonSchemaException, Exception {
-
-        Authelete sdk = Authelete.builder()
-                .serverIndex(3)
-                .security(Security.builder()
-                    .authlete(System.getenv().getOrDefault("AUTHLETE", ""))
-                    .build())
-            .build();
-
-        ServiceGetApiResponse res = sdk.serviceManagement().get()
-                .serviceId("<id>")
-                .call();
-
-        if (res.service().isPresent()) {
-            // handle response
-        }
-    }
+  console.log(result);
 }
+
+run();
+
 ```
 
 ### Override Server URL Per-Client
 
-The default server can also be overridden globally using the `.serverURL(String serverUrl)` builder method when initializing the SDK client instance. For example:
-```java
-package hello.world;
+The default server can also be overridden globally by passing a URL to the `serverURL: string` optional parameter when initializing the SDK client instance. For example:
+```typescript
+import { ScalarGalaxyTypescript } from "@shariqnzr-gmail-com-team/scalar-galaxy-typescript";
 
-import java.lang.Exception;
-import org.openapis.openapi.Authelete;
-import org.openapis.openapi.models.components.Security;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400ContentApplication1jsonSchemaException;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400Exception;
-import org.openapis.openapi.models.operations.ServiceGetApiResponse;
+const scalarGalaxyTypescript = new ScalarGalaxyTypescript({
+  serverURL: "https://void.scalar.com/",
+});
 
-public class Application {
+async function run() {
+  const result = await scalarGalaxyTypescript.planets.getAllData({});
 
-    public static void main(String[] args) throws 1api1infoGetResponses400Exception, 1api1infoGetResponses400ContentApplication1jsonSchemaException, 1api1infoGetResponses400ContentApplication1jsonSchemaException, Exception {
-
-        Authelete sdk = Authelete.builder()
-                .serverURL("https://br.authlete.com")
-                .security(Security.builder()
-                    .authlete(System.getenv().getOrDefault("AUTHLETE", ""))
-                    .build())
-            .build();
-
-        ServiceGetApiResponse res = sdk.serviceManagement().get()
-                .serviceId("<id>")
-                .call();
-
-        if (res.service().isPresent()) {
-            // handle response
-        }
-    }
+  console.log(result);
 }
+
+run();
+
 ```
 <!-- End Server Selection [server] -->
+
+<!-- Start Custom HTTP Client [http-client] -->
+## Custom HTTP Client
+
+The TypeScript SDK makes API calls using an `HTTPClient` that wraps the native
+[Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API). This
+client is a thin wrapper around `fetch` and provides the ability to attach hooks
+around the request lifecycle that can be used to modify the request or handle
+errors and response.
+
+The `HTTPClient` constructor takes an optional `fetcher` argument that can be
+used to integrate a third-party HTTP client or when writing tests to mock out
+the HTTP client and feed in fixtures.
+
+The following example shows how to use the `"beforeRequest"` hook to to add a
+custom header and a timeout to requests and how to use the `"requestError"` hook
+to log errors:
+
+```typescript
+import { ScalarGalaxyTypescript } from "@shariqnzr-gmail-com-team/scalar-galaxy-typescript";
+import { HTTPClient } from "@shariqnzr-gmail-com-team/scalar-galaxy-typescript/lib/http";
+
+const httpClient = new HTTPClient({
+  // fetcher takes a function that has the same signature as native `fetch`.
+  fetcher: (request) => {
+    return fetch(request);
+  }
+});
+
+httpClient.addHook("beforeRequest", (request) => {
+  const nextRequest = new Request(request, {
+    signal: request.signal || AbortSignal.timeout(5000)
+  });
+
+  nextRequest.headers.set("x-custom-header", "custom value");
+
+  return nextRequest;
+});
+
+httpClient.addHook("requestError", (error, request) => {
+  console.group("Request Error");
+  console.log("Reason:", `${error}`);
+  console.log("Endpoint:", `${request.method} ${request.url}`);
+  console.groupEnd();
+});
+
+const sdk = new ScalarGalaxyTypescript({ httpClient });
+```
+<!-- End Custom HTTP Client [http-client] -->
 
 <!-- Start Debugging [debug] -->
 ## Debugging
 
-### Debug
 You can setup your SDK to emit debug logs for SDK requests and responses.
 
-For request and response logging (especially json bodies), call `enableHTTPDebugLogging(boolean)` on the SDK builder like so:
-```java
-SDK.builder()
-    .enableHTTPDebugLogging(true)
-    .build();
-```
-Example output:
-```
-Sending request: http://localhost:35123/bearer#global GET
-Request headers: {Accept=[application/json], Authorization=[******], Client-Level-Header=[added by client], Idempotency-Key=[some-key], x-speakeasy-user-agent=[speakeasy-sdk/java 0.0.1 internal 0.1.0 org.openapis.openapi]}
-Received response: (GET http://localhost:35123/bearer#global) 200
-Response headers: {access-control-allow-credentials=[true], access-control-allow-origin=[*], connection=[keep-alive], content-length=[50], content-type=[application/json], date=[Wed, 09 Apr 2025 01:43:29 GMT], server=[gunicorn/19.9.0]}
-Response body:
-{
-  "authenticated": true, 
-  "token": "global"
-}
-```
-__WARNING__: This should only used for temporary debugging purposes. Leaving this option on in a production system could expose credentials/secrets in logs. <i>Authorization</i> headers are redacted by default and there is the ability to specify redacted header names via `SpeakeasyHTTPClient.setRedactedHeaders`.
+You can pass a logger that matches `console`'s interface as an SDK option.
 
-__NOTE__: This is a convenience method that calls `HTTPClient.enableDebugLogging()`. The `SpeakeasyHTTPClient` honors this setting. If you are using a custom HTTP client, it is up to the custom client to honor this setting.
+> [!WARNING]
+> Beware that debug logging will reveal secrets, like API tokens in headers, in log messages printed to a console or files. It's recommended to use this feature only during local development and not in production.
 
-Another option is to set the System property `-Djdk.httpclient.HttpClient.log=all`. However, this second option does not log bodies.
+```typescript
+import { ScalarGalaxyTypescript } from "@shariqnzr-gmail-com-team/scalar-galaxy-typescript";
+
+const sdk = new ScalarGalaxyTypescript({ debugLogger: console });
+```
 <!-- End Debugging [debug] -->
-
-<!-- Placeholder for Future Speakeasy SDK Sections -->
-
-# Development
-
-## Maturity
-
-This SDK is in beta, and there may be breaking changes between versions without a major version update. Therefore, we recommend pinning usage
-to a specific package version. This way, you can install the same version each time without breaking changes unless you are intentionally
-looking for the latest version.
 
 ## Contributions
 
 While we value open-source contributions to this SDK, this library is generated programmatically. Any manual changes added to internal files will be overwritten on the next generation. 
-We look forward to hearing your feedback. Feel free to open a PR or an issue with a proof of concept and we'll do our best to include it in a future release. 
+We look forward to hearing your feedback. Feel free to open a PR or an issue with a proof of concept and we'll do our best to include it in a future release.
 
-### SDK Created by [Speakeasy](https://www.speakeasy.com/?utm_source=openapi&utm_campaign=java)
+### SDK Created by [Scalar](https://www.scalar.com/?utm_source=scalar-galaxy-typescript&utm_campaign=typescript)

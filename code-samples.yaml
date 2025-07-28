@@ -1,0 +1,80 @@
+overlay: 1.0.0
+info:
+  title: CodeSamples overlay for typescript target
+  version: 0.0.0
+actions:
+  - target: $["paths"]["/auth/token"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "getToken_json"
+          "source": "import { ScalarGalaxyTypescript } from \"@shariqnzr-gmail-com-team/scalar-galaxy-typescript\";\n\nconst scalarGalaxyTypescript = new ScalarGalaxyTypescript();\n\nasync function run() {\n  const result = await scalarGalaxyTypescript.authentication.getTokenJson({\n    email: \"marc@scalar.com\",\n    password: \"i-love-scalar\",\n  });\n\n  console.log(result);\n}\n\nrun();"
+        - "lang": "typescript"
+          "label": "getToken_raw"
+          "source": "import { ScalarGalaxyTypescript } from \"@shariqnzr-gmail-com-team/scalar-galaxy-typescript\";\n\nconst scalarGalaxyTypescript = new ScalarGalaxyTypescript();\n\nasync function run() {\n  const result = await scalarGalaxyTypescript.authentication.getTokenRaw(bytesToStream(new TextEncoder().encode(\"{\\\"email\\\":\\\"marc@scalar.com\\\",\\\"password\\\":\\\"i-love-scalar\\\"}\")));\n\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/me"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "getMe"
+          "source": "import { ScalarGalaxyTypescript } from \"@shariqnzr-gmail-com-team/scalar-galaxy-typescript\";\n\nconst scalarGalaxyTypescript = new ScalarGalaxyTypescript();\n\nasync function run() {\n  const result = await scalarGalaxyTypescript.authentication.getMe();\n\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/planets"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "getAllData"
+          "source": "import { ScalarGalaxyTypescript } from \"@shariqnzr-gmail-com-team/scalar-galaxy-typescript\";\n\nconst scalarGalaxyTypescript = new ScalarGalaxyTypescript();\n\nasync function run() {\n  const result = await scalarGalaxyTypescript.planets.getAllData({});\n\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/planets"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "createPlanet_json"
+          "source": "import { ScalarGalaxyTypescript } from \"@shariqnzr-gmail-com-team/scalar-galaxy-typescript\";\n\nconst scalarGalaxyTypescript = new ScalarGalaxyTypescript();\n\nasync function run() {\n  const result = await scalarGalaxyTypescript.planets.createPlanetJson({\n    name: \"Mars\",\n    description: \"The red planet\",\n    type: \"terrestrial\",\n    habitabilityIndex: 0.68,\n    physicalProperties: {\n      mass: 0.107,\n      radius: 0.532,\n      gravity: 0.378,\n      temperature: {\n        min: 130,\n        max: 308,\n        average: 210,\n      },\n    },\n    atmosphere: [\n      {\n        compound: \"CO2\",\n        percentage: 95.3,\n      },\n    ],\n    discoveredAt: new Date(\"1610-01-07T00:00:00Z\"),\n    image: \"https://cdn.scalar.com/photos/mars.jpg\",\n    satellites: [\n      {\n        name: \"Phobos\",\n        diameter: 22.2,\n      },\n    ],\n    creator: {\n      name: \"Marc\",\n    },\n    tags: [\n      \"solar-system\",\n      \"rocky\",\n      \"explored\",\n    ],\n    callbackUrl: \"https://example.com/webhook\",\n  });\n\n  console.log(result);\n}\n\nrun();"
+        - "lang": "typescript"
+          "label": "createPlanet_raw"
+          "source": "import { ScalarGalaxyTypescript } from \"@shariqnzr-gmail-com-team/scalar-galaxy-typescript\";\n\nconst scalarGalaxyTypescript = new ScalarGalaxyTypescript();\n\nasync function run() {\n  const result = await scalarGalaxyTypescript.planets.createPlanetRaw(bytesToStream(new TextEncoder().encode(\"{\\\"name\\\":\\\"Mars\\\",\\\"description\\\":\\\"The red planet\\\",\\\"type\\\":\\\"terrestrial\\\",\\\"habitabilityIndex\\\":0.68,\\\"physicalProperties\\\":{\\\"mass\\\":0.107,\\\"radius\\\":0.532,\\\"gravity\\\":0.378,\\\"temperature\\\":{\\\"min\\\":130,\\\"max\\\":308,\\\"average\\\":210}},\\\"atmosphere\\\":[{\\\"compound\\\":\\\"CO2\\\",\\\"percentage\\\":95.3}],\\\"discoveredAt\\\":\\\"1610-01-07T00:00:00Z\\\",\\\"image\\\":\\\"https://cdn.scalar.com/photos/mars.jpg\\\",\\\"satellites\\\":[{\\\"name\\\":\\\"Phobos\\\",\\\"diameter\\\":22.2}],\\\"creator\\\":{\\\"name\\\":\\\"Marc\\\"},\\\"tags\\\":[\\\"solar-system\\\",\\\"rocky\\\",\\\"explored\\\"],\\\"callbackUrl\\\":\\\"https://example.com/webhook\\\"}\")));\n\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/planets/{planetId}"]["delete"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "deletePlanet"
+          "source": "import { ScalarGalaxyTypescript } from \"@shariqnzr-gmail-com-team/scalar-galaxy-typescript\";\n\nconst scalarGalaxyTypescript = new ScalarGalaxyTypescript();\n\nasync function run() {\n  await scalarGalaxyTypescript.planets.deletePlanet({\n    planetId: 1,\n  });\n\n\n}\n\nrun();"
+  - target: $["paths"]["/planets/{planetId}"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "getPlanet"
+          "source": "import { ScalarGalaxyTypescript } from \"@shariqnzr-gmail-com-team/scalar-galaxy-typescript\";\n\nconst scalarGalaxyTypescript = new ScalarGalaxyTypescript();\n\nasync function run() {\n  const result = await scalarGalaxyTypescript.planets.getPlanet({\n    planetId: 1,\n  });\n\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/planets/{planetId}"]["put"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "updatePlanet_json"
+          "source": "import { ScalarGalaxyTypescript } from \"@shariqnzr-gmail-com-team/scalar-galaxy-typescript\";\n\nconst scalarGalaxyTypescript = new ScalarGalaxyTypescript();\n\nasync function run() {\n  const result = await scalarGalaxyTypescript.planets.updatePlanetJson({\n    planetId: 1,\n    planet: {\n      name: \"Mars\",\n      description: \"The red planet\",\n      type: \"terrestrial\",\n      habitabilityIndex: 0.68,\n      physicalProperties: {\n        mass: 0.107,\n        radius: 0.532,\n        gravity: 0.378,\n        temperature: {\n          min: 130,\n          max: 308,\n          average: 210,\n        },\n      },\n      atmosphere: [\n        {\n          compound: \"CO2\",\n          percentage: 95.3,\n        },\n      ],\n      discoveredAt: new Date(\"1610-01-07T00:00:00Z\"),\n      image: \"https://cdn.scalar.com/photos/mars.jpg\",\n      satellites: [\n        {\n          name: \"Phobos\",\n          diameter: 22.2,\n        },\n      ],\n      creator: {\n        name: \"Marc\",\n      },\n      tags: [\n        \"solar-system\",\n        \"rocky\",\n        \"explored\",\n      ],\n      callbackUrl: \"https://example.com/webhook\",\n    },\n  });\n\n  console.log(result);\n}\n\nrun();"
+        - "lang": "typescript"
+          "label": "updatePlanet_raw"
+          "source": "import { ScalarGalaxyTypescript } from \"@shariqnzr-gmail-com-team/scalar-galaxy-typescript\";\n\nconst scalarGalaxyTypescript = new ScalarGalaxyTypescript();\n\nasync function run() {\n  const result = await scalarGalaxyTypescript.planets.updatePlanetRaw({\n    planetId: 1,\n    planet: bytesToStream(new TextEncoder().encode(\"{\\\"name\\\":\\\"Mars\\\",\\\"description\\\":\\\"The red planet\\\",\\\"type\\\":\\\"terrestrial\\\",\\\"habitabilityIndex\\\":0.68,\\\"physicalProperties\\\":{\\\"mass\\\":0.107,\\\"radius\\\":0.532,\\\"gravity\\\":0.378,\\\"temperature\\\":{\\\"min\\\":130,\\\"max\\\":308,\\\"average\\\":210}},\\\"atmosphere\\\":[{\\\"compound\\\":\\\"CO2\\\",\\\"percentage\\\":95.3}],\\\"discoveredAt\\\":\\\"1610-01-07T00:00:00Z\\\",\\\"image\\\":\\\"https://cdn.scalar.com/photos/mars.jpg\\\",\\\"satellites\\\":[{\\\"name\\\":\\\"Phobos\\\",\\\"diameter\\\":22.2}],\\\"creator\\\":{\\\"name\\\":\\\"Marc\\\"},\\\"tags\\\":[\\\"solar-system\\\",\\\"rocky\\\",\\\"explored\\\"],\\\"callbackUrl\\\":\\\"https://example.com/webhook\\\"}\")),\n  });\n\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/planets/{planetId}/image"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "uploadImage"
+          "source": "import { ScalarGalaxyTypescript } from \"@shariqnzr-gmail-com-team/scalar-galaxy-typescript\";\nimport { openAsBlob } from \"node:fs\";\n\nconst scalarGalaxyTypescript = new ScalarGalaxyTypescript();\n\nasync function run() {\n  const result = await scalarGalaxyTypescript.planets.uploadImage({\n    planetId: 1,\n    requestBody: {\n      image: await openAsBlob(\"example.file\"),\n    },\n  });\n\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/user/signup"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "createUser_json"
+          "source": "import { ScalarGalaxyTypescript } from \"@shariqnzr-gmail-com-team/scalar-galaxy-typescript\";\n\nconst scalarGalaxyTypescript = new ScalarGalaxyTypescript();\n\nasync function run() {\n  const result = await scalarGalaxyTypescript.authentication.createUserJson({\n    name: \"Marc\",\n    email: \"marc@scalar.com\",\n    password: \"i-love-scalar\",\n  });\n\n  console.log(result);\n}\n\nrun();"
+        - "lang": "typescript"
+          "label": "createUser_raw"
+          "source": "import { ScalarGalaxyTypescript } from \"@shariqnzr-gmail-com-team/scalar-galaxy-typescript\";\n\nconst scalarGalaxyTypescript = new ScalarGalaxyTypescript();\n\nasync function run() {\n  const result = await scalarGalaxyTypescript.authentication.createUserRaw(bytesToStream(new TextEncoder().encode(\"{\\\"name\\\":\\\"Marc\\\",\\\"email\\\":\\\"marc@scalar.com\\\",\\\"password\\\":\\\"i-love-scalar\\\"}\")));\n\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["newPlanet"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "newPlanet_json"
+          "source": "import { ScalarGalaxyTypescript } from \"@shariqnzr-gmail-com-team/scalar-galaxy-typescript\";\n\nconst scalarGalaxyTypescript = new ScalarGalaxyTypescript();\n\nasync function run() {\n  await scalarGalaxyTypescript.planets.newPlanetJson({\n    name: \"Mars\",\n    description: \"The red planet\",\n    type: \"terrestrial\",\n    habitabilityIndex: 0.68,\n    physicalProperties: {\n      mass: 0.107,\n      radius: 0.532,\n      gravity: 0.378,\n      temperature: {\n        min: 130,\n        max: 308,\n        average: 210,\n      },\n    },\n    atmosphere: [\n      {\n        compound: \"CO2\",\n        percentage: 95.3,\n      },\n    ],\n    discoveredAt: new Date(\"1610-01-07T00:00:00Z\"),\n    image: \"https://cdn.scalar.com/photos/mars.jpg\",\n    satellites: [\n      {\n        name: \"Phobos\",\n        diameter: 22.2,\n      },\n    ],\n    creator: {\n      name: \"Marc\",\n    },\n    tags: [\n      \"solar-system\",\n      \"rocky\",\n      \"explored\",\n    ],\n    callbackUrl: \"https://example.com/webhook\",\n  });\n\n\n}\n\nrun();"
+        - "lang": "typescript"
+          "label": "newPlanet_raw"
+          "source": "import { ScalarGalaxyTypescript } from \"@shariqnzr-gmail-com-team/scalar-galaxy-typescript\";\n\nconst scalarGalaxyTypescript = new ScalarGalaxyTypescript();\n\nasync function run() {\n  await scalarGalaxyTypescript.planets.newPlanetRaw(bytesToStream(new TextEncoder().encode(\"{\\\"name\\\":\\\"Mars\\\",\\\"description\\\":\\\"The red planet\\\",\\\"type\\\":\\\"terrestrial\\\",\\\"habitabilityIndex\\\":0.68,\\\"physicalProperties\\\":{\\\"mass\\\":0.107,\\\"radius\\\":0.532,\\\"gravity\\\":0.378,\\\"temperature\\\":{\\\"min\\\":130,\\\"max\\\":308,\\\"average\\\":210}},\\\"atmosphere\\\":[{\\\"compound\\\":\\\"CO2\\\",\\\"percentage\\\":95.3}],\\\"discoveredAt\\\":\\\"1610-01-07T00:00:00Z\\\",\\\"image\\\":\\\"https://cdn.scalar.com/photos/mars.jpg\\\",\\\"satellites\\\":[{\\\"name\\\":\\\"Phobos\\\",\\\"diameter\\\":22.2}],\\\"creator\\\":{\\\"name\\\":\\\"Marc\\\"},\\\"tags\\\":[\\\"solar-system\\\",\\\"rocky\\\",\\\"explored\\\"],\\\"callbackUrl\\\":\\\"https://example.com/webhook\\\"}\")));\n\n\n}\n\nrun();"
