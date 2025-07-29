@@ -14,7 +14,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
-import org.openapis.openapi.models.components.Property;
 import org.openapis.openapi.utils.Utils;
 
 
@@ -71,7 +70,7 @@ public class BackchannelAuthenticationCompleteApiRequestBody {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("properties")
-    private List<Property> properties;
+    private List<BackchannelAuthenticationCompleteApiProperty> properties;
 
     /**
      * Scopes to replace the scopes specified in the original backchannel authentication request with.
@@ -137,7 +136,7 @@ public class BackchannelAuthenticationCompleteApiRequestBody {
             @JsonProperty("authTime") @Nullable Long authTime,
             @JsonProperty("acr") @Nullable String acr,
             @JsonProperty("claims") @Nullable String claims,
-            @JsonProperty("properties") @Nullable List<Property> properties,
+            @JsonProperty("properties") @Nullable List<BackchannelAuthenticationCompleteApiProperty> properties,
             @JsonProperty("scopes") @Nullable List<String> scopes,
             @JsonProperty("idtHeaderParams") @Nullable String idtHeaderParams,
             @JsonProperty("errorDescription") @Nullable String errorDescription,
@@ -229,7 +228,7 @@ public class BackchannelAuthenticationCompleteApiRequestBody {
     /**
      * The extra properties associated with the access token.
      */
-    public Optional<List<Property>> properties() {
+    public Optional<List<BackchannelAuthenticationCompleteApiProperty>> properties() {
         return Optional.ofNullable(this.properties);
     }
 
@@ -360,7 +359,7 @@ public class BackchannelAuthenticationCompleteApiRequestBody {
     /**
      * The extra properties associated with the access token.
      */
-    public BackchannelAuthenticationCompleteApiRequestBody withProperties(@Nullable List<Property> properties) {
+    public BackchannelAuthenticationCompleteApiRequestBody withProperties(@Nullable List<BackchannelAuthenticationCompleteApiProperty> properties) {
         this.properties = properties;
         return this;
     }
@@ -509,7 +508,7 @@ public class BackchannelAuthenticationCompleteApiRequestBody {
 
         private String claims;
 
-        private List<Property> properties;
+        private List<BackchannelAuthenticationCompleteApiProperty> properties;
 
         private List<String> scopes;
 
@@ -589,7 +588,7 @@ public class BackchannelAuthenticationCompleteApiRequestBody {
         /**
          * The extra properties associated with the access token.
          */
-        public Builder properties(@Nullable List<Property> properties) {
+        public Builder properties(@Nullable List<BackchannelAuthenticationCompleteApiProperty> properties) {
             this.properties = properties;
             return this;
         }

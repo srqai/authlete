@@ -21,12 +21,12 @@ public class AuthTokenRevokeApiFormRequest {
 
 
     @SpeakeasyMetadata("request:mediaType=application/x-www-form-urlencoded")
-    private AuthTokenRevokeForm requestBody;
+    private AuthTokenRevokeApiFormRequestBody requestBody;
 
     @JsonCreator
     public AuthTokenRevokeApiFormRequest(
             @Nonnull String serviceId,
-            @Nonnull AuthTokenRevokeForm requestBody) {
+            @Nonnull AuthTokenRevokeApiFormRequestBody requestBody) {
         this.serviceId = Optional.ofNullable(serviceId)
             .orElseThrow(() -> new IllegalArgumentException("serviceId cannot be null"));
         this.requestBody = Optional.ofNullable(requestBody)
@@ -40,7 +40,7 @@ public class AuthTokenRevokeApiFormRequest {
         return this.serviceId;
     }
 
-    public AuthTokenRevokeForm requestBody() {
+    public AuthTokenRevokeApiFormRequestBody requestBody() {
         return this.requestBody;
     }
 
@@ -58,7 +58,7 @@ public class AuthTokenRevokeApiFormRequest {
     }
 
 
-    public AuthTokenRevokeApiFormRequest withRequestBody(@Nonnull AuthTokenRevokeForm requestBody) {
+    public AuthTokenRevokeApiFormRequest withRequestBody(@Nonnull AuthTokenRevokeApiFormRequestBody requestBody) {
         this.requestBody = Utils.checkNotNull(requestBody, "requestBody");
         return this;
     }
@@ -96,7 +96,7 @@ public class AuthTokenRevokeApiFormRequest {
 
         private String serviceId;
 
-        private AuthTokenRevokeForm requestBody;
+        private AuthTokenRevokeApiFormRequestBody requestBody;
 
         private Builder() {
           // force use of static builder() method
@@ -110,7 +110,7 @@ public class AuthTokenRevokeApiFormRequest {
             return this;
         }
 
-        public Builder requestBody(@Nonnull AuthTokenRevokeForm requestBody) {
+        public Builder requestBody(@Nonnull AuthTokenRevokeApiFormRequestBody requestBody) {
             this.requestBody = Utils.checkNotNull(requestBody, "requestBody");
             return this;
         }

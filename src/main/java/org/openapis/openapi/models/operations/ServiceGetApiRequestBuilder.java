@@ -6,6 +6,7 @@ package org.openapis.openapi.models.operations;
 import static org.openapis.openapi.operations.Operations.RequestOperation;
 
 import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
@@ -16,6 +17,7 @@ public class ServiceGetApiRequestBuilder {
     private final SDKConfiguration sdkConfiguration;
     private final ServiceGetApiRequest.Builder pojoBuilder;
     private ServiceGetApiRequest request;
+    private String serverURL;
     private boolean _setterCalled;
 
     public ServiceGetApiRequestBuilder(SDKConfiguration sdkConfiguration) {
@@ -26,6 +28,11 @@ public class ServiceGetApiRequestBuilder {
     public ServiceGetApiRequestBuilder serviceId(@Nonnull String serviceId) {
         this.pojoBuilder.serviceId(serviceId);
         this._setterCalled = true;
+        return this;
+    }
+
+    public ServiceGetApiRequestBuilder serverURL(@Nullable String serverURL) {
+        this.serverURL = serverURL;
         return this;
     }
 
@@ -42,7 +49,7 @@ public class ServiceGetApiRequestBuilder {
     */
     public ServiceGetApiResponse call() throws Exception {
         RequestOperation<ServiceGetApiRequest, ServiceGetApiResponse> operation
-              = new ServiceGetApiOperation(sdkConfiguration);
+              = new ServiceGetApiOperation(sdkConfiguration, serverURL);
 
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }

@@ -6,6 +6,7 @@ package org.openapis.openapi;
 import static org.openapis.openapi.operations.Operations.RequestOperation;
 
 import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.models.operations.HskGetApiRequest;
@@ -39,9 +40,24 @@ public class SecurityKeys {
      * @throws Exception if the API call fails
      */
     public HskGetApiResponse get(@Nonnull String serviceId, @Nonnull String handle) throws Exception {
+        return get(serviceId, handle, null);
+    }
+
+    /**
+     * Get Security Key
+     * 
+     * @param serviceId A service ID.
+     * @param handle 
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public HskGetApiResponse get(
+            @Nonnull String serviceId, @Nonnull String handle,
+            @Nullable String serverURL) throws Exception {
         HskGetApiRequest request = new HskGetApiRequest(serviceId, handle);
         RequestOperation<HskGetApiRequest, HskGetApiResponse> operation
-              = new HskGetApiOperation(sdkConfiguration);
+              = new HskGetApiOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 

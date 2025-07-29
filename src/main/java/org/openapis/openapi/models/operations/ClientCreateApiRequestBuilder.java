@@ -10,7 +10,6 @@ import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
-import org.openapis.openapi.models.components.ClientInput;
 import org.openapis.openapi.operations.ClientCreateApiOperation;
 import org.openapis.openapi.utils.Utils;
 
@@ -18,6 +17,7 @@ public class ClientCreateApiRequestBuilder {
     private final SDKConfiguration sdkConfiguration;
     private final ClientCreateApiRequest.Builder pojoBuilder;
     private ClientCreateApiRequest request;
+    private String serverURL;
     private boolean _setterCalled;
 
     public ClientCreateApiRequestBuilder(SDKConfiguration sdkConfiguration) {
@@ -31,9 +31,14 @@ public class ClientCreateApiRequestBuilder {
         return this;
     }
 
-    public ClientCreateApiRequestBuilder client(@Nullable ClientInput client) {
-        this.pojoBuilder.client(client);
+    public ClientCreateApiRequestBuilder requestBody(@Nullable ClientCreateApiRequestBody requestBody) {
+        this.pojoBuilder.requestBody(requestBody);
         this._setterCalled = true;
+        return this;
+    }
+
+    public ClientCreateApiRequestBuilder serverURL(@Nullable String serverURL) {
+        this.serverURL = serverURL;
         return this;
     }
 
@@ -50,7 +55,7 @@ public class ClientCreateApiRequestBuilder {
     */
     public ClientCreateApiResponse call() throws Exception {
         RequestOperation<ClientCreateApiRequest, ClientCreateApiResponse> operation
-              = new ClientCreateApiOperation(sdkConfiguration);
+              = new ClientCreateApiOperation(sdkConfiguration, serverURL);
 
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }

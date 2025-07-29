@@ -110,20 +110,20 @@ and return to the client application.
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="device_authorization_api" method="post" path="/api/{serviceId}/device/authorization" -->
 ```java
 package hello.world;
 
 import java.lang.Exception;
 import org.openapis.openapi.Authelete;
 import org.openapis.openapi.models.components.Security;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400ContentApplication1jsonSchemaException;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400Exception;
+import org.openapis.openapi.models.errors.*;
 import org.openapis.openapi.models.operations.DeviceAuthorizationApiRequestBody;
 import org.openapis.openapi.models.operations.DeviceAuthorizationApiResponse;
 
 public class Application {
 
-    public static void main(String[] args) throws 1api1infoGetResponses400Exception, 1api1infoGetResponses400ContentApplication1jsonSchemaException, 1api1infoGetResponses400ContentApplication1jsonSchemaException, Exception {
+    public static void main(String[] args) throws BadRequestException, UnauthorizedException, ForbiddenException, InternalServerError, Exception {
 
         Authelete sdk = Authelete.builder()
                 .security(Security.builder()
@@ -153,6 +153,7 @@ public class Application {
 | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
 | `serviceId`                                                                                       | *String*                                                                                          | :heavy_check_mark:                                                                                | A service ID.                                                                                     |
 | `requestBody`                                                                                     | [DeviceAuthorizationApiRequestBody](../../models/operations/DeviceAuthorizationApiRequestBody.md) | :heavy_check_mark:                                                                                | N/A                                                                                               |
+| `serverURL`                                                                                       | *String*                                                                                          | :heavy_minus_sign:                                                                                | An optional server URL to use.                                                                    |
 
 ### Response
 
@@ -160,12 +161,13 @@ public class Application {
 
 ### Errors
 
-| Error Type                                                                   | Status Code                                                                  | Content Type                                                                 |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| models/errors/1api1infoGetResponses400Exception                              | 400                                                                          | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 401, 403                                                                     | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 500                                                                          | application/json                                                             |
-| models/errors/APIException                                                   | 4XX, 5XX                                                                     | \*/\*                                                                        |
+| Error Type                          | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| models/errors/BadRequestException   | 400                                 | application/json                    |
+| models/errors/UnauthorizedException | 401                                 | application/json                    |
+| models/errors/ForbiddenException    | 403                                 | application/json                    |
+| models/errors/InternalServerError   | 500                                 | application/json                    |
+| models/errors/APIException          | 4XX, 5XX                            | \*/\*                               |
 
 ## authorizeForm
 
@@ -269,20 +271,20 @@ and return to the client application.
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="device_authorization_api_form" method="post" path="/api/{serviceId}/device/authorization" -->
 ```java
 package hello.world;
 
 import java.lang.Exception;
 import org.openapis.openapi.Authelete;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1device1authorizationPostRequestBodyContentApplication1jsonSchema;
 import org.openapis.openapi.models.components.Security;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400ContentApplication1jsonSchemaException;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400Exception;
+import org.openapis.openapi.models.errors.*;
+import org.openapis.openapi.models.operations.DeviceAuthorizationApiFormRequestBody;
 import org.openapis.openapi.models.operations.DeviceAuthorizationApiFormResponse;
 
 public class Application {
 
-    public static void main(String[] args) throws 1api1infoGetResponses400Exception, 1api1infoGetResponses400ContentApplication1jsonSchemaException, 1api1infoGetResponses400ContentApplication1jsonSchemaException, Exception {
+    public static void main(String[] args) throws BadRequestException, UnauthorizedException, ForbiddenException, InternalServerError, Exception {
 
         Authelete sdk = Authelete.builder()
                 .security(Security.builder()
@@ -292,8 +294,8 @@ public class Application {
 
         DeviceAuthorizationApiFormResponse res = sdk.devices().authorizeForm()
                 .serviceId("<id>")
-                .1api1Percent7BserviceIdPercent7D1device1authorizationPostRequestBodyContentApplication1jsonSchema(1api1Percent7BserviceIdPercent7D1device1authorizationPostRequestBodyContentApplication1jsonSchema.builder()
-                    .parameters("<value>")
+                .requestBody(DeviceAuthorizationApiFormRequestBody.builder()
+                    .clientLocked(true)
                     .build())
                 .call();
 
@@ -306,10 +308,11 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                                                                                                           | Type                                                                                                                                                                                                                                | Required                                                                                                                                                                                                                            | Description                                                                                                                                                                                                                         |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `serviceId`                                                                                                                                                                                                                         | *String*                                                                                                                                                                                                                            | :heavy_check_mark:                                                                                                                                                                                                                  | A service ID.                                                                                                                                                                                                                       |
-| `1api1Percent7BserviceIdPercent7D1device1authorizationPostRequestBodyContentApplication1jsonSchema`                                                                                                                                 | [1api1Percent7BserviceIdPercent7D1device1authorizationPostRequestBodyContentApplication1jsonSchema](../../models/components/Oneapi1Percent7BserviceIdPercent7D1device1authorizationPostRequestBodyContentApplication1jsonSchema.md) | :heavy_check_mark:                                                                                                                                                                                                                  | N/A                                                                                                                                                                                                                                 |
+| Parameter                                                                                                 | Type                                                                                                      | Required                                                                                                  | Description                                                                                               |
+| --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| `serviceId`                                                                                               | *String*                                                                                                  | :heavy_check_mark:                                                                                        | A service ID.                                                                                             |
+| `requestBody`                                                                                             | [DeviceAuthorizationApiFormRequestBody](../../models/operations/DeviceAuthorizationApiFormRequestBody.md) | :heavy_check_mark:                                                                                        | N/A                                                                                                       |
+| `serverURL`                                                                                               | *String*                                                                                                  | :heavy_minus_sign:                                                                                        | An optional server URL to use.                                                                            |
 
 ### Response
 
@@ -317,9 +320,10 @@ public class Application {
 
 ### Errors
 
-| Error Type                                                                   | Status Code                                                                  | Content Type                                                                 |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| models/errors/1api1infoGetResponses400Exception                              | 400                                                                          | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 401, 403                                                                     | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 500                                                                          | application/json                                                             |
-| models/errors/APIException                                                   | 4XX, 5XX                                                                     | \*/\*                                                                        |
+| Error Type                          | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| models/errors/BadRequestException   | 400                                 | application/json                    |
+| models/errors/UnauthorizedException | 401                                 | application/json                    |
+| models/errors/ForbiddenException    | 403                                 | application/json                    |
+| models/errors/InternalServerError   | 500                                 | application/json                    |
+| models/errors/APIException          | 4XX, 5XX                            | \*/\*                               |

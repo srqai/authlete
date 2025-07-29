@@ -17,6 +17,7 @@ public class IdtokenReissueApiRequestBuilder {
     private final SDKConfiguration sdkConfiguration;
     private final IdtokenReissueApiRequest.Builder pojoBuilder;
     private IdtokenReissueApiRequest request;
+    private String serverURL;
     private boolean _setterCalled;
 
     public IdtokenReissueApiRequestBuilder(SDKConfiguration sdkConfiguration) {
@@ -36,6 +37,11 @@ public class IdtokenReissueApiRequestBuilder {
         return this;
     }
 
+    public IdtokenReissueApiRequestBuilder serverURL(@Nullable String serverURL) {
+        this.serverURL = serverURL;
+        return this;
+    }
+
     private IdtokenReissueApiRequest _buildRequest() {
         if (this._setterCalled) {
             this.request = this.pojoBuilder.build();
@@ -49,7 +55,7 @@ public class IdtokenReissueApiRequestBuilder {
     */
     public IdtokenReissueApiResponse call() throws Exception {
         RequestOperation<IdtokenReissueApiRequest, IdtokenReissueApiResponse> operation
-              = new IdtokenReissueApiOperation(sdkConfiguration);
+              = new IdtokenReissueApiOperation(sdkConfiguration, serverURL);
 
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }

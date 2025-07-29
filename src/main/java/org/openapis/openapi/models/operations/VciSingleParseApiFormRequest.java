@@ -8,7 +8,6 @@ import jakarta.annotation.Nonnull;
 import java.lang.Override;
 import java.lang.String;
 import java.util.Optional;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1vci1single1parsePostRequestBodyContentApplication1jsonSchema;
 import org.openapis.openapi.utils.SpeakeasyMetadata;
 import org.openapis.openapi.utils.Utils;
 
@@ -22,16 +21,16 @@ public class VciSingleParseApiFormRequest {
 
 
     @SpeakeasyMetadata("request:mediaType=application/x-www-form-urlencoded")
-    private 1api1Percent7BserviceIdPercent7D1vci1single1parsePostRequestBodyContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1vci1single1parsePostRequestBodyContentApplication1jsonSchema;
+    private VciSingleParseApiFormRequestBody requestBody;
 
     @JsonCreator
     public VciSingleParseApiFormRequest(
             @Nonnull String serviceId,
-            @Nonnull 1api1Percent7BserviceIdPercent7D1vci1single1parsePostRequestBodyContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1vci1single1parsePostRequestBodyContentApplication1jsonSchema) {
+            @Nonnull VciSingleParseApiFormRequestBody requestBody) {
         this.serviceId = Optional.ofNullable(serviceId)
             .orElseThrow(() -> new IllegalArgumentException("serviceId cannot be null"));
-        this.1api1Percent7BserviceIdPercent7D1vci1single1parsePostRequestBodyContentApplication1jsonSchema = Optional.ofNullable(1api1Percent7BserviceIdPercent7D1vci1single1parsePostRequestBodyContentApplication1jsonSchema)
-            .orElseThrow(() -> new IllegalArgumentException("1api1Percent7BserviceIdPercent7D1vci1single1parsePostRequestBodyContentApplication1jsonSchema cannot be null"));
+        this.requestBody = Optional.ofNullable(requestBody)
+            .orElseThrow(() -> new IllegalArgumentException("requestBody cannot be null"));
     }
 
     /**
@@ -41,8 +40,8 @@ public class VciSingleParseApiFormRequest {
         return this.serviceId;
     }
 
-    public 1api1Percent7BserviceIdPercent7D1vci1single1parsePostRequestBodyContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1vci1single1parsePostRequestBodyContentApplication1jsonSchema() {
-        return this.1api1Percent7BserviceIdPercent7D1vci1single1parsePostRequestBodyContentApplication1jsonSchema;
+    public VciSingleParseApiFormRequestBody requestBody() {
+        return this.requestBody;
     }
 
     public static Builder builder() {
@@ -59,8 +58,8 @@ public class VciSingleParseApiFormRequest {
     }
 
 
-    public VciSingleParseApiFormRequest with1api1Percent7BserviceIdPercent7D1vci1single1parsePostRequestBodyContentApplication1jsonSchema(@Nonnull 1api1Percent7BserviceIdPercent7D1vci1single1parsePostRequestBodyContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1vci1single1parsePostRequestBodyContentApplication1jsonSchema) {
-        this.1api1Percent7BserviceIdPercent7D1vci1single1parsePostRequestBodyContentApplication1jsonSchema = Utils.checkNotNull(1api1Percent7BserviceIdPercent7D1vci1single1parsePostRequestBodyContentApplication1jsonSchema, "1api1Percent7BserviceIdPercent7D1vci1single1parsePostRequestBodyContentApplication1jsonSchema");
+    public VciSingleParseApiFormRequest withRequestBody(@Nonnull VciSingleParseApiFormRequestBody requestBody) {
+        this.requestBody = Utils.checkNotNull(requestBody, "requestBody");
         return this;
     }
 
@@ -76,20 +75,20 @@ public class VciSingleParseApiFormRequest {
         VciSingleParseApiFormRequest other = (VciSingleParseApiFormRequest) o;
         return 
             Utils.enhancedDeepEquals(this.serviceId, other.serviceId) &&
-            Utils.enhancedDeepEquals(this.1api1Percent7BserviceIdPercent7D1vci1single1parsePostRequestBodyContentApplication1jsonSchema, other.1api1Percent7BserviceIdPercent7D1vci1single1parsePostRequestBodyContentApplication1jsonSchema);
+            Utils.enhancedDeepEquals(this.requestBody, other.requestBody);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            serviceId, 1api1Percent7BserviceIdPercent7D1vci1single1parsePostRequestBodyContentApplication1jsonSchema);
+            serviceId, requestBody);
     }
     
     @Override
     public String toString() {
         return Utils.toString(VciSingleParseApiFormRequest.class,
                 "serviceId", serviceId,
-                "1api1Percent7BserviceIdPercent7D1vci1single1parsePostRequestBodyContentApplication1jsonSchema", 1api1Percent7BserviceIdPercent7D1vci1single1parsePostRequestBodyContentApplication1jsonSchema);
+                "requestBody", requestBody);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -97,7 +96,7 @@ public class VciSingleParseApiFormRequest {
 
         private String serviceId;
 
-        private 1api1Percent7BserviceIdPercent7D1vci1single1parsePostRequestBodyContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1vci1single1parsePostRequestBodyContentApplication1jsonSchema;
+        private VciSingleParseApiFormRequestBody requestBody;
 
         private Builder() {
           // force use of static builder() method
@@ -111,14 +110,14 @@ public class VciSingleParseApiFormRequest {
             return this;
         }
 
-        public Builder 1api1Percent7BserviceIdPercent7D1vci1single1parsePostRequestBodyContentApplication1jsonSchema(@Nonnull 1api1Percent7BserviceIdPercent7D1vci1single1parsePostRequestBodyContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1vci1single1parsePostRequestBodyContentApplication1jsonSchema) {
-            this.1api1Percent7BserviceIdPercent7D1vci1single1parsePostRequestBodyContentApplication1jsonSchema = Utils.checkNotNull(1api1Percent7BserviceIdPercent7D1vci1single1parsePostRequestBodyContentApplication1jsonSchema, "1api1Percent7BserviceIdPercent7D1vci1single1parsePostRequestBodyContentApplication1jsonSchema");
+        public Builder requestBody(@Nonnull VciSingleParseApiFormRequestBody requestBody) {
+            this.requestBody = Utils.checkNotNull(requestBody, "requestBody");
             return this;
         }
 
         public VciSingleParseApiFormRequest build() {
             return new VciSingleParseApiFormRequest(
-                serviceId, 1api1Percent7BserviceIdPercent7D1vci1single1parsePostRequestBodyContentApplication1jsonSchema);
+                serviceId, requestBody);
         }
 
     }

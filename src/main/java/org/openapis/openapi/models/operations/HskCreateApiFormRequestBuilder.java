@@ -6,10 +6,10 @@ package org.openapis.openapi.models.operations;
 import static org.openapis.openapi.operations.Operations.RequestOperation;
 
 import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1hsk1createPostRequestBodyContentApplication1jsonSchema;
 import org.openapis.openapi.operations.HskCreateApiFormOperation;
 import org.openapis.openapi.utils.Utils;
 
@@ -17,6 +17,7 @@ public class HskCreateApiFormRequestBuilder {
     private final SDKConfiguration sdkConfiguration;
     private final HskCreateApiFormRequest.Builder pojoBuilder;
     private HskCreateApiFormRequest request;
+    private String serverURL;
     private boolean _setterCalled;
 
     public HskCreateApiFormRequestBuilder(SDKConfiguration sdkConfiguration) {
@@ -30,9 +31,14 @@ public class HskCreateApiFormRequestBuilder {
         return this;
     }
 
-    public HskCreateApiFormRequestBuilder oneapi1Percent7BserviceIdPercent7D1hsk1createPostRequestBodyContentApplication1jsonSchema(@Nonnull 1api1Percent7BserviceIdPercent7D1hsk1createPostRequestBodyContentApplication1jsonSchema oneapi1Percent7BserviceIdPercent7D1hsk1createPostRequestBodyContentApplication1jsonSchema) {
-        this.pojoBuilder.oneapi1Percent7BserviceIdPercent7D1hsk1createPostRequestBodyContentApplication1jsonSchema(oneapi1Percent7BserviceIdPercent7D1hsk1createPostRequestBodyContentApplication1jsonSchema);
+    public HskCreateApiFormRequestBuilder requestBody(@Nonnull HskCreateApiFormRequestBody requestBody) {
+        this.pojoBuilder.requestBody(requestBody);
         this._setterCalled = true;
+        return this;
+    }
+
+    public HskCreateApiFormRequestBuilder serverURL(@Nullable String serverURL) {
+        this.serverURL = serverURL;
         return this;
     }
 
@@ -49,7 +55,7 @@ public class HskCreateApiFormRequestBuilder {
     */
     public HskCreateApiFormResponse call() throws Exception {
         RequestOperation<HskCreateApiFormRequest, HskCreateApiFormResponse> operation
-              = new HskCreateApiFormOperation(sdkConfiguration);
+              = new HskCreateApiFormOperation(sdkConfiguration, serverURL);
 
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }

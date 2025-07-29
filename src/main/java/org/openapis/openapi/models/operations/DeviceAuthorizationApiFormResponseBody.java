@@ -15,12 +15,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1auth1authorizationPostResponses200ContentApplication1jsonSchemaPropertiesGrant;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1gmPostRequestBodyContentApplication1jsonSchemaPropertiesGmAction;
-import org.openapis.openapi.models.components.AuthorizationDetails;
-import org.openapis.openapi.models.components.DynamicScope;
-import org.openapis.openapi.models.components.Pair;
-import org.openapis.openapi.models.components.Scope;
 import org.openapis.openapi.utils.Utils;
 
 
@@ -106,7 +100,7 @@ public class DeviceAuthorizationApiFormResponseBody {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("scopes")
-    private List<Scope> scopes;
+    private List<DeviceAuthorizationApiFormScope> scopes;
 
     /**
      * The names of the claims which were requested indirectly via some special scopes.
@@ -201,28 +195,28 @@ public class DeviceAuthorizationApiFormResponseBody {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("authorizationDetails")
-    private AuthorizationDetails authorizationDetails;
+    private DeviceAuthorizationApiFormAuthorizationDetails authorizationDetails;
 
     /**
      * The attributes of this service that the client application belongs to.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("serviceAttributes")
-    private List<Pair> serviceAttributes;
+    private List<DeviceAuthorizationApiFormServiceAttribute> serviceAttributes;
 
     /**
      * The attributes of the client.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("clientAttributes")
-    private List<Pair> clientAttributes;
+    private List<DeviceAuthorizationApiFormClientAttribute> clientAttributes;
 
     /**
      * The dynamic scopes which the client application requested by the scope request parameter.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("dynamicScopes")
-    private List<DynamicScope> dynamicScopes;
+    private List<DeviceAuthorizationApiFormDynamicScope> dynamicScopes;
 
     /**
      * The grant management action of the device authorization request.
@@ -232,7 +226,7 @@ public class DeviceAuthorizationApiFormResponseBody {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("gmAction")
-    private 1api1Percent7BserviceIdPercent7D1gmPostRequestBodyContentApplication1jsonSchemaPropertiesGmAction gmAction;
+    private DeviceAuthorizationApiFormGmAction gmAction;
 
     /**
      * the value of the `grant_id` request parameter of the device authorization request.
@@ -248,7 +242,7 @@ public class DeviceAuthorizationApiFormResponseBody {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("grant")
-    private 1api1Percent7BserviceIdPercent7D1auth1authorizationPostResponses200ContentApplication1jsonSchemaPropertiesGrant grant;
+    private DeviceAuthorizationApiFormGrant grant;
 
     /**
      * The subject identifying the user who has given the grant identified
@@ -301,7 +295,7 @@ public class DeviceAuthorizationApiFormResponseBody {
             @JsonProperty("clientIdAliasUsed") @Nullable Boolean clientIdAliasUsed,
             @JsonProperty("clientName") @Nullable String clientName,
             @JsonProperty("clientAuthMethod") @Nullable String clientAuthMethod,
-            @JsonProperty("scopes") @Nullable List<Scope> scopes,
+            @JsonProperty("scopes") @Nullable List<DeviceAuthorizationApiFormScope> scopes,
             @JsonProperty("claimNames") @Nullable List<String> claimNames,
             @JsonProperty("acrs") @Nullable List<String> acrs,
             @JsonProperty("deviceCode") @Nullable String deviceCode,
@@ -312,13 +306,13 @@ public class DeviceAuthorizationApiFormResponseBody {
             @JsonProperty("interval") @Nullable Integer interval,
             @JsonProperty("warnings") @Nullable List<String> warnings,
             @JsonProperty("resources") @Nullable List<String> resources,
-            @JsonProperty("authorizationDetails") @Nullable AuthorizationDetails authorizationDetails,
-            @JsonProperty("serviceAttributes") @Nullable List<Pair> serviceAttributes,
-            @JsonProperty("clientAttributes") @Nullable List<Pair> clientAttributes,
-            @JsonProperty("dynamicScopes") @Nullable List<DynamicScope> dynamicScopes,
-            @JsonProperty("gmAction") @Nullable 1api1Percent7BserviceIdPercent7D1gmPostRequestBodyContentApplication1jsonSchemaPropertiesGmAction gmAction,
+            @JsonProperty("authorizationDetails") @Nullable DeviceAuthorizationApiFormAuthorizationDetails authorizationDetails,
+            @JsonProperty("serviceAttributes") @Nullable List<DeviceAuthorizationApiFormServiceAttribute> serviceAttributes,
+            @JsonProperty("clientAttributes") @Nullable List<DeviceAuthorizationApiFormClientAttribute> clientAttributes,
+            @JsonProperty("dynamicScopes") @Nullable List<DeviceAuthorizationApiFormDynamicScope> dynamicScopes,
+            @JsonProperty("gmAction") @Nullable DeviceAuthorizationApiFormGmAction gmAction,
             @JsonProperty("grantId") @Nullable String grantId,
-            @JsonProperty("grant") @Nullable 1api1Percent7BserviceIdPercent7D1auth1authorizationPostResponses200ContentApplication1jsonSchemaPropertiesGrant grant,
+            @JsonProperty("grant") @Nullable DeviceAuthorizationApiFormGrant grant,
             @JsonProperty("grantSubject") @Nullable String grantSubject,
             @JsonProperty("clientEntityId") @Nullable String clientEntityId,
             @JsonProperty("clientEntityIdUsed") @Nullable Boolean clientEntityIdUsed) {
@@ -446,7 +440,7 @@ public class DeviceAuthorizationApiFormResponseBody {
      * array contained in this property is always `null` even if descriptions of the scopes
      * are registered.
      */
-    public Optional<List<Scope>> scopes() {
+    public Optional<List<DeviceAuthorizationApiFormScope>> scopes() {
         return Optional.ofNullable(this.scopes);
     }
 
@@ -541,28 +535,28 @@ public class DeviceAuthorizationApiFormResponseBody {
      * request parameter in the preceding device authorization request which is defined in
      * "OAuth 2.0 Rich Authorization Requests".
      */
-    public Optional<AuthorizationDetails> authorizationDetails() {
+    public Optional<DeviceAuthorizationApiFormAuthorizationDetails> authorizationDetails() {
         return Optional.ofNullable(this.authorizationDetails);
     }
 
     /**
      * The attributes of this service that the client application belongs to.
      */
-    public Optional<List<Pair>> serviceAttributes() {
+    public Optional<List<DeviceAuthorizationApiFormServiceAttribute>> serviceAttributes() {
         return Optional.ofNullable(this.serviceAttributes);
     }
 
     /**
      * The attributes of the client.
      */
-    public Optional<List<Pair>> clientAttributes() {
+    public Optional<List<DeviceAuthorizationApiFormClientAttribute>> clientAttributes() {
         return Optional.ofNullable(this.clientAttributes);
     }
 
     /**
      * The dynamic scopes which the client application requested by the scope request parameter.
      */
-    public Optional<List<DynamicScope>> dynamicScopes() {
+    public Optional<List<DeviceAuthorizationApiFormDynamicScope>> dynamicScopes() {
         return Optional.ofNullable(this.dynamicScopes);
     }
 
@@ -572,7 +566,7 @@ public class DeviceAuthorizationApiFormResponseBody {
      * <p>The `grant_management_action` request parameter is defined in
      * [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html).
      */
-    public Optional<1api1Percent7BserviceIdPercent7D1gmPostRequestBodyContentApplication1jsonSchemaPropertiesGmAction> gmAction() {
+    public Optional<DeviceAuthorizationApiFormGmAction> gmAction() {
         return Optional.ofNullable(this.gmAction);
     }
 
@@ -587,7 +581,7 @@ public class DeviceAuthorizationApiFormResponseBody {
         return Optional.ofNullable(this.grantId);
     }
 
-    public Optional<1api1Percent7BserviceIdPercent7D1auth1authorizationPostResponses200ContentApplication1jsonSchemaPropertiesGrant> grant() {
+    public Optional<DeviceAuthorizationApiFormGrant> grant() {
         return Optional.ofNullable(this.grant);
     }
 
@@ -733,7 +727,7 @@ public class DeviceAuthorizationApiFormResponseBody {
      * array contained in this property is always `null` even if descriptions of the scopes
      * are registered.
      */
-    public DeviceAuthorizationApiFormResponseBody withScopes(@Nullable List<Scope> scopes) {
+    public DeviceAuthorizationApiFormResponseBody withScopes(@Nullable List<DeviceAuthorizationApiFormScope> scopes) {
         this.scopes = scopes;
         return this;
     }
@@ -850,7 +844,7 @@ public class DeviceAuthorizationApiFormResponseBody {
      * request parameter in the preceding device authorization request which is defined in
      * "OAuth 2.0 Rich Authorization Requests".
      */
-    public DeviceAuthorizationApiFormResponseBody withAuthorizationDetails(@Nullable AuthorizationDetails authorizationDetails) {
+    public DeviceAuthorizationApiFormResponseBody withAuthorizationDetails(@Nullable DeviceAuthorizationApiFormAuthorizationDetails authorizationDetails) {
         this.authorizationDetails = authorizationDetails;
         return this;
     }
@@ -859,7 +853,7 @@ public class DeviceAuthorizationApiFormResponseBody {
     /**
      * The attributes of this service that the client application belongs to.
      */
-    public DeviceAuthorizationApiFormResponseBody withServiceAttributes(@Nullable List<Pair> serviceAttributes) {
+    public DeviceAuthorizationApiFormResponseBody withServiceAttributes(@Nullable List<DeviceAuthorizationApiFormServiceAttribute> serviceAttributes) {
         this.serviceAttributes = serviceAttributes;
         return this;
     }
@@ -868,7 +862,7 @@ public class DeviceAuthorizationApiFormResponseBody {
     /**
      * The attributes of the client.
      */
-    public DeviceAuthorizationApiFormResponseBody withClientAttributes(@Nullable List<Pair> clientAttributes) {
+    public DeviceAuthorizationApiFormResponseBody withClientAttributes(@Nullable List<DeviceAuthorizationApiFormClientAttribute> clientAttributes) {
         this.clientAttributes = clientAttributes;
         return this;
     }
@@ -877,7 +871,7 @@ public class DeviceAuthorizationApiFormResponseBody {
     /**
      * The dynamic scopes which the client application requested by the scope request parameter.
      */
-    public DeviceAuthorizationApiFormResponseBody withDynamicScopes(@Nullable List<DynamicScope> dynamicScopes) {
+    public DeviceAuthorizationApiFormResponseBody withDynamicScopes(@Nullable List<DeviceAuthorizationApiFormDynamicScope> dynamicScopes) {
         this.dynamicScopes = dynamicScopes;
         return this;
     }
@@ -889,7 +883,7 @@ public class DeviceAuthorizationApiFormResponseBody {
      * <p>The `grant_management_action` request parameter is defined in
      * [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html).
      */
-    public DeviceAuthorizationApiFormResponseBody withGmAction(@Nullable 1api1Percent7BserviceIdPercent7D1gmPostRequestBodyContentApplication1jsonSchemaPropertiesGmAction gmAction) {
+    public DeviceAuthorizationApiFormResponseBody withGmAction(@Nullable DeviceAuthorizationApiFormGmAction gmAction) {
         this.gmAction = gmAction;
         return this;
     }
@@ -908,7 +902,7 @@ public class DeviceAuthorizationApiFormResponseBody {
     }
 
 
-    public DeviceAuthorizationApiFormResponseBody withGrant(@Nullable 1api1Percent7BserviceIdPercent7D1auth1authorizationPostResponses200ContentApplication1jsonSchemaPropertiesGrant grant) {
+    public DeviceAuthorizationApiFormResponseBody withGrant(@Nullable DeviceAuthorizationApiFormGrant grant) {
         this.grant = grant;
         return this;
     }
@@ -1073,7 +1067,7 @@ public class DeviceAuthorizationApiFormResponseBody {
 
         private String clientAuthMethod;
 
-        private List<Scope> scopes;
+        private List<DeviceAuthorizationApiFormScope> scopes;
 
         private List<String> claimNames;
 
@@ -1095,19 +1089,19 @@ public class DeviceAuthorizationApiFormResponseBody {
 
         private List<String> resources;
 
-        private AuthorizationDetails authorizationDetails;
+        private DeviceAuthorizationApiFormAuthorizationDetails authorizationDetails;
 
-        private List<Pair> serviceAttributes;
+        private List<DeviceAuthorizationApiFormServiceAttribute> serviceAttributes;
 
-        private List<Pair> clientAttributes;
+        private List<DeviceAuthorizationApiFormClientAttribute> clientAttributes;
 
-        private List<DynamicScope> dynamicScopes;
+        private List<DeviceAuthorizationApiFormDynamicScope> dynamicScopes;
 
-        private 1api1Percent7BserviceIdPercent7D1gmPostRequestBodyContentApplication1jsonSchemaPropertiesGmAction gmAction;
+        private DeviceAuthorizationApiFormGmAction gmAction;
 
         private String grantId;
 
-        private 1api1Percent7BserviceIdPercent7D1auth1authorizationPostResponses200ContentApplication1jsonSchemaPropertiesGrant grant;
+        private DeviceAuthorizationApiFormGrant grant;
 
         private String grantSubject;
 
@@ -1207,7 +1201,7 @@ public class DeviceAuthorizationApiFormResponseBody {
          * array contained in this property is always `null` even if descriptions of the scopes
          * are registered.
          */
-        public Builder scopes(@Nullable List<Scope> scopes) {
+        public Builder scopes(@Nullable List<DeviceAuthorizationApiFormScope> scopes) {
             this.scopes = scopes;
             return this;
         }
@@ -1313,7 +1307,7 @@ public class DeviceAuthorizationApiFormResponseBody {
          * request parameter in the preceding device authorization request which is defined in
          * "OAuth 2.0 Rich Authorization Requests".
          */
-        public Builder authorizationDetails(@Nullable AuthorizationDetails authorizationDetails) {
+        public Builder authorizationDetails(@Nullable DeviceAuthorizationApiFormAuthorizationDetails authorizationDetails) {
             this.authorizationDetails = authorizationDetails;
             return this;
         }
@@ -1321,7 +1315,7 @@ public class DeviceAuthorizationApiFormResponseBody {
         /**
          * The attributes of this service that the client application belongs to.
          */
-        public Builder serviceAttributes(@Nullable List<Pair> serviceAttributes) {
+        public Builder serviceAttributes(@Nullable List<DeviceAuthorizationApiFormServiceAttribute> serviceAttributes) {
             this.serviceAttributes = serviceAttributes;
             return this;
         }
@@ -1329,7 +1323,7 @@ public class DeviceAuthorizationApiFormResponseBody {
         /**
          * The attributes of the client.
          */
-        public Builder clientAttributes(@Nullable List<Pair> clientAttributes) {
+        public Builder clientAttributes(@Nullable List<DeviceAuthorizationApiFormClientAttribute> clientAttributes) {
             this.clientAttributes = clientAttributes;
             return this;
         }
@@ -1337,7 +1331,7 @@ public class DeviceAuthorizationApiFormResponseBody {
         /**
          * The dynamic scopes which the client application requested by the scope request parameter.
          */
-        public Builder dynamicScopes(@Nullable List<DynamicScope> dynamicScopes) {
+        public Builder dynamicScopes(@Nullable List<DeviceAuthorizationApiFormDynamicScope> dynamicScopes) {
             this.dynamicScopes = dynamicScopes;
             return this;
         }
@@ -1348,7 +1342,7 @@ public class DeviceAuthorizationApiFormResponseBody {
          * <p>The `grant_management_action` request parameter is defined in
          * [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html).
          */
-        public Builder gmAction(@Nullable 1api1Percent7BserviceIdPercent7D1gmPostRequestBodyContentApplication1jsonSchemaPropertiesGmAction gmAction) {
+        public Builder gmAction(@Nullable DeviceAuthorizationApiFormGmAction gmAction) {
             this.gmAction = gmAction;
             return this;
         }
@@ -1365,7 +1359,7 @@ public class DeviceAuthorizationApiFormResponseBody {
             return this;
         }
 
-        public Builder grant(@Nullable 1api1Percent7BserviceIdPercent7D1auth1authorizationPostResponses200ContentApplication1jsonSchemaPropertiesGrant grant) {
+        public Builder grant(@Nullable DeviceAuthorizationApiFormGrant grant) {
             this.grant = grant;
             return this;
         }

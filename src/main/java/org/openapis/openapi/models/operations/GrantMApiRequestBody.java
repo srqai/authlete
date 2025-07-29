@@ -101,7 +101,7 @@ public class GrantMApiRequestBody {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("gmAction")
-    private GmAction gmAction;
+    private GrantMApiGmAction gmAction;
 
     /**
      * The value of the `grant_id` request parameter of the device authorization request.
@@ -124,7 +124,7 @@ public class GrantMApiRequestBody {
             @JsonProperty("htm") @Nullable String htm,
             @JsonProperty("htu") @Nullable String htu,
             @JsonProperty("resources") @Nullable List<String> resources,
-            @JsonProperty("gmAction") @Nullable GmAction gmAction,
+            @JsonProperty("gmAction") @Nullable GrantMApiGmAction gmAction,
             @JsonProperty("grantId") @Nullable String grantId) {
         this.accessToken = accessToken;
         this.scopes = scopes;
@@ -228,7 +228,7 @@ public class GrantMApiRequestBody {
      * <p>The `grant_management_action` request parameter is defined in
      * [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html).
      */
-    public Optional<GmAction> gmAction() {
+    public Optional<GrantMApiGmAction> gmAction() {
         return Optional.ofNullable(this.gmAction);
     }
 
@@ -347,7 +347,7 @@ public class GrantMApiRequestBody {
      * <p>The `grant_management_action` request parameter is defined in
      * [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html).
      */
-    public GrantMApiRequestBody withGmAction(@Nullable GmAction gmAction) {
+    public GrantMApiRequestBody withGmAction(@Nullable GrantMApiGmAction gmAction) {
         this.gmAction = gmAction;
         return this;
     }
@@ -431,7 +431,7 @@ public class GrantMApiRequestBody {
 
         private List<String> resources;
 
-        private GmAction gmAction;
+        private GrantMApiGmAction gmAction;
 
         private String grantId;
 
@@ -530,7 +530,7 @@ public class GrantMApiRequestBody {
          * <p>The `grant_management_action` request parameter is defined in
          * [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html).
          */
-        public Builder gmAction(@Nullable GmAction gmAction) {
+        public Builder gmAction(@Nullable GrantMApiGmAction gmAction) {
             this.gmAction = gmAction;
             return this;
         }

@@ -6,6 +6,7 @@ package org.openapis.openapi.models.operations;
 import static org.openapis.openapi.operations.Operations.RequestOperation;
 
 import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
@@ -16,6 +17,7 @@ public class GrantMApiRequestBuilder {
     private final SDKConfiguration sdkConfiguration;
     private final GrantMApiRequest.Builder pojoBuilder;
     private GrantMApiRequest request;
+    private String serverURL;
     private boolean _setterCalled;
 
     public GrantMApiRequestBuilder(SDKConfiguration sdkConfiguration) {
@@ -35,6 +37,11 @@ public class GrantMApiRequestBuilder {
         return this;
     }
 
+    public GrantMApiRequestBuilder serverURL(@Nullable String serverURL) {
+        this.serverURL = serverURL;
+        return this;
+    }
+
     private GrantMApiRequest _buildRequest() {
         if (this._setterCalled) {
             this.request = this.pojoBuilder.build();
@@ -48,7 +55,7 @@ public class GrantMApiRequestBuilder {
     */
     public GrantMApiResponse call() throws Exception {
         RequestOperation<GrantMApiRequest, GrantMApiResponse> operation
-              = new GrantMApiOperation(sdkConfiguration);
+              = new GrantMApiOperation(sdkConfiguration, serverURL);
 
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }

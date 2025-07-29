@@ -11,7 +11,6 @@ import jakarta.annotation.Nullable;
 import java.lang.Override;
 import java.lang.String;
 import java.util.Optional;
-import org.openapis.openapi.models.components.CredentialRequestInfo;
 import org.openapis.openapi.utils.Utils;
 
 
@@ -47,7 +46,7 @@ public class VciSingleParseApiResponseBody {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("info")
-    private CredentialRequestInfo info;
+    private VciSingleParseApiInfo info;
 
     @JsonCreator
     public VciSingleParseApiResponseBody(
@@ -55,7 +54,7 @@ public class VciSingleParseApiResponseBody {
             @JsonProperty("resultMessage") @Nullable String resultMessage,
             @JsonProperty("action") @Nullable VciSingleParseApiAction action,
             @JsonProperty("responseContent") @Nullable String responseContent,
-            @JsonProperty("info") @Nullable CredentialRequestInfo info) {
+            @JsonProperty("info") @Nullable VciSingleParseApiInfo info) {
         this.resultCode = resultCode;
         this.resultMessage = resultMessage;
         this.action = action;
@@ -96,7 +95,7 @@ public class VciSingleParseApiResponseBody {
         return Optional.ofNullable(this.responseContent);
     }
 
-    public Optional<CredentialRequestInfo> info() {
+    public Optional<VciSingleParseApiInfo> info() {
         return Optional.ofNullable(this.info);
     }
 
@@ -141,7 +140,7 @@ public class VciSingleParseApiResponseBody {
     }
 
 
-    public VciSingleParseApiResponseBody withInfo(@Nullable CredentialRequestInfo info) {
+    public VciSingleParseApiResponseBody withInfo(@Nullable VciSingleParseApiInfo info) {
         this.info = info;
         return this;
     }
@@ -192,7 +191,7 @@ public class VciSingleParseApiResponseBody {
 
         private String responseContent;
 
-        private CredentialRequestInfo info;
+        private VciSingleParseApiInfo info;
 
         private Builder() {
           // force use of static builder() method
@@ -230,7 +229,7 @@ public class VciSingleParseApiResponseBody {
             return this;
         }
 
-        public Builder info(@Nullable CredentialRequestInfo info) {
+        public Builder info(@Nullable VciSingleParseApiInfo info) {
             this.info = info;
             return this;
         }

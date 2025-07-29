@@ -14,9 +14,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
-import org.openapis.openapi.models.components.AuthorizationDetails;
-import org.openapis.openapi.models.components.DeliveryMode;
-import org.openapis.openapi.models.components.Pair;
 import org.openapis.openapi.utils.Utils;
 
 
@@ -85,7 +82,7 @@ public class BackchannelAuthenticationCompleteApiFormResponseBody {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("deliveryMode")
-    private DeliveryMode deliveryMode;
+    private BackchannelAuthenticationCompleteApiFormDeliveryMode deliveryMode;
 
     /**
      * The client notification endpoint to which a notification needs to be sent. This corresponds
@@ -176,21 +173,21 @@ public class BackchannelAuthenticationCompleteApiFormResponseBody {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("authorizationDetails")
-    private AuthorizationDetails authorizationDetails;
+    private BackchannelAuthenticationCompleteApiFormAuthorizationDetails authorizationDetails;
 
     /**
      * The attributes of this service that the client application belongs to.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("serviceAttributes")
-    private List<Pair> serviceAttributes;
+    private List<BackchannelAuthenticationCompleteApiFormServiceAttribute> serviceAttributes;
 
     /**
      * The attributes of the client.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("clientAttributes")
-    private List<Pair> clientAttributes;
+    private List<BackchannelAuthenticationCompleteApiFormClientAttribute> clientAttributes;
 
     /**
      * the value of the `grant_id` request parameter of the device authorization request.
@@ -227,7 +224,7 @@ public class BackchannelAuthenticationCompleteApiFormResponseBody {
             @JsonProperty("clientIdAlias") @Nullable String clientIdAlias,
             @JsonProperty("clientIdAliasUsed") @Nullable Boolean clientIdAliasUsed,
             @JsonProperty("clientName") @Nullable String clientName,
-            @JsonProperty("deliveryMode") @Nullable DeliveryMode deliveryMode,
+            @JsonProperty("deliveryMode") @Nullable BackchannelAuthenticationCompleteApiFormDeliveryMode deliveryMode,
             @JsonProperty("clientNotificationEndpoint") @Nullable String clientNotificationEndpoint,
             @JsonProperty("clientNotificationToken") @Nullable String clientNotificationToken,
             @JsonProperty("authReqId") @Nullable String authReqId,
@@ -239,9 +236,9 @@ public class BackchannelAuthenticationCompleteApiFormResponseBody {
             @JsonProperty("idTokenDuration") @Nullable Long idTokenDuration,
             @JsonProperty("jwtAccessToken") @Nullable String jwtAccessToken,
             @JsonProperty("resources") @Nullable List<String> resources,
-            @JsonProperty("authorizationDetails") @Nullable AuthorizationDetails authorizationDetails,
-            @JsonProperty("serviceAttributes") @Nullable List<Pair> serviceAttributes,
-            @JsonProperty("clientAttributes") @Nullable List<Pair> clientAttributes,
+            @JsonProperty("authorizationDetails") @Nullable BackchannelAuthenticationCompleteApiFormAuthorizationDetails authorizationDetails,
+            @JsonProperty("serviceAttributes") @Nullable List<BackchannelAuthenticationCompleteApiFormServiceAttribute> serviceAttributes,
+            @JsonProperty("clientAttributes") @Nullable List<BackchannelAuthenticationCompleteApiFormClientAttribute> clientAttributes,
             @JsonProperty("grantId") @Nullable String grantId,
             @JsonProperty("clientEntityId") @Nullable String clientEntityId,
             @JsonProperty("clientEntityIdUsed") @Nullable Boolean clientEntityIdUsed) {
@@ -346,7 +343,7 @@ public class BackchannelAuthenticationCompleteApiFormResponseBody {
         return Optional.ofNullable(this.clientName);
     }
 
-    public Optional<DeliveryMode> deliveryMode() {
+    public Optional<BackchannelAuthenticationCompleteApiFormDeliveryMode> deliveryMode() {
         return Optional.ofNullable(this.deliveryMode);
     }
 
@@ -437,21 +434,21 @@ public class BackchannelAuthenticationCompleteApiFormResponseBody {
      * request parameter in the preceding device authorization request which is defined in
      * "OAuth 2.0 Rich Authorization Requests".
      */
-    public Optional<AuthorizationDetails> authorizationDetails() {
+    public Optional<BackchannelAuthenticationCompleteApiFormAuthorizationDetails> authorizationDetails() {
         return Optional.ofNullable(this.authorizationDetails);
     }
 
     /**
      * The attributes of this service that the client application belongs to.
      */
-    public Optional<List<Pair>> serviceAttributes() {
+    public Optional<List<BackchannelAuthenticationCompleteApiFormServiceAttribute>> serviceAttributes() {
         return Optional.ofNullable(this.serviceAttributes);
     }
 
     /**
      * The attributes of the client.
      */
-    public Optional<List<Pair>> clientAttributes() {
+    public Optional<List<BackchannelAuthenticationCompleteApiFormClientAttribute>> clientAttributes() {
         return Optional.ofNullable(this.clientAttributes);
     }
 
@@ -562,7 +559,7 @@ public class BackchannelAuthenticationCompleteApiFormResponseBody {
     }
 
 
-    public BackchannelAuthenticationCompleteApiFormResponseBody withDeliveryMode(@Nullable DeliveryMode deliveryMode) {
+    public BackchannelAuthenticationCompleteApiFormResponseBody withDeliveryMode(@Nullable BackchannelAuthenticationCompleteApiFormDeliveryMode deliveryMode) {
         this.deliveryMode = deliveryMode;
         return this;
     }
@@ -677,7 +674,7 @@ public class BackchannelAuthenticationCompleteApiFormResponseBody {
      * request parameter in the preceding device authorization request which is defined in
      * "OAuth 2.0 Rich Authorization Requests".
      */
-    public BackchannelAuthenticationCompleteApiFormResponseBody withAuthorizationDetails(@Nullable AuthorizationDetails authorizationDetails) {
+    public BackchannelAuthenticationCompleteApiFormResponseBody withAuthorizationDetails(@Nullable BackchannelAuthenticationCompleteApiFormAuthorizationDetails authorizationDetails) {
         this.authorizationDetails = authorizationDetails;
         return this;
     }
@@ -686,7 +683,7 @@ public class BackchannelAuthenticationCompleteApiFormResponseBody {
     /**
      * The attributes of this service that the client application belongs to.
      */
-    public BackchannelAuthenticationCompleteApiFormResponseBody withServiceAttributes(@Nullable List<Pair> serviceAttributes) {
+    public BackchannelAuthenticationCompleteApiFormResponseBody withServiceAttributes(@Nullable List<BackchannelAuthenticationCompleteApiFormServiceAttribute> serviceAttributes) {
         this.serviceAttributes = serviceAttributes;
         return this;
     }
@@ -695,7 +692,7 @@ public class BackchannelAuthenticationCompleteApiFormResponseBody {
     /**
      * The attributes of the client.
      */
-    public BackchannelAuthenticationCompleteApiFormResponseBody withClientAttributes(@Nullable List<Pair> clientAttributes) {
+    public BackchannelAuthenticationCompleteApiFormResponseBody withClientAttributes(@Nullable List<BackchannelAuthenticationCompleteApiFormClientAttribute> clientAttributes) {
         this.clientAttributes = clientAttributes;
         return this;
     }
@@ -834,7 +831,7 @@ public class BackchannelAuthenticationCompleteApiFormResponseBody {
 
         private String clientName;
 
-        private DeliveryMode deliveryMode;
+        private BackchannelAuthenticationCompleteApiFormDeliveryMode deliveryMode;
 
         private String clientNotificationEndpoint;
 
@@ -858,11 +855,11 @@ public class BackchannelAuthenticationCompleteApiFormResponseBody {
 
         private List<String> resources;
 
-        private AuthorizationDetails authorizationDetails;
+        private BackchannelAuthenticationCompleteApiFormAuthorizationDetails authorizationDetails;
 
-        private List<Pair> serviceAttributes;
+        private List<BackchannelAuthenticationCompleteApiFormServiceAttribute> serviceAttributes;
 
-        private List<Pair> clientAttributes;
+        private List<BackchannelAuthenticationCompleteApiFormClientAttribute> clientAttributes;
 
         private String grantId;
 
@@ -943,7 +940,7 @@ public class BackchannelAuthenticationCompleteApiFormResponseBody {
             return this;
         }
 
-        public Builder deliveryMode(@Nullable DeliveryMode deliveryMode) {
+        public Builder deliveryMode(@Nullable BackchannelAuthenticationCompleteApiFormDeliveryMode deliveryMode) {
             this.deliveryMode = deliveryMode;
             return this;
         }
@@ -1046,7 +1043,7 @@ public class BackchannelAuthenticationCompleteApiFormResponseBody {
          * request parameter in the preceding device authorization request which is defined in
          * "OAuth 2.0 Rich Authorization Requests".
          */
-        public Builder authorizationDetails(@Nullable AuthorizationDetails authorizationDetails) {
+        public Builder authorizationDetails(@Nullable BackchannelAuthenticationCompleteApiFormAuthorizationDetails authorizationDetails) {
             this.authorizationDetails = authorizationDetails;
             return this;
         }
@@ -1054,7 +1051,7 @@ public class BackchannelAuthenticationCompleteApiFormResponseBody {
         /**
          * The attributes of this service that the client application belongs to.
          */
-        public Builder serviceAttributes(@Nullable List<Pair> serviceAttributes) {
+        public Builder serviceAttributes(@Nullable List<BackchannelAuthenticationCompleteApiFormServiceAttribute> serviceAttributes) {
             this.serviceAttributes = serviceAttributes;
             return this;
         }
@@ -1062,7 +1059,7 @@ public class BackchannelAuthenticationCompleteApiFormResponseBody {
         /**
          * The attributes of the client.
          */
-        public Builder clientAttributes(@Nullable List<Pair> clientAttributes) {
+        public Builder clientAttributes(@Nullable List<BackchannelAuthenticationCompleteApiFormClientAttribute> clientAttributes) {
             this.clientAttributes = clientAttributes;
             return this;
         }

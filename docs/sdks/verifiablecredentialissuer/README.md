@@ -22,24 +22,24 @@
 
 ## getMetadata
 
-null
+/api/{serviceId}/vci/metadata API
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="vci_metadata_api" method="post" path="/api/{serviceId}/vci/metadata" -->
 ```java
 package hello.world;
 
 import java.lang.Exception;
 import org.openapis.openapi.Authelete;
 import org.openapis.openapi.models.components.Security;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400ContentApplication1jsonSchemaException;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400Exception;
+import org.openapis.openapi.models.errors.*;
 import org.openapis.openapi.models.operations.VciMetadataApiRequestBody;
 import org.openapis.openapi.models.operations.VciMetadataApiResponse;
 
 public class Application {
 
-    public static void main(String[] args) throws 1api1infoGetResponses400Exception, 1api1infoGetResponses400ContentApplication1jsonSchemaException, 1api1infoGetResponses400ContentApplication1jsonSchemaException, Exception {
+    public static void main(String[] args) throws BadRequestException, UnauthorizedException, ForbiddenException, InternalServerError, Exception {
 
         Authelete sdk = Authelete.builder()
                 .security(Security.builder()
@@ -67,6 +67,7 @@ public class Application {
 | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
 | `serviceId`                                                                       | *String*                                                                          | :heavy_check_mark:                                                                | A service ID.                                                                     |
 | `requestBody`                                                                     | [VciMetadataApiRequestBody](../../models/operations/VciMetadataApiRequestBody.md) | :heavy_check_mark:                                                                | N/A                                                                               |
+| `serverURL`                                                                       | *String*                                                                          | :heavy_minus_sign:                                                                | An optional server URL to use.                                                    |
 
 ### Response
 
@@ -74,33 +75,34 @@ public class Application {
 
 ### Errors
 
-| Error Type                                                                   | Status Code                                                                  | Content Type                                                                 |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| models/errors/1api1infoGetResponses400Exception                              | 400                                                                          | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 401, 403                                                                     | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 500                                                                          | application/json                                                             |
-| models/errors/APIException                                                   | 4XX, 5XX                                                                     | \*/\*                                                                        |
+| Error Type                          | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| models/errors/BadRequestException   | 400                                 | application/json                    |
+| models/errors/UnauthorizedException | 401                                 | application/json                    |
+| models/errors/ForbiddenException    | 403                                 | application/json                    |
+| models/errors/InternalServerError   | 500                                 | application/json                    |
+| models/errors/APIException          | 4XX, 5XX                            | \*/\*                               |
 
 ## getMetadataForm
 
-null
+/api/{serviceId}/vci/metadata API
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="vci_metadata_api_form" method="post" path="/api/{serviceId}/vci/metadata" -->
 ```java
 package hello.world;
 
 import java.lang.Exception;
 import org.openapis.openapi.Authelete;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1vci1metadataPostRequestBodyContentApplication1jsonSchema;
 import org.openapis.openapi.models.components.Security;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400ContentApplication1jsonSchemaException;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400Exception;
+import org.openapis.openapi.models.errors.*;
+import org.openapis.openapi.models.operations.VciMetadataApiFormRequestBody;
 import org.openapis.openapi.models.operations.VciMetadataApiFormResponse;
 
 public class Application {
 
-    public static void main(String[] args) throws 1api1infoGetResponses400Exception, 1api1infoGetResponses400ContentApplication1jsonSchemaException, 1api1infoGetResponses400ContentApplication1jsonSchemaException, Exception {
+    public static void main(String[] args) throws BadRequestException, UnauthorizedException, ForbiddenException, InternalServerError, Exception {
 
         Authelete sdk = Authelete.builder()
                 .security(Security.builder()
@@ -110,8 +112,8 @@ public class Application {
 
         VciMetadataApiFormResponse res = sdk.verifiableCredentialIssuer().getMetadataForm()
                 .serviceId("<id>")
-                .1api1Percent7BserviceIdPercent7D1vci1metadataPostRequestBodyContentApplication1jsonSchema(1api1Percent7BserviceIdPercent7D1vci1metadataPostRequestBodyContentApplication1jsonSchema.builder()
-                    .pretty(true)
+                .requestBody(VciMetadataApiFormRequestBody.builder()
+                    .clientLocked(true)
                     .build())
                 .call();
 
@@ -124,10 +126,11 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                                                                                           | Type                                                                                                                                                                                                                | Required                                                                                                                                                                                                            | Description                                                                                                                                                                                                         |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `serviceId`                                                                                                                                                                                                         | *String*                                                                                                                                                                                                            | :heavy_check_mark:                                                                                                                                                                                                  | A service ID.                                                                                                                                                                                                       |
-| `1api1Percent7BserviceIdPercent7D1vci1metadataPostRequestBodyContentApplication1jsonSchema`                                                                                                                         | [1api1Percent7BserviceIdPercent7D1vci1metadataPostRequestBodyContentApplication1jsonSchema](../../models/components/Oneapi1Percent7BserviceIdPercent7D1vci1metadataPostRequestBodyContentApplication1jsonSchema.md) | :heavy_check_mark:                                                                                                                                                                                                  | N/A                                                                                                                                                                                                                 |
+| Parameter                                                                                 | Type                                                                                      | Required                                                                                  | Description                                                                               |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `serviceId`                                                                               | *String*                                                                                  | :heavy_check_mark:                                                                        | A service ID.                                                                             |
+| `requestBody`                                                                             | [VciMetadataApiFormRequestBody](../../models/operations/VciMetadataApiFormRequestBody.md) | :heavy_check_mark:                                                                        | N/A                                                                                       |
+| `serverURL`                                                                               | *String*                                                                                  | :heavy_minus_sign:                                                                        | An optional server URL to use.                                                            |
 
 ### Response
 
@@ -135,33 +138,34 @@ public class Application {
 
 ### Errors
 
-| Error Type                                                                   | Status Code                                                                  | Content Type                                                                 |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| models/errors/1api1infoGetResponses400Exception                              | 400                                                                          | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 401, 403                                                                     | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 500                                                                          | application/json                                                             |
-| models/errors/APIException                                                   | 4XX, 5XX                                                                     | \*/\*                                                                        |
+| Error Type                          | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| models/errors/BadRequestException   | 400                                 | application/json                    |
+| models/errors/UnauthorizedException | 401                                 | application/json                    |
+| models/errors/ForbiddenException    | 403                                 | application/json                    |
+| models/errors/InternalServerError   | 500                                 | application/json                    |
+| models/errors/APIException          | 4XX, 5XX                            | \*/\*                               |
 
 ## postJwks
 
-null
+/api/{serviceId}/vci/jwks API
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="vci_jwks_api" method="post" path="/api/{serviceId}/vci/jwks" -->
 ```java
 package hello.world;
 
 import java.lang.Exception;
 import org.openapis.openapi.Authelete;
 import org.openapis.openapi.models.components.Security;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400ContentApplication1jsonSchemaException;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400Exception;
+import org.openapis.openapi.models.errors.*;
 import org.openapis.openapi.models.operations.VciJwksApiRequestBody;
 import org.openapis.openapi.models.operations.VciJwksApiResponse;
 
 public class Application {
 
-    public static void main(String[] args) throws 1api1infoGetResponses400Exception, 1api1infoGetResponses400ContentApplication1jsonSchemaException, 1api1infoGetResponses400ContentApplication1jsonSchemaException, Exception {
+    public static void main(String[] args) throws BadRequestException, UnauthorizedException, ForbiddenException, InternalServerError, Exception {
 
         Authelete sdk = Authelete.builder()
                 .security(Security.builder()
@@ -189,6 +193,7 @@ public class Application {
 | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
 | `serviceId`                                                               | *String*                                                                  | :heavy_check_mark:                                                        | A service ID.                                                             |
 | `requestBody`                                                             | [VciJwksApiRequestBody](../../models/operations/VciJwksApiRequestBody.md) | :heavy_check_mark:                                                        | N/A                                                                       |
+| `serverURL`                                                               | *String*                                                                  | :heavy_minus_sign:                                                        | An optional server URL to use.                                            |
 
 ### Response
 
@@ -196,33 +201,34 @@ public class Application {
 
 ### Errors
 
-| Error Type                                                                   | Status Code                                                                  | Content Type                                                                 |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| models/errors/1api1infoGetResponses400Exception                              | 400                                                                          | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 401, 403                                                                     | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 500                                                                          | application/json                                                             |
-| models/errors/APIException                                                   | 4XX, 5XX                                                                     | \*/\*                                                                        |
+| Error Type                          | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| models/errors/BadRequestException   | 400                                 | application/json                    |
+| models/errors/UnauthorizedException | 401                                 | application/json                    |
+| models/errors/ForbiddenException    | 403                                 | application/json                    |
+| models/errors/InternalServerError   | 500                                 | application/json                    |
+| models/errors/APIException          | 4XX, 5XX                            | \*/\*                               |
 
 ## postJwksForm
 
-null
+/api/{serviceId}/vci/jwks API
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="vci_jwks_api_form" method="post" path="/api/{serviceId}/vci/jwks" -->
 ```java
 package hello.world;
 
 import java.lang.Exception;
 import org.openapis.openapi.Authelete;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1vci1jwksPostRequestBodyContentApplication1jsonSchema;
 import org.openapis.openapi.models.components.Security;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400ContentApplication1jsonSchemaException;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400Exception;
+import org.openapis.openapi.models.errors.*;
+import org.openapis.openapi.models.operations.VciJwksApiFormRequestBody;
 import org.openapis.openapi.models.operations.VciJwksApiFormResponse;
 
 public class Application {
 
-    public static void main(String[] args) throws 1api1infoGetResponses400Exception, 1api1infoGetResponses400ContentApplication1jsonSchemaException, 1api1infoGetResponses400ContentApplication1jsonSchemaException, Exception {
+    public static void main(String[] args) throws BadRequestException, UnauthorizedException, ForbiddenException, InternalServerError, Exception {
 
         Authelete sdk = Authelete.builder()
                 .security(Security.builder()
@@ -232,8 +238,8 @@ public class Application {
 
         VciJwksApiFormResponse res = sdk.verifiableCredentialIssuer().postJwksForm()
                 .serviceId("<id>")
-                .1api1Percent7BserviceIdPercent7D1vci1jwksPostRequestBodyContentApplication1jsonSchema(1api1Percent7BserviceIdPercent7D1vci1jwksPostRequestBodyContentApplication1jsonSchema.builder()
-                    .pretty(false)
+                .requestBody(VciJwksApiFormRequestBody.builder()
+                    .clientLocked(false)
                     .build())
                 .call();
 
@@ -246,10 +252,11 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                                                                                   | Type                                                                                                                                                                                                        | Required                                                                                                                                                                                                    | Description                                                                                                                                                                                                 |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `serviceId`                                                                                                                                                                                                 | *String*                                                                                                                                                                                                    | :heavy_check_mark:                                                                                                                                                                                          | A service ID.                                                                                                                                                                                               |
-| `1api1Percent7BserviceIdPercent7D1vci1jwksPostRequestBodyContentApplication1jsonSchema`                                                                                                                     | [1api1Percent7BserviceIdPercent7D1vci1jwksPostRequestBodyContentApplication1jsonSchema](../../models/components/Oneapi1Percent7BserviceIdPercent7D1vci1jwksPostRequestBodyContentApplication1jsonSchema.md) | :heavy_check_mark:                                                                                                                                                                                          | N/A                                                                                                                                                                                                         |
+| Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       |
+| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `serviceId`                                                                       | *String*                                                                          | :heavy_check_mark:                                                                | A service ID.                                                                     |
+| `requestBody`                                                                     | [VciJwksApiFormRequestBody](../../models/operations/VciJwksApiFormRequestBody.md) | :heavy_check_mark:                                                                | N/A                                                                               |
+| `serverURL`                                                                       | *String*                                                                          | :heavy_minus_sign:                                                                | An optional server URL to use.                                                    |
 
 ### Response
 
@@ -257,33 +264,34 @@ public class Application {
 
 ### Errors
 
-| Error Type                                                                   | Status Code                                                                  | Content Type                                                                 |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| models/errors/1api1infoGetResponses400Exception                              | 400                                                                          | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 401, 403                                                                     | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 500                                                                          | application/json                                                             |
-| models/errors/APIException                                                   | 4XX, 5XX                                                                     | \*/\*                                                                        |
+| Error Type                          | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| models/errors/BadRequestException   | 400                                 | application/json                    |
+| models/errors/UnauthorizedException | 401                                 | application/json                    |
+| models/errors/ForbiddenException    | 403                                 | application/json                    |
+| models/errors/InternalServerError   | 500                                 | application/json                    |
+| models/errors/APIException          | 4XX, 5XX                            | \*/\*                               |
 
 ## createOffer
 
-null
+/api/{serviceId}/vci/offer/create API
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="vci_offer_create_api" method="post" path="/api/{serviceId}/vci/offer/create" -->
 ```java
 package hello.world;
 
 import java.lang.Exception;
 import org.openapis.openapi.Authelete;
 import org.openapis.openapi.models.components.Security;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400ContentApplication1jsonSchemaException;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400Exception;
+import org.openapis.openapi.models.errors.*;
 import org.openapis.openapi.models.operations.VciOfferCreateApiRequestBody;
 import org.openapis.openapi.models.operations.VciOfferCreateApiResponse;
 
 public class Application {
 
-    public static void main(String[] args) throws 1api1infoGetResponses400Exception, 1api1infoGetResponses400ContentApplication1jsonSchemaException, 1api1infoGetResponses400ContentApplication1jsonSchemaException, Exception {
+    public static void main(String[] args) throws BadRequestException, UnauthorizedException, ForbiddenException, InternalServerError, Exception {
 
         Authelete sdk = Authelete.builder()
                 .security(Security.builder()
@@ -310,6 +318,7 @@ public class Application {
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
 | `serviceId`                                                                             | *String*                                                                                | :heavy_check_mark:                                                                      | A service ID.                                                                           |
 | `requestBody`                                                                           | [VciOfferCreateApiRequestBody](../../models/operations/VciOfferCreateApiRequestBody.md) | :heavy_check_mark:                                                                      | N/A                                                                                     |
+| `serverURL`                                                                             | *String*                                                                                | :heavy_minus_sign:                                                                      | An optional server URL to use.                                                          |
 
 ### Response
 
@@ -317,33 +326,34 @@ public class Application {
 
 ### Errors
 
-| Error Type                                                                   | Status Code                                                                  | Content Type                                                                 |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| models/errors/1api1infoGetResponses400Exception                              | 400                                                                          | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 401, 403                                                                     | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 500                                                                          | application/json                                                             |
-| models/errors/APIException                                                   | 4XX, 5XX                                                                     | \*/\*                                                                        |
+| Error Type                          | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| models/errors/BadRequestException   | 400                                 | application/json                    |
+| models/errors/UnauthorizedException | 401                                 | application/json                    |
+| models/errors/ForbiddenException    | 403                                 | application/json                    |
+| models/errors/InternalServerError   | 500                                 | application/json                    |
+| models/errors/APIException          | 4XX, 5XX                            | \*/\*                               |
 
 ## createOfferForm
 
-null
+/api/{serviceId}/vci/offer/create API
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="vci_offer_create_api_form" method="post" path="/api/{serviceId}/vci/offer/create" -->
 ```java
 package hello.world;
 
 import java.lang.Exception;
 import org.openapis.openapi.Authelete;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1vci1offer1createPostRequestBodyContentApplication1jsonSchema;
 import org.openapis.openapi.models.components.Security;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400ContentApplication1jsonSchemaException;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400Exception;
+import org.openapis.openapi.models.errors.*;
+import org.openapis.openapi.models.operations.VciOfferCreateApiFormRequestBody;
 import org.openapis.openapi.models.operations.VciOfferCreateApiFormResponse;
 
 public class Application {
 
-    public static void main(String[] args) throws 1api1infoGetResponses400Exception, 1api1infoGetResponses400ContentApplication1jsonSchemaException, 1api1infoGetResponses400ContentApplication1jsonSchemaException, Exception {
+    public static void main(String[] args) throws BadRequestException, UnauthorizedException, ForbiddenException, InternalServerError, Exception {
 
         Authelete sdk = Authelete.builder()
                 .security(Security.builder()
@@ -353,7 +363,8 @@ public class Application {
 
         VciOfferCreateApiFormResponse res = sdk.verifiableCredentialIssuer().createOfferForm()
                 .serviceId("<id>")
-                .1api1Percent7BserviceIdPercent7D1vci1offer1createPostRequestBodyContentApplication1jsonSchema(1api1Percent7BserviceIdPercent7D1vci1offer1createPostRequestBodyContentApplication1jsonSchema.builder()
+                .requestBody(VciOfferCreateApiFormRequestBody.builder()
+                    .clientLocked(true)
                     .build())
                 .call();
 
@@ -366,10 +377,11 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                                                                                                   | Type                                                                                                                                                                                                                        | Required                                                                                                                                                                                                                    | Description                                                                                                                                                                                                                 |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `serviceId`                                                                                                                                                                                                                 | *String*                                                                                                                                                                                                                    | :heavy_check_mark:                                                                                                                                                                                                          | A service ID.                                                                                                                                                                                                               |
-| `1api1Percent7BserviceIdPercent7D1vci1offer1createPostRequestBodyContentApplication1jsonSchema`                                                                                                                             | [1api1Percent7BserviceIdPercent7D1vci1offer1createPostRequestBodyContentApplication1jsonSchema](../../models/components/Oneapi1Percent7BserviceIdPercent7D1vci1offer1createPostRequestBodyContentApplication1jsonSchema.md) | :heavy_check_mark:                                                                                                                                                                                                          | N/A                                                                                                                                                                                                                         |
+| Parameter                                                                                       | Type                                                                                            | Required                                                                                        | Description                                                                                     |
+| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `serviceId`                                                                                     | *String*                                                                                        | :heavy_check_mark:                                                                              | A service ID.                                                                                   |
+| `requestBody`                                                                                   | [VciOfferCreateApiFormRequestBody](../../models/operations/VciOfferCreateApiFormRequestBody.md) | :heavy_check_mark:                                                                              | N/A                                                                                             |
+| `serverURL`                                                                                     | *String*                                                                                        | :heavy_minus_sign:                                                                              | An optional server URL to use.                                                                  |
 
 ### Response
 
@@ -377,33 +389,34 @@ public class Application {
 
 ### Errors
 
-| Error Type                                                                   | Status Code                                                                  | Content Type                                                                 |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| models/errors/1api1infoGetResponses400Exception                              | 400                                                                          | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 401, 403                                                                     | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 500                                                                          | application/json                                                             |
-| models/errors/APIException                                                   | 4XX, 5XX                                                                     | \*/\*                                                                        |
+| Error Type                          | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| models/errors/BadRequestException   | 400                                 | application/json                    |
+| models/errors/UnauthorizedException | 401                                 | application/json                    |
+| models/errors/ForbiddenException    | 403                                 | application/json                    |
+| models/errors/InternalServerError   | 500                                 | application/json                    |
+| models/errors/APIException          | 4XX, 5XX                            | \*/\*                               |
 
 ## getOfferInfo
 
-null
+/api/{serviceId}/vci/offer/info API
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="vci_offer_info_api" method="post" path="/api/{serviceId}/vci/offer/info" -->
 ```java
 package hello.world;
 
 import java.lang.Exception;
 import org.openapis.openapi.Authelete;
 import org.openapis.openapi.models.components.Security;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400ContentApplication1jsonSchemaException;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400Exception;
+import org.openapis.openapi.models.errors.*;
 import org.openapis.openapi.models.operations.VciOfferInfoApiRequestBody;
 import org.openapis.openapi.models.operations.VciOfferInfoApiResponse;
 
 public class Application {
 
-    public static void main(String[] args) throws 1api1infoGetResponses400Exception, 1api1infoGetResponses400ContentApplication1jsonSchemaException, 1api1infoGetResponses400ContentApplication1jsonSchemaException, Exception {
+    public static void main(String[] args) throws BadRequestException, UnauthorizedException, ForbiddenException, InternalServerError, Exception {
 
         Authelete sdk = Authelete.builder()
                 .security(Security.builder()
@@ -430,6 +443,7 @@ public class Application {
 | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
 | `serviceId`                                                                         | *String*                                                                            | :heavy_check_mark:                                                                  | A service ID.                                                                       |
 | `requestBody`                                                                       | [VciOfferInfoApiRequestBody](../../models/operations/VciOfferInfoApiRequestBody.md) | :heavy_check_mark:                                                                  | N/A                                                                                 |
+| `serverURL`                                                                         | *String*                                                                            | :heavy_minus_sign:                                                                  | An optional server URL to use.                                                      |
 
 ### Response
 
@@ -437,33 +451,34 @@ public class Application {
 
 ### Errors
 
-| Error Type                                                                   | Status Code                                                                  | Content Type                                                                 |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| models/errors/1api1infoGetResponses400Exception                              | 400                                                                          | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 401, 403                                                                     | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 500                                                                          | application/json                                                             |
-| models/errors/APIException                                                   | 4XX, 5XX                                                                     | \*/\*                                                                        |
+| Error Type                          | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| models/errors/BadRequestException   | 400                                 | application/json                    |
+| models/errors/UnauthorizedException | 401                                 | application/json                    |
+| models/errors/ForbiddenException    | 403                                 | application/json                    |
+| models/errors/InternalServerError   | 500                                 | application/json                    |
+| models/errors/APIException          | 4XX, 5XX                            | \*/\*                               |
 
 ## getOfferInfoForm
 
-null
+/api/{serviceId}/vci/offer/info API
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="vci_offer_info_api_form" method="post" path="/api/{serviceId}/vci/offer/info" -->
 ```java
 package hello.world;
 
 import java.lang.Exception;
 import org.openapis.openapi.Authelete;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1vci1offer1infoPostRequestBodyContentApplication1jsonSchema;
 import org.openapis.openapi.models.components.Security;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400ContentApplication1jsonSchemaException;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400Exception;
+import org.openapis.openapi.models.errors.*;
+import org.openapis.openapi.models.operations.VciOfferInfoApiFormRequestBody;
 import org.openapis.openapi.models.operations.VciOfferInfoApiFormResponse;
 
 public class Application {
 
-    public static void main(String[] args) throws 1api1infoGetResponses400Exception, 1api1infoGetResponses400ContentApplication1jsonSchemaException, 1api1infoGetResponses400ContentApplication1jsonSchemaException, Exception {
+    public static void main(String[] args) throws BadRequestException, UnauthorizedException, ForbiddenException, InternalServerError, Exception {
 
         Authelete sdk = Authelete.builder()
                 .security(Security.builder()
@@ -473,7 +488,8 @@ public class Application {
 
         VciOfferInfoApiFormResponse res = sdk.verifiableCredentialIssuer().getOfferInfoForm()
                 .serviceId("<id>")
-                .1api1Percent7BserviceIdPercent7D1vci1offer1infoPostRequestBodyContentApplication1jsonSchema(1api1Percent7BserviceIdPercent7D1vci1offer1infoPostRequestBodyContentApplication1jsonSchema.builder()
+                .requestBody(VciOfferInfoApiFormRequestBody.builder()
+                    .clientLocked(true)
                     .build())
                 .call();
 
@@ -486,10 +502,11 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                                                                                               | Type                                                                                                                                                                                                                    | Required                                                                                                                                                                                                                | Description                                                                                                                                                                                                             |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `serviceId`                                                                                                                                                                                                             | *String*                                                                                                                                                                                                                | :heavy_check_mark:                                                                                                                                                                                                      | A service ID.                                                                                                                                                                                                           |
-| `1api1Percent7BserviceIdPercent7D1vci1offer1infoPostRequestBodyContentApplication1jsonSchema`                                                                                                                           | [1api1Percent7BserviceIdPercent7D1vci1offer1infoPostRequestBodyContentApplication1jsonSchema](../../models/components/Oneapi1Percent7BserviceIdPercent7D1vci1offer1infoPostRequestBodyContentApplication1jsonSchema.md) | :heavy_check_mark:                                                                                                                                                                                                      | N/A                                                                                                                                                                                                                     |
+| Parameter                                                                                   | Type                                                                                        | Required                                                                                    | Description                                                                                 |
+| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| `serviceId`                                                                                 | *String*                                                                                    | :heavy_check_mark:                                                                          | A service ID.                                                                               |
+| `requestBody`                                                                               | [VciOfferInfoApiFormRequestBody](../../models/operations/VciOfferInfoApiFormRequestBody.md) | :heavy_check_mark:                                                                          | N/A                                                                                         |
+| `serverURL`                                                                                 | *String*                                                                                    | :heavy_minus_sign:                                                                          | An optional server URL to use.                                                              |
 
 ### Response
 
@@ -497,33 +514,34 @@ public class Application {
 
 ### Errors
 
-| Error Type                                                                   | Status Code                                                                  | Content Type                                                                 |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| models/errors/1api1infoGetResponses400Exception                              | 400                                                                          | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 401, 403                                                                     | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 500                                                                          | application/json                                                             |
-| models/errors/APIException                                                   | 4XX, 5XX                                                                     | \*/\*                                                                        |
+| Error Type                          | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| models/errors/BadRequestException   | 400                                 | application/json                    |
+| models/errors/UnauthorizedException | 401                                 | application/json                    |
+| models/errors/ForbiddenException    | 403                                 | application/json                    |
+| models/errors/InternalServerError   | 500                                 | application/json                    |
+| models/errors/APIException          | 4XX, 5XX                            | \*/\*                               |
 
 ## issueSingle
 
-null
+/api/{serviceId}/vci/single/issue API
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="vci_single_issue_api" method="post" path="/api/{serviceId}/vci/single/issue" -->
 ```java
 package hello.world;
 
 import java.lang.Exception;
 import org.openapis.openapi.Authelete;
 import org.openapis.openapi.models.components.Security;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400ContentApplication1jsonSchemaException;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400Exception;
+import org.openapis.openapi.models.errors.*;
 import org.openapis.openapi.models.operations.VciSingleIssueApiRequestBody;
 import org.openapis.openapi.models.operations.VciSingleIssueApiResponse;
 
 public class Application {
 
-    public static void main(String[] args) throws 1api1infoGetResponses400Exception, 1api1infoGetResponses400ContentApplication1jsonSchemaException, 1api1infoGetResponses400ContentApplication1jsonSchemaException, Exception {
+    public static void main(String[] args) throws BadRequestException, UnauthorizedException, ForbiddenException, InternalServerError, Exception {
 
         Authelete sdk = Authelete.builder()
                 .security(Security.builder()
@@ -550,6 +568,7 @@ public class Application {
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
 | `serviceId`                                                                             | *String*                                                                                | :heavy_check_mark:                                                                      | A service ID.                                                                           |
 | `requestBody`                                                                           | [VciSingleIssueApiRequestBody](../../models/operations/VciSingleIssueApiRequestBody.md) | :heavy_check_mark:                                                                      | N/A                                                                                     |
+| `serverURL`                                                                             | *String*                                                                                | :heavy_minus_sign:                                                                      | An optional server URL to use.                                                          |
 
 ### Response
 
@@ -557,33 +576,34 @@ public class Application {
 
 ### Errors
 
-| Error Type                                                                   | Status Code                                                                  | Content Type                                                                 |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| models/errors/1api1infoGetResponses400Exception                              | 400                                                                          | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 401, 403                                                                     | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 500                                                                          | application/json                                                             |
-| models/errors/APIException                                                   | 4XX, 5XX                                                                     | \*/\*                                                                        |
+| Error Type                          | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| models/errors/BadRequestException   | 400                                 | application/json                    |
+| models/errors/UnauthorizedException | 401                                 | application/json                    |
+| models/errors/ForbiddenException    | 403                                 | application/json                    |
+| models/errors/InternalServerError   | 500                                 | application/json                    |
+| models/errors/APIException          | 4XX, 5XX                            | \*/\*                               |
 
 ## batchParse
 
-null
+/api/{serviceId}/vci/batch/parse API
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="vci_batch_parse_api" method="post" path="/api/{serviceId}/vci/batch/parse" -->
 ```java
 package hello.world;
 
 import java.lang.Exception;
 import org.openapis.openapi.Authelete;
 import org.openapis.openapi.models.components.Security;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400ContentApplication1jsonSchemaException;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400Exception;
+import org.openapis.openapi.models.errors.*;
 import org.openapis.openapi.models.operations.VciBatchParseApiRequestBody;
 import org.openapis.openapi.models.operations.VciBatchParseApiResponse;
 
 public class Application {
 
-    public static void main(String[] args) throws 1api1infoGetResponses400Exception, 1api1infoGetResponses400ContentApplication1jsonSchemaException, 1api1infoGetResponses400ContentApplication1jsonSchemaException, Exception {
+    public static void main(String[] args) throws BadRequestException, UnauthorizedException, ForbiddenException, InternalServerError, Exception {
 
         Authelete sdk = Authelete.builder()
                 .security(Security.builder()
@@ -610,6 +630,7 @@ public class Application {
 | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
 | `serviceId`                                                                           | *String*                                                                              | :heavy_check_mark:                                                                    | A service ID.                                                                         |
 | `requestBody`                                                                         | [VciBatchParseApiRequestBody](../../models/operations/VciBatchParseApiRequestBody.md) | :heavy_check_mark:                                                                    | N/A                                                                                   |
+| `serverURL`                                                                           | *String*                                                                              | :heavy_minus_sign:                                                                    | An optional server URL to use.                                                        |
 
 ### Response
 
@@ -617,33 +638,34 @@ public class Application {
 
 ### Errors
 
-| Error Type                                                                   | Status Code                                                                  | Content Type                                                                 |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| models/errors/1api1infoGetResponses400Exception                              | 400                                                                          | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 401, 403                                                                     | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 500                                                                          | application/json                                                             |
-| models/errors/APIException                                                   | 4XX, 5XX                                                                     | \*/\*                                                                        |
+| Error Type                          | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| models/errors/BadRequestException   | 400                                 | application/json                    |
+| models/errors/UnauthorizedException | 401                                 | application/json                    |
+| models/errors/ForbiddenException    | 403                                 | application/json                    |
+| models/errors/InternalServerError   | 500                                 | application/json                    |
+| models/errors/APIException          | 4XX, 5XX                            | \*/\*                               |
 
 ## batchParseForm
 
-null
+/api/{serviceId}/vci/batch/parse API
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="vci_batch_parse_api_form" method="post" path="/api/{serviceId}/vci/batch/parse" -->
 ```java
 package hello.world;
 
 import java.lang.Exception;
 import org.openapis.openapi.Authelete;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1vci1batch1parsePostRequestBodyContentApplication1jsonSchema;
 import org.openapis.openapi.models.components.Security;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400ContentApplication1jsonSchemaException;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400Exception;
+import org.openapis.openapi.models.errors.*;
+import org.openapis.openapi.models.operations.VciBatchParseApiFormRequestBody;
 import org.openapis.openapi.models.operations.VciBatchParseApiFormResponse;
 
 public class Application {
 
-    public static void main(String[] args) throws 1api1infoGetResponses400Exception, 1api1infoGetResponses400ContentApplication1jsonSchemaException, 1api1infoGetResponses400ContentApplication1jsonSchemaException, Exception {
+    public static void main(String[] args) throws BadRequestException, UnauthorizedException, ForbiddenException, InternalServerError, Exception {
 
         Authelete sdk = Authelete.builder()
                 .security(Security.builder()
@@ -653,7 +675,8 @@ public class Application {
 
         VciBatchParseApiFormResponse res = sdk.verifiableCredentialIssuer().batchParseForm()
                 .serviceId("<id>")
-                .1api1Percent7BserviceIdPercent7D1vci1batch1parsePostRequestBodyContentApplication1jsonSchema(1api1Percent7BserviceIdPercent7D1vci1batch1parsePostRequestBodyContentApplication1jsonSchema.builder()
+                .requestBody(VciBatchParseApiFormRequestBody.builder()
+                    .clientLocked(true)
                     .build())
                 .call();
 
@@ -666,10 +689,11 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                                                                                                 | Type                                                                                                                                                                                                                      | Required                                                                                                                                                                                                                  | Description                                                                                                                                                                                                               |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `serviceId`                                                                                                                                                                                                               | *String*                                                                                                                                                                                                                  | :heavy_check_mark:                                                                                                                                                                                                        | A service ID.                                                                                                                                                                                                             |
-| `1api1Percent7BserviceIdPercent7D1vci1batch1parsePostRequestBodyContentApplication1jsonSchema`                                                                                                                            | [1api1Percent7BserviceIdPercent7D1vci1batch1parsePostRequestBodyContentApplication1jsonSchema](../../models/components/Oneapi1Percent7BserviceIdPercent7D1vci1batch1parsePostRequestBodyContentApplication1jsonSchema.md) | :heavy_check_mark:                                                                                                                                                                                                        | N/A                                                                                                                                                                                                                       |
+| Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   |
+| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `serviceId`                                                                                   | *String*                                                                                      | :heavy_check_mark:                                                                            | A service ID.                                                                                 |
+| `requestBody`                                                                                 | [VciBatchParseApiFormRequestBody](../../models/operations/VciBatchParseApiFormRequestBody.md) | :heavy_check_mark:                                                                            | N/A                                                                                           |
+| `serverURL`                                                                                   | *String*                                                                                      | :heavy_minus_sign:                                                                            | An optional server URL to use.                                                                |
 
 ### Response
 
@@ -677,33 +701,34 @@ public class Application {
 
 ### Errors
 
-| Error Type                                                                   | Status Code                                                                  | Content Type                                                                 |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| models/errors/1api1infoGetResponses400Exception                              | 400                                                                          | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 401, 403                                                                     | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 500                                                                          | application/json                                                             |
-| models/errors/APIException                                                   | 4XX, 5XX                                                                     | \*/\*                                                                        |
+| Error Type                          | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| models/errors/BadRequestException   | 400                                 | application/json                    |
+| models/errors/UnauthorizedException | 401                                 | application/json                    |
+| models/errors/ForbiddenException    | 403                                 | application/json                    |
+| models/errors/InternalServerError   | 500                                 | application/json                    |
+| models/errors/APIException          | 4XX, 5XX                            | \*/\*                               |
 
 ## parseDeferred
 
-null
+/api/{serviceId}/vci/deferred/parse API
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="vci_deferred_parse_api" method="post" path="/api/{serviceId}/vci/deferred/parse" -->
 ```java
 package hello.world;
 
 import java.lang.Exception;
 import org.openapis.openapi.Authelete;
 import org.openapis.openapi.models.components.Security;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400ContentApplication1jsonSchemaException;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400Exception;
+import org.openapis.openapi.models.errors.*;
 import org.openapis.openapi.models.operations.VciDeferredParseApiRequestBody;
 import org.openapis.openapi.models.operations.VciDeferredParseApiResponse;
 
 public class Application {
 
-    public static void main(String[] args) throws 1api1infoGetResponses400Exception, 1api1infoGetResponses400ContentApplication1jsonSchemaException, 1api1infoGetResponses400ContentApplication1jsonSchemaException, Exception {
+    public static void main(String[] args) throws BadRequestException, UnauthorizedException, ForbiddenException, InternalServerError, Exception {
 
         Authelete sdk = Authelete.builder()
                 .security(Security.builder()
@@ -730,6 +755,7 @@ public class Application {
 | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
 | `serviceId`                                                                                 | *String*                                                                                    | :heavy_check_mark:                                                                          | A service ID.                                                                               |
 | `requestBody`                                                                               | [VciDeferredParseApiRequestBody](../../models/operations/VciDeferredParseApiRequestBody.md) | :heavy_check_mark:                                                                          | N/A                                                                                         |
+| `serverURL`                                                                                 | *String*                                                                                    | :heavy_minus_sign:                                                                          | An optional server URL to use.                                                              |
 
 ### Response
 
@@ -737,33 +763,34 @@ public class Application {
 
 ### Errors
 
-| Error Type                                                                   | Status Code                                                                  | Content Type                                                                 |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| models/errors/1api1infoGetResponses400Exception                              | 400                                                                          | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 401, 403                                                                     | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 500                                                                          | application/json                                                             |
-| models/errors/APIException                                                   | 4XX, 5XX                                                                     | \*/\*                                                                        |
+| Error Type                          | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| models/errors/BadRequestException   | 400                                 | application/json                    |
+| models/errors/UnauthorizedException | 401                                 | application/json                    |
+| models/errors/ForbiddenException    | 403                                 | application/json                    |
+| models/errors/InternalServerError   | 500                                 | application/json                    |
+| models/errors/APIException          | 4XX, 5XX                            | \*/\*                               |
 
 ## parseDeferredForm
 
-null
+/api/{serviceId}/vci/deferred/parse API
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="vci_deferred_parse_api_form" method="post" path="/api/{serviceId}/vci/deferred/parse" -->
 ```java
 package hello.world;
 
 import java.lang.Exception;
 import org.openapis.openapi.Authelete;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1vci1deferred1parsePostRequestBodyContentApplication1jsonSchema;
 import org.openapis.openapi.models.components.Security;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400ContentApplication1jsonSchemaException;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400Exception;
+import org.openapis.openapi.models.errors.*;
+import org.openapis.openapi.models.operations.VciDeferredParseApiFormRequestBody;
 import org.openapis.openapi.models.operations.VciDeferredParseApiFormResponse;
 
 public class Application {
 
-    public static void main(String[] args) throws 1api1infoGetResponses400Exception, 1api1infoGetResponses400ContentApplication1jsonSchemaException, 1api1infoGetResponses400ContentApplication1jsonSchemaException, Exception {
+    public static void main(String[] args) throws BadRequestException, UnauthorizedException, ForbiddenException, InternalServerError, Exception {
 
         Authelete sdk = Authelete.builder()
                 .security(Security.builder()
@@ -773,7 +800,8 @@ public class Application {
 
         VciDeferredParseApiFormResponse res = sdk.verifiableCredentialIssuer().parseDeferredForm()
                 .serviceId("<id>")
-                .1api1Percent7BserviceIdPercent7D1vci1deferred1parsePostRequestBodyContentApplication1jsonSchema(1api1Percent7BserviceIdPercent7D1vci1deferred1parsePostRequestBodyContentApplication1jsonSchema.builder()
+                .requestBody(VciDeferredParseApiFormRequestBody.builder()
+                    .clientLocked(false)
                     .build())
                 .call();
 
@@ -786,10 +814,11 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                                                                                                       | Type                                                                                                                                                                                                                            | Required                                                                                                                                                                                                                        | Description                                                                                                                                                                                                                     |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `serviceId`                                                                                                                                                                                                                     | *String*                                                                                                                                                                                                                        | :heavy_check_mark:                                                                                                                                                                                                              | A service ID.                                                                                                                                                                                                                   |
-| `1api1Percent7BserviceIdPercent7D1vci1deferred1parsePostRequestBodyContentApplication1jsonSchema`                                                                                                                               | [1api1Percent7BserviceIdPercent7D1vci1deferred1parsePostRequestBodyContentApplication1jsonSchema](../../models/components/Oneapi1Percent7BserviceIdPercent7D1vci1deferred1parsePostRequestBodyContentApplication1jsonSchema.md) | :heavy_check_mark:                                                                                                                                                                                                              | N/A                                                                                                                                                                                                                             |
+| Parameter                                                                                           | Type                                                                                                | Required                                                                                            | Description                                                                                         |
+| --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `serviceId`                                                                                         | *String*                                                                                            | :heavy_check_mark:                                                                                  | A service ID.                                                                                       |
+| `requestBody`                                                                                       | [VciDeferredParseApiFormRequestBody](../../models/operations/VciDeferredParseApiFormRequestBody.md) | :heavy_check_mark:                                                                                  | N/A                                                                                                 |
+| `serverURL`                                                                                         | *String*                                                                                            | :heavy_minus_sign:                                                                                  | An optional server URL to use.                                                                      |
 
 ### Response
 
@@ -797,33 +826,34 @@ public class Application {
 
 ### Errors
 
-| Error Type                                                                   | Status Code                                                                  | Content Type                                                                 |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| models/errors/1api1infoGetResponses400Exception                              | 400                                                                          | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 401, 403                                                                     | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 500                                                                          | application/json                                                             |
-| models/errors/APIException                                                   | 4XX, 5XX                                                                     | \*/\*                                                                        |
+| Error Type                          | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| models/errors/BadRequestException   | 400                                 | application/json                    |
+| models/errors/UnauthorizedException | 401                                 | application/json                    |
+| models/errors/ForbiddenException    | 403                                 | application/json                    |
+| models/errors/InternalServerError   | 500                                 | application/json                    |
+| models/errors/APIException          | 4XX, 5XX                            | \*/\*                               |
 
 ## issueDeferred
 
-null
+/api/{serviceId}/vci/deferred/issue API
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="vci_deferred_issue_api" method="post" path="/api/{serviceId}/vci/deferred/issue" -->
 ```java
 package hello.world;
 
 import java.lang.Exception;
 import org.openapis.openapi.Authelete;
 import org.openapis.openapi.models.components.Security;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400ContentApplication1jsonSchemaException;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400Exception;
+import org.openapis.openapi.models.errors.*;
 import org.openapis.openapi.models.operations.VciDeferredIssueApiRequestBody;
 import org.openapis.openapi.models.operations.VciDeferredIssueApiResponse;
 
 public class Application {
 
-    public static void main(String[] args) throws 1api1infoGetResponses400Exception, 1api1infoGetResponses400ContentApplication1jsonSchemaException, 1api1infoGetResponses400ContentApplication1jsonSchemaException, Exception {
+    public static void main(String[] args) throws BadRequestException, UnauthorizedException, ForbiddenException, InternalServerError, Exception {
 
         Authelete sdk = Authelete.builder()
                 .security(Security.builder()
@@ -850,6 +880,7 @@ public class Application {
 | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
 | `serviceId`                                                                                 | *String*                                                                                    | :heavy_check_mark:                                                                          | A service ID.                                                                               |
 | `requestBody`                                                                               | [VciDeferredIssueApiRequestBody](../../models/operations/VciDeferredIssueApiRequestBody.md) | :heavy_check_mark:                                                                          | N/A                                                                                         |
+| `serverURL`                                                                                 | *String*                                                                                    | :heavy_minus_sign:                                                                          | An optional server URL to use.                                                              |
 
 ### Response
 
@@ -857,9 +888,10 @@ public class Application {
 
 ### Errors
 
-| Error Type                                                                   | Status Code                                                                  | Content Type                                                                 |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| models/errors/1api1infoGetResponses400Exception                              | 400                                                                          | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 401, 403                                                                     | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 500                                                                          | application/json                                                             |
-| models/errors/APIException                                                   | 4XX, 5XX                                                                     | \*/\*                                                                        |
+| Error Type                          | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| models/errors/BadRequestException   | 400                                 | application/json                    |
+| models/errors/UnauthorizedException | 401                                 | application/json                    |
+| models/errors/ForbiddenException    | 403                                 | application/json                    |
+| models/errors/InternalServerError   | 500                                 | application/json                    |
+| models/errors/APIException          | 4XX, 5XX                            | \*/\*                               |

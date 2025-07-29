@@ -5,7 +5,9 @@ package org.openapis.openapi;
 
 import static org.openapis.openapi.operations.Operations.RequestlessOperation;
 
+import jakarta.annotation.Nullable;
 import java.lang.Exception;
+import java.lang.String;
 import org.openapis.openapi.models.operations.InfoApiRequestBuilder;
 import org.openapis.openapi.models.operations.InfoApiResponse;
 import org.openapis.openapi.models.operations.MiscEchoApiRequestBuilder;
@@ -41,8 +43,21 @@ public class UtilityEndpoints {
      * @throws Exception if the API call fails
      */
     public InfoApiResponse getInfoDirect() throws Exception {
+        return getInfo(null);
+    }
+
+    /**
+     * Get Server Metadata
+     * 
+     * <p>get the server version and enabled features
+     * 
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public InfoApiResponse getInfo(@Nullable String serverURL) throws Exception {
         RequestlessOperation<InfoApiResponse> operation
-            = new InfoApiOperation(sdkConfiguration);
+            = new InfoApiOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest());
     }
 
@@ -66,8 +81,21 @@ public class UtilityEndpoints {
      * @throws Exception if the API call fails
      */
     public MiscEchoApiResponse echoDirect() throws Exception {
+        return echo(null);
+    }
+
+    /**
+     * Echo
+     * 
+     * <p>Echo test endpoint. Will return all path parameters in the request
+     * 
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public MiscEchoApiResponse echo(@Nullable String serverURL) throws Exception {
         RequestlessOperation<MiscEchoApiResponse> operation
-            = new MiscEchoApiOperation(sdkConfiguration);
+            = new MiscEchoApiOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest());
     }
 

@@ -9,11 +9,8 @@ import jakarta.annotation.Nonnull;
 import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1auth1revocationPostRequestBodyContentApplication1jsonSchema;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1auth1token1createPostRequestBodyContentApplication1jsonSchema;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1auth1token1failPostRequestBodyContentApplication1jsonSchema;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1auth1token1updatePostRequestBodyContentApplication1jsonSchema;
 import org.openapis.openapi.models.operations.AuthRevocationApiFormRequest;
+import org.openapis.openapi.models.operations.AuthRevocationApiFormRequestBody;
 import org.openapis.openapi.models.operations.AuthRevocationApiFormRequestBuilder;
 import org.openapis.openapi.models.operations.AuthRevocationApiFormResponse;
 import org.openapis.openapi.models.operations.AuthRevocationApiRequest;
@@ -21,6 +18,7 @@ import org.openapis.openapi.models.operations.AuthRevocationApiRequestBody;
 import org.openapis.openapi.models.operations.AuthRevocationApiRequestBuilder;
 import org.openapis.openapi.models.operations.AuthRevocationApiResponse;
 import org.openapis.openapi.models.operations.AuthTokenCreateApiFormRequest;
+import org.openapis.openapi.models.operations.AuthTokenCreateApiFormRequestBody;
 import org.openapis.openapi.models.operations.AuthTokenCreateApiFormRequestBuilder;
 import org.openapis.openapi.models.operations.AuthTokenCreateApiFormResponse;
 import org.openapis.openapi.models.operations.AuthTokenCreateApiRequest;
@@ -28,6 +26,7 @@ import org.openapis.openapi.models.operations.AuthTokenCreateApiRequestBody;
 import org.openapis.openapi.models.operations.AuthTokenCreateApiRequestBuilder;
 import org.openapis.openapi.models.operations.AuthTokenCreateApiResponse;
 import org.openapis.openapi.models.operations.AuthTokenFailApiFormRequest;
+import org.openapis.openapi.models.operations.AuthTokenFailApiFormRequestBody;
 import org.openapis.openapi.models.operations.AuthTokenFailApiFormRequestBuilder;
 import org.openapis.openapi.models.operations.AuthTokenFailApiFormResponse;
 import org.openapis.openapi.models.operations.AuthTokenFailApiRequest;
@@ -38,6 +37,7 @@ import org.openapis.openapi.models.operations.AuthTokenGetListApiRequest;
 import org.openapis.openapi.models.operations.AuthTokenGetListApiRequestBuilder;
 import org.openapis.openapi.models.operations.AuthTokenGetListApiResponse;
 import org.openapis.openapi.models.operations.AuthTokenUpdateApiFormRequest;
+import org.openapis.openapi.models.operations.AuthTokenUpdateApiFormRequestBody;
 import org.openapis.openapi.models.operations.AuthTokenUpdateApiFormRequestBuilder;
 import org.openapis.openapi.models.operations.AuthTokenUpdateApiFormResponse;
 import org.openapis.openapi.models.operations.AuthTokenUpdateApiRequest;
@@ -225,9 +225,94 @@ public class Tokens {
      * @throws Exception if the API call fails
      */
     public AuthTokenFailApiResponse fail(@Nonnull String serviceId, @Nonnull AuthTokenFailApiRequestBody requestBody) throws Exception {
+        return fail(serviceId, requestBody, null);
+    }
+
+    /**
+     * Fail Token Request
+     * 
+     * <p>This API generates a content of an error token response that the authorization server implementation
+     * returns to the client application.
+     * 
+     * <p>&lt;br&gt;
+     * &lt;details&gt;
+     * &lt;summary&gt;Description&lt;/summary&gt;
+     * 
+     * <p>This API is supposed to be called from within the implementation of the token endpoint of the service
+     * in order to generate an error response to the client application.
+     * 
+     * <p>The description of the `/auth/token` API describes the timing when this API should be called. See
+     * the description for the case of `action=PASSWORD`.
+     * 
+     * <p>The response from `/auth/token/fail` API has some parameters. Among them, it is `action` parameter
+     * that the authorization server implementation should check first because it denotes the next action
+     * that the authorization server implementation should take. According to the value of `action`, the
+     * authorization server implementation must take the steps described below.
+     * 
+     * <p>**INTERNAL_SERVER_ERROR**
+     * 
+     * <p>When the value of `action` is `INTERNAL_SERVER_ERROR`, it means that the request from the authorization
+     * server implementation was wrong or that an error occurred in Authlete.
+     * 
+     * <p>In either case, from the viewpoint of the client application, it is an error on the server side.
+     * Therefore, the service implementation should generate a response to the client application with
+     * HTTP status of "500 Internal Server Error".
+     * 
+     * <p>The value of `responseContent` is a JSON string which describes the error, so it can be used
+     * as the entity body of the response.
+     * 
+     * <p>The following illustrates the response which the service implementation should generate and return
+     * to the client application.
+     * 
+     * <p>```
+     * HTTP/1.1 500 Internal Server Error
+     * Content-Type: application/json
+     * Cache-Control: no-store
+     * Pragma: no-cache
+     * 
+     * <p>{responseContent}
+     * ```
+     * 
+     * <p>The endpoint implementation may return another different response to the client application
+     * since "500 Internal Server Error" is not required by OAuth 2.0.
+     * 
+     * <p>**BAD_REQUEST**
+     * 
+     * <p>When the value of `action` is `BAD_REQUEST`, it means that Authlete's `/auth/token/fail` API successfully
+     * generated an error response for the client application.
+     * 
+     * <p>The HTTP status of the response returned to the client application must be "400 Bad Request" and
+     * the content type must be `application/json`.
+     * 
+     * <p>The value of `responseContent` is a JSON string which describes the error, so it can be used
+     * as the entity body of the response.
+     * 
+     * <p>The following illustrates the response which the service implementation should generate and return
+     * to the client application.
+     * 
+     * <p>```
+     * HTTP/1.1 400 Bad Request
+     * Content-Type: application/json
+     * Cache-Control: no-store
+     * Pragma: no-cache
+     * 
+     * <p>{responseContent}
+     * ```
+     * 
+     * <p>&lt;/details&gt;
+     * 
+     * @param serviceId A service ID.
+     * @param requestBody 
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public AuthTokenFailApiResponse fail(
+            @Nonnull String serviceId, @Nonnull AuthTokenFailApiRequestBody requestBody,
+            @Nullable String serverURL) throws Exception {
         AuthTokenFailApiRequest request = new AuthTokenFailApiRequest(serviceId, requestBody);
         RequestOperation<AuthTokenFailApiRequest, AuthTokenFailApiResponse> operation
-              = new AuthTokenFailApiOperation(sdkConfiguration);
+              = new AuthTokenFailApiOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -384,14 +469,99 @@ public class Tokens {
      * <p>&lt;/details&gt;
      * 
      * @param serviceId A service ID.
-     * @param 1api1Percent7BserviceIdPercent7D1auth1token1failPostRequestBodyContentApplication1jsonSchema 
+     * @param requestBody 
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AuthTokenFailApiFormResponse failForm(@Nonnull String serviceId, @Nonnull 1api1Percent7BserviceIdPercent7D1auth1token1failPostRequestBodyContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1auth1token1failPostRequestBodyContentApplication1jsonSchema) throws Exception {
-        AuthTokenFailApiFormRequest request = new AuthTokenFailApiFormRequest(serviceId, 1api1Percent7BserviceIdPercent7D1auth1token1failPostRequestBodyContentApplication1jsonSchema);
+    public AuthTokenFailApiFormResponse failForm(@Nonnull String serviceId, @Nonnull AuthTokenFailApiFormRequestBody requestBody) throws Exception {
+        return failForm(serviceId, requestBody, null);
+    }
+
+    /**
+     * Fail Token Request
+     * 
+     * <p>This API generates a content of an error token response that the authorization server implementation
+     * returns to the client application.
+     * 
+     * <p>&lt;br&gt;
+     * &lt;details&gt;
+     * &lt;summary&gt;Description&lt;/summary&gt;
+     * 
+     * <p>This API is supposed to be called from within the implementation of the token endpoint of the service
+     * in order to generate an error response to the client application.
+     * 
+     * <p>The description of the `/auth/token` API describes the timing when this API should be called. See
+     * the description for the case of `action=PASSWORD`.
+     * 
+     * <p>The response from `/auth/token/fail` API has some parameters. Among them, it is `action` parameter
+     * that the authorization server implementation should check first because it denotes the next action
+     * that the authorization server implementation should take. According to the value of `action`, the
+     * authorization server implementation must take the steps described below.
+     * 
+     * <p>**INTERNAL_SERVER_ERROR**
+     * 
+     * <p>When the value of `action` is `INTERNAL_SERVER_ERROR`, it means that the request from the authorization
+     * server implementation was wrong or that an error occurred in Authlete.
+     * 
+     * <p>In either case, from the viewpoint of the client application, it is an error on the server side.
+     * Therefore, the service implementation should generate a response to the client application with
+     * HTTP status of "500 Internal Server Error".
+     * 
+     * <p>The value of `responseContent` is a JSON string which describes the error, so it can be used
+     * as the entity body of the response.
+     * 
+     * <p>The following illustrates the response which the service implementation should generate and return
+     * to the client application.
+     * 
+     * <p>```
+     * HTTP/1.1 500 Internal Server Error
+     * Content-Type: application/json
+     * Cache-Control: no-store
+     * Pragma: no-cache
+     * 
+     * <p>{responseContent}
+     * ```
+     * 
+     * <p>The endpoint implementation may return another different response to the client application
+     * since "500 Internal Server Error" is not required by OAuth 2.0.
+     * 
+     * <p>**BAD_REQUEST**
+     * 
+     * <p>When the value of `action` is `BAD_REQUEST`, it means that Authlete's `/auth/token/fail` API successfully
+     * generated an error response for the client application.
+     * 
+     * <p>The HTTP status of the response returned to the client application must be "400 Bad Request" and
+     * the content type must be `application/json`.
+     * 
+     * <p>The value of `responseContent` is a JSON string which describes the error, so it can be used
+     * as the entity body of the response.
+     * 
+     * <p>The following illustrates the response which the service implementation should generate and return
+     * to the client application.
+     * 
+     * <p>```
+     * HTTP/1.1 400 Bad Request
+     * Content-Type: application/json
+     * Cache-Control: no-store
+     * Pragma: no-cache
+     * 
+     * <p>{responseContent}
+     * ```
+     * 
+     * <p>&lt;/details&gt;
+     * 
+     * @param serviceId A service ID.
+     * @param requestBody 
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public AuthTokenFailApiFormResponse failForm(
+            @Nonnull String serviceId, @Nonnull AuthTokenFailApiFormRequestBody requestBody,
+            @Nullable String serverURL) throws Exception {
+        AuthTokenFailApiFormRequest request = new AuthTokenFailApiFormRequest(serviceId, requestBody);
         RequestOperation<AuthTokenFailApiFormRequest, AuthTokenFailApiFormResponse> operation
-              = new AuthTokenFailApiFormOperation(sdkConfiguration);
+              = new AuthTokenFailApiFormOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -679,9 +849,157 @@ public class Tokens {
      * @throws Exception if the API call fails
      */
     public AuthRevocationApiResponse revoke(@Nonnull String serviceId, @Nonnull AuthRevocationApiRequestBody requestBody) throws Exception {
+        return revoke(serviceId, requestBody, null);
+    }
+
+    /**
+     * Process Revocation Request
+     * 
+     * <p>This API revokes access tokens and refresh tokens.
+     * 
+     * <p>&lt;br&gt;
+     * &lt;details&gt;
+     * &lt;summary&gt;Description&lt;/summary&gt;
+     * 
+     * <p>This API is supposed to be called from within the implementation of the revocation endpoint ([RFC
+     * 7009](tools.ietf.org/html/rfc7009)) of the authorization server implementation in order to revoke
+     * access tokens and refresh tokens.
+     * 
+     * <p>The response from `/auth/revocation` API has some parameters. Among them, it is `action` parameter
+     * that the authorization server implementation should check first because it denotes the next action
+     * that the authorization server implementation should take. According to the value of `action`, the
+     * authorization server implementation must take the steps described below.
+     * 
+     * <p>**INTERNAL_SERVER_ERROR**
+     * 
+     * <p>When the value of `action` is `INTERNAL_SERVER_ERROR`, it means that the request from the authorization
+     * server implementation was wrong or that an error occurred in Authlete.
+     * In either case, from the viewpoint of the client application, it is an error on the server side.
+     * Therefore, the service implementation should generate a response to the client application with
+     * HTTP status of "500 Internal Server Error".
+     * 
+     * <p>The value of `responseContent` is a JSON string which describes the error, so it can be
+     * used as the entity body of the response.
+     * 
+     * <p>The following illustrates the response which the service implementation should generate and return
+     * to the client application.
+     * 
+     * <p>```
+     * HTTP/1.1 500 Internal Server Error
+     * Content-Type: application/json
+     * Cache-Control: no-store
+     * Pragma: no-cache
+     * 
+     * <p>{responseContent}
+     * ```
+     * 
+     * <p>**INVALID_CLIENT**
+     * 
+     * <p>When the value of `action` is `INVALID_CLIENT`, it means that authentication of the client failed.
+     * In this case, the HTTP status of the response to the client application is either "400 Bad Request"
+     * or "401 Unauthorized". The description about `invalid_client` shown below is an excerpt from [RFC
+     * 6749](https://datatracker.ietf.org/doc/html/rfc6749).
+     * 
+     * <p>`invalid_client`
+     * 
+     * <p>&gt; Client authentication failed (e.g., unknown client, no client authentication included, or unsupported
+     * authentication method). The authorization server MAY return an HTTP 401 (Unauthorized) status code
+     * to indicate which HTTP authentication schemes are supported. If the client attempted to authenticate
+     * via the `Authorization` request header field, the authorization server MUST respond with an HTTP
+     * 401 (Unauthorized) status code and include the `WWW-Authenticate` response header field matching
+     * the authentication scheme used by the client.
+     * 
+     * <p>In either case, the value of `responseContent` is a JSON string which can be used as the entity
+     * body of the response to the client application.
+     * 
+     * <p>The following illustrates the response which the service implementation should generate and return
+     * to the client application.
+     * 
+     * <p>```
+     * HTTP/1.1 400 Bad Request
+     * Content-Type: application/json
+     * Cache-Control: no-store
+     * Pragma: no-cache
+     * 
+     * <p>{responseContent}
+     * ```
+     * 
+     * <p>&lt;br&gt;
+     * 
+     * <p>```
+     * HTTP/1.1 401 Unauthorized
+     * WWW-Authenticate: {challenge}
+     * Content-Type: application/json
+     * Cache-Control: no-store
+     * Pragma: no-cache
+     * 
+     * <p>{responseContent}
+     * ```
+     * 
+     * <p>**BAD_REQUEST**
+     * 
+     * <p>When the value of `action` is `BAD_REQUEST`, it means that the request from the client application
+     * is invalid.
+     * 
+     * <p>The HTTP status of the response returned to the client application must be "400 Bad Request" and
+     * the content type must be `application/json`. [RFC 7009](https://datatracker.ietf.org/doc/html/rfc7009),
+     * [2.2.1. Error Respons](https://datatracker.ietf.org/doc/html/rfc7009#section-2.2.1) states "The
+     * error presentation conforms to the definition in [Section 5.2](https://datatracker.ietf.org/doc/html/rfc6749#section-5.2)
+     * of [[RFC 6749](https://datatracker.ietf.org/doc/html/rfc6749)]."
+     * 
+     * <p>The value of `responseContent` is a JSON string which describes the error, so it can be used
+     * as the entity body of the response.
+     * 
+     * <p>The following illustrates the response which the authorization server implementation should generate
+     * and return to the client application.
+     * 
+     * <p>```
+     * HTTP/1.1 400 Bad Request
+     * Content-Type: application/json
+     * Cache-Control: no-store
+     * Pragma: no-cache
+     * 
+     * <p>{responseContent}
+     * ```
+     * 
+     * <p>**OK**
+     * 
+     * <p>When the value of `action` is `OK`, it means that the request from the client application is valid
+     * and the presented token has been revoked successfully or if the client submitted an invalid token.
+     * Note that invalid tokens do not cause an error. See [2.2. Revocation Response](https://datatracker.ietf.org/doc/html/rfc7009#section-2.2) for details.
+     * 
+     * <p>The HTTP status of the response returned to the client application must be 200 OK.
+     * 
+     * <p>If the original request from the client application contains callback request parameter and its
+     * value is not empty, the content type should be `application/javascript` and the content should be
+     * a JavaScript snippet for JSONP.
+     * 
+     * <p>The value of `responseContent` is JavaScript snippet if the original request from the client application
+     * contains callback request parameter and its value is not empty. Otherwise, the value of `responseContent`
+     * is `null`.
+     * 
+     * <p>```
+     * HTTP/1.1 200 OK
+     * Content-Type: application/javascript
+     * Cache-Control: no-store
+     * Pragma: no-cache
+     * 
+     * <p>{responseContent}
+     * ```
+     * &lt;/details&gt;
+     * 
+     * @param serviceId A service ID.
+     * @param requestBody 
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public AuthRevocationApiResponse revoke(
+            @Nonnull String serviceId, @Nonnull AuthRevocationApiRequestBody requestBody,
+            @Nullable String serverURL) throws Exception {
         AuthRevocationApiRequest request = new AuthRevocationApiRequest(serviceId, requestBody);
         RequestOperation<AuthRevocationApiRequest, AuthRevocationApiResponse> operation
-              = new AuthRevocationApiOperation(sdkConfiguration);
+              = new AuthRevocationApiOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -964,14 +1282,162 @@ public class Tokens {
      * &lt;/details&gt;
      * 
      * @param serviceId A service ID.
-     * @param 1api1Percent7BserviceIdPercent7D1auth1revocationPostRequestBodyContentApplication1jsonSchema 
+     * @param requestBody 
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AuthRevocationApiFormResponse revokeForm(@Nonnull String serviceId, @Nonnull 1api1Percent7BserviceIdPercent7D1auth1revocationPostRequestBodyContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1auth1revocationPostRequestBodyContentApplication1jsonSchema) throws Exception {
-        AuthRevocationApiFormRequest request = new AuthRevocationApiFormRequest(serviceId, 1api1Percent7BserviceIdPercent7D1auth1revocationPostRequestBodyContentApplication1jsonSchema);
+    public AuthRevocationApiFormResponse revokeForm(@Nonnull String serviceId, @Nonnull AuthRevocationApiFormRequestBody requestBody) throws Exception {
+        return revokeForm(serviceId, requestBody, null);
+    }
+
+    /**
+     * Process Revocation Request
+     * 
+     * <p>This API revokes access tokens and refresh tokens.
+     * 
+     * <p>&lt;br&gt;
+     * &lt;details&gt;
+     * &lt;summary&gt;Description&lt;/summary&gt;
+     * 
+     * <p>This API is supposed to be called from within the implementation of the revocation endpoint ([RFC
+     * 7009](tools.ietf.org/html/rfc7009)) of the authorization server implementation in order to revoke
+     * access tokens and refresh tokens.
+     * 
+     * <p>The response from `/auth/revocation` API has some parameters. Among them, it is `action` parameter
+     * that the authorization server implementation should check first because it denotes the next action
+     * that the authorization server implementation should take. According to the value of `action`, the
+     * authorization server implementation must take the steps described below.
+     * 
+     * <p>**INTERNAL_SERVER_ERROR**
+     * 
+     * <p>When the value of `action` is `INTERNAL_SERVER_ERROR`, it means that the request from the authorization
+     * server implementation was wrong or that an error occurred in Authlete.
+     * In either case, from the viewpoint of the client application, it is an error on the server side.
+     * Therefore, the service implementation should generate a response to the client application with
+     * HTTP status of "500 Internal Server Error".
+     * 
+     * <p>The value of `responseContent` is a JSON string which describes the error, so it can be
+     * used as the entity body of the response.
+     * 
+     * <p>The following illustrates the response which the service implementation should generate and return
+     * to the client application.
+     * 
+     * <p>```
+     * HTTP/1.1 500 Internal Server Error
+     * Content-Type: application/json
+     * Cache-Control: no-store
+     * Pragma: no-cache
+     * 
+     * <p>{responseContent}
+     * ```
+     * 
+     * <p>**INVALID_CLIENT**
+     * 
+     * <p>When the value of `action` is `INVALID_CLIENT`, it means that authentication of the client failed.
+     * In this case, the HTTP status of the response to the client application is either "400 Bad Request"
+     * or "401 Unauthorized". The description about `invalid_client` shown below is an excerpt from [RFC
+     * 6749](https://datatracker.ietf.org/doc/html/rfc6749).
+     * 
+     * <p>`invalid_client`
+     * 
+     * <p>&gt; Client authentication failed (e.g., unknown client, no client authentication included, or unsupported
+     * authentication method). The authorization server MAY return an HTTP 401 (Unauthorized) status code
+     * to indicate which HTTP authentication schemes are supported. If the client attempted to authenticate
+     * via the `Authorization` request header field, the authorization server MUST respond with an HTTP
+     * 401 (Unauthorized) status code and include the `WWW-Authenticate` response header field matching
+     * the authentication scheme used by the client.
+     * 
+     * <p>In either case, the value of `responseContent` is a JSON string which can be used as the entity
+     * body of the response to the client application.
+     * 
+     * <p>The following illustrates the response which the service implementation should generate and return
+     * to the client application.
+     * 
+     * <p>```
+     * HTTP/1.1 400 Bad Request
+     * Content-Type: application/json
+     * Cache-Control: no-store
+     * Pragma: no-cache
+     * 
+     * <p>{responseContent}
+     * ```
+     * 
+     * <p>&lt;br&gt;
+     * 
+     * <p>```
+     * HTTP/1.1 401 Unauthorized
+     * WWW-Authenticate: {challenge}
+     * Content-Type: application/json
+     * Cache-Control: no-store
+     * Pragma: no-cache
+     * 
+     * <p>{responseContent}
+     * ```
+     * 
+     * <p>**BAD_REQUEST**
+     * 
+     * <p>When the value of `action` is `BAD_REQUEST`, it means that the request from the client application
+     * is invalid.
+     * 
+     * <p>The HTTP status of the response returned to the client application must be "400 Bad Request" and
+     * the content type must be `application/json`. [RFC 7009](https://datatracker.ietf.org/doc/html/rfc7009),
+     * [2.2.1. Error Respons](https://datatracker.ietf.org/doc/html/rfc7009#section-2.2.1) states "The
+     * error presentation conforms to the definition in [Section 5.2](https://datatracker.ietf.org/doc/html/rfc6749#section-5.2)
+     * of [[RFC 6749](https://datatracker.ietf.org/doc/html/rfc6749)]."
+     * 
+     * <p>The value of `responseContent` is a JSON string which describes the error, so it can be used
+     * as the entity body of the response.
+     * 
+     * <p>The following illustrates the response which the authorization server implementation should generate
+     * and return to the client application.
+     * 
+     * <p>```
+     * HTTP/1.1 400 Bad Request
+     * Content-Type: application/json
+     * Cache-Control: no-store
+     * Pragma: no-cache
+     * 
+     * <p>{responseContent}
+     * ```
+     * 
+     * <p>**OK**
+     * 
+     * <p>When the value of `action` is `OK`, it means that the request from the client application is valid
+     * and the presented token has been revoked successfully or if the client submitted an invalid token.
+     * Note that invalid tokens do not cause an error. See [2.2. Revocation Response](https://datatracker.ietf.org/doc/html/rfc7009#section-2.2) for details.
+     * 
+     * <p>The HTTP status of the response returned to the client application must be 200 OK.
+     * 
+     * <p>If the original request from the client application contains callback request parameter and its
+     * value is not empty, the content type should be `application/javascript` and the content should be
+     * a JavaScript snippet for JSONP.
+     * 
+     * <p>The value of `responseContent` is JavaScript snippet if the original request from the client application
+     * contains callback request parameter and its value is not empty. Otherwise, the value of `responseContent`
+     * is `null`.
+     * 
+     * <p>```
+     * HTTP/1.1 200 OK
+     * Content-Type: application/javascript
+     * Cache-Control: no-store
+     * Pragma: no-cache
+     * 
+     * <p>{responseContent}
+     * ```
+     * &lt;/details&gt;
+     * 
+     * @param serviceId A service ID.
+     * @param requestBody 
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public AuthRevocationApiFormResponse revokeForm(
+            @Nonnull String serviceId, @Nonnull AuthRevocationApiFormRequestBody requestBody,
+            @Nullable String serverURL) throws Exception {
+        AuthRevocationApiFormRequest request = new AuthRevocationApiFormRequest(serviceId, requestBody);
         RequestOperation<AuthRevocationApiFormRequest, AuthRevocationApiFormResponse> operation
-              = new AuthRevocationApiFormOperation(sdkConfiguration);
+              = new AuthRevocationApiFormOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1004,7 +1470,7 @@ public class Tokens {
      * @throws Exception if the API call fails
      */
     public IdtokenReissueApiResponse reissueId(@Nonnull String serviceId) throws Exception {
-        return reissueId(serviceId, null);
+        return reissueId(serviceId, null, null);
     }
 
     /**
@@ -1018,13 +1484,16 @@ public class Tokens {
      * 
      * @param serviceId A service ID.
      * @param requestBody 
+     * @param serverURL Overrides the server URL.
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public IdtokenReissueApiResponse reissueId(@Nonnull String serviceId, @Nullable IdtokenReissueApiRequestBody requestBody) throws Exception {
+    public IdtokenReissueApiResponse reissueId(
+            @Nonnull String serviceId, @Nullable IdtokenReissueApiRequestBody requestBody,
+            @Nullable String serverURL) throws Exception {
         IdtokenReissueApiRequest request = new IdtokenReissueApiRequest(serviceId, requestBody);
         RequestOperation<IdtokenReissueApiRequest, IdtokenReissueApiResponse> operation
-              = new IdtokenReissueApiOperation(sdkConfiguration);
+              = new IdtokenReissueApiOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1049,8 +1518,22 @@ public class Tokens {
      * @throws Exception if the API call fails
      */
     public AuthTokenGetListApiResponse list(@Nonnull AuthTokenGetListApiRequest request) throws Exception {
+        return list(request, null);
+    }
+
+    /**
+     * List Issued Tokens
+     * 
+     * <p>Get the list of access tokens that are associated with the service.
+     * 
+     * @param request The request object containing all the parameters for the API call.
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public AuthTokenGetListApiResponse list(@Nonnull AuthTokenGetListApiRequest request, @Nullable String serverURL) throws Exception {
         RequestOperation<AuthTokenGetListApiRequest, AuthTokenGetListApiResponse> operation
-              = new AuthTokenGetListApiOperation(sdkConfiguration);
+              = new AuthTokenGetListApiOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1076,9 +1559,26 @@ public class Tokens {
      * @throws Exception if the API call fails
      */
     public AuthTokenCreateApiResponse create(@Nonnull String serviceId, @Nonnull AuthTokenCreateApiRequestBody requestBody) throws Exception {
+        return create(serviceId, requestBody, null);
+    }
+
+    /**
+     * Create Access Token
+     * 
+     * <p>Create an access token.
+     * 
+     * @param serviceId A service ID.
+     * @param requestBody 
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public AuthTokenCreateApiResponse create(
+            @Nonnull String serviceId, @Nonnull AuthTokenCreateApiRequestBody requestBody,
+            @Nullable String serverURL) throws Exception {
         AuthTokenCreateApiRequest request = new AuthTokenCreateApiRequest(serviceId, requestBody);
         RequestOperation<AuthTokenCreateApiRequest, AuthTokenCreateApiResponse> operation
-              = new AuthTokenCreateApiOperation(sdkConfiguration);
+              = new AuthTokenCreateApiOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1099,14 +1599,31 @@ public class Tokens {
      * <p>Create an access token.
      * 
      * @param serviceId A service ID.
-     * @param 1api1Percent7BserviceIdPercent7D1auth1token1createPostRequestBodyContentApplication1jsonSchema 
+     * @param requestBody 
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AuthTokenCreateApiFormResponse createForm(@Nonnull String serviceId, @Nonnull 1api1Percent7BserviceIdPercent7D1auth1token1createPostRequestBodyContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1auth1token1createPostRequestBodyContentApplication1jsonSchema) throws Exception {
-        AuthTokenCreateApiFormRequest request = new AuthTokenCreateApiFormRequest(serviceId, 1api1Percent7BserviceIdPercent7D1auth1token1createPostRequestBodyContentApplication1jsonSchema);
+    public AuthTokenCreateApiFormResponse createForm(@Nonnull String serviceId, @Nonnull AuthTokenCreateApiFormRequestBody requestBody) throws Exception {
+        return createForm(serviceId, requestBody, null);
+    }
+
+    /**
+     * Create Access Token
+     * 
+     * <p>Create an access token.
+     * 
+     * @param serviceId A service ID.
+     * @param requestBody 
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public AuthTokenCreateApiFormResponse createForm(
+            @Nonnull String serviceId, @Nonnull AuthTokenCreateApiFormRequestBody requestBody,
+            @Nullable String serverURL) throws Exception {
+        AuthTokenCreateApiFormRequest request = new AuthTokenCreateApiFormRequest(serviceId, requestBody);
         RequestOperation<AuthTokenCreateApiFormRequest, AuthTokenCreateApiFormResponse> operation
-              = new AuthTokenCreateApiFormOperation(sdkConfiguration);
+              = new AuthTokenCreateApiFormOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1132,9 +1649,26 @@ public class Tokens {
      * @throws Exception if the API call fails
      */
     public AuthTokenUpdateApiResponse update(@Nonnull String serviceId, @Nonnull AuthTokenUpdateApiRequestBody requestBody) throws Exception {
+        return update(serviceId, requestBody, null);
+    }
+
+    /**
+     * Update Access Token
+     * 
+     * <p>Update an access token.
+     * 
+     * @param serviceId A service ID.
+     * @param requestBody 
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public AuthTokenUpdateApiResponse update(
+            @Nonnull String serviceId, @Nonnull AuthTokenUpdateApiRequestBody requestBody,
+            @Nullable String serverURL) throws Exception {
         AuthTokenUpdateApiRequest request = new AuthTokenUpdateApiRequest(serviceId, requestBody);
         RequestOperation<AuthTokenUpdateApiRequest, AuthTokenUpdateApiResponse> operation
-              = new AuthTokenUpdateApiOperation(sdkConfiguration);
+              = new AuthTokenUpdateApiOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1155,14 +1689,31 @@ public class Tokens {
      * <p>Update an access token.
      * 
      * @param serviceId A service ID.
-     * @param 1api1Percent7BserviceIdPercent7D1auth1token1updatePostRequestBodyContentApplication1jsonSchema 
+     * @param requestBody 
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AuthTokenUpdateApiFormResponse updateForm(@Nonnull String serviceId, @Nonnull 1api1Percent7BserviceIdPercent7D1auth1token1updatePostRequestBodyContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1auth1token1updatePostRequestBodyContentApplication1jsonSchema) throws Exception {
-        AuthTokenUpdateApiFormRequest request = new AuthTokenUpdateApiFormRequest(serviceId, 1api1Percent7BserviceIdPercent7D1auth1token1updatePostRequestBodyContentApplication1jsonSchema);
+    public AuthTokenUpdateApiFormResponse updateForm(@Nonnull String serviceId, @Nonnull AuthTokenUpdateApiFormRequestBody requestBody) throws Exception {
+        return updateForm(serviceId, requestBody, null);
+    }
+
+    /**
+     * Update Access Token
+     * 
+     * <p>Update an access token.
+     * 
+     * @param serviceId A service ID.
+     * @param requestBody 
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public AuthTokenUpdateApiFormResponse updateForm(
+            @Nonnull String serviceId, @Nonnull AuthTokenUpdateApiFormRequestBody requestBody,
+            @Nullable String serverURL) throws Exception {
+        AuthTokenUpdateApiFormRequest request = new AuthTokenUpdateApiFormRequest(serviceId, requestBody);
         RequestOperation<AuthTokenUpdateApiFormRequest, AuthTokenUpdateApiFormResponse> operation
-              = new AuthTokenUpdateApiFormOperation(sdkConfiguration);
+              = new AuthTokenUpdateApiFormOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 

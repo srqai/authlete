@@ -14,12 +14,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1auth1authorizationPostResponses200ContentApplication1jsonSchemaPropertiesGrant;
-import org.openapis.openapi.models.components.AuthorizationDetails;
-import org.openapis.openapi.models.components.GrantType;
-import org.openapis.openapi.models.components.Pair;
-import org.openapis.openapi.models.components.Property;
-import org.openapis.openapi.models.components.Scope;
 import org.openapis.openapi.utils.Utils;
 
 
@@ -133,7 +127,7 @@ public class AuthIntrospectionApiResponseBody {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("properties")
-    private List<Property> properties;
+    private List<AuthIntrospectionApiProperty> properties;
 
     /**
      * The client certificate thumbprint used to validate the access token.
@@ -175,21 +169,21 @@ public class AuthIntrospectionApiResponseBody {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("authorizationDetails")
-    private AuthorizationDetails authorizationDetails;
+    private AuthIntrospectionApiAuthorizationDetails authorizationDetails;
 
     /**
      * The attributes of this service that the client application belongs to.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("serviceAttributes")
-    private List<Pair> serviceAttributes;
+    private List<AuthIntrospectionApiServiceAttribute> serviceAttributes;
 
     /**
      * The attributes of the client.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("clientAttributes")
-    private List<Pair> clientAttributes;
+    private List<AuthIntrospectionApiClientAttribute> clientAttributes;
 
     /**
      * The scopes property of this class is a list of scope names. The property does not hold information
@@ -198,7 +192,7 @@ public class AuthIntrospectionApiResponseBody {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("scopeDetails")
-    private List<Scope> scopeDetails;
+    private List<AuthIntrospectionApiScopeDetail> scopeDetails;
 
     /**
      * The value of the `grant_id` request parameter of the device authorization request.
@@ -214,7 +208,7 @@ public class AuthIntrospectionApiResponseBody {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("grant")
-    private 1api1Percent7BserviceIdPercent7D1auth1authorizationPostResponses200ContentApplication1jsonSchemaPropertiesGrant grant;
+    private AuthIntrospectionApiGrant grant;
 
     /**
      * the flag which indicates whether the access token is for an external
@@ -237,7 +231,7 @@ public class AuthIntrospectionApiResponseBody {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("grantType")
-    private GrantType grantType;
+    private AuthIntrospectionApiGrantType grantType;
 
     /**
      * The Authentication Context Class Reference of the user authentication that the authorization server performed 
@@ -320,19 +314,19 @@ public class AuthIntrospectionApiResponseBody {
             @JsonProperty("usable") @Nullable Boolean usable,
             @JsonProperty("sufficient") @Nullable Boolean sufficient,
             @JsonProperty("refreshable") @Nullable Boolean refreshable,
-            @JsonProperty("properties") @Nullable List<Property> properties,
+            @JsonProperty("properties") @Nullable List<AuthIntrospectionApiProperty> properties,
             @JsonProperty("certificateThumbprint") @Nullable String certificateThumbprint,
             @JsonProperty("resources") @Nullable List<String> resources,
             @JsonProperty("accessTokenResources") @Nullable List<String> accessTokenResources,
-            @JsonProperty("authorizationDetails") @Nullable AuthorizationDetails authorizationDetails,
-            @JsonProperty("serviceAttributes") @Nullable List<Pair> serviceAttributes,
-            @JsonProperty("clientAttributes") @Nullable List<Pair> clientAttributes,
-            @JsonProperty("scopeDetails") @Nullable List<Scope> scopeDetails,
+            @JsonProperty("authorizationDetails") @Nullable AuthIntrospectionApiAuthorizationDetails authorizationDetails,
+            @JsonProperty("serviceAttributes") @Nullable List<AuthIntrospectionApiServiceAttribute> serviceAttributes,
+            @JsonProperty("clientAttributes") @Nullable List<AuthIntrospectionApiClientAttribute> clientAttributes,
+            @JsonProperty("scopeDetails") @Nullable List<AuthIntrospectionApiScopeDetail> scopeDetails,
             @JsonProperty("grantId") @Nullable String grantId,
-            @JsonProperty("grant") @Nullable 1api1Percent7BserviceIdPercent7D1auth1authorizationPostResponses200ContentApplication1jsonSchemaPropertiesGrant grant,
+            @JsonProperty("grant") @Nullable AuthIntrospectionApiGrant grant,
             @JsonProperty("forExternalAttachment") @Nullable Boolean forExternalAttachment,
             @JsonProperty("consentedClaims") @Nullable List<String> consentedClaims,
-            @JsonProperty("grantType") @Nullable GrantType grantType,
+            @JsonProperty("grantType") @Nullable AuthIntrospectionApiGrantType grantType,
             @JsonProperty("acr") @Nullable String acr,
             @JsonProperty("authTime") @Nullable Long authTime,
             @JsonProperty("clientEntityId") @Nullable String clientEntityId,
@@ -502,7 +496,7 @@ public class AuthIntrospectionApiResponseBody {
     /**
      * The extra properties associated with the access token.
      */
-    public Optional<List<Property>> properties() {
+    public Optional<List<AuthIntrospectionApiProperty>> properties() {
         return Optional.ofNullable(this.properties);
     }
 
@@ -544,21 +538,21 @@ public class AuthIntrospectionApiResponseBody {
      * request parameter in the preceding device authorization request which is defined in
      * "OAuth 2.0 Rich Authorization Requests".
      */
-    public Optional<AuthorizationDetails> authorizationDetails() {
+    public Optional<AuthIntrospectionApiAuthorizationDetails> authorizationDetails() {
         return Optional.ofNullable(this.authorizationDetails);
     }
 
     /**
      * The attributes of this service that the client application belongs to.
      */
-    public Optional<List<Pair>> serviceAttributes() {
+    public Optional<List<AuthIntrospectionApiServiceAttribute>> serviceAttributes() {
         return Optional.ofNullable(this.serviceAttributes);
     }
 
     /**
      * The attributes of the client.
      */
-    public Optional<List<Pair>> clientAttributes() {
+    public Optional<List<AuthIntrospectionApiClientAttribute>> clientAttributes() {
         return Optional.ofNullable(this.clientAttributes);
     }
 
@@ -567,7 +561,7 @@ public class AuthIntrospectionApiResponseBody {
      * about scope attributes. This scopeDetails property was newly created to convey information about
      * scope attributes.
      */
-    public Optional<List<Scope>> scopeDetails() {
+    public Optional<List<AuthIntrospectionApiScopeDetail>> scopeDetails() {
         return Optional.ofNullable(this.scopeDetails);
     }
 
@@ -582,7 +576,7 @@ public class AuthIntrospectionApiResponseBody {
         return Optional.ofNullable(this.grantId);
     }
 
-    public Optional<1api1Percent7BserviceIdPercent7D1auth1authorizationPostResponses200ContentApplication1jsonSchemaPropertiesGrant> grant() {
+    public Optional<AuthIntrospectionApiGrant> grant() {
         return Optional.ofNullable(this.grant);
     }
 
@@ -605,7 +599,7 @@ public class AuthIntrospectionApiResponseBody {
     /**
      * The grant type of the access token when the access token was created.
      */
-    public Optional<GrantType> grantType() {
+    public Optional<AuthIntrospectionApiGrantType> grantType() {
         return Optional.ofNullable(this.grantType);
     }
 
@@ -814,7 +808,7 @@ public class AuthIntrospectionApiResponseBody {
     /**
      * The extra properties associated with the access token.
      */
-    public AuthIntrospectionApiResponseBody withProperties(@Nullable List<Property> properties) {
+    public AuthIntrospectionApiResponseBody withProperties(@Nullable List<AuthIntrospectionApiProperty> properties) {
         this.properties = properties;
         return this;
     }
@@ -864,7 +858,7 @@ public class AuthIntrospectionApiResponseBody {
      * request parameter in the preceding device authorization request which is defined in
      * "OAuth 2.0 Rich Authorization Requests".
      */
-    public AuthIntrospectionApiResponseBody withAuthorizationDetails(@Nullable AuthorizationDetails authorizationDetails) {
+    public AuthIntrospectionApiResponseBody withAuthorizationDetails(@Nullable AuthIntrospectionApiAuthorizationDetails authorizationDetails) {
         this.authorizationDetails = authorizationDetails;
         return this;
     }
@@ -873,7 +867,7 @@ public class AuthIntrospectionApiResponseBody {
     /**
      * The attributes of this service that the client application belongs to.
      */
-    public AuthIntrospectionApiResponseBody withServiceAttributes(@Nullable List<Pair> serviceAttributes) {
+    public AuthIntrospectionApiResponseBody withServiceAttributes(@Nullable List<AuthIntrospectionApiServiceAttribute> serviceAttributes) {
         this.serviceAttributes = serviceAttributes;
         return this;
     }
@@ -882,7 +876,7 @@ public class AuthIntrospectionApiResponseBody {
     /**
      * The attributes of the client.
      */
-    public AuthIntrospectionApiResponseBody withClientAttributes(@Nullable List<Pair> clientAttributes) {
+    public AuthIntrospectionApiResponseBody withClientAttributes(@Nullable List<AuthIntrospectionApiClientAttribute> clientAttributes) {
         this.clientAttributes = clientAttributes;
         return this;
     }
@@ -893,7 +887,7 @@ public class AuthIntrospectionApiResponseBody {
      * about scope attributes. This scopeDetails property was newly created to convey information about
      * scope attributes.
      */
-    public AuthIntrospectionApiResponseBody withScopeDetails(@Nullable List<Scope> scopeDetails) {
+    public AuthIntrospectionApiResponseBody withScopeDetails(@Nullable List<AuthIntrospectionApiScopeDetail> scopeDetails) {
         this.scopeDetails = scopeDetails;
         return this;
     }
@@ -912,7 +906,7 @@ public class AuthIntrospectionApiResponseBody {
     }
 
 
-    public AuthIntrospectionApiResponseBody withGrant(@Nullable 1api1Percent7BserviceIdPercent7D1auth1authorizationPostResponses200ContentApplication1jsonSchemaPropertiesGrant grant) {
+    public AuthIntrospectionApiResponseBody withGrant(@Nullable AuthIntrospectionApiGrant grant) {
         this.grant = grant;
         return this;
     }
@@ -941,7 +935,7 @@ public class AuthIntrospectionApiResponseBody {
     /**
      * The grant type of the access token when the access token was created.
      */
-    public AuthIntrospectionApiResponseBody withGrantType(@Nullable GrantType grantType) {
+    public AuthIntrospectionApiResponseBody withGrantType(@Nullable AuthIntrospectionApiGrantType grantType) {
         this.grantType = grantType;
         return this;
     }
@@ -1167,7 +1161,7 @@ public class AuthIntrospectionApiResponseBody {
 
         private Boolean refreshable;
 
-        private List<Property> properties;
+        private List<AuthIntrospectionApiProperty> properties;
 
         private String certificateThumbprint;
 
@@ -1175,23 +1169,23 @@ public class AuthIntrospectionApiResponseBody {
 
         private List<String> accessTokenResources;
 
-        private AuthorizationDetails authorizationDetails;
+        private AuthIntrospectionApiAuthorizationDetails authorizationDetails;
 
-        private List<Pair> serviceAttributes;
+        private List<AuthIntrospectionApiServiceAttribute> serviceAttributes;
 
-        private List<Pair> clientAttributes;
+        private List<AuthIntrospectionApiClientAttribute> clientAttributes;
 
-        private List<Scope> scopeDetails;
+        private List<AuthIntrospectionApiScopeDetail> scopeDetails;
 
         private String grantId;
 
-        private 1api1Percent7BserviceIdPercent7D1auth1authorizationPostResponses200ContentApplication1jsonSchemaPropertiesGrant grant;
+        private AuthIntrospectionApiGrant grant;
 
         private Boolean forExternalAttachment;
 
         private List<String> consentedClaims;
 
-        private GrantType grantType;
+        private AuthIntrospectionApiGrantType grantType;
 
         private String acr;
 
@@ -1336,7 +1330,7 @@ public class AuthIntrospectionApiResponseBody {
         /**
          * The extra properties associated with the access token.
          */
-        public Builder properties(@Nullable List<Property> properties) {
+        public Builder properties(@Nullable List<AuthIntrospectionApiProperty> properties) {
             this.properties = properties;
             return this;
         }
@@ -1382,7 +1376,7 @@ public class AuthIntrospectionApiResponseBody {
          * request parameter in the preceding device authorization request which is defined in
          * "OAuth 2.0 Rich Authorization Requests".
          */
-        public Builder authorizationDetails(@Nullable AuthorizationDetails authorizationDetails) {
+        public Builder authorizationDetails(@Nullable AuthIntrospectionApiAuthorizationDetails authorizationDetails) {
             this.authorizationDetails = authorizationDetails;
             return this;
         }
@@ -1390,7 +1384,7 @@ public class AuthIntrospectionApiResponseBody {
         /**
          * The attributes of this service that the client application belongs to.
          */
-        public Builder serviceAttributes(@Nullable List<Pair> serviceAttributes) {
+        public Builder serviceAttributes(@Nullable List<AuthIntrospectionApiServiceAttribute> serviceAttributes) {
             this.serviceAttributes = serviceAttributes;
             return this;
         }
@@ -1398,7 +1392,7 @@ public class AuthIntrospectionApiResponseBody {
         /**
          * The attributes of the client.
          */
-        public Builder clientAttributes(@Nullable List<Pair> clientAttributes) {
+        public Builder clientAttributes(@Nullable List<AuthIntrospectionApiClientAttribute> clientAttributes) {
             this.clientAttributes = clientAttributes;
             return this;
         }
@@ -1408,7 +1402,7 @@ public class AuthIntrospectionApiResponseBody {
          * about scope attributes. This scopeDetails property was newly created to convey information about
          * scope attributes.
          */
-        public Builder scopeDetails(@Nullable List<Scope> scopeDetails) {
+        public Builder scopeDetails(@Nullable List<AuthIntrospectionApiScopeDetail> scopeDetails) {
             this.scopeDetails = scopeDetails;
             return this;
         }
@@ -1425,7 +1419,7 @@ public class AuthIntrospectionApiResponseBody {
             return this;
         }
 
-        public Builder grant(@Nullable 1api1Percent7BserviceIdPercent7D1auth1authorizationPostResponses200ContentApplication1jsonSchemaPropertiesGrant grant) {
+        public Builder grant(@Nullable AuthIntrospectionApiGrant grant) {
             this.grant = grant;
             return this;
         }
@@ -1451,7 +1445,7 @@ public class AuthIntrospectionApiResponseBody {
         /**
          * The grant type of the access token when the access token was created.
          */
-        public Builder grantType(@Nullable GrantType grantType) {
+        public Builder grantType(@Nullable AuthIntrospectionApiGrantType grantType) {
             this.grantType = grantType;
             return this;
         }

@@ -13,7 +13,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
-import org.openapis.openapi.models.components.Client;
 import org.openapis.openapi.utils.Utils;
 
 
@@ -45,14 +44,14 @@ public class ClientGetListApiResponseBody {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("clients")
-    private List<Client> clients;
+    private List<ClientGetListApiClient> clients;
 
     @JsonCreator
     public ClientGetListApiResponseBody(
             @JsonProperty("start") @Nullable Integer start,
             @JsonProperty("end") @Nullable Integer end,
             @JsonProperty("totalCount") @Nullable Integer totalCount,
-            @JsonProperty("clients") @Nullable List<Client> clients) {
+            @JsonProperty("clients") @Nullable List<ClientGetListApiClient> clients) {
         this.start = start;
         this.end = end;
         this.totalCount = totalCount;
@@ -89,7 +88,7 @@ public class ClientGetListApiResponseBody {
     /**
      * An array of clients.
      */
-    public Optional<List<Client>> clients() {
+    public Optional<List<ClientGetListApiClient>> clients() {
         return Optional.ofNullable(this.clients);
     }
 
@@ -129,7 +128,7 @@ public class ClientGetListApiResponseBody {
     /**
      * An array of clients.
      */
-    public ClientGetListApiResponseBody withClients(@Nullable List<Client> clients) {
+    public ClientGetListApiResponseBody withClients(@Nullable List<ClientGetListApiClient> clients) {
         this.clients = clients;
         return this;
     }
@@ -176,7 +175,7 @@ public class ClientGetListApiResponseBody {
 
         private Integer totalCount;
 
-        private List<Client> clients;
+        private List<ClientGetListApiClient> clients;
 
         private Builder() {
           // force use of static builder() method
@@ -210,7 +209,7 @@ public class ClientGetListApiResponseBody {
         /**
          * An array of clients.
          */
-        public Builder clients(@Nullable List<Client> clients) {
+        public Builder clients(@Nullable List<ClientGetListApiClient> clients) {
             this.clients = clients;
             return this;
         }

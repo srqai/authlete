@@ -9,7 +9,6 @@ import jakarta.annotation.Nullable;
 import java.lang.Override;
 import java.lang.String;
 import java.util.Optional;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1client1authorization1update1Percent7BclientIdPercent7DPostRequestBodyContentApplication1jsonSchema;
 import org.openapis.openapi.utils.SpeakeasyMetadata;
 import org.openapis.openapi.utils.Utils;
 
@@ -29,18 +28,18 @@ public class ClientAuthorizationUpdateApiFormRequest {
 
 
     @SpeakeasyMetadata("request:mediaType=application/x-www-form-urlencoded")
-    private 1api1Percent7BserviceIdPercent7D1client1authorization1update1Percent7BclientIdPercent7DPostRequestBodyContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1client1authorization1update1Percent7BclientIdPercent7DPostRequestBodyContentApplication1jsonSchema;
+    private ClientAuthorizationUpdateApiFormRequestBody requestBody;
 
     @JsonCreator
     public ClientAuthorizationUpdateApiFormRequest(
             @Nonnull String serviceId,
             @Nonnull String clientId,
-            @Nullable 1api1Percent7BserviceIdPercent7D1client1authorization1update1Percent7BclientIdPercent7DPostRequestBodyContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1client1authorization1update1Percent7BclientIdPercent7DPostRequestBodyContentApplication1jsonSchema) {
+            @Nullable ClientAuthorizationUpdateApiFormRequestBody requestBody) {
         this.serviceId = Optional.ofNullable(serviceId)
             .orElseThrow(() -> new IllegalArgumentException("serviceId cannot be null"));
         this.clientId = Optional.ofNullable(clientId)
             .orElseThrow(() -> new IllegalArgumentException("clientId cannot be null"));
-        this.1api1Percent7BserviceIdPercent7D1client1authorization1update1Percent7BclientIdPercent7DPostRequestBodyContentApplication1jsonSchema = 1api1Percent7BserviceIdPercent7D1client1authorization1update1Percent7BclientIdPercent7DPostRequestBodyContentApplication1jsonSchema;
+        this.requestBody = requestBody;
     }
     
     public ClientAuthorizationUpdateApiFormRequest(
@@ -63,8 +62,8 @@ public class ClientAuthorizationUpdateApiFormRequest {
         return this.clientId;
     }
 
-    public Optional<1api1Percent7BserviceIdPercent7D1client1authorization1update1Percent7BclientIdPercent7DPostRequestBodyContentApplication1jsonSchema> 1api1Percent7BserviceIdPercent7D1client1authorization1update1Percent7BclientIdPercent7DPostRequestBodyContentApplication1jsonSchema() {
-        return Optional.ofNullable(this.1api1Percent7BserviceIdPercent7D1client1authorization1update1Percent7BclientIdPercent7DPostRequestBodyContentApplication1jsonSchema);
+    public Optional<ClientAuthorizationUpdateApiFormRequestBody> requestBody() {
+        return Optional.ofNullable(this.requestBody);
     }
 
     public static Builder builder() {
@@ -90,8 +89,8 @@ public class ClientAuthorizationUpdateApiFormRequest {
     }
 
 
-    public ClientAuthorizationUpdateApiFormRequest with1api1Percent7BserviceIdPercent7D1client1authorization1update1Percent7BclientIdPercent7DPostRequestBodyContentApplication1jsonSchema(@Nullable 1api1Percent7BserviceIdPercent7D1client1authorization1update1Percent7BclientIdPercent7DPostRequestBodyContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1client1authorization1update1Percent7BclientIdPercent7DPostRequestBodyContentApplication1jsonSchema) {
-        this.1api1Percent7BserviceIdPercent7D1client1authorization1update1Percent7BclientIdPercent7DPostRequestBodyContentApplication1jsonSchema = 1api1Percent7BserviceIdPercent7D1client1authorization1update1Percent7BclientIdPercent7DPostRequestBodyContentApplication1jsonSchema;
+    public ClientAuthorizationUpdateApiFormRequest withRequestBody(@Nullable ClientAuthorizationUpdateApiFormRequestBody requestBody) {
+        this.requestBody = requestBody;
         return this;
     }
 
@@ -108,13 +107,13 @@ public class ClientAuthorizationUpdateApiFormRequest {
         return 
             Utils.enhancedDeepEquals(this.serviceId, other.serviceId) &&
             Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
-            Utils.enhancedDeepEquals(this.1api1Percent7BserviceIdPercent7D1client1authorization1update1Percent7BclientIdPercent7DPostRequestBodyContentApplication1jsonSchema, other.1api1Percent7BserviceIdPercent7D1client1authorization1update1Percent7BclientIdPercent7DPostRequestBodyContentApplication1jsonSchema);
+            Utils.enhancedDeepEquals(this.requestBody, other.requestBody);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            serviceId, clientId, 1api1Percent7BserviceIdPercent7D1client1authorization1update1Percent7BclientIdPercent7DPostRequestBodyContentApplication1jsonSchema);
+            serviceId, clientId, requestBody);
     }
     
     @Override
@@ -122,7 +121,7 @@ public class ClientAuthorizationUpdateApiFormRequest {
         return Utils.toString(ClientAuthorizationUpdateApiFormRequest.class,
                 "serviceId", serviceId,
                 "clientId", clientId,
-                "1api1Percent7BserviceIdPercent7D1client1authorization1update1Percent7BclientIdPercent7DPostRequestBodyContentApplication1jsonSchema", 1api1Percent7BserviceIdPercent7D1client1authorization1update1Percent7BclientIdPercent7DPostRequestBodyContentApplication1jsonSchema);
+                "requestBody", requestBody);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -132,7 +131,7 @@ public class ClientAuthorizationUpdateApiFormRequest {
 
         private String clientId;
 
-        private 1api1Percent7BserviceIdPercent7D1client1authorization1update1Percent7BclientIdPercent7DPostRequestBodyContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1client1authorization1update1Percent7BclientIdPercent7DPostRequestBodyContentApplication1jsonSchema;
+        private ClientAuthorizationUpdateApiFormRequestBody requestBody;
 
         private Builder() {
           // force use of static builder() method
@@ -154,14 +153,14 @@ public class ClientAuthorizationUpdateApiFormRequest {
             return this;
         }
 
-        public Builder 1api1Percent7BserviceIdPercent7D1client1authorization1update1Percent7BclientIdPercent7DPostRequestBodyContentApplication1jsonSchema(@Nullable 1api1Percent7BserviceIdPercent7D1client1authorization1update1Percent7BclientIdPercent7DPostRequestBodyContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1client1authorization1update1Percent7BclientIdPercent7DPostRequestBodyContentApplication1jsonSchema) {
-            this.1api1Percent7BserviceIdPercent7D1client1authorization1update1Percent7BclientIdPercent7DPostRequestBodyContentApplication1jsonSchema = 1api1Percent7BserviceIdPercent7D1client1authorization1update1Percent7BclientIdPercent7DPostRequestBodyContentApplication1jsonSchema;
+        public Builder requestBody(@Nullable ClientAuthorizationUpdateApiFormRequestBody requestBody) {
+            this.requestBody = requestBody;
             return this;
         }
 
         public ClientAuthorizationUpdateApiFormRequest build() {
             return new ClientAuthorizationUpdateApiFormRequest(
-                serviceId, clientId, 1api1Percent7BserviceIdPercent7D1client1authorization1update1Percent7BclientIdPercent7DPostRequestBodyContentApplication1jsonSchema);
+                serviceId, clientId, requestBody);
         }
 
     }

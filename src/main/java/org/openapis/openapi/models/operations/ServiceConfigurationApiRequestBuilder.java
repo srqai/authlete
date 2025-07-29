@@ -18,17 +18,12 @@ public class ServiceConfigurationApiRequestBuilder {
     private final SDKConfiguration sdkConfiguration;
     private final ServiceConfigurationApiRequest.Builder pojoBuilder;
     private ServiceConfigurationApiRequest request;
+    private String serverURL;
     private boolean _setterCalled;
 
     public ServiceConfigurationApiRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
         this.pojoBuilder = ServiceConfigurationApiRequest.builder();
-    }
-
-    public ServiceConfigurationApiRequestBuilder serviceId(@Nonnull String serviceId) {
-        this.pojoBuilder.serviceId(serviceId);
-        this._setterCalled = true;
-        return this;
     }
 
     public ServiceConfigurationApiRequestBuilder pretty(@Nullable Boolean pretty) {
@@ -40,6 +35,17 @@ public class ServiceConfigurationApiRequestBuilder {
     public ServiceConfigurationApiRequestBuilder patch(@Nullable String patch) {
         this.pojoBuilder.patch(patch);
         this._setterCalled = true;
+        return this;
+    }
+
+    public ServiceConfigurationApiRequestBuilder serviceId(@Nonnull String serviceId) {
+        this.pojoBuilder.serviceId(serviceId);
+        this._setterCalled = true;
+        return this;
+    }
+
+    public ServiceConfigurationApiRequestBuilder serverURL(@Nullable String serverURL) {
+        this.serverURL = serverURL;
         return this;
     }
 
@@ -56,7 +62,7 @@ public class ServiceConfigurationApiRequestBuilder {
     */
     public ServiceConfigurationApiResponse call() throws Exception {
         RequestOperation<ServiceConfigurationApiRequest, ServiceConfigurationApiResponse> operation
-              = new ServiceConfigurationApiOperation(sdkConfiguration);
+              = new ServiceConfigurationApiOperation(sdkConfiguration, serverURL);
 
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }

@@ -14,12 +14,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1auth1authorizationPostResponses200ContentApplication1jsonSchemaPropertiesGrant;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1gmPostRequestBodyContentApplication1jsonSchemaPropertiesGmAction;
-import org.openapis.openapi.models.components.AuthorizationDetails;
-import org.openapis.openapi.models.components.DynamicScope;
-import org.openapis.openapi.models.components.Pair;
-import org.openapis.openapi.models.components.Scope;
 import org.openapis.openapi.utils.Utils;
 
 
@@ -83,7 +77,7 @@ public class DeviceVerificationApiFormResponseBody {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("scopes")
-    private List<Scope> scopes;
+    private List<DeviceVerificationApiFormScope> scopes;
 
     /**
      * The names of the claims which were requested indirectly via some special scopes.
@@ -122,28 +116,28 @@ public class DeviceVerificationApiFormResponseBody {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("authorizationDetails")
-    private AuthorizationDetails authorizationDetails;
+    private DeviceVerificationApiFormAuthorizationDetails authorizationDetails;
 
     /**
      * The attributes of this service that the client application belongs to.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("serviceAttributes")
-    private List<Pair> serviceAttributes;
+    private List<DeviceVerificationApiFormServiceAttribute> serviceAttributes;
 
     /**
      * The attributes of the client.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("clientAttributes")
-    private List<Pair> clientAttributes;
+    private List<DeviceVerificationApiFormClientAttribute> clientAttributes;
 
     /**
      * The dynamic scopes which the client application requested by the scope request parameter.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("dynamicScopes")
-    private List<DynamicScope> dynamicScopes;
+    private List<DeviceVerificationApiFormDynamicScope> dynamicScopes;
 
     /**
      * Get the date in milliseconds since the Unix epoch (1970-01-01) at which the user code will expire.
@@ -160,7 +154,7 @@ public class DeviceVerificationApiFormResponseBody {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("gmAction")
-    private 1api1Percent7BserviceIdPercent7D1gmPostRequestBodyContentApplication1jsonSchemaPropertiesGmAction gmAction;
+    private DeviceVerificationApiFormGmAction gmAction;
 
     /**
      * the value of the `grant_id` request parameter of the device authorization request.
@@ -176,7 +170,7 @@ public class DeviceVerificationApiFormResponseBody {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("grant")
-    private 1api1Percent7BserviceIdPercent7D1auth1authorizationPostResponses200ContentApplication1jsonSchemaPropertiesGrant grant;
+    private DeviceVerificationApiFormGrant grant;
 
     /**
      * The subject identifying the user who has given the grant identified
@@ -227,18 +221,18 @@ public class DeviceVerificationApiFormResponseBody {
             @JsonProperty("clientIdAlias") @Nullable String clientIdAlias,
             @JsonProperty("clientIdAliasUsed") @Nullable Boolean clientIdAliasUsed,
             @JsonProperty("clientName") @Nullable String clientName,
-            @JsonProperty("scopes") @Nullable List<Scope> scopes,
+            @JsonProperty("scopes") @Nullable List<DeviceVerificationApiFormScope> scopes,
             @JsonProperty("claimNames") @Nullable List<String> claimNames,
             @JsonProperty("acrs") @Nullable List<String> acrs,
             @JsonProperty("resources") @Nullable List<String> resources,
-            @JsonProperty("authorizationDetails") @Nullable AuthorizationDetails authorizationDetails,
-            @JsonProperty("serviceAttributes") @Nullable List<Pair> serviceAttributes,
-            @JsonProperty("clientAttributes") @Nullable List<Pair> clientAttributes,
-            @JsonProperty("dynamicScopes") @Nullable List<DynamicScope> dynamicScopes,
+            @JsonProperty("authorizationDetails") @Nullable DeviceVerificationApiFormAuthorizationDetails authorizationDetails,
+            @JsonProperty("serviceAttributes") @Nullable List<DeviceVerificationApiFormServiceAttribute> serviceAttributes,
+            @JsonProperty("clientAttributes") @Nullable List<DeviceVerificationApiFormClientAttribute> clientAttributes,
+            @JsonProperty("dynamicScopes") @Nullable List<DeviceVerificationApiFormDynamicScope> dynamicScopes,
             @JsonProperty("expiresAt") @Nullable Long expiresAt,
-            @JsonProperty("gmAction") @Nullable 1api1Percent7BserviceIdPercent7D1gmPostRequestBodyContentApplication1jsonSchemaPropertiesGmAction gmAction,
+            @JsonProperty("gmAction") @Nullable DeviceVerificationApiFormGmAction gmAction,
             @JsonProperty("grantId") @Nullable String grantId,
-            @JsonProperty("grant") @Nullable 1api1Percent7BserviceIdPercent7D1auth1authorizationPostResponses200ContentApplication1jsonSchemaPropertiesGrant grant,
+            @JsonProperty("grant") @Nullable DeviceVerificationApiFormGrant grant,
             @JsonProperty("grantSubject") @Nullable String grantSubject,
             @JsonProperty("clientEntityId") @Nullable String clientEntityId,
             @JsonProperty("clientEntityIdUsed") @Nullable Boolean clientEntityIdUsed) {
@@ -334,7 +328,7 @@ public class DeviceVerificationApiFormResponseBody {
      * the array contained in this property is always null even if descriptions of the scopes
      * are registered.
      */
-    public Optional<List<Scope>> scopes() {
+    public Optional<List<DeviceVerificationApiFormScope>> scopes() {
         return Optional.ofNullable(this.scopes);
     }
 
@@ -373,28 +367,28 @@ public class DeviceVerificationApiFormResponseBody {
      * request parameter in the preceding device authorization request which is defined in
      * "OAuth 2.0 Rich Authorization Requests".
      */
-    public Optional<AuthorizationDetails> authorizationDetails() {
+    public Optional<DeviceVerificationApiFormAuthorizationDetails> authorizationDetails() {
         return Optional.ofNullable(this.authorizationDetails);
     }
 
     /**
      * The attributes of this service that the client application belongs to.
      */
-    public Optional<List<Pair>> serviceAttributes() {
+    public Optional<List<DeviceVerificationApiFormServiceAttribute>> serviceAttributes() {
         return Optional.ofNullable(this.serviceAttributes);
     }
 
     /**
      * The attributes of the client.
      */
-    public Optional<List<Pair>> clientAttributes() {
+    public Optional<List<DeviceVerificationApiFormClientAttribute>> clientAttributes() {
         return Optional.ofNullable(this.clientAttributes);
     }
 
     /**
      * The dynamic scopes which the client application requested by the scope request parameter.
      */
-    public Optional<List<DynamicScope>> dynamicScopes() {
+    public Optional<List<DeviceVerificationApiFormDynamicScope>> dynamicScopes() {
         return Optional.ofNullable(this.dynamicScopes);
     }
 
@@ -411,7 +405,7 @@ public class DeviceVerificationApiFormResponseBody {
      * <p>The `grant_management_action` request parameter is defined in
      * [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html).
      */
-    public Optional<1api1Percent7BserviceIdPercent7D1gmPostRequestBodyContentApplication1jsonSchemaPropertiesGmAction> gmAction() {
+    public Optional<DeviceVerificationApiFormGmAction> gmAction() {
         return Optional.ofNullable(this.gmAction);
     }
 
@@ -426,7 +420,7 @@ public class DeviceVerificationApiFormResponseBody {
         return Optional.ofNullable(this.grantId);
     }
 
-    public Optional<1api1Percent7BserviceIdPercent7D1auth1authorizationPostResponses200ContentApplication1jsonSchemaPropertiesGrant> grant() {
+    public Optional<DeviceVerificationApiFormGrant> grant() {
         return Optional.ofNullable(this.grant);
     }
 
@@ -546,7 +540,7 @@ public class DeviceVerificationApiFormResponseBody {
      * the array contained in this property is always null even if descriptions of the scopes
      * are registered.
      */
-    public DeviceVerificationApiFormResponseBody withScopes(@Nullable List<Scope> scopes) {
+    public DeviceVerificationApiFormResponseBody withScopes(@Nullable List<DeviceVerificationApiFormScope> scopes) {
         this.scopes = scopes;
         return this;
     }
@@ -593,7 +587,7 @@ public class DeviceVerificationApiFormResponseBody {
      * request parameter in the preceding device authorization request which is defined in
      * "OAuth 2.0 Rich Authorization Requests".
      */
-    public DeviceVerificationApiFormResponseBody withAuthorizationDetails(@Nullable AuthorizationDetails authorizationDetails) {
+    public DeviceVerificationApiFormResponseBody withAuthorizationDetails(@Nullable DeviceVerificationApiFormAuthorizationDetails authorizationDetails) {
         this.authorizationDetails = authorizationDetails;
         return this;
     }
@@ -602,7 +596,7 @@ public class DeviceVerificationApiFormResponseBody {
     /**
      * The attributes of this service that the client application belongs to.
      */
-    public DeviceVerificationApiFormResponseBody withServiceAttributes(@Nullable List<Pair> serviceAttributes) {
+    public DeviceVerificationApiFormResponseBody withServiceAttributes(@Nullable List<DeviceVerificationApiFormServiceAttribute> serviceAttributes) {
         this.serviceAttributes = serviceAttributes;
         return this;
     }
@@ -611,7 +605,7 @@ public class DeviceVerificationApiFormResponseBody {
     /**
      * The attributes of the client.
      */
-    public DeviceVerificationApiFormResponseBody withClientAttributes(@Nullable List<Pair> clientAttributes) {
+    public DeviceVerificationApiFormResponseBody withClientAttributes(@Nullable List<DeviceVerificationApiFormClientAttribute> clientAttributes) {
         this.clientAttributes = clientAttributes;
         return this;
     }
@@ -620,7 +614,7 @@ public class DeviceVerificationApiFormResponseBody {
     /**
      * The dynamic scopes which the client application requested by the scope request parameter.
      */
-    public DeviceVerificationApiFormResponseBody withDynamicScopes(@Nullable List<DynamicScope> dynamicScopes) {
+    public DeviceVerificationApiFormResponseBody withDynamicScopes(@Nullable List<DeviceVerificationApiFormDynamicScope> dynamicScopes) {
         this.dynamicScopes = dynamicScopes;
         return this;
     }
@@ -641,7 +635,7 @@ public class DeviceVerificationApiFormResponseBody {
      * <p>The `grant_management_action` request parameter is defined in
      * [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html).
      */
-    public DeviceVerificationApiFormResponseBody withGmAction(@Nullable 1api1Percent7BserviceIdPercent7D1gmPostRequestBodyContentApplication1jsonSchemaPropertiesGmAction gmAction) {
+    public DeviceVerificationApiFormResponseBody withGmAction(@Nullable DeviceVerificationApiFormGmAction gmAction) {
         this.gmAction = gmAction;
         return this;
     }
@@ -660,7 +654,7 @@ public class DeviceVerificationApiFormResponseBody {
     }
 
 
-    public DeviceVerificationApiFormResponseBody withGrant(@Nullable 1api1Percent7BserviceIdPercent7D1auth1authorizationPostResponses200ContentApplication1jsonSchemaPropertiesGrant grant) {
+    public DeviceVerificationApiFormResponseBody withGrant(@Nullable DeviceVerificationApiFormGrant grant) {
         this.grant = grant;
         return this;
     }
@@ -803,7 +797,7 @@ public class DeviceVerificationApiFormResponseBody {
 
         private String clientName;
 
-        private List<Scope> scopes;
+        private List<DeviceVerificationApiFormScope> scopes;
 
         private List<String> claimNames;
 
@@ -811,21 +805,21 @@ public class DeviceVerificationApiFormResponseBody {
 
         private List<String> resources;
 
-        private AuthorizationDetails authorizationDetails;
+        private DeviceVerificationApiFormAuthorizationDetails authorizationDetails;
 
-        private List<Pair> serviceAttributes;
+        private List<DeviceVerificationApiFormServiceAttribute> serviceAttributes;
 
-        private List<Pair> clientAttributes;
+        private List<DeviceVerificationApiFormClientAttribute> clientAttributes;
 
-        private List<DynamicScope> dynamicScopes;
+        private List<DeviceVerificationApiFormDynamicScope> dynamicScopes;
 
         private Long expiresAt;
 
-        private 1api1Percent7BserviceIdPercent7D1gmPostRequestBodyContentApplication1jsonSchemaPropertiesGmAction gmAction;
+        private DeviceVerificationApiFormGmAction gmAction;
 
         private String grantId;
 
-        private 1api1Percent7BserviceIdPercent7D1auth1authorizationPostResponses200ContentApplication1jsonSchemaPropertiesGrant grant;
+        private DeviceVerificationApiFormGrant grant;
 
         private String grantSubject;
 
@@ -901,7 +895,7 @@ public class DeviceVerificationApiFormResponseBody {
          * the array contained in this property is always null even if descriptions of the scopes
          * are registered.
          */
-        public Builder scopes(@Nullable List<Scope> scopes) {
+        public Builder scopes(@Nullable List<DeviceVerificationApiFormScope> scopes) {
             this.scopes = scopes;
             return this;
         }
@@ -944,7 +938,7 @@ public class DeviceVerificationApiFormResponseBody {
          * request parameter in the preceding device authorization request which is defined in
          * "OAuth 2.0 Rich Authorization Requests".
          */
-        public Builder authorizationDetails(@Nullable AuthorizationDetails authorizationDetails) {
+        public Builder authorizationDetails(@Nullable DeviceVerificationApiFormAuthorizationDetails authorizationDetails) {
             this.authorizationDetails = authorizationDetails;
             return this;
         }
@@ -952,7 +946,7 @@ public class DeviceVerificationApiFormResponseBody {
         /**
          * The attributes of this service that the client application belongs to.
          */
-        public Builder serviceAttributes(@Nullable List<Pair> serviceAttributes) {
+        public Builder serviceAttributes(@Nullable List<DeviceVerificationApiFormServiceAttribute> serviceAttributes) {
             this.serviceAttributes = serviceAttributes;
             return this;
         }
@@ -960,7 +954,7 @@ public class DeviceVerificationApiFormResponseBody {
         /**
          * The attributes of the client.
          */
-        public Builder clientAttributes(@Nullable List<Pair> clientAttributes) {
+        public Builder clientAttributes(@Nullable List<DeviceVerificationApiFormClientAttribute> clientAttributes) {
             this.clientAttributes = clientAttributes;
             return this;
         }
@@ -968,7 +962,7 @@ public class DeviceVerificationApiFormResponseBody {
         /**
          * The dynamic scopes which the client application requested by the scope request parameter.
          */
-        public Builder dynamicScopes(@Nullable List<DynamicScope> dynamicScopes) {
+        public Builder dynamicScopes(@Nullable List<DeviceVerificationApiFormDynamicScope> dynamicScopes) {
             this.dynamicScopes = dynamicScopes;
             return this;
         }
@@ -987,7 +981,7 @@ public class DeviceVerificationApiFormResponseBody {
          * <p>The `grant_management_action` request parameter is defined in
          * [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html).
          */
-        public Builder gmAction(@Nullable 1api1Percent7BserviceIdPercent7D1gmPostRequestBodyContentApplication1jsonSchemaPropertiesGmAction gmAction) {
+        public Builder gmAction(@Nullable DeviceVerificationApiFormGmAction gmAction) {
             this.gmAction = gmAction;
             return this;
         }
@@ -1004,7 +998,7 @@ public class DeviceVerificationApiFormResponseBody {
             return this;
         }
 
-        public Builder grant(@Nullable 1api1Percent7BserviceIdPercent7D1auth1authorizationPostResponses200ContentApplication1jsonSchemaPropertiesGrant grant) {
+        public Builder grant(@Nullable DeviceVerificationApiFormGrant grant) {
             this.grant = grant;
             return this;
         }

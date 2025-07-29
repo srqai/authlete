@@ -13,7 +13,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
-import org.openapis.openapi.models.components.Service;
 import org.openapis.openapi.utils.Utils;
 
 
@@ -47,14 +46,14 @@ public class ServiceGetListApiResponseBody {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("services")
-    private List<Service> services;
+    private List<ServiceGetListApiService> services;
 
     @JsonCreator
     public ServiceGetListApiResponseBody(
             @JsonProperty("start") @Nullable Integer start,
             @JsonProperty("end") @Nullable Integer end,
             @JsonProperty("totalCount") @Nullable Integer totalCount,
-            @JsonProperty("services") @Nullable List<Service> services) {
+            @JsonProperty("services") @Nullable List<ServiceGetListApiService> services) {
         this.start = start;
         this.end = end;
         this.totalCount = totalCount;
@@ -93,7 +92,7 @@ public class ServiceGetListApiResponseBody {
     /**
      * An array of services.
      */
-    public Optional<List<Service>> services() {
+    public Optional<List<ServiceGetListApiService>> services() {
         return Optional.ofNullable(this.services);
     }
 
@@ -135,7 +134,7 @@ public class ServiceGetListApiResponseBody {
     /**
      * An array of services.
      */
-    public ServiceGetListApiResponseBody withServices(@Nullable List<Service> services) {
+    public ServiceGetListApiResponseBody withServices(@Nullable List<ServiceGetListApiService> services) {
         this.services = services;
         return this;
     }
@@ -182,7 +181,7 @@ public class ServiceGetListApiResponseBody {
 
         private Integer totalCount;
 
-        private List<Service> services;
+        private List<ServiceGetListApiService> services;
 
         private Builder() {
           // force use of static builder() method
@@ -218,7 +217,7 @@ public class ServiceGetListApiResponseBody {
         /**
          * An array of services.
          */
-        public Builder services(@Nullable List<Service> services) {
+        public Builder services(@Nullable List<ServiceGetListApiService> services) {
             this.services = services;
             return this;
         }

@@ -6,15 +6,11 @@ package org.openapis.openapi;
 import static org.openapis.openapi.operations.Operations.RequestOperation;
 
 import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1vci1batch1parsePostRequestBodyContentApplication1jsonSchema;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1vci1deferred1parsePostRequestBodyContentApplication1jsonSchema;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1vci1jwksPostRequestBodyContentApplication1jsonSchema;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1vci1metadataPostRequestBodyContentApplication1jsonSchema;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1vci1offer1createPostRequestBodyContentApplication1jsonSchema;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1vci1offer1infoPostRequestBodyContentApplication1jsonSchema;
 import org.openapis.openapi.models.operations.VciBatchParseApiFormRequest;
+import org.openapis.openapi.models.operations.VciBatchParseApiFormRequestBody;
 import org.openapis.openapi.models.operations.VciBatchParseApiFormRequestBuilder;
 import org.openapis.openapi.models.operations.VciBatchParseApiFormResponse;
 import org.openapis.openapi.models.operations.VciBatchParseApiRequest;
@@ -26,6 +22,7 @@ import org.openapis.openapi.models.operations.VciDeferredIssueApiRequestBody;
 import org.openapis.openapi.models.operations.VciDeferredIssueApiRequestBuilder;
 import org.openapis.openapi.models.operations.VciDeferredIssueApiResponse;
 import org.openapis.openapi.models.operations.VciDeferredParseApiFormRequest;
+import org.openapis.openapi.models.operations.VciDeferredParseApiFormRequestBody;
 import org.openapis.openapi.models.operations.VciDeferredParseApiFormRequestBuilder;
 import org.openapis.openapi.models.operations.VciDeferredParseApiFormResponse;
 import org.openapis.openapi.models.operations.VciDeferredParseApiRequest;
@@ -33,6 +30,7 @@ import org.openapis.openapi.models.operations.VciDeferredParseApiRequestBody;
 import org.openapis.openapi.models.operations.VciDeferredParseApiRequestBuilder;
 import org.openapis.openapi.models.operations.VciDeferredParseApiResponse;
 import org.openapis.openapi.models.operations.VciJwksApiFormRequest;
+import org.openapis.openapi.models.operations.VciJwksApiFormRequestBody;
 import org.openapis.openapi.models.operations.VciJwksApiFormRequestBuilder;
 import org.openapis.openapi.models.operations.VciJwksApiFormResponse;
 import org.openapis.openapi.models.operations.VciJwksApiRequest;
@@ -40,6 +38,7 @@ import org.openapis.openapi.models.operations.VciJwksApiRequestBody;
 import org.openapis.openapi.models.operations.VciJwksApiRequestBuilder;
 import org.openapis.openapi.models.operations.VciJwksApiResponse;
 import org.openapis.openapi.models.operations.VciMetadataApiFormRequest;
+import org.openapis.openapi.models.operations.VciMetadataApiFormRequestBody;
 import org.openapis.openapi.models.operations.VciMetadataApiFormRequestBuilder;
 import org.openapis.openapi.models.operations.VciMetadataApiFormResponse;
 import org.openapis.openapi.models.operations.VciMetadataApiRequest;
@@ -47,6 +46,7 @@ import org.openapis.openapi.models.operations.VciMetadataApiRequestBody;
 import org.openapis.openapi.models.operations.VciMetadataApiRequestBuilder;
 import org.openapis.openapi.models.operations.VciMetadataApiResponse;
 import org.openapis.openapi.models.operations.VciOfferCreateApiFormRequest;
+import org.openapis.openapi.models.operations.VciOfferCreateApiFormRequestBody;
 import org.openapis.openapi.models.operations.VciOfferCreateApiFormRequestBuilder;
 import org.openapis.openapi.models.operations.VciOfferCreateApiFormResponse;
 import org.openapis.openapi.models.operations.VciOfferCreateApiRequest;
@@ -54,6 +54,7 @@ import org.openapis.openapi.models.operations.VciOfferCreateApiRequestBody;
 import org.openapis.openapi.models.operations.VciOfferCreateApiRequestBuilder;
 import org.openapis.openapi.models.operations.VciOfferCreateApiResponse;
 import org.openapis.openapi.models.operations.VciOfferInfoApiFormRequest;
+import org.openapis.openapi.models.operations.VciOfferInfoApiFormRequestBody;
 import org.openapis.openapi.models.operations.VciOfferInfoApiFormRequestBuilder;
 import org.openapis.openapi.models.operations.VciOfferInfoApiFormResponse;
 import org.openapis.openapi.models.operations.VciOfferInfoApiRequest;
@@ -90,8 +91,6 @@ public class VerifiableCredentialIssuer {
     /**
      * /api/{serviceId}/vci/metadata API
      * 
-     * <p>null
-     * 
      * @return The call builder
      */
     public VciMetadataApiRequestBuilder getMetadata() {
@@ -101,24 +100,35 @@ public class VerifiableCredentialIssuer {
     /**
      * /api/{serviceId}/vci/metadata API
      * 
-     * <p>null
-     * 
      * @param serviceId A service ID.
      * @param requestBody 
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public VciMetadataApiResponse getMetadata(@Nonnull String serviceId, @Nonnull VciMetadataApiRequestBody requestBody) throws Exception {
-        VciMetadataApiRequest request = new VciMetadataApiRequest(serviceId, requestBody);
-        RequestOperation<VciMetadataApiRequest, VciMetadataApiResponse> operation
-              = new VciMetadataApiOperation(sdkConfiguration);
-        return operation.handleResponse(operation.doRequest(request));
+        return getMetadata(serviceId, requestBody, null);
     }
 
     /**
      * /api/{serviceId}/vci/metadata API
      * 
-     * <p>null
+     * @param serviceId A service ID.
+     * @param requestBody 
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public VciMetadataApiResponse getMetadata(
+            @Nonnull String serviceId, @Nonnull VciMetadataApiRequestBody requestBody,
+            @Nullable String serverURL) throws Exception {
+        VciMetadataApiRequest request = new VciMetadataApiRequest(serviceId, requestBody);
+        RequestOperation<VciMetadataApiRequest, VciMetadataApiResponse> operation
+              = new VciMetadataApiOperation(sdkConfiguration, serverURL);
+        return operation.handleResponse(operation.doRequest(request));
+    }
+
+    /**
+     * /api/{serviceId}/vci/metadata API
      * 
      * @return The call builder
      */
@@ -129,24 +139,35 @@ public class VerifiableCredentialIssuer {
     /**
      * /api/{serviceId}/vci/metadata API
      * 
-     * <p>null
-     * 
      * @param serviceId A service ID.
-     * @param 1api1Percent7BserviceIdPercent7D1vci1metadataPostRequestBodyContentApplication1jsonSchema 
+     * @param requestBody 
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public VciMetadataApiFormResponse getMetadataForm(@Nonnull String serviceId, @Nonnull 1api1Percent7BserviceIdPercent7D1vci1metadataPostRequestBodyContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1vci1metadataPostRequestBodyContentApplication1jsonSchema) throws Exception {
-        VciMetadataApiFormRequest request = new VciMetadataApiFormRequest(serviceId, 1api1Percent7BserviceIdPercent7D1vci1metadataPostRequestBodyContentApplication1jsonSchema);
+    public VciMetadataApiFormResponse getMetadataForm(@Nonnull String serviceId, @Nonnull VciMetadataApiFormRequestBody requestBody) throws Exception {
+        return getMetadataForm(serviceId, requestBody, null);
+    }
+
+    /**
+     * /api/{serviceId}/vci/metadata API
+     * 
+     * @param serviceId A service ID.
+     * @param requestBody 
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public VciMetadataApiFormResponse getMetadataForm(
+            @Nonnull String serviceId, @Nonnull VciMetadataApiFormRequestBody requestBody,
+            @Nullable String serverURL) throws Exception {
+        VciMetadataApiFormRequest request = new VciMetadataApiFormRequest(serviceId, requestBody);
         RequestOperation<VciMetadataApiFormRequest, VciMetadataApiFormResponse> operation
-              = new VciMetadataApiFormOperation(sdkConfiguration);
+              = new VciMetadataApiFormOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
     /**
      * /api/{serviceId}/vci/jwks API
-     * 
-     * <p>null
      * 
      * @return The call builder
      */
@@ -157,24 +178,35 @@ public class VerifiableCredentialIssuer {
     /**
      * /api/{serviceId}/vci/jwks API
      * 
-     * <p>null
-     * 
      * @param serviceId A service ID.
      * @param requestBody 
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public VciJwksApiResponse postJwks(@Nonnull String serviceId, @Nonnull VciJwksApiRequestBody requestBody) throws Exception {
-        VciJwksApiRequest request = new VciJwksApiRequest(serviceId, requestBody);
-        RequestOperation<VciJwksApiRequest, VciJwksApiResponse> operation
-              = new VciJwksApiOperation(sdkConfiguration);
-        return operation.handleResponse(operation.doRequest(request));
+        return postJwks(serviceId, requestBody, null);
     }
 
     /**
      * /api/{serviceId}/vci/jwks API
      * 
-     * <p>null
+     * @param serviceId A service ID.
+     * @param requestBody 
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public VciJwksApiResponse postJwks(
+            @Nonnull String serviceId, @Nonnull VciJwksApiRequestBody requestBody,
+            @Nullable String serverURL) throws Exception {
+        VciJwksApiRequest request = new VciJwksApiRequest(serviceId, requestBody);
+        RequestOperation<VciJwksApiRequest, VciJwksApiResponse> operation
+              = new VciJwksApiOperation(sdkConfiguration, serverURL);
+        return operation.handleResponse(operation.doRequest(request));
+    }
+
+    /**
+     * /api/{serviceId}/vci/jwks API
      * 
      * @return The call builder
      */
@@ -185,24 +217,35 @@ public class VerifiableCredentialIssuer {
     /**
      * /api/{serviceId}/vci/jwks API
      * 
-     * <p>null
-     * 
      * @param serviceId A service ID.
-     * @param 1api1Percent7BserviceIdPercent7D1vci1jwksPostRequestBodyContentApplication1jsonSchema 
+     * @param requestBody 
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public VciJwksApiFormResponse postJwksForm(@Nonnull String serviceId, @Nonnull 1api1Percent7BserviceIdPercent7D1vci1jwksPostRequestBodyContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1vci1jwksPostRequestBodyContentApplication1jsonSchema) throws Exception {
-        VciJwksApiFormRequest request = new VciJwksApiFormRequest(serviceId, 1api1Percent7BserviceIdPercent7D1vci1jwksPostRequestBodyContentApplication1jsonSchema);
+    public VciJwksApiFormResponse postJwksForm(@Nonnull String serviceId, @Nonnull VciJwksApiFormRequestBody requestBody) throws Exception {
+        return postJwksForm(serviceId, requestBody, null);
+    }
+
+    /**
+     * /api/{serviceId}/vci/jwks API
+     * 
+     * @param serviceId A service ID.
+     * @param requestBody 
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public VciJwksApiFormResponse postJwksForm(
+            @Nonnull String serviceId, @Nonnull VciJwksApiFormRequestBody requestBody,
+            @Nullable String serverURL) throws Exception {
+        VciJwksApiFormRequest request = new VciJwksApiFormRequest(serviceId, requestBody);
         RequestOperation<VciJwksApiFormRequest, VciJwksApiFormResponse> operation
-              = new VciJwksApiFormOperation(sdkConfiguration);
+              = new VciJwksApiFormOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
     /**
      * /api/{serviceId}/vci/offer/create API
-     * 
-     * <p>null
      * 
      * @return The call builder
      */
@@ -213,24 +256,35 @@ public class VerifiableCredentialIssuer {
     /**
      * /api/{serviceId}/vci/offer/create API
      * 
-     * <p>null
-     * 
      * @param serviceId A service ID.
      * @param requestBody 
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public VciOfferCreateApiResponse createOffer(@Nonnull String serviceId, @Nonnull VciOfferCreateApiRequestBody requestBody) throws Exception {
-        VciOfferCreateApiRequest request = new VciOfferCreateApiRequest(serviceId, requestBody);
-        RequestOperation<VciOfferCreateApiRequest, VciOfferCreateApiResponse> operation
-              = new VciOfferCreateApiOperation(sdkConfiguration);
-        return operation.handleResponse(operation.doRequest(request));
+        return createOffer(serviceId, requestBody, null);
     }
 
     /**
      * /api/{serviceId}/vci/offer/create API
      * 
-     * <p>null
+     * @param serviceId A service ID.
+     * @param requestBody 
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public VciOfferCreateApiResponse createOffer(
+            @Nonnull String serviceId, @Nonnull VciOfferCreateApiRequestBody requestBody,
+            @Nullable String serverURL) throws Exception {
+        VciOfferCreateApiRequest request = new VciOfferCreateApiRequest(serviceId, requestBody);
+        RequestOperation<VciOfferCreateApiRequest, VciOfferCreateApiResponse> operation
+              = new VciOfferCreateApiOperation(sdkConfiguration, serverURL);
+        return operation.handleResponse(operation.doRequest(request));
+    }
+
+    /**
+     * /api/{serviceId}/vci/offer/create API
      * 
      * @return The call builder
      */
@@ -241,24 +295,35 @@ public class VerifiableCredentialIssuer {
     /**
      * /api/{serviceId}/vci/offer/create API
      * 
-     * <p>null
-     * 
      * @param serviceId A service ID.
-     * @param 1api1Percent7BserviceIdPercent7D1vci1offer1createPostRequestBodyContentApplication1jsonSchema 
+     * @param requestBody 
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public VciOfferCreateApiFormResponse createOfferForm(@Nonnull String serviceId, @Nonnull 1api1Percent7BserviceIdPercent7D1vci1offer1createPostRequestBodyContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1vci1offer1createPostRequestBodyContentApplication1jsonSchema) throws Exception {
-        VciOfferCreateApiFormRequest request = new VciOfferCreateApiFormRequest(serviceId, 1api1Percent7BserviceIdPercent7D1vci1offer1createPostRequestBodyContentApplication1jsonSchema);
+    public VciOfferCreateApiFormResponse createOfferForm(@Nonnull String serviceId, @Nonnull VciOfferCreateApiFormRequestBody requestBody) throws Exception {
+        return createOfferForm(serviceId, requestBody, null);
+    }
+
+    /**
+     * /api/{serviceId}/vci/offer/create API
+     * 
+     * @param serviceId A service ID.
+     * @param requestBody 
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public VciOfferCreateApiFormResponse createOfferForm(
+            @Nonnull String serviceId, @Nonnull VciOfferCreateApiFormRequestBody requestBody,
+            @Nullable String serverURL) throws Exception {
+        VciOfferCreateApiFormRequest request = new VciOfferCreateApiFormRequest(serviceId, requestBody);
         RequestOperation<VciOfferCreateApiFormRequest, VciOfferCreateApiFormResponse> operation
-              = new VciOfferCreateApiFormOperation(sdkConfiguration);
+              = new VciOfferCreateApiFormOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
     /**
      * /api/{serviceId}/vci/offer/info API
-     * 
-     * <p>null
      * 
      * @return The call builder
      */
@@ -269,24 +334,35 @@ public class VerifiableCredentialIssuer {
     /**
      * /api/{serviceId}/vci/offer/info API
      * 
-     * <p>null
-     * 
      * @param serviceId A service ID.
      * @param requestBody 
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public VciOfferInfoApiResponse getOfferInfo(@Nonnull String serviceId, @Nonnull VciOfferInfoApiRequestBody requestBody) throws Exception {
-        VciOfferInfoApiRequest request = new VciOfferInfoApiRequest(serviceId, requestBody);
-        RequestOperation<VciOfferInfoApiRequest, VciOfferInfoApiResponse> operation
-              = new VciOfferInfoApiOperation(sdkConfiguration);
-        return operation.handleResponse(operation.doRequest(request));
+        return getOfferInfo(serviceId, requestBody, null);
     }
 
     /**
      * /api/{serviceId}/vci/offer/info API
      * 
-     * <p>null
+     * @param serviceId A service ID.
+     * @param requestBody 
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public VciOfferInfoApiResponse getOfferInfo(
+            @Nonnull String serviceId, @Nonnull VciOfferInfoApiRequestBody requestBody,
+            @Nullable String serverURL) throws Exception {
+        VciOfferInfoApiRequest request = new VciOfferInfoApiRequest(serviceId, requestBody);
+        RequestOperation<VciOfferInfoApiRequest, VciOfferInfoApiResponse> operation
+              = new VciOfferInfoApiOperation(sdkConfiguration, serverURL);
+        return operation.handleResponse(operation.doRequest(request));
+    }
+
+    /**
+     * /api/{serviceId}/vci/offer/info API
      * 
      * @return The call builder
      */
@@ -297,24 +373,35 @@ public class VerifiableCredentialIssuer {
     /**
      * /api/{serviceId}/vci/offer/info API
      * 
-     * <p>null
-     * 
      * @param serviceId A service ID.
-     * @param 1api1Percent7BserviceIdPercent7D1vci1offer1infoPostRequestBodyContentApplication1jsonSchema 
+     * @param requestBody 
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public VciOfferInfoApiFormResponse getOfferInfoForm(@Nonnull String serviceId, @Nonnull 1api1Percent7BserviceIdPercent7D1vci1offer1infoPostRequestBodyContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1vci1offer1infoPostRequestBodyContentApplication1jsonSchema) throws Exception {
-        VciOfferInfoApiFormRequest request = new VciOfferInfoApiFormRequest(serviceId, 1api1Percent7BserviceIdPercent7D1vci1offer1infoPostRequestBodyContentApplication1jsonSchema);
+    public VciOfferInfoApiFormResponse getOfferInfoForm(@Nonnull String serviceId, @Nonnull VciOfferInfoApiFormRequestBody requestBody) throws Exception {
+        return getOfferInfoForm(serviceId, requestBody, null);
+    }
+
+    /**
+     * /api/{serviceId}/vci/offer/info API
+     * 
+     * @param serviceId A service ID.
+     * @param requestBody 
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public VciOfferInfoApiFormResponse getOfferInfoForm(
+            @Nonnull String serviceId, @Nonnull VciOfferInfoApiFormRequestBody requestBody,
+            @Nullable String serverURL) throws Exception {
+        VciOfferInfoApiFormRequest request = new VciOfferInfoApiFormRequest(serviceId, requestBody);
         RequestOperation<VciOfferInfoApiFormRequest, VciOfferInfoApiFormResponse> operation
-              = new VciOfferInfoApiFormOperation(sdkConfiguration);
+              = new VciOfferInfoApiFormOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
     /**
      * /api/{serviceId}/vci/single/issue API
-     * 
-     * <p>null
      * 
      * @return The call builder
      */
@@ -325,24 +412,35 @@ public class VerifiableCredentialIssuer {
     /**
      * /api/{serviceId}/vci/single/issue API
      * 
-     * <p>null
-     * 
      * @param serviceId A service ID.
      * @param requestBody 
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public VciSingleIssueApiResponse issueSingle(@Nonnull String serviceId, @Nonnull VciSingleIssueApiRequestBody requestBody) throws Exception {
+        return issueSingle(serviceId, requestBody, null);
+    }
+
+    /**
+     * /api/{serviceId}/vci/single/issue API
+     * 
+     * @param serviceId A service ID.
+     * @param requestBody 
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public VciSingleIssueApiResponse issueSingle(
+            @Nonnull String serviceId, @Nonnull VciSingleIssueApiRequestBody requestBody,
+            @Nullable String serverURL) throws Exception {
         VciSingleIssueApiRequest request = new VciSingleIssueApiRequest(serviceId, requestBody);
         RequestOperation<VciSingleIssueApiRequest, VciSingleIssueApiResponse> operation
-              = new VciSingleIssueApiOperation(sdkConfiguration);
+              = new VciSingleIssueApiOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
     /**
      * /api/{serviceId}/vci/batch/parse API
-     * 
-     * <p>null
      * 
      * @return The call builder
      */
@@ -353,24 +451,35 @@ public class VerifiableCredentialIssuer {
     /**
      * /api/{serviceId}/vci/batch/parse API
      * 
-     * <p>null
-     * 
      * @param serviceId A service ID.
      * @param requestBody 
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public VciBatchParseApiResponse batchParse(@Nonnull String serviceId, @Nonnull VciBatchParseApiRequestBody requestBody) throws Exception {
-        VciBatchParseApiRequest request = new VciBatchParseApiRequest(serviceId, requestBody);
-        RequestOperation<VciBatchParseApiRequest, VciBatchParseApiResponse> operation
-              = new VciBatchParseApiOperation(sdkConfiguration);
-        return operation.handleResponse(operation.doRequest(request));
+        return batchParse(serviceId, requestBody, null);
     }
 
     /**
      * /api/{serviceId}/vci/batch/parse API
      * 
-     * <p>null
+     * @param serviceId A service ID.
+     * @param requestBody 
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public VciBatchParseApiResponse batchParse(
+            @Nonnull String serviceId, @Nonnull VciBatchParseApiRequestBody requestBody,
+            @Nullable String serverURL) throws Exception {
+        VciBatchParseApiRequest request = new VciBatchParseApiRequest(serviceId, requestBody);
+        RequestOperation<VciBatchParseApiRequest, VciBatchParseApiResponse> operation
+              = new VciBatchParseApiOperation(sdkConfiguration, serverURL);
+        return operation.handleResponse(operation.doRequest(request));
+    }
+
+    /**
+     * /api/{serviceId}/vci/batch/parse API
      * 
      * @return The call builder
      */
@@ -381,24 +490,35 @@ public class VerifiableCredentialIssuer {
     /**
      * /api/{serviceId}/vci/batch/parse API
      * 
-     * <p>null
-     * 
      * @param serviceId A service ID.
-     * @param 1api1Percent7BserviceIdPercent7D1vci1batch1parsePostRequestBodyContentApplication1jsonSchema 
+     * @param requestBody 
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public VciBatchParseApiFormResponse batchParseForm(@Nonnull String serviceId, @Nonnull 1api1Percent7BserviceIdPercent7D1vci1batch1parsePostRequestBodyContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1vci1batch1parsePostRequestBodyContentApplication1jsonSchema) throws Exception {
-        VciBatchParseApiFormRequest request = new VciBatchParseApiFormRequest(serviceId, 1api1Percent7BserviceIdPercent7D1vci1batch1parsePostRequestBodyContentApplication1jsonSchema);
+    public VciBatchParseApiFormResponse batchParseForm(@Nonnull String serviceId, @Nonnull VciBatchParseApiFormRequestBody requestBody) throws Exception {
+        return batchParseForm(serviceId, requestBody, null);
+    }
+
+    /**
+     * /api/{serviceId}/vci/batch/parse API
+     * 
+     * @param serviceId A service ID.
+     * @param requestBody 
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public VciBatchParseApiFormResponse batchParseForm(
+            @Nonnull String serviceId, @Nonnull VciBatchParseApiFormRequestBody requestBody,
+            @Nullable String serverURL) throws Exception {
+        VciBatchParseApiFormRequest request = new VciBatchParseApiFormRequest(serviceId, requestBody);
         RequestOperation<VciBatchParseApiFormRequest, VciBatchParseApiFormResponse> operation
-              = new VciBatchParseApiFormOperation(sdkConfiguration);
+              = new VciBatchParseApiFormOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
     /**
      * /api/{serviceId}/vci/deferred/parse API
-     * 
-     * <p>null
      * 
      * @return The call builder
      */
@@ -409,24 +529,35 @@ public class VerifiableCredentialIssuer {
     /**
      * /api/{serviceId}/vci/deferred/parse API
      * 
-     * <p>null
-     * 
      * @param serviceId A service ID.
      * @param requestBody 
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public VciDeferredParseApiResponse parseDeferred(@Nonnull String serviceId, @Nonnull VciDeferredParseApiRequestBody requestBody) throws Exception {
-        VciDeferredParseApiRequest request = new VciDeferredParseApiRequest(serviceId, requestBody);
-        RequestOperation<VciDeferredParseApiRequest, VciDeferredParseApiResponse> operation
-              = new VciDeferredParseApiOperation(sdkConfiguration);
-        return operation.handleResponse(operation.doRequest(request));
+        return parseDeferred(serviceId, requestBody, null);
     }
 
     /**
      * /api/{serviceId}/vci/deferred/parse API
      * 
-     * <p>null
+     * @param serviceId A service ID.
+     * @param requestBody 
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public VciDeferredParseApiResponse parseDeferred(
+            @Nonnull String serviceId, @Nonnull VciDeferredParseApiRequestBody requestBody,
+            @Nullable String serverURL) throws Exception {
+        VciDeferredParseApiRequest request = new VciDeferredParseApiRequest(serviceId, requestBody);
+        RequestOperation<VciDeferredParseApiRequest, VciDeferredParseApiResponse> operation
+              = new VciDeferredParseApiOperation(sdkConfiguration, serverURL);
+        return operation.handleResponse(operation.doRequest(request));
+    }
+
+    /**
+     * /api/{serviceId}/vci/deferred/parse API
      * 
      * @return The call builder
      */
@@ -437,24 +568,35 @@ public class VerifiableCredentialIssuer {
     /**
      * /api/{serviceId}/vci/deferred/parse API
      * 
-     * <p>null
-     * 
      * @param serviceId A service ID.
-     * @param 1api1Percent7BserviceIdPercent7D1vci1deferred1parsePostRequestBodyContentApplication1jsonSchema 
+     * @param requestBody 
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public VciDeferredParseApiFormResponse parseDeferredForm(@Nonnull String serviceId, @Nonnull 1api1Percent7BserviceIdPercent7D1vci1deferred1parsePostRequestBodyContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1vci1deferred1parsePostRequestBodyContentApplication1jsonSchema) throws Exception {
-        VciDeferredParseApiFormRequest request = new VciDeferredParseApiFormRequest(serviceId, 1api1Percent7BserviceIdPercent7D1vci1deferred1parsePostRequestBodyContentApplication1jsonSchema);
+    public VciDeferredParseApiFormResponse parseDeferredForm(@Nonnull String serviceId, @Nonnull VciDeferredParseApiFormRequestBody requestBody) throws Exception {
+        return parseDeferredForm(serviceId, requestBody, null);
+    }
+
+    /**
+     * /api/{serviceId}/vci/deferred/parse API
+     * 
+     * @param serviceId A service ID.
+     * @param requestBody 
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public VciDeferredParseApiFormResponse parseDeferredForm(
+            @Nonnull String serviceId, @Nonnull VciDeferredParseApiFormRequestBody requestBody,
+            @Nullable String serverURL) throws Exception {
+        VciDeferredParseApiFormRequest request = new VciDeferredParseApiFormRequest(serviceId, requestBody);
         RequestOperation<VciDeferredParseApiFormRequest, VciDeferredParseApiFormResponse> operation
-              = new VciDeferredParseApiFormOperation(sdkConfiguration);
+              = new VciDeferredParseApiFormOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
     /**
      * /api/{serviceId}/vci/deferred/issue API
-     * 
-     * <p>null
      * 
      * @return The call builder
      */
@@ -465,17 +607,30 @@ public class VerifiableCredentialIssuer {
     /**
      * /api/{serviceId}/vci/deferred/issue API
      * 
-     * <p>null
-     * 
      * @param serviceId A service ID.
      * @param requestBody 
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public VciDeferredIssueApiResponse issueDeferred(@Nonnull String serviceId, @Nonnull VciDeferredIssueApiRequestBody requestBody) throws Exception {
+        return issueDeferred(serviceId, requestBody, null);
+    }
+
+    /**
+     * /api/{serviceId}/vci/deferred/issue API
+     * 
+     * @param serviceId A service ID.
+     * @param requestBody 
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public VciDeferredIssueApiResponse issueDeferred(
+            @Nonnull String serviceId, @Nonnull VciDeferredIssueApiRequestBody requestBody,
+            @Nullable String serverURL) throws Exception {
         VciDeferredIssueApiRequest request = new VciDeferredIssueApiRequest(serviceId, requestBody);
         RequestOperation<VciDeferredIssueApiRequest, VciDeferredIssueApiResponse> operation
-              = new VciDeferredIssueApiOperation(sdkConfiguration);
+              = new VciDeferredIssueApiOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 

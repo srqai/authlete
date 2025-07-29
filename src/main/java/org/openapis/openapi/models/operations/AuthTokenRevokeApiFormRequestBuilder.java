@@ -6,6 +6,7 @@ package org.openapis.openapi.models.operations;
 import static org.openapis.openapi.operations.Operations.RequestOperation;
 
 import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
@@ -16,6 +17,7 @@ public class AuthTokenRevokeApiFormRequestBuilder {
     private final SDKConfiguration sdkConfiguration;
     private final AuthTokenRevokeApiFormRequest.Builder pojoBuilder;
     private AuthTokenRevokeApiFormRequest request;
+    private String serverURL;
     private boolean _setterCalled;
 
     public AuthTokenRevokeApiFormRequestBuilder(SDKConfiguration sdkConfiguration) {
@@ -29,9 +31,14 @@ public class AuthTokenRevokeApiFormRequestBuilder {
         return this;
     }
 
-    public AuthTokenRevokeApiFormRequestBuilder requestBody(@Nonnull AuthTokenRevokeForm requestBody) {
+    public AuthTokenRevokeApiFormRequestBuilder requestBody(@Nonnull AuthTokenRevokeApiFormRequestBody requestBody) {
         this.pojoBuilder.requestBody(requestBody);
         this._setterCalled = true;
+        return this;
+    }
+
+    public AuthTokenRevokeApiFormRequestBuilder serverURL(@Nullable String serverURL) {
+        this.serverURL = serverURL;
         return this;
     }
 
@@ -48,7 +55,7 @@ public class AuthTokenRevokeApiFormRequestBuilder {
     */
     public AuthTokenRevokeApiFormResponse call() throws Exception {
         RequestOperation<AuthTokenRevokeApiFormRequest, AuthTokenRevokeApiFormResponse> operation
-              = new AuthTokenRevokeApiFormOperation(sdkConfiguration);
+              = new AuthTokenRevokeApiFormOperation(sdkConfiguration, serverURL);
 
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }

@@ -12,7 +12,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
-import org.openapis.openapi.models.components.Hsk;
 import org.openapis.openapi.utils.Utils;
 
 
@@ -43,14 +42,14 @@ public class HskGetListApiResponseBody {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("hsks")
-    private List<Hsk> hsks;
+    private List<HskGetListApiHsk> hsks;
 
     @JsonCreator
     public HskGetListApiResponseBody(
             @JsonProperty("resultCode") @Nullable String resultCode,
             @JsonProperty("resultMessage") @Nullable String resultMessage,
             @JsonProperty("action") @Nullable HskGetListApiAction action,
-            @JsonProperty("hsks") @Nullable List<Hsk> hsks) {
+            @JsonProperty("hsks") @Nullable List<HskGetListApiHsk> hsks) {
         this.resultCode = resultCode;
         this.resultMessage = resultMessage;
         this.action = action;
@@ -86,7 +85,7 @@ public class HskGetListApiResponseBody {
     /**
      * List of HSK
      */
-    public Optional<List<Hsk>> hsks() {
+    public Optional<List<HskGetListApiHsk>> hsks() {
         return Optional.ofNullable(this.hsks);
     }
 
@@ -125,7 +124,7 @@ public class HskGetListApiResponseBody {
     /**
      * List of HSK
      */
-    public HskGetListApiResponseBody withHsks(@Nullable List<Hsk> hsks) {
+    public HskGetListApiResponseBody withHsks(@Nullable List<HskGetListApiHsk> hsks) {
         this.hsks = hsks;
         return this;
     }
@@ -172,7 +171,7 @@ public class HskGetListApiResponseBody {
 
         private HskGetListApiAction action;
 
-        private List<Hsk> hsks;
+        private List<HskGetListApiHsk> hsks;
 
         private Builder() {
           // force use of static builder() method
@@ -205,7 +204,7 @@ public class HskGetListApiResponseBody {
         /**
          * List of HSK
          */
-        public Builder hsks(@Nullable List<Hsk> hsks) {
+        public Builder hsks(@Nullable List<HskGetListApiHsk> hsks) {
             this.hsks = hsks;
             return this;
         }

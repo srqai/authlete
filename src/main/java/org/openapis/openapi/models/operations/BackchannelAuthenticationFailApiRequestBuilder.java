@@ -6,6 +6,7 @@ package org.openapis.openapi.models.operations;
 import static org.openapis.openapi.operations.Operations.RequestOperation;
 
 import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
@@ -16,6 +17,7 @@ public class BackchannelAuthenticationFailApiRequestBuilder {
     private final SDKConfiguration sdkConfiguration;
     private final BackchannelAuthenticationFailApiRequest.Builder pojoBuilder;
     private BackchannelAuthenticationFailApiRequest request;
+    private String serverURL;
     private boolean _setterCalled;
 
     public BackchannelAuthenticationFailApiRequestBuilder(SDKConfiguration sdkConfiguration) {
@@ -35,6 +37,11 @@ public class BackchannelAuthenticationFailApiRequestBuilder {
         return this;
     }
 
+    public BackchannelAuthenticationFailApiRequestBuilder serverURL(@Nullable String serverURL) {
+        this.serverURL = serverURL;
+        return this;
+    }
+
     private BackchannelAuthenticationFailApiRequest _buildRequest() {
         if (this._setterCalled) {
             this.request = this.pojoBuilder.build();
@@ -48,7 +55,7 @@ public class BackchannelAuthenticationFailApiRequestBuilder {
     */
     public BackchannelAuthenticationFailApiResponse call() throws Exception {
         RequestOperation<BackchannelAuthenticationFailApiRequest, BackchannelAuthenticationFailApiResponse> operation
-              = new BackchannelAuthenticationFailApiOperation(sdkConfiguration);
+              = new BackchannelAuthenticationFailApiOperation(sdkConfiguration, serverURL);
 
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }

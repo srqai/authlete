@@ -6,10 +6,10 @@ package org.openapis.openapi.models.operations;
 import static org.openapis.openapi.operations.Operations.RequestOperation;
 
 import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1pushedAuthReqPostRequestBodyContentApplication1jsonSchema;
 import org.openapis.openapi.operations.PushedAuthReqApiFormOperation;
 import org.openapis.openapi.utils.Utils;
 
@@ -17,6 +17,7 @@ public class PushedAuthReqApiFormRequestBuilder {
     private final SDKConfiguration sdkConfiguration;
     private final PushedAuthReqApiFormRequest.Builder pojoBuilder;
     private PushedAuthReqApiFormRequest request;
+    private String serverURL;
     private boolean _setterCalled;
 
     public PushedAuthReqApiFormRequestBuilder(SDKConfiguration sdkConfiguration) {
@@ -30,9 +31,14 @@ public class PushedAuthReqApiFormRequestBuilder {
         return this;
     }
 
-    public PushedAuthReqApiFormRequestBuilder oneapi1Percent7BserviceIdPercent7D1pushedAuthReqPostRequestBodyContentApplication1jsonSchema(@Nonnull 1api1Percent7BserviceIdPercent7D1pushedAuthReqPostRequestBodyContentApplication1jsonSchema oneapi1Percent7BserviceIdPercent7D1pushedAuthReqPostRequestBodyContentApplication1jsonSchema) {
-        this.pojoBuilder.oneapi1Percent7BserviceIdPercent7D1pushedAuthReqPostRequestBodyContentApplication1jsonSchema(oneapi1Percent7BserviceIdPercent7D1pushedAuthReqPostRequestBodyContentApplication1jsonSchema);
+    public PushedAuthReqApiFormRequestBuilder requestBody(@Nonnull PushedAuthReqApiFormRequestBody requestBody) {
+        this.pojoBuilder.requestBody(requestBody);
         this._setterCalled = true;
+        return this;
+    }
+
+    public PushedAuthReqApiFormRequestBuilder serverURL(@Nullable String serverURL) {
+        this.serverURL = serverURL;
         return this;
     }
 
@@ -49,7 +55,7 @@ public class PushedAuthReqApiFormRequestBuilder {
     */
     public PushedAuthReqApiFormResponse call() throws Exception {
         RequestOperation<PushedAuthReqApiFormRequest, PushedAuthReqApiFormResponse> operation
-              = new PushedAuthReqApiFormOperation(sdkConfiguration);
+              = new PushedAuthReqApiFormOperation(sdkConfiguration, serverURL);
 
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }

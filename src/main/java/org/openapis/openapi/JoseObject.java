@@ -9,8 +9,8 @@ import jakarta.annotation.Nonnull;
 import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1jose1verifyPostRequestBodyContentApplication1jsonSchema;
 import org.openapis.openapi.models.operations.JoseVerifyApiFormRequest;
+import org.openapis.openapi.models.operations.JoseVerifyApiFormRequestBody;
 import org.openapis.openapi.models.operations.JoseVerifyApiFormRequestBuilder;
 import org.openapis.openapi.models.operations.JoseVerifyApiFormResponse;
 import org.openapis.openapi.models.operations.JoseVerifyApiRequest;
@@ -49,7 +49,7 @@ public class JoseObject {
      * @throws Exception if the API call fails
      */
     public JoseVerifyApiResponse verify(@Nonnull String serviceId) throws Exception {
-        return verify(serviceId, null);
+        return verify(serviceId, null, null);
     }
 
     /**
@@ -59,13 +59,16 @@ public class JoseObject {
      * 
      * @param serviceId A service ID.
      * @param requestBody 
+     * @param serverURL Overrides the server URL.
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public JoseVerifyApiResponse verify(@Nonnull String serviceId, @Nullable JoseVerifyApiRequestBody requestBody) throws Exception {
+    public JoseVerifyApiResponse verify(
+            @Nonnull String serviceId, @Nullable JoseVerifyApiRequestBody requestBody,
+            @Nullable String serverURL) throws Exception {
         JoseVerifyApiRequest request = new JoseVerifyApiRequest(serviceId, requestBody);
         RequestOperation<JoseVerifyApiRequest, JoseVerifyApiResponse> operation
-              = new JoseVerifyApiOperation(sdkConfiguration);
+              = new JoseVerifyApiOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -90,7 +93,7 @@ public class JoseObject {
      * @throws Exception if the API call fails
      */
     public JoseVerifyApiFormResponse verifyForm(@Nonnull String serviceId) throws Exception {
-        return verifyForm(serviceId, null);
+        return verifyForm(serviceId, null, null);
     }
 
     /**
@@ -99,14 +102,17 @@ public class JoseObject {
      * <p>This API verifies a JOSE object.
      * 
      * @param serviceId A service ID.
-     * @param 1api1Percent7BserviceIdPercent7D1jose1verifyPostRequestBodyContentApplication1jsonSchema 
+     * @param requestBody 
+     * @param serverURL Overrides the server URL.
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public JoseVerifyApiFormResponse verifyForm(@Nonnull String serviceId, @Nullable 1api1Percent7BserviceIdPercent7D1jose1verifyPostRequestBodyContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1jose1verifyPostRequestBodyContentApplication1jsonSchema) throws Exception {
-        JoseVerifyApiFormRequest request = new JoseVerifyApiFormRequest(serviceId, 1api1Percent7BserviceIdPercent7D1jose1verifyPostRequestBodyContentApplication1jsonSchema);
+    public JoseVerifyApiFormResponse verifyForm(
+            @Nonnull String serviceId, @Nullable JoseVerifyApiFormRequestBody requestBody,
+            @Nullable String serverURL) throws Exception {
+        JoseVerifyApiFormRequest request = new JoseVerifyApiFormRequest(serviceId, requestBody);
         RequestOperation<JoseVerifyApiFormRequest, JoseVerifyApiFormResponse> operation
-              = new JoseVerifyApiFormOperation(sdkConfiguration);
+              = new JoseVerifyApiFormOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 

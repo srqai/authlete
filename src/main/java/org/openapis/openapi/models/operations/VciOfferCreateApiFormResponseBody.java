@@ -11,7 +11,6 @@ import jakarta.annotation.Nullable;
 import java.lang.Override;
 import java.lang.String;
 import java.util.Optional;
-import org.openapis.openapi.models.components.CredentialOfferInfo;
 import org.openapis.openapi.utils.Utils;
 
 
@@ -40,14 +39,14 @@ public class VciOfferCreateApiFormResponseBody {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("info")
-    private CredentialOfferInfo info;
+    private VciOfferCreateApiFormInfo info;
 
     @JsonCreator
     public VciOfferCreateApiFormResponseBody(
             @JsonProperty("resultCode") @Nullable String resultCode,
             @JsonProperty("resultMessage") @Nullable String resultMessage,
             @JsonProperty("action") @Nullable VciOfferCreateApiFormAction action,
-            @JsonProperty("info") @Nullable CredentialOfferInfo info) {
+            @JsonProperty("info") @Nullable VciOfferCreateApiFormInfo info) {
         this.resultCode = resultCode;
         this.resultMessage = resultMessage;
         this.action = action;
@@ -80,7 +79,7 @@ public class VciOfferCreateApiFormResponseBody {
         return Optional.ofNullable(this.action);
     }
 
-    public Optional<CredentialOfferInfo> info() {
+    public Optional<VciOfferCreateApiFormInfo> info() {
         return Optional.ofNullable(this.info);
     }
 
@@ -116,7 +115,7 @@ public class VciOfferCreateApiFormResponseBody {
     }
 
 
-    public VciOfferCreateApiFormResponseBody withInfo(@Nullable CredentialOfferInfo info) {
+    public VciOfferCreateApiFormResponseBody withInfo(@Nullable VciOfferCreateApiFormInfo info) {
         this.info = info;
         return this;
     }
@@ -163,7 +162,7 @@ public class VciOfferCreateApiFormResponseBody {
 
         private VciOfferCreateApiFormAction action;
 
-        private CredentialOfferInfo info;
+        private VciOfferCreateApiFormInfo info;
 
         private Builder() {
           // force use of static builder() method
@@ -193,7 +192,7 @@ public class VciOfferCreateApiFormResponseBody {
             return this;
         }
 
-        public Builder info(@Nullable CredentialOfferInfo info) {
+        public Builder info(@Nullable VciOfferCreateApiFormInfo info) {
             this.info = info;
             return this;
         }

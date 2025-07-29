@@ -11,7 +11,6 @@ import jakarta.annotation.Nullable;
 import java.lang.Override;
 import java.lang.String;
 import java.util.Optional;
-import org.openapis.openapi.models.components.CredentialRequestInfo;
 import org.openapis.openapi.utils.Utils;
 
 
@@ -44,10 +43,12 @@ public class VciDeferredParseApiFormResponseBody {
     @JsonProperty("responseContent")
     private String responseContent;
 
-
+    /**
+     * Information about the credential request bound to the transaction ID.
+     */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("info")
-    private CredentialRequestInfo info;
+    private VciDeferredParseApiFormInfo info;
 
     @JsonCreator
     public VciDeferredParseApiFormResponseBody(
@@ -55,7 +56,7 @@ public class VciDeferredParseApiFormResponseBody {
             @JsonProperty("resultMessage") @Nullable String resultMessage,
             @JsonProperty("action") @Nullable VciDeferredParseApiFormAction action,
             @JsonProperty("responseContent") @Nullable String responseContent,
-            @JsonProperty("info") @Nullable CredentialRequestInfo info) {
+            @JsonProperty("info") @Nullable VciDeferredParseApiFormInfo info) {
         this.resultCode = resultCode;
         this.resultMessage = resultMessage;
         this.action = action;
@@ -96,7 +97,10 @@ public class VciDeferredParseApiFormResponseBody {
         return Optional.ofNullable(this.responseContent);
     }
 
-    public Optional<CredentialRequestInfo> info() {
+    /**
+     * Information about the credential request bound to the transaction ID.
+     */
+    public Optional<VciDeferredParseApiFormInfo> info() {
         return Optional.ofNullable(this.info);
     }
 
@@ -141,7 +145,10 @@ public class VciDeferredParseApiFormResponseBody {
     }
 
 
-    public VciDeferredParseApiFormResponseBody withInfo(@Nullable CredentialRequestInfo info) {
+    /**
+     * Information about the credential request bound to the transaction ID.
+     */
+    public VciDeferredParseApiFormResponseBody withInfo(@Nullable VciDeferredParseApiFormInfo info) {
         this.info = info;
         return this;
     }
@@ -192,7 +199,7 @@ public class VciDeferredParseApiFormResponseBody {
 
         private String responseContent;
 
-        private CredentialRequestInfo info;
+        private VciDeferredParseApiFormInfo info;
 
         private Builder() {
           // force use of static builder() method
@@ -230,7 +237,10 @@ public class VciDeferredParseApiFormResponseBody {
             return this;
         }
 
-        public Builder info(@Nullable CredentialRequestInfo info) {
+        /**
+         * Information about the credential request bound to the transaction ID.
+         */
+        public Builder info(@Nullable VciDeferredParseApiFormInfo info) {
             this.info = info;
             return this;
         }

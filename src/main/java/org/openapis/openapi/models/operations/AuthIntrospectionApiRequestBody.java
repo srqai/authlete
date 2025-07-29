@@ -14,7 +14,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
-import org.openapis.openapi.models.components.Pair;
 import org.openapis.openapi.utils.Utils;
 
 
@@ -138,7 +137,7 @@ public class AuthIntrospectionApiRequestBody {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("headers")
-    private List<Pair> headers;
+    private List<AuthIntrospectionApiHeader> headers;
 
     @JsonCreator
     public AuthIntrospectionApiRequestBody(
@@ -155,7 +154,7 @@ public class AuthIntrospectionApiRequestBody {
             @JsonProperty("requiredComponents") @Nullable List<String> requiredComponents,
             @JsonProperty("uri") @Nullable String uri,
             @JsonProperty("message") @Nullable String message,
-            @JsonProperty("headers") @Nullable List<Pair> headers) {
+            @JsonProperty("headers") @Nullable List<AuthIntrospectionApiHeader> headers) {
         this.token = Optional.ofNullable(token)
             .orElseThrow(() -> new IllegalArgumentException("token cannot be null"));
         this.scopes = scopes;
@@ -300,7 +299,7 @@ public class AuthIntrospectionApiRequestBody {
      * HTTP headers to be included in processing the signature. If this is a signed request, this must include the 
      * Signature and Signature-Input headers, as well as any additional headers covered by the signature.
      */
-    public Optional<List<Pair>> headers() {
+    public Optional<List<AuthIntrospectionApiHeader>> headers() {
         return Optional.ofNullable(this.headers);
     }
 
@@ -453,7 +452,7 @@ public class AuthIntrospectionApiRequestBody {
      * HTTP headers to be included in processing the signature. If this is a signed request, this must include the 
      * Signature and Signature-Input headers, as well as any additional headers covered by the signature.
      */
-    public AuthIntrospectionApiRequestBody withHeaders(@Nullable List<Pair> headers) {
+    public AuthIntrospectionApiRequestBody withHeaders(@Nullable List<AuthIntrospectionApiHeader> headers) {
         this.headers = headers;
         return this;
     }
@@ -543,7 +542,7 @@ public class AuthIntrospectionApiRequestBody {
 
         private String message;
 
-        private List<Pair> headers;
+        private List<AuthIntrospectionApiHeader> headers;
 
         private Builder() {
           // force use of static builder() method
@@ -680,7 +679,7 @@ public class AuthIntrospectionApiRequestBody {
          * HTTP headers to be included in processing the signature. If this is a signed request, this must include the 
          * Signature and Signature-Input headers, as well as any additional headers covered by the signature.
          */
-        public Builder headers(@Nullable List<Pair> headers) {
+        public Builder headers(@Nullable List<AuthIntrospectionApiHeader> headers) {
             this.headers = headers;
             return this;
         }

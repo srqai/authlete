@@ -6,6 +6,7 @@ package org.openapis.openapi;
 import static org.openapis.openapi.operations.Operations.RequestOperation;
 
 import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.models.operations.HskDeleteApiRequest;
@@ -39,9 +40,24 @@ public class HardwareSecurityKey {
      * @throws Exception if the API call fails
      */
     public HskDeleteApiResponse delete(@Nonnull String serviceId, @Nonnull String handle) throws Exception {
+        return delete(serviceId, handle, null);
+    }
+
+    /**
+     * Delete Security Key
+     * 
+     * @param serviceId A service ID.
+     * @param handle 
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public HskDeleteApiResponse delete(
+            @Nonnull String serviceId, @Nonnull String handle,
+            @Nullable String serverURL) throws Exception {
         HskDeleteApiRequest request = new HskDeleteApiRequest(serviceId, handle);
         RequestOperation<HskDeleteApiRequest, HskDeleteApiResponse> operation
-              = new HskDeleteApiOperation(sdkConfiguration);
+              = new HskDeleteApiOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 

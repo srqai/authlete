@@ -16,12 +16,6 @@ import org.openapis.openapi.utils.Utils;
 
 public class ServiceConfigurationApiRequest {
     /**
-     * A service ID.
-     */
-    @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=serviceId")
-    private String serviceId;
-
-    /**
      * This boolean value indicates whether the JSON in the response should be formatted or not. If `true`, the JSON in the response is pretty-formatted. The default value is `false`.
      */
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=pretty")
@@ -33,27 +27,26 @@ public class ServiceConfigurationApiRequest {
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=patch")
     private String patch;
 
+    /**
+     * A service ID.
+     */
+    @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=serviceId")
+    private String serviceId;
+
     @JsonCreator
     public ServiceConfigurationApiRequest(
-            @Nonnull String serviceId,
             @Nullable Boolean pretty,
-            @Nullable String patch) {
-        this.serviceId = Optional.ofNullable(serviceId)
-            .orElseThrow(() -> new IllegalArgumentException("serviceId cannot be null"));
+            @Nullable String patch,
+            @Nonnull String serviceId) {
         this.pretty = pretty;
         this.patch = patch;
+        this.serviceId = Optional.ofNullable(serviceId)
+            .orElseThrow(() -> new IllegalArgumentException("serviceId cannot be null"));
     }
     
     public ServiceConfigurationApiRequest(
             @Nonnull String serviceId) {
-        this(serviceId, null, null);
-    }
-
-    /**
-     * A service ID.
-     */
-    public String serviceId() {
-        return this.serviceId;
+        this(null, null, serviceId);
     }
 
     /**
@@ -70,17 +63,15 @@ public class ServiceConfigurationApiRequest {
         return Optional.ofNullable(this.patch);
     }
 
-    public static Builder builder() {
-        return new Builder();
-    }
-
-
     /**
      * A service ID.
      */
-    public ServiceConfigurationApiRequest withServiceId(@Nonnull String serviceId) {
-        this.serviceId = Utils.checkNotNull(serviceId, "serviceId");
-        return this;
+    public String serviceId() {
+        return this.serviceId;
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
 
@@ -102,6 +93,15 @@ public class ServiceConfigurationApiRequest {
     }
 
 
+    /**
+     * A service ID.
+     */
+    public ServiceConfigurationApiRequest withServiceId(@Nonnull String serviceId) {
+        this.serviceId = Utils.checkNotNull(serviceId, "serviceId");
+        return this;
+    }
+
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -112,44 +112,36 @@ public class ServiceConfigurationApiRequest {
         }
         ServiceConfigurationApiRequest other = (ServiceConfigurationApiRequest) o;
         return 
-            Utils.enhancedDeepEquals(this.serviceId, other.serviceId) &&
             Utils.enhancedDeepEquals(this.pretty, other.pretty) &&
-            Utils.enhancedDeepEquals(this.patch, other.patch);
+            Utils.enhancedDeepEquals(this.patch, other.patch) &&
+            Utils.enhancedDeepEquals(this.serviceId, other.serviceId);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            serviceId, pretty, patch);
+            pretty, patch, serviceId);
     }
     
     @Override
     public String toString() {
         return Utils.toString(ServiceConfigurationApiRequest.class,
-                "serviceId", serviceId,
                 "pretty", pretty,
-                "patch", patch);
+                "patch", patch,
+                "serviceId", serviceId);
     }
 
     @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
 
-        private String serviceId;
-
         private Boolean pretty;
 
         private String patch;
 
+        private String serviceId;
+
         private Builder() {
           // force use of static builder() method
-        }
-
-        /**
-         * A service ID.
-         */
-        public Builder serviceId(@Nonnull String serviceId) {
-            this.serviceId = Utils.checkNotNull(serviceId, "serviceId");
-            return this;
         }
 
         /**
@@ -168,9 +160,17 @@ public class ServiceConfigurationApiRequest {
             return this;
         }
 
+        /**
+         * A service ID.
+         */
+        public Builder serviceId(@Nonnull String serviceId) {
+            this.serviceId = Utils.checkNotNull(serviceId, "serviceId");
+            return this;
+        }
+
         public ServiceConfigurationApiRequest build() {
             return new ServiceConfigurationApiRequest(
-                serviceId, pretty, patch);
+                pretty, patch, serviceId);
         }
 
     }

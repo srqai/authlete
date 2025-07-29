@@ -6,19 +6,20 @@ package org.openapis.openapi;
 import static org.openapis.openapi.operations.Operations.RequestOperation;
 
 import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.models.operations.AuthTokenDeleteApiRequest;
 import org.openapis.openapi.models.operations.AuthTokenDeleteApiRequestBuilder;
 import org.openapis.openapi.models.operations.AuthTokenDeleteApiResponse;
 import org.openapis.openapi.models.operations.AuthTokenRevokeApiFormRequest;
+import org.openapis.openapi.models.operations.AuthTokenRevokeApiFormRequestBody;
 import org.openapis.openapi.models.operations.AuthTokenRevokeApiFormRequestBuilder;
 import org.openapis.openapi.models.operations.AuthTokenRevokeApiFormResponse;
 import org.openapis.openapi.models.operations.AuthTokenRevokeApiRequest;
 import org.openapis.openapi.models.operations.AuthTokenRevokeApiRequestBody;
 import org.openapis.openapi.models.operations.AuthTokenRevokeApiRequestBuilder;
 import org.openapis.openapi.models.operations.AuthTokenRevokeApiResponse;
-import org.openapis.openapi.models.operations.AuthTokenRevokeForm;
 import org.openapis.openapi.operations.AuthTokenDeleteApiOperation;
 import org.openapis.openapi.operations.AuthTokenRevokeApiFormOperation;
 import org.openapis.openapi.operations.AuthTokenRevokeApiOperation;
@@ -55,9 +56,28 @@ public class TokenOperations {
      * @throws Exception if the API call fails
      */
     public AuthTokenDeleteApiResponse delete(@Nonnull String serviceId, @Nonnull String accessTokenIdentifier) throws Exception {
+        return delete(serviceId, accessTokenIdentifier, null);
+    }
+
+    /**
+     * Delete Access Token
+     * 
+     * <p>Delete an access token.
+     * 
+     * @param serviceId A service ID.
+     * @param accessTokenIdentifier The identifier of an existing access token. The identifier is the value of the access token
+     *         or the value of the hash of the access token.
+     *         
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public AuthTokenDeleteApiResponse delete(
+            @Nonnull String serviceId, @Nonnull String accessTokenIdentifier,
+            @Nullable String serverURL) throws Exception {
         AuthTokenDeleteApiRequest request = new AuthTokenDeleteApiRequest(serviceId, accessTokenIdentifier);
         RequestOperation<AuthTokenDeleteApiRequest, AuthTokenDeleteApiResponse> operation
-              = new AuthTokenDeleteApiOperation(sdkConfiguration);
+              = new AuthTokenDeleteApiOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -83,9 +103,26 @@ public class TokenOperations {
      * @throws Exception if the API call fails
      */
     public AuthTokenRevokeApiResponse revoke(@Nonnull String serviceId, @Nonnull AuthTokenRevokeApiRequestBody requestBody) throws Exception {
+        return revoke(serviceId, requestBody, null);
+    }
+
+    /**
+     * Revoke Access Token
+     * 
+     * <p>Revoke an access token.
+     * 
+     * @param serviceId A service ID.
+     * @param requestBody 
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public AuthTokenRevokeApiResponse revoke(
+            @Nonnull String serviceId, @Nonnull AuthTokenRevokeApiRequestBody requestBody,
+            @Nullable String serverURL) throws Exception {
         AuthTokenRevokeApiRequest request = new AuthTokenRevokeApiRequest(serviceId, requestBody);
         RequestOperation<AuthTokenRevokeApiRequest, AuthTokenRevokeApiResponse> operation
-              = new AuthTokenRevokeApiOperation(sdkConfiguration);
+              = new AuthTokenRevokeApiOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -110,10 +147,27 @@ public class TokenOperations {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AuthTokenRevokeApiFormResponse revokeForm(@Nonnull String serviceId, @Nonnull AuthTokenRevokeForm requestBody) throws Exception {
+    public AuthTokenRevokeApiFormResponse revokeForm(@Nonnull String serviceId, @Nonnull AuthTokenRevokeApiFormRequestBody requestBody) throws Exception {
+        return revokeForm(serviceId, requestBody, null);
+    }
+
+    /**
+     * Revoke Access Token
+     * 
+     * <p>Revoke an access token.
+     * 
+     * @param serviceId A service ID.
+     * @param requestBody 
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public AuthTokenRevokeApiFormResponse revokeForm(
+            @Nonnull String serviceId, @Nonnull AuthTokenRevokeApiFormRequestBody requestBody,
+            @Nullable String serverURL) throws Exception {
         AuthTokenRevokeApiFormRequest request = new AuthTokenRevokeApiFormRequest(serviceId, requestBody);
         RequestOperation<AuthTokenRevokeApiFormRequest, AuthTokenRevokeApiFormResponse> operation
-              = new AuthTokenRevokeApiFormOperation(sdkConfiguration);
+              = new AuthTokenRevokeApiFormOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 

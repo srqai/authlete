@@ -6,6 +6,7 @@ package org.openapis.openapi.models.operations;
 import static org.openapis.openapi.operations.Operations.RequestOperation;
 
 import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
@@ -16,6 +17,7 @@ public class FederationRegistrationApiRequestBuilder {
     private final SDKConfiguration sdkConfiguration;
     private final FederationRegistrationApiRequest.Builder pojoBuilder;
     private FederationRegistrationApiRequest request;
+    private String serverURL;
     private boolean _setterCalled;
 
     public FederationRegistrationApiRequestBuilder(SDKConfiguration sdkConfiguration) {
@@ -35,6 +37,11 @@ public class FederationRegistrationApiRequestBuilder {
         return this;
     }
 
+    public FederationRegistrationApiRequestBuilder serverURL(@Nullable String serverURL) {
+        this.serverURL = serverURL;
+        return this;
+    }
+
     private FederationRegistrationApiRequest _buildRequest() {
         if (this._setterCalled) {
             this.request = this.pojoBuilder.build();
@@ -48,7 +55,7 @@ public class FederationRegistrationApiRequestBuilder {
     */
     public FederationRegistrationApiResponse call() throws Exception {
         RequestOperation<FederationRegistrationApiRequest, FederationRegistrationApiResponse> operation
-              = new FederationRegistrationApiOperation(sdkConfiguration);
+              = new FederationRegistrationApiOperation(sdkConfiguration, serverURL);
 
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }

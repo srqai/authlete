@@ -12,7 +12,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
-import org.openapis.openapi.models.components.CredentialRequestInfo;
 import org.openapis.openapi.utils.Utils;
 
 
@@ -51,7 +50,7 @@ public class VciBatchParseApiResponseBody {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("info")
-    private List<CredentialRequestInfo> info;
+    private List<VciBatchParseApiInfo> info;
 
     @JsonCreator
     public VciBatchParseApiResponseBody(
@@ -59,7 +58,7 @@ public class VciBatchParseApiResponseBody {
             @JsonProperty("resultMessage") @Nullable String resultMessage,
             @JsonProperty("action") @Nullable VciBatchParseApiAction action,
             @JsonProperty("responseContent") @Nullable String responseContent,
-            @JsonProperty("info") @Nullable List<CredentialRequestInfo> info) {
+            @JsonProperty("info") @Nullable List<VciBatchParseApiInfo> info) {
         this.resultCode = resultCode;
         this.resultMessage = resultMessage;
         this.action = action;
@@ -104,7 +103,7 @@ public class VciBatchParseApiResponseBody {
      * Information about the credential requests in the batch credential
      * request.
      */
-    public Optional<List<CredentialRequestInfo>> info() {
+    public Optional<List<VciBatchParseApiInfo>> info() {
         return Optional.ofNullable(this.info);
     }
 
@@ -153,7 +152,7 @@ public class VciBatchParseApiResponseBody {
      * Information about the credential requests in the batch credential
      * request.
      */
-    public VciBatchParseApiResponseBody withInfo(@Nullable List<CredentialRequestInfo> info) {
+    public VciBatchParseApiResponseBody withInfo(@Nullable List<VciBatchParseApiInfo> info) {
         this.info = info;
         return this;
     }
@@ -204,7 +203,7 @@ public class VciBatchParseApiResponseBody {
 
         private String responseContent;
 
-        private List<CredentialRequestInfo> info;
+        private List<VciBatchParseApiInfo> info;
 
         private Builder() {
           // force use of static builder() method
@@ -246,7 +245,7 @@ public class VciBatchParseApiResponseBody {
          * Information about the credential requests in the batch credential
          * request.
          */
-        public Builder info(@Nullable List<CredentialRequestInfo> info) {
+        public Builder info(@Nullable List<VciBatchParseApiInfo> info) {
             this.info = info;
             return this;
         }

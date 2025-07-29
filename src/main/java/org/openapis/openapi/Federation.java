@@ -6,10 +6,11 @@ package org.openapis.openapi;
 import static org.openapis.openapi.operations.Operations.RequestOperation;
 
 import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1federation1registrationPostRequestBodyContentApplication1jsonSchema;
 import org.openapis.openapi.models.operations.FederationRegistrationApiFormRequest;
+import org.openapis.openapi.models.operations.FederationRegistrationApiFormRequestBody;
 import org.openapis.openapi.models.operations.FederationRegistrationApiFormRequestBuilder;
 import org.openapis.openapi.models.operations.FederationRegistrationApiFormResponse;
 import org.openapis.openapi.models.operations.FederationRegistrationApiRequest;
@@ -119,9 +120,61 @@ public class Federation {
      * @throws Exception if the API call fails
      */
     public FederationRegistrationApiResponse register(@Nonnull String serviceId, @Nonnull FederationRegistrationApiRequestBody requestBody) throws Exception {
+        return register(serviceId, requestBody, null);
+    }
+
+    /**
+     * Process Federation Registration Request
+     * 
+     * <p>The Authlete API is for implementations of the &lt;b&gt;federation registration
+     * endpoint&lt;/b&gt; that accepts "explicit client registration". Its details are
+     * defined in &lt;a href="https://openid.net/specs/openid-connect-federation-1_0.html"
+     * &gt;OpenID Connect Federation 1.0&lt;/a&gt;.
+     * &lt;/p&gt;
+     * 
+     * <p>&lt;p&gt;
+     * The endpoint accepts `POST` requests whose `Content-Type`
+     * is either of the following.
+     * &lt;/p&gt;
+     * 
+     * <p>&lt;ol&gt;
+     *   &lt;li&gt;`application/entity-statement+jwt`
+     *   &lt;li&gt;`application/trust-chain+json`
+     * &lt;/ol&gt;
+     * 
+     * <p>&lt;p&gt;
+     * When the `Content-Type` of a request is
+     * `application/entity-statement+jwt`, the content of the request is
+     * the entity configuration of a relying party that is to be registered.
+     * In this case, the implementation of the federation registration endpoint
+     * should call Authlete's `/federation/registration` API with the
+     * entity configuration set to the `entityConfiguration` request
+     * parameter.
+     * &lt;/p&gt;
+     * 
+     * <p>&lt;p&gt;
+     * On the other hand, when the `Content-Type` of a request is
+     * `application/trust-chain+json`, the content of the request is a
+     * JSON array that contains entity statements in JWT format. The sequence
+     * of the entity statements composes the trust chain of a relying party
+     * that is to be registered. In this case, the implementation of the
+     * federation registration endpoint should call Authlete's
+     * `/federation/registration` API with the trust chain set to the
+     * `trustChain` request parameter.
+     * &lt;/p&gt;
+     * 
+     * @param serviceId A service ID.
+     * @param requestBody 
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public FederationRegistrationApiResponse register(
+            @Nonnull String serviceId, @Nonnull FederationRegistrationApiRequestBody requestBody,
+            @Nullable String serverURL) throws Exception {
         FederationRegistrationApiRequest request = new FederationRegistrationApiRequest(serviceId, requestBody);
         RequestOperation<FederationRegistrationApiRequest, FederationRegistrationApiResponse> operation
-              = new FederationRegistrationApiOperation(sdkConfiguration);
+              = new FederationRegistrationApiOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -212,14 +265,66 @@ public class Federation {
      * &lt;/p&gt;
      * 
      * @param serviceId A service ID.
-     * @param 1api1Percent7BserviceIdPercent7D1federation1registrationPostRequestBodyContentApplication1jsonSchema 
+     * @param requestBody 
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public FederationRegistrationApiFormResponse registerForm(@Nonnull String serviceId, @Nonnull 1api1Percent7BserviceIdPercent7D1federation1registrationPostRequestBodyContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1federation1registrationPostRequestBodyContentApplication1jsonSchema) throws Exception {
-        FederationRegistrationApiFormRequest request = new FederationRegistrationApiFormRequest(serviceId, 1api1Percent7BserviceIdPercent7D1federation1registrationPostRequestBodyContentApplication1jsonSchema);
+    public FederationRegistrationApiFormResponse registerForm(@Nonnull String serviceId, @Nonnull FederationRegistrationApiFormRequestBody requestBody) throws Exception {
+        return registerForm(serviceId, requestBody, null);
+    }
+
+    /**
+     * Process Federation Registration Request
+     * 
+     * <p>The Authlete API is for implementations of the &lt;b&gt;federation registration
+     * endpoint&lt;/b&gt; that accepts "explicit client registration". Its details are
+     * defined in &lt;a href="https://openid.net/specs/openid-connect-federation-1_0.html"
+     * &gt;OpenID Connect Federation 1.0&lt;/a&gt;.
+     * &lt;/p&gt;
+     * 
+     * <p>&lt;p&gt;
+     * The endpoint accepts `POST` requests whose `Content-Type`
+     * is either of the following.
+     * &lt;/p&gt;
+     * 
+     * <p>&lt;ol&gt;
+     *   &lt;li&gt;`application/entity-statement+jwt`
+     *   &lt;li&gt;`application/trust-chain+json`
+     * &lt;/ol&gt;
+     * 
+     * <p>&lt;p&gt;
+     * When the `Content-Type` of a request is
+     * `application/entity-statement+jwt`, the content of the request is
+     * the entity configuration of a relying party that is to be registered.
+     * In this case, the implementation of the federation registration endpoint
+     * should call Authlete's `/federation/registration` API with the
+     * entity configuration set to the `entityConfiguration` request
+     * parameter.
+     * &lt;/p&gt;
+     * 
+     * <p>&lt;p&gt;
+     * On the other hand, when the `Content-Type` of a request is
+     * `application/trust-chain+json`, the content of the request is a
+     * JSON array that contains entity statements in JWT format. The sequence
+     * of the entity statements composes the trust chain of a relying party
+     * that is to be registered. In this case, the implementation of the
+     * federation registration endpoint should call Authlete's
+     * `/federation/registration` API with the trust chain set to the
+     * `trustChain` request parameter.
+     * &lt;/p&gt;
+     * 
+     * @param serviceId A service ID.
+     * @param requestBody 
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public FederationRegistrationApiFormResponse registerForm(
+            @Nonnull String serviceId, @Nonnull FederationRegistrationApiFormRequestBody requestBody,
+            @Nullable String serverURL) throws Exception {
+        FederationRegistrationApiFormRequest request = new FederationRegistrationApiFormRequest(serviceId, requestBody);
         RequestOperation<FederationRegistrationApiFormRequest, FederationRegistrationApiFormResponse> operation
-              = new FederationRegistrationApiFormOperation(sdkConfiguration);
+              = new FederationRegistrationApiFormOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 

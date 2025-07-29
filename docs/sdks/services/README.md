@@ -16,20 +16,20 @@ Create a new service.
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="service_create_api" method="post" path="/api/service/create" -->
 ```java
 package hello.world;
 
 import java.lang.Exception;
 import java.util.List;
 import org.openapis.openapi.Authelete;
-import org.openapis.openapi.models.components.*;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400ContentApplication1jsonSchemaException;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400Exception;
-import org.openapis.openapi.models.operations.ServiceCreateApiResponse;
+import org.openapis.openapi.models.components.Security;
+import org.openapis.openapi.models.errors.*;
+import org.openapis.openapi.models.operations.*;
 
 public class Application {
 
-    public static void main(String[] args) throws 1api1infoGetResponses400Exception, 1api1infoGetResponses400ContentApplication1jsonSchemaException, 1api1infoGetResponses400ContentApplication1jsonSchemaException, Exception {
+    public static void main(String[] args) throws BadRequestException, UnauthorizedException, ForbiddenException, InternalServerError, Exception {
 
         Authelete sdk = Authelete.builder()
                 .security(Security.builder()
@@ -37,46 +37,46 @@ public class Application {
                     .build())
             .build();
 
-        ServiceInput req = ServiceInput.builder()
+        ServiceCreateApiRequest req = ServiceCreateApiRequest.builder()
                 .serviceName("My service")
                 .issuer("https://my-service.example.com")
                 .clientIdAliasEnabled(true)
                 .supportedGrantTypes(List.of(
-                    GrantType.AUTHORIZATION_CODE,
-                    GrantType.REFRESH_TOKEN))
+                    ServiceCreateApiSupportedGrantTypeRequest.AUTHORIZATION_CODE,
+                    ServiceCreateApiSupportedGrantTypeRequest.REFRESH_TOKEN))
                 .supportedResponseTypes(List.of(
-                    ResponseType.CODE))
+                    ServiceCreateApiSupportedResponseTypeRequest.CODE))
                 .authorizationEndpoint("https://my-service.example.com/authz")
                 .pkceRequired(true)
                 .tokenEndpoint("https://my-service.example.com/token")
                 .supportedTokenAuthMethods(List.of(
-                    ClientAuthenticationMethod.CLIENT_SECRET_BASIC))
+                    ServiceCreateApiSupportedTokenAuthMethodRequest.CLIENT_SECRET_BASIC))
                 .revocationEndpoint("https://my-service.example.com/revocation")
                 .supportedRevocationAuthMethods(List.of(
-                    ClientAuthenticationMethod.CLIENT_SECRET_BASIC))
+                    ServiceCreateApiSupportedRevocationAuthMethodRequest.CLIENT_SECRET_BASIC))
                 .introspectionEndpoint("https://my-service.example.com/introspection")
                 .supportedIntrospectionAuthMethods(List.of(
-                    ClientAuthenticationMethod.CLIENT_SECRET_BASIC))
+                    ServiceCreateApiSupportedIntrospectionAuthMethodRequest.CLIENT_SECRET_BASIC))
                 .accessTokenType("Bearer")
                 .accessTokenDuration(3600L)
                 .refreshTokenDuration(3600L)
                 .supportedScopes(List.of(
-                    Scope.builder()
+                    ServiceCreateApiSupportedScopeRequest.builder()
                         .name("timeline.read")
                         .defaultEntry(false)
                         .description("A permission to read your timeline.")
                         .build(),
-                    Scope.builder()
+                    ServiceCreateApiSupportedScopeRequest.builder()
                         .name("history.read")
                         .defaultEntry(false)
                         .description("A permission to read your history.")
                         .build()))
                 .attributes(List.of(
-                    Pair.builder()
+                    ServiceCreateApiAttributeRequest.builder()
                         .key("attribute1-key")
                         .value("attribute1-value")
                         .build(),
-                    Pair.builder()
+                    ServiceCreateApiAttributeRequest.builder()
                         .key("attribute2-key")
                         .value("attribute2-value")
                         .build()))
@@ -86,7 +86,7 @@ public class Application {
                 .request(req)
                 .call();
 
-        if (res.service().isPresent()) {
+        if (res.object().isPresent()) {
             // handle response
         }
     }
@@ -95,9 +95,10 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                           | Type                                                | Required                                            | Description                                         |
-| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
-| `request`                                           | [ServiceInput](../../models/shared/ServiceInput.md) | :heavy_check_mark:                                  | The request object to use for the request.          |
+| Parameter                                                                     | Type                                                                          | Required                                                                      | Description                                                                   |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `request`                                                                     | [ServiceCreateApiRequest](../../models/operations/ServiceCreateApiRequest.md) | :heavy_check_mark:                                                            | The request object to use for the request.                                    |
+| `serverURL`                                                                   | *String*                                                                      | :heavy_minus_sign:                                                            | An optional server URL to use.                                                |
 
 ### Response
 
@@ -105,12 +106,13 @@ public class Application {
 
 ### Errors
 
-| Error Type                                                                   | Status Code                                                                  | Content Type                                                                 |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| models/errors/1api1infoGetResponses400Exception                              | 400                                                                          | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 401, 403                                                                     | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 500                                                                          | application/json                                                             |
-| models/errors/APIException                                                   | 4XX, 5XX                                                                     | \*/\*                                                                        |
+| Error Type                          | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| models/errors/BadRequestException   | 400                                 | application/json                    |
+| models/errors/UnauthorizedException | 401                                 | application/json                    |
+| models/errors/ForbiddenException    | 403                                 | application/json                    |
+| models/errors/InternalServerError   | 500                                 | application/json                    |
+| models/errors/APIException          | 4XX, 5XX                            | \*/\*                               |
 
 ## update
 
@@ -119,20 +121,20 @@ Update a service.
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="service_update_api" method="post" path="/api/{serviceId}/service/update" -->
 ```java
 package hello.world;
 
 import java.lang.Exception;
 import java.util.List;
 import org.openapis.openapi.Authelete;
-import org.openapis.openapi.models.components.*;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400ContentApplication1jsonSchemaException;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400Exception;
-import org.openapis.openapi.models.operations.ServiceUpdateApiResponse;
+import org.openapis.openapi.models.components.Security;
+import org.openapis.openapi.models.errors.*;
+import org.openapis.openapi.models.operations.*;
 
 public class Application {
 
-    public static void main(String[] args) throws 1api1infoGetResponses400Exception, 1api1infoGetResponses400ContentApplication1jsonSchemaException, 1api1infoGetResponses400ContentApplication1jsonSchemaException, Exception {
+    public static void main(String[] args) throws BadRequestException, UnauthorizedException, ForbiddenException, InternalServerError, Exception {
 
         Authelete sdk = Authelete.builder()
                 .security(Security.builder()
@@ -142,37 +144,37 @@ public class Application {
 
         ServiceUpdateApiResponse res = sdk.services().update()
                 .serviceId("<id>")
-                .service(ServiceInput.builder()
+                .requestBody(ServiceUpdateApiRequestBody.builder()
                     .serviceName("My updated service")
                     .issuer("https://my-service.example.com")
                     .clientIdAliasEnabled(true)
                     .supportedGrantTypes(List.of(
-                        GrantType.AUTHORIZATION_CODE,
-                        GrantType.REFRESH_TOKEN))
+                        ServiceUpdateApiSupportedGrantTypeRequest.AUTHORIZATION_CODE,
+                        ServiceUpdateApiSupportedGrantTypeRequest.REFRESH_TOKEN))
                     .supportedResponseTypes(List.of(
-                        ResponseType.CODE))
+                        ServiceUpdateApiSupportedResponseTypeRequest.CODE))
                     .errorDescriptionOmitted(false)
                     .errorUriOmitted(false)
                     .authorizationEndpoint("https://my-service.example.com/authz")
                     .directAuthorizationEndpointEnabled(false)
                     .supportedDisplays(List.of(
-                        Display.PAGE))
+                        ServiceUpdateApiSupportedDisplayRequest.PAGE))
                     .pkceRequired(true)
                     .pkceS256Required(false)
                     .authorizationResponseDuration(0L)
                     .tokenEndpoint("https://my-service.example.com/token")
                     .directTokenEndpointEnabled(false)
                     .supportedTokenAuthMethods(List.of(
-                        ClientAuthenticationMethod.CLIENT_SECRET_BASIC))
+                        ServiceUpdateApiSupportedTokenAuthMethodRequest.CLIENT_SECRET_BASIC))
                     .missingClientIdAllowed(false)
                     .revocationEndpoint("https://my-service.example.com/revocation")
                     .directRevocationEndpointEnabled(false)
                     .supportedRevocationAuthMethods(List.of(
-                        ClientAuthenticationMethod.CLIENT_SECRET_BASIC))
+                        ServiceUpdateApiSupportedRevocationAuthMethodRequest.CLIENT_SECRET_BASIC))
                     .introspectionEndpoint("https://my-service.example.com/introspection")
                     .directIntrospectionEndpointEnabled(false)
                     .supportedIntrospectionAuthMethods(List.of(
-                        ClientAuthenticationMethod.CLIENT_SECRET_BASIC))
+                        ServiceUpdateApiSupportedIntrospectionAuthMethodRequest.CLIENT_SECRET_BASIC))
                     .pushedAuthReqDuration(0L)
                     .parRequired(false)
                     .requestObjectRequired(false)
@@ -187,12 +189,12 @@ public class Application {
                     .refreshTokenDurationReset(false)
                     .refreshTokenKept(false)
                     .supportedScopes(List.of(
-                        Scope.builder()
+                        ServiceUpdateApiSupportedScopeRequest.builder()
                             .name("history.read")
                             .defaultEntry(false)
                             .description("A permission to read your history.")
                             .build(),
-                        Scope.builder()
+                        ServiceUpdateApiSupportedScopeRequest.builder()
                             .name("timeline.read")
                             .defaultEntry(false)
                             .description("A permission to read your timeline.")
@@ -201,7 +203,7 @@ public class Application {
                     .idTokenDuration(0L)
                     .allowableClockSkew(0)
                     .supportedClaimTypes(List.of(
-                        ClaimType.NORMAL))
+                        ServiceUpdateApiSupportedClaimTypeRequest.NORMAL))
                     .claimShortcutRestrictive(false)
                     .directJwksEndpointEnabled(false)
                     .directUserInfoEndpointEnabled(false)
@@ -214,11 +216,11 @@ public class Application {
                     .deviceFlowPollingInterval(0)
                     .userCodeLength(0)
                     .attributes(List.of(
-                        Pair.builder()
+                        ServiceUpdateApiAttributeRequest.builder()
                             .key("attribute1-key")
                             .value("attribute1-value")
                             .build(),
-                        Pair.builder()
+                        ServiceUpdateApiAttributeRequest.builder()
                             .key("attribute2-key")
                             .value("attribute2-value")
                             .build()))
@@ -235,7 +237,7 @@ public class Application {
                     .build())
                 .call();
 
-        if (res.service().isPresent()) {
+        if (res.object().isPresent()) {
             // handle response
         }
     }
@@ -244,10 +246,11 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                          | Type                                                               | Required                                                           | Description                                                        |
-| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
-| `serviceId`                                                        | *String*                                                           | :heavy_check_mark:                                                 | A service ID.                                                      |
-| `service`                                                          | [Optional\<ServiceInput>](../../models/components/ServiceInput.md) | :heavy_minus_sign:                                                 | N/A                                                                |
+| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `serviceId`                                                                                      | *String*                                                                                         | :heavy_check_mark:                                                                               | A service ID.                                                                                    |
+| `requestBody`                                                                                    | [Optional\<ServiceUpdateApiRequestBody>](../../models/operations/ServiceUpdateApiRequestBody.md) | :heavy_minus_sign:                                                                               | N/A                                                                                              |
+| `serverURL`                                                                                      | *String*                                                                                         | :heavy_minus_sign:                                                                               | An optional server URL to use.                                                                   |
 
 ### Response
 
@@ -255,12 +258,13 @@ public class Application {
 
 ### Errors
 
-| Error Type                                                                   | Status Code                                                                  | Content Type                                                                 |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| models/errors/1api1infoGetResponses400Exception                              | 400                                                                          | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 401, 403                                                                     | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 500                                                                          | application/json                                                             |
-| models/errors/APIException                                                   | 4XX, 5XX                                                                     | \*/\*                                                                        |
+| Error Type                          | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| models/errors/BadRequestException   | 400                                 | application/json                    |
+| models/errors/UnauthorizedException | 401                                 | application/json                    |
+| models/errors/ForbiddenException    | 403                                 | application/json                    |
+| models/errors/InternalServerError   | 500                                 | application/json                    |
+| models/errors/APIException          | 4XX, 5XX                            | \*/\*                               |
 
 ## delete
 
@@ -269,19 +273,19 @@ Delete a service.
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="service_delete_api" method="delete" path="/api/{serviceId}/service/delete" -->
 ```java
 package hello.world;
 
 import java.lang.Exception;
 import org.openapis.openapi.Authelete;
 import org.openapis.openapi.models.components.Security;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400ContentApplication1jsonSchemaException;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400Exception;
+import org.openapis.openapi.models.errors.*;
 import org.openapis.openapi.models.operations.ServiceDeleteApiResponse;
 
 public class Application {
 
-    public static void main(String[] args) throws 1api1infoGetResponses400Exception, 1api1infoGetResponses400ContentApplication1jsonSchemaException, 1api1infoGetResponses400ContentApplication1jsonSchemaException, Exception {
+    public static void main(String[] args) throws BadRequestException, UnauthorizedException, ForbiddenException, InternalServerError, Exception {
 
         Authelete sdk = Authelete.builder()
                 .security(Security.builder()
@@ -300,9 +304,10 @@ public class Application {
 
 ### Parameters
 
-| Parameter          | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `serviceId`        | *String*           | :heavy_check_mark: | A service ID.      |
+| Parameter                      | Type                           | Required                       | Description                    |
+| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
+| `serviceId`                    | *String*                       | :heavy_check_mark:             | A service ID.                  |
+| `serverURL`                    | *String*                       | :heavy_minus_sign:             | An optional server URL to use. |
 
 ### Response
 
@@ -310,9 +315,10 @@ public class Application {
 
 ### Errors
 
-| Error Type                                                                   | Status Code                                                                  | Content Type                                                                 |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| models/errors/1api1infoGetResponses400Exception                              | 400                                                                          | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 401, 403                                                                     | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 500                                                                          | application/json                                                             |
-| models/errors/APIException                                                   | 4XX, 5XX                                                                     | \*/\*                                                                        |
+| Error Type                          | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| models/errors/BadRequestException   | 400                                 | application/json                    |
+| models/errors/UnauthorizedException | 401                                 | application/json                    |
+| models/errors/ForbiddenException    | 403                                 | application/json                    |
+| models/errors/InternalServerError   | 500                                 | application/json                    |
+| models/errors/APIException          | 4XX, 5XX                            | \*/\*                               |

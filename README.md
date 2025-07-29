@@ -137,7 +137,7 @@ The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'org.openapis:openapi:0.1.1'
+implementation 'org.openapis:openapi:0.2.1'
 ```
 
 Maven:
@@ -145,7 +145,7 @@ Maven:
 <dependency>
     <groupId>org.openapis</groupId>
     <artifactId>openapi</artifactId>
-    <version>0.1.1</version>
+    <version>0.2.1</version>
 </dependency>
 ```
 
@@ -175,13 +175,12 @@ package hello.world;
 import java.lang.Exception;
 import org.openapis.openapi.Authelete;
 import org.openapis.openapi.models.components.Security;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400ContentApplication1jsonSchemaException;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400Exception;
+import org.openapis.openapi.models.errors.*;
 import org.openapis.openapi.models.operations.ServiceGetApiResponse;
 
 public class Application {
 
-    public static void main(String[] args) throws 1api1infoGetResponses400Exception, 1api1infoGetResponses400ContentApplication1jsonSchemaException, 1api1infoGetResponses400ContentApplication1jsonSchemaException, Exception {
+    public static void main(String[] args) throws BadRequestException, UnauthorizedException, ForbiddenException, InternalServerError, Exception {
 
         Authelete sdk = Authelete.builder()
                 .security(Security.builder()
@@ -193,7 +192,7 @@ public class Application {
                 .serviceId("<id>")
                 .call();
 
-        if (res.service().isPresent()) {
+        if (res.object().isPresent()) {
             // handle response
         }
     }
@@ -220,13 +219,12 @@ package hello.world;
 import java.lang.Exception;
 import org.openapis.openapi.Authelete;
 import org.openapis.openapi.models.components.Security;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400ContentApplication1jsonSchemaException;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400Exception;
+import org.openapis.openapi.models.errors.*;
 import org.openapis.openapi.models.operations.ServiceGetApiResponse;
 
 public class Application {
 
-    public static void main(String[] args) throws 1api1infoGetResponses400Exception, 1api1infoGetResponses400ContentApplication1jsonSchemaException, 1api1infoGetResponses400ContentApplication1jsonSchemaException, Exception {
+    public static void main(String[] args) throws BadRequestException, UnauthorizedException, ForbiddenException, InternalServerError, Exception {
 
         Authelete sdk = Authelete.builder()
                 .security(Security.builder()
@@ -238,7 +236,7 @@ public class Application {
                 .serviceId("<id>")
                 .call();
 
-        if (res.service().isPresent()) {
+        if (res.object().isPresent()) {
             // handle response
         }
     }
@@ -260,7 +258,6 @@ public class Application {
 * [processPushedRequest](docs/sdks/authorization/README.md#processpushedrequest) - Process Pushed Authorization Request
 * [processPushedRequestForm](docs/sdks/authorization/README.md#processpushedrequestform) - Process Pushed Authorization Request
 * [getTicketInfo](docs/sdks/authorization/README.md#getticketinfo) - Get Ticket Information
-* [getTicketInfoForm](docs/sdks/authorization/README.md#getticketinfoform) - Get Ticket Information
 
 ### [authorizationEndpoint()](docs/sdks/authorizationendpoint/README.md)
 
@@ -296,7 +293,6 @@ public class Application {
 
 * [getById](docs/sdks/clients/README.md#getbyid) - Get Client
 * [updateLock](docs/sdks/clients/README.md#updatelock) - Update Client Lock
-* [updateLockForm](docs/sdks/clients/README.md#updatelockform) - Update Client Lock
 * [refreshSecret](docs/sdks/clients/README.md#refreshsecret) - Rotate Client Secret
 * [updateSecret](docs/sdks/clients/README.md#updatesecret) - Update Client Secret
 * [updateSecretForm](docs/sdks/clients/README.md#updatesecretform) - Update Client Secret
@@ -466,12 +462,13 @@ Handling errors in this SDK should largely match your expectations. All operatio
 
 By default, an API error will throw a `models/errors/APIException` exception. When custom error responses are specified for an operation, the SDK may also throw their associated exception. You can refer to respective *Errors* tables in SDK docs for more details on possible exception types for each operation. For example, the `get` method throws the following exceptions:
 
-| Error Type                                                                   | Status Code | Content Type     |
-| ---------------------------------------------------------------------------- | ----------- | ---------------- |
-| models/errors/1api1infoGetResponses400Exception                              | 400         | application/json |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 401, 403    | application/json |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 500         | application/json |
-| models/errors/APIException                                                   | 4XX, 5XX    | \*/\*            |
+| Error Type                          | Status Code | Content Type     |
+| ----------------------------------- | ----------- | ---------------- |
+| models/errors/BadRequestException   | 400         | application/json |
+| models/errors/UnauthorizedException | 401         | application/json |
+| models/errors/ForbiddenException    | 403         | application/json |
+| models/errors/InternalServerError   | 500         | application/json |
+| models/errors/APIException          | 4XX, 5XX    | \*/\*            |
 
 ### Example
 
@@ -481,13 +478,12 @@ package hello.world;
 import java.lang.Exception;
 import org.openapis.openapi.Authelete;
 import org.openapis.openapi.models.components.Security;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400ContentApplication1jsonSchemaException;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400Exception;
+import org.openapis.openapi.models.errors.*;
 import org.openapis.openapi.models.operations.ServiceGetApiResponse;
 
 public class Application {
 
-    public static void main(String[] args) throws 1api1infoGetResponses400Exception, 1api1infoGetResponses400ContentApplication1jsonSchemaException, 1api1infoGetResponses400ContentApplication1jsonSchemaException, Exception {
+    public static void main(String[] args) throws BadRequestException, UnauthorizedException, ForbiddenException, InternalServerError, Exception {
 
         Authelete sdk = Authelete.builder()
                 .security(Security.builder()
@@ -499,7 +495,7 @@ public class Application {
                 .serviceId("<id>")
                 .call();
 
-        if (res.service().isPresent()) {
+        if (res.object().isPresent()) {
             // handle response
         }
     }
@@ -529,13 +525,12 @@ package hello.world;
 import java.lang.Exception;
 import org.openapis.openapi.Authelete;
 import org.openapis.openapi.models.components.Security;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400ContentApplication1jsonSchemaException;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400Exception;
+import org.openapis.openapi.models.errors.*;
 import org.openapis.openapi.models.operations.ServiceGetApiResponse;
 
 public class Application {
 
-    public static void main(String[] args) throws 1api1infoGetResponses400Exception, 1api1infoGetResponses400ContentApplication1jsonSchemaException, 1api1infoGetResponses400ContentApplication1jsonSchemaException, Exception {
+    public static void main(String[] args) throws BadRequestException, UnauthorizedException, ForbiddenException, InternalServerError, Exception {
 
         Authelete sdk = Authelete.builder()
                 .serverIndex(3)
@@ -548,7 +543,7 @@ public class Application {
                 .serviceId("<id>")
                 .call();
 
-        if (res.service().isPresent()) {
+        if (res.object().isPresent()) {
             // handle response
         }
     }
@@ -564,13 +559,12 @@ package hello.world;
 import java.lang.Exception;
 import org.openapis.openapi.Authelete;
 import org.openapis.openapi.models.components.Security;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400ContentApplication1jsonSchemaException;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400Exception;
+import org.openapis.openapi.models.errors.*;
 import org.openapis.openapi.models.operations.ServiceGetApiResponse;
 
 public class Application {
 
-    public static void main(String[] args) throws 1api1infoGetResponses400Exception, 1api1infoGetResponses400ContentApplication1jsonSchemaException, 1api1infoGetResponses400ContentApplication1jsonSchemaException, Exception {
+    public static void main(String[] args) throws BadRequestException, UnauthorizedException, ForbiddenException, InternalServerError, Exception {
 
         Authelete sdk = Authelete.builder()
                 .serverURL("https://br.authlete.com")
@@ -583,7 +577,41 @@ public class Application {
                 .serviceId("<id>")
                 .call();
 
-        if (res.service().isPresent()) {
+        if (res.object().isPresent()) {
+            // handle response
+        }
+    }
+}
+```
+
+### Override Server URL Per-Operation
+
+The server URL can also be overridden on a per-operation basis, provided a server list was specified for the operation. For example:
+```java
+package hello.world;
+
+import java.lang.Exception;
+import org.openapis.openapi.Authelete;
+import org.openapis.openapi.models.components.Security;
+import org.openapis.openapi.models.errors.*;
+import org.openapis.openapi.models.operations.ServiceGetApiResponse;
+
+public class Application {
+
+    public static void main(String[] args) throws BadRequestException, UnauthorizedException, ForbiddenException, InternalServerError, Exception {
+
+        Authelete sdk = Authelete.builder()
+                .security(Security.builder()
+                    .authlete(System.getenv().getOrDefault("AUTHLETE", ""))
+                    .build())
+            .build();
+
+        ServiceGetApiResponse res = sdk.serviceManagement().get()
+                .serverURL("https://br.authlete.com")
+                .serviceId("<id>")
+                .call();
+
+        if (res.object().isPresent()) {
             // handle response
         }
     }

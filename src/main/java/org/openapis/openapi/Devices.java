@@ -6,10 +6,11 @@ package org.openapis.openapi;
 import static org.openapis.openapi.operations.Operations.RequestOperation;
 
 import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1device1authorizationPostRequestBodyContentApplication1jsonSchema;
 import org.openapis.openapi.models.operations.DeviceAuthorizationApiFormRequest;
+import org.openapis.openapi.models.operations.DeviceAuthorizationApiFormRequestBody;
 import org.openapis.openapi.models.operations.DeviceAuthorizationApiFormRequestBuilder;
 import org.openapis.openapi.models.operations.DeviceAuthorizationApiFormResponse;
 import org.openapis.openapi.models.operations.DeviceAuthorizationApiRequest;
@@ -239,9 +240,121 @@ public class Devices {
      * @throws Exception if the API call fails
      */
     public DeviceAuthorizationApiResponse authorize(@Nonnull String serviceId, @Nonnull DeviceAuthorizationApiRequestBody requestBody) throws Exception {
+        return authorize(serviceId, requestBody, null);
+    }
+
+    /**
+     * Process Device Authorization Request
+     * 
+     * <p>This API parses request parameters of a [device authorization request](https://datatracker.ietf.org/doc/html/rfc8628#section-3.1)
+     * and returns necessary data for the authorization server implementation to process the device authorization
+     * request further.
+     * 
+     * <p>&lt;br&gt;
+     * &lt;details&gt;
+     * &lt;summary&gt;Description&lt;/summary&gt;
+     * 
+     * <p>This API is supposed to be called from the within the implementation of the device authorization
+     * endpoint of the service. The service implementation should retrieve the value of `action` from the
+     * response and take the following steps according to the value.
+     * 
+     * <p>**INTERNAL_SERVER_ERROR**
+     * 
+     * <p>When the value of `action` is `INTERNAL_SERVER_ERROR`, it means that the API call from the authorization
+     * server implementation was wrong or that an error occurred in Authlete.
+     * 
+     * <p>In either case, from a viewpoint of the client application, it is an error on the server side.
+     * Therefore, the authorization server implementation should generate a response to the client application
+     * with "500 Internal Server Error"s and `application/json`.
+     * 
+     * <p>The value of `responseContent` is a JSON string which describes t he error, so it can be
+     * used as the entity body of the response.
+     * 
+     * <p>The following illustrates the response which the authorization server implementation should generate
+     * and return to the client application.
+     * 
+     * <p>```
+     * HTTP/1.1 500 Internal Server Error
+     * Content-Type: application/json
+     * Cache-Control: no-store
+     * Pragma: no-cache
+     * 
+     * <p>{responseContent}
+     * ```
+     * 
+     * <p>**BAD_REQUEST**
+     * 
+     * <p>When the value of `action` is `BAD_REQUEST`, it means that the request from the client application
+     * is wrong.
+     * 
+     * <p>The authorization server implementation should generate a response to the client application with
+     * "400 Bad Request" and `application/json`.
+     * 
+     * <p>The value of `responseContent` is a JSON string which describes the error, so it can be used as
+     * the entity body of the response.
+     * 
+     * <p>The following illustrates the response which the service implementation should generate and return
+     * to the client application.
+     * 
+     * <p>```
+     * HTTP/1.1 400 Bad Request
+     * Content-Type: application/json
+     * Cache-Control: no-store
+     * Pragma: no-cache
+     * 
+     * <p>{responseContent}
+     * ```
+     * 
+     * <p>**UNAUTHORIZED**
+     * 
+     * <p>When the value of `action` is `UNAUTHORIZED`, it means that client authentication of the device authorization
+     * request failed.
+     * 
+     * <p>The authorization server implementation should generate a response to the client application with
+     * "401 Unauthorized" and `application/json`.
+     * 
+     * <p>The value of `responseContent` is a JSON string which describes the error, so it can be used as
+     * the entity body of the response.
+     * 
+     * <p>The following illustrates the response which the service implementation must generate and return
+     * to the client application.
+     * 
+     * <p>```
+     * HTTP/1.1 401 Unauthorized
+     * WWW-Authenticate: (challenge)
+     * Content-Type: application/json
+     * Cache-Control: no-store
+     * Pragma: no-cache
+     * 
+     * <p>{responseContent}
+     * ```
+     * 
+     * <p>**OK**
+     * 
+     * <p>When the value of `action` is `OK`, it means that the device authorization request from the client
+     * application is valid.
+     * 
+     * <p>The authorization server implementation should generate a response to the client application with
+     * "200 OK" and `application/json`.
+     * 
+     * <p>The `responseContent` is a JSON string which can be used as the entity body of the response.
+     * 
+     * <p>The following illustrates the response which the authorization server implementation should generate
+     * and return to the client application.
+     * &lt;/details&gt;
+     * 
+     * @param serviceId A service ID.
+     * @param requestBody 
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public DeviceAuthorizationApiResponse authorize(
+            @Nonnull String serviceId, @Nonnull DeviceAuthorizationApiRequestBody requestBody,
+            @Nullable String serverURL) throws Exception {
         DeviceAuthorizationApiRequest request = new DeviceAuthorizationApiRequest(serviceId, requestBody);
         RequestOperation<DeviceAuthorizationApiRequest, DeviceAuthorizationApiResponse> operation
-              = new DeviceAuthorizationApiOperation(sdkConfiguration);
+              = new DeviceAuthorizationApiOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -452,14 +565,126 @@ public class Devices {
      * &lt;/details&gt;
      * 
      * @param serviceId A service ID.
-     * @param 1api1Percent7BserviceIdPercent7D1device1authorizationPostRequestBodyContentApplication1jsonSchema 
+     * @param requestBody 
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public DeviceAuthorizationApiFormResponse authorizeForm(@Nonnull String serviceId, @Nonnull 1api1Percent7BserviceIdPercent7D1device1authorizationPostRequestBodyContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1device1authorizationPostRequestBodyContentApplication1jsonSchema) throws Exception {
-        DeviceAuthorizationApiFormRequest request = new DeviceAuthorizationApiFormRequest(serviceId, 1api1Percent7BserviceIdPercent7D1device1authorizationPostRequestBodyContentApplication1jsonSchema);
+    public DeviceAuthorizationApiFormResponse authorizeForm(@Nonnull String serviceId, @Nonnull DeviceAuthorizationApiFormRequestBody requestBody) throws Exception {
+        return authorizeForm(serviceId, requestBody, null);
+    }
+
+    /**
+     * Process Device Authorization Request
+     * 
+     * <p>This API parses request parameters of a [device authorization request](https://datatracker.ietf.org/doc/html/rfc8628#section-3.1)
+     * and returns necessary data for the authorization server implementation to process the device authorization
+     * request further.
+     * 
+     * <p>&lt;br&gt;
+     * &lt;details&gt;
+     * &lt;summary&gt;Description&lt;/summary&gt;
+     * 
+     * <p>This API is supposed to be called from the within the implementation of the device authorization
+     * endpoint of the service. The service implementation should retrieve the value of `action` from the
+     * response and take the following steps according to the value.
+     * 
+     * <p>**INTERNAL_SERVER_ERROR**
+     * 
+     * <p>When the value of `action` is `INTERNAL_SERVER_ERROR`, it means that the API call from the authorization
+     * server implementation was wrong or that an error occurred in Authlete.
+     * 
+     * <p>In either case, from a viewpoint of the client application, it is an error on the server side.
+     * Therefore, the authorization server implementation should generate a response to the client application
+     * with "500 Internal Server Error"s and `application/json`.
+     * 
+     * <p>The value of `responseContent` is a JSON string which describes t he error, so it can be
+     * used as the entity body of the response.
+     * 
+     * <p>The following illustrates the response which the authorization server implementation should generate
+     * and return to the client application.
+     * 
+     * <p>```
+     * HTTP/1.1 500 Internal Server Error
+     * Content-Type: application/json
+     * Cache-Control: no-store
+     * Pragma: no-cache
+     * 
+     * <p>{responseContent}
+     * ```
+     * 
+     * <p>**BAD_REQUEST**
+     * 
+     * <p>When the value of `action` is `BAD_REQUEST`, it means that the request from the client application
+     * is wrong.
+     * 
+     * <p>The authorization server implementation should generate a response to the client application with
+     * "400 Bad Request" and `application/json`.
+     * 
+     * <p>The value of `responseContent` is a JSON string which describes the error, so it can be used as
+     * the entity body of the response.
+     * 
+     * <p>The following illustrates the response which the service implementation should generate and return
+     * to the client application.
+     * 
+     * <p>```
+     * HTTP/1.1 400 Bad Request
+     * Content-Type: application/json
+     * Cache-Control: no-store
+     * Pragma: no-cache
+     * 
+     * <p>{responseContent}
+     * ```
+     * 
+     * <p>**UNAUTHORIZED**
+     * 
+     * <p>When the value of `action` is `UNAUTHORIZED`, it means that client authentication of the device authorization
+     * request failed.
+     * 
+     * <p>The authorization server implementation should generate a response to the client application with
+     * "401 Unauthorized" and `application/json`.
+     * 
+     * <p>The value of `responseContent` is a JSON string which describes the error, so it can be used as
+     * the entity body of the response.
+     * 
+     * <p>The following illustrates the response which the service implementation must generate and return
+     * to the client application.
+     * 
+     * <p>```
+     * HTTP/1.1 401 Unauthorized
+     * WWW-Authenticate: (challenge)
+     * Content-Type: application/json
+     * Cache-Control: no-store
+     * Pragma: no-cache
+     * 
+     * <p>{responseContent}
+     * ```
+     * 
+     * <p>**OK**
+     * 
+     * <p>When the value of `action` is `OK`, it means that the device authorization request from the client
+     * application is valid.
+     * 
+     * <p>The authorization server implementation should generate a response to the client application with
+     * "200 OK" and `application/json`.
+     * 
+     * <p>The `responseContent` is a JSON string which can be used as the entity body of the response.
+     * 
+     * <p>The following illustrates the response which the authorization server implementation should generate
+     * and return to the client application.
+     * &lt;/details&gt;
+     * 
+     * @param serviceId A service ID.
+     * @param requestBody 
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public DeviceAuthorizationApiFormResponse authorizeForm(
+            @Nonnull String serviceId, @Nonnull DeviceAuthorizationApiFormRequestBody requestBody,
+            @Nullable String serverURL) throws Exception {
+        DeviceAuthorizationApiFormRequest request = new DeviceAuthorizationApiFormRequest(serviceId, requestBody);
         RequestOperation<DeviceAuthorizationApiFormRequest, DeviceAuthorizationApiFormResponse> operation
-              = new DeviceAuthorizationApiFormOperation(sdkConfiguration);
+              = new DeviceAuthorizationApiFormOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 

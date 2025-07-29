@@ -9,13 +9,14 @@ import jakarta.annotation.Nonnull;
 import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
-import org.openapis.openapi.models.components.ServiceInput;
+import org.openapis.openapi.models.operations.ServiceCreateApiRequest;
 import org.openapis.openapi.models.operations.ServiceCreateApiRequestBuilder;
 import org.openapis.openapi.models.operations.ServiceCreateApiResponse;
 import org.openapis.openapi.models.operations.ServiceDeleteApiRequest;
 import org.openapis.openapi.models.operations.ServiceDeleteApiRequestBuilder;
 import org.openapis.openapi.models.operations.ServiceDeleteApiResponse;
 import org.openapis.openapi.models.operations.ServiceUpdateApiRequest;
+import org.openapis.openapi.models.operations.ServiceUpdateApiRequestBody;
 import org.openapis.openapi.models.operations.ServiceUpdateApiRequestBuilder;
 import org.openapis.openapi.models.operations.ServiceUpdateApiResponse;
 import org.openapis.openapi.operations.ServiceCreateApiOperation;
@@ -50,7 +51,7 @@ public class Services {
      * @throws Exception if the API call fails
      */
     public ServiceCreateApiResponse createDirect() throws Exception {
-        return create(null);
+        return create(null, null);
     }
 
     /**
@@ -59,12 +60,13 @@ public class Services {
      * <p>Create a new service.
      * 
      * @param request The request object containing all the parameters for the API call.
+     * @param serverURL Overrides the server URL.
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public ServiceCreateApiResponse create(@Nullable ServiceInput request) throws Exception {
-        RequestOperation<ServiceInput, ServiceCreateApiResponse> operation
-              = new ServiceCreateApiOperation(sdkConfiguration);
+    public ServiceCreateApiResponse create(@Nullable ServiceCreateApiRequest request, @Nullable String serverURL) throws Exception {
+        RequestOperation<ServiceCreateApiRequest, ServiceCreateApiResponse> operation
+              = new ServiceCreateApiOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -89,7 +91,7 @@ public class Services {
      * @throws Exception if the API call fails
      */
     public ServiceUpdateApiResponse update(@Nonnull String serviceId) throws Exception {
-        return update(serviceId, null);
+        return update(serviceId, null, null);
     }
 
     /**
@@ -98,14 +100,17 @@ public class Services {
      * <p>Update a service.
      * 
      * @param serviceId A service ID.
-     * @param service 
+     * @param requestBody 
+     * @param serverURL Overrides the server URL.
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public ServiceUpdateApiResponse update(@Nonnull String serviceId, @Nullable ServiceInput service) throws Exception {
-        ServiceUpdateApiRequest request = new ServiceUpdateApiRequest(serviceId, service);
+    public ServiceUpdateApiResponse update(
+            @Nonnull String serviceId, @Nullable ServiceUpdateApiRequestBody requestBody,
+            @Nullable String serverURL) throws Exception {
+        ServiceUpdateApiRequest request = new ServiceUpdateApiRequest(serviceId, requestBody);
         RequestOperation<ServiceUpdateApiRequest, ServiceUpdateApiResponse> operation
-              = new ServiceUpdateApiOperation(sdkConfiguration);
+              = new ServiceUpdateApiOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -130,9 +135,23 @@ public class Services {
      * @throws Exception if the API call fails
      */
     public ServiceDeleteApiResponse delete(@Nonnull String serviceId) throws Exception {
+        return delete(serviceId, null);
+    }
+
+    /**
+     * Delete Service ⚡
+     * 
+     * <p>Delete a service.
+     * 
+     * @param serviceId A service ID.
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public ServiceDeleteApiResponse delete(@Nonnull String serviceId, @Nullable String serverURL) throws Exception {
         ServiceDeleteApiRequest request = new ServiceDeleteApiRequest(serviceId);
         RequestOperation<ServiceDeleteApiRequest, ServiceDeleteApiResponse> operation
-              = new ServiceDeleteApiOperation(sdkConfiguration);
+              = new ServiceDeleteApiOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 

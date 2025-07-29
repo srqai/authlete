@@ -330,20 +330,20 @@ not have to be changed to support CIBA.
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="backchannel_authentication_api" method="post" path="/api/{serviceId}/backchannel/authentication" -->
 ```java
 package hello.world;
 
 import java.lang.Exception;
 import org.openapis.openapi.Authelete;
 import org.openapis.openapi.models.components.Security;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400ContentApplication1jsonSchemaException;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400Exception;
+import org.openapis.openapi.models.errors.*;
 import org.openapis.openapi.models.operations.BackchannelAuthenticationApiRequestBody;
 import org.openapis.openapi.models.operations.BackchannelAuthenticationApiResponse;
 
 public class Application {
 
-    public static void main(String[] args) throws 1api1infoGetResponses400Exception, 1api1infoGetResponses400ContentApplication1jsonSchemaException, 1api1infoGetResponses400ContentApplication1jsonSchemaException, Exception {
+    public static void main(String[] args) throws BadRequestException, UnauthorizedException, ForbiddenException, InternalServerError, Exception {
 
         Authelete sdk = Authelete.builder()
                 .security(Security.builder()
@@ -373,6 +373,7 @@ public class Application {
 | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
 | `serviceId`                                                                                                   | *String*                                                                                                      | :heavy_check_mark:                                                                                            | A service ID.                                                                                                 |
 | `requestBody`                                                                                                 | [BackchannelAuthenticationApiRequestBody](../../models/operations/BackchannelAuthenticationApiRequestBody.md) | :heavy_check_mark:                                                                                            | N/A                                                                                                           |
+| `serverURL`                                                                                                   | *String*                                                                                                      | :heavy_minus_sign:                                                                                            | An optional server URL to use.                                                                                |
 
 ### Response
 
@@ -380,12 +381,13 @@ public class Application {
 
 ### Errors
 
-| Error Type                                                                   | Status Code                                                                  | Content Type                                                                 |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| models/errors/1api1infoGetResponses400Exception                              | 400                                                                          | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 401, 403                                                                     | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 500                                                                          | application/json                                                             |
-| models/errors/APIException                                                   | 4XX, 5XX                                                                     | \*/\*                                                                        |
+| Error Type                          | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| models/errors/BadRequestException   | 400                                 | application/json                    |
+| models/errors/UnauthorizedException | 401                                 | application/json                    |
+| models/errors/ForbiddenException    | 403                                 | application/json                    |
+| models/errors/InternalServerError   | 500                                 | application/json                    |
+| models/errors/APIException          | 4XX, 5XX                            | \*/\*                               |
 
 ## processForm
 
@@ -703,20 +705,20 @@ not have to be changed to support CIBA.
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="backchannel_authentication_api_form" method="post" path="/api/{serviceId}/backchannel/authentication" -->
 ```java
 package hello.world;
 
 import java.lang.Exception;
 import org.openapis.openapi.Authelete;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1backchannel1authenticationPostRequestBodyContentApplication1jsonSchema;
 import org.openapis.openapi.models.components.Security;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400ContentApplication1jsonSchemaException;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400Exception;
+import org.openapis.openapi.models.errors.*;
+import org.openapis.openapi.models.operations.BackchannelAuthenticationApiFormRequestBody;
 import org.openapis.openapi.models.operations.BackchannelAuthenticationApiFormResponse;
 
 public class Application {
 
-    public static void main(String[] args) throws 1api1infoGetResponses400Exception, 1api1infoGetResponses400ContentApplication1jsonSchemaException, 1api1infoGetResponses400ContentApplication1jsonSchemaException, Exception {
+    public static void main(String[] args) throws BadRequestException, UnauthorizedException, ForbiddenException, InternalServerError, Exception {
 
         Authelete sdk = Authelete.builder()
                 .security(Security.builder()
@@ -726,8 +728,8 @@ public class Application {
 
         BackchannelAuthenticationApiFormResponse res = sdk.ciba().processForm()
                 .serviceId("<id>")
-                .1api1Percent7BserviceIdPercent7D1backchannel1authenticationPostRequestBodyContentApplication1jsonSchema(1api1Percent7BserviceIdPercent7D1backchannel1authenticationPostRequestBodyContentApplication1jsonSchema.builder()
-                    .parameters("<value>")
+                .requestBody(BackchannelAuthenticationApiFormRequestBody.builder()
+                    .clientLocked(false)
                     .build())
                 .call();
 
@@ -740,10 +742,11 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                                                                                                                       | Type                                                                                                                                                                                                                                            | Required                                                                                                                                                                                                                                        | Description                                                                                                                                                                                                                                     |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `serviceId`                                                                                                                                                                                                                                     | *String*                                                                                                                                                                                                                                        | :heavy_check_mark:                                                                                                                                                                                                                              | A service ID.                                                                                                                                                                                                                                   |
-| `1api1Percent7BserviceIdPercent7D1backchannel1authenticationPostRequestBodyContentApplication1jsonSchema`                                                                                                                                       | [1api1Percent7BserviceIdPercent7D1backchannel1authenticationPostRequestBodyContentApplication1jsonSchema](../../models/components/Oneapi1Percent7BserviceIdPercent7D1backchannel1authenticationPostRequestBodyContentApplication1jsonSchema.md) | :heavy_check_mark:                                                                                                                                                                                                                              | N/A                                                                                                                                                                                                                                             |
+| Parameter                                                                                                             | Type                                                                                                                  | Required                                                                                                              | Description                                                                                                           |
+| --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| `serviceId`                                                                                                           | *String*                                                                                                              | :heavy_check_mark:                                                                                                    | A service ID.                                                                                                         |
+| `requestBody`                                                                                                         | [BackchannelAuthenticationApiFormRequestBody](../../models/operations/BackchannelAuthenticationApiFormRequestBody.md) | :heavy_check_mark:                                                                                                    | N/A                                                                                                                   |
+| `serverURL`                                                                                                           | *String*                                                                                                              | :heavy_minus_sign:                                                                                                    | An optional server URL to use.                                                                                        |
 
 ### Response
 
@@ -751,12 +754,13 @@ public class Application {
 
 ### Errors
 
-| Error Type                                                                   | Status Code                                                                  | Content Type                                                                 |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| models/errors/1api1infoGetResponses400Exception                              | 400                                                                          | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 401, 403                                                                     | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 500                                                                          | application/json                                                             |
-| models/errors/APIException                                                   | 4XX, 5XX                                                                     | \*/\*                                                                        |
+| Error Type                          | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| models/errors/BadRequestException   | 400                                 | application/json                    |
+| models/errors/UnauthorizedException | 401                                 | application/json                    |
+| models/errors/ForbiddenException    | 403                                 | application/json                    |
+| models/errors/InternalServerError   | 500                                 | application/json                    |
+| models/errors/APIException          | 4XX, 5XX                            | \*/\*                               |
 
 ## issue
 
@@ -853,20 +857,20 @@ Pragma: no-cache
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="backchannel_authentication_issue_api" method="post" path="/api/{serviceId}/backchannel/authentication/issue" -->
 ```java
 package hello.world;
 
 import java.lang.Exception;
 import org.openapis.openapi.Authelete;
 import org.openapis.openapi.models.components.Security;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400ContentApplication1jsonSchemaException;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400Exception;
+import org.openapis.openapi.models.errors.*;
 import org.openapis.openapi.models.operations.BackchannelAuthenticationIssueApiRequestBody;
 import org.openapis.openapi.models.operations.BackchannelAuthenticationIssueApiResponse;
 
 public class Application {
 
-    public static void main(String[] args) throws 1api1infoGetResponses400Exception, 1api1infoGetResponses400ContentApplication1jsonSchemaException, 1api1infoGetResponses400ContentApplication1jsonSchemaException, Exception {
+    public static void main(String[] args) throws BadRequestException, UnauthorizedException, ForbiddenException, InternalServerError, Exception {
 
         Authelete sdk = Authelete.builder()
                 .security(Security.builder()
@@ -894,6 +898,7 @@ public class Application {
 | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
 | `serviceId`                                                                                                             | *String*                                                                                                                | :heavy_check_mark:                                                                                                      | A service ID.                                                                                                           |
 | `requestBody`                                                                                                           | [BackchannelAuthenticationIssueApiRequestBody](../../models/operations/BackchannelAuthenticationIssueApiRequestBody.md) | :heavy_check_mark:                                                                                                      | N/A                                                                                                                     |
+| `serverURL`                                                                                                             | *String*                                                                                                                | :heavy_minus_sign:                                                                                                      | An optional server URL to use.                                                                                          |
 
 ### Response
 
@@ -901,12 +906,13 @@ public class Application {
 
 ### Errors
 
-| Error Type                                                                   | Status Code                                                                  | Content Type                                                                 |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| models/errors/1api1infoGetResponses400Exception                              | 400                                                                          | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 401, 403                                                                     | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 500                                                                          | application/json                                                             |
-| models/errors/APIException                                                   | 4XX, 5XX                                                                     | \*/\*                                                                        |
+| Error Type                          | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| models/errors/BadRequestException   | 400                                 | application/json                    |
+| models/errors/UnauthorizedException | 401                                 | application/json                    |
+| models/errors/ForbiddenException    | 403                                 | application/json                    |
+| models/errors/InternalServerError   | 500                                 | application/json                    |
+| models/errors/APIException          | 4XX, 5XX                            | \*/\*                               |
 
 ## issueForm
 
@@ -1003,20 +1009,20 @@ Pragma: no-cache
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="backchannel_authentication_issue_api_form" method="post" path="/api/{serviceId}/backchannel/authentication/issue" -->
 ```java
 package hello.world;
 
 import java.lang.Exception;
 import org.openapis.openapi.Authelete;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1backchannel1authentication1issuePostRequestBodyContentApplication1jsonSchema;
 import org.openapis.openapi.models.components.Security;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400ContentApplication1jsonSchemaException;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400Exception;
+import org.openapis.openapi.models.errors.*;
+import org.openapis.openapi.models.operations.BackchannelAuthenticationIssueApiFormRequestBody;
 import org.openapis.openapi.models.operations.BackchannelAuthenticationIssueApiFormResponse;
 
 public class Application {
 
-    public static void main(String[] args) throws 1api1infoGetResponses400Exception, 1api1infoGetResponses400ContentApplication1jsonSchemaException, 1api1infoGetResponses400ContentApplication1jsonSchemaException, Exception {
+    public static void main(String[] args) throws BadRequestException, UnauthorizedException, ForbiddenException, InternalServerError, Exception {
 
         Authelete sdk = Authelete.builder()
                 .security(Security.builder()
@@ -1026,8 +1032,8 @@ public class Application {
 
         BackchannelAuthenticationIssueApiFormResponse res = sdk.ciba().issueForm()
                 .serviceId("<id>")
-                .1api1Percent7BserviceIdPercent7D1backchannel1authentication1issuePostRequestBodyContentApplication1jsonSchema(1api1Percent7BserviceIdPercent7D1backchannel1authentication1issuePostRequestBodyContentApplication1jsonSchema.builder()
-                    .ticket("<value>")
+                .requestBody(BackchannelAuthenticationIssueApiFormRequestBody.builder()
+                    .clientLocked(true)
                     .build())
                 .call();
 
@@ -1040,10 +1046,11 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                                                                                                                                   | Type                                                                                                                                                                                                                                                        | Required                                                                                                                                                                                                                                                    | Description                                                                                                                                                                                                                                                 |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `serviceId`                                                                                                                                                                                                                                                 | *String*                                                                                                                                                                                                                                                    | :heavy_check_mark:                                                                                                                                                                                                                                          | A service ID.                                                                                                                                                                                                                                               |
-| `1api1Percent7BserviceIdPercent7D1backchannel1authentication1issuePostRequestBodyContentApplication1jsonSchema`                                                                                                                                             | [1api1Percent7BserviceIdPercent7D1backchannel1authentication1issuePostRequestBodyContentApplication1jsonSchema](../../models/components/Oneapi1Percent7BserviceIdPercent7D1backchannel1authentication1issuePostRequestBodyContentApplication1jsonSchema.md) | :heavy_check_mark:                                                                                                                                                                                                                                          | N/A                                                                                                                                                                                                                                                         |
+| Parameter                                                                                                                       | Type                                                                                                                            | Required                                                                                                                        | Description                                                                                                                     |
+| ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| `serviceId`                                                                                                                     | *String*                                                                                                                        | :heavy_check_mark:                                                                                                              | A service ID.                                                                                                                   |
+| `requestBody`                                                                                                                   | [BackchannelAuthenticationIssueApiFormRequestBody](../../models/operations/BackchannelAuthenticationIssueApiFormRequestBody.md) | :heavy_check_mark:                                                                                                              | N/A                                                                                                                             |
+| `serverURL`                                                                                                                     | *String*                                                                                                                        | :heavy_minus_sign:                                                                                                              | An optional server URL to use.                                                                                                  |
 
 ### Response
 
@@ -1051,12 +1058,13 @@ public class Application {
 
 ### Errors
 
-| Error Type                                                                   | Status Code                                                                  | Content Type                                                                 |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| models/errors/1api1infoGetResponses400Exception                              | 400                                                                          | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 401, 403                                                                     | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 500                                                                          | application/json                                                             |
-| models/errors/APIException                                                   | 4XX, 5XX                                                                     | \*/\*                                                                        |
+| Error Type                          | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| models/errors/BadRequestException   | 400                                 | application/json                    |
+| models/errors/UnauthorizedException | 401                                 | application/json                    |
+| models/errors/ForbiddenException    | 403                                 | application/json                    |
+| models/errors/InternalServerError   | 500                                 | application/json                    |
+| models/errors/APIException          | 4XX, 5XX                            | \*/\*                               |
 
 ## fail
 
@@ -1100,19 +1108,19 @@ server implementation should return a "403 Forbidden" response to the client app
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="backchannel_authentication_fail_api" method="post" path="/api/{serviceId}/backchannel/authentication/fail" -->
 ```java
 package hello.world;
 
 import java.lang.Exception;
 import org.openapis.openapi.Authelete;
 import org.openapis.openapi.models.components.Security;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400ContentApplication1jsonSchemaException;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400Exception;
+import org.openapis.openapi.models.errors.*;
 import org.openapis.openapi.models.operations.*;
 
 public class Application {
 
-    public static void main(String[] args) throws 1api1infoGetResponses400Exception, 1api1infoGetResponses400ContentApplication1jsonSchemaException, 1api1infoGetResponses400ContentApplication1jsonSchemaException, Exception {
+    public static void main(String[] args) throws BadRequestException, UnauthorizedException, ForbiddenException, InternalServerError, Exception {
 
         Authelete sdk = Authelete.builder()
                 .security(Security.builder()
@@ -1141,6 +1149,7 @@ public class Application {
 | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
 | `serviceId`                                                                                                           | *String*                                                                                                              | :heavy_check_mark:                                                                                                    | A service ID.                                                                                                         |
 | `requestBody`                                                                                                         | [BackchannelAuthenticationFailApiRequestBody](../../models/operations/BackchannelAuthenticationFailApiRequestBody.md) | :heavy_check_mark:                                                                                                    | N/A                                                                                                                   |
+| `serverURL`                                                                                                           | *String*                                                                                                              | :heavy_minus_sign:                                                                                                    | An optional server URL to use.                                                                                        |
 
 ### Response
 
@@ -1148,12 +1157,13 @@ public class Application {
 
 ### Errors
 
-| Error Type                                                                   | Status Code                                                                  | Content Type                                                                 |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| models/errors/1api1infoGetResponses400Exception                              | 400                                                                          | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 401, 403                                                                     | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 500                                                                          | application/json                                                             |
-| models/errors/APIException                                                   | 4XX, 5XX                                                                     | \*/\*                                                                        |
+| Error Type                          | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| models/errors/BadRequestException   | 400                                 | application/json                    |
+| models/errors/UnauthorizedException | 401                                 | application/json                    |
+| models/errors/ForbiddenException    | 403                                 | application/json                    |
+| models/errors/InternalServerError   | 500                                 | application/json                    |
+| models/errors/APIException          | 4XX, 5XX                            | \*/\*                               |
 
 ## failForm
 
@@ -1197,19 +1207,20 @@ server implementation should return a "403 Forbidden" response to the client app
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="backchannel_authentication_fail_api_form" method="post" path="/api/{serviceId}/backchannel/authentication/fail" -->
 ```java
 package hello.world;
 
 import java.lang.Exception;
 import org.openapis.openapi.Authelete;
-import org.openapis.openapi.models.components.*;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400ContentApplication1jsonSchemaException;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400Exception;
+import org.openapis.openapi.models.components.Security;
+import org.openapis.openapi.models.errors.*;
+import org.openapis.openapi.models.operations.BackchannelAuthenticationFailApiFormRequestBody;
 import org.openapis.openapi.models.operations.BackchannelAuthenticationFailApiFormResponse;
 
 public class Application {
 
-    public static void main(String[] args) throws 1api1infoGetResponses400Exception, 1api1infoGetResponses400ContentApplication1jsonSchemaException, 1api1infoGetResponses400ContentApplication1jsonSchemaException, Exception {
+    public static void main(String[] args) throws BadRequestException, UnauthorizedException, ForbiddenException, InternalServerError, Exception {
 
         Authelete sdk = Authelete.builder()
                 .security(Security.builder()
@@ -1219,9 +1230,8 @@ public class Application {
 
         BackchannelAuthenticationFailApiFormResponse res = sdk.ciba().failForm()
                 .serviceId("<id>")
-                .1api1Percent7BserviceIdPercent7D1backchannel1authentication1failPostRequestBodyContentApplication1jsonSchema(1api1Percent7BserviceIdPercent7D1backchannel1authentication1failPostRequestBodyContentApplication1jsonSchema.builder()
-                    .ticket("<value>")
-                    .reason(1api1Percent7BserviceIdPercent7D1backchannel1authentication1failPostRequestBodyContentApplication1jsonSchemaReason.MISSING_USER_CODE)
+                .requestBody(BackchannelAuthenticationFailApiFormRequestBody.builder()
+                    .clientLocked(false)
                     .build())
                 .call();
 
@@ -1234,10 +1244,11 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                                                                                                                                 | Type                                                                                                                                                                                                                                                      | Required                                                                                                                                                                                                                                                  | Description                                                                                                                                                                                                                                               |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `serviceId`                                                                                                                                                                                                                                               | *String*                                                                                                                                                                                                                                                  | :heavy_check_mark:                                                                                                                                                                                                                                        | A service ID.                                                                                                                                                                                                                                             |
-| `1api1Percent7BserviceIdPercent7D1backchannel1authentication1failPostRequestBodyContentApplication1jsonSchema`                                                                                                                                            | [1api1Percent7BserviceIdPercent7D1backchannel1authentication1failPostRequestBodyContentApplication1jsonSchema](../../models/components/Oneapi1Percent7BserviceIdPercent7D1backchannel1authentication1failPostRequestBodyContentApplication1jsonSchema.md) | :heavy_check_mark:                                                                                                                                                                                                                                        | N/A                                                                                                                                                                                                                                                       |
+| Parameter                                                                                                                     | Type                                                                                                                          | Required                                                                                                                      | Description                                                                                                                   |
+| ----------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| `serviceId`                                                                                                                   | *String*                                                                                                                      | :heavy_check_mark:                                                                                                            | A service ID.                                                                                                                 |
+| `requestBody`                                                                                                                 | [BackchannelAuthenticationFailApiFormRequestBody](../../models/operations/BackchannelAuthenticationFailApiFormRequestBody.md) | :heavy_check_mark:                                                                                                            | N/A                                                                                                                           |
+| `serverURL`                                                                                                                   | *String*                                                                                                                      | :heavy_minus_sign:                                                                                                            | An optional server URL to use.                                                                                                |
 
 ### Response
 
@@ -1245,12 +1256,13 @@ public class Application {
 
 ### Errors
 
-| Error Type                                                                   | Status Code                                                                  | Content Type                                                                 |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| models/errors/1api1infoGetResponses400Exception                              | 400                                                                          | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 401, 403                                                                     | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 500                                                                          | application/json                                                             |
-| models/errors/APIException                                                   | 4XX, 5XX                                                                     | \*/\*                                                                        |
+| Error Type                          | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| models/errors/BadRequestException   | 400                                 | application/json                    |
+| models/errors/UnauthorizedException | 401                                 | application/json                    |
+| models/errors/ForbiddenException    | 403                                 | application/json                    |
+| models/errors/InternalServerError   | 500                                 | application/json                    |
+| models/errors/APIException          | 4XX, 5XX                            | \*/\*                               |
 
 ## completeBackchannelAuth
 
@@ -1366,19 +1378,19 @@ Content-Type: application/json
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="backchannel_authentication_complete_api" method="post" path="/api/{serviceId}/backchannel/authentication/complete" -->
 ```java
 package hello.world;
 
 import java.lang.Exception;
 import org.openapis.openapi.Authelete;
 import org.openapis.openapi.models.components.Security;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400ContentApplication1jsonSchemaException;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400Exception;
+import org.openapis.openapi.models.errors.*;
 import org.openapis.openapi.models.operations.*;
 
 public class Application {
 
-    public static void main(String[] args) throws 1api1infoGetResponses400Exception, 1api1infoGetResponses400ContentApplication1jsonSchemaException, 1api1infoGetResponses400ContentApplication1jsonSchemaException, Exception {
+    public static void main(String[] args) throws BadRequestException, UnauthorizedException, ForbiddenException, InternalServerError, Exception {
 
         Authelete sdk = Authelete.builder()
                 .security(Security.builder()
@@ -1408,6 +1420,7 @@ public class Application {
 | ----------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
 | `serviceId`                                                                                                                   | *String*                                                                                                                      | :heavy_check_mark:                                                                                                            | A service ID.                                                                                                                 |
 | `requestBody`                                                                                                                 | [BackchannelAuthenticationCompleteApiRequestBody](../../models/operations/BackchannelAuthenticationCompleteApiRequestBody.md) | :heavy_check_mark:                                                                                                            | N/A                                                                                                                           |
+| `serverURL`                                                                                                                   | *String*                                                                                                                      | :heavy_minus_sign:                                                                                                            | An optional server URL to use.                                                                                                |
 
 ### Response
 
@@ -1415,12 +1428,13 @@ public class Application {
 
 ### Errors
 
-| Error Type                                                                   | Status Code                                                                  | Content Type                                                                 |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| models/errors/1api1infoGetResponses400Exception                              | 400                                                                          | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 401, 403                                                                     | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 500                                                                          | application/json                                                             |
-| models/errors/APIException                                                   | 4XX, 5XX                                                                     | \*/\*                                                                        |
+| Error Type                          | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| models/errors/BadRequestException   | 400                                 | application/json                    |
+| models/errors/UnauthorizedException | 401                                 | application/json                    |
+| models/errors/ForbiddenException    | 403                                 | application/json                    |
+| models/errors/InternalServerError   | 500                                 | application/json                    |
+| models/errors/APIException          | 4XX, 5XX                            | \*/\*                               |
 
 ## completeBackchannelAuthForm
 
@@ -1536,19 +1550,20 @@ Content-Type: application/json
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="backchannel_authentication_complete_api_form" method="post" path="/api/{serviceId}/backchannel/authentication/complete" -->
 ```java
 package hello.world;
 
 import java.lang.Exception;
 import org.openapis.openapi.Authelete;
-import org.openapis.openapi.models.components.*;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400ContentApplication1jsonSchemaException;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400Exception;
+import org.openapis.openapi.models.components.Security;
+import org.openapis.openapi.models.errors.*;
+import org.openapis.openapi.models.operations.BackchannelAuthenticationCompleteApiFormRequestBody;
 import org.openapis.openapi.models.operations.BackchannelAuthenticationCompleteApiFormResponse;
 
 public class Application {
 
-    public static void main(String[] args) throws 1api1infoGetResponses400Exception, 1api1infoGetResponses400ContentApplication1jsonSchemaException, 1api1infoGetResponses400ContentApplication1jsonSchemaException, Exception {
+    public static void main(String[] args) throws BadRequestException, UnauthorizedException, ForbiddenException, InternalServerError, Exception {
 
         Authelete sdk = Authelete.builder()
                 .security(Security.builder()
@@ -1558,10 +1573,8 @@ public class Application {
 
         BackchannelAuthenticationCompleteApiFormResponse res = sdk.ciba().completeBackchannelAuthForm()
                 .serviceId("<id>")
-                .1api1Percent7BserviceIdPercent7D1backchannel1authentication1completePostRequestBodyContentApplication1jsonSchema(1api1Percent7BserviceIdPercent7D1backchannel1authentication1completePostRequestBodyContentApplication1jsonSchema.builder()
-                    .ticket("<value>")
-                    .result(1api1Percent7BserviceIdPercent7D1backchannel1authentication1completePostRequestBodyContentApplication1jsonSchemaResult.TRANSACTION_FAILED)
-                    .subject("<value>")
+                .requestBody(BackchannelAuthenticationCompleteApiFormRequestBody.builder()
+                    .clientLocked(true)
                     .build())
                 .call();
 
@@ -1574,10 +1587,11 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                                                                                                                                         | Type                                                                                                                                                                                                                                                              | Required                                                                                                                                                                                                                                                          | Description                                                                                                                                                                                                                                                       |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `serviceId`                                                                                                                                                                                                                                                       | *String*                                                                                                                                                                                                                                                          | :heavy_check_mark:                                                                                                                                                                                                                                                | A service ID.                                                                                                                                                                                                                                                     |
-| `1api1Percent7BserviceIdPercent7D1backchannel1authentication1completePostRequestBodyContentApplication1jsonSchema`                                                                                                                                                | [1api1Percent7BserviceIdPercent7D1backchannel1authentication1completePostRequestBodyContentApplication1jsonSchema](../../models/components/Oneapi1Percent7BserviceIdPercent7D1backchannel1authentication1completePostRequestBodyContentApplication1jsonSchema.md) | :heavy_check_mark:                                                                                                                                                                                                                                                | N/A                                                                                                                                                                                                                                                               |
+| Parameter                                                                                                                             | Type                                                                                                                                  | Required                                                                                                                              | Description                                                                                                                           |
+| ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| `serviceId`                                                                                                                           | *String*                                                                                                                              | :heavy_check_mark:                                                                                                                    | A service ID.                                                                                                                         |
+| `requestBody`                                                                                                                         | [BackchannelAuthenticationCompleteApiFormRequestBody](../../models/operations/BackchannelAuthenticationCompleteApiFormRequestBody.md) | :heavy_check_mark:                                                                                                                    | N/A                                                                                                                                   |
+| `serverURL`                                                                                                                           | *String*                                                                                                                              | :heavy_minus_sign:                                                                                                                    | An optional server URL to use.                                                                                                        |
 
 ### Response
 
@@ -1585,9 +1599,10 @@ public class Application {
 
 ### Errors
 
-| Error Type                                                                   | Status Code                                                                  | Content Type                                                                 |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| models/errors/1api1infoGetResponses400Exception                              | 400                                                                          | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 401, 403                                                                     | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 500                                                                          | application/json                                                             |
-| models/errors/APIException                                                   | 4XX, 5XX                                                                     | \*/\*                                                                        |
+| Error Type                          | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| models/errors/BadRequestException   | 400                                 | application/json                    |
+| models/errors/UnauthorizedException | 401                                 | application/json                    |
+| models/errors/ForbiddenException    | 403                                 | application/json                    |
+| models/errors/InternalServerError   | 500                                 | application/json                    |
+| models/errors/APIException          | 4XX, 5XX                            | \*/\*                               |

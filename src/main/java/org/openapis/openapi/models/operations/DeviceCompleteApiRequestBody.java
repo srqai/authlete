@@ -14,7 +14,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
-import org.openapis.openapi.models.components.Property;
 import org.openapis.openapi.utils.Utils;
 
 
@@ -71,7 +70,7 @@ public class DeviceCompleteApiRequestBody {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("properties")
-    private List<Property> properties;
+    private List<DeviceCompleteApiProperty> properties;
 
     /**
      * Scopes to replace the scopes specified in the original device authorization request with.
@@ -130,7 +129,7 @@ public class DeviceCompleteApiRequestBody {
             @JsonProperty("authTime") @Nullable Long authTime,
             @JsonProperty("acr") @Nullable String acr,
             @JsonProperty("claims") @Nullable String claims,
-            @JsonProperty("properties") @Nullable List<Property> properties,
+            @JsonProperty("properties") @Nullable List<DeviceCompleteApiProperty> properties,
             @JsonProperty("scopes") @Nullable List<String> scopes,
             @JsonProperty("errorDescription") @Nullable String errorDescription,
             @JsonProperty("errorUri") @Nullable String errorUri,
@@ -220,7 +219,7 @@ public class DeviceCompleteApiRequestBody {
     /**
      * The extra properties associated with the access token.
      */
-    public Optional<List<Property>> properties() {
+    public Optional<List<DeviceCompleteApiProperty>> properties() {
         return Optional.ofNullable(this.properties);
     }
 
@@ -344,7 +343,7 @@ public class DeviceCompleteApiRequestBody {
     /**
      * The extra properties associated with the access token.
      */
-    public DeviceCompleteApiRequestBody withProperties(@Nullable List<Property> properties) {
+    public DeviceCompleteApiRequestBody withProperties(@Nullable List<DeviceCompleteApiProperty> properties) {
         this.properties = properties;
         return this;
     }
@@ -482,7 +481,7 @@ public class DeviceCompleteApiRequestBody {
 
         private String claims;
 
-        private List<Property> properties;
+        private List<DeviceCompleteApiProperty> properties;
 
         private List<String> scopes;
 
@@ -560,7 +559,7 @@ public class DeviceCompleteApiRequestBody {
         /**
          * The extra properties associated with the access token.
          */
-        public Builder properties(@Nullable List<Property> properties) {
+        public Builder properties(@Nullable List<DeviceCompleteApiProperty> properties) {
             this.properties = properties;
             return this;
         }

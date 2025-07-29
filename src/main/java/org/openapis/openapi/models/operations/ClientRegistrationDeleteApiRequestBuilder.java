@@ -6,6 +6,7 @@ package org.openapis.openapi.models.operations;
 import static org.openapis.openapi.operations.Operations.RequestOperation;
 
 import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
@@ -16,6 +17,7 @@ public class ClientRegistrationDeleteApiRequestBuilder {
     private final SDKConfiguration sdkConfiguration;
     private final ClientRegistrationDeleteApiRequest.Builder pojoBuilder;
     private ClientRegistrationDeleteApiRequest request;
+    private String serverURL;
     private boolean _setterCalled;
 
     public ClientRegistrationDeleteApiRequestBuilder(SDKConfiguration sdkConfiguration) {
@@ -35,6 +37,11 @@ public class ClientRegistrationDeleteApiRequestBuilder {
         return this;
     }
 
+    public ClientRegistrationDeleteApiRequestBuilder serverURL(@Nullable String serverURL) {
+        this.serverURL = serverURL;
+        return this;
+    }
+
     private ClientRegistrationDeleteApiRequest _buildRequest() {
         if (this._setterCalled) {
             this.request = this.pojoBuilder.build();
@@ -48,7 +55,7 @@ public class ClientRegistrationDeleteApiRequestBuilder {
     */
     public ClientRegistrationDeleteApiResponse call() throws Exception {
         RequestOperation<ClientRegistrationDeleteApiRequest, ClientRegistrationDeleteApiResponse> operation
-              = new ClientRegistrationDeleteApiOperation(sdkConfiguration);
+              = new ClientRegistrationDeleteApiOperation(sdkConfiguration, serverURL);
 
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }

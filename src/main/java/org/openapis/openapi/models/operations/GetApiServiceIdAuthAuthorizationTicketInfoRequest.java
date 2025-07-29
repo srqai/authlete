@@ -13,35 +13,19 @@ import org.openapis.openapi.utils.Utils;
 
 
 public class GetApiServiceIdAuthAuthorizationTicketInfoRequest {
-    /**
-     * A service ID
-     */
+
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=serviceId")
     private String serviceId;
 
-
-    @SpeakeasyMetadata("request:mediaType=application/json")
-    private GetApiServiceIdAuthAuthorizationTicketInfoRequestBody requestBody;
-
     @JsonCreator
     public GetApiServiceIdAuthAuthorizationTicketInfoRequest(
-            @Nonnull String serviceId,
-            @Nonnull GetApiServiceIdAuthAuthorizationTicketInfoRequestBody requestBody) {
+            @Nonnull String serviceId) {
         this.serviceId = Optional.ofNullable(serviceId)
             .orElseThrow(() -> new IllegalArgumentException("serviceId cannot be null"));
-        this.requestBody = Optional.ofNullable(requestBody)
-            .orElseThrow(() -> new IllegalArgumentException("requestBody cannot be null"));
     }
 
-    /**
-     * A service ID
-     */
     public String serviceId() {
         return this.serviceId;
-    }
-
-    public GetApiServiceIdAuthAuthorizationTicketInfoRequestBody requestBody() {
-        return this.requestBody;
     }
 
     public static Builder builder() {
@@ -49,17 +33,8 @@ public class GetApiServiceIdAuthAuthorizationTicketInfoRequest {
     }
 
 
-    /**
-     * A service ID
-     */
     public GetApiServiceIdAuthAuthorizationTicketInfoRequest withServiceId(@Nonnull String serviceId) {
         this.serviceId = Utils.checkNotNull(serviceId, "serviceId");
-        return this;
-    }
-
-
-    public GetApiServiceIdAuthAuthorizationTicketInfoRequest withRequestBody(@Nonnull GetApiServiceIdAuthAuthorizationTicketInfoRequestBody requestBody) {
-        this.requestBody = Utils.checkNotNull(requestBody, "requestBody");
         return this;
     }
 
@@ -74,21 +49,19 @@ public class GetApiServiceIdAuthAuthorizationTicketInfoRequest {
         }
         GetApiServiceIdAuthAuthorizationTicketInfoRequest other = (GetApiServiceIdAuthAuthorizationTicketInfoRequest) o;
         return 
-            Utils.enhancedDeepEquals(this.serviceId, other.serviceId) &&
-            Utils.enhancedDeepEquals(this.requestBody, other.requestBody);
+            Utils.enhancedDeepEquals(this.serviceId, other.serviceId);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            serviceId, requestBody);
+            serviceId);
     }
     
     @Override
     public String toString() {
         return Utils.toString(GetApiServiceIdAuthAuthorizationTicketInfoRequest.class,
-                "serviceId", serviceId,
-                "requestBody", requestBody);
+                "serviceId", serviceId);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -96,28 +69,18 @@ public class GetApiServiceIdAuthAuthorizationTicketInfoRequest {
 
         private String serviceId;
 
-        private GetApiServiceIdAuthAuthorizationTicketInfoRequestBody requestBody;
-
         private Builder() {
           // force use of static builder() method
         }
 
-        /**
-         * A service ID
-         */
         public Builder serviceId(@Nonnull String serviceId) {
             this.serviceId = Utils.checkNotNull(serviceId, "serviceId");
             return this;
         }
 
-        public Builder requestBody(@Nonnull GetApiServiceIdAuthAuthorizationTicketInfoRequestBody requestBody) {
-            this.requestBody = Utils.checkNotNull(requestBody, "requestBody");
-            return this;
-        }
-
         public GetApiServiceIdAuthAuthorizationTicketInfoRequest build() {
             return new GetApiServiceIdAuthAuthorizationTicketInfoRequest(
-                serviceId, requestBody);
+                serviceId);
         }
 
     }

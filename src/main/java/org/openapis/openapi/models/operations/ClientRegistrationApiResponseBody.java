@@ -11,7 +11,6 @@ import jakarta.annotation.Nullable;
 import java.lang.Override;
 import java.lang.String;
 import java.util.Optional;
-import org.openapis.openapi.models.components.Client;
 import org.openapis.openapi.utils.Utils;
 
 
@@ -48,7 +47,7 @@ public class ClientRegistrationApiResponseBody {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("client")
-    private Client client;
+    private ClientRegistrationApiClient client;
 
     @JsonCreator
     public ClientRegistrationApiResponseBody(
@@ -56,7 +55,7 @@ public class ClientRegistrationApiResponseBody {
             @JsonProperty("resultMessage") @Nullable String resultMessage,
             @JsonProperty("action") @Nullable ClientRegistrationApiAction action,
             @JsonProperty("responseContent") @Nullable String responseContent,
-            @JsonProperty("client") @Nullable Client client) {
+            @JsonProperty("client") @Nullable ClientRegistrationApiClient client) {
         this.resultCode = resultCode;
         this.resultMessage = resultMessage;
         this.action = action;
@@ -98,7 +97,7 @@ public class ClientRegistrationApiResponseBody {
         return Optional.ofNullable(this.responseContent);
     }
 
-    public Optional<Client> client() {
+    public Optional<ClientRegistrationApiClient> client() {
         return Optional.ofNullable(this.client);
     }
 
@@ -144,7 +143,7 @@ public class ClientRegistrationApiResponseBody {
     }
 
 
-    public ClientRegistrationApiResponseBody withClient(@Nullable Client client) {
+    public ClientRegistrationApiResponseBody withClient(@Nullable ClientRegistrationApiClient client) {
         this.client = client;
         return this;
     }
@@ -195,7 +194,7 @@ public class ClientRegistrationApiResponseBody {
 
         private String responseContent;
 
-        private Client client;
+        private ClientRegistrationApiClient client;
 
         private Builder() {
           // force use of static builder() method
@@ -234,7 +233,7 @@ public class ClientRegistrationApiResponseBody {
             return this;
         }
 
-        public Builder client(@Nullable Client client) {
+        public Builder client(@Nullable ClientRegistrationApiClient client) {
             this.client = client;
             return this;
         }

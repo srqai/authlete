@@ -6,6 +6,7 @@ package org.openapis.openapi.models.operations;
 import static org.openapis.openapi.operations.Operations.RequestOperation;
 
 import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
@@ -16,6 +17,7 @@ public class AuthTokenRevokeApiRequestBuilder {
     private final SDKConfiguration sdkConfiguration;
     private final AuthTokenRevokeApiRequest.Builder pojoBuilder;
     private AuthTokenRevokeApiRequest request;
+    private String serverURL;
     private boolean _setterCalled;
 
     public AuthTokenRevokeApiRequestBuilder(SDKConfiguration sdkConfiguration) {
@@ -35,6 +37,11 @@ public class AuthTokenRevokeApiRequestBuilder {
         return this;
     }
 
+    public AuthTokenRevokeApiRequestBuilder serverURL(@Nullable String serverURL) {
+        this.serverURL = serverURL;
+        return this;
+    }
+
     private AuthTokenRevokeApiRequest _buildRequest() {
         if (this._setterCalled) {
             this.request = this.pojoBuilder.build();
@@ -48,7 +55,7 @@ public class AuthTokenRevokeApiRequestBuilder {
     */
     public AuthTokenRevokeApiResponse call() throws Exception {
         RequestOperation<AuthTokenRevokeApiRequest, AuthTokenRevokeApiResponse> operation
-              = new AuthTokenRevokeApiOperation(sdkConfiguration);
+              = new AuthTokenRevokeApiOperation(sdkConfiguration, serverURL);
 
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }

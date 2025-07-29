@@ -6,6 +6,7 @@ package org.openapis.openapi.models.operations;
 import static org.openapis.openapi.operations.Operations.RequestOperation;
 
 import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
@@ -16,6 +17,7 @@ public class ClientExtensionRequestablesScopesUpdateApiRequestBuilder {
     private final SDKConfiguration sdkConfiguration;
     private final ClientExtensionRequestablesScopesUpdateApiRequest.Builder pojoBuilder;
     private ClientExtensionRequestablesScopesUpdateApiRequest request;
+    private String serverURL;
     private boolean _setterCalled;
 
     public ClientExtensionRequestablesScopesUpdateApiRequestBuilder(SDKConfiguration sdkConfiguration) {
@@ -41,6 +43,11 @@ public class ClientExtensionRequestablesScopesUpdateApiRequestBuilder {
         return this;
     }
 
+    public ClientExtensionRequestablesScopesUpdateApiRequestBuilder serverURL(@Nullable String serverURL) {
+        this.serverURL = serverURL;
+        return this;
+    }
+
     private ClientExtensionRequestablesScopesUpdateApiRequest _buildRequest() {
         if (this._setterCalled) {
             this.request = this.pojoBuilder.build();
@@ -54,7 +61,7 @@ public class ClientExtensionRequestablesScopesUpdateApiRequestBuilder {
     */
     public ClientExtensionRequestablesScopesUpdateApiResponse call() throws Exception {
         RequestOperation<ClientExtensionRequestablesScopesUpdateApiRequest, ClientExtensionRequestablesScopesUpdateApiResponse> operation
-              = new ClientExtensionRequestablesScopesUpdateApiOperation(sdkConfiguration);
+              = new ClientExtensionRequestablesScopesUpdateApiOperation(sdkConfiguration, serverURL);
 
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }

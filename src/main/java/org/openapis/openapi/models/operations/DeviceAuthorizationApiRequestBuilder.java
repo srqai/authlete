@@ -6,6 +6,7 @@ package org.openapis.openapi.models.operations;
 import static org.openapis.openapi.operations.Operations.RequestOperation;
 
 import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
@@ -16,6 +17,7 @@ public class DeviceAuthorizationApiRequestBuilder {
     private final SDKConfiguration sdkConfiguration;
     private final DeviceAuthorizationApiRequest.Builder pojoBuilder;
     private DeviceAuthorizationApiRequest request;
+    private String serverURL;
     private boolean _setterCalled;
 
     public DeviceAuthorizationApiRequestBuilder(SDKConfiguration sdkConfiguration) {
@@ -35,6 +37,11 @@ public class DeviceAuthorizationApiRequestBuilder {
         return this;
     }
 
+    public DeviceAuthorizationApiRequestBuilder serverURL(@Nullable String serverURL) {
+        this.serverURL = serverURL;
+        return this;
+    }
+
     private DeviceAuthorizationApiRequest _buildRequest() {
         if (this._setterCalled) {
             this.request = this.pojoBuilder.build();
@@ -48,7 +55,7 @@ public class DeviceAuthorizationApiRequestBuilder {
     */
     public DeviceAuthorizationApiResponse call() throws Exception {
         RequestOperation<DeviceAuthorizationApiRequest, DeviceAuthorizationApiResponse> operation
-              = new DeviceAuthorizationApiOperation(sdkConfiguration);
+              = new DeviceAuthorizationApiOperation(sdkConfiguration, serverURL);
 
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }

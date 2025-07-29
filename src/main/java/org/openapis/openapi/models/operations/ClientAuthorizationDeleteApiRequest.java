@@ -14,6 +14,12 @@ import org.openapis.openapi.utils.Utils;
 
 public class ClientAuthorizationDeleteApiRequest {
     /**
+     * Unique user ID of an end-user.
+     */
+    @SpeakeasyMetadata("queryParam:style=form,explode=true,name=subject")
+    private String subject;
+
+    /**
      * A service ID.
      */
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=serviceId")
@@ -25,23 +31,24 @@ public class ClientAuthorizationDeleteApiRequest {
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=clientId")
     private String clientId;
 
-    /**
-     * Unique user ID of an end-user.
-     */
-    @SpeakeasyMetadata("queryParam:style=form,explode=true,name=subject")
-    private String subject;
-
     @JsonCreator
     public ClientAuthorizationDeleteApiRequest(
+            @Nonnull String subject,
             @Nonnull String serviceId,
-            @Nonnull String clientId,
-            @Nonnull String subject) {
+            @Nonnull String clientId) {
+        this.subject = Optional.ofNullable(subject)
+            .orElseThrow(() -> new IllegalArgumentException("subject cannot be null"));
         this.serviceId = Optional.ofNullable(serviceId)
             .orElseThrow(() -> new IllegalArgumentException("serviceId cannot be null"));
         this.clientId = Optional.ofNullable(clientId)
             .orElseThrow(() -> new IllegalArgumentException("clientId cannot be null"));
-        this.subject = Optional.ofNullable(subject)
-            .orElseThrow(() -> new IllegalArgumentException("subject cannot be null"));
+    }
+
+    /**
+     * Unique user ID of an end-user.
+     */
+    public String subject() {
+        return this.subject;
     }
 
     /**
@@ -58,15 +65,17 @@ public class ClientAuthorizationDeleteApiRequest {
         return this.clientId;
     }
 
+    public static Builder builder() {
+        return new Builder();
+    }
+
+
     /**
      * Unique user ID of an end-user.
      */
-    public String subject() {
-        return this.subject;
-    }
-
-    public static Builder builder() {
-        return new Builder();
+    public ClientAuthorizationDeleteApiRequest withSubject(@Nonnull String subject) {
+        this.subject = Utils.checkNotNull(subject, "subject");
+        return this;
     }
 
 
@@ -88,15 +97,6 @@ public class ClientAuthorizationDeleteApiRequest {
     }
 
 
-    /**
-     * Unique user ID of an end-user.
-     */
-    public ClientAuthorizationDeleteApiRequest withSubject(@Nonnull String subject) {
-        this.subject = Utils.checkNotNull(subject, "subject");
-        return this;
-    }
-
-
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -107,36 +107,44 @@ public class ClientAuthorizationDeleteApiRequest {
         }
         ClientAuthorizationDeleteApiRequest other = (ClientAuthorizationDeleteApiRequest) o;
         return 
+            Utils.enhancedDeepEquals(this.subject, other.subject) &&
             Utils.enhancedDeepEquals(this.serviceId, other.serviceId) &&
-            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
-            Utils.enhancedDeepEquals(this.subject, other.subject);
+            Utils.enhancedDeepEquals(this.clientId, other.clientId);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            serviceId, clientId, subject);
+            subject, serviceId, clientId);
     }
     
     @Override
     public String toString() {
         return Utils.toString(ClientAuthorizationDeleteApiRequest.class,
+                "subject", subject,
                 "serviceId", serviceId,
-                "clientId", clientId,
-                "subject", subject);
+                "clientId", clientId);
     }
 
     @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
 
+        private String subject;
+
         private String serviceId;
 
         private String clientId;
 
-        private String subject;
-
         private Builder() {
           // force use of static builder() method
+        }
+
+        /**
+         * Unique user ID of an end-user.
+         */
+        public Builder subject(@Nonnull String subject) {
+            this.subject = Utils.checkNotNull(subject, "subject");
+            return this;
         }
 
         /**
@@ -155,17 +163,9 @@ public class ClientAuthorizationDeleteApiRequest {
             return this;
         }
 
-        /**
-         * Unique user ID of an end-user.
-         */
-        public Builder subject(@Nonnull String subject) {
-            this.subject = Utils.checkNotNull(subject, "subject");
-            return this;
-        }
-
         public ClientAuthorizationDeleteApiRequest build() {
             return new ClientAuthorizationDeleteApiRequest(
-                serviceId, clientId, subject);
+                subject, serviceId, clientId);
         }
 
     }

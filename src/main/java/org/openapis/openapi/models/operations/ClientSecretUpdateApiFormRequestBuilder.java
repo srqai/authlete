@@ -6,10 +6,10 @@ package org.openapis.openapi.models.operations;
 import static org.openapis.openapi.operations.Operations.RequestOperation;
 
 import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1client1secret1update1Percent7BclientIdentifierPercent7DPostRequestBodyContentApplication1jsonSchema;
 import org.openapis.openapi.operations.ClientSecretUpdateApiFormOperation;
 import org.openapis.openapi.utils.Utils;
 
@@ -17,6 +17,7 @@ public class ClientSecretUpdateApiFormRequestBuilder {
     private final SDKConfiguration sdkConfiguration;
     private final ClientSecretUpdateApiFormRequest.Builder pojoBuilder;
     private ClientSecretUpdateApiFormRequest request;
+    private String serverURL;
     private boolean _setterCalled;
 
     public ClientSecretUpdateApiFormRequestBuilder(SDKConfiguration sdkConfiguration) {
@@ -36,9 +37,14 @@ public class ClientSecretUpdateApiFormRequestBuilder {
         return this;
     }
 
-    public ClientSecretUpdateApiFormRequestBuilder oneapi1Percent7BserviceIdPercent7D1client1secret1update1Percent7BclientIdentifierPercent7DPostRequestBodyContentApplication1jsonSchema(@Nonnull 1api1Percent7BserviceIdPercent7D1client1secret1update1Percent7BclientIdentifierPercent7DPostRequestBodyContentApplication1jsonSchema oneapi1Percent7BserviceIdPercent7D1client1secret1update1Percent7BclientIdentifierPercent7DPostRequestBodyContentApplication1jsonSchema) {
-        this.pojoBuilder.oneapi1Percent7BserviceIdPercent7D1client1secret1update1Percent7BclientIdentifierPercent7DPostRequestBodyContentApplication1jsonSchema(oneapi1Percent7BserviceIdPercent7D1client1secret1update1Percent7BclientIdentifierPercent7DPostRequestBodyContentApplication1jsonSchema);
+    public ClientSecretUpdateApiFormRequestBuilder requestBody(@Nonnull ClientSecretUpdateApiFormRequestBody requestBody) {
+        this.pojoBuilder.requestBody(requestBody);
         this._setterCalled = true;
+        return this;
+    }
+
+    public ClientSecretUpdateApiFormRequestBuilder serverURL(@Nullable String serverURL) {
+        this.serverURL = serverURL;
         return this;
     }
 
@@ -55,7 +61,7 @@ public class ClientSecretUpdateApiFormRequestBuilder {
     */
     public ClientSecretUpdateApiFormResponse call() throws Exception {
         RequestOperation<ClientSecretUpdateApiFormRequest, ClientSecretUpdateApiFormResponse> operation
-              = new ClientSecretUpdateApiFormOperation(sdkConfiguration);
+              = new ClientSecretUpdateApiFormOperation(sdkConfiguration, serverURL);
 
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }

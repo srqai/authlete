@@ -11,7 +11,6 @@ import jakarta.annotation.Nullable;
 import java.lang.Override;
 import java.lang.String;
 import java.util.Optional;
-import org.openapis.openapi.models.components.Client;
 import org.openapis.openapi.utils.Utils;
 
 
@@ -48,7 +47,7 @@ public class ClientRegistrationUpdateApiResponseBody {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("client")
-    private Client client;
+    private ClientRegistrationUpdateApiClient client;
 
     @JsonCreator
     public ClientRegistrationUpdateApiResponseBody(
@@ -56,7 +55,7 @@ public class ClientRegistrationUpdateApiResponseBody {
             @JsonProperty("resultMessage") @Nullable String resultMessage,
             @JsonProperty("action") @Nullable ClientRegistrationUpdateApiAction action,
             @JsonProperty("responseContent") @Nullable String responseContent,
-            @JsonProperty("client") @Nullable Client client) {
+            @JsonProperty("client") @Nullable ClientRegistrationUpdateApiClient client) {
         this.resultCode = resultCode;
         this.resultMessage = resultMessage;
         this.action = action;
@@ -98,7 +97,7 @@ public class ClientRegistrationUpdateApiResponseBody {
         return Optional.ofNullable(this.responseContent);
     }
 
-    public Optional<Client> client() {
+    public Optional<ClientRegistrationUpdateApiClient> client() {
         return Optional.ofNullable(this.client);
     }
 
@@ -144,7 +143,7 @@ public class ClientRegistrationUpdateApiResponseBody {
     }
 
 
-    public ClientRegistrationUpdateApiResponseBody withClient(@Nullable Client client) {
+    public ClientRegistrationUpdateApiResponseBody withClient(@Nullable ClientRegistrationUpdateApiClient client) {
         this.client = client;
         return this;
     }
@@ -195,7 +194,7 @@ public class ClientRegistrationUpdateApiResponseBody {
 
         private String responseContent;
 
-        private Client client;
+        private ClientRegistrationUpdateApiClient client;
 
         private Builder() {
           // force use of static builder() method
@@ -234,7 +233,7 @@ public class ClientRegistrationUpdateApiResponseBody {
             return this;
         }
 
-        public Builder client(@Nullable Client client) {
+        public Builder client(@Nullable ClientRegistrationUpdateApiClient client) {
             this.client = client;
             return this;
         }

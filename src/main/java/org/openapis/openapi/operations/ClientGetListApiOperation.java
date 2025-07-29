@@ -7,17 +7,21 @@ import static org.openapis.openapi.operations.Operations.RequestOperation;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import java.io.InputStream;
 import java.lang.Exception;
 import java.lang.String;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.Map;
 import java.util.Optional;
 import org.openapis.openapi.SDKConfiguration;
 import org.openapis.openapi.SecuritySource;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400ContentApplication1jsonSchemaException;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400Exception;
 import org.openapis.openapi.models.errors.APIException;
+import org.openapis.openapi.models.errors.BadRequestException;
+import org.openapis.openapi.models.errors.ForbiddenException;
+import org.openapis.openapi.models.errors.InternalServerError;
+import org.openapis.openapi.models.errors.UnauthorizedException;
 import org.openapis.openapi.models.operations.ClientGetListApiRequest;
 import org.openapis.openapi.models.operations.ClientGetListApiResponse;
 import org.openapis.openapi.models.operations.ClientGetListApiResponseBody;
@@ -30,15 +34,43 @@ import org.openapis.openapi.utils.Utils;
 
 
 public class ClientGetListApiOperation implements RequestOperation<ClientGetListApiRequest, ClientGetListApiResponse> {
+    
+    /**
+     * CLIENT_GET_LIST_API_SERVERS contains the list of server urls available to the SDK.
+     */
+    public static final String[] CLIENT_GET_LIST_API_SERVERS = {
+        /**
+         * 🇺🇸 US Cluster
+         */
+        "https://us.authlete.com",
+        /**
+         * 🇯🇵 Japan Cluster
+         */
+        "https://jp.authlete.com",
+        /**
+         * 🇪🇺 Europe Cluster
+         */
+        "https://eu.authlete.com",
+        /**
+         * 🇧🇷 Brazil Cluster
+         */
+        "https://br.authlete.com",
+    };
 
     private final SDKConfiguration sdkConfiguration;
     private final String baseUrl;
     private final SecuritySource securitySource;
     private final HTTPClient client;
 
-    public ClientGetListApiOperation(@Nonnull SDKConfiguration sdkConfiguration) {
+    public ClientGetListApiOperation(
+        @Nonnull SDKConfiguration sdkConfiguration,
+        @Nullable String serverURL) {
         this.sdkConfiguration = sdkConfiguration;
-        this.baseUrl = this.sdkConfiguration.serverUrl();
+        this.baseUrl = Optional.ofNullable(serverURL)
+                .filter(u -> !u.isBlank())
+                .orElse(Utils.templateUrl(
+                        CLIENT_GET_LIST_API_SERVERS[0], 
+                        Map.of()));
         this.securitySource = this.sdkConfiguration.securitySource();
         this.client = this.sdkConfiguration.client();
     }
@@ -151,7 +183,7 @@ public class ClientGetListApiOperation implements RequestOperation<ClientGetList
         }
         if (Utils.statusCodeMatches(response.statusCode(), "400")) {
             if (Utils.contentTypeMatches(contentType, "application/json")) {
-                1api1infoGetResponses400Exception out = Utils.mapper().readValue(
+                BadRequestException out = Utils.mapper().readValue(
                     response.body(),
                     new TypeReference<>() {
                     });
@@ -166,9 +198,26 @@ public class ClientGetListApiOperation implements RequestOperation<ClientGetList
                     Utils.extractByteArrayFromBody(response));
             }
         }
-        if (Utils.statusCodeMatches(response.statusCode(), "401", "403")) {
+        if (Utils.statusCodeMatches(response.statusCode(), "401")) {
             if (Utils.contentTypeMatches(contentType, "application/json")) {
-                1api1infoGetResponses400ContentApplication1jsonSchemaException out = Utils.mapper().readValue(
+                UnauthorizedException out = Utils.mapper().readValue(
+                    response.body(),
+                    new TypeReference<>() {
+                    });
+                    out.withRawResponse(response);
+                
+                throw out;
+            } else {
+                throw new APIException(
+                    response, 
+                    response.statusCode(), 
+                    "Unexpected content-type received: " + contentType, 
+                    Utils.extractByteArrayFromBody(response));
+            }
+        }
+        if (Utils.statusCodeMatches(response.statusCode(), "403")) {
+            if (Utils.contentTypeMatches(contentType, "application/json")) {
+                ForbiddenException out = Utils.mapper().readValue(
                     response.body(),
                     new TypeReference<>() {
                     });
@@ -185,7 +234,7 @@ public class ClientGetListApiOperation implements RequestOperation<ClientGetList
         }
         if (Utils.statusCodeMatches(response.statusCode(), "500")) {
             if (Utils.contentTypeMatches(contentType, "application/json")) {
-                1api1infoGetResponses400ContentApplication1jsonSchemaException out = Utils.mapper().readValue(
+                InternalServerError out = Utils.mapper().readValue(
                     response.body(),
                     new TypeReference<>() {
                     });

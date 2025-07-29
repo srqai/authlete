@@ -14,12 +14,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1auth1authorizationPostResponses200ContentApplication1jsonSchemaPropertiesGrant;
-import org.openapis.openapi.models.components.AuthorizationDetails;
-import org.openapis.openapi.models.components.GrantType;
-import org.openapis.openapi.models.components.Pair;
-import org.openapis.openapi.models.components.Property;
-import org.openapis.openapi.models.components.Scope;
 import org.openapis.openapi.utils.Utils;
 
 
@@ -133,7 +127,7 @@ public class AuthIntrospectionApiFormResponseBody {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("properties")
-    private List<Property> properties;
+    private List<AuthIntrospectionApiFormProperty> properties;
 
     /**
      * The client certificate thumbprint used to validate the access token.
@@ -175,21 +169,21 @@ public class AuthIntrospectionApiFormResponseBody {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("authorizationDetails")
-    private AuthorizationDetails authorizationDetails;
+    private AuthIntrospectionApiFormAuthorizationDetails authorizationDetails;
 
     /**
      * The attributes of this service that the client application belongs to.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("serviceAttributes")
-    private List<Pair> serviceAttributes;
+    private List<AuthIntrospectionApiFormServiceAttribute> serviceAttributes;
 
     /**
      * The attributes of the client.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("clientAttributes")
-    private List<Pair> clientAttributes;
+    private List<AuthIntrospectionApiFormClientAttribute> clientAttributes;
 
     /**
      * The scopes property of this class is a list of scope names. The property does not hold information
@@ -198,7 +192,7 @@ public class AuthIntrospectionApiFormResponseBody {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("scopeDetails")
-    private List<Scope> scopeDetails;
+    private List<AuthIntrospectionApiFormScopeDetail> scopeDetails;
 
     /**
      * The value of the `grant_id` request parameter of the device authorization request.
@@ -214,7 +208,7 @@ public class AuthIntrospectionApiFormResponseBody {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("grant")
-    private 1api1Percent7BserviceIdPercent7D1auth1authorizationPostResponses200ContentApplication1jsonSchemaPropertiesGrant grant;
+    private AuthIntrospectionApiFormGrant grant;
 
     /**
      * the flag which indicates whether the access token is for an external
@@ -237,7 +231,7 @@ public class AuthIntrospectionApiFormResponseBody {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("grantType")
-    private GrantType grantType;
+    private AuthIntrospectionApiFormGrantType grantType;
 
     /**
      * The Authentication Context Class Reference of the user authentication that the authorization server performed 
@@ -320,19 +314,19 @@ public class AuthIntrospectionApiFormResponseBody {
             @JsonProperty("usable") @Nullable Boolean usable,
             @JsonProperty("sufficient") @Nullable Boolean sufficient,
             @JsonProperty("refreshable") @Nullable Boolean refreshable,
-            @JsonProperty("properties") @Nullable List<Property> properties,
+            @JsonProperty("properties") @Nullable List<AuthIntrospectionApiFormProperty> properties,
             @JsonProperty("certificateThumbprint") @Nullable String certificateThumbprint,
             @JsonProperty("resources") @Nullable List<String> resources,
             @JsonProperty("accessTokenResources") @Nullable List<String> accessTokenResources,
-            @JsonProperty("authorizationDetails") @Nullable AuthorizationDetails authorizationDetails,
-            @JsonProperty("serviceAttributes") @Nullable List<Pair> serviceAttributes,
-            @JsonProperty("clientAttributes") @Nullable List<Pair> clientAttributes,
-            @JsonProperty("scopeDetails") @Nullable List<Scope> scopeDetails,
+            @JsonProperty("authorizationDetails") @Nullable AuthIntrospectionApiFormAuthorizationDetails authorizationDetails,
+            @JsonProperty("serviceAttributes") @Nullable List<AuthIntrospectionApiFormServiceAttribute> serviceAttributes,
+            @JsonProperty("clientAttributes") @Nullable List<AuthIntrospectionApiFormClientAttribute> clientAttributes,
+            @JsonProperty("scopeDetails") @Nullable List<AuthIntrospectionApiFormScopeDetail> scopeDetails,
             @JsonProperty("grantId") @Nullable String grantId,
-            @JsonProperty("grant") @Nullable 1api1Percent7BserviceIdPercent7D1auth1authorizationPostResponses200ContentApplication1jsonSchemaPropertiesGrant grant,
+            @JsonProperty("grant") @Nullable AuthIntrospectionApiFormGrant grant,
             @JsonProperty("forExternalAttachment") @Nullable Boolean forExternalAttachment,
             @JsonProperty("consentedClaims") @Nullable List<String> consentedClaims,
-            @JsonProperty("grantType") @Nullable GrantType grantType,
+            @JsonProperty("grantType") @Nullable AuthIntrospectionApiFormGrantType grantType,
             @JsonProperty("acr") @Nullable String acr,
             @JsonProperty("authTime") @Nullable Long authTime,
             @JsonProperty("clientEntityId") @Nullable String clientEntityId,
@@ -502,7 +496,7 @@ public class AuthIntrospectionApiFormResponseBody {
     /**
      * The extra properties associated with the access token.
      */
-    public Optional<List<Property>> properties() {
+    public Optional<List<AuthIntrospectionApiFormProperty>> properties() {
         return Optional.ofNullable(this.properties);
     }
 
@@ -544,21 +538,21 @@ public class AuthIntrospectionApiFormResponseBody {
      * request parameter in the preceding device authorization request which is defined in
      * "OAuth 2.0 Rich Authorization Requests".
      */
-    public Optional<AuthorizationDetails> authorizationDetails() {
+    public Optional<AuthIntrospectionApiFormAuthorizationDetails> authorizationDetails() {
         return Optional.ofNullable(this.authorizationDetails);
     }
 
     /**
      * The attributes of this service that the client application belongs to.
      */
-    public Optional<List<Pair>> serviceAttributes() {
+    public Optional<List<AuthIntrospectionApiFormServiceAttribute>> serviceAttributes() {
         return Optional.ofNullable(this.serviceAttributes);
     }
 
     /**
      * The attributes of the client.
      */
-    public Optional<List<Pair>> clientAttributes() {
+    public Optional<List<AuthIntrospectionApiFormClientAttribute>> clientAttributes() {
         return Optional.ofNullable(this.clientAttributes);
     }
 
@@ -567,7 +561,7 @@ public class AuthIntrospectionApiFormResponseBody {
      * about scope attributes. This scopeDetails property was newly created to convey information about
      * scope attributes.
      */
-    public Optional<List<Scope>> scopeDetails() {
+    public Optional<List<AuthIntrospectionApiFormScopeDetail>> scopeDetails() {
         return Optional.ofNullable(this.scopeDetails);
     }
 
@@ -582,7 +576,7 @@ public class AuthIntrospectionApiFormResponseBody {
         return Optional.ofNullable(this.grantId);
     }
 
-    public Optional<1api1Percent7BserviceIdPercent7D1auth1authorizationPostResponses200ContentApplication1jsonSchemaPropertiesGrant> grant() {
+    public Optional<AuthIntrospectionApiFormGrant> grant() {
         return Optional.ofNullable(this.grant);
     }
 
@@ -605,7 +599,7 @@ public class AuthIntrospectionApiFormResponseBody {
     /**
      * The grant type of the access token when the access token was created.
      */
-    public Optional<GrantType> grantType() {
+    public Optional<AuthIntrospectionApiFormGrantType> grantType() {
         return Optional.ofNullable(this.grantType);
     }
 
@@ -814,7 +808,7 @@ public class AuthIntrospectionApiFormResponseBody {
     /**
      * The extra properties associated with the access token.
      */
-    public AuthIntrospectionApiFormResponseBody withProperties(@Nullable List<Property> properties) {
+    public AuthIntrospectionApiFormResponseBody withProperties(@Nullable List<AuthIntrospectionApiFormProperty> properties) {
         this.properties = properties;
         return this;
     }
@@ -864,7 +858,7 @@ public class AuthIntrospectionApiFormResponseBody {
      * request parameter in the preceding device authorization request which is defined in
      * "OAuth 2.0 Rich Authorization Requests".
      */
-    public AuthIntrospectionApiFormResponseBody withAuthorizationDetails(@Nullable AuthorizationDetails authorizationDetails) {
+    public AuthIntrospectionApiFormResponseBody withAuthorizationDetails(@Nullable AuthIntrospectionApiFormAuthorizationDetails authorizationDetails) {
         this.authorizationDetails = authorizationDetails;
         return this;
     }
@@ -873,7 +867,7 @@ public class AuthIntrospectionApiFormResponseBody {
     /**
      * The attributes of this service that the client application belongs to.
      */
-    public AuthIntrospectionApiFormResponseBody withServiceAttributes(@Nullable List<Pair> serviceAttributes) {
+    public AuthIntrospectionApiFormResponseBody withServiceAttributes(@Nullable List<AuthIntrospectionApiFormServiceAttribute> serviceAttributes) {
         this.serviceAttributes = serviceAttributes;
         return this;
     }
@@ -882,7 +876,7 @@ public class AuthIntrospectionApiFormResponseBody {
     /**
      * The attributes of the client.
      */
-    public AuthIntrospectionApiFormResponseBody withClientAttributes(@Nullable List<Pair> clientAttributes) {
+    public AuthIntrospectionApiFormResponseBody withClientAttributes(@Nullable List<AuthIntrospectionApiFormClientAttribute> clientAttributes) {
         this.clientAttributes = clientAttributes;
         return this;
     }
@@ -893,7 +887,7 @@ public class AuthIntrospectionApiFormResponseBody {
      * about scope attributes. This scopeDetails property was newly created to convey information about
      * scope attributes.
      */
-    public AuthIntrospectionApiFormResponseBody withScopeDetails(@Nullable List<Scope> scopeDetails) {
+    public AuthIntrospectionApiFormResponseBody withScopeDetails(@Nullable List<AuthIntrospectionApiFormScopeDetail> scopeDetails) {
         this.scopeDetails = scopeDetails;
         return this;
     }
@@ -912,7 +906,7 @@ public class AuthIntrospectionApiFormResponseBody {
     }
 
 
-    public AuthIntrospectionApiFormResponseBody withGrant(@Nullable 1api1Percent7BserviceIdPercent7D1auth1authorizationPostResponses200ContentApplication1jsonSchemaPropertiesGrant grant) {
+    public AuthIntrospectionApiFormResponseBody withGrant(@Nullable AuthIntrospectionApiFormGrant grant) {
         this.grant = grant;
         return this;
     }
@@ -941,7 +935,7 @@ public class AuthIntrospectionApiFormResponseBody {
     /**
      * The grant type of the access token when the access token was created.
      */
-    public AuthIntrospectionApiFormResponseBody withGrantType(@Nullable GrantType grantType) {
+    public AuthIntrospectionApiFormResponseBody withGrantType(@Nullable AuthIntrospectionApiFormGrantType grantType) {
         this.grantType = grantType;
         return this;
     }
@@ -1167,7 +1161,7 @@ public class AuthIntrospectionApiFormResponseBody {
 
         private Boolean refreshable;
 
-        private List<Property> properties;
+        private List<AuthIntrospectionApiFormProperty> properties;
 
         private String certificateThumbprint;
 
@@ -1175,23 +1169,23 @@ public class AuthIntrospectionApiFormResponseBody {
 
         private List<String> accessTokenResources;
 
-        private AuthorizationDetails authorizationDetails;
+        private AuthIntrospectionApiFormAuthorizationDetails authorizationDetails;
 
-        private List<Pair> serviceAttributes;
+        private List<AuthIntrospectionApiFormServiceAttribute> serviceAttributes;
 
-        private List<Pair> clientAttributes;
+        private List<AuthIntrospectionApiFormClientAttribute> clientAttributes;
 
-        private List<Scope> scopeDetails;
+        private List<AuthIntrospectionApiFormScopeDetail> scopeDetails;
 
         private String grantId;
 
-        private 1api1Percent7BserviceIdPercent7D1auth1authorizationPostResponses200ContentApplication1jsonSchemaPropertiesGrant grant;
+        private AuthIntrospectionApiFormGrant grant;
 
         private Boolean forExternalAttachment;
 
         private List<String> consentedClaims;
 
-        private GrantType grantType;
+        private AuthIntrospectionApiFormGrantType grantType;
 
         private String acr;
 
@@ -1336,7 +1330,7 @@ public class AuthIntrospectionApiFormResponseBody {
         /**
          * The extra properties associated with the access token.
          */
-        public Builder properties(@Nullable List<Property> properties) {
+        public Builder properties(@Nullable List<AuthIntrospectionApiFormProperty> properties) {
             this.properties = properties;
             return this;
         }
@@ -1382,7 +1376,7 @@ public class AuthIntrospectionApiFormResponseBody {
          * request parameter in the preceding device authorization request which is defined in
          * "OAuth 2.0 Rich Authorization Requests".
          */
-        public Builder authorizationDetails(@Nullable AuthorizationDetails authorizationDetails) {
+        public Builder authorizationDetails(@Nullable AuthIntrospectionApiFormAuthorizationDetails authorizationDetails) {
             this.authorizationDetails = authorizationDetails;
             return this;
         }
@@ -1390,7 +1384,7 @@ public class AuthIntrospectionApiFormResponseBody {
         /**
          * The attributes of this service that the client application belongs to.
          */
-        public Builder serviceAttributes(@Nullable List<Pair> serviceAttributes) {
+        public Builder serviceAttributes(@Nullable List<AuthIntrospectionApiFormServiceAttribute> serviceAttributes) {
             this.serviceAttributes = serviceAttributes;
             return this;
         }
@@ -1398,7 +1392,7 @@ public class AuthIntrospectionApiFormResponseBody {
         /**
          * The attributes of the client.
          */
-        public Builder clientAttributes(@Nullable List<Pair> clientAttributes) {
+        public Builder clientAttributes(@Nullable List<AuthIntrospectionApiFormClientAttribute> clientAttributes) {
             this.clientAttributes = clientAttributes;
             return this;
         }
@@ -1408,7 +1402,7 @@ public class AuthIntrospectionApiFormResponseBody {
          * about scope attributes. This scopeDetails property was newly created to convey information about
          * scope attributes.
          */
-        public Builder scopeDetails(@Nullable List<Scope> scopeDetails) {
+        public Builder scopeDetails(@Nullable List<AuthIntrospectionApiFormScopeDetail> scopeDetails) {
             this.scopeDetails = scopeDetails;
             return this;
         }
@@ -1425,7 +1419,7 @@ public class AuthIntrospectionApiFormResponseBody {
             return this;
         }
 
-        public Builder grant(@Nullable 1api1Percent7BserviceIdPercent7D1auth1authorizationPostResponses200ContentApplication1jsonSchemaPropertiesGrant grant) {
+        public Builder grant(@Nullable AuthIntrospectionApiFormGrant grant) {
             this.grant = grant;
             return this;
         }
@@ -1451,7 +1445,7 @@ public class AuthIntrospectionApiFormResponseBody {
         /**
          * The grant type of the access token when the access token was created.
          */
-        public Builder grantType(@Nullable GrantType grantType) {
+        public Builder grantType(@Nullable AuthIntrospectionApiFormGrantType grantType) {
             this.grantType = grantType;
             return this;
         }

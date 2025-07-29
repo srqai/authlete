@@ -6,6 +6,7 @@ package org.openapis.openapi.models.operations;
 import static org.openapis.openapi.operations.Operations.RequestOperation;
 
 import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
@@ -16,6 +17,7 @@ public class HskDeleteApiRequestBuilder {
     private final SDKConfiguration sdkConfiguration;
     private final HskDeleteApiRequest.Builder pojoBuilder;
     private HskDeleteApiRequest request;
+    private String serverURL;
     private boolean _setterCalled;
 
     public HskDeleteApiRequestBuilder(SDKConfiguration sdkConfiguration) {
@@ -35,6 +37,11 @@ public class HskDeleteApiRequestBuilder {
         return this;
     }
 
+    public HskDeleteApiRequestBuilder serverURL(@Nullable String serverURL) {
+        this.serverURL = serverURL;
+        return this;
+    }
+
     private HskDeleteApiRequest _buildRequest() {
         if (this._setterCalled) {
             this.request = this.pojoBuilder.build();
@@ -48,7 +55,7 @@ public class HskDeleteApiRequestBuilder {
     */
     public HskDeleteApiResponse call() throws Exception {
         RequestOperation<HskDeleteApiRequest, HskDeleteApiResponse> operation
-              = new HskDeleteApiOperation(sdkConfiguration);
+              = new HskDeleteApiOperation(sdkConfiguration, serverURL);
 
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }

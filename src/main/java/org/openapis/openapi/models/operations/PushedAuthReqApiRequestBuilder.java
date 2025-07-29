@@ -6,6 +6,7 @@ package org.openapis.openapi.models.operations;
 import static org.openapis.openapi.operations.Operations.RequestOperation;
 
 import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
@@ -16,6 +17,7 @@ public class PushedAuthReqApiRequestBuilder {
     private final SDKConfiguration sdkConfiguration;
     private final PushedAuthReqApiRequest.Builder pojoBuilder;
     private PushedAuthReqApiRequest request;
+    private String serverURL;
     private boolean _setterCalled;
 
     public PushedAuthReqApiRequestBuilder(SDKConfiguration sdkConfiguration) {
@@ -35,6 +37,11 @@ public class PushedAuthReqApiRequestBuilder {
         return this;
     }
 
+    public PushedAuthReqApiRequestBuilder serverURL(@Nullable String serverURL) {
+        this.serverURL = serverURL;
+        return this;
+    }
+
     private PushedAuthReqApiRequest _buildRequest() {
         if (this._setterCalled) {
             this.request = this.pojoBuilder.build();
@@ -48,7 +55,7 @@ public class PushedAuthReqApiRequestBuilder {
     */
     public PushedAuthReqApiResponse call() throws Exception {
         RequestOperation<PushedAuthReqApiRequest, PushedAuthReqApiResponse> operation
-              = new PushedAuthReqApiOperation(sdkConfiguration);
+              = new PushedAuthReqApiOperation(sdkConfiguration, serverURL);
 
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }

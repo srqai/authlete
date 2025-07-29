@@ -16,12 +16,6 @@ import org.openapis.openapi.utils.Utils;
 
 public class AuthTokenGetListApiRequest {
     /**
-     * A service ID.
-     */
-    @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=serviceId")
-    private String serviceId;
-
-    /**
      * Client Identifier (client ID or client ID alias).
      */
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=clientIdentifier")
@@ -45,32 +39,31 @@ public class AuthTokenGetListApiRequest {
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=end")
     private Integer end;
 
+    /**
+     * A service ID.
+     */
+    @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=serviceId")
+    private String serviceId;
+
     @JsonCreator
     public AuthTokenGetListApiRequest(
-            @Nonnull String serviceId,
             @Nullable String clientIdentifier,
             @Nullable String subject,
             @Nullable Integer start,
-            @Nullable Integer end) {
-        this.serviceId = Optional.ofNullable(serviceId)
-            .orElseThrow(() -> new IllegalArgumentException("serviceId cannot be null"));
+            @Nullable Integer end,
+            @Nonnull String serviceId) {
         this.clientIdentifier = clientIdentifier;
         this.subject = subject;
         this.start = start;
         this.end = end;
+        this.serviceId = Optional.ofNullable(serviceId)
+            .orElseThrow(() -> new IllegalArgumentException("serviceId cannot be null"));
     }
     
     public AuthTokenGetListApiRequest(
             @Nonnull String serviceId) {
-        this(serviceId, null, null,
-            null, null);
-    }
-
-    /**
-     * A service ID.
-     */
-    public String serviceId() {
-        return this.serviceId;
+        this(null, null, null,
+            null, serviceId);
     }
 
     /**
@@ -101,17 +94,15 @@ public class AuthTokenGetListApiRequest {
         return Optional.ofNullable(this.end);
     }
 
-    public static Builder builder() {
-        return new Builder();
-    }
-
-
     /**
      * A service ID.
      */
-    public AuthTokenGetListApiRequest withServiceId(@Nonnull String serviceId) {
-        this.serviceId = Utils.checkNotNull(serviceId, "serviceId");
-        return this;
+    public String serviceId() {
+        return this.serviceId;
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
 
@@ -151,6 +142,15 @@ public class AuthTokenGetListApiRequest {
     }
 
 
+    /**
+     * A service ID.
+     */
+    public AuthTokenGetListApiRequest withServiceId(@Nonnull String serviceId) {
+        this.serviceId = Utils.checkNotNull(serviceId, "serviceId");
+        return this;
+    }
+
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -161,34 +161,32 @@ public class AuthTokenGetListApiRequest {
         }
         AuthTokenGetListApiRequest other = (AuthTokenGetListApiRequest) o;
         return 
-            Utils.enhancedDeepEquals(this.serviceId, other.serviceId) &&
             Utils.enhancedDeepEquals(this.clientIdentifier, other.clientIdentifier) &&
             Utils.enhancedDeepEquals(this.subject, other.subject) &&
             Utils.enhancedDeepEquals(this.start, other.start) &&
-            Utils.enhancedDeepEquals(this.end, other.end);
+            Utils.enhancedDeepEquals(this.end, other.end) &&
+            Utils.enhancedDeepEquals(this.serviceId, other.serviceId);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            serviceId, clientIdentifier, subject,
-            start, end);
+            clientIdentifier, subject, start,
+            end, serviceId);
     }
     
     @Override
     public String toString() {
         return Utils.toString(AuthTokenGetListApiRequest.class,
-                "serviceId", serviceId,
                 "clientIdentifier", clientIdentifier,
                 "subject", subject,
                 "start", start,
-                "end", end);
+                "end", end,
+                "serviceId", serviceId);
     }
 
     @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
-
-        private String serviceId;
 
         private String clientIdentifier;
 
@@ -198,16 +196,10 @@ public class AuthTokenGetListApiRequest {
 
         private Integer end;
 
+        private String serviceId;
+
         private Builder() {
           // force use of static builder() method
-        }
-
-        /**
-         * A service ID.
-         */
-        public Builder serviceId(@Nonnull String serviceId) {
-            this.serviceId = Utils.checkNotNull(serviceId, "serviceId");
-            return this;
         }
 
         /**
@@ -242,10 +234,18 @@ public class AuthTokenGetListApiRequest {
             return this;
         }
 
+        /**
+         * A service ID.
+         */
+        public Builder serviceId(@Nonnull String serviceId) {
+            this.serviceId = Utils.checkNotNull(serviceId, "serviceId");
+            return this;
+        }
+
         public AuthTokenGetListApiRequest build() {
             return new AuthTokenGetListApiRequest(
-                serviceId, clientIdentifier, subject,
-                start, end);
+                clientIdentifier, subject, start,
+                end, serviceId);
         }
 
     }

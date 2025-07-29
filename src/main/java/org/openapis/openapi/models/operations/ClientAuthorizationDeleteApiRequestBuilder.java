@@ -6,6 +6,7 @@ package org.openapis.openapi.models.operations;
 import static org.openapis.openapi.operations.Operations.RequestOperation;
 
 import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
@@ -16,11 +17,18 @@ public class ClientAuthorizationDeleteApiRequestBuilder {
     private final SDKConfiguration sdkConfiguration;
     private final ClientAuthorizationDeleteApiRequest.Builder pojoBuilder;
     private ClientAuthorizationDeleteApiRequest request;
+    private String serverURL;
     private boolean _setterCalled;
 
     public ClientAuthorizationDeleteApiRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
         this.pojoBuilder = ClientAuthorizationDeleteApiRequest.builder();
+    }
+
+    public ClientAuthorizationDeleteApiRequestBuilder subject(@Nonnull String subject) {
+        this.pojoBuilder.subject(subject);
+        this._setterCalled = true;
+        return this;
     }
 
     public ClientAuthorizationDeleteApiRequestBuilder serviceId(@Nonnull String serviceId) {
@@ -35,9 +43,8 @@ public class ClientAuthorizationDeleteApiRequestBuilder {
         return this;
     }
 
-    public ClientAuthorizationDeleteApiRequestBuilder subject(@Nonnull String subject) {
-        this.pojoBuilder.subject(subject);
-        this._setterCalled = true;
+    public ClientAuthorizationDeleteApiRequestBuilder serverURL(@Nullable String serverURL) {
+        this.serverURL = serverURL;
         return this;
     }
 
@@ -54,7 +61,7 @@ public class ClientAuthorizationDeleteApiRequestBuilder {
     */
     public ClientAuthorizationDeleteApiResponse call() throws Exception {
         RequestOperation<ClientAuthorizationDeleteApiRequest, ClientAuthorizationDeleteApiResponse> operation
-              = new ClientAuthorizationDeleteApiOperation(sdkConfiguration);
+              = new ClientAuthorizationDeleteApiOperation(sdkConfiguration, serverURL);
 
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }

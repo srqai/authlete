@@ -6,6 +6,7 @@ package org.openapis.openapi.models.operations;
 import static org.openapis.openapi.operations.Operations.RequestOperation;
 
 import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
@@ -16,6 +17,7 @@ public class AuthTokenUpdateApiRequestBuilder {
     private final SDKConfiguration sdkConfiguration;
     private final AuthTokenUpdateApiRequest.Builder pojoBuilder;
     private AuthTokenUpdateApiRequest request;
+    private String serverURL;
     private boolean _setterCalled;
 
     public AuthTokenUpdateApiRequestBuilder(SDKConfiguration sdkConfiguration) {
@@ -35,6 +37,11 @@ public class AuthTokenUpdateApiRequestBuilder {
         return this;
     }
 
+    public AuthTokenUpdateApiRequestBuilder serverURL(@Nullable String serverURL) {
+        this.serverURL = serverURL;
+        return this;
+    }
+
     private AuthTokenUpdateApiRequest _buildRequest() {
         if (this._setterCalled) {
             this.request = this.pojoBuilder.build();
@@ -48,7 +55,7 @@ public class AuthTokenUpdateApiRequestBuilder {
     */
     public AuthTokenUpdateApiResponse call() throws Exception {
         RequestOperation<AuthTokenUpdateApiRequest, AuthTokenUpdateApiResponse> operation
-              = new AuthTokenUpdateApiOperation(sdkConfiguration);
+              = new AuthTokenUpdateApiOperation(sdkConfiguration, serverURL);
 
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }

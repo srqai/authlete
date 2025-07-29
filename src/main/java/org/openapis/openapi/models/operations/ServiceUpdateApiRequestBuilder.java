@@ -10,7 +10,6 @@ import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
-import org.openapis.openapi.models.components.ServiceInput;
 import org.openapis.openapi.operations.ServiceUpdateApiOperation;
 import org.openapis.openapi.utils.Utils;
 
@@ -18,6 +17,7 @@ public class ServiceUpdateApiRequestBuilder {
     private final SDKConfiguration sdkConfiguration;
     private final ServiceUpdateApiRequest.Builder pojoBuilder;
     private ServiceUpdateApiRequest request;
+    private String serverURL;
     private boolean _setterCalled;
 
     public ServiceUpdateApiRequestBuilder(SDKConfiguration sdkConfiguration) {
@@ -31,9 +31,14 @@ public class ServiceUpdateApiRequestBuilder {
         return this;
     }
 
-    public ServiceUpdateApiRequestBuilder service(@Nullable ServiceInput service) {
-        this.pojoBuilder.service(service);
+    public ServiceUpdateApiRequestBuilder requestBody(@Nullable ServiceUpdateApiRequestBody requestBody) {
+        this.pojoBuilder.requestBody(requestBody);
         this._setterCalled = true;
+        return this;
+    }
+
+    public ServiceUpdateApiRequestBuilder serverURL(@Nullable String serverURL) {
+        this.serverURL = serverURL;
         return this;
     }
 
@@ -50,7 +55,7 @@ public class ServiceUpdateApiRequestBuilder {
     */
     public ServiceUpdateApiResponse call() throws Exception {
         RequestOperation<ServiceUpdateApiRequest, ServiceUpdateApiResponse> operation
-              = new ServiceUpdateApiOperation(sdkConfiguration);
+              = new ServiceUpdateApiOperation(sdkConfiguration, serverURL);
 
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }

@@ -6,10 +6,10 @@ package org.openapis.openapi.models.operations;
 import static org.openapis.openapi.operations.Operations.RequestOperation;
 
 import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1vci1jwtissuerPostRequestBodyContentApplication1jsonSchema;
 import org.openapis.openapi.operations.VciJwtissuerApiFormOperation;
 import org.openapis.openapi.utils.Utils;
 
@@ -17,6 +17,7 @@ public class VciJwtissuerApiFormRequestBuilder {
     private final SDKConfiguration sdkConfiguration;
     private final VciJwtissuerApiFormRequest.Builder pojoBuilder;
     private VciJwtissuerApiFormRequest request;
+    private String serverURL;
     private boolean _setterCalled;
 
     public VciJwtissuerApiFormRequestBuilder(SDKConfiguration sdkConfiguration) {
@@ -30,9 +31,14 @@ public class VciJwtissuerApiFormRequestBuilder {
         return this;
     }
 
-    public VciJwtissuerApiFormRequestBuilder oneapi1Percent7BserviceIdPercent7D1vci1jwtissuerPostRequestBodyContentApplication1jsonSchema(@Nonnull 1api1Percent7BserviceIdPercent7D1vci1jwtissuerPostRequestBodyContentApplication1jsonSchema oneapi1Percent7BserviceIdPercent7D1vci1jwtissuerPostRequestBodyContentApplication1jsonSchema) {
-        this.pojoBuilder.oneapi1Percent7BserviceIdPercent7D1vci1jwtissuerPostRequestBodyContentApplication1jsonSchema(oneapi1Percent7BserviceIdPercent7D1vci1jwtissuerPostRequestBodyContentApplication1jsonSchema);
+    public VciJwtissuerApiFormRequestBuilder requestBody(@Nonnull VciJwtissuerApiFormRequestBody requestBody) {
+        this.pojoBuilder.requestBody(requestBody);
         this._setterCalled = true;
+        return this;
+    }
+
+    public VciJwtissuerApiFormRequestBuilder serverURL(@Nullable String serverURL) {
+        this.serverURL = serverURL;
         return this;
     }
 
@@ -49,7 +55,7 @@ public class VciJwtissuerApiFormRequestBuilder {
     */
     public VciJwtissuerApiFormResponse call() throws Exception {
         RequestOperation<VciJwtissuerApiFormRequest, VciJwtissuerApiFormResponse> operation
-              = new VciJwtissuerApiFormOperation(sdkConfiguration);
+              = new VciJwtissuerApiFormOperation(sdkConfiguration, serverURL);
 
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }

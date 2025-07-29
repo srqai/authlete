@@ -11,7 +11,6 @@ import jakarta.annotation.Nullable;
 import java.lang.Override;
 import java.lang.String;
 import java.util.Optional;
-import org.openapis.openapi.models.components.Client;
 import org.openapis.openapi.utils.Utils;
 
 
@@ -48,7 +47,7 @@ public class FederationRegistrationApiResponseBody {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("client")
-    private Client client;
+    private FederationRegistrationApiClient client;
 
     @JsonCreator
     public FederationRegistrationApiResponseBody(
@@ -56,7 +55,7 @@ public class FederationRegistrationApiResponseBody {
             @JsonProperty("resultMessage") @Nullable String resultMessage,
             @JsonProperty("action") @Nullable FederationRegistrationApiAction action,
             @JsonProperty("responseContent") @Nullable String responseContent,
-            @JsonProperty("client") @Nullable Client client) {
+            @JsonProperty("client") @Nullable FederationRegistrationApiClient client) {
         this.resultCode = resultCode;
         this.resultMessage = resultMessage;
         this.action = action;
@@ -98,7 +97,7 @@ public class FederationRegistrationApiResponseBody {
         return Optional.ofNullable(this.responseContent);
     }
 
-    public Optional<Client> client() {
+    public Optional<FederationRegistrationApiClient> client() {
         return Optional.ofNullable(this.client);
     }
 
@@ -144,7 +143,7 @@ public class FederationRegistrationApiResponseBody {
     }
 
 
-    public FederationRegistrationApiResponseBody withClient(@Nullable Client client) {
+    public FederationRegistrationApiResponseBody withClient(@Nullable FederationRegistrationApiClient client) {
         this.client = client;
         return this;
     }
@@ -195,7 +194,7 @@ public class FederationRegistrationApiResponseBody {
 
         private String responseContent;
 
-        private Client client;
+        private FederationRegistrationApiClient client;
 
         private Builder() {
           // force use of static builder() method
@@ -234,7 +233,7 @@ public class FederationRegistrationApiResponseBody {
             return this;
         }
 
-        public Builder client(@Nullable Client client) {
+        public Builder client(@Nullable FederationRegistrationApiClient client) {
             this.client = client;
             return this;
         }

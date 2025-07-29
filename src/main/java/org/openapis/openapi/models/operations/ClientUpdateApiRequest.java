@@ -9,7 +9,6 @@ import jakarta.annotation.Nullable;
 import java.lang.Override;
 import java.lang.String;
 import java.util.Optional;
-import org.openapis.openapi.models.components.ClientInput;
 import org.openapis.openapi.utils.SpeakeasyMetadata;
 import org.openapis.openapi.utils.Utils;
 
@@ -29,18 +28,18 @@ public class ClientUpdateApiRequest {
 
 
     @SpeakeasyMetadata("request:mediaType=application/json")
-    private ClientInput client;
+    private ClientUpdateApiRequestBody requestBody;
 
     @JsonCreator
     public ClientUpdateApiRequest(
             @Nonnull String serviceId,
             @Nonnull String clientId,
-            @Nullable ClientInput client) {
+            @Nullable ClientUpdateApiRequestBody requestBody) {
         this.serviceId = Optional.ofNullable(serviceId)
             .orElseThrow(() -> new IllegalArgumentException("serviceId cannot be null"));
         this.clientId = Optional.ofNullable(clientId)
             .orElseThrow(() -> new IllegalArgumentException("clientId cannot be null"));
-        this.client = client;
+        this.requestBody = requestBody;
     }
     
     public ClientUpdateApiRequest(
@@ -63,8 +62,8 @@ public class ClientUpdateApiRequest {
         return this.clientId;
     }
 
-    public Optional<ClientInput> client() {
-        return Optional.ofNullable(this.client);
+    public Optional<ClientUpdateApiRequestBody> requestBody() {
+        return Optional.ofNullable(this.requestBody);
     }
 
     public static Builder builder() {
@@ -90,8 +89,8 @@ public class ClientUpdateApiRequest {
     }
 
 
-    public ClientUpdateApiRequest withClient(@Nullable ClientInput client) {
-        this.client = client;
+    public ClientUpdateApiRequest withRequestBody(@Nullable ClientUpdateApiRequestBody requestBody) {
+        this.requestBody = requestBody;
         return this;
     }
 
@@ -108,13 +107,13 @@ public class ClientUpdateApiRequest {
         return 
             Utils.enhancedDeepEquals(this.serviceId, other.serviceId) &&
             Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
-            Utils.enhancedDeepEquals(this.client, other.client);
+            Utils.enhancedDeepEquals(this.requestBody, other.requestBody);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            serviceId, clientId, client);
+            serviceId, clientId, requestBody);
     }
     
     @Override
@@ -122,7 +121,7 @@ public class ClientUpdateApiRequest {
         return Utils.toString(ClientUpdateApiRequest.class,
                 "serviceId", serviceId,
                 "clientId", clientId,
-                "client", client);
+                "requestBody", requestBody);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -132,7 +131,7 @@ public class ClientUpdateApiRequest {
 
         private String clientId;
 
-        private ClientInput client;
+        private ClientUpdateApiRequestBody requestBody;
 
         private Builder() {
           // force use of static builder() method
@@ -154,14 +153,14 @@ public class ClientUpdateApiRequest {
             return this;
         }
 
-        public Builder client(@Nullable ClientInput client) {
-            this.client = client;
+        public Builder requestBody(@Nullable ClientUpdateApiRequestBody requestBody) {
+            this.requestBody = requestBody;
             return this;
         }
 
         public ClientUpdateApiRequest build() {
             return new ClientUpdateApiRequest(
-                serviceId, clientId, client);
+                serviceId, clientId, requestBody);
         }
 
     }

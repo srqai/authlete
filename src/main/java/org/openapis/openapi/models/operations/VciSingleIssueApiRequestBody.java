@@ -11,7 +11,6 @@ import jakarta.annotation.Nullable;
 import java.lang.Override;
 import java.lang.String;
 import java.util.Optional;
-import org.openapis.openapi.models.components.CredentialIssuanceOrder;
 import org.openapis.openapi.utils.Utils;
 
 
@@ -26,12 +25,12 @@ public class VciSingleIssueApiRequestBody {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("order")
-    private CredentialIssuanceOrder order;
+    private VciSingleIssueApiOrder order;
 
     @JsonCreator
     public VciSingleIssueApiRequestBody(
             @JsonProperty("accessToken") @Nullable String accessToken,
-            @JsonProperty("order") @Nullable CredentialIssuanceOrder order) {
+            @JsonProperty("order") @Nullable VciSingleIssueApiOrder order) {
         this.accessToken = accessToken;
         this.order = order;
     }
@@ -47,7 +46,7 @@ public class VciSingleIssueApiRequestBody {
         return Optional.ofNullable(this.accessToken);
     }
 
-    public Optional<CredentialIssuanceOrder> order() {
+    public Optional<VciSingleIssueApiOrder> order() {
         return Optional.ofNullable(this.order);
     }
 
@@ -65,7 +64,7 @@ public class VciSingleIssueApiRequestBody {
     }
 
 
-    public VciSingleIssueApiRequestBody withOrder(@Nullable CredentialIssuanceOrder order) {
+    public VciSingleIssueApiRequestBody withOrder(@Nullable VciSingleIssueApiOrder order) {
         this.order = order;
         return this;
     }
@@ -103,7 +102,7 @@ public class VciSingleIssueApiRequestBody {
 
         private String accessToken;
 
-        private CredentialIssuanceOrder order;
+        private VciSingleIssueApiOrder order;
 
         private Builder() {
           // force use of static builder() method
@@ -117,7 +116,7 @@ public class VciSingleIssueApiRequestBody {
             return this;
         }
 
-        public Builder order(@Nullable CredentialIssuanceOrder order) {
+        public Builder order(@Nullable VciSingleIssueApiOrder order) {
             this.order = order;
             return this;
         }

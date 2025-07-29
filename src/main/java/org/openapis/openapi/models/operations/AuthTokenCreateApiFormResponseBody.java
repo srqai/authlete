@@ -14,8 +14,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
-import org.openapis.openapi.models.components.AuthorizationDetails;
-import org.openapis.openapi.models.components.Property;
 import org.openapis.openapi.utils.Utils;
 
 
@@ -81,7 +79,7 @@ public class AuthTokenCreateApiFormResponseBody {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("properties")
-    private List<Property> properties;
+    private List<AuthTokenCreateApiFormProperty> properties;
 
     /**
      * The newly issued refresh token.
@@ -128,7 +126,7 @@ public class AuthTokenCreateApiFormResponseBody {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("authorizationDetails")
-    private AuthorizationDetails authorizationDetails;
+    private AuthTokenCreateApiFormAuthorizationDetails authorizationDetails;
 
     /**
      * the flag which indicates whether the access token is for an external
@@ -162,13 +160,13 @@ public class AuthTokenCreateApiFormResponseBody {
             @JsonProperty("expiresAt") @Nullable Long expiresAt,
             @JsonProperty("expiresIn") @Nullable Long expiresIn,
             @JsonProperty("grantType") @Nullable String grantType,
-            @JsonProperty("properties") @Nullable List<Property> properties,
+            @JsonProperty("properties") @Nullable List<AuthTokenCreateApiFormProperty> properties,
             @JsonProperty("refreshToken") @Nullable String refreshToken,
             @JsonProperty("scopes") @Nullable List<String> scopes,
             @JsonProperty("subject") @Nullable String subject,
             @JsonProperty("tokenType") @Nullable String tokenType,
             @JsonProperty("jwtAccessToken") @Nullable String jwtAccessToken,
-            @JsonProperty("authorizationDetails") @Nullable AuthorizationDetails authorizationDetails,
+            @JsonProperty("authorizationDetails") @Nullable AuthTokenCreateApiFormAuthorizationDetails authorizationDetails,
             @JsonProperty("forExternalAttachment") @Nullable Boolean forExternalAttachment,
             @JsonProperty("tokenId") @Nullable String tokenId,
             @JsonProperty("refreshTokenScopes") @Nullable List<String> refreshTokenScopes) {
@@ -260,7 +258,7 @@ public class AuthTokenCreateApiFormResponseBody {
     /**
      * The extra properties associated with the access token.
      */
-    public Optional<List<Property>> properties() {
+    public Optional<List<AuthTokenCreateApiFormProperty>> properties() {
         return Optional.ofNullable(this.properties);
     }
 
@@ -307,7 +305,7 @@ public class AuthTokenCreateApiFormResponseBody {
      * request parameter in the preceding device authorization request which is defined in
      * "OAuth 2.0 Rich Authorization Requests".
      */
-    public Optional<AuthorizationDetails> authorizationDetails() {
+    public Optional<AuthTokenCreateApiFormAuthorizationDetails> authorizationDetails() {
         return Optional.ofNullable(this.authorizationDetails);
     }
 
@@ -413,7 +411,7 @@ public class AuthTokenCreateApiFormResponseBody {
     /**
      * The extra properties associated with the access token.
      */
-    public AuthTokenCreateApiFormResponseBody withProperties(@Nullable List<Property> properties) {
+    public AuthTokenCreateApiFormResponseBody withProperties(@Nullable List<AuthTokenCreateApiFormProperty> properties) {
         this.properties = properties;
         return this;
     }
@@ -472,7 +470,7 @@ public class AuthTokenCreateApiFormResponseBody {
      * request parameter in the preceding device authorization request which is defined in
      * "OAuth 2.0 Rich Authorization Requests".
      */
-    public AuthTokenCreateApiFormResponseBody withAuthorizationDetails(@Nullable AuthorizationDetails authorizationDetails) {
+    public AuthTokenCreateApiFormResponseBody withAuthorizationDetails(@Nullable AuthTokenCreateApiFormAuthorizationDetails authorizationDetails) {
         this.authorizationDetails = authorizationDetails;
         return this;
     }
@@ -589,7 +587,7 @@ public class AuthTokenCreateApiFormResponseBody {
 
         private String grantType;
 
-        private List<Property> properties;
+        private List<AuthTokenCreateApiFormProperty> properties;
 
         private String refreshToken;
 
@@ -601,7 +599,7 @@ public class AuthTokenCreateApiFormResponseBody {
 
         private String jwtAccessToken;
 
-        private AuthorizationDetails authorizationDetails;
+        private AuthTokenCreateApiFormAuthorizationDetails authorizationDetails;
 
         private Boolean forExternalAttachment;
 
@@ -680,7 +678,7 @@ public class AuthTokenCreateApiFormResponseBody {
         /**
          * The extra properties associated with the access token.
          */
-        public Builder properties(@Nullable List<Property> properties) {
+        public Builder properties(@Nullable List<AuthTokenCreateApiFormProperty> properties) {
             this.properties = properties;
             return this;
         }
@@ -733,7 +731,7 @@ public class AuthTokenCreateApiFormResponseBody {
          * request parameter in the preceding device authorization request which is defined in
          * "OAuth 2.0 Rich Authorization Requests".
          */
-        public Builder authorizationDetails(@Nullable AuthorizationDetails authorizationDetails) {
+        public Builder authorizationDetails(@Nullable AuthTokenCreateApiFormAuthorizationDetails authorizationDetails) {
             this.authorizationDetails = authorizationDetails;
             return this;
         }

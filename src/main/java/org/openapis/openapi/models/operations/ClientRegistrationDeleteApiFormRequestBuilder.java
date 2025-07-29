@@ -6,10 +6,10 @@ package org.openapis.openapi.models.operations;
 import static org.openapis.openapi.operations.Operations.RequestOperation;
 
 import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1client1registration1deletePostRequestBodyContentApplication1jsonSchema;
 import org.openapis.openapi.operations.ClientRegistrationDeleteApiFormOperation;
 import org.openapis.openapi.utils.Utils;
 
@@ -17,6 +17,7 @@ public class ClientRegistrationDeleteApiFormRequestBuilder {
     private final SDKConfiguration sdkConfiguration;
     private final ClientRegistrationDeleteApiFormRequest.Builder pojoBuilder;
     private ClientRegistrationDeleteApiFormRequest request;
+    private String serverURL;
     private boolean _setterCalled;
 
     public ClientRegistrationDeleteApiFormRequestBuilder(SDKConfiguration sdkConfiguration) {
@@ -30,9 +31,14 @@ public class ClientRegistrationDeleteApiFormRequestBuilder {
         return this;
     }
 
-    public ClientRegistrationDeleteApiFormRequestBuilder oneapi1Percent7BserviceIdPercent7D1client1registration1deletePostRequestBodyContentApplication1jsonSchema(@Nonnull 1api1Percent7BserviceIdPercent7D1client1registration1deletePostRequestBodyContentApplication1jsonSchema oneapi1Percent7BserviceIdPercent7D1client1registration1deletePostRequestBodyContentApplication1jsonSchema) {
-        this.pojoBuilder.oneapi1Percent7BserviceIdPercent7D1client1registration1deletePostRequestBodyContentApplication1jsonSchema(oneapi1Percent7BserviceIdPercent7D1client1registration1deletePostRequestBodyContentApplication1jsonSchema);
+    public ClientRegistrationDeleteApiFormRequestBuilder requestBody(@Nonnull ClientRegistrationDeleteApiFormRequestBody requestBody) {
+        this.pojoBuilder.requestBody(requestBody);
         this._setterCalled = true;
+        return this;
+    }
+
+    public ClientRegistrationDeleteApiFormRequestBuilder serverURL(@Nullable String serverURL) {
+        this.serverURL = serverURL;
         return this;
     }
 
@@ -49,7 +55,7 @@ public class ClientRegistrationDeleteApiFormRequestBuilder {
     */
     public ClientRegistrationDeleteApiFormResponse call() throws Exception {
         RequestOperation<ClientRegistrationDeleteApiFormRequest, ClientRegistrationDeleteApiFormResponse> operation
-              = new ClientRegistrationDeleteApiFormOperation(sdkConfiguration);
+              = new ClientRegistrationDeleteApiFormOperation(sdkConfiguration, serverURL);
 
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }

@@ -6,7 +6,9 @@ package org.openapis.openapi.models.operations;
 import static org.openapis.openapi.operations.Operations.RequestOperation;
 
 import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import java.lang.Exception;
+import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
 import org.openapis.openapi.operations.ClientAuthorizationGetListApiOperation;
 import org.openapis.openapi.utils.Utils;
@@ -14,6 +16,7 @@ import org.openapis.openapi.utils.Utils;
 public class ClientAuthorizationGetListApiRequestBuilder {
     private final SDKConfiguration sdkConfiguration;
     private ClientAuthorizationGetListApiRequest request;
+    private String serverURL;
     private boolean _setterCalled;
 
     public ClientAuthorizationGetListApiRequestBuilder(SDKConfiguration sdkConfiguration) {
@@ -22,6 +25,11 @@ public class ClientAuthorizationGetListApiRequestBuilder {
 
     public ClientAuthorizationGetListApiRequestBuilder request(@Nonnull ClientAuthorizationGetListApiRequest request) {
         this.request = Utils.checkNotNull(request, "request");
+        return this;
+    }
+
+    public ClientAuthorizationGetListApiRequestBuilder serverURL(@Nullable String serverURL) {
+        this.serverURL = serverURL;
         return this;
     }
 
@@ -35,7 +43,7 @@ public class ClientAuthorizationGetListApiRequestBuilder {
     */
     public ClientAuthorizationGetListApiResponse call() throws Exception {
         RequestOperation<ClientAuthorizationGetListApiRequest, ClientAuthorizationGetListApiResponse> operation
-              = new ClientAuthorizationGetListApiOperation(sdkConfiguration);
+              = new ClientAuthorizationGetListApiOperation(sdkConfiguration, serverURL);
 
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }

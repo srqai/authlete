@@ -15,8 +15,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
-import org.openapis.openapi.models.components.AuthorizationDetails;
-import org.openapis.openapi.models.components.Property;
 import org.openapis.openapi.utils.Utils;
 
 
@@ -54,7 +52,7 @@ public class AuthTokenUpdateApiRequestBody {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("properties")
-    private List<Property> properties;
+    private List<AuthTokenUpdateApiPropertyRequest> properties;
 
     /**
      * A boolean request parameter which indicates whether the API attempts to update the expiration
@@ -120,7 +118,7 @@ public class AuthTokenUpdateApiRequestBody {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("authorizationDetails")
-    private AuthorizationDetails authorizationDetails;
+    private AuthTokenUpdateApiAuthorizationDetailsRequest authorizationDetails;
 
     /**
      * the flag which indicates whether the access token is for an external
@@ -135,14 +133,14 @@ public class AuthTokenUpdateApiRequestBody {
             @JsonProperty("accessToken") @Nonnull String accessToken,
             @JsonProperty("accessTokenExpiresAt") @Nullable Long accessTokenExpiresAt,
             @JsonProperty("scopes") @Nullable List<String> scopes,
-            @JsonProperty("properties") @Nullable List<Property> properties,
+            @JsonProperty("properties") @Nullable List<AuthTokenUpdateApiPropertyRequest> properties,
             @JsonProperty("accessTokenExpiresAtUpdatedOnScopeUpdate") @Nullable Boolean accessTokenExpiresAtUpdatedOnScopeUpdate,
             @JsonProperty("accessTokenHash") @Nullable String accessTokenHash,
             @JsonProperty("accessTokenValueUpdated") @Nullable Boolean accessTokenValueUpdated,
             @JsonProperty("accessTokenPersistent") @Nullable Boolean accessTokenPersistent,
             @JsonProperty("certificateThumbprint") @Nullable String certificateThumbprint,
             @JsonProperty("dpopKeyThumbprint") @Nullable String dpopKeyThumbprint,
-            @JsonProperty("authorizationDetails") @Nullable AuthorizationDetails authorizationDetails,
+            @JsonProperty("authorizationDetails") @Nullable AuthTokenUpdateApiAuthorizationDetailsRequest authorizationDetails,
             @JsonProperty("forExternalAttachment") @Nullable Boolean forExternalAttachment) {
         this.accessToken = Optional.ofNullable(accessToken)
             .orElseThrow(() -> new IllegalArgumentException("accessToken cannot be null"));
@@ -199,7 +197,7 @@ public class AuthTokenUpdateApiRequestBody {
      * A new set of properties assigned to the access token. If the `properties` request parameter is
      * not included in a request or its value is null, the properties of the access token are not changed.
      */
-    public Optional<List<Property>> properties() {
+    public Optional<List<AuthTokenUpdateApiPropertyRequest>> properties() {
         return Optional.ofNullable(this.properties);
     }
 
@@ -265,7 +263,7 @@ public class AuthTokenUpdateApiRequestBody {
      * request parameter in the preceding device authorization request which is defined in
      * "OAuth 2.0 Rich Authorization Requests".
      */
-    public Optional<AuthorizationDetails> authorizationDetails() {
+    public Optional<AuthTokenUpdateApiAuthorizationDetailsRequest> authorizationDetails() {
         return Optional.ofNullable(this.authorizationDetails);
     }
 
@@ -320,7 +318,7 @@ public class AuthTokenUpdateApiRequestBody {
      * A new set of properties assigned to the access token. If the `properties` request parameter is
      * not included in a request or its value is null, the properties of the access token are not changed.
      */
-    public AuthTokenUpdateApiRequestBody withProperties(@Nullable List<Property> properties) {
+    public AuthTokenUpdateApiRequestBody withProperties(@Nullable List<AuthTokenUpdateApiPropertyRequest> properties) {
         this.properties = properties;
         return this;
     }
@@ -400,7 +398,7 @@ public class AuthTokenUpdateApiRequestBody {
      * request parameter in the preceding device authorization request which is defined in
      * "OAuth 2.0 Rich Authorization Requests".
      */
-    public AuthTokenUpdateApiRequestBody withAuthorizationDetails(@Nullable AuthorizationDetails authorizationDetails) {
+    public AuthTokenUpdateApiRequestBody withAuthorizationDetails(@Nullable AuthTokenUpdateApiAuthorizationDetailsRequest authorizationDetails) {
         this.authorizationDetails = authorizationDetails;
         return this;
     }
@@ -475,7 +473,7 @@ public class AuthTokenUpdateApiRequestBody {
 
         private List<String> scopes;
 
-        private List<Property> properties;
+        private List<AuthTokenUpdateApiPropertyRequest> properties;
 
         private Boolean accessTokenExpiresAtUpdatedOnScopeUpdate;
 
@@ -489,7 +487,7 @@ public class AuthTokenUpdateApiRequestBody {
 
         private String dpopKeyThumbprint;
 
-        private AuthorizationDetails authorizationDetails;
+        private AuthTokenUpdateApiAuthorizationDetailsRequest authorizationDetails;
 
         private Boolean forExternalAttachment;
 
@@ -532,7 +530,7 @@ public class AuthTokenUpdateApiRequestBody {
          * A new set of properties assigned to the access token. If the `properties` request parameter is
          * not included in a request or its value is null, the properties of the access token are not changed.
          */
-        public Builder properties(@Nullable List<Property> properties) {
+        public Builder properties(@Nullable List<AuthTokenUpdateApiPropertyRequest> properties) {
             this.properties = properties;
             return this;
         }
@@ -605,7 +603,7 @@ public class AuthTokenUpdateApiRequestBody {
          * request parameter in the preceding device authorization request which is defined in
          * "OAuth 2.0 Rich Authorization Requests".
          */
-        public Builder authorizationDetails(@Nullable AuthorizationDetails authorizationDetails) {
+        public Builder authorizationDetails(@Nullable AuthTokenUpdateApiAuthorizationDetailsRequest authorizationDetails) {
             this.authorizationDetails = authorizationDetails;
             return this;
         }

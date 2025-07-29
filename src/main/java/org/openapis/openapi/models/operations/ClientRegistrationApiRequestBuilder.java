@@ -6,6 +6,7 @@ package org.openapis.openapi.models.operations;
 import static org.openapis.openapi.operations.Operations.RequestOperation;
 
 import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
@@ -16,6 +17,7 @@ public class ClientRegistrationApiRequestBuilder {
     private final SDKConfiguration sdkConfiguration;
     private final ClientRegistrationApiRequest.Builder pojoBuilder;
     private ClientRegistrationApiRequest request;
+    private String serverURL;
     private boolean _setterCalled;
 
     public ClientRegistrationApiRequestBuilder(SDKConfiguration sdkConfiguration) {
@@ -35,6 +37,11 @@ public class ClientRegistrationApiRequestBuilder {
         return this;
     }
 
+    public ClientRegistrationApiRequestBuilder serverURL(@Nullable String serverURL) {
+        this.serverURL = serverURL;
+        return this;
+    }
+
     private ClientRegistrationApiRequest _buildRequest() {
         if (this._setterCalled) {
             this.request = this.pojoBuilder.build();
@@ -48,7 +55,7 @@ public class ClientRegistrationApiRequestBuilder {
     */
     public ClientRegistrationApiResponse call() throws Exception {
         RequestOperation<ClientRegistrationApiRequest, ClientRegistrationApiResponse> operation
-              = new ClientRegistrationApiOperation(sdkConfiguration);
+              = new ClientRegistrationApiOperation(sdkConfiguration, serverURL);
 
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }

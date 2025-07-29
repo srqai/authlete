@@ -12,7 +12,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
-import org.openapis.openapi.models.components.CredentialIssuanceOrder;
 import org.openapis.openapi.utils.Utils;
 
 
@@ -29,12 +28,12 @@ public class VciBatchIssueApiRequestBody {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("orders")
-    private List<CredentialIssuanceOrder> orders;
+    private List<VciBatchIssueApiOrder> orders;
 
     @JsonCreator
     public VciBatchIssueApiRequestBody(
             @JsonProperty("accessToken") @Nullable String accessToken,
-            @JsonProperty("orders") @Nullable List<CredentialIssuanceOrder> orders) {
+            @JsonProperty("orders") @Nullable List<VciBatchIssueApiOrder> orders) {
         this.accessToken = accessToken;
         this.orders = orders;
     }
@@ -53,7 +52,7 @@ public class VciBatchIssueApiRequestBody {
     /**
      * The instructions for issuance of credentials and/or transaction IDs.
      */
-    public Optional<List<CredentialIssuanceOrder>> orders() {
+    public Optional<List<VciBatchIssueApiOrder>> orders() {
         return Optional.ofNullable(this.orders);
     }
 
@@ -74,7 +73,7 @@ public class VciBatchIssueApiRequestBody {
     /**
      * The instructions for issuance of credentials and/or transaction IDs.
      */
-    public VciBatchIssueApiRequestBody withOrders(@Nullable List<CredentialIssuanceOrder> orders) {
+    public VciBatchIssueApiRequestBody withOrders(@Nullable List<VciBatchIssueApiOrder> orders) {
         this.orders = orders;
         return this;
     }
@@ -112,7 +111,7 @@ public class VciBatchIssueApiRequestBody {
 
         private String accessToken;
 
-        private List<CredentialIssuanceOrder> orders;
+        private List<VciBatchIssueApiOrder> orders;
 
         private Builder() {
           // force use of static builder() method
@@ -129,7 +128,7 @@ public class VciBatchIssueApiRequestBody {
         /**
          * The instructions for issuance of credentials and/or transaction IDs.
          */
-        public Builder orders(@Nullable List<CredentialIssuanceOrder> orders) {
+        public Builder orders(@Nullable List<VciBatchIssueApiOrder> orders) {
             this.orders = orders;
             return this;
         }

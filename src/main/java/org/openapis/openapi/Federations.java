@@ -204,7 +204,7 @@ public class Federations {
      * @throws Exception if the API call fails
      */
     public FederationConfigurationApiResponse postConfiguration(@Nonnull String serviceId) throws Exception {
-        return postConfiguration(serviceId, null);
+        return postConfiguration(serviceId, null, null);
     }
 
     /**
@@ -294,13 +294,16 @@ public class Federations {
      * 
      * @param serviceId A service ID.
      * @param requestBody 
+     * @param serverURL Overrides the server URL.
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public FederationConfigurationApiResponse postConfiguration(@Nonnull String serviceId, @Nullable FederationConfigurationApiRequestBody requestBody) throws Exception {
+    public FederationConfigurationApiResponse postConfiguration(
+            @Nonnull String serviceId, @Nullable FederationConfigurationApiRequestBody requestBody,
+            @Nullable String serverURL) throws Exception {
         FederationConfigurationApiRequest request = new FederationConfigurationApiRequest(serviceId, requestBody);
         RequestOperation<FederationConfigurationApiRequest, FederationConfigurationApiResponse> operation
-              = new FederationConfigurationApiOperation(sdkConfiguration);
+              = new FederationConfigurationApiOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 

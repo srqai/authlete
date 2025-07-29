@@ -13,7 +13,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1auth1token1get1listGetResponses200ContentApplication1jsonSchemaPropertiesClient;
 import org.openapis.openapi.utils.Utils;
 
 
@@ -58,7 +57,7 @@ public class ClientAuthorizationGetListApiResponseBody {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("clients")
-    private List<1api1Percent7BserviceIdPercent7D1auth1token1get1listGetResponses200ContentApplication1jsonSchemaPropertiesClient> clients;
+    private List<ClientAuthorizationGetListApiClient> clients;
 
     @JsonCreator
     public ClientAuthorizationGetListApiResponseBody(
@@ -67,7 +66,7 @@ public class ClientAuthorizationGetListApiResponseBody {
             @JsonProperty("developer") @Nullable String developer,
             @JsonProperty("subject") @Nullable String subject,
             @JsonProperty("totalCount") @Nullable Integer totalCount,
-            @JsonProperty("clients") @Nullable List<1api1Percent7BserviceIdPercent7D1auth1token1get1listGetResponses200ContentApplication1jsonSchemaPropertiesClient> clients) {
+            @JsonProperty("clients") @Nullable List<ClientAuthorizationGetListApiClient> clients) {
         this.start = start;
         this.end = end;
         this.developer = developer;
@@ -119,7 +118,7 @@ public class ClientAuthorizationGetListApiResponseBody {
     /**
      * An array of clients.
      */
-    public Optional<List<1api1Percent7BserviceIdPercent7D1auth1token1get1listGetResponses200ContentApplication1jsonSchemaPropertiesClient>> clients() {
+    public Optional<List<ClientAuthorizationGetListApiClient>> clients() {
         return Optional.ofNullable(this.clients);
     }
 
@@ -176,7 +175,7 @@ public class ClientAuthorizationGetListApiResponseBody {
     /**
      * An array of clients.
      */
-    public ClientAuthorizationGetListApiResponseBody withClients(@Nullable List<1api1Percent7BserviceIdPercent7D1auth1token1get1listGetResponses200ContentApplication1jsonSchemaPropertiesClient> clients) {
+    public ClientAuthorizationGetListApiResponseBody withClients(@Nullable List<ClientAuthorizationGetListApiClient> clients) {
         this.clients = clients;
         return this;
     }
@@ -231,7 +230,7 @@ public class ClientAuthorizationGetListApiResponseBody {
 
         private Integer totalCount;
 
-        private List<1api1Percent7BserviceIdPercent7D1auth1token1get1listGetResponses200ContentApplication1jsonSchemaPropertiesClient> clients;
+        private List<ClientAuthorizationGetListApiClient> clients;
 
         private Builder() {
           // force use of static builder() method
@@ -280,7 +279,7 @@ public class ClientAuthorizationGetListApiResponseBody {
         /**
          * An array of clients.
          */
-        public Builder clients(@Nullable List<1api1Percent7BserviceIdPercent7D1auth1token1get1listGetResponses200ContentApplication1jsonSchemaPropertiesClient> clients) {
+        public Builder clients(@Nullable List<ClientAuthorizationGetListApiClient> clients) {
             this.clients = clients;
             return this;
         }

@@ -14,9 +14,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
-import org.openapis.openapi.models.components.AuthorizationDetails;
-import org.openapis.openapi.models.components.Pair;
-import org.openapis.openapi.models.components.Property;
 import org.openapis.openapi.utils.Utils;
 
 
@@ -141,7 +138,7 @@ public class AuthTokenIssueApiFormResponseBody {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("properties")
-    private List<Property> properties;
+    private List<AuthTokenIssueApiFormProperty> properties;
 
     /**
      * The newly issued access token in JWT format. If the authorization server is configured to issue JWT-based access tokens
@@ -166,21 +163,21 @@ public class AuthTokenIssueApiFormResponseBody {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("authorizationDetails")
-    private AuthorizationDetails authorizationDetails;
+    private AuthTokenIssueApiFormAuthorizationDetails authorizationDetails;
 
     /**
      * The attributes of this service that the client application belongs to.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("serviceAttributes")
-    private List<Pair> serviceAttributes;
+    private List<AuthTokenIssueApiFormServiceAttribute> serviceAttributes;
 
     /**
      * The attributes of the client.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("clientAttributes")
-    private List<Pair> clientAttributes;
+    private List<AuthTokenIssueApiFormClientAttribute> clientAttributes;
 
     /**
      * The entity ID of the client.
@@ -220,12 +217,12 @@ public class AuthTokenIssueApiFormResponseBody {
             @JsonProperty("clientIdAliasUsed") @Nullable Boolean clientIdAliasUsed,
             @JsonProperty("subject") @Nullable String subject,
             @JsonProperty("scopes") @Nullable List<String> scopes,
-            @JsonProperty("properties") @Nullable List<Property> properties,
+            @JsonProperty("properties") @Nullable List<AuthTokenIssueApiFormProperty> properties,
             @JsonProperty("jwtAccessToken") @Nullable String jwtAccessToken,
             @JsonProperty("accessTokenResources") @Nullable List<String> accessTokenResources,
-            @JsonProperty("authorizationDetails") @Nullable AuthorizationDetails authorizationDetails,
-            @JsonProperty("serviceAttributes") @Nullable List<Pair> serviceAttributes,
-            @JsonProperty("clientAttributes") @Nullable List<Pair> clientAttributes,
+            @JsonProperty("authorizationDetails") @Nullable AuthTokenIssueApiFormAuthorizationDetails authorizationDetails,
+            @JsonProperty("serviceAttributes") @Nullable List<AuthTokenIssueApiFormServiceAttribute> serviceAttributes,
+            @JsonProperty("clientAttributes") @Nullable List<AuthTokenIssueApiFormClientAttribute> clientAttributes,
             @JsonProperty("clientEntityId") @Nullable String clientEntityId,
             @JsonProperty("clientEntityIdUsed") @Nullable Boolean clientEntityIdUsed,
             @JsonProperty("refreshTokenScopes") @Nullable List<String> refreshTokenScopes) {
@@ -384,7 +381,7 @@ public class AuthTokenIssueApiFormResponseBody {
      * The extra properties associated with the access token.
      * This parameter is `null` when no extra property is associated with the issued access token.
      */
-    public Optional<List<Property>> properties() {
+    public Optional<List<AuthTokenIssueApiFormProperty>> properties() {
         return Optional.ofNullable(this.properties);
     }
 
@@ -409,21 +406,21 @@ public class AuthTokenIssueApiFormResponseBody {
      * request parameter in the preceding device authorization request which is defined in
      * "OAuth 2.0 Rich Authorization Requests".
      */
-    public Optional<AuthorizationDetails> authorizationDetails() {
+    public Optional<AuthTokenIssueApiFormAuthorizationDetails> authorizationDetails() {
         return Optional.ofNullable(this.authorizationDetails);
     }
 
     /**
      * The attributes of this service that the client application belongs to.
      */
-    public Optional<List<Pair>> serviceAttributes() {
+    public Optional<List<AuthTokenIssueApiFormServiceAttribute>> serviceAttributes() {
         return Optional.ofNullable(this.serviceAttributes);
     }
 
     /**
      * The attributes of the client.
      */
-    public Optional<List<Pair>> clientAttributes() {
+    public Optional<List<AuthTokenIssueApiFormClientAttribute>> clientAttributes() {
         return Optional.ofNullable(this.clientAttributes);
     }
 
@@ -601,7 +598,7 @@ public class AuthTokenIssueApiFormResponseBody {
      * The extra properties associated with the access token.
      * This parameter is `null` when no extra property is associated with the issued access token.
      */
-    public AuthTokenIssueApiFormResponseBody withProperties(@Nullable List<Property> properties) {
+    public AuthTokenIssueApiFormResponseBody withProperties(@Nullable List<AuthTokenIssueApiFormProperty> properties) {
         this.properties = properties;
         return this;
     }
@@ -632,7 +629,7 @@ public class AuthTokenIssueApiFormResponseBody {
      * request parameter in the preceding device authorization request which is defined in
      * "OAuth 2.0 Rich Authorization Requests".
      */
-    public AuthTokenIssueApiFormResponseBody withAuthorizationDetails(@Nullable AuthorizationDetails authorizationDetails) {
+    public AuthTokenIssueApiFormResponseBody withAuthorizationDetails(@Nullable AuthTokenIssueApiFormAuthorizationDetails authorizationDetails) {
         this.authorizationDetails = authorizationDetails;
         return this;
     }
@@ -641,7 +638,7 @@ public class AuthTokenIssueApiFormResponseBody {
     /**
      * The attributes of this service that the client application belongs to.
      */
-    public AuthTokenIssueApiFormResponseBody withServiceAttributes(@Nullable List<Pair> serviceAttributes) {
+    public AuthTokenIssueApiFormResponseBody withServiceAttributes(@Nullable List<AuthTokenIssueApiFormServiceAttribute> serviceAttributes) {
         this.serviceAttributes = serviceAttributes;
         return this;
     }
@@ -650,7 +647,7 @@ public class AuthTokenIssueApiFormResponseBody {
     /**
      * The attributes of the client.
      */
-    public AuthTokenIssueApiFormResponseBody withClientAttributes(@Nullable List<Pair> clientAttributes) {
+    public AuthTokenIssueApiFormResponseBody withClientAttributes(@Nullable List<AuthTokenIssueApiFormClientAttribute> clientAttributes) {
         this.clientAttributes = clientAttributes;
         return this;
     }
@@ -794,17 +791,17 @@ public class AuthTokenIssueApiFormResponseBody {
 
         private List<String> scopes;
 
-        private List<Property> properties;
+        private List<AuthTokenIssueApiFormProperty> properties;
 
         private String jwtAccessToken;
 
         private List<String> accessTokenResources;
 
-        private AuthorizationDetails authorizationDetails;
+        private AuthTokenIssueApiFormAuthorizationDetails authorizationDetails;
 
-        private List<Pair> serviceAttributes;
+        private List<AuthTokenIssueApiFormServiceAttribute> serviceAttributes;
 
-        private List<Pair> clientAttributes;
+        private List<AuthTokenIssueApiFormClientAttribute> clientAttributes;
 
         private String clientEntityId;
 
@@ -949,7 +946,7 @@ public class AuthTokenIssueApiFormResponseBody {
          * The extra properties associated with the access token.
          * This parameter is `null` when no extra property is associated with the issued access token.
          */
-        public Builder properties(@Nullable List<Property> properties) {
+        public Builder properties(@Nullable List<AuthTokenIssueApiFormProperty> properties) {
             this.properties = properties;
             return this;
         }
@@ -977,7 +974,7 @@ public class AuthTokenIssueApiFormResponseBody {
          * request parameter in the preceding device authorization request which is defined in
          * "OAuth 2.0 Rich Authorization Requests".
          */
-        public Builder authorizationDetails(@Nullable AuthorizationDetails authorizationDetails) {
+        public Builder authorizationDetails(@Nullable AuthTokenIssueApiFormAuthorizationDetails authorizationDetails) {
             this.authorizationDetails = authorizationDetails;
             return this;
         }
@@ -985,7 +982,7 @@ public class AuthTokenIssueApiFormResponseBody {
         /**
          * The attributes of this service that the client application belongs to.
          */
-        public Builder serviceAttributes(@Nullable List<Pair> serviceAttributes) {
+        public Builder serviceAttributes(@Nullable List<AuthTokenIssueApiFormServiceAttribute> serviceAttributes) {
             this.serviceAttributes = serviceAttributes;
             return this;
         }
@@ -993,7 +990,7 @@ public class AuthTokenIssueApiFormResponseBody {
         /**
          * The attributes of the client.
          */
-        public Builder clientAttributes(@Nullable List<Pair> clientAttributes) {
+        public Builder clientAttributes(@Nullable List<AuthTokenIssueApiFormClientAttribute> clientAttributes) {
             this.clientAttributes = clientAttributes;
             return this;
         }

@@ -6,10 +6,10 @@ package org.openapis.openapi.models.operations;
 import static org.openapis.openapi.operations.Operations.RequestOperation;
 
 import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1client1registrationPostRequestBodyContentApplication1jsonSchema;
 import org.openapis.openapi.operations.ClientRegistrationApiFormOperation;
 import org.openapis.openapi.utils.Utils;
 
@@ -17,6 +17,7 @@ public class ClientRegistrationApiFormRequestBuilder {
     private final SDKConfiguration sdkConfiguration;
     private final ClientRegistrationApiFormRequest.Builder pojoBuilder;
     private ClientRegistrationApiFormRequest request;
+    private String serverURL;
     private boolean _setterCalled;
 
     public ClientRegistrationApiFormRequestBuilder(SDKConfiguration sdkConfiguration) {
@@ -30,9 +31,14 @@ public class ClientRegistrationApiFormRequestBuilder {
         return this;
     }
 
-    public ClientRegistrationApiFormRequestBuilder oneapi1Percent7BserviceIdPercent7D1client1registrationPostRequestBodyContentApplication1jsonSchema(@Nonnull 1api1Percent7BserviceIdPercent7D1client1registrationPostRequestBodyContentApplication1jsonSchema oneapi1Percent7BserviceIdPercent7D1client1registrationPostRequestBodyContentApplication1jsonSchema) {
-        this.pojoBuilder.oneapi1Percent7BserviceIdPercent7D1client1registrationPostRequestBodyContentApplication1jsonSchema(oneapi1Percent7BserviceIdPercent7D1client1registrationPostRequestBodyContentApplication1jsonSchema);
+    public ClientRegistrationApiFormRequestBuilder requestBody(@Nonnull ClientRegistrationApiFormRequestBody requestBody) {
+        this.pojoBuilder.requestBody(requestBody);
         this._setterCalled = true;
+        return this;
+    }
+
+    public ClientRegistrationApiFormRequestBuilder serverURL(@Nullable String serverURL) {
+        this.serverURL = serverURL;
         return this;
     }
 
@@ -49,7 +55,7 @@ public class ClientRegistrationApiFormRequestBuilder {
     */
     public ClientRegistrationApiFormResponse call() throws Exception {
         RequestOperation<ClientRegistrationApiFormRequest, ClientRegistrationApiFormResponse> operation
-              = new ClientRegistrationApiFormOperation(sdkConfiguration);
+              = new ClientRegistrationApiFormOperation(sdkConfiguration, serverURL);
 
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }

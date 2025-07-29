@@ -6,6 +6,7 @@ package org.openapis.openapi.models.operations;
 import static org.openapis.openapi.operations.Operations.RequestOperation;
 
 import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
@@ -16,6 +17,7 @@ public class VciOfferCreateApiRequestBuilder {
     private final SDKConfiguration sdkConfiguration;
     private final VciOfferCreateApiRequest.Builder pojoBuilder;
     private VciOfferCreateApiRequest request;
+    private String serverURL;
     private boolean _setterCalled;
 
     public VciOfferCreateApiRequestBuilder(SDKConfiguration sdkConfiguration) {
@@ -35,6 +37,11 @@ public class VciOfferCreateApiRequestBuilder {
         return this;
     }
 
+    public VciOfferCreateApiRequestBuilder serverURL(@Nullable String serverURL) {
+        this.serverURL = serverURL;
+        return this;
+    }
+
     private VciOfferCreateApiRequest _buildRequest() {
         if (this._setterCalled) {
             this.request = this.pojoBuilder.build();
@@ -48,7 +55,7 @@ public class VciOfferCreateApiRequestBuilder {
     */
     public VciOfferCreateApiResponse call() throws Exception {
         RequestOperation<VciOfferCreateApiRequest, VciOfferCreateApiResponse> operation
-              = new VciOfferCreateApiOperation(sdkConfiguration);
+              = new VciOfferCreateApiOperation(sdkConfiguration, serverURL);
 
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }

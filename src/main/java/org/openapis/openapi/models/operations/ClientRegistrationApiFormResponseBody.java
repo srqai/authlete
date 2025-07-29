@@ -11,7 +11,6 @@ import jakarta.annotation.Nullable;
 import java.lang.Override;
 import java.lang.String;
 import java.util.Optional;
-import org.openapis.openapi.models.components.Client;
 import org.openapis.openapi.utils.Utils;
 
 
@@ -48,7 +47,7 @@ public class ClientRegistrationApiFormResponseBody {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("client")
-    private Client client;
+    private ClientRegistrationApiFormClient client;
 
     @JsonCreator
     public ClientRegistrationApiFormResponseBody(
@@ -56,7 +55,7 @@ public class ClientRegistrationApiFormResponseBody {
             @JsonProperty("resultMessage") @Nullable String resultMessage,
             @JsonProperty("action") @Nullable ClientRegistrationApiFormAction action,
             @JsonProperty("responseContent") @Nullable String responseContent,
-            @JsonProperty("client") @Nullable Client client) {
+            @JsonProperty("client") @Nullable ClientRegistrationApiFormClient client) {
         this.resultCode = resultCode;
         this.resultMessage = resultMessage;
         this.action = action;
@@ -98,7 +97,7 @@ public class ClientRegistrationApiFormResponseBody {
         return Optional.ofNullable(this.responseContent);
     }
 
-    public Optional<Client> client() {
+    public Optional<ClientRegistrationApiFormClient> client() {
         return Optional.ofNullable(this.client);
     }
 
@@ -144,7 +143,7 @@ public class ClientRegistrationApiFormResponseBody {
     }
 
 
-    public ClientRegistrationApiFormResponseBody withClient(@Nullable Client client) {
+    public ClientRegistrationApiFormResponseBody withClient(@Nullable ClientRegistrationApiFormClient client) {
         this.client = client;
         return this;
     }
@@ -195,7 +194,7 @@ public class ClientRegistrationApiFormResponseBody {
 
         private String responseContent;
 
-        private Client client;
+        private ClientRegistrationApiFormClient client;
 
         private Builder() {
           // force use of static builder() method
@@ -234,7 +233,7 @@ public class ClientRegistrationApiFormResponseBody {
             return this;
         }
 
-        public Builder client(@Nullable Client client) {
+        public Builder client(@Nullable ClientRegistrationApiFormClient client) {
             this.client = client;
             return this;
         }

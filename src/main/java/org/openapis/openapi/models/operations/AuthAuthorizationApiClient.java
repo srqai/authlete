@@ -15,8 +15,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
-import org.openapis.openapi.models.components.ClientTypeProperties;
-import org.openapis.openapi.models.components.TaggedValue;
 import org.openapis.openapi.utils.Utils;
 
 
@@ -42,7 +40,7 @@ public class AuthAuthorizationApiClient {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("clientNames")
-    private List<TaggedValue> clientNames;
+    private List<AuthAuthorizationApiClientName> clientNames;
 
     /**
      * The description about the client application.
@@ -57,7 +55,7 @@ public class AuthAuthorizationApiClient {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("descriptions")
-    private List<TaggedValue> descriptions;
+    private List<AuthAuthorizationApiClientDescription> descriptions;
 
     /**
      * The client identifier used in Authlete API calls. The value of this property is assigned by Authlete.
@@ -87,7 +85,7 @@ public class AuthAuthorizationApiClient {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("clientType")
-    private ClientTypeProperties clientType;
+    private AuthAuthorizationApiClientType clientType;
 
     /**
      * The URL pointing to the logo image of the client application.
@@ -105,7 +103,7 @@ public class AuthAuthorizationApiClient {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("logoUris")
-    private List<TaggedValue> logoUris;
+    private List<AuthAuthorizationApiLogoUris> logoUris;
 
     /**
      * The URL pointing to the "Terms Of Service" page.
@@ -125,7 +123,7 @@ public class AuthAuthorizationApiClient {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("tosUris")
-    private List<TaggedValue> tosUris;
+    private List<AuthAuthorizationApiTosUris> tosUris;
 
     /**
      * The URL pointing to the page which describes the policy as to how end-user's profile data is used.
@@ -143,25 +141,25 @@ public class AuthAuthorizationApiClient {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("policyUris")
-    private List<TaggedValue> policyUris;
+    private List<AuthAuthorizationApiPolicyUris> policyUris;
 
     @JsonCreator
     public AuthAuthorizationApiClient(
             @JsonProperty("number") @Nullable Integer number,
             @JsonProperty("clientName") @Nullable String clientName,
-            @JsonProperty("clientNames") @Nullable List<TaggedValue> clientNames,
+            @JsonProperty("clientNames") @Nullable List<AuthAuthorizationApiClientName> clientNames,
             @JsonProperty("description") @Nullable String description,
-            @JsonProperty("descriptions") @Nullable List<TaggedValue> descriptions,
+            @JsonProperty("descriptions") @Nullable List<AuthAuthorizationApiClientDescription> descriptions,
             @JsonProperty("clientId") @Nullable Long clientId,
             @JsonProperty("clientIdAlias") @Nullable String clientIdAlias,
             @JsonProperty("clientIdAliasEnabled") @Nullable Boolean clientIdAliasEnabled,
-            @JsonProperty("clientType") @Nullable ClientTypeProperties clientType,
+            @JsonProperty("clientType") @Nullable AuthAuthorizationApiClientType clientType,
             @JsonProperty("logoUri") @Nullable String logoUri,
-            @JsonProperty("logoUris") @Nullable List<TaggedValue> logoUris,
+            @JsonProperty("logoUris") @Nullable List<AuthAuthorizationApiLogoUris> logoUris,
             @JsonProperty("tosUri") @Nullable String tosUri,
-            @JsonProperty("tosUris") @Nullable List<TaggedValue> tosUris,
+            @JsonProperty("tosUris") @Nullable List<AuthAuthorizationApiTosUris> tosUris,
             @JsonProperty("policyUri") @Nullable String policyUri,
-            @JsonProperty("policyUris") @Nullable List<TaggedValue> policyUris) {
+            @JsonProperty("policyUris") @Nullable List<AuthAuthorizationApiPolicyUris> policyUris) {
         this.number = number;
         this.clientName = clientName;
         this.clientNames = clientNames;
@@ -206,7 +204,7 @@ public class AuthAuthorizationApiClient {
      * Client names with language tags. If the client application has different names for different
      * languages, this property can be used to register the names.
      */
-    public Optional<List<TaggedValue>> clientNames() {
+    public Optional<List<AuthAuthorizationApiClientName>> clientNames() {
         return Optional.ofNullable(this.clientNames);
     }
 
@@ -221,7 +219,7 @@ public class AuthAuthorizationApiClient {
      * Descriptions about the client application with language tags. If the client application has different
      * descriptions for different languages, this property can be used to register the descriptions.
      */
-    public Optional<List<TaggedValue>> descriptions() {
+    public Optional<List<AuthAuthorizationApiClientDescription>> descriptions() {
         return Optional.ofNullable(this.descriptions);
     }
 
@@ -251,7 +249,7 @@ public class AuthAuthorizationApiClient {
      * The client type, either `CONFIDENTIAL` or `PUBLIC`. See [RFC 6749, 2.1. Client Types](https://datatracker.ietf.org/doc/html/rfc6749#section-2.1)
      * for details.
      */
-    public Optional<ClientTypeProperties> clientType() {
+    public Optional<AuthAuthorizationApiClientType> clientType() {
         return Optional.ofNullable(this.clientType);
     }
 
@@ -269,7 +267,7 @@ public class AuthAuthorizationApiClient {
      * Logo image URLs with language tags. If the client application has different logo images for
      * different languages, this property can be used to register URLs of the images.
      */
-    public Optional<List<TaggedValue>> logoUris() {
+    public Optional<List<AuthAuthorizationApiLogoUris>> logoUris() {
         return Optional.ofNullable(this.logoUris);
     }
 
@@ -289,7 +287,7 @@ public class AuthAuthorizationApiClient {
      * <p>If the client application has different "Terms Of Service" pages for different languages,
      * this property can be used to register the URLs.
      */
-    public Optional<List<TaggedValue>> tosUris() {
+    public Optional<List<AuthAuthorizationApiTosUris>> tosUris() {
         return Optional.ofNullable(this.tosUris);
     }
 
@@ -307,7 +305,7 @@ public class AuthAuthorizationApiClient {
      * URLs of policy pages with language tags.
      * If the client application has different policy pages for different languages, this property can be used to register the URLs.
      */
-    public Optional<List<TaggedValue>> policyUris() {
+    public Optional<List<AuthAuthorizationApiPolicyUris>> policyUris() {
         return Optional.ofNullable(this.policyUris);
     }
 
@@ -339,7 +337,7 @@ public class AuthAuthorizationApiClient {
      * Client names with language tags. If the client application has different names for different
      * languages, this property can be used to register the names.
      */
-    public AuthAuthorizationApiClient withClientNames(@Nullable List<TaggedValue> clientNames) {
+    public AuthAuthorizationApiClient withClientNames(@Nullable List<AuthAuthorizationApiClientName> clientNames) {
         this.clientNames = clientNames;
         return this;
     }
@@ -358,7 +356,7 @@ public class AuthAuthorizationApiClient {
      * Descriptions about the client application with language tags. If the client application has different
      * descriptions for different languages, this property can be used to register the descriptions.
      */
-    public AuthAuthorizationApiClient withDescriptions(@Nullable List<TaggedValue> descriptions) {
+    public AuthAuthorizationApiClient withDescriptions(@Nullable List<AuthAuthorizationApiClientDescription> descriptions) {
         this.descriptions = descriptions;
         return this;
     }
@@ -396,7 +394,7 @@ public class AuthAuthorizationApiClient {
      * The client type, either `CONFIDENTIAL` or `PUBLIC`. See [RFC 6749, 2.1. Client Types](https://datatracker.ietf.org/doc/html/rfc6749#section-2.1)
      * for details.
      */
-    public AuthAuthorizationApiClient withClientType(@Nullable ClientTypeProperties clientType) {
+    public AuthAuthorizationApiClient withClientType(@Nullable AuthAuthorizationApiClientType clientType) {
         this.clientType = clientType;
         return this;
     }
@@ -418,7 +416,7 @@ public class AuthAuthorizationApiClient {
      * Logo image URLs with language tags. If the client application has different logo images for
      * different languages, this property can be used to register URLs of the images.
      */
-    public AuthAuthorizationApiClient withLogoUris(@Nullable List<TaggedValue> logoUris) {
+    public AuthAuthorizationApiClient withLogoUris(@Nullable List<AuthAuthorizationApiLogoUris> logoUris) {
         this.logoUris = logoUris;
         return this;
     }
@@ -442,7 +440,7 @@ public class AuthAuthorizationApiClient {
      * <p>If the client application has different "Terms Of Service" pages for different languages,
      * this property can be used to register the URLs.
      */
-    public AuthAuthorizationApiClient withTosUris(@Nullable List<TaggedValue> tosUris) {
+    public AuthAuthorizationApiClient withTosUris(@Nullable List<AuthAuthorizationApiTosUris> tosUris) {
         this.tosUris = tosUris;
         return this;
     }
@@ -464,7 +462,7 @@ public class AuthAuthorizationApiClient {
      * URLs of policy pages with language tags.
      * If the client application has different policy pages for different languages, this property can be used to register the URLs.
      */
-    public AuthAuthorizationApiClient withPolicyUris(@Nullable List<TaggedValue> policyUris) {
+    public AuthAuthorizationApiClient withPolicyUris(@Nullable List<AuthAuthorizationApiPolicyUris> policyUris) {
         this.policyUris = policyUris;
         return this;
     }
@@ -534,11 +532,11 @@ public class AuthAuthorizationApiClient {
 
         private String clientName;
 
-        private List<TaggedValue> clientNames;
+        private List<AuthAuthorizationApiClientName> clientNames;
 
         private String description;
 
-        private List<TaggedValue> descriptions;
+        private List<AuthAuthorizationApiClientDescription> descriptions;
 
         private Long clientId;
 
@@ -546,19 +544,19 @@ public class AuthAuthorizationApiClient {
 
         private Boolean clientIdAliasEnabled;
 
-        private ClientTypeProperties clientType;
+        private AuthAuthorizationApiClientType clientType;
 
         private String logoUri;
 
-        private List<TaggedValue> logoUris;
+        private List<AuthAuthorizationApiLogoUris> logoUris;
 
         private String tosUri;
 
-        private List<TaggedValue> tosUris;
+        private List<AuthAuthorizationApiTosUris> tosUris;
 
         private String policyUri;
 
-        private List<TaggedValue> policyUris;
+        private List<AuthAuthorizationApiPolicyUris> policyUris;
 
         private Builder() {
           // force use of static builder() method
@@ -585,7 +583,7 @@ public class AuthAuthorizationApiClient {
          * Client names with language tags. If the client application has different names for different
          * languages, this property can be used to register the names.
          */
-        public Builder clientNames(@Nullable List<TaggedValue> clientNames) {
+        public Builder clientNames(@Nullable List<AuthAuthorizationApiClientName> clientNames) {
             this.clientNames = clientNames;
             return this;
         }
@@ -602,7 +600,7 @@ public class AuthAuthorizationApiClient {
          * Descriptions about the client application with language tags. If the client application has different
          * descriptions for different languages, this property can be used to register the descriptions.
          */
-        public Builder descriptions(@Nullable List<TaggedValue> descriptions) {
+        public Builder descriptions(@Nullable List<AuthAuthorizationApiClientDescription> descriptions) {
             this.descriptions = descriptions;
             return this;
         }
@@ -636,7 +634,7 @@ public class AuthAuthorizationApiClient {
          * The client type, either `CONFIDENTIAL` or `PUBLIC`. See [RFC 6749, 2.1. Client Types](https://datatracker.ietf.org/doc/html/rfc6749#section-2.1)
          * for details.
          */
-        public Builder clientType(@Nullable ClientTypeProperties clientType) {
+        public Builder clientType(@Nullable AuthAuthorizationApiClientType clientType) {
             this.clientType = clientType;
             return this;
         }
@@ -656,7 +654,7 @@ public class AuthAuthorizationApiClient {
          * Logo image URLs with language tags. If the client application has different logo images for
          * different languages, this property can be used to register URLs of the images.
          */
-        public Builder logoUris(@Nullable List<TaggedValue> logoUris) {
+        public Builder logoUris(@Nullable List<AuthAuthorizationApiLogoUris> logoUris) {
             this.logoUris = logoUris;
             return this;
         }
@@ -678,7 +676,7 @@ public class AuthAuthorizationApiClient {
          * <p>If the client application has different "Terms Of Service" pages for different languages,
          * this property can be used to register the URLs.
          */
-        public Builder tosUris(@Nullable List<TaggedValue> tosUris) {
+        public Builder tosUris(@Nullable List<AuthAuthorizationApiTosUris> tosUris) {
             this.tosUris = tosUris;
             return this;
         }
@@ -698,7 +696,7 @@ public class AuthAuthorizationApiClient {
          * URLs of policy pages with language tags.
          * If the client application has different policy pages for different languages, this property can be used to register the URLs.
          */
-        public Builder policyUris(@Nullable List<TaggedValue> policyUris) {
+        public Builder policyUris(@Nullable List<AuthAuthorizationApiPolicyUris> policyUris) {
             this.policyUris = policyUris;
             return this;
         }

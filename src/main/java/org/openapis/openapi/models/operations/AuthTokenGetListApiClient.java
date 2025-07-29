@@ -15,8 +15,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
-import org.openapis.openapi.models.components.ClientTypeProperties;
-import org.openapis.openapi.models.components.TaggedValue;
 import org.openapis.openapi.utils.Utils;
 
 
@@ -42,7 +40,7 @@ public class AuthTokenGetListApiClient {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("clientNames")
-    private List<TaggedValue> clientNames;
+    private List<AuthTokenGetListApiClientName> clientNames;
 
     /**
      * The description about the client application.
@@ -57,7 +55,7 @@ public class AuthTokenGetListApiClient {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("descriptions")
-    private List<TaggedValue> descriptions;
+    private List<AuthTokenGetListApiDescription> descriptions;
 
     /**
      * The client identifier used in Authlete API calls. The value of this property is assigned by Authlete.
@@ -87,19 +85,19 @@ public class AuthTokenGetListApiClient {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("clientType")
-    private ClientTypeProperties clientType;
+    private AuthTokenGetListApiClientType clientType;
 
     @JsonCreator
     public AuthTokenGetListApiClient(
             @JsonProperty("number") @Nullable Integer number,
             @JsonProperty("clientName") @Nullable String clientName,
-            @JsonProperty("clientNames") @Nullable List<TaggedValue> clientNames,
+            @JsonProperty("clientNames") @Nullable List<AuthTokenGetListApiClientName> clientNames,
             @JsonProperty("description") @Nullable String description,
-            @JsonProperty("descriptions") @Nullable List<TaggedValue> descriptions,
+            @JsonProperty("descriptions") @Nullable List<AuthTokenGetListApiDescription> descriptions,
             @JsonProperty("clientId") @Nullable Long clientId,
             @JsonProperty("clientIdAlias") @Nullable String clientIdAlias,
             @JsonProperty("clientIdAliasEnabled") @Nullable Boolean clientIdAliasEnabled,
-            @JsonProperty("clientType") @Nullable ClientTypeProperties clientType) {
+            @JsonProperty("clientType") @Nullable AuthTokenGetListApiClientType clientType) {
         this.number = number;
         this.clientName = clientName;
         this.clientNames = clientNames;
@@ -136,7 +134,7 @@ public class AuthTokenGetListApiClient {
      * Client names with language tags. If the client application has different names for different
      * languages, this property can be used to register the names.
      */
-    public Optional<List<TaggedValue>> clientNames() {
+    public Optional<List<AuthTokenGetListApiClientName>> clientNames() {
         return Optional.ofNullable(this.clientNames);
     }
 
@@ -151,7 +149,7 @@ public class AuthTokenGetListApiClient {
      * Descriptions about the client application with language tags. If the client application has different
      * descriptions for different languages, this property can be used to register the descriptions.
      */
-    public Optional<List<TaggedValue>> descriptions() {
+    public Optional<List<AuthTokenGetListApiDescription>> descriptions() {
         return Optional.ofNullable(this.descriptions);
     }
 
@@ -181,7 +179,7 @@ public class AuthTokenGetListApiClient {
      * The client type, either `CONFIDENTIAL` or `PUBLIC`. See [RFC 6749, 2.1. Client Types](https://datatracker.ietf.org/doc/html/rfc6749#section-2.1)
      * for details.
      */
-    public Optional<ClientTypeProperties> clientType() {
+    public Optional<AuthTokenGetListApiClientType> clientType() {
         return Optional.ofNullable(this.clientType);
     }
 
@@ -213,7 +211,7 @@ public class AuthTokenGetListApiClient {
      * Client names with language tags. If the client application has different names for different
      * languages, this property can be used to register the names.
      */
-    public AuthTokenGetListApiClient withClientNames(@Nullable List<TaggedValue> clientNames) {
+    public AuthTokenGetListApiClient withClientNames(@Nullable List<AuthTokenGetListApiClientName> clientNames) {
         this.clientNames = clientNames;
         return this;
     }
@@ -232,7 +230,7 @@ public class AuthTokenGetListApiClient {
      * Descriptions about the client application with language tags. If the client application has different
      * descriptions for different languages, this property can be used to register the descriptions.
      */
-    public AuthTokenGetListApiClient withDescriptions(@Nullable List<TaggedValue> descriptions) {
+    public AuthTokenGetListApiClient withDescriptions(@Nullable List<AuthTokenGetListApiDescription> descriptions) {
         this.descriptions = descriptions;
         return this;
     }
@@ -270,7 +268,7 @@ public class AuthTokenGetListApiClient {
      * The client type, either `CONFIDENTIAL` or `PUBLIC`. See [RFC 6749, 2.1. Client Types](https://datatracker.ietf.org/doc/html/rfc6749#section-2.1)
      * for details.
      */
-    public AuthTokenGetListApiClient withClientType(@Nullable ClientTypeProperties clientType) {
+    public AuthTokenGetListApiClient withClientType(@Nullable AuthTokenGetListApiClientType clientType) {
         this.clientType = clientType;
         return this;
     }
@@ -326,11 +324,11 @@ public class AuthTokenGetListApiClient {
 
         private String clientName;
 
-        private List<TaggedValue> clientNames;
+        private List<AuthTokenGetListApiClientName> clientNames;
 
         private String description;
 
-        private List<TaggedValue> descriptions;
+        private List<AuthTokenGetListApiDescription> descriptions;
 
         private Long clientId;
 
@@ -338,7 +336,7 @@ public class AuthTokenGetListApiClient {
 
         private Boolean clientIdAliasEnabled;
 
-        private ClientTypeProperties clientType;
+        private AuthTokenGetListApiClientType clientType;
 
         private Builder() {
           // force use of static builder() method
@@ -365,7 +363,7 @@ public class AuthTokenGetListApiClient {
          * Client names with language tags. If the client application has different names for different
          * languages, this property can be used to register the names.
          */
-        public Builder clientNames(@Nullable List<TaggedValue> clientNames) {
+        public Builder clientNames(@Nullable List<AuthTokenGetListApiClientName> clientNames) {
             this.clientNames = clientNames;
             return this;
         }
@@ -382,7 +380,7 @@ public class AuthTokenGetListApiClient {
          * Descriptions about the client application with language tags. If the client application has different
          * descriptions for different languages, this property can be used to register the descriptions.
          */
-        public Builder descriptions(@Nullable List<TaggedValue> descriptions) {
+        public Builder descriptions(@Nullable List<AuthTokenGetListApiDescription> descriptions) {
             this.descriptions = descriptions;
             return this;
         }
@@ -416,7 +414,7 @@ public class AuthTokenGetListApiClient {
          * The client type, either `CONFIDENTIAL` or `PUBLIC`. See [RFC 6749, 2.1. Client Types](https://datatracker.ietf.org/doc/html/rfc6749#section-2.1)
          * for details.
          */
-        public Builder clientType(@Nullable ClientTypeProperties clientType) {
+        public Builder clientType(@Nullable AuthTokenGetListApiClientType clientType) {
             this.clientType = clientType;
             return this;
         }

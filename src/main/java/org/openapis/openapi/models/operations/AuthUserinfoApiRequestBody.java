@@ -13,7 +13,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
-import org.openapis.openapi.models.components.Pair;
 import org.openapis.openapi.utils.Utils;
 
 
@@ -85,7 +84,7 @@ public class AuthUserinfoApiRequestBody {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("headers")
-    private List<Pair> headers;
+    private List<AuthUserinfoApiHeader> headers;
 
     @JsonCreator
     public AuthUserinfoApiRequestBody(
@@ -96,7 +95,7 @@ public class AuthUserinfoApiRequestBody {
             @JsonProperty("htu") @Nullable String htu,
             @JsonProperty("uri") @Nullable String uri,
             @JsonProperty("message") @Nullable String message,
-            @JsonProperty("headers") @Nullable List<Pair> headers) {
+            @JsonProperty("headers") @Nullable List<AuthUserinfoApiHeader> headers) {
         this.token = Optional.ofNullable(token)
             .orElseThrow(() -> new IllegalArgumentException("token cannot be null"));
         this.clientCertificate = clientCertificate;
@@ -181,7 +180,7 @@ public class AuthUserinfoApiRequestBody {
      * HTTP headers to be included in processing the signature. If this is a signed request, this must include the 
      * Signature and Signature-Input headers, as well as any additional headers covered by the signature.
      */
-    public Optional<List<Pair>> headers() {
+    public Optional<List<AuthUserinfoApiHeader>> headers() {
         return Optional.ofNullable(this.headers);
     }
 
@@ -270,7 +269,7 @@ public class AuthUserinfoApiRequestBody {
      * HTTP headers to be included in processing the signature. If this is a signed request, this must include the 
      * Signature and Signature-Input headers, as well as any additional headers covered by the signature.
      */
-    public AuthUserinfoApiRequestBody withHeaders(@Nullable List<Pair> headers) {
+    public AuthUserinfoApiRequestBody withHeaders(@Nullable List<AuthUserinfoApiHeader> headers) {
         this.headers = headers;
         return this;
     }
@@ -334,7 +333,7 @@ public class AuthUserinfoApiRequestBody {
 
         private String message;
 
-        private List<Pair> headers;
+        private List<AuthUserinfoApiHeader> headers;
 
         private Builder() {
           // force use of static builder() method
@@ -413,7 +412,7 @@ public class AuthUserinfoApiRequestBody {
          * HTTP headers to be included in processing the signature. If this is a signed request, this must include the 
          * Signature and Signature-Input headers, as well as any additional headers covered by the signature.
          */
-        public Builder headers(@Nullable List<Pair> headers) {
+        public Builder headers(@Nullable List<AuthUserinfoApiHeader> headers) {
             this.headers = headers;
             return this;
         }

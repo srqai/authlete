@@ -18,17 +18,12 @@ public class ServiceJwksGetApiRequestBuilder {
     private final SDKConfiguration sdkConfiguration;
     private final ServiceJwksGetApiRequest.Builder pojoBuilder;
     private ServiceJwksGetApiRequest request;
+    private String serverURL;
     private boolean _setterCalled;
 
     public ServiceJwksGetApiRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
         this.pojoBuilder = ServiceJwksGetApiRequest.builder();
-    }
-
-    public ServiceJwksGetApiRequestBuilder serviceId(@Nonnull String serviceId) {
-        this.pojoBuilder.serviceId(serviceId);
-        this._setterCalled = true;
-        return this;
     }
 
     public ServiceJwksGetApiRequestBuilder includePrivateKeys(@Nullable Boolean includePrivateKeys) {
@@ -40,6 +35,17 @@ public class ServiceJwksGetApiRequestBuilder {
     public ServiceJwksGetApiRequestBuilder pretty(@Nullable Boolean pretty) {
         this.pojoBuilder.pretty(pretty);
         this._setterCalled = true;
+        return this;
+    }
+
+    public ServiceJwksGetApiRequestBuilder serviceId(@Nonnull String serviceId) {
+        this.pojoBuilder.serviceId(serviceId);
+        this._setterCalled = true;
+        return this;
+    }
+
+    public ServiceJwksGetApiRequestBuilder serverURL(@Nullable String serverURL) {
+        this.serverURL = serverURL;
         return this;
     }
 
@@ -56,7 +62,7 @@ public class ServiceJwksGetApiRequestBuilder {
     */
     public ServiceJwksGetApiResponse call() throws Exception {
         RequestOperation<ServiceJwksGetApiRequest, ServiceJwksGetApiResponse> operation
-              = new ServiceJwksGetApiOperation(sdkConfiguration);
+              = new ServiceJwksGetApiOperation(sdkConfiguration, serverURL);
 
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }

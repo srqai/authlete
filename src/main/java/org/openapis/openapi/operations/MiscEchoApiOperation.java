@@ -6,11 +6,13 @@ package org.openapis.openapi.operations;
 import static org.openapis.openapi.operations.Operations.RequestlessOperation;
 
 import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import java.io.InputStream;
 import java.lang.Exception;
 import java.lang.String;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.Map;
 import java.util.Optional;
 import org.openapis.openapi.SDKConfiguration;
 import org.openapis.openapi.SecuritySource;
@@ -25,15 +27,43 @@ import org.openapis.openapi.utils.Utils;
 
 
 public class MiscEchoApiOperation implements RequestlessOperation<MiscEchoApiResponse> {
+    
+    /**
+     * MISC_ECHO_API_SERVERS contains the list of server urls available to the SDK.
+     */
+    public static final String[] MISC_ECHO_API_SERVERS = {
+        /**
+         * 🇺🇸 US Cluster
+         */
+        "https://us.authlete.com",
+        /**
+         * 🇯🇵 Japan Cluster
+         */
+        "https://jp.authlete.com",
+        /**
+         * 🇪🇺 Europe Cluster
+         */
+        "https://eu.authlete.com",
+        /**
+         * 🇧🇷 Brazil Cluster
+         */
+        "https://br.authlete.com",
+    };
 
     private final SDKConfiguration sdkConfiguration;
     private final String baseUrl;
     private final SecuritySource securitySource;
     private final HTTPClient client;
 
-    public MiscEchoApiOperation(@Nonnull SDKConfiguration sdkConfiguration) {
+    public MiscEchoApiOperation(
+        @Nonnull SDKConfiguration sdkConfiguration,
+        @Nullable String serverURL) {
         this.sdkConfiguration = sdkConfiguration;
-        this.baseUrl = this.sdkConfiguration.serverUrl();
+        this.baseUrl = Optional.ofNullable(serverURL)
+                .filter(u -> !u.isBlank())
+                .orElse(Utils.templateUrl(
+                        MISC_ECHO_API_SERVERS[0], 
+                        Map.of()));
         this.securitySource = this.sdkConfiguration.securitySource();
         this.client = this.sdkConfiguration.client();
     }

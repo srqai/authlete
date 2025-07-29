@@ -6,6 +6,7 @@ package org.openapis.openapi.models.operations;
 import static org.openapis.openapi.operations.Operations.RequestOperation;
 
 import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
@@ -16,6 +17,7 @@ public class PostApiServiceIdAuthAuthorizationTicketUpdateRequestBuilder {
     private final SDKConfiguration sdkConfiguration;
     private final PostApiServiceIdAuthAuthorizationTicketUpdateRequest.Builder pojoBuilder;
     private PostApiServiceIdAuthAuthorizationTicketUpdateRequest request;
+    private String serverURL;
     private boolean _setterCalled;
 
     public PostApiServiceIdAuthAuthorizationTicketUpdateRequestBuilder(SDKConfiguration sdkConfiguration) {
@@ -35,6 +37,11 @@ public class PostApiServiceIdAuthAuthorizationTicketUpdateRequestBuilder {
         return this;
     }
 
+    public PostApiServiceIdAuthAuthorizationTicketUpdateRequestBuilder serverURL(@Nullable String serverURL) {
+        this.serverURL = serverURL;
+        return this;
+    }
+
     private PostApiServiceIdAuthAuthorizationTicketUpdateRequest _buildRequest() {
         if (this._setterCalled) {
             this.request = this.pojoBuilder.build();
@@ -48,7 +55,7 @@ public class PostApiServiceIdAuthAuthorizationTicketUpdateRequestBuilder {
     */
     public PostApiServiceIdAuthAuthorizationTicketUpdateResponse call() throws Exception {
         RequestOperation<PostApiServiceIdAuthAuthorizationTicketUpdateRequest, PostApiServiceIdAuthAuthorizationTicketUpdateResponse> operation
-              = new PostApiServiceIdAuthAuthorizationTicketUpdateOperation(sdkConfiguration);
+              = new PostApiServiceIdAuthAuthorizationTicketUpdateOperation(sdkConfiguration, serverURL);
 
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }

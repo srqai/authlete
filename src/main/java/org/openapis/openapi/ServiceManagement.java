@@ -59,9 +59,26 @@ public class ServiceManagement {
      * @throws Exception if the API call fails
      */
     public ServiceGetApiResponse get(@Nonnull String serviceId) throws Exception {
+        return get(serviceId, null);
+    }
+
+    /**
+     * Get Service
+     * 
+     * <p>Get a service.
+     * 
+     * <p>If the access token can only view or modify clients underneath this service, but does not
+     * have access to view this service directly, a limited view of the service will be returned.
+     * 
+     * @param serviceId A service ID.
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public ServiceGetApiResponse get(@Nonnull String serviceId, @Nullable String serverURL) throws Exception {
         ServiceGetApiRequest request = new ServiceGetApiRequest(serviceId);
         RequestOperation<ServiceGetApiRequest, ServiceGetApiResponse> operation
-              = new ServiceGetApiOperation(sdkConfiguration);
+              = new ServiceGetApiOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -99,7 +116,7 @@ public class ServiceManagement {
      * @throws Exception if the API call fails
      */
     public ServiceGetListApiResponse listDirect() throws Exception {
-        return list(null, null);
+        return list(null, null, null);
     }
 
     /**
@@ -116,13 +133,16 @@ public class ServiceManagement {
      * 
      * @param start Start index (inclusive) of the result set. The default value is 0. Must not be a negative number.
      * @param end End index (exclusive) of the result set. The default value is 5. Must not be a negative number.
+     * @param serverURL Overrides the server URL.
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public ServiceGetListApiResponse list(@Nullable Integer start, @Nullable Integer end) throws Exception {
+    public ServiceGetListApiResponse list(
+            @Nullable Integer start, @Nullable Integer end,
+            @Nullable String serverURL) throws Exception {
         ServiceGetListApiRequest request = new ServiceGetListApiRequest(start, end);
         RequestOperation<ServiceGetListApiRequest, ServiceGetListApiResponse> operation
-              = new ServiceGetListApiOperation(sdkConfiguration);
+              = new ServiceGetListApiOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -171,7 +191,8 @@ public class ServiceManagement {
      * @throws Exception if the API call fails
      */
     public ServiceConfigurationApiResponse getConfiguration(@Nonnull String serviceId) throws Exception {
-        return getConfiguration(serviceId, null, null);
+        return getConfiguration(null, null, serviceId,
+            null);
     }
 
     /**
@@ -191,18 +212,19 @@ public class ServiceManagement {
      * 
      * <p>&lt;/details&gt;
      * 
-     * @param serviceId A service ID.
      * @param pretty This boolean value indicates whether the JSON in the response should be formatted or not. If `true`, the JSON in the response is pretty-formatted. The default value is `false`.
      * @param patch Get the JSON Patch [RFC 6902 JavaScript Object Notation (JSON) Patch](https://www.rfc-editor.org/rfc/rfc6902) to be applied.
+     * @param serviceId A service ID.
+     * @param serverURL Overrides the server URL.
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public ServiceConfigurationApiResponse getConfiguration(
-            @Nonnull String serviceId, @Nullable Boolean pretty,
-            @Nullable String patch) throws Exception {
-        ServiceConfigurationApiRequest request = new ServiceConfigurationApiRequest(serviceId, pretty, patch);
+            @Nullable Boolean pretty, @Nullable String patch,
+            @Nonnull String serviceId, @Nullable String serverURL) throws Exception {
+        ServiceConfigurationApiRequest request = new ServiceConfigurationApiRequest(pretty, patch, serviceId);
         RequestOperation<ServiceConfigurationApiRequest, ServiceConfigurationApiResponse> operation
-              = new ServiceConfigurationApiOperation(sdkConfiguration);
+              = new ServiceConfigurationApiOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 

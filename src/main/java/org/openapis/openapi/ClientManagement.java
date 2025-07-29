@@ -10,8 +10,8 @@ import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.Integer;
 import java.lang.String;
-import org.openapis.openapi.models.components.ClientInput;
 import org.openapis.openapi.models.operations.ClientCreateApiRequest;
+import org.openapis.openapi.models.operations.ClientCreateApiRequestBody;
 import org.openapis.openapi.models.operations.ClientCreateApiRequestBuilder;
 import org.openapis.openapi.models.operations.ClientCreateApiResponse;
 import org.openapis.openapi.models.operations.ClientDeleteApiRequest;
@@ -21,6 +21,7 @@ import org.openapis.openapi.models.operations.ClientGetListApiRequest;
 import org.openapis.openapi.models.operations.ClientGetListApiRequestBuilder;
 import org.openapis.openapi.models.operations.ClientGetListApiResponse;
 import org.openapis.openapi.models.operations.ClientUpdateApiRequest;
+import org.openapis.openapi.models.operations.ClientUpdateApiRequestBody;
 import org.openapis.openapi.models.operations.ClientUpdateApiRequestBuilder;
 import org.openapis.openapi.models.operations.ClientUpdateApiResponse;
 import org.openapis.openapi.operations.ClientCreateApiOperation;
@@ -67,8 +68,8 @@ public class ClientManagement {
      * @throws Exception if the API call fails
      */
     public ClientGetListApiResponse list(@Nonnull String serviceId) throws Exception {
-        return list(serviceId, null, null,
-            null);
+        return list(null, null, null,
+            serviceId, null);
     }
 
     /**
@@ -81,24 +82,26 @@ public class ClientManagement {
      * service are returned.
      * - ViewClient: []
      * 
-     * @param serviceId A service ID.
      * @param developer The developer of client applications. The default value is null. If this parameter is not set
      *         to `null`, client application of the specified developer are returned. Otherwise, all client
      *         applications that belong to the service are returned.
      *         
      * @param start Start index (inclusive) of the result set. The default value is 0. Must not be a negative number.
      * @param end End index (exclusive) of the result set. The default value is 5. Must not be a negative number.
+     * @param serviceId A service ID.
+     * @param serverURL Overrides the server URL.
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public ClientGetListApiResponse list(
-            @Nonnull String serviceId, @Nullable String developer,
-            @Nullable Integer start, @Nullable Integer end) throws Exception {
+            @Nullable String developer, @Nullable Integer start,
+            @Nullable Integer end, @Nonnull String serviceId,
+            @Nullable String serverURL) throws Exception {
         ClientGetListApiRequest request = new ClientGetListApiRequest(
-                serviceId, developer, start,
-                end);
+                developer, start, end,
+                serviceId);
         RequestOperation<ClientGetListApiRequest, ClientGetListApiResponse> operation
-              = new ClientGetListApiOperation(sdkConfiguration);
+              = new ClientGetListApiOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -123,7 +126,7 @@ public class ClientManagement {
      * @throws Exception if the API call fails
      */
     public ClientCreateApiResponse create(@Nonnull String serviceId) throws Exception {
-        return create(serviceId, null);
+        return create(serviceId, null, null);
     }
 
     /**
@@ -132,14 +135,17 @@ public class ClientManagement {
      * <p>Create a new client.
      * 
      * @param serviceId A service ID.
-     * @param client 
+     * @param requestBody 
+     * @param serverURL Overrides the server URL.
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public ClientCreateApiResponse create(@Nonnull String serviceId, @Nullable ClientInput client) throws Exception {
-        ClientCreateApiRequest request = new ClientCreateApiRequest(serviceId, client);
+    public ClientCreateApiResponse create(
+            @Nonnull String serviceId, @Nullable ClientCreateApiRequestBody requestBody,
+            @Nullable String serverURL) throws Exception {
+        ClientCreateApiRequest request = new ClientCreateApiRequest(serviceId, requestBody);
         RequestOperation<ClientCreateApiRequest, ClientCreateApiResponse> operation
-              = new ClientCreateApiOperation(sdkConfiguration);
+              = new ClientCreateApiOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -165,7 +171,8 @@ public class ClientManagement {
      * @throws Exception if the API call fails
      */
     public ClientUpdateApiResponse update(@Nonnull String serviceId, @Nonnull String clientId) throws Exception {
-        return update(serviceId, clientId, null);
+        return update(serviceId, clientId, null,
+            null);
     }
 
     /**
@@ -175,16 +182,17 @@ public class ClientManagement {
      * 
      * @param serviceId A service ID.
      * @param clientId A client ID.
-     * @param client 
+     * @param requestBody 
+     * @param serverURL Overrides the server URL.
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public ClientUpdateApiResponse update(
             @Nonnull String serviceId, @Nonnull String clientId,
-            @Nullable ClientInput client) throws Exception {
-        ClientUpdateApiRequest request = new ClientUpdateApiRequest(serviceId, clientId, client);
+            @Nullable ClientUpdateApiRequestBody requestBody, @Nullable String serverURL) throws Exception {
+        ClientUpdateApiRequest request = new ClientUpdateApiRequest(serviceId, clientId, requestBody);
         RequestOperation<ClientUpdateApiRequest, ClientUpdateApiResponse> operation
-              = new ClientUpdateApiOperation(sdkConfiguration);
+              = new ClientUpdateApiOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -210,9 +218,26 @@ public class ClientManagement {
      * @throws Exception if the API call fails
      */
     public ClientDeleteApiResponse delete(@Nonnull String serviceId, @Nonnull String clientId) throws Exception {
+        return delete(serviceId, clientId, null);
+    }
+
+    /**
+     * Delete Client ⚡
+     * 
+     * <p>Delete a client.
+     * 
+     * @param serviceId A service ID.
+     * @param clientId The client ID.
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public ClientDeleteApiResponse delete(
+            @Nonnull String serviceId, @Nonnull String clientId,
+            @Nullable String serverURL) throws Exception {
         ClientDeleteApiRequest request = new ClientDeleteApiRequest(serviceId, clientId);
         RequestOperation<ClientDeleteApiRequest, ClientDeleteApiResponse> operation
-              = new ClientDeleteApiOperation(sdkConfiguration);
+              = new ClientDeleteApiOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 

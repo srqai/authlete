@@ -13,7 +13,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
-import org.openapis.openapi.models.components.AccessToken;
 import org.openapis.openapi.utils.Utils;
 
 

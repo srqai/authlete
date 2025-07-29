@@ -6,6 +6,7 @@ package org.openapis.openapi.models.operations;
 import static org.openapis.openapi.operations.Operations.RequestOperation;
 
 import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
@@ -16,6 +17,7 @@ public class VciBatchIssueApiRequestBuilder {
     private final SDKConfiguration sdkConfiguration;
     private final VciBatchIssueApiRequest.Builder pojoBuilder;
     private VciBatchIssueApiRequest request;
+    private String serverURL;
     private boolean _setterCalled;
 
     public VciBatchIssueApiRequestBuilder(SDKConfiguration sdkConfiguration) {
@@ -35,6 +37,11 @@ public class VciBatchIssueApiRequestBuilder {
         return this;
     }
 
+    public VciBatchIssueApiRequestBuilder serverURL(@Nullable String serverURL) {
+        this.serverURL = serverURL;
+        return this;
+    }
+
     private VciBatchIssueApiRequest _buildRequest() {
         if (this._setterCalled) {
             this.request = this.pojoBuilder.build();
@@ -48,7 +55,7 @@ public class VciBatchIssueApiRequestBuilder {
     */
     public VciBatchIssueApiResponse call() throws Exception {
         RequestOperation<VciBatchIssueApiRequest, VciBatchIssueApiResponse> operation
-              = new VciBatchIssueApiOperation(sdkConfiguration);
+              = new VciBatchIssueApiOperation(sdkConfiguration, serverURL);
 
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }

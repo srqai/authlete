@@ -6,14 +6,15 @@ package org.openapis.openapi;
 import static org.openapis.openapi.operations.Operations.RequestOperation;
 
 import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1vci1jwtissuerPostRequestBodyContentApplication1jsonSchema;
 import org.openapis.openapi.models.operations.VciBatchIssueApiRequest;
 import org.openapis.openapi.models.operations.VciBatchIssueApiRequestBody;
 import org.openapis.openapi.models.operations.VciBatchIssueApiRequestBuilder;
 import org.openapis.openapi.models.operations.VciBatchIssueApiResponse;
 import org.openapis.openapi.models.operations.VciJwtissuerApiFormRequest;
+import org.openapis.openapi.models.operations.VciJwtissuerApiFormRequestBody;
 import org.openapis.openapi.models.operations.VciJwtissuerApiFormRequestBuilder;
 import org.openapis.openapi.models.operations.VciJwtissuerApiFormResponse;
 import org.openapis.openapi.models.operations.VciJwtissuerApiRequest;
@@ -35,8 +36,6 @@ public class Credentials {
     /**
      * /api/{serviceId}/vci/jwtissuer API
      * 
-     * <p>null
-     * 
      * @return The call builder
      */
     public VciJwtissuerApiRequestBuilder issueJwt() {
@@ -46,24 +45,35 @@ public class Credentials {
     /**
      * /api/{serviceId}/vci/jwtissuer API
      * 
-     * <p>null
-     * 
      * @param serviceId A service ID.
      * @param requestBody 
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public VciJwtissuerApiResponse issueJwt(@Nonnull String serviceId, @Nonnull VciJwtissuerApiRequestBody requestBody) throws Exception {
-        VciJwtissuerApiRequest request = new VciJwtissuerApiRequest(serviceId, requestBody);
-        RequestOperation<VciJwtissuerApiRequest, VciJwtissuerApiResponse> operation
-              = new VciJwtissuerApiOperation(sdkConfiguration);
-        return operation.handleResponse(operation.doRequest(request));
+        return issueJwt(serviceId, requestBody, null);
     }
 
     /**
      * /api/{serviceId}/vci/jwtissuer API
      * 
-     * <p>null
+     * @param serviceId A service ID.
+     * @param requestBody 
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public VciJwtissuerApiResponse issueJwt(
+            @Nonnull String serviceId, @Nonnull VciJwtissuerApiRequestBody requestBody,
+            @Nullable String serverURL) throws Exception {
+        VciJwtissuerApiRequest request = new VciJwtissuerApiRequest(serviceId, requestBody);
+        RequestOperation<VciJwtissuerApiRequest, VciJwtissuerApiResponse> operation
+              = new VciJwtissuerApiOperation(sdkConfiguration, serverURL);
+        return operation.handleResponse(operation.doRequest(request));
+    }
+
+    /**
+     * /api/{serviceId}/vci/jwtissuer API
      * 
      * @return The call builder
      */
@@ -74,24 +84,35 @@ public class Credentials {
     /**
      * /api/{serviceId}/vci/jwtissuer API
      * 
-     * <p>null
-     * 
      * @param serviceId A service ID.
-     * @param 1api1Percent7BserviceIdPercent7D1vci1jwtissuerPostRequestBodyContentApplication1jsonSchema 
+     * @param requestBody 
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public VciJwtissuerApiFormResponse issueJwtForm(@Nonnull String serviceId, @Nonnull 1api1Percent7BserviceIdPercent7D1vci1jwtissuerPostRequestBodyContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1vci1jwtissuerPostRequestBodyContentApplication1jsonSchema) throws Exception {
-        VciJwtissuerApiFormRequest request = new VciJwtissuerApiFormRequest(serviceId, 1api1Percent7BserviceIdPercent7D1vci1jwtissuerPostRequestBodyContentApplication1jsonSchema);
+    public VciJwtissuerApiFormResponse issueJwtForm(@Nonnull String serviceId, @Nonnull VciJwtissuerApiFormRequestBody requestBody) throws Exception {
+        return issueJwtForm(serviceId, requestBody, null);
+    }
+
+    /**
+     * /api/{serviceId}/vci/jwtissuer API
+     * 
+     * @param serviceId A service ID.
+     * @param requestBody 
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public VciJwtissuerApiFormResponse issueJwtForm(
+            @Nonnull String serviceId, @Nonnull VciJwtissuerApiFormRequestBody requestBody,
+            @Nullable String serverURL) throws Exception {
+        VciJwtissuerApiFormRequest request = new VciJwtissuerApiFormRequest(serviceId, requestBody);
         RequestOperation<VciJwtissuerApiFormRequest, VciJwtissuerApiFormResponse> operation
-              = new VciJwtissuerApiFormOperation(sdkConfiguration);
+              = new VciJwtissuerApiFormOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
     /**
      * /api/{serviceId}/vci/batch/issue API
-     * 
-     * <p>null
      * 
      * @return The call builder
      */
@@ -102,17 +123,30 @@ public class Credentials {
     /**
      * /api/{serviceId}/vci/batch/issue API
      * 
-     * <p>null
-     * 
      * @param serviceId A service ID.
      * @param requestBody 
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public VciBatchIssueApiResponse issueBatch(@Nonnull String serviceId, @Nonnull VciBatchIssueApiRequestBody requestBody) throws Exception {
+        return issueBatch(serviceId, requestBody, null);
+    }
+
+    /**
+     * /api/{serviceId}/vci/batch/issue API
+     * 
+     * @param serviceId A service ID.
+     * @param requestBody 
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public VciBatchIssueApiResponse issueBatch(
+            @Nonnull String serviceId, @Nonnull VciBatchIssueApiRequestBody requestBody,
+            @Nullable String serverURL) throws Exception {
         VciBatchIssueApiRequest request = new VciBatchIssueApiRequest(serviceId, requestBody);
         RequestOperation<VciBatchIssueApiRequest, VciBatchIssueApiResponse> operation
-              = new VciBatchIssueApiOperation(sdkConfiguration);
+              = new VciBatchIssueApiOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 

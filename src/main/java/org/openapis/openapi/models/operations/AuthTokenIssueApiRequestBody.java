@@ -13,7 +13,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
-import org.openapis.openapi.models.components.Property;
 import org.openapis.openapi.utils.Utils;
 
 
@@ -37,7 +36,7 @@ public class AuthTokenIssueApiRequestBody {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("properties")
-    private List<Property> properties;
+    private List<AuthTokenIssueApiPropertyRequest> properties;
 
     /**
      * Additional claims that are added to the payload part of the JWT access token.
@@ -57,7 +56,7 @@ public class AuthTokenIssueApiRequestBody {
     public AuthTokenIssueApiRequestBody(
             @JsonProperty("ticket") @Nonnull String ticket,
             @JsonProperty("subject") @Nonnull String subject,
-            @JsonProperty("properties") @Nullable List<Property> properties,
+            @JsonProperty("properties") @Nullable List<AuthTokenIssueApiPropertyRequest> properties,
             @JsonProperty("jwtAtClaims") @Nullable String jwtAtClaims,
             @JsonProperty("accessToken") @Nullable String accessToken) {
         this.ticket = Optional.ofNullable(ticket)
@@ -95,7 +94,7 @@ public class AuthTokenIssueApiRequestBody {
      * when `Content-Type` of the request is `application/json`, so don't use `application/x-www-form-urlencoded`
      * if you want to specify properties.
      */
-    public Optional<List<Property>> properties() {
+    public Optional<List<AuthTokenIssueApiPropertyRequest>> properties() {
         return Optional.ofNullable(this.properties);
     }
 
@@ -141,7 +140,7 @@ public class AuthTokenIssueApiRequestBody {
      * when `Content-Type` of the request is `application/json`, so don't use `application/x-www-form-urlencoded`
      * if you want to specify properties.
      */
-    public AuthTokenIssueApiRequestBody withProperties(@Nullable List<Property> properties) {
+    public AuthTokenIssueApiRequestBody withProperties(@Nullable List<AuthTokenIssueApiPropertyRequest> properties) {
         this.properties = properties;
         return this;
     }
@@ -206,7 +205,7 @@ public class AuthTokenIssueApiRequestBody {
 
         private String subject;
 
-        private List<Property> properties;
+        private List<AuthTokenIssueApiPropertyRequest> properties;
 
         private String jwtAtClaims;
 
@@ -237,7 +236,7 @@ public class AuthTokenIssueApiRequestBody {
          * when `Content-Type` of the request is `application/json`, so don't use `application/x-www-form-urlencoded`
          * if you want to specify properties.
          */
-        public Builder properties(@Nullable List<Property> properties) {
+        public Builder properties(@Nullable List<AuthTokenIssueApiPropertyRequest> properties) {
             this.properties = properties;
             return this;
         }

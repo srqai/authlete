@@ -15,13 +15,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1auth1authorizationPostResponses200ContentApplication1jsonSchemaPropertiesGrant;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1gmPostRequestBodyContentApplication1jsonSchemaPropertiesGmAction;
-import org.openapis.openapi.models.components.AuthorizationDetails;
-import org.openapis.openapi.models.components.DeliveryMode;
-import org.openapis.openapi.models.components.DynamicScope;
-import org.openapis.openapi.models.components.Pair;
-import org.openapis.openapi.models.components.Scope;
 import org.openapis.openapi.utils.Utils;
 
 
@@ -101,7 +94,7 @@ public class BackchannelAuthenticationApiFormResponseBody {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("scopes")
-    private List<Scope> scopes;
+    private List<BackchannelAuthenticationApiFormScope> scopes;
 
     /**
      * The names of the claims which were requested indirectly via some special scopes.
@@ -228,33 +221,33 @@ public class BackchannelAuthenticationApiFormResponseBody {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("authorizationDetails")
-    private AuthorizationDetails authorizationDetails;
+    private BackchannelAuthenticationApiFormAuthorizationDetails authorizationDetails;
 
     /**
      * The attributes of this service that the client application belongs to.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("serviceAttributes")
-    private List<Pair> serviceAttributes;
+    private List<BackchannelAuthenticationApiFormServiceAttribute> serviceAttributes;
 
     /**
      * The attributes of the client.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("clientAttributes")
-    private List<Pair> clientAttributes;
+    private List<BackchannelAuthenticationApiFormClientAttribute> clientAttributes;
 
     /**
      * The dynamic scopes which the client application requested by the scope request parameter.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("dynamicScopes")
-    private List<DynamicScope> dynamicScopes;
+    private List<BackchannelAuthenticationApiFormDynamicScope> dynamicScopes;
 
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("deliveryMode")
-    private DeliveryMode deliveryMode;
+    private BackchannelAuthenticationApiFormDeliveryMode deliveryMode;
 
     /**
      * The client authentication method that was performed.
@@ -271,7 +264,7 @@ public class BackchannelAuthenticationApiFormResponseBody {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("gmAction")
-    private 1api1Percent7BserviceIdPercent7D1gmPostRequestBodyContentApplication1jsonSchemaPropertiesGmAction gmAction;
+    private BackchannelAuthenticationApiFormGmAction gmAction;
 
     /**
      * the value of the `grant_id` request parameter of the device authorization request.
@@ -287,7 +280,7 @@ public class BackchannelAuthenticationApiFormResponseBody {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("grant")
-    private 1api1Percent7BserviceIdPercent7D1auth1authorizationPostResponses200ContentApplication1jsonSchemaPropertiesGrant grant;
+    private BackchannelAuthenticationApiFormGrant grant;
 
     /**
      * The subject identifying the user who has given the grant identified
@@ -339,7 +332,7 @@ public class BackchannelAuthenticationApiFormResponseBody {
             @JsonProperty("clientIdAlias") @Nullable String clientIdAlias,
             @JsonProperty("clientIdAliasUsed") @Nullable Boolean clientIdAliasUsed,
             @JsonProperty("clientName") @Nullable String clientName,
-            @JsonProperty("scopes") @Nullable List<Scope> scopes,
+            @JsonProperty("scopes") @Nullable List<BackchannelAuthenticationApiFormScope> scopes,
             @JsonProperty("claimNames") @Nullable List<String> claimNames,
             @JsonProperty("clientNotificationToken") @Nullable String clientNotificationToken,
             @JsonProperty("acrs") @Nullable List<String> acrs,
@@ -354,15 +347,15 @@ public class BackchannelAuthenticationApiFormResponseBody {
             @JsonProperty("warnings") @Nullable List<String> warnings,
             @JsonProperty("ticket") @Nullable String ticket,
             @JsonProperty("resources") @Nullable List<String> resources,
-            @JsonProperty("authorizationDetails") @Nullable AuthorizationDetails authorizationDetails,
-            @JsonProperty("serviceAttributes") @Nullable List<Pair> serviceAttributes,
-            @JsonProperty("clientAttributes") @Nullable List<Pair> clientAttributes,
-            @JsonProperty("dynamicScopes") @Nullable List<DynamicScope> dynamicScopes,
-            @JsonProperty("deliveryMode") @Nullable DeliveryMode deliveryMode,
+            @JsonProperty("authorizationDetails") @Nullable BackchannelAuthenticationApiFormAuthorizationDetails authorizationDetails,
+            @JsonProperty("serviceAttributes") @Nullable List<BackchannelAuthenticationApiFormServiceAttribute> serviceAttributes,
+            @JsonProperty("clientAttributes") @Nullable List<BackchannelAuthenticationApiFormClientAttribute> clientAttributes,
+            @JsonProperty("dynamicScopes") @Nullable List<BackchannelAuthenticationApiFormDynamicScope> dynamicScopes,
+            @JsonProperty("deliveryMode") @Nullable BackchannelAuthenticationApiFormDeliveryMode deliveryMode,
             @JsonProperty("clientAuthMethod") @Nullable String clientAuthMethod,
-            @JsonProperty("gmAction") @Nullable 1api1Percent7BserviceIdPercent7D1gmPostRequestBodyContentApplication1jsonSchemaPropertiesGmAction gmAction,
+            @JsonProperty("gmAction") @Nullable BackchannelAuthenticationApiFormGmAction gmAction,
             @JsonProperty("grantId") @Nullable String grantId,
-            @JsonProperty("grant") @Nullable 1api1Percent7BserviceIdPercent7D1auth1authorizationPostResponses200ContentApplication1jsonSchemaPropertiesGrant grant,
+            @JsonProperty("grant") @Nullable BackchannelAuthenticationApiFormGrant grant,
             @JsonProperty("grantSubject") @Nullable String grantSubject,
             @JsonProperty("clientEntityId") @Nullable String clientEntityId,
             @JsonProperty("clientEntityIdUsed") @Nullable Boolean clientEntityIdUsed) {
@@ -491,7 +484,7 @@ public class BackchannelAuthenticationApiFormResponseBody {
      * in the array contained in this property is always null even if descriptions of the scopes
      * are registered.
      */
-    public Optional<List<Scope>> scopes() {
+    public Optional<List<BackchannelAuthenticationApiFormScope>> scopes() {
         return Optional.ofNullable(this.scopes);
     }
 
@@ -618,32 +611,32 @@ public class BackchannelAuthenticationApiFormResponseBody {
      * request parameter in the preceding device authorization request which is defined in
      * "OAuth 2.0 Rich Authorization Requests".
      */
-    public Optional<AuthorizationDetails> authorizationDetails() {
+    public Optional<BackchannelAuthenticationApiFormAuthorizationDetails> authorizationDetails() {
         return Optional.ofNullable(this.authorizationDetails);
     }
 
     /**
      * The attributes of this service that the client application belongs to.
      */
-    public Optional<List<Pair>> serviceAttributes() {
+    public Optional<List<BackchannelAuthenticationApiFormServiceAttribute>> serviceAttributes() {
         return Optional.ofNullable(this.serviceAttributes);
     }
 
     /**
      * The attributes of the client.
      */
-    public Optional<List<Pair>> clientAttributes() {
+    public Optional<List<BackchannelAuthenticationApiFormClientAttribute>> clientAttributes() {
         return Optional.ofNullable(this.clientAttributes);
     }
 
     /**
      * The dynamic scopes which the client application requested by the scope request parameter.
      */
-    public Optional<List<DynamicScope>> dynamicScopes() {
+    public Optional<List<BackchannelAuthenticationApiFormDynamicScope>> dynamicScopes() {
         return Optional.ofNullable(this.dynamicScopes);
     }
 
-    public Optional<DeliveryMode> deliveryMode() {
+    public Optional<BackchannelAuthenticationApiFormDeliveryMode> deliveryMode() {
         return Optional.ofNullable(this.deliveryMode);
     }
 
@@ -660,7 +653,7 @@ public class BackchannelAuthenticationApiFormResponseBody {
      * <p>The `grant_management_action` request parameter is defined in
      * [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html).
      */
-    public Optional<1api1Percent7BserviceIdPercent7D1gmPostRequestBodyContentApplication1jsonSchemaPropertiesGmAction> gmAction() {
+    public Optional<BackchannelAuthenticationApiFormGmAction> gmAction() {
         return Optional.ofNullable(this.gmAction);
     }
 
@@ -675,7 +668,7 @@ public class BackchannelAuthenticationApiFormResponseBody {
         return Optional.ofNullable(this.grantId);
     }
 
-    public Optional<1api1Percent7BserviceIdPercent7D1auth1authorizationPostResponses200ContentApplication1jsonSchemaPropertiesGrant> grant() {
+    public Optional<BackchannelAuthenticationApiFormGrant> grant() {
         return Optional.ofNullable(this.grant);
     }
 
@@ -813,7 +806,7 @@ public class BackchannelAuthenticationApiFormResponseBody {
      * in the array contained in this property is always null even if descriptions of the scopes
      * are registered.
      */
-    public BackchannelAuthenticationApiFormResponseBody withScopes(@Nullable List<Scope> scopes) {
+    public BackchannelAuthenticationApiFormResponseBody withScopes(@Nullable List<BackchannelAuthenticationApiFormScope> scopes) {
         this.scopes = scopes;
         return this;
     }
@@ -970,7 +963,7 @@ public class BackchannelAuthenticationApiFormResponseBody {
      * request parameter in the preceding device authorization request which is defined in
      * "OAuth 2.0 Rich Authorization Requests".
      */
-    public BackchannelAuthenticationApiFormResponseBody withAuthorizationDetails(@Nullable AuthorizationDetails authorizationDetails) {
+    public BackchannelAuthenticationApiFormResponseBody withAuthorizationDetails(@Nullable BackchannelAuthenticationApiFormAuthorizationDetails authorizationDetails) {
         this.authorizationDetails = authorizationDetails;
         return this;
     }
@@ -979,7 +972,7 @@ public class BackchannelAuthenticationApiFormResponseBody {
     /**
      * The attributes of this service that the client application belongs to.
      */
-    public BackchannelAuthenticationApiFormResponseBody withServiceAttributes(@Nullable List<Pair> serviceAttributes) {
+    public BackchannelAuthenticationApiFormResponseBody withServiceAttributes(@Nullable List<BackchannelAuthenticationApiFormServiceAttribute> serviceAttributes) {
         this.serviceAttributes = serviceAttributes;
         return this;
     }
@@ -988,7 +981,7 @@ public class BackchannelAuthenticationApiFormResponseBody {
     /**
      * The attributes of the client.
      */
-    public BackchannelAuthenticationApiFormResponseBody withClientAttributes(@Nullable List<Pair> clientAttributes) {
+    public BackchannelAuthenticationApiFormResponseBody withClientAttributes(@Nullable List<BackchannelAuthenticationApiFormClientAttribute> clientAttributes) {
         this.clientAttributes = clientAttributes;
         return this;
     }
@@ -997,13 +990,13 @@ public class BackchannelAuthenticationApiFormResponseBody {
     /**
      * The dynamic scopes which the client application requested by the scope request parameter.
      */
-    public BackchannelAuthenticationApiFormResponseBody withDynamicScopes(@Nullable List<DynamicScope> dynamicScopes) {
+    public BackchannelAuthenticationApiFormResponseBody withDynamicScopes(@Nullable List<BackchannelAuthenticationApiFormDynamicScope> dynamicScopes) {
         this.dynamicScopes = dynamicScopes;
         return this;
     }
 
 
-    public BackchannelAuthenticationApiFormResponseBody withDeliveryMode(@Nullable DeliveryMode deliveryMode) {
+    public BackchannelAuthenticationApiFormResponseBody withDeliveryMode(@Nullable BackchannelAuthenticationApiFormDeliveryMode deliveryMode) {
         this.deliveryMode = deliveryMode;
         return this;
     }
@@ -1024,7 +1017,7 @@ public class BackchannelAuthenticationApiFormResponseBody {
      * <p>The `grant_management_action` request parameter is defined in
      * [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html).
      */
-    public BackchannelAuthenticationApiFormResponseBody withGmAction(@Nullable 1api1Percent7BserviceIdPercent7D1gmPostRequestBodyContentApplication1jsonSchemaPropertiesGmAction gmAction) {
+    public BackchannelAuthenticationApiFormResponseBody withGmAction(@Nullable BackchannelAuthenticationApiFormGmAction gmAction) {
         this.gmAction = gmAction;
         return this;
     }
@@ -1043,7 +1036,7 @@ public class BackchannelAuthenticationApiFormResponseBody {
     }
 
 
-    public BackchannelAuthenticationApiFormResponseBody withGrant(@Nullable 1api1Percent7BserviceIdPercent7D1auth1authorizationPostResponses200ContentApplication1jsonSchemaPropertiesGrant grant) {
+    public BackchannelAuthenticationApiFormResponseBody withGrant(@Nullable BackchannelAuthenticationApiFormGrant grant) {
         this.grant = grant;
         return this;
     }
@@ -1218,7 +1211,7 @@ public class BackchannelAuthenticationApiFormResponseBody {
 
         private String clientName;
 
-        private List<Scope> scopes;
+        private List<BackchannelAuthenticationApiFormScope> scopes;
 
         private List<String> claimNames;
 
@@ -1248,23 +1241,23 @@ public class BackchannelAuthenticationApiFormResponseBody {
 
         private List<String> resources;
 
-        private AuthorizationDetails authorizationDetails;
+        private BackchannelAuthenticationApiFormAuthorizationDetails authorizationDetails;
 
-        private List<Pair> serviceAttributes;
+        private List<BackchannelAuthenticationApiFormServiceAttribute> serviceAttributes;
 
-        private List<Pair> clientAttributes;
+        private List<BackchannelAuthenticationApiFormClientAttribute> clientAttributes;
 
-        private List<DynamicScope> dynamicScopes;
+        private List<BackchannelAuthenticationApiFormDynamicScope> dynamicScopes;
 
-        private DeliveryMode deliveryMode;
+        private BackchannelAuthenticationApiFormDeliveryMode deliveryMode;
 
         private String clientAuthMethod;
 
-        private 1api1Percent7BserviceIdPercent7D1gmPostRequestBodyContentApplication1jsonSchemaPropertiesGmAction gmAction;
+        private BackchannelAuthenticationApiFormGmAction gmAction;
 
         private String grantId;
 
-        private 1api1Percent7BserviceIdPercent7D1auth1authorizationPostResponses200ContentApplication1jsonSchemaPropertiesGrant grant;
+        private BackchannelAuthenticationApiFormGrant grant;
 
         private String grantSubject;
 
@@ -1357,7 +1350,7 @@ public class BackchannelAuthenticationApiFormResponseBody {
          * in the array contained in this property is always null even if descriptions of the scopes
          * are registered.
          */
-        public Builder scopes(@Nullable List<Scope> scopes) {
+        public Builder scopes(@Nullable List<BackchannelAuthenticationApiFormScope> scopes) {
             this.scopes = scopes;
             return this;
         }
@@ -1499,7 +1492,7 @@ public class BackchannelAuthenticationApiFormResponseBody {
          * request parameter in the preceding device authorization request which is defined in
          * "OAuth 2.0 Rich Authorization Requests".
          */
-        public Builder authorizationDetails(@Nullable AuthorizationDetails authorizationDetails) {
+        public Builder authorizationDetails(@Nullable BackchannelAuthenticationApiFormAuthorizationDetails authorizationDetails) {
             this.authorizationDetails = authorizationDetails;
             return this;
         }
@@ -1507,7 +1500,7 @@ public class BackchannelAuthenticationApiFormResponseBody {
         /**
          * The attributes of this service that the client application belongs to.
          */
-        public Builder serviceAttributes(@Nullable List<Pair> serviceAttributes) {
+        public Builder serviceAttributes(@Nullable List<BackchannelAuthenticationApiFormServiceAttribute> serviceAttributes) {
             this.serviceAttributes = serviceAttributes;
             return this;
         }
@@ -1515,7 +1508,7 @@ public class BackchannelAuthenticationApiFormResponseBody {
         /**
          * The attributes of the client.
          */
-        public Builder clientAttributes(@Nullable List<Pair> clientAttributes) {
+        public Builder clientAttributes(@Nullable List<BackchannelAuthenticationApiFormClientAttribute> clientAttributes) {
             this.clientAttributes = clientAttributes;
             return this;
         }
@@ -1523,12 +1516,12 @@ public class BackchannelAuthenticationApiFormResponseBody {
         /**
          * The dynamic scopes which the client application requested by the scope request parameter.
          */
-        public Builder dynamicScopes(@Nullable List<DynamicScope> dynamicScopes) {
+        public Builder dynamicScopes(@Nullable List<BackchannelAuthenticationApiFormDynamicScope> dynamicScopes) {
             this.dynamicScopes = dynamicScopes;
             return this;
         }
 
-        public Builder deliveryMode(@Nullable DeliveryMode deliveryMode) {
+        public Builder deliveryMode(@Nullable BackchannelAuthenticationApiFormDeliveryMode deliveryMode) {
             this.deliveryMode = deliveryMode;
             return this;
         }
@@ -1547,7 +1540,7 @@ public class BackchannelAuthenticationApiFormResponseBody {
          * <p>The `grant_management_action` request parameter is defined in
          * [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html).
          */
-        public Builder gmAction(@Nullable 1api1Percent7BserviceIdPercent7D1gmPostRequestBodyContentApplication1jsonSchemaPropertiesGmAction gmAction) {
+        public Builder gmAction(@Nullable BackchannelAuthenticationApiFormGmAction gmAction) {
             this.gmAction = gmAction;
             return this;
         }
@@ -1564,7 +1557,7 @@ public class BackchannelAuthenticationApiFormResponseBody {
             return this;
         }
 
-        public Builder grant(@Nullable 1api1Percent7BserviceIdPercent7D1auth1authorizationPostResponses200ContentApplication1jsonSchemaPropertiesGrant grant) {
+        public Builder grant(@Nullable BackchannelAuthenticationApiFormGrant grant) {
             this.grant = grant;
             return this;
         }

@@ -27,19 +27,19 @@ if the service supports [OpenID Connect Discovery 1.0](https://openid.net/specs/
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="service_jwks_get_api" method="get" path="/api/{serviceId}/service/jwks/get" -->
 ```java
 package hello.world;
 
 import java.lang.Exception;
 import org.openapis.openapi.Authelete;
 import org.openapis.openapi.models.components.Security;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400ContentApplication1jsonSchemaException;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400Exception;
+import org.openapis.openapi.models.errors.*;
 import org.openapis.openapi.models.operations.ServiceJwksGetApiResponse;
 
 public class Application {
 
-    public static void main(String[] args) throws 1api1infoGetResponses400Exception, 1api1infoGetResponses400ContentApplication1jsonSchemaException, 1api1infoGetResponses400ContentApplication1jsonSchemaException, Exception {
+    public static void main(String[] args) throws BadRequestException, UnauthorizedException, ForbiddenException, InternalServerError, Exception {
 
         Authelete sdk = Authelete.builder()
                 .security(Security.builder()
@@ -62,9 +62,10 @@ public class Application {
 
 | Parameter                                                                                                                                                                                                         | Type                                                                                                                                                                                                              | Required                                                                                                                                                                                                          | Description                                                                                                                                                                                                       |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `serviceId`                                                                                                                                                                                                       | *String*                                                                                                                                                                                                          | :heavy_check_mark:                                                                                                                                                                                                | A service ID.                                                                                                                                                                                                     |
 | `includePrivateKeys`                                                                                                                                                                                              | *Optional\<Boolean>*                                                                                                                                                                                              | :heavy_minus_sign:                                                                                                                                                                                                | The boolean value that indicates whether the response should include the private keys associated with the service or not. If `true`, the private keys are included in the response. The default value is `false`. |
 | `pretty`                                                                                                                                                                                                          | *Optional\<Boolean>*                                                                                                                                                                                              | :heavy_minus_sign:                                                                                                                                                                                                | This boolean value indicates whether the JSON in the response should be formatted or not. If `true`, the JSON in the response is pretty-formatted. The default value is `false`.                                  |
+| `serviceId`                                                                                                                                                                                                       | *String*                                                                                                                                                                                                          | :heavy_check_mark:                                                                                                                                                                                                | A service ID.                                                                                                                                                                                                     |
+| `serverURL`                                                                                                                                                                                                       | *String*                                                                                                                                                                                                          | :heavy_minus_sign:                                                                                                                                                                                                | An optional server URL to use.                                                                                                                                                                                    |
 
 ### Response
 
@@ -72,9 +73,10 @@ public class Application {
 
 ### Errors
 
-| Error Type                                                                   | Status Code                                                                  | Content Type                                                                 |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| models/errors/1api1infoGetResponses400Exception                              | 400                                                                          | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 401, 403                                                                     | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 500                                                                          | application/json                                                             |
-| models/errors/APIException                                                   | 4XX, 5XX                                                                     | \*/\*                                                                        |
+| Error Type                          | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| models/errors/BadRequestException   | 400                                 | application/json                    |
+| models/errors/UnauthorizedException | 401                                 | application/json                    |
+| models/errors/ForbiddenException    | 403                                 | application/json                    |
+| models/errors/InternalServerError   | 500                                 | application/json                    |
+| models/errors/APIException          | 4XX, 5XX                            | \*/\*                               |

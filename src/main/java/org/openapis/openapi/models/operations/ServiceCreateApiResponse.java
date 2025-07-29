@@ -11,7 +11,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.net.http.HttpResponse;
 import java.util.Optional;
-import org.openapis.openapi.models.components.Service;
 import org.openapis.openapi.utils.Response;
 import org.openapis.openapi.utils.Utils;
 
@@ -33,20 +32,20 @@ public class ServiceCreateApiResponse implements Response {
     private HttpResponse<InputStream> rawResponse;
 
 
-    private Service service;
+    private ServiceCreateApiResponseBody object;
 
     @JsonCreator
     public ServiceCreateApiResponse(
             @Nonnull String contentType,
             int statusCode,
             @Nonnull HttpResponse<InputStream> rawResponse,
-            @Nullable Service service) {
+            @Nullable ServiceCreateApiResponseBody object) {
         this.contentType = Optional.ofNullable(contentType)
             .orElseThrow(() -> new IllegalArgumentException("contentType cannot be null"));
         this.statusCode = statusCode;
         this.rawResponse = Optional.ofNullable(rawResponse)
             .orElseThrow(() -> new IllegalArgumentException("rawResponse cannot be null"));
-        this.service = service;
+        this.object = object;
     }
     
     public ServiceCreateApiResponse(
@@ -78,8 +77,8 @@ public class ServiceCreateApiResponse implements Response {
         return this.rawResponse;
     }
 
-    public Optional<Service> service() {
-        return Optional.ofNullable(this.service);
+    public Optional<ServiceCreateApiResponseBody> object() {
+        return Optional.ofNullable(this.object);
     }
 
     public static Builder builder() {
@@ -114,8 +113,8 @@ public class ServiceCreateApiResponse implements Response {
     }
 
 
-    public ServiceCreateApiResponse withService(@Nullable Service service) {
-        this.service = service;
+    public ServiceCreateApiResponse withObject(@Nullable ServiceCreateApiResponseBody object) {
+        this.object = object;
         return this;
     }
 
@@ -133,14 +132,14 @@ public class ServiceCreateApiResponse implements Response {
             Utils.enhancedDeepEquals(this.contentType, other.contentType) &&
             Utils.enhancedDeepEquals(this.statusCode, other.statusCode) &&
             Utils.enhancedDeepEquals(this.rawResponse, other.rawResponse) &&
-            Utils.enhancedDeepEquals(this.service, other.service);
+            Utils.enhancedDeepEquals(this.object, other.object);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
             contentType, statusCode, rawResponse,
-            service);
+            object);
     }
     
     @Override
@@ -149,7 +148,7 @@ public class ServiceCreateApiResponse implements Response {
                 "contentType", contentType,
                 "statusCode", statusCode,
                 "rawResponse", rawResponse,
-                "service", service);
+                "object", object);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -161,7 +160,7 @@ public class ServiceCreateApiResponse implements Response {
 
         private HttpResponse<InputStream> rawResponse;
 
-        private Service service;
+        private ServiceCreateApiResponseBody object;
 
         private Builder() {
           // force use of static builder() method
@@ -191,15 +190,15 @@ public class ServiceCreateApiResponse implements Response {
             return this;
         }
 
-        public Builder service(@Nullable Service service) {
-            this.service = service;
+        public Builder object(@Nullable ServiceCreateApiResponseBody object) {
+            this.object = object;
             return this;
         }
 
         public ServiceCreateApiResponse build() {
             return new ServiceCreateApiResponse(
                 contentType, statusCode, rawResponse,
-                service);
+                object);
         }
 
     }

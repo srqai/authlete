@@ -13,9 +13,7 @@ import org.openapis.openapi.utils.Utils;
 
 
 public class PostApiServiceIdAuthAuthorizationTicketUpdateRequest {
-    /**
-     * A service ID
-     */
+
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=serviceId")
     private String serviceId;
 
@@ -33,9 +31,6 @@ public class PostApiServiceIdAuthAuthorizationTicketUpdateRequest {
             .orElseThrow(() -> new IllegalArgumentException("requestBody cannot be null"));
     }
 
-    /**
-     * A service ID
-     */
     public String serviceId() {
         return this.serviceId;
     }
@@ -49,9 +44,6 @@ public class PostApiServiceIdAuthAuthorizationTicketUpdateRequest {
     }
 
 
-    /**
-     * A service ID
-     */
     public PostApiServiceIdAuthAuthorizationTicketUpdateRequest withServiceId(@Nonnull String serviceId) {
         this.serviceId = Utils.checkNotNull(serviceId, "serviceId");
         return this;
@@ -102,9 +94,6 @@ public class PostApiServiceIdAuthAuthorizationTicketUpdateRequest {
           // force use of static builder() method
         }
 
-        /**
-         * A service ID
-         */
         public Builder serviceId(@Nonnull String serviceId) {
             this.serviceId = Utils.checkNotNull(serviceId, "serviceId");
             return this;

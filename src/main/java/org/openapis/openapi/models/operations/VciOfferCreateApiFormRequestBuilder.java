@@ -6,10 +6,10 @@ package org.openapis.openapi.models.operations;
 import static org.openapis.openapi.operations.Operations.RequestOperation;
 
 import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1vci1offer1createPostRequestBodyContentApplication1jsonSchema;
 import org.openapis.openapi.operations.VciOfferCreateApiFormOperation;
 import org.openapis.openapi.utils.Utils;
 
@@ -17,6 +17,7 @@ public class VciOfferCreateApiFormRequestBuilder {
     private final SDKConfiguration sdkConfiguration;
     private final VciOfferCreateApiFormRequest.Builder pojoBuilder;
     private VciOfferCreateApiFormRequest request;
+    private String serverURL;
     private boolean _setterCalled;
 
     public VciOfferCreateApiFormRequestBuilder(SDKConfiguration sdkConfiguration) {
@@ -30,9 +31,14 @@ public class VciOfferCreateApiFormRequestBuilder {
         return this;
     }
 
-    public VciOfferCreateApiFormRequestBuilder oneapi1Percent7BserviceIdPercent7D1vci1offer1createPostRequestBodyContentApplication1jsonSchema(@Nonnull 1api1Percent7BserviceIdPercent7D1vci1offer1createPostRequestBodyContentApplication1jsonSchema oneapi1Percent7BserviceIdPercent7D1vci1offer1createPostRequestBodyContentApplication1jsonSchema) {
-        this.pojoBuilder.oneapi1Percent7BserviceIdPercent7D1vci1offer1createPostRequestBodyContentApplication1jsonSchema(oneapi1Percent7BserviceIdPercent7D1vci1offer1createPostRequestBodyContentApplication1jsonSchema);
+    public VciOfferCreateApiFormRequestBuilder requestBody(@Nonnull VciOfferCreateApiFormRequestBody requestBody) {
+        this.pojoBuilder.requestBody(requestBody);
         this._setterCalled = true;
+        return this;
+    }
+
+    public VciOfferCreateApiFormRequestBuilder serverURL(@Nullable String serverURL) {
+        this.serverURL = serverURL;
         return this;
     }
 
@@ -49,7 +55,7 @@ public class VciOfferCreateApiFormRequestBuilder {
     */
     public VciOfferCreateApiFormResponse call() throws Exception {
         RequestOperation<VciOfferCreateApiFormRequest, VciOfferCreateApiFormResponse> operation
-              = new VciOfferCreateApiFormOperation(sdkConfiguration);
+              = new VciOfferCreateApiFormOperation(sdkConfiguration, serverURL);
 
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }

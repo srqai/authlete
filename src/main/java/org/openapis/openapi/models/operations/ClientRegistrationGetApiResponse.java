@@ -11,7 +11,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.net.http.HttpResponse;
 import java.util.Optional;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1client1registrationPostResponses200ContentApplication1jsonSchema;
 import org.openapis.openapi.utils.Response;
 import org.openapis.openapi.utils.Utils;
 
@@ -33,20 +32,20 @@ public class ClientRegistrationGetApiResponse implements Response {
     private HttpResponse<InputStream> rawResponse;
 
 
-    private 1api1Percent7BserviceIdPercent7D1client1registrationPostResponses200ContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1client1registrationPostResponses200ContentApplication1jsonSchema;
+    private ClientRegistrationGetApiResponseBody object;
 
     @JsonCreator
     public ClientRegistrationGetApiResponse(
             @Nonnull String contentType,
             int statusCode,
             @Nonnull HttpResponse<InputStream> rawResponse,
-            @Nullable 1api1Percent7BserviceIdPercent7D1client1registrationPostResponses200ContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1client1registrationPostResponses200ContentApplication1jsonSchema) {
+            @Nullable ClientRegistrationGetApiResponseBody object) {
         this.contentType = Optional.ofNullable(contentType)
             .orElseThrow(() -> new IllegalArgumentException("contentType cannot be null"));
         this.statusCode = statusCode;
         this.rawResponse = Optional.ofNullable(rawResponse)
             .orElseThrow(() -> new IllegalArgumentException("rawResponse cannot be null"));
-        this.1api1Percent7BserviceIdPercent7D1client1registrationPostResponses200ContentApplication1jsonSchema = 1api1Percent7BserviceIdPercent7D1client1registrationPostResponses200ContentApplication1jsonSchema;
+        this.object = object;
     }
     
     public ClientRegistrationGetApiResponse(
@@ -78,8 +77,8 @@ public class ClientRegistrationGetApiResponse implements Response {
         return this.rawResponse;
     }
 
-    public Optional<1api1Percent7BserviceIdPercent7D1client1registrationPostResponses200ContentApplication1jsonSchema> 1api1Percent7BserviceIdPercent7D1client1registrationPostResponses200ContentApplication1jsonSchema() {
-        return Optional.ofNullable(this.1api1Percent7BserviceIdPercent7D1client1registrationPostResponses200ContentApplication1jsonSchema);
+    public Optional<ClientRegistrationGetApiResponseBody> object() {
+        return Optional.ofNullable(this.object);
     }
 
     public static Builder builder() {
@@ -114,8 +113,8 @@ public class ClientRegistrationGetApiResponse implements Response {
     }
 
 
-    public ClientRegistrationGetApiResponse with1api1Percent7BserviceIdPercent7D1client1registrationPostResponses200ContentApplication1jsonSchema(@Nullable 1api1Percent7BserviceIdPercent7D1client1registrationPostResponses200ContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1client1registrationPostResponses200ContentApplication1jsonSchema) {
-        this.1api1Percent7BserviceIdPercent7D1client1registrationPostResponses200ContentApplication1jsonSchema = 1api1Percent7BserviceIdPercent7D1client1registrationPostResponses200ContentApplication1jsonSchema;
+    public ClientRegistrationGetApiResponse withObject(@Nullable ClientRegistrationGetApiResponseBody object) {
+        this.object = object;
         return this;
     }
 
@@ -133,14 +132,14 @@ public class ClientRegistrationGetApiResponse implements Response {
             Utils.enhancedDeepEquals(this.contentType, other.contentType) &&
             Utils.enhancedDeepEquals(this.statusCode, other.statusCode) &&
             Utils.enhancedDeepEquals(this.rawResponse, other.rawResponse) &&
-            Utils.enhancedDeepEquals(this.1api1Percent7BserviceIdPercent7D1client1registrationPostResponses200ContentApplication1jsonSchema, other.1api1Percent7BserviceIdPercent7D1client1registrationPostResponses200ContentApplication1jsonSchema);
+            Utils.enhancedDeepEquals(this.object, other.object);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
             contentType, statusCode, rawResponse,
-            1api1Percent7BserviceIdPercent7D1client1registrationPostResponses200ContentApplication1jsonSchema);
+            object);
     }
     
     @Override
@@ -149,7 +148,7 @@ public class ClientRegistrationGetApiResponse implements Response {
                 "contentType", contentType,
                 "statusCode", statusCode,
                 "rawResponse", rawResponse,
-                "1api1Percent7BserviceIdPercent7D1client1registrationPostResponses200ContentApplication1jsonSchema", 1api1Percent7BserviceIdPercent7D1client1registrationPostResponses200ContentApplication1jsonSchema);
+                "object", object);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -161,7 +160,7 @@ public class ClientRegistrationGetApiResponse implements Response {
 
         private HttpResponse<InputStream> rawResponse;
 
-        private 1api1Percent7BserviceIdPercent7D1client1registrationPostResponses200ContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1client1registrationPostResponses200ContentApplication1jsonSchema;
+        private ClientRegistrationGetApiResponseBody object;
 
         private Builder() {
           // force use of static builder() method
@@ -191,15 +190,15 @@ public class ClientRegistrationGetApiResponse implements Response {
             return this;
         }
 
-        public Builder 1api1Percent7BserviceIdPercent7D1client1registrationPostResponses200ContentApplication1jsonSchema(@Nullable 1api1Percent7BserviceIdPercent7D1client1registrationPostResponses200ContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1client1registrationPostResponses200ContentApplication1jsonSchema) {
-            this.1api1Percent7BserviceIdPercent7D1client1registrationPostResponses200ContentApplication1jsonSchema = 1api1Percent7BserviceIdPercent7D1client1registrationPostResponses200ContentApplication1jsonSchema;
+        public Builder object(@Nullable ClientRegistrationGetApiResponseBody object) {
+            this.object = object;
             return this;
         }
 
         public ClientRegistrationGetApiResponse build() {
             return new ClientRegistrationGetApiResponse(
                 contentType, statusCode, rawResponse,
-                1api1Percent7BserviceIdPercent7D1client1registrationPostResponses200ContentApplication1jsonSchema);
+                object);
         }
 
     }

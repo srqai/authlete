@@ -14,8 +14,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
-import org.openapis.openapi.models.components.Pair;
-import org.openapis.openapi.models.components.Property;
 import org.openapis.openapi.utils.Utils;
 
 
@@ -104,7 +102,7 @@ public class AuthUserinfoApiResponseBody {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("properties")
-    private List<Property> properties;
+    private List<AuthUserinfoApiProperty> properties;
 
     /**
      * The value of the `userinfo` property in the `claims` request parameter or in the `claims` property in an authorization request object.
@@ -161,14 +159,14 @@ public class AuthUserinfoApiResponseBody {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("serviceAttributes")
-    private List<Pair> serviceAttributes;
+    private List<AuthUserinfoApiServiceAttribute> serviceAttributes;
 
     /**
      * The attributes of the client.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("clientAttributes")
-    private List<Pair> clientAttributes;
+    private List<AuthUserinfoApiClientAttribute> clientAttributes;
 
     /**
      * the claims that the user has consented for the client application
@@ -304,10 +302,10 @@ public class AuthUserinfoApiResponseBody {
             @JsonProperty("scopes") @Nullable List<String> scopes,
             @JsonProperty("subject") @Nullable String subject,
             @JsonProperty("token") @Nullable String token,
-            @JsonProperty("properties") @Nullable List<Property> properties,
+            @JsonProperty("properties") @Nullable List<AuthUserinfoApiProperty> properties,
             @JsonProperty("userInfoClaims") @Nullable String userInfoClaims,
-            @JsonProperty("serviceAttributes") @Nullable List<Pair> serviceAttributes,
-            @JsonProperty("clientAttributes") @Nullable List<Pair> clientAttributes,
+            @JsonProperty("serviceAttributes") @Nullable List<AuthUserinfoApiServiceAttribute> serviceAttributes,
+            @JsonProperty("clientAttributes") @Nullable List<AuthUserinfoApiClientAttribute> clientAttributes,
             @JsonProperty("consentedClaims") @Nullable List<String> consentedClaims,
             @JsonProperty("requestedClaimsForTx") @Nullable List<String> requestedClaimsForTx,
             @JsonProperty("requestedVerifiedClaimsForTx") @Nullable List<List<String>> requestedVerifiedClaimsForTx,
@@ -432,7 +430,7 @@ public class AuthUserinfoApiResponseBody {
     /**
      * The extra properties associated with the access token.
      */
-    public Optional<List<Property>> properties() {
+    public Optional<List<AuthUserinfoApiProperty>> properties() {
         return Optional.ofNullable(this.properties);
     }
 
@@ -489,14 +487,14 @@ public class AuthUserinfoApiResponseBody {
     /**
      * The attributes of this service that the client application belongs to.
      */
-    public Optional<List<Pair>> serviceAttributes() {
+    public Optional<List<AuthUserinfoApiServiceAttribute>> serviceAttributes() {
         return Optional.ofNullable(this.serviceAttributes);
     }
 
     /**
      * The attributes of the client.
      */
-    public Optional<List<Pair>> clientAttributes() {
+    public Optional<List<AuthUserinfoApiClientAttribute>> clientAttributes() {
         return Optional.ofNullable(this.clientAttributes);
     }
 
@@ -730,7 +728,7 @@ public class AuthUserinfoApiResponseBody {
     /**
      * The extra properties associated with the access token.
      */
-    public AuthUserinfoApiResponseBody withProperties(@Nullable List<Property> properties) {
+    public AuthUserinfoApiResponseBody withProperties(@Nullable List<AuthUserinfoApiProperty> properties) {
         this.properties = properties;
         return this;
     }
@@ -791,7 +789,7 @@ public class AuthUserinfoApiResponseBody {
     /**
      * The attributes of this service that the client application belongs to.
      */
-    public AuthUserinfoApiResponseBody withServiceAttributes(@Nullable List<Pair> serviceAttributes) {
+    public AuthUserinfoApiResponseBody withServiceAttributes(@Nullable List<AuthUserinfoApiServiceAttribute> serviceAttributes) {
         this.serviceAttributes = serviceAttributes;
         return this;
     }
@@ -800,7 +798,7 @@ public class AuthUserinfoApiResponseBody {
     /**
      * The attributes of the client.
      */
-    public AuthUserinfoApiResponseBody withClientAttributes(@Nullable List<Pair> clientAttributes) {
+    public AuthUserinfoApiResponseBody withClientAttributes(@Nullable List<AuthUserinfoApiClientAttribute> clientAttributes) {
         this.clientAttributes = clientAttributes;
         return this;
     }
@@ -1040,13 +1038,13 @@ public class AuthUserinfoApiResponseBody {
 
         private String token;
 
-        private List<Property> properties;
+        private List<AuthUserinfoApiProperty> properties;
 
         private String userInfoClaims;
 
-        private List<Pair> serviceAttributes;
+        private List<AuthUserinfoApiServiceAttribute> serviceAttributes;
 
-        private List<Pair> clientAttributes;
+        private List<AuthUserinfoApiClientAttribute> clientAttributes;
 
         private List<String> consentedClaims;
 
@@ -1159,7 +1157,7 @@ public class AuthUserinfoApiResponseBody {
         /**
          * The extra properties associated with the access token.
          */
-        public Builder properties(@Nullable List<Property> properties) {
+        public Builder properties(@Nullable List<AuthUserinfoApiProperty> properties) {
             this.properties = properties;
             return this;
         }
@@ -1218,7 +1216,7 @@ public class AuthUserinfoApiResponseBody {
         /**
          * The attributes of this service that the client application belongs to.
          */
-        public Builder serviceAttributes(@Nullable List<Pair> serviceAttributes) {
+        public Builder serviceAttributes(@Nullable List<AuthUserinfoApiServiceAttribute> serviceAttributes) {
             this.serviceAttributes = serviceAttributes;
             return this;
         }
@@ -1226,7 +1224,7 @@ public class AuthUserinfoApiResponseBody {
         /**
          * The attributes of the client.
          */
-        public Builder clientAttributes(@Nullable List<Pair> clientAttributes) {
+        public Builder clientAttributes(@Nullable List<AuthUserinfoApiClientAttribute> clientAttributes) {
             this.clientAttributes = clientAttributes;
             return this;
         }

@@ -10,7 +10,6 @@ import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1client1authorization1update1Percent7BclientIdPercent7DPostRequestBodyContentApplication1jsonSchema;
 import org.openapis.openapi.operations.ClientAuthorizationUpdateApiFormOperation;
 import org.openapis.openapi.utils.Utils;
 
@@ -18,6 +17,7 @@ public class ClientAuthorizationUpdateApiFormRequestBuilder {
     private final SDKConfiguration sdkConfiguration;
     private final ClientAuthorizationUpdateApiFormRequest.Builder pojoBuilder;
     private ClientAuthorizationUpdateApiFormRequest request;
+    private String serverURL;
     private boolean _setterCalled;
 
     public ClientAuthorizationUpdateApiFormRequestBuilder(SDKConfiguration sdkConfiguration) {
@@ -37,9 +37,14 @@ public class ClientAuthorizationUpdateApiFormRequestBuilder {
         return this;
     }
 
-    public ClientAuthorizationUpdateApiFormRequestBuilder oneapi1Percent7BserviceIdPercent7D1client1authorization1update1Percent7BclientIdPercent7DPostRequestBodyContentApplication1jsonSchema(@Nullable 1api1Percent7BserviceIdPercent7D1client1authorization1update1Percent7BclientIdPercent7DPostRequestBodyContentApplication1jsonSchema oneapi1Percent7BserviceIdPercent7D1client1authorization1update1Percent7BclientIdPercent7DPostRequestBodyContentApplication1jsonSchema) {
-        this.pojoBuilder.oneapi1Percent7BserviceIdPercent7D1client1authorization1update1Percent7BclientIdPercent7DPostRequestBodyContentApplication1jsonSchema(oneapi1Percent7BserviceIdPercent7D1client1authorization1update1Percent7BclientIdPercent7DPostRequestBodyContentApplication1jsonSchema);
+    public ClientAuthorizationUpdateApiFormRequestBuilder requestBody(@Nullable ClientAuthorizationUpdateApiFormRequestBody requestBody) {
+        this.pojoBuilder.requestBody(requestBody);
         this._setterCalled = true;
+        return this;
+    }
+
+    public ClientAuthorizationUpdateApiFormRequestBuilder serverURL(@Nullable String serverURL) {
+        this.serverURL = serverURL;
         return this;
     }
 
@@ -56,7 +61,7 @@ public class ClientAuthorizationUpdateApiFormRequestBuilder {
     */
     public ClientAuthorizationUpdateApiFormResponse call() throws Exception {
         RequestOperation<ClientAuthorizationUpdateApiFormRequest, ClientAuthorizationUpdateApiFormResponse> operation
-              = new ClientAuthorizationUpdateApiFormOperation(sdkConfiguration);
+              = new ClientAuthorizationUpdateApiFormOperation(sdkConfiguration, serverURL);
 
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }

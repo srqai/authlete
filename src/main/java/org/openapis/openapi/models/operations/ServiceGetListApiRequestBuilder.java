@@ -8,6 +8,7 @@ import static org.openapis.openapi.operations.Operations.RequestOperation;
 import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.Integer;
+import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
 import org.openapis.openapi.operations.ServiceGetListApiOperation;
 
@@ -15,6 +16,7 @@ public class ServiceGetListApiRequestBuilder {
     private final SDKConfiguration sdkConfiguration;
     private final ServiceGetListApiRequest.Builder pojoBuilder;
     private ServiceGetListApiRequest request;
+    private String serverURL;
     private boolean _setterCalled;
 
     public ServiceGetListApiRequestBuilder(SDKConfiguration sdkConfiguration) {
@@ -34,6 +36,11 @@ public class ServiceGetListApiRequestBuilder {
         return this;
     }
 
+    public ServiceGetListApiRequestBuilder serverURL(@Nullable String serverURL) {
+        this.serverURL = serverURL;
+        return this;
+    }
+
     private ServiceGetListApiRequest _buildRequest() {
         if (this._setterCalled) {
             this.request = this.pojoBuilder.build();
@@ -47,7 +54,7 @@ public class ServiceGetListApiRequestBuilder {
     */
     public ServiceGetListApiResponse call() throws Exception {
         RequestOperation<ServiceGetListApiRequest, ServiceGetListApiResponse> operation
-              = new ServiceGetListApiOperation(sdkConfiguration);
+              = new ServiceGetListApiOperation(sdkConfiguration, serverURL);
 
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }

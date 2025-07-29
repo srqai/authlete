@@ -6,10 +6,11 @@ package org.openapis.openapi;
 import static org.openapis.openapi.operations.Operations.RequestOperation;
 
 import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1vci1single1parsePostRequestBodyContentApplication1jsonSchema;
 import org.openapis.openapi.models.operations.VciSingleParseApiFormRequest;
+import org.openapis.openapi.models.operations.VciSingleParseApiFormRequestBody;
 import org.openapis.openapi.models.operations.VciSingleParseApiFormRequestBuilder;
 import org.openapis.openapi.models.operations.VciSingleParseApiFormResponse;
 import org.openapis.openapi.models.operations.VciSingleParseApiRequest;
@@ -30,8 +31,6 @@ public class Vci {
     /**
      * /api/{serviceId}/vci/single/parse API
      * 
-     * <p>null
-     * 
      * @return The call builder
      */
     public VciSingleParseApiRequestBuilder parseSingle() {
@@ -41,24 +40,35 @@ public class Vci {
     /**
      * /api/{serviceId}/vci/single/parse API
      * 
-     * <p>null
-     * 
      * @param serviceId A service ID.
      * @param requestBody 
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public VciSingleParseApiResponse parseSingle(@Nonnull String serviceId, @Nonnull VciSingleParseApiRequestBody requestBody) throws Exception {
-        VciSingleParseApiRequest request = new VciSingleParseApiRequest(serviceId, requestBody);
-        RequestOperation<VciSingleParseApiRequest, VciSingleParseApiResponse> operation
-              = new VciSingleParseApiOperation(sdkConfiguration);
-        return operation.handleResponse(operation.doRequest(request));
+        return parseSingle(serviceId, requestBody, null);
     }
 
     /**
      * /api/{serviceId}/vci/single/parse API
      * 
-     * <p>null
+     * @param serviceId A service ID.
+     * @param requestBody 
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public VciSingleParseApiResponse parseSingle(
+            @Nonnull String serviceId, @Nonnull VciSingleParseApiRequestBody requestBody,
+            @Nullable String serverURL) throws Exception {
+        VciSingleParseApiRequest request = new VciSingleParseApiRequest(serviceId, requestBody);
+        RequestOperation<VciSingleParseApiRequest, VciSingleParseApiResponse> operation
+              = new VciSingleParseApiOperation(sdkConfiguration, serverURL);
+        return operation.handleResponse(operation.doRequest(request));
+    }
+
+    /**
+     * /api/{serviceId}/vci/single/parse API
      * 
      * @return The call builder
      */
@@ -69,17 +79,30 @@ public class Vci {
     /**
      * /api/{serviceId}/vci/single/parse API
      * 
-     * <p>null
-     * 
      * @param serviceId A service ID.
-     * @param 1api1Percent7BserviceIdPercent7D1vci1single1parsePostRequestBodyContentApplication1jsonSchema 
+     * @param requestBody 
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public VciSingleParseApiFormResponse parseSingleForm(@Nonnull String serviceId, @Nonnull 1api1Percent7BserviceIdPercent7D1vci1single1parsePostRequestBodyContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1vci1single1parsePostRequestBodyContentApplication1jsonSchema) throws Exception {
-        VciSingleParseApiFormRequest request = new VciSingleParseApiFormRequest(serviceId, 1api1Percent7BserviceIdPercent7D1vci1single1parsePostRequestBodyContentApplication1jsonSchema);
+    public VciSingleParseApiFormResponse parseSingleForm(@Nonnull String serviceId, @Nonnull VciSingleParseApiFormRequestBody requestBody) throws Exception {
+        return parseSingleForm(serviceId, requestBody, null);
+    }
+
+    /**
+     * /api/{serviceId}/vci/single/parse API
+     * 
+     * @param serviceId A service ID.
+     * @param requestBody 
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public VciSingleParseApiFormResponse parseSingleForm(
+            @Nonnull String serviceId, @Nonnull VciSingleParseApiFormRequestBody requestBody,
+            @Nullable String serverURL) throws Exception {
+        VciSingleParseApiFormRequest request = new VciSingleParseApiFormRequest(serviceId, requestBody);
         RequestOperation<VciSingleParseApiFormRequest, VciSingleParseApiFormResponse> operation
-              = new VciSingleParseApiFormOperation(sdkConfiguration);
+              = new VciSingleParseApiFormOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 

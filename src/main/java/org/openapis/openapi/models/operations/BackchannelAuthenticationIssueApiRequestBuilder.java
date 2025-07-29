@@ -6,6 +6,7 @@ package org.openapis.openapi.models.operations;
 import static org.openapis.openapi.operations.Operations.RequestOperation;
 
 import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
@@ -16,6 +17,7 @@ public class BackchannelAuthenticationIssueApiRequestBuilder {
     private final SDKConfiguration sdkConfiguration;
     private final BackchannelAuthenticationIssueApiRequest.Builder pojoBuilder;
     private BackchannelAuthenticationIssueApiRequest request;
+    private String serverURL;
     private boolean _setterCalled;
 
     public BackchannelAuthenticationIssueApiRequestBuilder(SDKConfiguration sdkConfiguration) {
@@ -35,6 +37,11 @@ public class BackchannelAuthenticationIssueApiRequestBuilder {
         return this;
     }
 
+    public BackchannelAuthenticationIssueApiRequestBuilder serverURL(@Nullable String serverURL) {
+        this.serverURL = serverURL;
+        return this;
+    }
+
     private BackchannelAuthenticationIssueApiRequest _buildRequest() {
         if (this._setterCalled) {
             this.request = this.pojoBuilder.build();
@@ -48,7 +55,7 @@ public class BackchannelAuthenticationIssueApiRequestBuilder {
     */
     public BackchannelAuthenticationIssueApiResponse call() throws Exception {
         RequestOperation<BackchannelAuthenticationIssueApiRequest, BackchannelAuthenticationIssueApiResponse> operation
-              = new BackchannelAuthenticationIssueApiOperation(sdkConfiguration);
+              = new BackchannelAuthenticationIssueApiOperation(sdkConfiguration, serverURL);
 
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }

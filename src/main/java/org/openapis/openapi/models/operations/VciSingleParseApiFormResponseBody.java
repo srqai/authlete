@@ -11,7 +11,6 @@ import jakarta.annotation.Nullable;
 import java.lang.Override;
 import java.lang.String;
 import java.util.Optional;
-import org.openapis.openapi.models.components.CredentialRequestInfo;
 import org.openapis.openapi.utils.Utils;
 
 
@@ -47,7 +46,7 @@ public class VciSingleParseApiFormResponseBody {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("info")
-    private CredentialRequestInfo info;
+    private VciSingleParseApiFormInfo info;
 
     @JsonCreator
     public VciSingleParseApiFormResponseBody(
@@ -55,7 +54,7 @@ public class VciSingleParseApiFormResponseBody {
             @JsonProperty("resultMessage") @Nullable String resultMessage,
             @JsonProperty("action") @Nullable VciSingleParseApiFormAction action,
             @JsonProperty("responseContent") @Nullable String responseContent,
-            @JsonProperty("info") @Nullable CredentialRequestInfo info) {
+            @JsonProperty("info") @Nullable VciSingleParseApiFormInfo info) {
         this.resultCode = resultCode;
         this.resultMessage = resultMessage;
         this.action = action;
@@ -96,7 +95,7 @@ public class VciSingleParseApiFormResponseBody {
         return Optional.ofNullable(this.responseContent);
     }
 
-    public Optional<CredentialRequestInfo> info() {
+    public Optional<VciSingleParseApiFormInfo> info() {
         return Optional.ofNullable(this.info);
     }
 
@@ -141,7 +140,7 @@ public class VciSingleParseApiFormResponseBody {
     }
 
 
-    public VciSingleParseApiFormResponseBody withInfo(@Nullable CredentialRequestInfo info) {
+    public VciSingleParseApiFormResponseBody withInfo(@Nullable VciSingleParseApiFormInfo info) {
         this.info = info;
         return this;
     }
@@ -192,7 +191,7 @@ public class VciSingleParseApiFormResponseBody {
 
         private String responseContent;
 
-        private CredentialRequestInfo info;
+        private VciSingleParseApiFormInfo info;
 
         private Builder() {
           // force use of static builder() method
@@ -230,7 +229,7 @@ public class VciSingleParseApiFormResponseBody {
             return this;
         }
 
-        public Builder info(@Nullable CredentialRequestInfo info) {
+        public Builder info(@Nullable VciSingleParseApiFormInfo info) {
             this.info = info;
             return this;
         }

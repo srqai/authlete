@@ -6,10 +6,10 @@ package org.openapis.openapi.models.operations;
 import static org.openapis.openapi.operations.Operations.RequestOperation;
 
 import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1vci1deferred1parsePostRequestBodyContentApplication1jsonSchema;
 import org.openapis.openapi.operations.VciDeferredParseApiFormOperation;
 import org.openapis.openapi.utils.Utils;
 
@@ -17,6 +17,7 @@ public class VciDeferredParseApiFormRequestBuilder {
     private final SDKConfiguration sdkConfiguration;
     private final VciDeferredParseApiFormRequest.Builder pojoBuilder;
     private VciDeferredParseApiFormRequest request;
+    private String serverURL;
     private boolean _setterCalled;
 
     public VciDeferredParseApiFormRequestBuilder(SDKConfiguration sdkConfiguration) {
@@ -30,9 +31,14 @@ public class VciDeferredParseApiFormRequestBuilder {
         return this;
     }
 
-    public VciDeferredParseApiFormRequestBuilder oneapi1Percent7BserviceIdPercent7D1vci1deferred1parsePostRequestBodyContentApplication1jsonSchema(@Nonnull 1api1Percent7BserviceIdPercent7D1vci1deferred1parsePostRequestBodyContentApplication1jsonSchema oneapi1Percent7BserviceIdPercent7D1vci1deferred1parsePostRequestBodyContentApplication1jsonSchema) {
-        this.pojoBuilder.oneapi1Percent7BserviceIdPercent7D1vci1deferred1parsePostRequestBodyContentApplication1jsonSchema(oneapi1Percent7BserviceIdPercent7D1vci1deferred1parsePostRequestBodyContentApplication1jsonSchema);
+    public VciDeferredParseApiFormRequestBuilder requestBody(@Nonnull VciDeferredParseApiFormRequestBody requestBody) {
+        this.pojoBuilder.requestBody(requestBody);
         this._setterCalled = true;
+        return this;
+    }
+
+    public VciDeferredParseApiFormRequestBuilder serverURL(@Nullable String serverURL) {
+        this.serverURL = serverURL;
         return this;
     }
 
@@ -49,7 +55,7 @@ public class VciDeferredParseApiFormRequestBuilder {
     */
     public VciDeferredParseApiFormResponse call() throws Exception {
         RequestOperation<VciDeferredParseApiFormRequest, VciDeferredParseApiFormResponse> operation
-              = new VciDeferredParseApiFormOperation(sdkConfiguration);
+              = new VciDeferredParseApiFormOperation(sdkConfiguration, serverURL);
 
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }

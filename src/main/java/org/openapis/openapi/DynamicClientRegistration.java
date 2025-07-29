@@ -6,10 +6,11 @@ package org.openapis.openapi;
 import static org.openapis.openapi.operations.Operations.RequestOperation;
 
 import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1client1registration1deletePostRequestBodyContentApplication1jsonSchema;
 import org.openapis.openapi.models.operations.ClientRegistrationDeleteApiFormRequest;
+import org.openapis.openapi.models.operations.ClientRegistrationDeleteApiFormRequestBody;
 import org.openapis.openapi.models.operations.ClientRegistrationDeleteApiFormRequestBuilder;
 import org.openapis.openapi.models.operations.ClientRegistrationDeleteApiFormResponse;
 import org.openapis.openapi.models.operations.ClientRegistrationDeleteApiRequest;
@@ -257,9 +258,130 @@ public class DynamicClientRegistration {
      * @throws Exception if the API call fails
      */
     public ClientRegistrationDeleteApiResponse delete(@Nonnull String serviceId, @Nonnull ClientRegistrationDeleteApiRequestBody requestBody) throws Exception {
+        return delete(serviceId, requestBody, null);
+    }
+
+    /**
+     * Delete Client
+     * 
+     * <p>Delete a dynamically registered client. This API is supposed to be used to implement a client
+     * registration management endpoint that complies with [RFC 7592](https://datatracker.ietf.org/doc/html/rfc7592)
+     * (OAuth 2.0 Dynamic Registration Management).
+     * 
+     * <p>&lt;br&gt;
+     * &lt;details&gt;
+     * &lt;summary&gt;Description&lt;/summary&gt;
+     * 
+     * <p>This API is supposed to be called from the within the implementation of the client registration
+     * management endpoint of the authorization server. The authorization server implementation should
+     * retrieve the value of `action` from the response and take the following steps according to the value.
+     * 
+     * <p>**INTERNAL_SERVER_ERROR**
+     * 
+     * <p>When the value of `action` is `INTERNAL_SERVER_ERROR`, it means that the API call from the authorization
+     * server implementation was wrong or that an error occurred in Authlete.
+     * 
+     * <p>In either case, from a viewpoint of the client or developer, it is an error on the server side.
+     * Therefore, the authorization server implementation should generate a response with "500 Internal
+     * Server Error"s and `application/json`.
+     * 
+     * <p>The value of `responseContent` is a JSON string which describes the error, so it can be used as
+     * the entity body of the response.
+     * 
+     * <p>The following illustrates the response which the authorization server implementation should generate
+     * and return to the client or developer.
+     * 
+     * <p>```
+     * HTTP/1.1 500 Internal Server Error
+     * Content-Type: application/json
+     * Cache-Control: no-store
+     * Pragma: no-cache
+     * 
+     * <p>{responseContent}
+     * ```
+     * 
+     * <p>The endpoint implementation may return another different response to the client or developer since
+     * "500 Internal Server Error" is not required by the specification.
+     * 
+     * <p>**BAD_REQUEST**
+     * 
+     * <p>When the value of `action` is `BAD_REQUEST`, it means that the request from the client or developer
+     * was wrong.
+     * 
+     * <p>The authorization server implementation should generate a response with "400 Bad Request" and `application/json`.
+     * 
+     * <p>The value of `responseContent` is a JSON string which describes the error, so it can be used as
+     * the entity body of the response.
+     * 
+     * <p>The following illustrates the response which the authorization server implementation should generate
+     * and return to the client or developer.
+     * 
+     * <p>```
+     * HTTP/1.1 400 Bad Request
+     * Content-Type: application/json
+     * Cache-Control: no-store
+     * Pragma: no-cache
+     * 
+     * <p>{responseContent}
+     * ```
+     * 
+     * <p>**UNAUTHORIZED**
+     * 
+     * <p>When the value of `action` is `UNAUTHORIZED`, it means that the registration access token used by
+     * the client configuration request (RFC 7592) is invalid, or the client application which the token
+     * is tied to does not exist any longer or is invalid.
+     * 
+     * <p>The HTTP status of the response returned to the client application must be "401 Unauthorized" and
+     * the content type must be `application/json`.
+     * 
+     * <p>The value of `responseContent` is a JSON string which describes the error, so it can be used as
+     * the entity body of the response.
+     * 
+     * <p>The following illustrates the response which the endpoint implementation should generate and return
+     * to the client application.
+     * 
+     * <p>```
+     * HTTP/1.1 401 Unauthorized
+     * Content-Type: application/json
+     * Cache-Control: no-store
+     * Pragma: no-cache
+     * 
+     * <p>{responseContent}
+     * ```
+     * 
+     * <p>NOTE: The `UNAUTHORIZED` value was added in October, 2021. See the description of
+     * `Service.unauthorizedOnClientConfigSupported` for details.
+     * 
+     * <p>**DELETED**
+     * 
+     * <p>When the value of `action` is `DELETED`, it means that the request from the client or developer is
+     * valid.
+     * 
+     * <p>The authorization server implementation should generate a response to the client or developer with
+     * "204 No Content".
+     * 
+     * <p>The following illustrates the response which the authorization server implementation should generate
+     * and return to the client or developer.
+     * 
+     * <p>```
+     * HTTP/1.1 204 No Content
+     * Cache-Control: no-store
+     * Pragma: no-cache
+     * ```
+     * &lt;/details&gt;
+     * 
+     * @param serviceId A service ID.
+     * @param requestBody 
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public ClientRegistrationDeleteApiResponse delete(
+            @Nonnull String serviceId, @Nonnull ClientRegistrationDeleteApiRequestBody requestBody,
+            @Nullable String serverURL) throws Exception {
         ClientRegistrationDeleteApiRequest request = new ClientRegistrationDeleteApiRequest(serviceId, requestBody);
         RequestOperation<ClientRegistrationDeleteApiRequest, ClientRegistrationDeleteApiResponse> operation
-              = new ClientRegistrationDeleteApiOperation(sdkConfiguration);
+              = new ClientRegistrationDeleteApiOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -488,14 +610,135 @@ public class DynamicClientRegistration {
      * &lt;/details&gt;
      * 
      * @param serviceId A service ID.
-     * @param 1api1Percent7BserviceIdPercent7D1client1registration1deletePostRequestBodyContentApplication1jsonSchema 
+     * @param requestBody 
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public ClientRegistrationDeleteApiFormResponse deleteForm(@Nonnull String serviceId, @Nonnull 1api1Percent7BserviceIdPercent7D1client1registration1deletePostRequestBodyContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1client1registration1deletePostRequestBodyContentApplication1jsonSchema) throws Exception {
-        ClientRegistrationDeleteApiFormRequest request = new ClientRegistrationDeleteApiFormRequest(serviceId, 1api1Percent7BserviceIdPercent7D1client1registration1deletePostRequestBodyContentApplication1jsonSchema);
+    public ClientRegistrationDeleteApiFormResponse deleteForm(@Nonnull String serviceId, @Nonnull ClientRegistrationDeleteApiFormRequestBody requestBody) throws Exception {
+        return deleteForm(serviceId, requestBody, null);
+    }
+
+    /**
+     * Delete Client
+     * 
+     * <p>Delete a dynamically registered client. This API is supposed to be used to implement a client
+     * registration management endpoint that complies with [RFC 7592](https://datatracker.ietf.org/doc/html/rfc7592)
+     * (OAuth 2.0 Dynamic Registration Management).
+     * 
+     * <p>&lt;br&gt;
+     * &lt;details&gt;
+     * &lt;summary&gt;Description&lt;/summary&gt;
+     * 
+     * <p>This API is supposed to be called from the within the implementation of the client registration
+     * management endpoint of the authorization server. The authorization server implementation should
+     * retrieve the value of `action` from the response and take the following steps according to the value.
+     * 
+     * <p>**INTERNAL_SERVER_ERROR**
+     * 
+     * <p>When the value of `action` is `INTERNAL_SERVER_ERROR`, it means that the API call from the authorization
+     * server implementation was wrong or that an error occurred in Authlete.
+     * 
+     * <p>In either case, from a viewpoint of the client or developer, it is an error on the server side.
+     * Therefore, the authorization server implementation should generate a response with "500 Internal
+     * Server Error"s and `application/json`.
+     * 
+     * <p>The value of `responseContent` is a JSON string which describes the error, so it can be used as
+     * the entity body of the response.
+     * 
+     * <p>The following illustrates the response which the authorization server implementation should generate
+     * and return to the client or developer.
+     * 
+     * <p>```
+     * HTTP/1.1 500 Internal Server Error
+     * Content-Type: application/json
+     * Cache-Control: no-store
+     * Pragma: no-cache
+     * 
+     * <p>{responseContent}
+     * ```
+     * 
+     * <p>The endpoint implementation may return another different response to the client or developer since
+     * "500 Internal Server Error" is not required by the specification.
+     * 
+     * <p>**BAD_REQUEST**
+     * 
+     * <p>When the value of `action` is `BAD_REQUEST`, it means that the request from the client or developer
+     * was wrong.
+     * 
+     * <p>The authorization server implementation should generate a response with "400 Bad Request" and `application/json`.
+     * 
+     * <p>The value of `responseContent` is a JSON string which describes the error, so it can be used as
+     * the entity body of the response.
+     * 
+     * <p>The following illustrates the response which the authorization server implementation should generate
+     * and return to the client or developer.
+     * 
+     * <p>```
+     * HTTP/1.1 400 Bad Request
+     * Content-Type: application/json
+     * Cache-Control: no-store
+     * Pragma: no-cache
+     * 
+     * <p>{responseContent}
+     * ```
+     * 
+     * <p>**UNAUTHORIZED**
+     * 
+     * <p>When the value of `action` is `UNAUTHORIZED`, it means that the registration access token used by
+     * the client configuration request (RFC 7592) is invalid, or the client application which the token
+     * is tied to does not exist any longer or is invalid.
+     * 
+     * <p>The HTTP status of the response returned to the client application must be "401 Unauthorized" and
+     * the content type must be `application/json`.
+     * 
+     * <p>The value of `responseContent` is a JSON string which describes the error, so it can be used as
+     * the entity body of the response.
+     * 
+     * <p>The following illustrates the response which the endpoint implementation should generate and return
+     * to the client application.
+     * 
+     * <p>```
+     * HTTP/1.1 401 Unauthorized
+     * Content-Type: application/json
+     * Cache-Control: no-store
+     * Pragma: no-cache
+     * 
+     * <p>{responseContent}
+     * ```
+     * 
+     * <p>NOTE: The `UNAUTHORIZED` value was added in October, 2021. See the description of
+     * `Service.unauthorizedOnClientConfigSupported` for details.
+     * 
+     * <p>**DELETED**
+     * 
+     * <p>When the value of `action` is `DELETED`, it means that the request from the client or developer is
+     * valid.
+     * 
+     * <p>The authorization server implementation should generate a response to the client or developer with
+     * "204 No Content".
+     * 
+     * <p>The following illustrates the response which the authorization server implementation should generate
+     * and return to the client or developer.
+     * 
+     * <p>```
+     * HTTP/1.1 204 No Content
+     * Cache-Control: no-store
+     * Pragma: no-cache
+     * ```
+     * &lt;/details&gt;
+     * 
+     * @param serviceId A service ID.
+     * @param requestBody 
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public ClientRegistrationDeleteApiFormResponse deleteForm(
+            @Nonnull String serviceId, @Nonnull ClientRegistrationDeleteApiFormRequestBody requestBody,
+            @Nullable String serverURL) throws Exception {
+        ClientRegistrationDeleteApiFormRequest request = new ClientRegistrationDeleteApiFormRequest(serviceId, requestBody);
         RequestOperation<ClientRegistrationDeleteApiFormRequest, ClientRegistrationDeleteApiFormResponse> operation
-              = new ClientRegistrationDeleteApiFormOperation(sdkConfiguration);
+              = new ClientRegistrationDeleteApiFormOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 

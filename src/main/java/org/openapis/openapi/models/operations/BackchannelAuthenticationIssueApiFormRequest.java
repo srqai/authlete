@@ -8,7 +8,6 @@ import jakarta.annotation.Nonnull;
 import java.lang.Override;
 import java.lang.String;
 import java.util.Optional;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1backchannel1authentication1issuePostRequestBodyContentApplication1jsonSchema;
 import org.openapis.openapi.utils.SpeakeasyMetadata;
 import org.openapis.openapi.utils.Utils;
 
@@ -22,16 +21,16 @@ public class BackchannelAuthenticationIssueApiFormRequest {
 
 
     @SpeakeasyMetadata("request:mediaType=application/x-www-form-urlencoded")
-    private 1api1Percent7BserviceIdPercent7D1backchannel1authentication1issuePostRequestBodyContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1backchannel1authentication1issuePostRequestBodyContentApplication1jsonSchema;
+    private BackchannelAuthenticationIssueApiFormRequestBody requestBody;
 
     @JsonCreator
     public BackchannelAuthenticationIssueApiFormRequest(
             @Nonnull String serviceId,
-            @Nonnull 1api1Percent7BserviceIdPercent7D1backchannel1authentication1issuePostRequestBodyContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1backchannel1authentication1issuePostRequestBodyContentApplication1jsonSchema) {
+            @Nonnull BackchannelAuthenticationIssueApiFormRequestBody requestBody) {
         this.serviceId = Optional.ofNullable(serviceId)
             .orElseThrow(() -> new IllegalArgumentException("serviceId cannot be null"));
-        this.1api1Percent7BserviceIdPercent7D1backchannel1authentication1issuePostRequestBodyContentApplication1jsonSchema = Optional.ofNullable(1api1Percent7BserviceIdPercent7D1backchannel1authentication1issuePostRequestBodyContentApplication1jsonSchema)
-            .orElseThrow(() -> new IllegalArgumentException("1api1Percent7BserviceIdPercent7D1backchannel1authentication1issuePostRequestBodyContentApplication1jsonSchema cannot be null"));
+        this.requestBody = Optional.ofNullable(requestBody)
+            .orElseThrow(() -> new IllegalArgumentException("requestBody cannot be null"));
     }
 
     /**
@@ -41,8 +40,8 @@ public class BackchannelAuthenticationIssueApiFormRequest {
         return this.serviceId;
     }
 
-    public 1api1Percent7BserviceIdPercent7D1backchannel1authentication1issuePostRequestBodyContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1backchannel1authentication1issuePostRequestBodyContentApplication1jsonSchema() {
-        return this.1api1Percent7BserviceIdPercent7D1backchannel1authentication1issuePostRequestBodyContentApplication1jsonSchema;
+    public BackchannelAuthenticationIssueApiFormRequestBody requestBody() {
+        return this.requestBody;
     }
 
     public static Builder builder() {
@@ -59,8 +58,8 @@ public class BackchannelAuthenticationIssueApiFormRequest {
     }
 
 
-    public BackchannelAuthenticationIssueApiFormRequest with1api1Percent7BserviceIdPercent7D1backchannel1authentication1issuePostRequestBodyContentApplication1jsonSchema(@Nonnull 1api1Percent7BserviceIdPercent7D1backchannel1authentication1issuePostRequestBodyContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1backchannel1authentication1issuePostRequestBodyContentApplication1jsonSchema) {
-        this.1api1Percent7BserviceIdPercent7D1backchannel1authentication1issuePostRequestBodyContentApplication1jsonSchema = Utils.checkNotNull(1api1Percent7BserviceIdPercent7D1backchannel1authentication1issuePostRequestBodyContentApplication1jsonSchema, "1api1Percent7BserviceIdPercent7D1backchannel1authentication1issuePostRequestBodyContentApplication1jsonSchema");
+    public BackchannelAuthenticationIssueApiFormRequest withRequestBody(@Nonnull BackchannelAuthenticationIssueApiFormRequestBody requestBody) {
+        this.requestBody = Utils.checkNotNull(requestBody, "requestBody");
         return this;
     }
 
@@ -76,20 +75,20 @@ public class BackchannelAuthenticationIssueApiFormRequest {
         BackchannelAuthenticationIssueApiFormRequest other = (BackchannelAuthenticationIssueApiFormRequest) o;
         return 
             Utils.enhancedDeepEquals(this.serviceId, other.serviceId) &&
-            Utils.enhancedDeepEquals(this.1api1Percent7BserviceIdPercent7D1backchannel1authentication1issuePostRequestBodyContentApplication1jsonSchema, other.1api1Percent7BserviceIdPercent7D1backchannel1authentication1issuePostRequestBodyContentApplication1jsonSchema);
+            Utils.enhancedDeepEquals(this.requestBody, other.requestBody);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            serviceId, 1api1Percent7BserviceIdPercent7D1backchannel1authentication1issuePostRequestBodyContentApplication1jsonSchema);
+            serviceId, requestBody);
     }
     
     @Override
     public String toString() {
         return Utils.toString(BackchannelAuthenticationIssueApiFormRequest.class,
                 "serviceId", serviceId,
-                "1api1Percent7BserviceIdPercent7D1backchannel1authentication1issuePostRequestBodyContentApplication1jsonSchema", 1api1Percent7BserviceIdPercent7D1backchannel1authentication1issuePostRequestBodyContentApplication1jsonSchema);
+                "requestBody", requestBody);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -97,7 +96,7 @@ public class BackchannelAuthenticationIssueApiFormRequest {
 
         private String serviceId;
 
-        private 1api1Percent7BserviceIdPercent7D1backchannel1authentication1issuePostRequestBodyContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1backchannel1authentication1issuePostRequestBodyContentApplication1jsonSchema;
+        private BackchannelAuthenticationIssueApiFormRequestBody requestBody;
 
         private Builder() {
           // force use of static builder() method
@@ -111,14 +110,14 @@ public class BackchannelAuthenticationIssueApiFormRequest {
             return this;
         }
 
-        public Builder 1api1Percent7BserviceIdPercent7D1backchannel1authentication1issuePostRequestBodyContentApplication1jsonSchema(@Nonnull 1api1Percent7BserviceIdPercent7D1backchannel1authentication1issuePostRequestBodyContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1backchannel1authentication1issuePostRequestBodyContentApplication1jsonSchema) {
-            this.1api1Percent7BserviceIdPercent7D1backchannel1authentication1issuePostRequestBodyContentApplication1jsonSchema = Utils.checkNotNull(1api1Percent7BserviceIdPercent7D1backchannel1authentication1issuePostRequestBodyContentApplication1jsonSchema, "1api1Percent7BserviceIdPercent7D1backchannel1authentication1issuePostRequestBodyContentApplication1jsonSchema");
+        public Builder requestBody(@Nonnull BackchannelAuthenticationIssueApiFormRequestBody requestBody) {
+            this.requestBody = Utils.checkNotNull(requestBody, "requestBody");
             return this;
         }
 
         public BackchannelAuthenticationIssueApiFormRequest build() {
             return new BackchannelAuthenticationIssueApiFormRequest(
-                serviceId, 1api1Percent7BserviceIdPercent7D1backchannel1authentication1issuePostRequestBodyContentApplication1jsonSchema);
+                serviceId, requestBody);
         }
 
     }

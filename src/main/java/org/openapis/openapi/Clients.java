@@ -9,11 +9,6 @@ import jakarta.annotation.Nonnull;
 import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1client1authorization1update1Percent7BclientIdPercent7DPostRequestBodyContentApplication1jsonSchema;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1client1lockFlag1update1Percent7BclientIdentifierPercent7DPostRequestBodyContentApplication1jsonSchema;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1client1registration1updatePostRequestBodyContentApplication1jsonSchema;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1client1registrationPostRequestBodyContentApplication1jsonSchema;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1client1secret1update1Percent7BclientIdentifierPercent7DPostRequestBodyContentApplication1jsonSchema;
 import org.openapis.openapi.models.operations.ClientAuthorizationDeleteApiRequest;
 import org.openapis.openapi.models.operations.ClientAuthorizationDeleteApiRequestBuilder;
 import org.openapis.openapi.models.operations.ClientAuthorizationDeleteApiResponse;
@@ -21,6 +16,7 @@ import org.openapis.openapi.models.operations.ClientAuthorizationGetListApiReque
 import org.openapis.openapi.models.operations.ClientAuthorizationGetListApiRequestBuilder;
 import org.openapis.openapi.models.operations.ClientAuthorizationGetListApiResponse;
 import org.openapis.openapi.models.operations.ClientAuthorizationUpdateApiFormRequest;
+import org.openapis.openapi.models.operations.ClientAuthorizationUpdateApiFormRequestBody;
 import org.openapis.openapi.models.operations.ClientAuthorizationUpdateApiFormRequestBuilder;
 import org.openapis.openapi.models.operations.ClientAuthorizationUpdateApiFormResponse;
 import org.openapis.openapi.models.operations.ClientAuthorizationUpdateApiRequest;
@@ -37,9 +33,6 @@ import org.openapis.openapi.models.operations.ClientExtensionRequestablesScopesU
 import org.openapis.openapi.models.operations.ClientExtensionRequestablesScopesUpdateApiRequestBody;
 import org.openapis.openapi.models.operations.ClientExtensionRequestablesScopesUpdateApiRequestBuilder;
 import org.openapis.openapi.models.operations.ClientExtensionRequestablesScopesUpdateApiResponse;
-import org.openapis.openapi.models.operations.ClientFlagUpdateApiFormRequest;
-import org.openapis.openapi.models.operations.ClientFlagUpdateApiFormRequestBuilder;
-import org.openapis.openapi.models.operations.ClientFlagUpdateApiFormResponse;
 import org.openapis.openapi.models.operations.ClientFlagUpdateApiRequest;
 import org.openapis.openapi.models.operations.ClientFlagUpdateApiRequestBody;
 import org.openapis.openapi.models.operations.ClientFlagUpdateApiRequestBuilder;
@@ -54,6 +47,7 @@ import org.openapis.openapi.models.operations.ClientGrantedScopesGetApiRequest;
 import org.openapis.openapi.models.operations.ClientGrantedScopesGetApiRequestBuilder;
 import org.openapis.openapi.models.operations.ClientGrantedScopesGetApiResponse;
 import org.openapis.openapi.models.operations.ClientRegistrationApiFormRequest;
+import org.openapis.openapi.models.operations.ClientRegistrationApiFormRequestBody;
 import org.openapis.openapi.models.operations.ClientRegistrationApiFormRequestBuilder;
 import org.openapis.openapi.models.operations.ClientRegistrationApiFormResponse;
 import org.openapis.openapi.models.operations.ClientRegistrationApiRequest;
@@ -61,9 +55,11 @@ import org.openapis.openapi.models.operations.ClientRegistrationApiRequestBody;
 import org.openapis.openapi.models.operations.ClientRegistrationApiRequestBuilder;
 import org.openapis.openapi.models.operations.ClientRegistrationApiResponse;
 import org.openapis.openapi.models.operations.ClientRegistrationGetApiRequest;
+import org.openapis.openapi.models.operations.ClientRegistrationGetApiRequestBody;
 import org.openapis.openapi.models.operations.ClientRegistrationGetApiRequestBuilder;
 import org.openapis.openapi.models.operations.ClientRegistrationGetApiResponse;
 import org.openapis.openapi.models.operations.ClientRegistrationUpdateApiFormRequest;
+import org.openapis.openapi.models.operations.ClientRegistrationUpdateApiFormRequestBody;
 import org.openapis.openapi.models.operations.ClientRegistrationUpdateApiFormRequestBuilder;
 import org.openapis.openapi.models.operations.ClientRegistrationUpdateApiFormResponse;
 import org.openapis.openapi.models.operations.ClientRegistrationUpdateApiRequest;
@@ -74,6 +70,7 @@ import org.openapis.openapi.models.operations.ClientSecretRefreshApiRequest;
 import org.openapis.openapi.models.operations.ClientSecretRefreshApiRequestBuilder;
 import org.openapis.openapi.models.operations.ClientSecretRefreshApiResponse;
 import org.openapis.openapi.models.operations.ClientSecretUpdateApiFormRequest;
+import org.openapis.openapi.models.operations.ClientSecretUpdateApiFormRequestBody;
 import org.openapis.openapi.models.operations.ClientSecretUpdateApiFormRequestBuilder;
 import org.openapis.openapi.models.operations.ClientSecretUpdateApiFormResponse;
 import org.openapis.openapi.models.operations.ClientSecretUpdateApiRequest;
@@ -87,7 +84,6 @@ import org.openapis.openapi.operations.ClientAuthorizationUpdateApiOperation;
 import org.openapis.openapi.operations.ClientExtensionRequestablesScopesDeleteApiOperation;
 import org.openapis.openapi.operations.ClientExtensionRequestablesScopesGetApiOperation;
 import org.openapis.openapi.operations.ClientExtensionRequestablesScopesUpdateApiOperation;
-import org.openapis.openapi.operations.ClientFlagUpdateApiFormOperation;
 import org.openapis.openapi.operations.ClientFlagUpdateApiOperation;
 import org.openapis.openapi.operations.ClientGetApiOperation;
 import org.openapis.openapi.operations.ClientGrantedScopesDeleteApiOperation;
@@ -131,9 +127,26 @@ public class Clients {
      * @throws Exception if the API call fails
      */
     public ClientGetApiResponse getById(@Nonnull String serviceId, @Nonnull String clientId) throws Exception {
+        return getById(serviceId, clientId, null);
+    }
+
+    /**
+     * Get Client
+     * 
+     * <p>Get a client.
+     * 
+     * @param serviceId A service ID.
+     * @param clientId A client ID.
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public ClientGetApiResponse getById(
+            @Nonnull String serviceId, @Nonnull String clientId,
+            @Nullable String serverURL) throws Exception {
         ClientGetApiRequest request = new ClientGetApiRequest(serviceId, clientId);
         RequestOperation<ClientGetApiRequest, ClientGetApiResponse> operation
-              = new ClientGetApiOperation(sdkConfiguration);
+              = new ClientGetApiOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -159,7 +172,8 @@ public class Clients {
      * @throws Exception if the API call fails
      */
     public ClientFlagUpdateApiResponse updateLock(@Nonnull String serviceId, @Nonnull String clientIdentifier) throws Exception {
-        return updateLock(serviceId, clientIdentifier, null);
+        return updateLock(serviceId, clientIdentifier, null,
+            null);
     }
 
     /**
@@ -170,60 +184,16 @@ public class Clients {
      * @param serviceId A service ID.
      * @param clientIdentifier A client ID.
      * @param requestBody 
+     * @param serverURL Overrides the server URL.
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public ClientFlagUpdateApiResponse updateLock(
             @Nonnull String serviceId, @Nonnull String clientIdentifier,
-            @Nullable ClientFlagUpdateApiRequestBody requestBody) throws Exception {
+            @Nullable ClientFlagUpdateApiRequestBody requestBody, @Nullable String serverURL) throws Exception {
         ClientFlagUpdateApiRequest request = new ClientFlagUpdateApiRequest(serviceId, clientIdentifier, requestBody);
         RequestOperation<ClientFlagUpdateApiRequest, ClientFlagUpdateApiResponse> operation
-              = new ClientFlagUpdateApiOperation(sdkConfiguration);
-        return operation.handleResponse(operation.doRequest(request));
-    }
-
-    /**
-     * Update Client Lock
-     * 
-     * <p>Lock and unlock a client
-     * 
-     * @return The call builder
-     */
-    public ClientFlagUpdateApiFormRequestBuilder updateLockForm() {
-        return new ClientFlagUpdateApiFormRequestBuilder(sdkConfiguration);
-    }
-
-    /**
-     * Update Client Lock
-     * 
-     * <p>Lock and unlock a client
-     * 
-     * @param serviceId A service ID.
-     * @param clientIdentifier A client ID.
-     * @return The response from the API call
-     * @throws Exception if the API call fails
-     */
-    public ClientFlagUpdateApiFormResponse updateLockForm(@Nonnull String serviceId, @Nonnull String clientIdentifier) throws Exception {
-        return updateLockForm(serviceId, clientIdentifier, null);
-    }
-
-    /**
-     * Update Client Lock
-     * 
-     * <p>Lock and unlock a client
-     * 
-     * @param serviceId A service ID.
-     * @param clientIdentifier A client ID.
-     * @param 1api1Percent7BserviceIdPercent7D1client1lockFlag1update1Percent7BclientIdentifierPercent7DPostRequestBodyContentApplication1jsonSchema 
-     * @return The response from the API call
-     * @throws Exception if the API call fails
-     */
-    public ClientFlagUpdateApiFormResponse updateLockForm(
-            @Nonnull String serviceId, @Nonnull String clientIdentifier,
-            @Nullable 1api1Percent7BserviceIdPercent7D1client1lockFlag1update1Percent7BclientIdentifierPercent7DPostRequestBodyContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1client1lockFlag1update1Percent7BclientIdentifierPercent7DPostRequestBodyContentApplication1jsonSchema) throws Exception {
-        ClientFlagUpdateApiFormRequest request = new ClientFlagUpdateApiFormRequest(serviceId, clientIdentifier, 1api1Percent7BserviceIdPercent7D1client1lockFlag1update1Percent7BclientIdentifierPercent7DPostRequestBodyContentApplication1jsonSchema);
-        RequestOperation<ClientFlagUpdateApiFormRequest, ClientFlagUpdateApiFormResponse> operation
-              = new ClientFlagUpdateApiFormOperation(sdkConfiguration);
+              = new ClientFlagUpdateApiOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -256,9 +226,30 @@ public class Clients {
      * @throws Exception if the API call fails
      */
     public ClientSecretRefreshApiResponse refreshSecret(@Nonnull String serviceId, @Nonnull String clientIdentifier) throws Exception {
+        return refreshSecret(serviceId, clientIdentifier, null);
+    }
+
+    /**
+     * Rotate Client Secret
+     * 
+     * <p>Refresh the client secret of a client. A new value of the client secret will be generated by the
+     * Authlete server.
+     * 
+     * <p>If you want to specify a new value, use `/api/client/secret/update` API.
+     * 
+     * @param serviceId A service ID.
+     * @param clientIdentifier The client ID or the client ID alias of a client.
+     *         
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public ClientSecretRefreshApiResponse refreshSecret(
+            @Nonnull String serviceId, @Nonnull String clientIdentifier,
+            @Nullable String serverURL) throws Exception {
         ClientSecretRefreshApiRequest request = new ClientSecretRefreshApiRequest(serviceId, clientIdentifier);
         RequestOperation<ClientSecretRefreshApiRequest, ClientSecretRefreshApiResponse> operation
-              = new ClientSecretRefreshApiOperation(sdkConfiguration);
+              = new ClientSecretRefreshApiOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -294,9 +285,32 @@ public class Clients {
     public ClientSecretUpdateApiResponse updateSecret(
             @Nonnull String serviceId, @Nonnull String clientIdentifier,
             @Nonnull ClientSecretUpdateApiRequestBody requestBody) throws Exception {
+        return updateSecret(serviceId, clientIdentifier, requestBody,
+            null);
+    }
+
+    /**
+     * Update Client Secret
+     * 
+     * <p>Update the client secret of a client.
+     * 
+     * <p>If you want to have the Authlete server generate a new value of the client secret, use `/api/client/secret/refresh`
+     * API.
+     * 
+     * @param serviceId A service ID.
+     * @param clientIdentifier The client ID or the client ID alias of a client.
+     *         
+     * @param requestBody 
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public ClientSecretUpdateApiResponse updateSecret(
+            @Nonnull String serviceId, @Nonnull String clientIdentifier,
+            @Nonnull ClientSecretUpdateApiRequestBody requestBody, @Nullable String serverURL) throws Exception {
         ClientSecretUpdateApiRequest request = new ClientSecretUpdateApiRequest(serviceId, clientIdentifier, requestBody);
         RequestOperation<ClientSecretUpdateApiRequest, ClientSecretUpdateApiResponse> operation
-              = new ClientSecretUpdateApiOperation(sdkConfiguration);
+              = new ClientSecretUpdateApiOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -325,16 +339,39 @@ public class Clients {
      * @param serviceId A service ID.
      * @param clientIdentifier The client ID or the client ID alias of a client.
      *         
-     * @param 1api1Percent7BserviceIdPercent7D1client1secret1update1Percent7BclientIdentifierPercent7DPostRequestBodyContentApplication1jsonSchema 
+     * @param requestBody 
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public ClientSecretUpdateApiFormResponse updateSecretForm(
             @Nonnull String serviceId, @Nonnull String clientIdentifier,
-            @Nonnull 1api1Percent7BserviceIdPercent7D1client1secret1update1Percent7BclientIdentifierPercent7DPostRequestBodyContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1client1secret1update1Percent7BclientIdentifierPercent7DPostRequestBodyContentApplication1jsonSchema) throws Exception {
-        ClientSecretUpdateApiFormRequest request = new ClientSecretUpdateApiFormRequest(serviceId, clientIdentifier, 1api1Percent7BserviceIdPercent7D1client1secret1update1Percent7BclientIdentifierPercent7DPostRequestBodyContentApplication1jsonSchema);
+            @Nonnull ClientSecretUpdateApiFormRequestBody requestBody) throws Exception {
+        return updateSecretForm(serviceId, clientIdentifier, requestBody,
+            null);
+    }
+
+    /**
+     * Update Client Secret
+     * 
+     * <p>Update the client secret of a client.
+     * 
+     * <p>If you want to have the Authlete server generate a new value of the client secret, use `/api/client/secret/refresh`
+     * API.
+     * 
+     * @param serviceId A service ID.
+     * @param clientIdentifier The client ID or the client ID alias of a client.
+     *         
+     * @param requestBody 
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public ClientSecretUpdateApiFormResponse updateSecretForm(
+            @Nonnull String serviceId, @Nonnull String clientIdentifier,
+            @Nonnull ClientSecretUpdateApiFormRequestBody requestBody, @Nullable String serverURL) throws Exception {
+        ClientSecretUpdateApiFormRequest request = new ClientSecretUpdateApiFormRequest(serviceId, clientIdentifier, requestBody);
         RequestOperation<ClientSecretUpdateApiFormRequest, ClientSecretUpdateApiFormResponse> operation
-              = new ClientSecretUpdateApiFormOperation(sdkConfiguration);
+              = new ClientSecretUpdateApiFormOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -363,8 +400,24 @@ public class Clients {
      * @throws Exception if the API call fails
      */
     public ClientAuthorizationGetListApiResponse getAuthorizedApplications(@Nonnull ClientAuthorizationGetListApiRequest request) throws Exception {
+        return getAuthorizedApplications(request, null);
+    }
+
+    /**
+     * Get Authorized Applications
+     * 
+     * <p>Get a list of client applications that an end-user has authorized.
+     * 
+     * <p>The subject parameter is required and can be provided either in the path or as a query parameter.
+     * 
+     * @param request The request object containing all the parameters for the API call.
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public ClientAuthorizationGetListApiResponse getAuthorizedApplications(@Nonnull ClientAuthorizationGetListApiRequest request, @Nullable String serverURL) throws Exception {
         RequestOperation<ClientAuthorizationGetListApiRequest, ClientAuthorizationGetListApiResponse> operation
-              = new ClientAuthorizationGetListApiOperation(sdkConfiguration);
+              = new ClientAuthorizationGetListApiOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -391,7 +444,8 @@ public class Clients {
      * @throws Exception if the API call fails
      */
     public ClientAuthorizationUpdateApiResponse updateAuthorization(@Nonnull String serviceId, @Nonnull String clientId) throws Exception {
-        return updateAuthorization(serviceId, clientId, null);
+        return updateAuthorization(serviceId, clientId, null,
+            null);
     }
 
     /**
@@ -403,15 +457,16 @@ public class Clients {
      * @param clientId A client ID.
      *         
      * @param requestBody 
+     * @param serverURL Overrides the server URL.
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public ClientAuthorizationUpdateApiResponse updateAuthorization(
             @Nonnull String serviceId, @Nonnull String clientId,
-            @Nullable ClientAuthorizationUpdateApiRequestBody requestBody) throws Exception {
+            @Nullable ClientAuthorizationUpdateApiRequestBody requestBody, @Nullable String serverURL) throws Exception {
         ClientAuthorizationUpdateApiRequest request = new ClientAuthorizationUpdateApiRequest(serviceId, clientId, requestBody);
         RequestOperation<ClientAuthorizationUpdateApiRequest, ClientAuthorizationUpdateApiResponse> operation
-              = new ClientAuthorizationUpdateApiOperation(sdkConfiguration);
+              = new ClientAuthorizationUpdateApiOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -438,7 +493,8 @@ public class Clients {
      * @throws Exception if the API call fails
      */
     public ClientAuthorizationUpdateApiFormResponse updateAuthorizationForm(@Nonnull String serviceId, @Nonnull String clientId) throws Exception {
-        return updateAuthorizationForm(serviceId, clientId, null);
+        return updateAuthorizationForm(serviceId, clientId, null,
+            null);
     }
 
     /**
@@ -449,16 +505,17 @@ public class Clients {
      * @param serviceId A service ID.
      * @param clientId A client ID.
      *         
-     * @param 1api1Percent7BserviceIdPercent7D1client1authorization1update1Percent7BclientIdPercent7DPostRequestBodyContentApplication1jsonSchema 
+     * @param requestBody 
+     * @param serverURL Overrides the server URL.
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public ClientAuthorizationUpdateApiFormResponse updateAuthorizationForm(
             @Nonnull String serviceId, @Nonnull String clientId,
-            @Nullable 1api1Percent7BserviceIdPercent7D1client1authorization1update1Percent7BclientIdPercent7DPostRequestBodyContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1client1authorization1update1Percent7BclientIdPercent7DPostRequestBodyContentApplication1jsonSchema) throws Exception {
-        ClientAuthorizationUpdateApiFormRequest request = new ClientAuthorizationUpdateApiFormRequest(serviceId, clientId, 1api1Percent7BserviceIdPercent7D1client1authorization1update1Percent7BclientIdPercent7DPostRequestBodyContentApplication1jsonSchema);
+            @Nullable ClientAuthorizationUpdateApiFormRequestBody requestBody, @Nullable String serverURL) throws Exception {
+        ClientAuthorizationUpdateApiFormRequest request = new ClientAuthorizationUpdateApiFormRequest(serviceId, clientId, requestBody);
         RequestOperation<ClientAuthorizationUpdateApiFormRequest, ClientAuthorizationUpdateApiFormResponse> operation
-              = new ClientAuthorizationUpdateApiFormOperation(sdkConfiguration);
+              = new ClientAuthorizationUpdateApiFormOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -482,20 +539,43 @@ public class Clients {
      * 
      * <p>The subject parameter is required and can be provided either in the path or as a query parameter.
      * 
+     * @param subject Unique user ID of an end-user.
+     *         
      * @param serviceId A service ID.
      * @param clientId A client ID.
-     *         
-     * @param subject Unique user ID of an end-user.
      *         
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public ClientAuthorizationDeleteApiResponse deleteAuthorization(
-            @Nonnull String serviceId, @Nonnull String clientId,
-            @Nonnull String subject) throws Exception {
-        ClientAuthorizationDeleteApiRequest request = new ClientAuthorizationDeleteApiRequest(serviceId, clientId, subject);
+            @Nonnull String subject, @Nonnull String serviceId,
+            @Nonnull String clientId) throws Exception {
+        return deleteAuthorization(subject, serviceId, clientId,
+            null);
+    }
+
+    /**
+     * Delete Client Tokens
+     * 
+     * <p>Delete all existing access tokens issued to a client application by an end-user.
+     * 
+     * <p>The subject parameter is required and can be provided either in the path or as a query parameter.
+     * 
+     * @param subject Unique user ID of an end-user.
+     *         
+     * @param serviceId A service ID.
+     * @param clientId A client ID.
+     *         
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public ClientAuthorizationDeleteApiResponse deleteAuthorization(
+            @Nonnull String subject, @Nonnull String serviceId,
+            @Nonnull String clientId, @Nullable String serverURL) throws Exception {
+        ClientAuthorizationDeleteApiRequest request = new ClientAuthorizationDeleteApiRequest(subject, serviceId, clientId);
         RequestOperation<ClientAuthorizationDeleteApiRequest, ClientAuthorizationDeleteApiResponse> operation
-              = new ClientAuthorizationDeleteApiOperation(sdkConfiguration);
+              = new ClientAuthorizationDeleteApiOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -565,20 +645,66 @@ public class Clients {
      * <p>The subject parameter is required and can be provided either in the path or as a query parameter.
      * &lt;/details&gt;
      * 
+     * @param subject Unique user ID of an end-user.
+     *         
      * @param serviceId A service ID.
      * @param clientId A client ID.
-     *         
-     * @param subject Unique user ID of an end-user.
      *         
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public ClientGrantedScopesGetApiResponse getGrantedScopes(
-            @Nonnull String serviceId, @Nonnull String clientId,
-            @Nonnull String subject) throws Exception {
-        ClientGrantedScopesGetApiRequest request = new ClientGrantedScopesGetApiRequest(serviceId, clientId, subject);
+            @Nonnull String subject, @Nonnull String serviceId,
+            @Nonnull String clientId) throws Exception {
+        return getGrantedScopes(subject, serviceId, clientId,
+            null);
+    }
+
+    /**
+     * Get Granted Scopes
+     * 
+     * <p>Get the set of scopes that a user has granted to a client application.
+     * 
+     * <p>&lt;br&gt;
+     * &lt;details&gt;
+     * &lt;summary&gt;Description&lt;/summary&gt;
+     * 
+     * <p>Possible values for `requestableScopes` parameter in the response from this API are as follows.
+     * 
+     * <p>**null**
+     * 
+     * <p>The user has not granted authorization to the client application in the past, or records about the
+     * combination of the user and the client application have been deleted from Authlete's DB.
+     * 
+     * <p>**An empty set**
+     * 
+     * <p>The user has granted authorization to the client application in the past, but no scopes are associated
+     * with the authorization.
+     * 
+     * <p>**A set with at least one element**
+     * 
+     * <p>The user has granted authorization to the client application in the past and some scopes are associated
+     * with the authorization. These scopes are returned.
+     * Example: `[ "profile", "email" ]`
+     * 
+     * <p>The subject parameter is required and can be provided either in the path or as a query parameter.
+     * &lt;/details&gt;
+     * 
+     * @param subject Unique user ID of an end-user.
+     *         
+     * @param serviceId A service ID.
+     * @param clientId A client ID.
+     *         
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public ClientGrantedScopesGetApiResponse getGrantedScopes(
+            @Nonnull String subject, @Nonnull String serviceId,
+            @Nonnull String clientId, @Nullable String serverURL) throws Exception {
+        ClientGrantedScopesGetApiRequest request = new ClientGrantedScopesGetApiRequest(subject, serviceId, clientId);
         RequestOperation<ClientGrantedScopesGetApiRequest, ClientGrantedScopesGetApiResponse> operation
-              = new ClientGrantedScopesGetApiOperation(sdkConfiguration);
+              = new ClientGrantedScopesGetApiOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -618,20 +744,51 @@ public class Clients {
      * 
      * <p>The subject parameter is required and can be provided either in the path or as a query parameter.
      * 
+     * @param subject Unique user ID of an end-user.
+     *         
      * @param serviceId A service ID.
      * @param clientId A client ID.
-     *         
-     * @param subject Unique user ID of an end-user.
      *         
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public ClientGrantedScopesDeleteApiResponse deleteGrantedScopes(
-            @Nonnull String serviceId, @Nonnull String clientId,
-            @Nonnull String subject) throws Exception {
-        ClientGrantedScopesDeleteApiRequest request = new ClientGrantedScopesDeleteApiRequest(serviceId, clientId, subject);
+            @Nonnull String subject, @Nonnull String serviceId,
+            @Nonnull String clientId) throws Exception {
+        return deleteGrantedScopes(subject, serviceId, clientId,
+            null);
+    }
+
+    /**
+     * Delete Granted Scopes
+     * 
+     * <p>Delete the set of scopes that an end-user has granted to a client application.
+     * 
+     * <p>&lt;br&gt;
+     * &lt;details&gt;
+     * &lt;summary&gt;Description&lt;/summary&gt;
+     * 
+     * <p>Even if records about granted scopes are deleted by calling this API, existing access tokens are
+     * not deleted and scopes of existing access tokens are not changed.
+     * &lt;/details&gt;
+     * 
+     * <p>The subject parameter is required and can be provided either in the path or as a query parameter.
+     * 
+     * @param subject Unique user ID of an end-user.
+     *         
+     * @param serviceId A service ID.
+     * @param clientId A client ID.
+     *         
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public ClientGrantedScopesDeleteApiResponse deleteGrantedScopes(
+            @Nonnull String subject, @Nonnull String serviceId,
+            @Nonnull String clientId, @Nullable String serverURL) throws Exception {
+        ClientGrantedScopesDeleteApiRequest request = new ClientGrantedScopesDeleteApiRequest(subject, serviceId, clientId);
         RequestOperation<ClientGrantedScopesDeleteApiRequest, ClientGrantedScopesDeleteApiResponse> operation
-              = new ClientGrantedScopesDeleteApiOperation(sdkConfiguration);
+              = new ClientGrantedScopesDeleteApiOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -821,9 +978,108 @@ public class Clients {
      * @throws Exception if the API call fails
      */
     public ClientRegistrationApiResponse register(@Nonnull String serviceId, @Nonnull ClientRegistrationApiRequestBody requestBody) throws Exception {
+        return register(serviceId, requestBody, null);
+    }
+
+    /**
+     * Register Client
+     * 
+     * <p>Register a client. This API is supposed to be used to implement a client registration endpoint that
+     * complies with [RFC 7591](https://datatracker.ietf.org/doc/html/rfc7591) (OAuth 2.0 Dynamic Client
+     * Registration Protocol).
+     * 
+     * <p>&lt;br&gt;
+     * &lt;details&gt;
+     * &lt;summary&gt;Description&lt;/summary&gt;
+     * 
+     * <p>This API is supposed to be called from the within the implementation of the client registration
+     * endpoint of the authorization server. The authorization server implementation should retrieve
+     * the value of `action` from the response and take the following steps according to the value.
+     * 
+     * <p>**INTERNAL_SERVER_ERROR**
+     * 
+     * <p>When the value of `action` is `INTERNAL_SERVER_ERROR`, it means that the API call from the authorization
+     * server implementation was wrong or that an error occurred in Authlete.
+     * 
+     * <p>In either case, from a viewpoint of the client or developer, it is an error on the server side.
+     * Therefore, the authorization server implementation should generate a response with "500 Internal
+     * Server Error"s and `application/json`.
+     * 
+     * <p>The value of `responseContent` is a JSON string which describes the error, so it can be used as
+     * the entity body of the response.
+     * 
+     * <p>The following illustrates the response which the authorization server implementation should generate
+     * and return to the client or developer.
+     * 
+     * <p>```
+     * HTTP/1.1 500 Internal Server Error
+     * Content-Type: application/json
+     * Cache-Control: no-store
+     * Pragma: no-cache
+     * 
+     * <p>{responseContent}
+     * ```
+     * 
+     * <p>The endpoint implementation may return another different response to the client or developer since
+     * "500 Internal Server Error" is not required by the specification.
+     * 
+     * <p>**BAD_REQUEST**
+     * 
+     * <p>When the value of `action` is `BAD_REQUEST`, it means that the request from the client or developer
+     * was wrong.
+     * 
+     * <p>The authorization server implementation should generate a response with "400 Bad Request" and `application/json`.
+     * 
+     * <p>The value of `responseContent` is a JSON string which describes the error, so it can be used
+     * as the entity body of the response.
+     * 
+     * <p>The following illustrates the response which the authorization server implementation should generate
+     * and return to the client or developer.
+     * 
+     * <p>```
+     * HTTP/1.1 400 Bad Request
+     * Content-Type: application/json
+     * Cache-Control: no-store
+     * Pragma: no-cache
+     * 
+     * <p>{responseContent}
+     * ```
+     * 
+     * <p>**CREATED**
+     * 
+     * <p>When the value of `action` is `CREATED`, it means that the request from the client or developer is
+     * valid.
+     * 
+     * <p>The authorization server implementation should generate a response to the client or developer with
+     * "201 CREATED" and `application/json`.
+     * 
+     * <p>The `responseContent` a JSON string which can be used as the entity body of the response.
+     * 
+     * <p>The following illustrates the response which the authorization server implementation should generate
+     * and return to the client or developer.
+     * 
+     * <p>```
+     * HTTP/1.1 201 CREATED
+     * Content-Type: application/json
+     * Cache-Control: no-store
+     * Pragma: no-cache
+     * 
+     * <p>{responseContent}
+     * ```
+     * &lt;/details&gt;
+     * 
+     * @param serviceId A service ID.
+     * @param requestBody 
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public ClientRegistrationApiResponse register(
+            @Nonnull String serviceId, @Nonnull ClientRegistrationApiRequestBody requestBody,
+            @Nullable String serverURL) throws Exception {
         ClientRegistrationApiRequest request = new ClientRegistrationApiRequest(serviceId, requestBody);
         RequestOperation<ClientRegistrationApiRequest, ClientRegistrationApiResponse> operation
-              = new ClientRegistrationApiOperation(sdkConfiguration);
+              = new ClientRegistrationApiOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1008,14 +1264,113 @@ public class Clients {
      * &lt;/details&gt;
      * 
      * @param serviceId A service ID.
-     * @param 1api1Percent7BserviceIdPercent7D1client1registrationPostRequestBodyContentApplication1jsonSchema 
+     * @param requestBody 
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public ClientRegistrationApiFormResponse registerForm(@Nonnull String serviceId, @Nonnull 1api1Percent7BserviceIdPercent7D1client1registrationPostRequestBodyContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1client1registrationPostRequestBodyContentApplication1jsonSchema) throws Exception {
-        ClientRegistrationApiFormRequest request = new ClientRegistrationApiFormRequest(serviceId, 1api1Percent7BserviceIdPercent7D1client1registrationPostRequestBodyContentApplication1jsonSchema);
+    public ClientRegistrationApiFormResponse registerForm(@Nonnull String serviceId, @Nonnull ClientRegistrationApiFormRequestBody requestBody) throws Exception {
+        return registerForm(serviceId, requestBody, null);
+    }
+
+    /**
+     * Register Client
+     * 
+     * <p>Register a client. This API is supposed to be used to implement a client registration endpoint that
+     * complies with [RFC 7591](https://datatracker.ietf.org/doc/html/rfc7591) (OAuth 2.0 Dynamic Client
+     * Registration Protocol).
+     * 
+     * <p>&lt;br&gt;
+     * &lt;details&gt;
+     * &lt;summary&gt;Description&lt;/summary&gt;
+     * 
+     * <p>This API is supposed to be called from the within the implementation of the client registration
+     * endpoint of the authorization server. The authorization server implementation should retrieve
+     * the value of `action` from the response and take the following steps according to the value.
+     * 
+     * <p>**INTERNAL_SERVER_ERROR**
+     * 
+     * <p>When the value of `action` is `INTERNAL_SERVER_ERROR`, it means that the API call from the authorization
+     * server implementation was wrong or that an error occurred in Authlete.
+     * 
+     * <p>In either case, from a viewpoint of the client or developer, it is an error on the server side.
+     * Therefore, the authorization server implementation should generate a response with "500 Internal
+     * Server Error"s and `application/json`.
+     * 
+     * <p>The value of `responseContent` is a JSON string which describes the error, so it can be used as
+     * the entity body of the response.
+     * 
+     * <p>The following illustrates the response which the authorization server implementation should generate
+     * and return to the client or developer.
+     * 
+     * <p>```
+     * HTTP/1.1 500 Internal Server Error
+     * Content-Type: application/json
+     * Cache-Control: no-store
+     * Pragma: no-cache
+     * 
+     * <p>{responseContent}
+     * ```
+     * 
+     * <p>The endpoint implementation may return another different response to the client or developer since
+     * "500 Internal Server Error" is not required by the specification.
+     * 
+     * <p>**BAD_REQUEST**
+     * 
+     * <p>When the value of `action` is `BAD_REQUEST`, it means that the request from the client or developer
+     * was wrong.
+     * 
+     * <p>The authorization server implementation should generate a response with "400 Bad Request" and `application/json`.
+     * 
+     * <p>The value of `responseContent` is a JSON string which describes the error, so it can be used
+     * as the entity body of the response.
+     * 
+     * <p>The following illustrates the response which the authorization server implementation should generate
+     * and return to the client or developer.
+     * 
+     * <p>```
+     * HTTP/1.1 400 Bad Request
+     * Content-Type: application/json
+     * Cache-Control: no-store
+     * Pragma: no-cache
+     * 
+     * <p>{responseContent}
+     * ```
+     * 
+     * <p>**CREATED**
+     * 
+     * <p>When the value of `action` is `CREATED`, it means that the request from the client or developer is
+     * valid.
+     * 
+     * <p>The authorization server implementation should generate a response to the client or developer with
+     * "201 CREATED" and `application/json`.
+     * 
+     * <p>The `responseContent` a JSON string which can be used as the entity body of the response.
+     * 
+     * <p>The following illustrates the response which the authorization server implementation should generate
+     * and return to the client or developer.
+     * 
+     * <p>```
+     * HTTP/1.1 201 CREATED
+     * Content-Type: application/json
+     * Cache-Control: no-store
+     * Pragma: no-cache
+     * 
+     * <p>{responseContent}
+     * ```
+     * &lt;/details&gt;
+     * 
+     * @param serviceId A service ID.
+     * @param requestBody 
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public ClientRegistrationApiFormResponse registerForm(
+            @Nonnull String serviceId, @Nonnull ClientRegistrationApiFormRequestBody requestBody,
+            @Nullable String serverURL) throws Exception {
+        ClientRegistrationApiFormRequest request = new ClientRegistrationApiFormRequest(serviceId, requestBody);
         RequestOperation<ClientRegistrationApiFormRequest, ClientRegistrationApiFormResponse> operation
-              = new ClientRegistrationApiFormOperation(sdkConfiguration);
+              = new ClientRegistrationApiFormOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1254,14 +1609,140 @@ public class Clients {
      * &lt;/details&gt;
      * 
      * @param serviceId A service ID.
-     * @param 1api1Percent7BserviceIdPercent7D1client1registrationPostRequestBodyContentApplication1jsonSchema 
+     * @param requestBody 
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public ClientRegistrationGetApiResponse get(@Nonnull String serviceId, @Nonnull 1api1Percent7BserviceIdPercent7D1client1registrationPostRequestBodyContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1client1registrationPostRequestBodyContentApplication1jsonSchema) throws Exception {
-        ClientRegistrationGetApiRequest request = new ClientRegistrationGetApiRequest(serviceId, 1api1Percent7BserviceIdPercent7D1client1registrationPostRequestBodyContentApplication1jsonSchema);
+    public ClientRegistrationGetApiResponse get(@Nonnull String serviceId, @Nonnull ClientRegistrationGetApiRequestBody requestBody) throws Exception {
+        return get(serviceId, requestBody, null);
+    }
+
+    /**
+     * Get Client
+     * 
+     * <p>Get a dynamically registered client. This API is supposed to be used to implement a client registration
+     * management endpoint that complies with [RFC 7592](https://datatracker.ietf.org/doc/html/rfc7592)
+     * (OAuth 2.0 Dynamic Registration Management).
+     * 
+     * <p>&lt;br&gt;
+     * &lt;details&gt;
+     * &lt;summary&gt;Description&lt;/summary&gt;
+     * 
+     * <p>This API is supposed to be called from the within the implementation of the client registration
+     * management endpoint of the authorization server. The authorization server implementation should
+     * retrieve the value of `action` from the response and take the following steps according to the value.
+     * 
+     * <p>**INTERNAL_SERVER_ERROR**
+     * 
+     * <p>When the value of `action` is `INTERNAL_SERVER_ERROR`, it means that the API call from the authorization
+     * server implementation was wrong or that an error occurred in Authlete.
+     * 
+     * <p>In either case, from a viewpoint of the client or developer, it is an error on the server side.
+     * Therefore, the authorization server implementation should generate a response to the client or developer
+     * with "500 Internal Server Error"s and `application/json`.
+     * 
+     * <p>The value of `responseContent` is a JSON string which describes the error, so it can be used as
+     * the entity body of the response.
+     * 
+     * <p>The following illustrates the response which the authorization server implementation should generate
+     * and return to the client or developer.
+     * 
+     * <p>```
+     * HTTP/1.1 500 Internal Server Error
+     * Content-Type: application/json
+     * Cache-Control: no-store
+     * Pragma: no-cache
+     * 
+     * <p>{responseContent}
+     * ```
+     * 
+     * <p>The endpoint implementation may return another different response to the client or developer since
+     * "500 Internal Server Error" is not required by the specification.
+     * 
+     * <p>**BAD_REQUEST**
+     * 
+     * <p>When the value of `action` is `BAD_REQUEST`, it means that the request from the client or developer
+     * was wrong.
+     * 
+     * <p>The authorization server implementation should generate a response to the client or developer with
+     * "400 Bad Request" and `application/json`.
+     * 
+     * <p>The value of `responseContent` is a JSON string which describes the error, so it can be used as
+     * the entity body of the response.
+     * 
+     * <p>The following illustrates the response which the authorization server implementation should generate
+     * and return to the client or developer.
+     * 
+     * <p>```
+     * HTTP/1.1 400 Bad Request
+     * Content-Type: application/json
+     * Cache-Control: no-store
+     * Pragma: no-cache
+     * 
+     * <p>{responseContent}
+     * ```
+     * 
+     * <p>**UNAUTHORIZED**
+     * 
+     * <p>When the value of `action` is `UNAUTHORIZED`, it means that the registration access token used by
+     * the client configuration request (RFC 7592) is invalid, or the client application which the token
+     * is tied to does not exist any longer or is invalid.
+     * 
+     * <p>The HTTP status of the response returned to the client application must be "401 Unauthorized" and
+     * the content type must be `application/json`.
+     * 
+     * <p>The value of `responseContent` is a JSON string which describes the error, so it can be used as
+     * the entity body of the response.
+     * 
+     * <p>The following illustrates the response which the endpoint implementation should generate and return
+     * to the client application.
+     * 
+     * <p>```
+     * HTTP/1.1 401 Unauthorized
+     * Content-Type: application/json
+     * Cache-Control: no-store
+     * Pragma: no-cache
+     * 
+     * <p>{responseContent}
+     * ```
+     * 
+     * <p>NOTE: The `UNAUTHORIZED` value was added in October, 2021. See the description of
+     * `Service.unauthorizedOnClientConfigSupported` for details.
+     * 
+     * <p>**OK**
+     * 
+     * <p>When the value of `action` is `OK`, it means that the request from the client or developer is valid.
+     * 
+     * <p>The authorization server implementation should generate a response to the client or developer with
+     * "200 OK" and `application/json`.
+     * 
+     * <p>The `responseContent` a JSON string which can be used as the entity body of the response.
+     * 
+     * <p>The following illustrates the response which the authorization server implementation should generate
+     * and return to the client or developer.
+     * 
+     * <p>```
+     * HTTP/1.1 200 OK
+     * Content-Type: application/json
+     * Cache-Control: no-store
+     * Pragma: no-cache
+     * 
+     * <p>{responseContent}
+     * ```
+     * &lt;/details&gt;
+     * 
+     * @param serviceId A service ID.
+     * @param requestBody 
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public ClientRegistrationGetApiResponse get(
+            @Nonnull String serviceId, @Nonnull ClientRegistrationGetApiRequestBody requestBody,
+            @Nullable String serverURL) throws Exception {
+        ClientRegistrationGetApiRequest request = new ClientRegistrationGetApiRequest(serviceId, requestBody);
         RequestOperation<ClientRegistrationGetApiRequest, ClientRegistrationGetApiResponse> operation
-              = new ClientRegistrationGetApiOperation(sdkConfiguration);
+              = new ClientRegistrationGetApiOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1505,9 +1986,135 @@ public class Clients {
      * @throws Exception if the API call fails
      */
     public ClientRegistrationUpdateApiResponse updateRegistration(@Nonnull String serviceId, @Nonnull ClientRegistrationUpdateApiRequestBody requestBody) throws Exception {
+        return updateRegistration(serviceId, requestBody, null);
+    }
+
+    /**
+     * Update Client
+     * 
+     * <p>Update a dynamically registered client. This API is supposed to be used to implement a client
+     * registration management endpoint that complies with [RFC 7592](https://datatracker.ietf.org/doc/html/rfc7592)
+     * (OAuth 2.0 Dynamic Registration Management).
+     * 
+     * <p>&lt;br&gt;
+     * &lt;details&gt;
+     * &lt;summary&gt;Description&lt;/summary&gt;
+     * 
+     * <p>This API is supposed to be called from the within the implementation of the client registration
+     * management endpoint of the authorization server. The authorization server implementation should
+     * retrieve the value of `action` from the response and take the following steps according to the value.
+     * 
+     * <p>**INTERNAL_SERVER_ERROR**
+     * 
+     * <p>When the value of `action` is `INTERNAL_SERVER_ERROR`, it means that the API call from the authorization
+     * server implementation was wrong or that an error occurred in Authlete.
+     * 
+     * <p>In either case, from a viewpoint of the client or developer, it is an error on the server side.
+     * Therefore, the authorization server implementation should generate a response with "500 Internal
+     * Server Error"s and `application/json`.
+     * 
+     * <p>The value of `responseContent` is a JSON string which describes the error, so it can be used as
+     * the entity body of the response.
+     * 
+     * <p>The following illustrates the response which the authorization server implementation should generate
+     * and return to the client or developer.
+     * 
+     * <p>```
+     * HTTP/1.1 500 Internal Server Error
+     * Content-Type: application/json
+     * Cache-Control: no-store
+     * Pragma: no-cache
+     * 
+     * <p>{responseContent}
+     * ```
+     * 
+     * <p>The endpoint implementation may return another different response to the client or developer since
+     * "500 Internal Server Error" is not required by the specification.
+     * 
+     * <p>**BAD_REQUEST**
+     * 
+     * <p>When the value of `action` is `BAD_REQUEST`, it means that the request from the client or developer
+     * was wrong.
+     * 
+     * <p>The authorization server implementation should generate a response with "400 Bad Request" and `application/json`.
+     * 
+     * <p>The value of `responseContent` is a JSON string which describes the error, so it can be used as
+     * the entity body of the response.
+     * 
+     * <p>The following illustrates the response which the authorization server implementation should generate
+     * and return to the client or developer.
+     * 
+     * <p>```
+     * HTTP/1.1 400 Bad Request
+     * Content-Type: application/json
+     * Cache-Control: no-store
+     * Pragma: no-cache
+     * 
+     * <p>{responseContent}
+     * ```
+     * 
+     * <p>**UNAUTHORIZED**
+     * 
+     * <p>When the value of `action` is `UNAUTHORIZED`, it means that the registration access token used by
+     * the client configuration request (RFC 7592) is invalid, or the client application which the token
+     * is tied to does not exist any longer or is invalid.
+     * 
+     * <p>The HTTP status of the response returned to the client application must be "401 Unauthorized" and
+     * the content type must be `application/json`.
+     * 
+     * <p>The value of `responseContent` is a JSON string which describes the error, so it can be used as
+     * the entity body of the response.
+     * 
+     * <p>The following illustrates the response which the endpoint implementation should generate and return
+     * to the client application.
+     * 
+     * <p>```
+     * HTTP/1.1 401 Unauthorized
+     * Content-Type: application/json
+     * Cache-Control: no-store
+     * Pragma: no-cache
+     * 
+     * <p>{responseContent}
+     * ```
+     * 
+     * <p>NOTE: The `UNAUTHORIZED` value was added in October, 2021. See the description of
+     * `Service.unauthorizedOnClientConfigSupported` for details.
+     * 
+     * <p>**UPDATED**
+     * 
+     * <p>When the value of `action` is `UPDATED`, it means that the request from the client or developer is
+     * valid.
+     * 
+     * <p>The authorization server implementation should generate a response to the client or developer with
+     * "200 OK" and `application/json`.
+     * 
+     * <p>The `responseContent` a JSON string which can be used as the entity body of the response.
+     * 
+     * <p>The following illustrates the response which the authorization server implementation should generate
+     * and return to the client or developer.
+     * 
+     * <p>```
+     * HTTP/1.1 200 OK
+     * Content-Type: application/json
+     * Cache-Control: no-store
+     * Pragma: no-cache
+     * 
+     * <p>{responseContent}
+     * ```
+     * &lt;/details&gt;
+     * 
+     * @param serviceId A service ID.
+     * @param requestBody 
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public ClientRegistrationUpdateApiResponse updateRegistration(
+            @Nonnull String serviceId, @Nonnull ClientRegistrationUpdateApiRequestBody requestBody,
+            @Nullable String serverURL) throws Exception {
         ClientRegistrationUpdateApiRequest request = new ClientRegistrationUpdateApiRequest(serviceId, requestBody);
         RequestOperation<ClientRegistrationUpdateApiRequest, ClientRegistrationUpdateApiResponse> operation
-              = new ClientRegistrationUpdateApiOperation(sdkConfiguration);
+              = new ClientRegistrationUpdateApiOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1746,14 +2353,140 @@ public class Clients {
      * &lt;/details&gt;
      * 
      * @param serviceId A service ID.
-     * @param 1api1Percent7BserviceIdPercent7D1client1registration1updatePostRequestBodyContentApplication1jsonSchema 
+     * @param requestBody 
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public ClientRegistrationUpdateApiFormResponse updateRegistrationForm(@Nonnull String serviceId, @Nonnull 1api1Percent7BserviceIdPercent7D1client1registration1updatePostRequestBodyContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1client1registration1updatePostRequestBodyContentApplication1jsonSchema) throws Exception {
-        ClientRegistrationUpdateApiFormRequest request = new ClientRegistrationUpdateApiFormRequest(serviceId, 1api1Percent7BserviceIdPercent7D1client1registration1updatePostRequestBodyContentApplication1jsonSchema);
+    public ClientRegistrationUpdateApiFormResponse updateRegistrationForm(@Nonnull String serviceId, @Nonnull ClientRegistrationUpdateApiFormRequestBody requestBody) throws Exception {
+        return updateRegistrationForm(serviceId, requestBody, null);
+    }
+
+    /**
+     * Update Client
+     * 
+     * <p>Update a dynamically registered client. This API is supposed to be used to implement a client
+     * registration management endpoint that complies with [RFC 7592](https://datatracker.ietf.org/doc/html/rfc7592)
+     * (OAuth 2.0 Dynamic Registration Management).
+     * 
+     * <p>&lt;br&gt;
+     * &lt;details&gt;
+     * &lt;summary&gt;Description&lt;/summary&gt;
+     * 
+     * <p>This API is supposed to be called from the within the implementation of the client registration
+     * management endpoint of the authorization server. The authorization server implementation should
+     * retrieve the value of `action` from the response and take the following steps according to the value.
+     * 
+     * <p>**INTERNAL_SERVER_ERROR**
+     * 
+     * <p>When the value of `action` is `INTERNAL_SERVER_ERROR`, it means that the API call from the authorization
+     * server implementation was wrong or that an error occurred in Authlete.
+     * 
+     * <p>In either case, from a viewpoint of the client or developer, it is an error on the server side.
+     * Therefore, the authorization server implementation should generate a response with "500 Internal
+     * Server Error"s and `application/json`.
+     * 
+     * <p>The value of `responseContent` is a JSON string which describes the error, so it can be used as
+     * the entity body of the response.
+     * 
+     * <p>The following illustrates the response which the authorization server implementation should generate
+     * and return to the client or developer.
+     * 
+     * <p>```
+     * HTTP/1.1 500 Internal Server Error
+     * Content-Type: application/json
+     * Cache-Control: no-store
+     * Pragma: no-cache
+     * 
+     * <p>{responseContent}
+     * ```
+     * 
+     * <p>The endpoint implementation may return another different response to the client or developer since
+     * "500 Internal Server Error" is not required by the specification.
+     * 
+     * <p>**BAD_REQUEST**
+     * 
+     * <p>When the value of `action` is `BAD_REQUEST`, it means that the request from the client or developer
+     * was wrong.
+     * 
+     * <p>The authorization server implementation should generate a response with "400 Bad Request" and `application/json`.
+     * 
+     * <p>The value of `responseContent` is a JSON string which describes the error, so it can be used as
+     * the entity body of the response.
+     * 
+     * <p>The following illustrates the response which the authorization server implementation should generate
+     * and return to the client or developer.
+     * 
+     * <p>```
+     * HTTP/1.1 400 Bad Request
+     * Content-Type: application/json
+     * Cache-Control: no-store
+     * Pragma: no-cache
+     * 
+     * <p>{responseContent}
+     * ```
+     * 
+     * <p>**UNAUTHORIZED**
+     * 
+     * <p>When the value of `action` is `UNAUTHORIZED`, it means that the registration access token used by
+     * the client configuration request (RFC 7592) is invalid, or the client application which the token
+     * is tied to does not exist any longer or is invalid.
+     * 
+     * <p>The HTTP status of the response returned to the client application must be "401 Unauthorized" and
+     * the content type must be `application/json`.
+     * 
+     * <p>The value of `responseContent` is a JSON string which describes the error, so it can be used as
+     * the entity body of the response.
+     * 
+     * <p>The following illustrates the response which the endpoint implementation should generate and return
+     * to the client application.
+     * 
+     * <p>```
+     * HTTP/1.1 401 Unauthorized
+     * Content-Type: application/json
+     * Cache-Control: no-store
+     * Pragma: no-cache
+     * 
+     * <p>{responseContent}
+     * ```
+     * 
+     * <p>NOTE: The `UNAUTHORIZED` value was added in October, 2021. See the description of
+     * `Service.unauthorizedOnClientConfigSupported` for details.
+     * 
+     * <p>**UPDATED**
+     * 
+     * <p>When the value of `action` is `UPDATED`, it means that the request from the client or developer is
+     * valid.
+     * 
+     * <p>The authorization server implementation should generate a response to the client or developer with
+     * "200 OK" and `application/json`.
+     * 
+     * <p>The `responseContent` a JSON string which can be used as the entity body of the response.
+     * 
+     * <p>The following illustrates the response which the authorization server implementation should generate
+     * and return to the client or developer.
+     * 
+     * <p>```
+     * HTTP/1.1 200 OK
+     * Content-Type: application/json
+     * Cache-Control: no-store
+     * Pragma: no-cache
+     * 
+     * <p>{responseContent}
+     * ```
+     * &lt;/details&gt;
+     * 
+     * @param serviceId A service ID.
+     * @param requestBody 
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public ClientRegistrationUpdateApiFormResponse updateRegistrationForm(
+            @Nonnull String serviceId, @Nonnull ClientRegistrationUpdateApiFormRequestBody requestBody,
+            @Nullable String serverURL) throws Exception {
+        ClientRegistrationUpdateApiFormRequest request = new ClientRegistrationUpdateApiFormRequest(serviceId, requestBody);
         RequestOperation<ClientRegistrationUpdateApiFormRequest, ClientRegistrationUpdateApiFormResponse> operation
-              = new ClientRegistrationUpdateApiFormOperation(sdkConfiguration);
+              = new ClientRegistrationUpdateApiFormOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1780,9 +2513,27 @@ public class Clients {
      * @throws Exception if the API call fails
      */
     public ClientExtensionRequestablesScopesGetApiResponse getRequestableScopes(@Nonnull String serviceId, @Nonnull String clientId) throws Exception {
+        return getRequestableScopes(serviceId, clientId, null);
+    }
+
+    /**
+     * Get Requestable Scopes
+     * 
+     * <p>Get the requestable scopes per client
+     * 
+     * @param serviceId A service ID.
+     * @param clientId A client ID.
+     *         
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public ClientExtensionRequestablesScopesGetApiResponse getRequestableScopes(
+            @Nonnull String serviceId, @Nonnull String clientId,
+            @Nullable String serverURL) throws Exception {
         ClientExtensionRequestablesScopesGetApiRequest request = new ClientExtensionRequestablesScopesGetApiRequest(serviceId, clientId);
         RequestOperation<ClientExtensionRequestablesScopesGetApiRequest, ClientExtensionRequestablesScopesGetApiResponse> operation
-              = new ClientExtensionRequestablesScopesGetApiOperation(sdkConfiguration);
+              = new ClientExtensionRequestablesScopesGetApiOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1812,9 +2563,29 @@ public class Clients {
     public ClientExtensionRequestablesScopesUpdateApiResponse updateRequestableScopes(
             @Nonnull String serviceId, @Nonnull String clientId,
             @Nonnull ClientExtensionRequestablesScopesUpdateApiRequestBody requestBody) throws Exception {
+        return updateRequestableScopes(serviceId, clientId, requestBody,
+            null);
+    }
+
+    /**
+     * Update Requestable Scopes
+     * 
+     * <p>Update requestable scopes of a client
+     * 
+     * @param serviceId A service ID.
+     * @param clientId A client ID.
+     *         
+     * @param requestBody 
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public ClientExtensionRequestablesScopesUpdateApiResponse updateRequestableScopes(
+            @Nonnull String serviceId, @Nonnull String clientId,
+            @Nonnull ClientExtensionRequestablesScopesUpdateApiRequestBody requestBody, @Nullable String serverURL) throws Exception {
         ClientExtensionRequestablesScopesUpdateApiRequest request = new ClientExtensionRequestablesScopesUpdateApiRequest(serviceId, clientId, requestBody);
         RequestOperation<ClientExtensionRequestablesScopesUpdateApiRequest, ClientExtensionRequestablesScopesUpdateApiResponse> operation
-              = new ClientExtensionRequestablesScopesUpdateApiOperation(sdkConfiguration);
+              = new ClientExtensionRequestablesScopesUpdateApiOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1841,9 +2612,27 @@ public class Clients {
      * @throws Exception if the API call fails
      */
     public ClientExtensionRequestablesScopesDeleteApiResponse deleteRequestableScopes(@Nonnull String serviceId, @Nonnull String clientId) throws Exception {
+        return deleteRequestableScopes(serviceId, clientId, null);
+    }
+
+    /**
+     * Delete Requestable Scopes
+     * 
+     * <p>Delete requestable scopes of a client
+     * 
+     * @param serviceId A service ID.
+     * @param clientId A client ID.
+     *         
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public ClientExtensionRequestablesScopesDeleteApiResponse deleteRequestableScopes(
+            @Nonnull String serviceId, @Nonnull String clientId,
+            @Nullable String serverURL) throws Exception {
         ClientExtensionRequestablesScopesDeleteApiRequest request = new ClientExtensionRequestablesScopesDeleteApiRequest(serviceId, clientId);
         RequestOperation<ClientExtensionRequestablesScopesDeleteApiRequest, ClientExtensionRequestablesScopesDeleteApiResponse> operation
-              = new ClientExtensionRequestablesScopesDeleteApiOperation(sdkConfiguration);
+              = new ClientExtensionRequestablesScopesDeleteApiOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 

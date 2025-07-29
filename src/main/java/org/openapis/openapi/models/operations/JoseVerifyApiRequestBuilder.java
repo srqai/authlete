@@ -17,6 +17,7 @@ public class JoseVerifyApiRequestBuilder {
     private final SDKConfiguration sdkConfiguration;
     private final JoseVerifyApiRequest.Builder pojoBuilder;
     private JoseVerifyApiRequest request;
+    private String serverURL;
     private boolean _setterCalled;
 
     public JoseVerifyApiRequestBuilder(SDKConfiguration sdkConfiguration) {
@@ -36,6 +37,11 @@ public class JoseVerifyApiRequestBuilder {
         return this;
     }
 
+    public JoseVerifyApiRequestBuilder serverURL(@Nullable String serverURL) {
+        this.serverURL = serverURL;
+        return this;
+    }
+
     private JoseVerifyApiRequest _buildRequest() {
         if (this._setterCalled) {
             this.request = this.pojoBuilder.build();
@@ -49,7 +55,7 @@ public class JoseVerifyApiRequestBuilder {
     */
     public JoseVerifyApiResponse call() throws Exception {
         RequestOperation<JoseVerifyApiRequest, JoseVerifyApiResponse> operation
-              = new JoseVerifyApiOperation(sdkConfiguration);
+              = new JoseVerifyApiOperation(sdkConfiguration, serverURL);
 
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }

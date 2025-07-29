@@ -14,11 +14,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1auth1tokenPostResponses200ContentApplication1jsonSchemaPropertiesActorTokenInfo;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1auth1tokenPostResponses200ContentApplication1jsonSchemaPropertiesActorTokenType;
-import org.openapis.openapi.models.components.AuthorizationDetails;
-import org.openapis.openapi.models.components.Pair;
-import org.openapis.openapi.models.components.Property;
 import org.openapis.openapi.utils.Utils;
 
 
@@ -188,7 +183,7 @@ public class AuthTokenApiResponseBody {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("properties")
-    private List<Property> properties;
+    private List<AuthTokenApiProperty> properties;
 
     /**
      * The newly issued access token in JWT format. If the authorization server is configured
@@ -222,21 +217,21 @@ public class AuthTokenApiResponseBody {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("authorizationDetails")
-    private AuthorizationDetails authorizationDetails;
+    private AuthTokenApiAuthorizationDetails authorizationDetails;
 
     /**
      * The attributes of this service that the client application belongs to.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("serviceAttributes")
-    private List<Pair> serviceAttributes;
+    private List<AuthTokenApiServiceAttribute> serviceAttributes;
 
     /**
      * The attributes of the client.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("clientAttributes")
-    private List<Pair> clientAttributes;
+    private List<AuthTokenApiClientAttribute> clientAttributes;
 
     /**
      * The client authentication method that was performed at the token endpoint.
@@ -268,7 +263,7 @@ public class AuthTokenApiResponseBody {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("requestedTokenType")
-    private 1api1Percent7BserviceIdPercent7D1auth1tokenPostResponses200ContentApplication1jsonSchemaPropertiesActorTokenType requestedTokenType;
+    private AuthTokenApiRequestedTokenType requestedTokenType;
 
 
     @JsonInclude(Include.NON_ABSENT)
@@ -280,12 +275,12 @@ public class AuthTokenApiResponseBody {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("subjectTokenType")
-    private 1api1Percent7BserviceIdPercent7D1auth1tokenPostResponses200ContentApplication1jsonSchemaPropertiesActorTokenType subjectTokenType;
+    private AuthTokenApiSubjectTokenType subjectTokenType;
 
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("subjectTokenInfo")
-    private 1api1Percent7BserviceIdPercent7D1auth1tokenPostResponses200ContentApplication1jsonSchemaPropertiesActorTokenInfo subjectTokenInfo;
+    private AuthTokenApiSubjectTokenInfo subjectTokenInfo;
 
 
     @JsonInclude(Include.NON_ABSENT)
@@ -399,20 +394,20 @@ public class AuthTokenApiResponseBody {
             @JsonProperty("clientIdAliasUsed") @Nullable Boolean clientIdAliasUsed,
             @JsonProperty("subject") @Nullable String subject,
             @JsonProperty("scopes") @Nullable List<String> scopes,
-            @JsonProperty("properties") @Nullable List<Property> properties,
+            @JsonProperty("properties") @Nullable List<AuthTokenApiProperty> properties,
             @JsonProperty("jwtAccessToken") @Nullable String jwtAccessToken,
             @JsonProperty("resources") @Nullable List<String> resources,
             @JsonProperty("accessTokenResources") @Nullable List<String> accessTokenResources,
-            @JsonProperty("authorizationDetails") @Nullable AuthorizationDetails authorizationDetails,
-            @JsonProperty("serviceAttributes") @Nullable List<Pair> serviceAttributes,
-            @JsonProperty("clientAttributes") @Nullable List<Pair> clientAttributes,
+            @JsonProperty("authorizationDetails") @Nullable AuthTokenApiAuthorizationDetails authorizationDetails,
+            @JsonProperty("serviceAttributes") @Nullable List<AuthTokenApiServiceAttribute> serviceAttributes,
+            @JsonProperty("clientAttributes") @Nullable List<AuthTokenApiClientAttribute> clientAttributes,
             @JsonProperty("clientAuthMethod") @Nullable String clientAuthMethod,
             @JsonProperty("grantId") @Nullable String grantId,
             @JsonProperty("audiences") @Nullable List<String> audiences,
-            @JsonProperty("requestedTokenType") @Nullable 1api1Percent7BserviceIdPercent7D1auth1tokenPostResponses200ContentApplication1jsonSchemaPropertiesActorTokenType requestedTokenType,
+            @JsonProperty("requestedTokenType") @Nullable AuthTokenApiRequestedTokenType requestedTokenType,
             @JsonProperty("subjectToken") @Nullable String subjectToken,
-            @JsonProperty("subjectTokenType") @Nullable 1api1Percent7BserviceIdPercent7D1auth1tokenPostResponses200ContentApplication1jsonSchemaPropertiesActorTokenType subjectTokenType,
-            @JsonProperty("subjectTokenInfo") @Nullable 1api1Percent7BserviceIdPercent7D1auth1tokenPostResponses200ContentApplication1jsonSchemaPropertiesActorTokenInfo subjectTokenInfo,
+            @JsonProperty("subjectTokenType") @Nullable AuthTokenApiSubjectTokenType subjectTokenType,
+            @JsonProperty("subjectTokenInfo") @Nullable AuthTokenApiSubjectTokenInfo subjectTokenInfo,
             @JsonProperty("actorToken") @Nullable String actorToken,
             @JsonProperty("actorTokenType") @Nullable AuthTokenApiActorTokenType actorTokenType,
             @JsonProperty("actorTokenInfo") @Nullable AuthTokenApiActorTokenInfo actorTokenInfo,
@@ -657,7 +652,7 @@ public class AuthTokenApiResponseBody {
      * The extra properties associated with the access token.
      * This parameter is `null` when no extra property is associated with the issued access token.
      */
-    public Optional<List<Property>> properties() {
+    public Optional<List<AuthTokenApiProperty>> properties() {
         return Optional.ofNullable(this.properties);
     }
 
@@ -691,21 +686,21 @@ public class AuthTokenApiResponseBody {
      * request parameter in the preceding device authorization request which is defined in
      * "OAuth 2.0 Rich Authorization Requests".
      */
-    public Optional<AuthorizationDetails> authorizationDetails() {
+    public Optional<AuthTokenApiAuthorizationDetails> authorizationDetails() {
         return Optional.ofNullable(this.authorizationDetails);
     }
 
     /**
      * The attributes of this service that the client application belongs to.
      */
-    public Optional<List<Pair>> serviceAttributes() {
+    public Optional<List<AuthTokenApiServiceAttribute>> serviceAttributes() {
         return Optional.ofNullable(this.serviceAttributes);
     }
 
     /**
      * The attributes of the client.
      */
-    public Optional<List<Pair>> clientAttributes() {
+    public Optional<List<AuthTokenApiClientAttribute>> clientAttributes() {
         return Optional.ofNullable(this.clientAttributes);
     }
 
@@ -737,7 +732,7 @@ public class AuthTokenApiResponseBody {
     /**
      * The grant type of the access token when the access token was created.
      */
-    public Optional<1api1Percent7BserviceIdPercent7D1auth1tokenPostResponses200ContentApplication1jsonSchemaPropertiesActorTokenType> requestedTokenType() {
+    public Optional<AuthTokenApiRequestedTokenType> requestedTokenType() {
         return Optional.ofNullable(this.requestedTokenType);
     }
 
@@ -748,11 +743,11 @@ public class AuthTokenApiResponseBody {
     /**
      * The grant type of the access token when the access token was created.
      */
-    public Optional<1api1Percent7BserviceIdPercent7D1auth1tokenPostResponses200ContentApplication1jsonSchemaPropertiesActorTokenType> subjectTokenType() {
+    public Optional<AuthTokenApiSubjectTokenType> subjectTokenType() {
         return Optional.ofNullable(this.subjectTokenType);
     }
 
-    public Optional<1api1Percent7BserviceIdPercent7D1auth1tokenPostResponses200ContentApplication1jsonSchemaPropertiesActorTokenInfo> subjectTokenInfo() {
+    public Optional<AuthTokenApiSubjectTokenInfo> subjectTokenInfo() {
         return Optional.ofNullable(this.subjectTokenInfo);
     }
 
@@ -1052,7 +1047,7 @@ public class AuthTokenApiResponseBody {
      * The extra properties associated with the access token.
      * This parameter is `null` when no extra property is associated with the issued access token.
      */
-    public AuthTokenApiResponseBody withProperties(@Nullable List<Property> properties) {
+    public AuthTokenApiResponseBody withProperties(@Nullable List<AuthTokenApiProperty> properties) {
         this.properties = properties;
         return this;
     }
@@ -1094,7 +1089,7 @@ public class AuthTokenApiResponseBody {
      * request parameter in the preceding device authorization request which is defined in
      * "OAuth 2.0 Rich Authorization Requests".
      */
-    public AuthTokenApiResponseBody withAuthorizationDetails(@Nullable AuthorizationDetails authorizationDetails) {
+    public AuthTokenApiResponseBody withAuthorizationDetails(@Nullable AuthTokenApiAuthorizationDetails authorizationDetails) {
         this.authorizationDetails = authorizationDetails;
         return this;
     }
@@ -1103,7 +1098,7 @@ public class AuthTokenApiResponseBody {
     /**
      * The attributes of this service that the client application belongs to.
      */
-    public AuthTokenApiResponseBody withServiceAttributes(@Nullable List<Pair> serviceAttributes) {
+    public AuthTokenApiResponseBody withServiceAttributes(@Nullable List<AuthTokenApiServiceAttribute> serviceAttributes) {
         this.serviceAttributes = serviceAttributes;
         return this;
     }
@@ -1112,7 +1107,7 @@ public class AuthTokenApiResponseBody {
     /**
      * The attributes of the client.
      */
-    public AuthTokenApiResponseBody withClientAttributes(@Nullable List<Pair> clientAttributes) {
+    public AuthTokenApiResponseBody withClientAttributes(@Nullable List<AuthTokenApiClientAttribute> clientAttributes) {
         this.clientAttributes = clientAttributes;
         return this;
     }
@@ -1152,7 +1147,7 @@ public class AuthTokenApiResponseBody {
     /**
      * The grant type of the access token when the access token was created.
      */
-    public AuthTokenApiResponseBody withRequestedTokenType(@Nullable 1api1Percent7BserviceIdPercent7D1auth1tokenPostResponses200ContentApplication1jsonSchemaPropertiesActorTokenType requestedTokenType) {
+    public AuthTokenApiResponseBody withRequestedTokenType(@Nullable AuthTokenApiRequestedTokenType requestedTokenType) {
         this.requestedTokenType = requestedTokenType;
         return this;
     }
@@ -1167,13 +1162,13 @@ public class AuthTokenApiResponseBody {
     /**
      * The grant type of the access token when the access token was created.
      */
-    public AuthTokenApiResponseBody withSubjectTokenType(@Nullable 1api1Percent7BserviceIdPercent7D1auth1tokenPostResponses200ContentApplication1jsonSchemaPropertiesActorTokenType subjectTokenType) {
+    public AuthTokenApiResponseBody withSubjectTokenType(@Nullable AuthTokenApiSubjectTokenType subjectTokenType) {
         this.subjectTokenType = subjectTokenType;
         return this;
     }
 
 
-    public AuthTokenApiResponseBody withSubjectTokenInfo(@Nullable 1api1Percent7BserviceIdPercent7D1auth1tokenPostResponses200ContentApplication1jsonSchemaPropertiesActorTokenInfo subjectTokenInfo) {
+    public AuthTokenApiResponseBody withSubjectTokenInfo(@Nullable AuthTokenApiSubjectTokenInfo subjectTokenInfo) {
         this.subjectTokenInfo = subjectTokenInfo;
         return this;
     }
@@ -1468,7 +1463,7 @@ public class AuthTokenApiResponseBody {
 
         private List<String> scopes;
 
-        private List<Property> properties;
+        private List<AuthTokenApiProperty> properties;
 
         private String jwtAccessToken;
 
@@ -1476,11 +1471,11 @@ public class AuthTokenApiResponseBody {
 
         private List<String> accessTokenResources;
 
-        private AuthorizationDetails authorizationDetails;
+        private AuthTokenApiAuthorizationDetails authorizationDetails;
 
-        private List<Pair> serviceAttributes;
+        private List<AuthTokenApiServiceAttribute> serviceAttributes;
 
-        private List<Pair> clientAttributes;
+        private List<AuthTokenApiClientAttribute> clientAttributes;
 
         private String clientAuthMethod;
 
@@ -1488,13 +1483,13 @@ public class AuthTokenApiResponseBody {
 
         private List<String> audiences;
 
-        private 1api1Percent7BserviceIdPercent7D1auth1tokenPostResponses200ContentApplication1jsonSchemaPropertiesActorTokenType requestedTokenType;
+        private AuthTokenApiRequestedTokenType requestedTokenType;
 
         private String subjectToken;
 
-        private 1api1Percent7BserviceIdPercent7D1auth1tokenPostResponses200ContentApplication1jsonSchemaPropertiesActorTokenType subjectTokenType;
+        private AuthTokenApiSubjectTokenType subjectTokenType;
 
-        private 1api1Percent7BserviceIdPercent7D1auth1tokenPostResponses200ContentApplication1jsonSchemaPropertiesActorTokenInfo subjectTokenInfo;
+        private AuthTokenApiSubjectTokenInfo subjectTokenInfo;
 
         private String actorToken;
 
@@ -1709,7 +1704,7 @@ public class AuthTokenApiResponseBody {
          * The extra properties associated with the access token.
          * This parameter is `null` when no extra property is associated with the issued access token.
          */
-        public Builder properties(@Nullable List<Property> properties) {
+        public Builder properties(@Nullable List<AuthTokenApiProperty> properties) {
             this.properties = properties;
             return this;
         }
@@ -1747,7 +1742,7 @@ public class AuthTokenApiResponseBody {
          * request parameter in the preceding device authorization request which is defined in
          * "OAuth 2.0 Rich Authorization Requests".
          */
-        public Builder authorizationDetails(@Nullable AuthorizationDetails authorizationDetails) {
+        public Builder authorizationDetails(@Nullable AuthTokenApiAuthorizationDetails authorizationDetails) {
             this.authorizationDetails = authorizationDetails;
             return this;
         }
@@ -1755,7 +1750,7 @@ public class AuthTokenApiResponseBody {
         /**
          * The attributes of this service that the client application belongs to.
          */
-        public Builder serviceAttributes(@Nullable List<Pair> serviceAttributes) {
+        public Builder serviceAttributes(@Nullable List<AuthTokenApiServiceAttribute> serviceAttributes) {
             this.serviceAttributes = serviceAttributes;
             return this;
         }
@@ -1763,7 +1758,7 @@ public class AuthTokenApiResponseBody {
         /**
          * The attributes of the client.
          */
-        public Builder clientAttributes(@Nullable List<Pair> clientAttributes) {
+        public Builder clientAttributes(@Nullable List<AuthTokenApiClientAttribute> clientAttributes) {
             this.clientAttributes = clientAttributes;
             return this;
         }
@@ -1799,7 +1794,7 @@ public class AuthTokenApiResponseBody {
         /**
          * The grant type of the access token when the access token was created.
          */
-        public Builder requestedTokenType(@Nullable 1api1Percent7BserviceIdPercent7D1auth1tokenPostResponses200ContentApplication1jsonSchemaPropertiesActorTokenType requestedTokenType) {
+        public Builder requestedTokenType(@Nullable AuthTokenApiRequestedTokenType requestedTokenType) {
             this.requestedTokenType = requestedTokenType;
             return this;
         }
@@ -1812,12 +1807,12 @@ public class AuthTokenApiResponseBody {
         /**
          * The grant type of the access token when the access token was created.
          */
-        public Builder subjectTokenType(@Nullable 1api1Percent7BserviceIdPercent7D1auth1tokenPostResponses200ContentApplication1jsonSchemaPropertiesActorTokenType subjectTokenType) {
+        public Builder subjectTokenType(@Nullable AuthTokenApiSubjectTokenType subjectTokenType) {
             this.subjectTokenType = subjectTokenType;
             return this;
         }
 
-        public Builder subjectTokenInfo(@Nullable 1api1Percent7BserviceIdPercent7D1auth1tokenPostResponses200ContentApplication1jsonSchemaPropertiesActorTokenInfo subjectTokenInfo) {
+        public Builder subjectTokenInfo(@Nullable AuthTokenApiSubjectTokenInfo subjectTokenInfo) {
             this.subjectTokenInfo = subjectTokenInfo;
             return this;
         }

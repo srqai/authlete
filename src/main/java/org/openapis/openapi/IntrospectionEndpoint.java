@@ -6,10 +6,11 @@ package org.openapis.openapi;
 import static org.openapis.openapi.operations.Operations.RequestOperation;
 
 import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1auth1introspectionPostRequestBodyContentApplication1jsonSchema;
 import org.openapis.openapi.models.operations.AuthIntrospectionApiFormRequest;
+import org.openapis.openapi.models.operations.AuthIntrospectionApiFormRequestBody;
 import org.openapis.openapi.models.operations.AuthIntrospectionApiFormRequestBuilder;
 import org.openapis.openapi.models.operations.AuthIntrospectionApiFormResponse;
 import org.openapis.openapi.models.operations.AuthIntrospectionApiRequest;
@@ -375,9 +376,189 @@ public class IntrospectionEndpoint {
      * @throws Exception if the API call fails
      */
     public AuthIntrospectionApiResponse process(@Nonnull String serviceId, @Nonnull AuthIntrospectionApiRequestBody requestBody) throws Exception {
+        return process(serviceId, requestBody, null);
+    }
+
+    /**
+     * Process Introspection Request
+     * 
+     * <p>This API gathers information about an access token.
+     * 
+     * <p>&lt;br&gt;
+     * &lt;details&gt;
+     * &lt;summary&gt;Description&lt;/summary&gt;
+     * 
+     * <p>This API is supposed to be called from within the implementations of protected resource endpoints
+     * of the authorization server implementation in order to get information about the access token which
+     * was presented by the client application.
+     * 
+     * <p>In general, a client application accesses a protected resource endpoint of a service with an access
+     * token, and the implementation of the endpoint checks whether the presented access token has enough
+     * privileges (= scopes) to access the protected resource before returning the protected resource to
+     * the client application. To achieve this flow, the endpoint implementation has to know detailed
+     * information about the access token. Authlete `/auth/introspection` API can be used to get such information.
+     * 
+     * <p>The response from `/auth/introspection` API has some parameters. Among them, it is `action` parameter
+     * that the authorization server implementation should check first because it denotes the next action
+     * that the authorization server implementation should take. According to the value of `action`, the
+     * authorization server implementation must take the steps described below.
+     * 
+     * <p>**INTERNAL_SERVER_ERROR**
+     * 
+     * <p>When the value of `action` is `INTERNAL_SERVER_ERROR`, it means that the request from the authorization
+     * server implementation was wrong or that an error occurred in Authlete.
+     * In either case, from the viewpoint of the client application, it is an error on the server side.
+     * Therefore, the service implementation should generate a response to the client application with
+     * HTTP status of "500 Internal Server Error". Authlete recommends `application/json` as the content
+     * type although OAuth 2.0 specification does not mention the format of the error response when the
+     * redirect URI is not usable.
+     * 
+     * <p>The value of `responseContent` is a string which describes the error in the format of
+     * [RFC 6750](https://datatracker.ietf.org/doc/html/rfc6750) (OAuth 2.0 Bearer Token Usage), so if
+     * the protected resource of the service implementation wants to return an error response to the client
+     * application in the way that complies with RFC 6750 (in other words, if `accessTokenType` configuration
+     * parameter of the service is Bearer), the value of `responseContent` can be used as the value of
+     * `WWW-Authenticate` header.
+     * 
+     * <p>The following is an example response which complies with RFC 6750.
+     * 
+     * <p>```
+     * HTTP/1.1 500 Internal Server Error
+     * Content-Type: application/json
+     * Cache-Control: no-store
+     * Pragma: no-cache
+     * 
+     * <p>{responseContent}
+     * ```
+     * 
+     * <p>**BAD_REQUEST**
+     * 
+     * <p>When the value of `action` is `BAD_REQUEST`, it means that the request from the client application
+     * does not contain an access token (= the request from the authorization server implementation to
+     * Authlete does not contain `token` request parameter).
+     * 
+     * <p>A response with HTTP status of "400 Bad Request" must be returned to the client application and
+     * the content type must be `application/json`.
+     * 
+     * <p>The value of `responseContent` is a string which describes the error in the format of [RFC
+     * 6750](https://datatracker.ietf.org/doc/html/rfc6750) (OAuth 2.0 Bearer Token Usage), so if the
+     * protected resource of the service implementation wants to return an error response to the client
+     * application in the way that complies with RFC 6750 (in other words, if `accessTokenType` configuration
+     * parameter of the service is `Bearer`), the value of `responseContent` can be used as the value of
+     * `WWW-Authenticate` header.
+     * 
+     * <p>The following is an example response which complies with RFC 6750.
+     * 
+     * <p>```
+     * HTTP/1.1 400 Bad Request
+     * WWW-Authenticate: {responseContent}
+     * Cache-Control: no-store
+     * Pragma: no-cache
+     * ```
+     * 
+     * <p>**UNAUTHORIZED**
+     * 
+     * <p>When the value of `action` is `UNAUTHORIZED`, it means that the access token does not exist or has
+     * expired.
+     * 
+     * <p>The value of `responseContent` is a string which describes the error in the format of RFC
+     * 6750 (OAuth 2.0 Bearer Token Usage), so if the protected resource of the service implementation
+     * wants to return an error response to the client application in the way that complies with [RFC
+     * 6750](https://datatracker.ietf.org/doc/html/rfc6750) (in other words, if `accessTokenType` configuration
+     * parameter of the service is `Bearer`), the value of `responseContent` can be used as the value of
+     * `WWW-Authenticate` header.
+     * 
+     * <p>The following is an example response which complies with RFC 6750.
+     * 
+     * <p>```
+     * HTTP/1.1 401 Unauthorized
+     * WWW-Authenticate: {responseContent}
+     * Cache-Control: no-store
+     * Pragma: no-cache
+     * ```
+     * 
+     * <p>**FORBIDDEN**
+     * 
+     * <p>When the value of `action` is `FORBIDDEN`, it means that the access token does not cover the required
+     * scopes or that the subject associated with the access token is different from the subject contained
+     * in the request.
+     * 
+     * <p>A response with HTTP status of "400 Bad Request" must be returned to the client application and
+     * the content type must be `application/json`.
+     * 
+     * <p>The value of `responseContent` is a string which describes the error in the format of [RFC
+     * 6750](https://datatracker.ietf.org/doc/html/rfc6750) (OAuth 2.0 Bearer Token Usage), so if the
+     * protected resource of the service implementation wants to return an error response to the client
+     * application in the way that complies with RFC 6750 (in other words, if `accessTokenType` configuration
+     * parameter of the service is Bearer), the value of `responseContent` can be used as the value of
+     * `WWW-Authenticate` header.
+     * 
+     * <p>The following is an example response which complies with RFC 6750.
+     * 
+     * <p>```
+     * HTTP/1.1 403 Forbidden
+     * WWW-Authenticate: {responseContent}
+     * Cache-Control: no-store
+     * Pragma: no-cache
+     * ```
+     * 
+     * <p>**OK**
+     * 
+     * <p>When the value of `action` is `OK`, it means that the access token which the client application
+     * presented is valid (= exists and has not expired).
+     * 
+     * <p>The implementation of the protected resource endpoint is supposed to return the protected resource
+     * to the client application.
+     * 
+     * <p>When action is `OK`, the value of `responseContent` is `"Bearer error=\"invalid_request\""`. This
+     * is the simplest string which can be used as the value of `WWW-Authenticate` header to indicate
+     * "400 Bad Request". The implementation of the protected resource endpoint may use this string to
+     * tell the client application that the request was bad (e.g. in case necessary request parameters
+     * for the protected resource endpoint are missing). However, in such a case, the implementation
+     * should generate a more informative error message to help developers of client applications.
+     * 
+     * <p>The following is an example error response which complies with RFC 6750.
+     * 
+     * <p>```
+     * HTTP/1.1 400 Bad Request
+     * WWW-Authenticate: {responseContent}
+     * Cache-Control: no-store
+     * Pragma: no-cache
+     * ```
+     * 
+     * <p>Basically, The value of `responseContent` is a string which describes the error in the format of
+     * [RFC 6750](https://datatracker.ietf.org/doc/html/rfc6750) (OAuth 2.0 Bearer Token Usage). So, if
+     * the service has selected `Bearer` as the value of `accessTokenType` configuration parameter, the
+     * value of `responseContent` can be used directly as the value of `WWW-Authenticate` header. However,
+     * if the service has selected another different token type, the service has to generate error messages
+     * for itself.
+     * 
+     * <p>_**JWT-based access token**_
+     * 
+     * <p>Since version 2.1, Authlete provides a feature to issue access tokens in JWT format. This feature
+     * can be enabled by setting a non-null value to the `accessTokenSignAlg` property of the service
+     * (see the description of the Service class for details). `/api/auth/introspection` API can accept
+     * access tokens in JWT format. However, note that the API does not return information contained in
+     * a given JWT-based access token but returns information stored in the database record which corresponds
+     * to the given JWT-based access token. Because attributes of the database record can be modified
+     * after the access token is issued (for example, by using `/api/auth/token/update` API), information
+     * returned by `/api/auth/introspection` API and information the given JWT-based access token holds
+     * may be different.
+     * 
+     * <p>&lt;/details&gt;
+     * 
+     * @param serviceId A service ID.
+     * @param requestBody 
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public AuthIntrospectionApiResponse process(
+            @Nonnull String serviceId, @Nonnull AuthIntrospectionApiRequestBody requestBody,
+            @Nullable String serverURL) throws Exception {
         AuthIntrospectionApiRequest request = new AuthIntrospectionApiRequest(serviceId, requestBody);
         RequestOperation<AuthIntrospectionApiRequest, AuthIntrospectionApiResponse> operation
-              = new AuthIntrospectionApiOperation(sdkConfiguration);
+              = new AuthIntrospectionApiOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -724,14 +905,194 @@ public class IntrospectionEndpoint {
      * <p>&lt;/details&gt;
      * 
      * @param serviceId A service ID.
-     * @param 1api1Percent7BserviceIdPercent7D1auth1introspectionPostRequestBodyContentApplication1jsonSchema 
+     * @param requestBody 
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AuthIntrospectionApiFormResponse processForm(@Nonnull String serviceId, @Nonnull 1api1Percent7BserviceIdPercent7D1auth1introspectionPostRequestBodyContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1auth1introspectionPostRequestBodyContentApplication1jsonSchema) throws Exception {
-        AuthIntrospectionApiFormRequest request = new AuthIntrospectionApiFormRequest(serviceId, 1api1Percent7BserviceIdPercent7D1auth1introspectionPostRequestBodyContentApplication1jsonSchema);
+    public AuthIntrospectionApiFormResponse processForm(@Nonnull String serviceId, @Nonnull AuthIntrospectionApiFormRequestBody requestBody) throws Exception {
+        return processForm(serviceId, requestBody, null);
+    }
+
+    /**
+     * Process Introspection Request
+     * 
+     * <p>This API gathers information about an access token.
+     * 
+     * <p>&lt;br&gt;
+     * &lt;details&gt;
+     * &lt;summary&gt;Description&lt;/summary&gt;
+     * 
+     * <p>This API is supposed to be called from within the implementations of protected resource endpoints
+     * of the authorization server implementation in order to get information about the access token which
+     * was presented by the client application.
+     * 
+     * <p>In general, a client application accesses a protected resource endpoint of a service with an access
+     * token, and the implementation of the endpoint checks whether the presented access token has enough
+     * privileges (= scopes) to access the protected resource before returning the protected resource to
+     * the client application. To achieve this flow, the endpoint implementation has to know detailed
+     * information about the access token. Authlete `/auth/introspection` API can be used to get such information.
+     * 
+     * <p>The response from `/auth/introspection` API has some parameters. Among them, it is `action` parameter
+     * that the authorization server implementation should check first because it denotes the next action
+     * that the authorization server implementation should take. According to the value of `action`, the
+     * authorization server implementation must take the steps described below.
+     * 
+     * <p>**INTERNAL_SERVER_ERROR**
+     * 
+     * <p>When the value of `action` is `INTERNAL_SERVER_ERROR`, it means that the request from the authorization
+     * server implementation was wrong or that an error occurred in Authlete.
+     * In either case, from the viewpoint of the client application, it is an error on the server side.
+     * Therefore, the service implementation should generate a response to the client application with
+     * HTTP status of "500 Internal Server Error". Authlete recommends `application/json` as the content
+     * type although OAuth 2.0 specification does not mention the format of the error response when the
+     * redirect URI is not usable.
+     * 
+     * <p>The value of `responseContent` is a string which describes the error in the format of
+     * [RFC 6750](https://datatracker.ietf.org/doc/html/rfc6750) (OAuth 2.0 Bearer Token Usage), so if
+     * the protected resource of the service implementation wants to return an error response to the client
+     * application in the way that complies with RFC 6750 (in other words, if `accessTokenType` configuration
+     * parameter of the service is Bearer), the value of `responseContent` can be used as the value of
+     * `WWW-Authenticate` header.
+     * 
+     * <p>The following is an example response which complies with RFC 6750.
+     * 
+     * <p>```
+     * HTTP/1.1 500 Internal Server Error
+     * Content-Type: application/json
+     * Cache-Control: no-store
+     * Pragma: no-cache
+     * 
+     * <p>{responseContent}
+     * ```
+     * 
+     * <p>**BAD_REQUEST**
+     * 
+     * <p>When the value of `action` is `BAD_REQUEST`, it means that the request from the client application
+     * does not contain an access token (= the request from the authorization server implementation to
+     * Authlete does not contain `token` request parameter).
+     * 
+     * <p>A response with HTTP status of "400 Bad Request" must be returned to the client application and
+     * the content type must be `application/json`.
+     * 
+     * <p>The value of `responseContent` is a string which describes the error in the format of [RFC
+     * 6750](https://datatracker.ietf.org/doc/html/rfc6750) (OAuth 2.0 Bearer Token Usage), so if the
+     * protected resource of the service implementation wants to return an error response to the client
+     * application in the way that complies with RFC 6750 (in other words, if `accessTokenType` configuration
+     * parameter of the service is `Bearer`), the value of `responseContent` can be used as the value of
+     * `WWW-Authenticate` header.
+     * 
+     * <p>The following is an example response which complies with RFC 6750.
+     * 
+     * <p>```
+     * HTTP/1.1 400 Bad Request
+     * WWW-Authenticate: {responseContent}
+     * Cache-Control: no-store
+     * Pragma: no-cache
+     * ```
+     * 
+     * <p>**UNAUTHORIZED**
+     * 
+     * <p>When the value of `action` is `UNAUTHORIZED`, it means that the access token does not exist or has
+     * expired.
+     * 
+     * <p>The value of `responseContent` is a string which describes the error in the format of RFC
+     * 6750 (OAuth 2.0 Bearer Token Usage), so if the protected resource of the service implementation
+     * wants to return an error response to the client application in the way that complies with [RFC
+     * 6750](https://datatracker.ietf.org/doc/html/rfc6750) (in other words, if `accessTokenType` configuration
+     * parameter of the service is `Bearer`), the value of `responseContent` can be used as the value of
+     * `WWW-Authenticate` header.
+     * 
+     * <p>The following is an example response which complies with RFC 6750.
+     * 
+     * <p>```
+     * HTTP/1.1 401 Unauthorized
+     * WWW-Authenticate: {responseContent}
+     * Cache-Control: no-store
+     * Pragma: no-cache
+     * ```
+     * 
+     * <p>**FORBIDDEN**
+     * 
+     * <p>When the value of `action` is `FORBIDDEN`, it means that the access token does not cover the required
+     * scopes or that the subject associated with the access token is different from the subject contained
+     * in the request.
+     * 
+     * <p>A response with HTTP status of "400 Bad Request" must be returned to the client application and
+     * the content type must be `application/json`.
+     * 
+     * <p>The value of `responseContent` is a string which describes the error in the format of [RFC
+     * 6750](https://datatracker.ietf.org/doc/html/rfc6750) (OAuth 2.0 Bearer Token Usage), so if the
+     * protected resource of the service implementation wants to return an error response to the client
+     * application in the way that complies with RFC 6750 (in other words, if `accessTokenType` configuration
+     * parameter of the service is Bearer), the value of `responseContent` can be used as the value of
+     * `WWW-Authenticate` header.
+     * 
+     * <p>The following is an example response which complies with RFC 6750.
+     * 
+     * <p>```
+     * HTTP/1.1 403 Forbidden
+     * WWW-Authenticate: {responseContent}
+     * Cache-Control: no-store
+     * Pragma: no-cache
+     * ```
+     * 
+     * <p>**OK**
+     * 
+     * <p>When the value of `action` is `OK`, it means that the access token which the client application
+     * presented is valid (= exists and has not expired).
+     * 
+     * <p>The implementation of the protected resource endpoint is supposed to return the protected resource
+     * to the client application.
+     * 
+     * <p>When action is `OK`, the value of `responseContent` is `"Bearer error=\"invalid_request\""`. This
+     * is the simplest string which can be used as the value of `WWW-Authenticate` header to indicate
+     * "400 Bad Request". The implementation of the protected resource endpoint may use this string to
+     * tell the client application that the request was bad (e.g. in case necessary request parameters
+     * for the protected resource endpoint are missing). However, in such a case, the implementation
+     * should generate a more informative error message to help developers of client applications.
+     * 
+     * <p>The following is an example error response which complies with RFC 6750.
+     * 
+     * <p>```
+     * HTTP/1.1 400 Bad Request
+     * WWW-Authenticate: {responseContent}
+     * Cache-Control: no-store
+     * Pragma: no-cache
+     * ```
+     * 
+     * <p>Basically, The value of `responseContent` is a string which describes the error in the format of
+     * [RFC 6750](https://datatracker.ietf.org/doc/html/rfc6750) (OAuth 2.0 Bearer Token Usage). So, if
+     * the service has selected `Bearer` as the value of `accessTokenType` configuration parameter, the
+     * value of `responseContent` can be used directly as the value of `WWW-Authenticate` header. However,
+     * if the service has selected another different token type, the service has to generate error messages
+     * for itself.
+     * 
+     * <p>_**JWT-based access token**_
+     * 
+     * <p>Since version 2.1, Authlete provides a feature to issue access tokens in JWT format. This feature
+     * can be enabled by setting a non-null value to the `accessTokenSignAlg` property of the service
+     * (see the description of the Service class for details). `/api/auth/introspection` API can accept
+     * access tokens in JWT format. However, note that the API does not return information contained in
+     * a given JWT-based access token but returns information stored in the database record which corresponds
+     * to the given JWT-based access token. Because attributes of the database record can be modified
+     * after the access token is issued (for example, by using `/api/auth/token/update` API), information
+     * returned by `/api/auth/introspection` API and information the given JWT-based access token holds
+     * may be different.
+     * 
+     * <p>&lt;/details&gt;
+     * 
+     * @param serviceId A service ID.
+     * @param requestBody 
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public AuthIntrospectionApiFormResponse processForm(
+            @Nonnull String serviceId, @Nonnull AuthIntrospectionApiFormRequestBody requestBody,
+            @Nullable String serverURL) throws Exception {
+        AuthIntrospectionApiFormRequest request = new AuthIntrospectionApiFormRequest(serviceId, requestBody);
         RequestOperation<AuthIntrospectionApiFormRequest, AuthIntrospectionApiFormResponse> operation
-              = new AuthIntrospectionApiFormOperation(sdkConfiguration);
+              = new AuthIntrospectionApiFormOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 

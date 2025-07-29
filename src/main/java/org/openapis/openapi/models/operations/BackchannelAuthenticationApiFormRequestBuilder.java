@@ -6,10 +6,10 @@ package org.openapis.openapi.models.operations;
 import static org.openapis.openapi.operations.Operations.RequestOperation;
 
 import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1backchannel1authenticationPostRequestBodyContentApplication1jsonSchema;
 import org.openapis.openapi.operations.BackchannelAuthenticationApiFormOperation;
 import org.openapis.openapi.utils.Utils;
 
@@ -17,6 +17,7 @@ public class BackchannelAuthenticationApiFormRequestBuilder {
     private final SDKConfiguration sdkConfiguration;
     private final BackchannelAuthenticationApiFormRequest.Builder pojoBuilder;
     private BackchannelAuthenticationApiFormRequest request;
+    private String serverURL;
     private boolean _setterCalled;
 
     public BackchannelAuthenticationApiFormRequestBuilder(SDKConfiguration sdkConfiguration) {
@@ -30,9 +31,14 @@ public class BackchannelAuthenticationApiFormRequestBuilder {
         return this;
     }
 
-    public BackchannelAuthenticationApiFormRequestBuilder oneapi1Percent7BserviceIdPercent7D1backchannel1authenticationPostRequestBodyContentApplication1jsonSchema(@Nonnull 1api1Percent7BserviceIdPercent7D1backchannel1authenticationPostRequestBodyContentApplication1jsonSchema oneapi1Percent7BserviceIdPercent7D1backchannel1authenticationPostRequestBodyContentApplication1jsonSchema) {
-        this.pojoBuilder.oneapi1Percent7BserviceIdPercent7D1backchannel1authenticationPostRequestBodyContentApplication1jsonSchema(oneapi1Percent7BserviceIdPercent7D1backchannel1authenticationPostRequestBodyContentApplication1jsonSchema);
+    public BackchannelAuthenticationApiFormRequestBuilder requestBody(@Nonnull BackchannelAuthenticationApiFormRequestBody requestBody) {
+        this.pojoBuilder.requestBody(requestBody);
         this._setterCalled = true;
+        return this;
+    }
+
+    public BackchannelAuthenticationApiFormRequestBuilder serverURL(@Nullable String serverURL) {
+        this.serverURL = serverURL;
         return this;
     }
 
@@ -49,7 +55,7 @@ public class BackchannelAuthenticationApiFormRequestBuilder {
     */
     public BackchannelAuthenticationApiFormResponse call() throws Exception {
         RequestOperation<BackchannelAuthenticationApiFormRequest, BackchannelAuthenticationApiFormResponse> operation
-              = new BackchannelAuthenticationApiFormOperation(sdkConfiguration);
+              = new BackchannelAuthenticationApiFormOperation(sdkConfiguration, serverURL);
 
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }

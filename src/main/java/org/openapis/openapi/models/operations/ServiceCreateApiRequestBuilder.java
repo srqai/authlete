@@ -7,25 +7,31 @@ import static org.openapis.openapi.operations.Operations.RequestOperation;
 
 import jakarta.annotation.Nullable;
 import java.lang.Exception;
+import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
-import org.openapis.openapi.models.components.ServiceInput;
 import org.openapis.openapi.operations.ServiceCreateApiOperation;
 
 public class ServiceCreateApiRequestBuilder {
     private final SDKConfiguration sdkConfiguration;
-    private ServiceInput request;
+    private ServiceCreateApiRequest request;
+    private String serverURL;
     private boolean _setterCalled;
 
     public ServiceCreateApiRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
     }
 
-    public ServiceCreateApiRequestBuilder request(@Nullable ServiceInput request) {
+    public ServiceCreateApiRequestBuilder request(@Nullable ServiceCreateApiRequest request) {
         this.request = request;
         return this;
     }
 
-    private ServiceInput _buildRequest() {
+    public ServiceCreateApiRequestBuilder serverURL(@Nullable String serverURL) {
+        this.serverURL = serverURL;
+        return this;
+    }
+
+    private ServiceCreateApiRequest _buildRequest() {
         return this.request;
     }
     /**
@@ -34,8 +40,8 @@ public class ServiceCreateApiRequestBuilder {
     * @return The response from the server.
     */
     public ServiceCreateApiResponse call() throws Exception {
-        RequestOperation<ServiceInput, ServiceCreateApiResponse> operation
-              = new ServiceCreateApiOperation(sdkConfiguration);
+        RequestOperation<ServiceCreateApiRequest, ServiceCreateApiResponse> operation
+              = new ServiceCreateApiOperation(sdkConfiguration, serverURL);
 
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }

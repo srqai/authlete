@@ -16,12 +16,6 @@ import org.openapis.openapi.utils.Utils;
 
 public class ServiceJwksGetApiRequest {
     /**
-     * A service ID.
-     */
-    @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=serviceId")
-    private String serviceId;
-
-    /**
      * The boolean value that indicates whether the response should include the private keys associated with the service or not. If `true`, the private keys are included in the response. The default value is `false`.
      */
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=includePrivateKeys")
@@ -33,27 +27,26 @@ public class ServiceJwksGetApiRequest {
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=pretty")
     private Boolean pretty;
 
+    /**
+     * A service ID.
+     */
+    @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=serviceId")
+    private String serviceId;
+
     @JsonCreator
     public ServiceJwksGetApiRequest(
-            @Nonnull String serviceId,
             @Nullable Boolean includePrivateKeys,
-            @Nullable Boolean pretty) {
-        this.serviceId = Optional.ofNullable(serviceId)
-            .orElseThrow(() -> new IllegalArgumentException("serviceId cannot be null"));
+            @Nullable Boolean pretty,
+            @Nonnull String serviceId) {
         this.includePrivateKeys = includePrivateKeys;
         this.pretty = pretty;
+        this.serviceId = Optional.ofNullable(serviceId)
+            .orElseThrow(() -> new IllegalArgumentException("serviceId cannot be null"));
     }
     
     public ServiceJwksGetApiRequest(
             @Nonnull String serviceId) {
-        this(serviceId, null, null);
-    }
-
-    /**
-     * A service ID.
-     */
-    public String serviceId() {
-        return this.serviceId;
+        this(null, null, serviceId);
     }
 
     /**
@@ -70,17 +63,15 @@ public class ServiceJwksGetApiRequest {
         return Optional.ofNullable(this.pretty);
     }
 
-    public static Builder builder() {
-        return new Builder();
-    }
-
-
     /**
      * A service ID.
      */
-    public ServiceJwksGetApiRequest withServiceId(@Nonnull String serviceId) {
-        this.serviceId = Utils.checkNotNull(serviceId, "serviceId");
-        return this;
+    public String serviceId() {
+        return this.serviceId;
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
 
@@ -102,6 +93,15 @@ public class ServiceJwksGetApiRequest {
     }
 
 
+    /**
+     * A service ID.
+     */
+    public ServiceJwksGetApiRequest withServiceId(@Nonnull String serviceId) {
+        this.serviceId = Utils.checkNotNull(serviceId, "serviceId");
+        return this;
+    }
+
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -112,44 +112,36 @@ public class ServiceJwksGetApiRequest {
         }
         ServiceJwksGetApiRequest other = (ServiceJwksGetApiRequest) o;
         return 
-            Utils.enhancedDeepEquals(this.serviceId, other.serviceId) &&
             Utils.enhancedDeepEquals(this.includePrivateKeys, other.includePrivateKeys) &&
-            Utils.enhancedDeepEquals(this.pretty, other.pretty);
+            Utils.enhancedDeepEquals(this.pretty, other.pretty) &&
+            Utils.enhancedDeepEquals(this.serviceId, other.serviceId);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            serviceId, includePrivateKeys, pretty);
+            includePrivateKeys, pretty, serviceId);
     }
     
     @Override
     public String toString() {
         return Utils.toString(ServiceJwksGetApiRequest.class,
-                "serviceId", serviceId,
                 "includePrivateKeys", includePrivateKeys,
-                "pretty", pretty);
+                "pretty", pretty,
+                "serviceId", serviceId);
     }
 
     @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
 
-        private String serviceId;
-
         private Boolean includePrivateKeys;
 
         private Boolean pretty;
 
+        private String serviceId;
+
         private Builder() {
           // force use of static builder() method
-        }
-
-        /**
-         * A service ID.
-         */
-        public Builder serviceId(@Nonnull String serviceId) {
-            this.serviceId = Utils.checkNotNull(serviceId, "serviceId");
-            return this;
         }
 
         /**
@@ -168,9 +160,17 @@ public class ServiceJwksGetApiRequest {
             return this;
         }
 
+        /**
+         * A service ID.
+         */
+        public Builder serviceId(@Nonnull String serviceId) {
+            this.serviceId = Utils.checkNotNull(serviceId, "serviceId");
+            return this;
+        }
+
         public ServiceJwksGetApiRequest build() {
             return new ServiceJwksGetApiRequest(
-                serviceId, includePrivateKeys, pretty);
+                includePrivateKeys, pretty, serviceId);
         }
 
     }

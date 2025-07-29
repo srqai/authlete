@@ -6,11 +6,11 @@ package org.openapis.openapi;
 import static org.openapis.openapi.operations.Operations.RequestOperation;
 
 import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1device1completePostRequestBodyContentApplication1jsonSchema;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1device1verificationPostRequestBodyContentApplication1jsonSchema;
 import org.openapis.openapi.models.operations.DeviceCompleteApiFormRequest;
+import org.openapis.openapi.models.operations.DeviceCompleteApiFormRequestBody;
 import org.openapis.openapi.models.operations.DeviceCompleteApiFormRequestBuilder;
 import org.openapis.openapi.models.operations.DeviceCompleteApiFormResponse;
 import org.openapis.openapi.models.operations.DeviceCompleteApiRequest;
@@ -18,6 +18,7 @@ import org.openapis.openapi.models.operations.DeviceCompleteApiRequestBody;
 import org.openapis.openapi.models.operations.DeviceCompleteApiRequestBuilder;
 import org.openapis.openapi.models.operations.DeviceCompleteApiResponse;
 import org.openapis.openapi.models.operations.DeviceVerificationApiFormRequest;
+import org.openapis.openapi.models.operations.DeviceVerificationApiFormRequestBody;
 import org.openapis.openapi.models.operations.DeviceVerificationApiFormRequestBuilder;
 import org.openapis.openapi.models.operations.DeviceVerificationApiFormResponse;
 import org.openapis.openapi.models.operations.DeviceVerificationApiRequest;
@@ -139,9 +140,66 @@ public class DeviceFlow {
      * @throws Exception if the API call fails
      */
     public DeviceVerificationApiResponse verify(@Nonnull String serviceId, @Nonnull DeviceVerificationApiRequestBody requestBody) throws Exception {
+        return verify(serviceId, requestBody, null);
+    }
+
+    /**
+     * Process Device Verification Request
+     * 
+     * <p>The API returns information associated with a user code.
+     * 
+     * <p>&lt;br&gt;
+     * &lt;details&gt;
+     * &lt;summary&gt;Description&lt;/summary&gt;
+     * 
+     * <p>After receiving a response from the device authorization endpoint of the authorization server,
+     * the client application shows the end-user the user code and the verification URI which are included
+     * in the device authorization response. Then, the end-user will access the verification URI using
+     * a web browser on another device (typically, a smart phone). In normal implementations, the verification
+     * endpoint will return an HTML page with an input form where the end-user inputs a user code. The
+     * authorization server will receive a user code from the form.
+     * 
+     * <p>After receiving a user code, the authorization server should call Authlete's `/device/verification`
+     * API with the user code. And then, the authorization server implementation should retrieve the value
+     * of `action` parameter from the API response and take the following steps according to the value.
+     * 
+     * <p>**SERVER_ERROR**
+     * 
+     * <p>When the value of `action` is `SERVER_ERROR`, it means that an error occurred on Authlete side. The
+     * authorization server implementation should tell the end-user that something wrong happened and
+     * urge her to re-initiate a device flow.
+     * 
+     * <p>**NOT_EXIST**
+     * 
+     * <p>When the value of `action` is `NOT_EXIST`, it means that the user code does not exist. The authorization
+     * server implementation should tell the end-user that the user code is invalid and urge her to retry
+     * to input a valid user code.
+     * 
+     * <p>**EXPIRED**
+     * 
+     * <p>When the value of `action` is `EXPIRED`, it means that the user code has expired. The authorization
+     * server implementation should tell the end-user that the user code has expired and urge her to
+     * re-initiate a device flow.
+     * 
+     * <p>**VALID**
+     * 
+     * <p>When the value of `action` is `VALID`, it means that the user code exists, has not expired, and
+     * belongs to the service. The authorization server implementation should interact with the end-user
+     * to ask whether she approves or rejects the authorization request from the device.
+     * &lt;/details&gt;
+     * 
+     * @param serviceId A service ID.
+     * @param requestBody 
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public DeviceVerificationApiResponse verify(
+            @Nonnull String serviceId, @Nonnull DeviceVerificationApiRequestBody requestBody,
+            @Nullable String serverURL) throws Exception {
         DeviceVerificationApiRequest request = new DeviceVerificationApiRequest(serviceId, requestBody);
         RequestOperation<DeviceVerificationApiRequest, DeviceVerificationApiResponse> operation
-              = new DeviceVerificationApiOperation(sdkConfiguration);
+              = new DeviceVerificationApiOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -242,14 +300,71 @@ public class DeviceFlow {
      * &lt;/details&gt;
      * 
      * @param serviceId A service ID.
-     * @param 1api1Percent7BserviceIdPercent7D1device1verificationPostRequestBodyContentApplication1jsonSchema 
+     * @param requestBody 
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public DeviceVerificationApiFormResponse verifyForm(@Nonnull String serviceId, @Nonnull 1api1Percent7BserviceIdPercent7D1device1verificationPostRequestBodyContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1device1verificationPostRequestBodyContentApplication1jsonSchema) throws Exception {
-        DeviceVerificationApiFormRequest request = new DeviceVerificationApiFormRequest(serviceId, 1api1Percent7BserviceIdPercent7D1device1verificationPostRequestBodyContentApplication1jsonSchema);
+    public DeviceVerificationApiFormResponse verifyForm(@Nonnull String serviceId, @Nonnull DeviceVerificationApiFormRequestBody requestBody) throws Exception {
+        return verifyForm(serviceId, requestBody, null);
+    }
+
+    /**
+     * Process Device Verification Request
+     * 
+     * <p>The API returns information associated with a user code.
+     * 
+     * <p>&lt;br&gt;
+     * &lt;details&gt;
+     * &lt;summary&gt;Description&lt;/summary&gt;
+     * 
+     * <p>After receiving a response from the device authorization endpoint of the authorization server,
+     * the client application shows the end-user the user code and the verification URI which are included
+     * in the device authorization response. Then, the end-user will access the verification URI using
+     * a web browser on another device (typically, a smart phone). In normal implementations, the verification
+     * endpoint will return an HTML page with an input form where the end-user inputs a user code. The
+     * authorization server will receive a user code from the form.
+     * 
+     * <p>After receiving a user code, the authorization server should call Authlete's `/device/verification`
+     * API with the user code. And then, the authorization server implementation should retrieve the value
+     * of `action` parameter from the API response and take the following steps according to the value.
+     * 
+     * <p>**SERVER_ERROR**
+     * 
+     * <p>When the value of `action` is `SERVER_ERROR`, it means that an error occurred on Authlete side. The
+     * authorization server implementation should tell the end-user that something wrong happened and
+     * urge her to re-initiate a device flow.
+     * 
+     * <p>**NOT_EXIST**
+     * 
+     * <p>When the value of `action` is `NOT_EXIST`, it means that the user code does not exist. The authorization
+     * server implementation should tell the end-user that the user code is invalid and urge her to retry
+     * to input a valid user code.
+     * 
+     * <p>**EXPIRED**
+     * 
+     * <p>When the value of `action` is `EXPIRED`, it means that the user code has expired. The authorization
+     * server implementation should tell the end-user that the user code has expired and urge her to
+     * re-initiate a device flow.
+     * 
+     * <p>**VALID**
+     * 
+     * <p>When the value of `action` is `VALID`, it means that the user code exists, has not expired, and
+     * belongs to the service. The authorization server implementation should interact with the end-user
+     * to ask whether she approves or rejects the authorization request from the device.
+     * &lt;/details&gt;
+     * 
+     * @param serviceId A service ID.
+     * @param requestBody 
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public DeviceVerificationApiFormResponse verifyForm(
+            @Nonnull String serviceId, @Nonnull DeviceVerificationApiFormRequestBody requestBody,
+            @Nullable String serverURL) throws Exception {
+        DeviceVerificationApiFormRequest request = new DeviceVerificationApiFormRequest(serviceId, requestBody);
         RequestOperation<DeviceVerificationApiFormRequest, DeviceVerificationApiFormResponse> operation
-              = new DeviceVerificationApiFormOperation(sdkConfiguration);
+              = new DeviceVerificationApiFormOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -413,9 +528,95 @@ public class DeviceFlow {
      * @throws Exception if the API call fails
      */
     public DeviceCompleteApiResponse complete(@Nonnull String serviceId, @Nonnull DeviceCompleteApiRequestBody requestBody) throws Exception {
+        return complete(serviceId, requestBody, null);
+    }
+
+    /**
+     * Complete Device Authorization
+     * 
+     * <p>This API returns information about what action the authorization server should take after it receives
+     * the result of end-user's decision about whether the end-user has approved or rejected a client
+     * application's request.
+     * 
+     * <p>&lt;br&gt;
+     * &lt;details&gt;
+     * &lt;summary&gt;Description&lt;/summary&gt;
+     * 
+     * <p>In the device flow, an end-user accesses the verification endpoint of the authorization server where
+     * she interacts with the verification endpoint and inputs a user code. The verification endpoint checks
+     * if the user code is valid and then asks the end-user whether she approves or rejects the authorization
+     * request which the user code represents.
+     * 
+     * <p>After the authorization server receives the decision of the end-user, it should call Authlete's
+     * `/device/complete` API to tell Authlete the decision.
+     * 
+     * <p>When the end-user was authenticated and authorization was granted to the client by the end-user,
+     * the authorization server should call the API with `result=AUTHORIZED`. In this successful case,
+     * the subject request parameter is mandatory. The API will update the database record so that `/auth/token`
+     * API can generate an access token later.
+     * 
+     * <p>If the `scope` parameter of the device authorization request included the openid scope, an ID token
+     * is generated. In this case, `sub`, `authTime`, `acr` and `claims` request parameters in the API
+     * call to `/device/complete` affect the ID token.
+     * 
+     * <p>When the authorization server receives the decision of the end-user and it indicates that she has
+     * rejected to give authorization to the client, the authorization server should call the API with
+     * `result=ACCESS_DENIED`. In this case, the API will update the database record so that the `/auth/token`
+     * API can generate an error response later. If `errorDescription` and `errorUri` request parameters
+     * are given to the `/device/complete` API, they will be used as the values of `error_description`
+     * and `error_uri` response parameters in the error response from the token endpoint.
+     * 
+     * <p>When the authorization server could not get decision from the end-user for some reasons, the authorization
+     * server should call the API with `result=TRANSACTION_FAILED`. In this error case, the API will behave
+     * in the same way as in the case of `ACCESS_DENIED`. The only difference is that `expired_token` is
+     * used as the value of the `error` response parameter instead of `access_denied`.
+     * 
+     * <p>After receiving a response from the `/device/complete` API, the implementation of the authorization
+     * server should retrieve the value of `action` from the response and take the following steps according
+     * to the value.
+     * 
+     * <p>**SERVER_ERROR**
+     * 
+     * <p>When the value of `action` is `SERVER_ERROR`, it means that an error occurred on Authlete side. The
+     * authorization server implementation should tell the end-user that something wrong happened and
+     * urge her to re-initiate a device flow.
+     * 
+     * <p>**USER_CODE_NOT_EXIST**
+     * 
+     * <p>When the value of `action` is `USER_CODE_NOT_EXIST`, it means that the user code included in the API
+     * call does not exist. The authorization server implementation should tell the end-user that the user
+     * code has been invalidated and urge her to re-initiate a device flow.
+     * 
+     * <p>**USER_CODE_EXPIRED**
+     * 
+     * <p>When the value of `action` is `USER_CODE_EXPIRED`,  it means that the user code included in the API
+     * call has expired. The authorization server implementation should tell the end-user that the user
+     * code has expired and urge her to re-initiate a device flow.
+     * 
+     * <p>**INVALID_REQUEST**
+     * 
+     * <p>When the value of `action` is `INVALID_REQUEST`, it means that the API call is invalid. Probably,
+     * the authorization server implementation has some bugs.
+     * 
+     * <p>**SUCCESS**
+     * 
+     * <p>When the value of `action` is `SUCCESS`, it means that the API call has been processed successfully.
+     * The authorization server should return a successful response to the web browser the end-user is
+     * using.
+     * &lt;/details&gt;
+     * 
+     * @param serviceId A service ID.
+     * @param requestBody 
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public DeviceCompleteApiResponse complete(
+            @Nonnull String serviceId, @Nonnull DeviceCompleteApiRequestBody requestBody,
+            @Nullable String serverURL) throws Exception {
         DeviceCompleteApiRequest request = new DeviceCompleteApiRequest(serviceId, requestBody);
         RequestOperation<DeviceCompleteApiRequest, DeviceCompleteApiResponse> operation
-              = new DeviceCompleteApiOperation(sdkConfiguration);
+              = new DeviceCompleteApiOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -574,14 +775,100 @@ public class DeviceFlow {
      * &lt;/details&gt;
      * 
      * @param serviceId A service ID.
-     * @param 1api1Percent7BserviceIdPercent7D1device1completePostRequestBodyContentApplication1jsonSchema 
+     * @param requestBody 
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public DeviceCompleteApiFormResponse completeForm(@Nonnull String serviceId, @Nonnull 1api1Percent7BserviceIdPercent7D1device1completePostRequestBodyContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1device1completePostRequestBodyContentApplication1jsonSchema) throws Exception {
-        DeviceCompleteApiFormRequest request = new DeviceCompleteApiFormRequest(serviceId, 1api1Percent7BserviceIdPercent7D1device1completePostRequestBodyContentApplication1jsonSchema);
+    public DeviceCompleteApiFormResponse completeForm(@Nonnull String serviceId, @Nonnull DeviceCompleteApiFormRequestBody requestBody) throws Exception {
+        return completeForm(serviceId, requestBody, null);
+    }
+
+    /**
+     * Complete Device Authorization
+     * 
+     * <p>This API returns information about what action the authorization server should take after it receives
+     * the result of end-user's decision about whether the end-user has approved or rejected a client
+     * application's request.
+     * 
+     * <p>&lt;br&gt;
+     * &lt;details&gt;
+     * &lt;summary&gt;Description&lt;/summary&gt;
+     * 
+     * <p>In the device flow, an end-user accesses the verification endpoint of the authorization server where
+     * she interacts with the verification endpoint and inputs a user code. The verification endpoint checks
+     * if the user code is valid and then asks the end-user whether she approves or rejects the authorization
+     * request which the user code represents.
+     * 
+     * <p>After the authorization server receives the decision of the end-user, it should call Authlete's
+     * `/device/complete` API to tell Authlete the decision.
+     * 
+     * <p>When the end-user was authenticated and authorization was granted to the client by the end-user,
+     * the authorization server should call the API with `result=AUTHORIZED`. In this successful case,
+     * the subject request parameter is mandatory. The API will update the database record so that `/auth/token`
+     * API can generate an access token later.
+     * 
+     * <p>If the `scope` parameter of the device authorization request included the openid scope, an ID token
+     * is generated. In this case, `sub`, `authTime`, `acr` and `claims` request parameters in the API
+     * call to `/device/complete` affect the ID token.
+     * 
+     * <p>When the authorization server receives the decision of the end-user and it indicates that she has
+     * rejected to give authorization to the client, the authorization server should call the API with
+     * `result=ACCESS_DENIED`. In this case, the API will update the database record so that the `/auth/token`
+     * API can generate an error response later. If `errorDescription` and `errorUri` request parameters
+     * are given to the `/device/complete` API, they will be used as the values of `error_description`
+     * and `error_uri` response parameters in the error response from the token endpoint.
+     * 
+     * <p>When the authorization server could not get decision from the end-user for some reasons, the authorization
+     * server should call the API with `result=TRANSACTION_FAILED`. In this error case, the API will behave
+     * in the same way as in the case of `ACCESS_DENIED`. The only difference is that `expired_token` is
+     * used as the value of the `error` response parameter instead of `access_denied`.
+     * 
+     * <p>After receiving a response from the `/device/complete` API, the implementation of the authorization
+     * server should retrieve the value of `action` from the response and take the following steps according
+     * to the value.
+     * 
+     * <p>**SERVER_ERROR**
+     * 
+     * <p>When the value of `action` is `SERVER_ERROR`, it means that an error occurred on Authlete side. The
+     * authorization server implementation should tell the end-user that something wrong happened and
+     * urge her to re-initiate a device flow.
+     * 
+     * <p>**USER_CODE_NOT_EXIST**
+     * 
+     * <p>When the value of `action` is `USER_CODE_NOT_EXIST`, it means that the user code included in the API
+     * call does not exist. The authorization server implementation should tell the end-user that the user
+     * code has been invalidated and urge her to re-initiate a device flow.
+     * 
+     * <p>**USER_CODE_EXPIRED**
+     * 
+     * <p>When the value of `action` is `USER_CODE_EXPIRED`,  it means that the user code included in the API
+     * call has expired. The authorization server implementation should tell the end-user that the user
+     * code has expired and urge her to re-initiate a device flow.
+     * 
+     * <p>**INVALID_REQUEST**
+     * 
+     * <p>When the value of `action` is `INVALID_REQUEST`, it means that the API call is invalid. Probably,
+     * the authorization server implementation has some bugs.
+     * 
+     * <p>**SUCCESS**
+     * 
+     * <p>When the value of `action` is `SUCCESS`, it means that the API call has been processed successfully.
+     * The authorization server should return a successful response to the web browser the end-user is
+     * using.
+     * &lt;/details&gt;
+     * 
+     * @param serviceId A service ID.
+     * @param requestBody 
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public DeviceCompleteApiFormResponse completeForm(
+            @Nonnull String serviceId, @Nonnull DeviceCompleteApiFormRequestBody requestBody,
+            @Nullable String serverURL) throws Exception {
+        DeviceCompleteApiFormRequest request = new DeviceCompleteApiFormRequest(serviceId, requestBody);
         RequestOperation<DeviceCompleteApiFormRequest, DeviceCompleteApiFormResponse> operation
-              = new DeviceCompleteApiFormOperation(sdkConfiguration);
+              = new DeviceCompleteApiFormOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 

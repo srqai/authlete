@@ -70,7 +70,8 @@ public class JwkSetEndpoint {
      * @throws Exception if the API call fails
      */
     public ServiceJwksGetApiResponse get(@Nonnull String serviceId) throws Exception {
-        return get(serviceId, null, null);
+        return get(null, null, serviceId,
+            null);
     }
 
     /**
@@ -91,18 +92,19 @@ public class JwkSetEndpoint {
      * 
      * <p>&lt;/details&gt;
      * 
-     * @param serviceId A service ID.
      * @param includePrivateKeys The boolean value that indicates whether the response should include the private keys associated with the service or not. If `true`, the private keys are included in the response. The default value is `false`.
      * @param pretty This boolean value indicates whether the JSON in the response should be formatted or not. If `true`, the JSON in the response is pretty-formatted. The default value is `false`.
+     * @param serviceId A service ID.
+     * @param serverURL Overrides the server URL.
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public ServiceJwksGetApiResponse get(
-            @Nonnull String serviceId, @Nullable Boolean includePrivateKeys,
-            @Nullable Boolean pretty) throws Exception {
-        ServiceJwksGetApiRequest request = new ServiceJwksGetApiRequest(serviceId, includePrivateKeys, pretty);
+            @Nullable Boolean includePrivateKeys, @Nullable Boolean pretty,
+            @Nonnull String serviceId, @Nullable String serverURL) throws Exception {
+        ServiceJwksGetApiRequest request = new ServiceJwksGetApiRequest(includePrivateKeys, pretty, serviceId);
         RequestOperation<ServiceJwksGetApiRequest, ServiceJwksGetApiResponse> operation
-              = new ServiceJwksGetApiOperation(sdkConfiguration);
+              = new ServiceJwksGetApiOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 

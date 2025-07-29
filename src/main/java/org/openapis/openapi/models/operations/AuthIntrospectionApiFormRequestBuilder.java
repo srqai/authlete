@@ -6,10 +6,10 @@ package org.openapis.openapi.models.operations;
 import static org.openapis.openapi.operations.Operations.RequestOperation;
 
 import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1auth1introspectionPostRequestBodyContentApplication1jsonSchema;
 import org.openapis.openapi.operations.AuthIntrospectionApiFormOperation;
 import org.openapis.openapi.utils.Utils;
 
@@ -17,6 +17,7 @@ public class AuthIntrospectionApiFormRequestBuilder {
     private final SDKConfiguration sdkConfiguration;
     private final AuthIntrospectionApiFormRequest.Builder pojoBuilder;
     private AuthIntrospectionApiFormRequest request;
+    private String serverURL;
     private boolean _setterCalled;
 
     public AuthIntrospectionApiFormRequestBuilder(SDKConfiguration sdkConfiguration) {
@@ -30,9 +31,14 @@ public class AuthIntrospectionApiFormRequestBuilder {
         return this;
     }
 
-    public AuthIntrospectionApiFormRequestBuilder oneapi1Percent7BserviceIdPercent7D1auth1introspectionPostRequestBodyContentApplication1jsonSchema(@Nonnull 1api1Percent7BserviceIdPercent7D1auth1introspectionPostRequestBodyContentApplication1jsonSchema oneapi1Percent7BserviceIdPercent7D1auth1introspectionPostRequestBodyContentApplication1jsonSchema) {
-        this.pojoBuilder.oneapi1Percent7BserviceIdPercent7D1auth1introspectionPostRequestBodyContentApplication1jsonSchema(oneapi1Percent7BserviceIdPercent7D1auth1introspectionPostRequestBodyContentApplication1jsonSchema);
+    public AuthIntrospectionApiFormRequestBuilder requestBody(@Nonnull AuthIntrospectionApiFormRequestBody requestBody) {
+        this.pojoBuilder.requestBody(requestBody);
         this._setterCalled = true;
+        return this;
+    }
+
+    public AuthIntrospectionApiFormRequestBuilder serverURL(@Nullable String serverURL) {
+        this.serverURL = serverURL;
         return this;
     }
 
@@ -49,7 +55,7 @@ public class AuthIntrospectionApiFormRequestBuilder {
     */
     public AuthIntrospectionApiFormResponse call() throws Exception {
         RequestOperation<AuthIntrospectionApiFormRequest, AuthIntrospectionApiFormResponse> operation
-              = new AuthIntrospectionApiFormOperation(sdkConfiguration);
+              = new AuthIntrospectionApiFormOperation(sdkConfiguration, serverURL);
 
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }

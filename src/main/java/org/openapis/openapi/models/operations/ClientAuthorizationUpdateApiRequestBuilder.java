@@ -17,6 +17,7 @@ public class ClientAuthorizationUpdateApiRequestBuilder {
     private final SDKConfiguration sdkConfiguration;
     private final ClientAuthorizationUpdateApiRequest.Builder pojoBuilder;
     private ClientAuthorizationUpdateApiRequest request;
+    private String serverURL;
     private boolean _setterCalled;
 
     public ClientAuthorizationUpdateApiRequestBuilder(SDKConfiguration sdkConfiguration) {
@@ -42,6 +43,11 @@ public class ClientAuthorizationUpdateApiRequestBuilder {
         return this;
     }
 
+    public ClientAuthorizationUpdateApiRequestBuilder serverURL(@Nullable String serverURL) {
+        this.serverURL = serverURL;
+        return this;
+    }
+
     private ClientAuthorizationUpdateApiRequest _buildRequest() {
         if (this._setterCalled) {
             this.request = this.pojoBuilder.build();
@@ -55,7 +61,7 @@ public class ClientAuthorizationUpdateApiRequestBuilder {
     */
     public ClientAuthorizationUpdateApiResponse call() throws Exception {
         RequestOperation<ClientAuthorizationUpdateApiRequest, ClientAuthorizationUpdateApiResponse> operation
-              = new ClientAuthorizationUpdateApiOperation(sdkConfiguration);
+              = new ClientAuthorizationUpdateApiOperation(sdkConfiguration, serverURL);
 
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }

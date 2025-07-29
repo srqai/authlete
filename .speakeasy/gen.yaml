@@ -2,6 +2,7 @@ configVersion: 2.0.0
 generation:
   sdkClassName: authelete
   maintainOpenAPIOrder: true
+  deduplicateErrors: true
   usageSnippets:
     optionalPropertyRendering: withExample
     sdkInitStyle: constructor
@@ -22,7 +23,7 @@ generation:
     generateNewTests: true
     skipResponseBodyAssertions: false
 java:
-  version: 0.1.1
+  version: 0.2.1
   additionalDependencies: []
   additionalPlugins: []
   artifactID: openapi

@@ -12,7 +12,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
-import org.openapis.openapi.models.components.AuthorizationDetails;
 import org.openapis.openapi.utils.Utils;
 
 
@@ -20,7 +19,7 @@ public class AuthAuthorizationApiFormGrant {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("scopes")
-    private List<AuthAuthorizationApiFormScope> scopes;
+    private List<AuthAuthorizationApiFormGrantScope> scopes;
 
     /**
      * The claims associated with the Grant.
@@ -36,13 +35,13 @@ public class AuthAuthorizationApiFormGrant {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("authorizationDetails")
-    private AuthorizationDetails authorizationDetails;
+    private AuthAuthorizationApiFormGrantAuthorizationDetails authorizationDetails;
 
     @JsonCreator
     public AuthAuthorizationApiFormGrant(
-            @JsonProperty("scopes") @Nullable List<AuthAuthorizationApiFormScope> scopes,
+            @JsonProperty("scopes") @Nullable List<AuthAuthorizationApiFormGrantScope> scopes,
             @JsonProperty("claims") @Nullable List<String> claims,
-            @JsonProperty("authorizationDetails") @Nullable AuthorizationDetails authorizationDetails) {
+            @JsonProperty("authorizationDetails") @Nullable AuthAuthorizationApiFormGrantAuthorizationDetails authorizationDetails) {
         this.scopes = scopes;
         this.claims = claims;
         this.authorizationDetails = authorizationDetails;
@@ -52,7 +51,7 @@ public class AuthAuthorizationApiFormGrant {
         this(null, null, null);
     }
 
-    public Optional<List<AuthAuthorizationApiFormScope>> scopes() {
+    public Optional<List<AuthAuthorizationApiFormGrantScope>> scopes() {
         return Optional.ofNullable(this.scopes);
     }
 
@@ -68,7 +67,7 @@ public class AuthAuthorizationApiFormGrant {
      * request parameter in the preceding device authorization request which is defined in
      * "OAuth 2.0 Rich Authorization Requests".
      */
-    public Optional<AuthorizationDetails> authorizationDetails() {
+    public Optional<AuthAuthorizationApiFormGrantAuthorizationDetails> authorizationDetails() {
         return Optional.ofNullable(this.authorizationDetails);
     }
 
@@ -77,7 +76,7 @@ public class AuthAuthorizationApiFormGrant {
     }
 
 
-    public AuthAuthorizationApiFormGrant withScopes(@Nullable List<AuthAuthorizationApiFormScope> scopes) {
+    public AuthAuthorizationApiFormGrant withScopes(@Nullable List<AuthAuthorizationApiFormGrantScope> scopes) {
         this.scopes = scopes;
         return this;
     }
@@ -97,7 +96,7 @@ public class AuthAuthorizationApiFormGrant {
      * request parameter in the preceding device authorization request which is defined in
      * "OAuth 2.0 Rich Authorization Requests".
      */
-    public AuthAuthorizationApiFormGrant withAuthorizationDetails(@Nullable AuthorizationDetails authorizationDetails) {
+    public AuthAuthorizationApiFormGrant withAuthorizationDetails(@Nullable AuthAuthorizationApiFormGrantAuthorizationDetails authorizationDetails) {
         this.authorizationDetails = authorizationDetails;
         return this;
     }
@@ -135,17 +134,17 @@ public class AuthAuthorizationApiFormGrant {
     @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
 
-        private List<AuthAuthorizationApiFormScope> scopes;
+        private List<AuthAuthorizationApiFormGrantScope> scopes;
 
         private List<String> claims;
 
-        private AuthorizationDetails authorizationDetails;
+        private AuthAuthorizationApiFormGrantAuthorizationDetails authorizationDetails;
 
         private Builder() {
           // force use of static builder() method
         }
 
-        public Builder scopes(@Nullable List<AuthAuthorizationApiFormScope> scopes) {
+        public Builder scopes(@Nullable List<AuthAuthorizationApiFormGrantScope> scopes) {
             this.scopes = scopes;
             return this;
         }
@@ -163,7 +162,7 @@ public class AuthAuthorizationApiFormGrant {
          * request parameter in the preceding device authorization request which is defined in
          * "OAuth 2.0 Rich Authorization Requests".
          */
-        public Builder authorizationDetails(@Nullable AuthorizationDetails authorizationDetails) {
+        public Builder authorizationDetails(@Nullable AuthAuthorizationApiFormGrantAuthorizationDetails authorizationDetails) {
             this.authorizationDetails = authorizationDetails;
             return this;
         }

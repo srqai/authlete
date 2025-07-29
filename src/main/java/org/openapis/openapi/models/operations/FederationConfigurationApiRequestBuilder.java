@@ -17,6 +17,7 @@ public class FederationConfigurationApiRequestBuilder {
     private final SDKConfiguration sdkConfiguration;
     private final FederationConfigurationApiRequest.Builder pojoBuilder;
     private FederationConfigurationApiRequest request;
+    private String serverURL;
     private boolean _setterCalled;
 
     public FederationConfigurationApiRequestBuilder(SDKConfiguration sdkConfiguration) {
@@ -36,6 +37,11 @@ public class FederationConfigurationApiRequestBuilder {
         return this;
     }
 
+    public FederationConfigurationApiRequestBuilder serverURL(@Nullable String serverURL) {
+        this.serverURL = serverURL;
+        return this;
+    }
+
     private FederationConfigurationApiRequest _buildRequest() {
         if (this._setterCalled) {
             this.request = this.pojoBuilder.build();
@@ -49,7 +55,7 @@ public class FederationConfigurationApiRequestBuilder {
     */
     public FederationConfigurationApiResponse call() throws Exception {
         RequestOperation<FederationConfigurationApiRequest, FederationConfigurationApiResponse> operation
-              = new FederationConfigurationApiOperation(sdkConfiguration);
+              = new FederationConfigurationApiOperation(sdkConfiguration, serverURL);
 
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }

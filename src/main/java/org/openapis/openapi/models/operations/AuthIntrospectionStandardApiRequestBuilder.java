@@ -6,6 +6,7 @@ package org.openapis.openapi.models.operations;
 import static org.openapis.openapi.operations.Operations.RequestOperation;
 
 import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
@@ -16,6 +17,7 @@ public class AuthIntrospectionStandardApiRequestBuilder {
     private final SDKConfiguration sdkConfiguration;
     private final AuthIntrospectionStandardApiRequest.Builder pojoBuilder;
     private AuthIntrospectionStandardApiRequest request;
+    private String serverURL;
     private boolean _setterCalled;
 
     public AuthIntrospectionStandardApiRequestBuilder(SDKConfiguration sdkConfiguration) {
@@ -35,6 +37,11 @@ public class AuthIntrospectionStandardApiRequestBuilder {
         return this;
     }
 
+    public AuthIntrospectionStandardApiRequestBuilder serverURL(@Nullable String serverURL) {
+        this.serverURL = serverURL;
+        return this;
+    }
+
     private AuthIntrospectionStandardApiRequest _buildRequest() {
         if (this._setterCalled) {
             this.request = this.pojoBuilder.build();
@@ -48,7 +55,7 @@ public class AuthIntrospectionStandardApiRequestBuilder {
     */
     public AuthIntrospectionStandardApiResponse call() throws Exception {
         RequestOperation<AuthIntrospectionStandardApiRequest, AuthIntrospectionStandardApiResponse> operation
-              = new AuthIntrospectionStandardApiOperation(sdkConfiguration);
+              = new AuthIntrospectionStandardApiOperation(sdkConfiguration, serverURL);
 
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }

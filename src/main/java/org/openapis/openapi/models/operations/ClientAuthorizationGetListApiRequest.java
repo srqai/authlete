@@ -16,12 +16,6 @@ import org.openapis.openapi.utils.Utils;
 
 public class ClientAuthorizationGetListApiRequest {
     /**
-     * A service ID.
-     */
-    @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=serviceId")
-    private String serviceId;
-
-    /**
      * Unique user ID of an end-user.
      */
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=subject")
@@ -45,34 +39,33 @@ public class ClientAuthorizationGetListApiRequest {
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=end")
     private Integer end;
 
+    /**
+     * A service ID.
+     */
+    @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=serviceId")
+    private String serviceId;
+
     @JsonCreator
     public ClientAuthorizationGetListApiRequest(
-            @Nonnull String serviceId,
             @Nonnull String subject,
             @Nullable String developer,
             @Nullable Integer start,
-            @Nullable Integer end) {
-        this.serviceId = Optional.ofNullable(serviceId)
-            .orElseThrow(() -> new IllegalArgumentException("serviceId cannot be null"));
+            @Nullable Integer end,
+            @Nonnull String serviceId) {
         this.subject = Optional.ofNullable(subject)
             .orElseThrow(() -> new IllegalArgumentException("subject cannot be null"));
         this.developer = developer;
         this.start = start;
         this.end = end;
+        this.serviceId = Optional.ofNullable(serviceId)
+            .orElseThrow(() -> new IllegalArgumentException("serviceId cannot be null"));
     }
     
     public ClientAuthorizationGetListApiRequest(
-            @Nonnull String serviceId,
-            @Nonnull String subject) {
-        this(serviceId, subject, null,
-            null, null);
-    }
-
-    /**
-     * A service ID.
-     */
-    public String serviceId() {
-        return this.serviceId;
+            @Nonnull String subject,
+            @Nonnull String serviceId) {
+        this(subject, null, null,
+            null, serviceId);
     }
 
     /**
@@ -103,17 +96,15 @@ public class ClientAuthorizationGetListApiRequest {
         return Optional.ofNullable(this.end);
     }
 
-    public static Builder builder() {
-        return new Builder();
-    }
-
-
     /**
      * A service ID.
      */
-    public ClientAuthorizationGetListApiRequest withServiceId(@Nonnull String serviceId) {
-        this.serviceId = Utils.checkNotNull(serviceId, "serviceId");
-        return this;
+    public String serviceId() {
+        return this.serviceId;
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
 
@@ -153,6 +144,15 @@ public class ClientAuthorizationGetListApiRequest {
     }
 
 
+    /**
+     * A service ID.
+     */
+    public ClientAuthorizationGetListApiRequest withServiceId(@Nonnull String serviceId) {
+        this.serviceId = Utils.checkNotNull(serviceId, "serviceId");
+        return this;
+    }
+
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -163,34 +163,32 @@ public class ClientAuthorizationGetListApiRequest {
         }
         ClientAuthorizationGetListApiRequest other = (ClientAuthorizationGetListApiRequest) o;
         return 
-            Utils.enhancedDeepEquals(this.serviceId, other.serviceId) &&
             Utils.enhancedDeepEquals(this.subject, other.subject) &&
             Utils.enhancedDeepEquals(this.developer, other.developer) &&
             Utils.enhancedDeepEquals(this.start, other.start) &&
-            Utils.enhancedDeepEquals(this.end, other.end);
+            Utils.enhancedDeepEquals(this.end, other.end) &&
+            Utils.enhancedDeepEquals(this.serviceId, other.serviceId);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            serviceId, subject, developer,
-            start, end);
+            subject, developer, start,
+            end, serviceId);
     }
     
     @Override
     public String toString() {
         return Utils.toString(ClientAuthorizationGetListApiRequest.class,
-                "serviceId", serviceId,
                 "subject", subject,
                 "developer", developer,
                 "start", start,
-                "end", end);
+                "end", end,
+                "serviceId", serviceId);
     }
 
     @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
-
-        private String serviceId;
 
         private String subject;
 
@@ -200,16 +198,10 @@ public class ClientAuthorizationGetListApiRequest {
 
         private Integer end;
 
+        private String serviceId;
+
         private Builder() {
           // force use of static builder() method
-        }
-
-        /**
-         * A service ID.
-         */
-        public Builder serviceId(@Nonnull String serviceId) {
-            this.serviceId = Utils.checkNotNull(serviceId, "serviceId");
-            return this;
         }
 
         /**
@@ -244,10 +236,18 @@ public class ClientAuthorizationGetListApiRequest {
             return this;
         }
 
+        /**
+         * A service ID.
+         */
+        public Builder serviceId(@Nonnull String serviceId) {
+            this.serviceId = Utils.checkNotNull(serviceId, "serviceId");
+            return this;
+        }
+
         public ClientAuthorizationGetListApiRequest build() {
             return new ClientAuthorizationGetListApiRequest(
-                serviceId, subject, developer,
-                start, end);
+                subject, developer, start,
+                end, serviceId);
         }
 
     }

@@ -6,6 +6,7 @@ package org.openapis.openapi;
 import static org.openapis.openapi.operations.Operations.RequestOperation;
 
 import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.models.operations.GrantMApiRequest;
@@ -46,9 +47,27 @@ public class GrantManagementEndpoints {
      * @throws Exception if the API call fails
      */
     public GrantMApiResponse processRequest(@Nonnull String serviceId, @Nonnull GrantMApiRequestBody requestBody) throws Exception {
+        return processRequest(serviceId, requestBody, null);
+    }
+
+    /**
+     * Process Grant Management Request
+     * 
+     * <p>The API is for the implementation of the grant management endpoint which is
+     * defined in "&lt;a href="https://openid.net/specs/fapi-grant-management.html"&gt;Grant Management for OAuth 2.0&lt;/a&gt;".
+     * 
+     * @param serviceId A service ID.
+     * @param requestBody 
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public GrantMApiResponse processRequest(
+            @Nonnull String serviceId, @Nonnull GrantMApiRequestBody requestBody,
+            @Nullable String serverURL) throws Exception {
         GrantMApiRequest request = new GrantMApiRequest(serviceId, requestBody);
         RequestOperation<GrantMApiRequest, GrantMApiResponse> operation
-              = new GrantMApiOperation(sdkConfiguration);
+              = new GrantMApiOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 

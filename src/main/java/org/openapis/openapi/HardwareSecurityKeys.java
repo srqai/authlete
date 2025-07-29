@@ -6,10 +6,11 @@ package org.openapis.openapi;
 import static org.openapis.openapi.operations.Operations.RequestOperation;
 
 import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1hsk1createPostRequestBodyContentApplication1jsonSchema;
 import org.openapis.openapi.models.operations.HskCreateApiFormRequest;
+import org.openapis.openapi.models.operations.HskCreateApiFormRequestBody;
 import org.openapis.openapi.models.operations.HskCreateApiFormRequestBuilder;
 import org.openapis.openapi.models.operations.HskCreateApiFormResponse;
 import org.openapis.openapi.models.operations.HskCreateApiRequest;
@@ -49,9 +50,24 @@ public class HardwareSecurityKeys {
      * @throws Exception if the API call fails
      */
     public HskCreateApiResponse create(@Nonnull String serviceId, @Nonnull HskCreateApiRequestBody requestBody) throws Exception {
+        return create(serviceId, requestBody, null);
+    }
+
+    /**
+     * Create Security Key
+     * 
+     * @param serviceId A service ID.
+     * @param requestBody 
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public HskCreateApiResponse create(
+            @Nonnull String serviceId, @Nonnull HskCreateApiRequestBody requestBody,
+            @Nullable String serverURL) throws Exception {
         HskCreateApiRequest request = new HskCreateApiRequest(serviceId, requestBody);
         RequestOperation<HskCreateApiRequest, HskCreateApiResponse> operation
-              = new HskCreateApiOperation(sdkConfiguration);
+              = new HskCreateApiOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -68,14 +84,29 @@ public class HardwareSecurityKeys {
      * Create Security Key
      * 
      * @param serviceId A service ID.
-     * @param 1api1Percent7BserviceIdPercent7D1hsk1createPostRequestBodyContentApplication1jsonSchema 
+     * @param requestBody 
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public HskCreateApiFormResponse createForm(@Nonnull String serviceId, @Nonnull 1api1Percent7BserviceIdPercent7D1hsk1createPostRequestBodyContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1hsk1createPostRequestBodyContentApplication1jsonSchema) throws Exception {
-        HskCreateApiFormRequest request = new HskCreateApiFormRequest(serviceId, 1api1Percent7BserviceIdPercent7D1hsk1createPostRequestBodyContentApplication1jsonSchema);
+    public HskCreateApiFormResponse createForm(@Nonnull String serviceId, @Nonnull HskCreateApiFormRequestBody requestBody) throws Exception {
+        return createForm(serviceId, requestBody, null);
+    }
+
+    /**
+     * Create Security Key
+     * 
+     * @param serviceId A service ID.
+     * @param requestBody 
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public HskCreateApiFormResponse createForm(
+            @Nonnull String serviceId, @Nonnull HskCreateApiFormRequestBody requestBody,
+            @Nullable String serverURL) throws Exception {
+        HskCreateApiFormRequest request = new HskCreateApiFormRequest(serviceId, requestBody);
         RequestOperation<HskCreateApiFormRequest, HskCreateApiFormResponse> operation
-              = new HskCreateApiFormOperation(sdkConfiguration);
+              = new HskCreateApiFormOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -96,9 +127,21 @@ public class HardwareSecurityKeys {
      * @throws Exception if the API call fails
      */
     public HskGetListApiResponse list(@Nonnull String serviceId) throws Exception {
+        return list(serviceId, null);
+    }
+
+    /**
+     * List Security Keys
+     * 
+     * @param serviceId A service ID.
+     * @param serverURL Overrides the server URL.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public HskGetListApiResponse list(@Nonnull String serviceId, @Nullable String serverURL) throws Exception {
         HskGetListApiRequest request = new HskGetListApiRequest(serviceId);
         RequestOperation<HskGetListApiRequest, HskGetListApiResponse> operation
-              = new HskGetListApiOperation(sdkConfiguration);
+              = new HskGetListApiOperation(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 

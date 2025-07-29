@@ -11,7 +11,6 @@ import jakarta.annotation.Nullable;
 import java.lang.Override;
 import java.lang.String;
 import java.util.Optional;
-import org.openapis.openapi.models.components.Hsk;
 import org.openapis.openapi.utils.Utils;
 
 
@@ -42,14 +41,14 @@ public class HskCreateApiFormResponseBody {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("hsk")
-    private Hsk hsk;
+    private HskCreateApiFormHsk hsk;
 
     @JsonCreator
     public HskCreateApiFormResponseBody(
             @JsonProperty("resultCode") @Nullable String resultCode,
             @JsonProperty("resultMessage") @Nullable String resultMessage,
             @JsonProperty("action") @Nullable HskCreateApiFormAction action,
-            @JsonProperty("hsk") @Nullable Hsk hsk) {
+            @JsonProperty("hsk") @Nullable HskCreateApiFormHsk hsk) {
         this.resultCode = resultCode;
         this.resultMessage = resultMessage;
         this.action = action;
@@ -85,7 +84,7 @@ public class HskCreateApiFormResponseBody {
     /**
      * Holds information about a key managed in an HSM (Hardware Security Module)
      */
-    public Optional<Hsk> hsk() {
+    public Optional<HskCreateApiFormHsk> hsk() {
         return Optional.ofNullable(this.hsk);
     }
 
@@ -124,7 +123,7 @@ public class HskCreateApiFormResponseBody {
     /**
      * Holds information about a key managed in an HSM (Hardware Security Module)
      */
-    public HskCreateApiFormResponseBody withHsk(@Nullable Hsk hsk) {
+    public HskCreateApiFormResponseBody withHsk(@Nullable HskCreateApiFormHsk hsk) {
         this.hsk = hsk;
         return this;
     }
@@ -171,7 +170,7 @@ public class HskCreateApiFormResponseBody {
 
         private HskCreateApiFormAction action;
 
-        private Hsk hsk;
+        private HskCreateApiFormHsk hsk;
 
         private Builder() {
           // force use of static builder() method
@@ -204,7 +203,7 @@ public class HskCreateApiFormResponseBody {
         /**
          * Holds information about a key managed in an HSM (Hardware Security Module)
          */
-        public Builder hsk(@Nullable Hsk hsk) {
+        public Builder hsk(@Nullable HskCreateApiFormHsk hsk) {
             this.hsk = hsk;
             return this;
         }

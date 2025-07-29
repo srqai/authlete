@@ -14,14 +14,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1gmPostRequestBodyContentApplication1jsonSchemaPropertiesGmAction;
-import org.openapis.openapi.models.components.AuthorizationDetails;
-import org.openapis.openapi.models.components.CredentialOfferInfo;
-import org.openapis.openapi.models.components.Display;
-import org.openapis.openapi.models.components.DynamicScope;
-import org.openapis.openapi.models.components.Prompt;
-import org.openapis.openapi.models.components.Scope;
-import org.openapis.openapi.models.components.Service;
 import org.openapis.openapi.utils.Utils;
 
 
@@ -65,7 +57,7 @@ public class AuthAuthorizationApiFormResponseBody {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("display")
-    private Display display;
+    private AuthAuthorizationApiFormDisplay display;
 
     /**
      * The maximum authentication age. This value comes from `max_age` request parameter, or `defaultMaxAge` configuration parameter
@@ -82,7 +74,7 @@ public class AuthAuthorizationApiFormResponseBody {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("service")
-    private Service service;
+    private AuthAuthorizationApiFormService service;
 
     /**
      * The scopes that the client application requests. This value comes from `scope` request parameter.
@@ -111,7 +103,7 @@ public class AuthAuthorizationApiFormResponseBody {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("scopes")
-    private List<Scope> scopes;
+    private List<AuthAuthorizationApiFormScope> scopes;
 
     /**
      * The locales that the client application presented as candidates to be used for UI.
@@ -202,7 +194,7 @@ public class AuthAuthorizationApiFormResponseBody {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("prompts")
-    private List<Prompt> prompts;
+    private List<AuthAuthorizationApiFormPrompt> prompts;
 
     /**
      * The prompt that the UI displayed to the end-user must satisfy as the minimum level. This value comes from `prompt` request parameter.
@@ -213,7 +205,7 @@ public class AuthAuthorizationApiFormResponseBody {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("lowestPrompt")
-    private Prompt lowestPrompt;
+    private AuthAuthorizationApiFormLowestPrompt lowestPrompt;
 
     /**
      * The payload part of the request object. The value of this proprty is `null` if the authorization request does not include a request object.
@@ -334,7 +326,7 @@ public class AuthAuthorizationApiFormResponseBody {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("authorizationDetails")
-    private AuthorizationDetails authorizationDetails;
+    private AuthAuthorizationApiFormAuthorizationDetails authorizationDetails;
 
     /**
      * The `purpose` request parameter is defined in [9. Transaction-specific Purpose](https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html#name-transaction-specific-purpos)
@@ -369,7 +361,7 @@ public class AuthAuthorizationApiFormResponseBody {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("dynamicScopes")
-    private List<DynamicScope> dynamicScopes;
+    private List<AuthAuthorizationApiFormDynamicScope> dynamicScopes;
 
     /**
      * The grant management action of the device authorization request.
@@ -379,7 +371,7 @@ public class AuthAuthorizationApiFormResponseBody {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("gmAction")
-    private 1api1Percent7BserviceIdPercent7D1gmPostRequestBodyContentApplication1jsonSchemaPropertiesGmAction gmAction;
+    private AuthAuthorizationApiFormGmAction gmAction;
 
     /**
      * the value of the `grant_id` request parameter of the device authorization request.
@@ -534,7 +526,7 @@ public class AuthAuthorizationApiFormResponseBody {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentialOfferInfo")
-    private CredentialOfferInfo credentialOfferInfo;
+    private AuthAuthorizationApiFormCredentialOfferInfo credentialOfferInfo;
 
     /**
      * Get the information about the &lt;b&gt;issuable credentials&lt;/b&gt; that can
@@ -551,10 +543,10 @@ public class AuthAuthorizationApiFormResponseBody {
             @JsonProperty("resultMessage") @Nullable String resultMessage,
             @JsonProperty("action") @Nullable AuthAuthorizationApiFormAction action,
             @JsonProperty("client") @Nullable AuthAuthorizationApiFormClient client,
-            @JsonProperty("display") @Nullable Display display,
+            @JsonProperty("display") @Nullable AuthAuthorizationApiFormDisplay display,
             @JsonProperty("maxAge") @Nullable Integer maxAge,
-            @JsonProperty("service") @Nullable Service service,
-            @JsonProperty("scopes") @Nullable List<Scope> scopes,
+            @JsonProperty("service") @Nullable AuthAuthorizationApiFormService service,
+            @JsonProperty("scopes") @Nullable List<AuthAuthorizationApiFormScope> scopes,
             @JsonProperty("uiLocales") @Nullable List<String> uiLocales,
             @JsonProperty("claimsLocales") @Nullable List<String> claimsLocales,
             @JsonProperty("claims") @Nullable List<String> claims,
@@ -563,18 +555,18 @@ public class AuthAuthorizationApiFormResponseBody {
             @JsonProperty("acrs") @Nullable List<String> acrs,
             @JsonProperty("subject") @Nullable String subject,
             @JsonProperty("loginHint") @Nullable String loginHint,
-            @JsonProperty("prompts") @Nullable List<Prompt> prompts,
-            @JsonProperty("lowestPrompt") @Nullable Prompt lowestPrompt,
+            @JsonProperty("prompts") @Nullable List<AuthAuthorizationApiFormPrompt> prompts,
+            @JsonProperty("lowestPrompt") @Nullable AuthAuthorizationApiFormLowestPrompt lowestPrompt,
             @JsonProperty("requestObjectPayload") @Nullable String requestObjectPayload,
             @JsonProperty("idTokenClaims") @Nullable String idTokenClaims,
             @JsonProperty("userInfoClaims") @Nullable String userInfoClaims,
             @JsonProperty("resources") @Nullable List<String> resources,
-            @JsonProperty("authorizationDetails") @Nullable AuthorizationDetails authorizationDetails,
+            @JsonProperty("authorizationDetails") @Nullable AuthAuthorizationApiFormAuthorizationDetails authorizationDetails,
             @JsonProperty("purpose") @Nullable String purpose,
             @JsonProperty("responseContent") @Nullable String responseContent,
             @JsonProperty("ticket") @Nullable String ticket,
-            @JsonProperty("dynamicScopes") @Nullable List<DynamicScope> dynamicScopes,
-            @JsonProperty("gmAction") @Nullable 1api1Percent7BserviceIdPercent7D1gmPostRequestBodyContentApplication1jsonSchemaPropertiesGmAction gmAction,
+            @JsonProperty("dynamicScopes") @Nullable List<AuthAuthorizationApiFormDynamicScope> dynamicScopes,
+            @JsonProperty("gmAction") @Nullable AuthAuthorizationApiFormGmAction gmAction,
             @JsonProperty("grantId") @Nullable String grantId,
             @JsonProperty("grant") @Nullable AuthAuthorizationApiFormGrant grant,
             @JsonProperty("grantSubject") @Nullable String grantSubject,
@@ -583,7 +575,7 @@ public class AuthAuthorizationApiFormResponseBody {
             @JsonProperty("transformedClaims") @Nullable String transformedClaims,
             @JsonProperty("clientEntityIdUsed") @Nullable Boolean clientEntityIdUsed,
             @JsonProperty("claimsAtUserInfo") @Nullable List<String> claimsAtUserInfo,
-            @JsonProperty("credentialOfferInfo") @Nullable CredentialOfferInfo credentialOfferInfo,
+            @JsonProperty("credentialOfferInfo") @Nullable AuthAuthorizationApiFormCredentialOfferInfo credentialOfferInfo,
             @JsonProperty("issuableCredentials") @Nullable String issuableCredentials) {
         this.resultCode = resultCode;
         this.resultMessage = resultMessage;
@@ -677,7 +669,7 @@ public class AuthAuthorizationApiFormResponseBody {
      * <p>Values for this property correspond to the values listed in
      * "[OpenID Connect Core 1.0, 3.1.2.1. Authentication Request](https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest), display".
      */
-    public Optional<Display> display() {
+    public Optional<AuthAuthorizationApiFormDisplay> display() {
         return Optional.ofNullable(this.display);
     }
 
@@ -693,7 +685,7 @@ public class AuthAuthorizationApiFormResponseBody {
         return Optional.ofNullable(this.maxAge);
     }
 
-    public Optional<Service> service() {
+    public Optional<AuthAuthorizationApiFormService> service() {
         return Optional.ofNullable(this.service);
     }
 
@@ -722,7 +714,7 @@ public class AuthAuthorizationApiFormResponseBody {
      * when scope request parameter contains `offline_access`. This behavior is a requirement written in
      * [OpenID Connect Core 1.0, 11. Offline Access](https://openid.net/specs/openid-connect-core-1_0.html#OfflineAccess).
      */
-    public Optional<List<Scope>> scopes() {
+    public Optional<List<AuthAuthorizationApiFormScope>> scopes() {
         return Optional.ofNullable(this.scopes);
     }
 
@@ -813,7 +805,7 @@ public class AuthAuthorizationApiFormResponseBody {
     /**
      * The list of values of prompt request parameter. See "[OpenID Connect Core 1.0, 3.1.2.1. Authentication Request](https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest), prompt" for prompt request parameter.
      */
-    public Optional<List<Prompt>> prompts() {
+    public Optional<List<AuthAuthorizationApiFormPrompt>> prompts() {
         return Optional.ofNullable(this.prompts);
     }
 
@@ -824,7 +816,7 @@ public class AuthAuthorizationApiFormResponseBody {
      * 
      * <p>See "[OpenID Connect Core 1.0, 3.1.2.1. Authentication Request](https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest), prompt" for `prompt` request parameter.
      */
-    public Optional<Prompt> lowestPrompt() {
+    public Optional<AuthAuthorizationApiFormLowestPrompt> lowestPrompt() {
         return Optional.ofNullable(this.lowestPrompt);
     }
 
@@ -945,7 +937,7 @@ public class AuthAuthorizationApiFormResponseBody {
      * request parameter in the preceding device authorization request which is defined in
      * "OAuth 2.0 Rich Authorization Requests".
      */
-    public Optional<AuthorizationDetails> authorizationDetails() {
+    public Optional<AuthAuthorizationApiFormAuthorizationDetails> authorizationDetails() {
         return Optional.ofNullable(this.authorizationDetails);
     }
 
@@ -980,7 +972,7 @@ public class AuthAuthorizationApiFormResponseBody {
     /**
      * The dynamic scopes which the client application requested by the scope request parameter.
      */
-    public Optional<List<DynamicScope>> dynamicScopes() {
+    public Optional<List<AuthAuthorizationApiFormDynamicScope>> dynamicScopes() {
         return Optional.ofNullable(this.dynamicScopes);
     }
 
@@ -990,7 +982,7 @@ public class AuthAuthorizationApiFormResponseBody {
      * <p>The `grant_management_action` request parameter is defined in
      * [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html).
      */
-    public Optional<1api1Percent7BserviceIdPercent7D1gmPostRequestBodyContentApplication1jsonSchemaPropertiesGmAction> gmAction() {
+    public Optional<AuthAuthorizationApiFormGmAction> gmAction() {
         return Optional.ofNullable(this.gmAction);
     }
 
@@ -1143,7 +1135,7 @@ public class AuthAuthorizationApiFormResponseBody {
         return Optional.ofNullable(this.claimsAtUserInfo);
     }
 
-    public Optional<CredentialOfferInfo> credentialOfferInfo() {
+    public Optional<AuthAuthorizationApiFormCredentialOfferInfo> credentialOfferInfo() {
         return Optional.ofNullable(this.credentialOfferInfo);
     }
 
@@ -1205,7 +1197,7 @@ public class AuthAuthorizationApiFormResponseBody {
      * <p>Values for this property correspond to the values listed in
      * "[OpenID Connect Core 1.0, 3.1.2.1. Authentication Request](https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest), display".
      */
-    public AuthAuthorizationApiFormResponseBody withDisplay(@Nullable Display display) {
+    public AuthAuthorizationApiFormResponseBody withDisplay(@Nullable AuthAuthorizationApiFormDisplay display) {
         this.display = display;
         return this;
     }
@@ -1225,7 +1217,7 @@ public class AuthAuthorizationApiFormResponseBody {
     }
 
 
-    public AuthAuthorizationApiFormResponseBody withService(@Nullable Service service) {
+    public AuthAuthorizationApiFormResponseBody withService(@Nullable AuthAuthorizationApiFormService service) {
         this.service = service;
         return this;
     }
@@ -1256,7 +1248,7 @@ public class AuthAuthorizationApiFormResponseBody {
      * when scope request parameter contains `offline_access`. This behavior is a requirement written in
      * [OpenID Connect Core 1.0, 11. Offline Access](https://openid.net/specs/openid-connect-core-1_0.html#OfflineAccess).
      */
-    public AuthAuthorizationApiFormResponseBody withScopes(@Nullable List<Scope> scopes) {
+    public AuthAuthorizationApiFormResponseBody withScopes(@Nullable List<AuthAuthorizationApiFormScope> scopes) {
         this.scopes = scopes;
         return this;
     }
@@ -1365,7 +1357,7 @@ public class AuthAuthorizationApiFormResponseBody {
     /**
      * The list of values of prompt request parameter. See "[OpenID Connect Core 1.0, 3.1.2.1. Authentication Request](https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest), prompt" for prompt request parameter.
      */
-    public AuthAuthorizationApiFormResponseBody withPrompts(@Nullable List<Prompt> prompts) {
+    public AuthAuthorizationApiFormResponseBody withPrompts(@Nullable List<AuthAuthorizationApiFormPrompt> prompts) {
         this.prompts = prompts;
         return this;
     }
@@ -1378,7 +1370,7 @@ public class AuthAuthorizationApiFormResponseBody {
      * 
      * <p>See "[OpenID Connect Core 1.0, 3.1.2.1. Authentication Request](https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest), prompt" for `prompt` request parameter.
      */
-    public AuthAuthorizationApiFormResponseBody withLowestPrompt(@Nullable Prompt lowestPrompt) {
+    public AuthAuthorizationApiFormResponseBody withLowestPrompt(@Nullable AuthAuthorizationApiFormLowestPrompt lowestPrompt) {
         this.lowestPrompt = lowestPrompt;
         return this;
     }
@@ -1509,7 +1501,7 @@ public class AuthAuthorizationApiFormResponseBody {
      * request parameter in the preceding device authorization request which is defined in
      * "OAuth 2.0 Rich Authorization Requests".
      */
-    public AuthAuthorizationApiFormResponseBody withAuthorizationDetails(@Nullable AuthorizationDetails authorizationDetails) {
+    public AuthAuthorizationApiFormResponseBody withAuthorizationDetails(@Nullable AuthAuthorizationApiFormAuthorizationDetails authorizationDetails) {
         this.authorizationDetails = authorizationDetails;
         return this;
     }
@@ -1552,7 +1544,7 @@ public class AuthAuthorizationApiFormResponseBody {
     /**
      * The dynamic scopes which the client application requested by the scope request parameter.
      */
-    public AuthAuthorizationApiFormResponseBody withDynamicScopes(@Nullable List<DynamicScope> dynamicScopes) {
+    public AuthAuthorizationApiFormResponseBody withDynamicScopes(@Nullable List<AuthAuthorizationApiFormDynamicScope> dynamicScopes) {
         this.dynamicScopes = dynamicScopes;
         return this;
     }
@@ -1564,7 +1556,7 @@ public class AuthAuthorizationApiFormResponseBody {
      * <p>The `grant_management_action` request parameter is defined in
      * [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html).
      */
-    public AuthAuthorizationApiFormResponseBody withGmAction(@Nullable 1api1Percent7BserviceIdPercent7D1gmPostRequestBodyContentApplication1jsonSchemaPropertiesGmAction gmAction) {
+    public AuthAuthorizationApiFormResponseBody withGmAction(@Nullable AuthAuthorizationApiFormGmAction gmAction) {
         this.gmAction = gmAction;
         return this;
     }
@@ -1735,7 +1727,7 @@ public class AuthAuthorizationApiFormResponseBody {
     }
 
 
-    public AuthAuthorizationApiFormResponseBody withCredentialOfferInfo(@Nullable CredentialOfferInfo credentialOfferInfo) {
+    public AuthAuthorizationApiFormResponseBody withCredentialOfferInfo(@Nullable AuthAuthorizationApiFormCredentialOfferInfo credentialOfferInfo) {
         this.credentialOfferInfo = credentialOfferInfo;
         return this;
     }
@@ -1874,13 +1866,13 @@ public class AuthAuthorizationApiFormResponseBody {
 
         private AuthAuthorizationApiFormClient client;
 
-        private Display display;
+        private AuthAuthorizationApiFormDisplay display;
 
         private Integer maxAge;
 
-        private Service service;
+        private AuthAuthorizationApiFormService service;
 
-        private List<Scope> scopes;
+        private List<AuthAuthorizationApiFormScope> scopes;
 
         private List<String> uiLocales;
 
@@ -1898,9 +1890,9 @@ public class AuthAuthorizationApiFormResponseBody {
 
         private String loginHint;
 
-        private List<Prompt> prompts;
+        private List<AuthAuthorizationApiFormPrompt> prompts;
 
-        private Prompt lowestPrompt;
+        private AuthAuthorizationApiFormLowestPrompt lowestPrompt;
 
         private String requestObjectPayload;
 
@@ -1910,7 +1902,7 @@ public class AuthAuthorizationApiFormResponseBody {
 
         private List<String> resources;
 
-        private AuthorizationDetails authorizationDetails;
+        private AuthAuthorizationApiFormAuthorizationDetails authorizationDetails;
 
         private String purpose;
 
@@ -1918,9 +1910,9 @@ public class AuthAuthorizationApiFormResponseBody {
 
         private String ticket;
 
-        private List<DynamicScope> dynamicScopes;
+        private List<AuthAuthorizationApiFormDynamicScope> dynamicScopes;
 
-        private 1api1Percent7BserviceIdPercent7D1gmPostRequestBodyContentApplication1jsonSchemaPropertiesGmAction gmAction;
+        private AuthAuthorizationApiFormGmAction gmAction;
 
         private String grantId;
 
@@ -1938,7 +1930,7 @@ public class AuthAuthorizationApiFormResponseBody {
 
         private List<String> claimsAtUserInfo;
 
-        private CredentialOfferInfo credentialOfferInfo;
+        private AuthAuthorizationApiFormCredentialOfferInfo credentialOfferInfo;
 
         private String issuableCredentials;
 
@@ -1986,7 +1978,7 @@ public class AuthAuthorizationApiFormResponseBody {
          * <p>Values for this property correspond to the values listed in
          * "[OpenID Connect Core 1.0, 3.1.2.1. Authentication Request](https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest), display".
          */
-        public Builder display(@Nullable Display display) {
+        public Builder display(@Nullable AuthAuthorizationApiFormDisplay display) {
             this.display = display;
             return this;
         }
@@ -2004,7 +1996,7 @@ public class AuthAuthorizationApiFormResponseBody {
             return this;
         }
 
-        public Builder service(@Nullable Service service) {
+        public Builder service(@Nullable AuthAuthorizationApiFormService service) {
             this.service = service;
             return this;
         }
@@ -2034,7 +2026,7 @@ public class AuthAuthorizationApiFormResponseBody {
          * when scope request parameter contains `offline_access`. This behavior is a requirement written in
          * [OpenID Connect Core 1.0, 11. Offline Access](https://openid.net/specs/openid-connect-core-1_0.html#OfflineAccess).
          */
-        public Builder scopes(@Nullable List<Scope> scopes) {
+        public Builder scopes(@Nullable List<AuthAuthorizationApiFormScope> scopes) {
             this.scopes = scopes;
             return this;
         }
@@ -2134,7 +2126,7 @@ public class AuthAuthorizationApiFormResponseBody {
         /**
          * The list of values of prompt request parameter. See "[OpenID Connect Core 1.0, 3.1.2.1. Authentication Request](https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest), prompt" for prompt request parameter.
          */
-        public Builder prompts(@Nullable List<Prompt> prompts) {
+        public Builder prompts(@Nullable List<AuthAuthorizationApiFormPrompt> prompts) {
             this.prompts = prompts;
             return this;
         }
@@ -2146,7 +2138,7 @@ public class AuthAuthorizationApiFormResponseBody {
          * 
          * <p>See "[OpenID Connect Core 1.0, 3.1.2.1. Authentication Request](https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest), prompt" for `prompt` request parameter.
          */
-        public Builder lowestPrompt(@Nullable Prompt lowestPrompt) {
+        public Builder lowestPrompt(@Nullable AuthAuthorizationApiFormLowestPrompt lowestPrompt) {
             this.lowestPrompt = lowestPrompt;
             return this;
         }
@@ -2272,7 +2264,7 @@ public class AuthAuthorizationApiFormResponseBody {
          * request parameter in the preceding device authorization request which is defined in
          * "OAuth 2.0 Rich Authorization Requests".
          */
-        public Builder authorizationDetails(@Nullable AuthorizationDetails authorizationDetails) {
+        public Builder authorizationDetails(@Nullable AuthAuthorizationApiFormAuthorizationDetails authorizationDetails) {
             this.authorizationDetails = authorizationDetails;
             return this;
         }
@@ -2311,7 +2303,7 @@ public class AuthAuthorizationApiFormResponseBody {
         /**
          * The dynamic scopes which the client application requested by the scope request parameter.
          */
-        public Builder dynamicScopes(@Nullable List<DynamicScope> dynamicScopes) {
+        public Builder dynamicScopes(@Nullable List<AuthAuthorizationApiFormDynamicScope> dynamicScopes) {
             this.dynamicScopes = dynamicScopes;
             return this;
         }
@@ -2322,7 +2314,7 @@ public class AuthAuthorizationApiFormResponseBody {
          * <p>The `grant_management_action` request parameter is defined in
          * [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html).
          */
-        public Builder gmAction(@Nullable 1api1Percent7BserviceIdPercent7D1gmPostRequestBodyContentApplication1jsonSchemaPropertiesGmAction gmAction) {
+        public Builder gmAction(@Nullable AuthAuthorizationApiFormGmAction gmAction) {
             this.gmAction = gmAction;
             return this;
         }
@@ -2484,7 +2476,7 @@ public class AuthAuthorizationApiFormResponseBody {
             return this;
         }
 
-        public Builder credentialOfferInfo(@Nullable CredentialOfferInfo credentialOfferInfo) {
+        public Builder credentialOfferInfo(@Nullable AuthAuthorizationApiFormCredentialOfferInfo credentialOfferInfo) {
             this.credentialOfferInfo = credentialOfferInfo;
             return this;
         }

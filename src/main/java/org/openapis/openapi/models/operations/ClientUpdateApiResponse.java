@@ -11,7 +11,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.net.http.HttpResponse;
 import java.util.Optional;
-import org.openapis.openapi.models.components.Client;
 import org.openapis.openapi.utils.Response;
 import org.openapis.openapi.utils.Utils;
 
@@ -33,20 +32,20 @@ public class ClientUpdateApiResponse implements Response {
     private HttpResponse<InputStream> rawResponse;
 
 
-    private Client client;
+    private ClientUpdateApiResponseBody object;
 
     @JsonCreator
     public ClientUpdateApiResponse(
             @Nonnull String contentType,
             int statusCode,
             @Nonnull HttpResponse<InputStream> rawResponse,
-            @Nullable Client client) {
+            @Nullable ClientUpdateApiResponseBody object) {
         this.contentType = Optional.ofNullable(contentType)
             .orElseThrow(() -> new IllegalArgumentException("contentType cannot be null"));
         this.statusCode = statusCode;
         this.rawResponse = Optional.ofNullable(rawResponse)
             .orElseThrow(() -> new IllegalArgumentException("rawResponse cannot be null"));
-        this.client = client;
+        this.object = object;
     }
     
     public ClientUpdateApiResponse(
@@ -78,8 +77,8 @@ public class ClientUpdateApiResponse implements Response {
         return this.rawResponse;
     }
 
-    public Optional<Client> client() {
-        return Optional.ofNullable(this.client);
+    public Optional<ClientUpdateApiResponseBody> object() {
+        return Optional.ofNullable(this.object);
     }
 
     public static Builder builder() {
@@ -114,8 +113,8 @@ public class ClientUpdateApiResponse implements Response {
     }
 
 
-    public ClientUpdateApiResponse withClient(@Nullable Client client) {
-        this.client = client;
+    public ClientUpdateApiResponse withObject(@Nullable ClientUpdateApiResponseBody object) {
+        this.object = object;
         return this;
     }
 
@@ -133,14 +132,14 @@ public class ClientUpdateApiResponse implements Response {
             Utils.enhancedDeepEquals(this.contentType, other.contentType) &&
             Utils.enhancedDeepEquals(this.statusCode, other.statusCode) &&
             Utils.enhancedDeepEquals(this.rawResponse, other.rawResponse) &&
-            Utils.enhancedDeepEquals(this.client, other.client);
+            Utils.enhancedDeepEquals(this.object, other.object);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
             contentType, statusCode, rawResponse,
-            client);
+            object);
     }
     
     @Override
@@ -149,7 +148,7 @@ public class ClientUpdateApiResponse implements Response {
                 "contentType", contentType,
                 "statusCode", statusCode,
                 "rawResponse", rawResponse,
-                "client", client);
+                "object", object);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -161,7 +160,7 @@ public class ClientUpdateApiResponse implements Response {
 
         private HttpResponse<InputStream> rawResponse;
 
-        private Client client;
+        private ClientUpdateApiResponseBody object;
 
         private Builder() {
           // force use of static builder() method
@@ -191,15 +190,15 @@ public class ClientUpdateApiResponse implements Response {
             return this;
         }
 
-        public Builder client(@Nullable Client client) {
-            this.client = client;
+        public Builder object(@Nullable ClientUpdateApiResponseBody object) {
+            this.object = object;
             return this;
         }
 
         public ClientUpdateApiResponse build() {
             return new ClientUpdateApiResponse(
                 contentType, statusCode, rawResponse,
-                client);
+                object);
         }
 
     }

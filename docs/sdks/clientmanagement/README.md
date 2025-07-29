@@ -22,19 +22,19 @@ service are returned.
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="client_get_list_api" method="get" path="/api/{serviceId}/client/get/list" -->
 ```java
 package hello.world;
 
 import java.lang.Exception;
 import org.openapis.openapi.Authelete;
 import org.openapis.openapi.models.components.Security;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400ContentApplication1jsonSchemaException;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400Exception;
+import org.openapis.openapi.models.errors.*;
 import org.openapis.openapi.models.operations.ClientGetListApiResponse;
 
 public class Application {
 
-    public static void main(String[] args) throws 1api1infoGetResponses400Exception, 1api1infoGetResponses400ContentApplication1jsonSchemaException, 1api1infoGetResponses400ContentApplication1jsonSchemaException, Exception {
+    public static void main(String[] args) throws BadRequestException, UnauthorizedException, ForbiddenException, InternalServerError, Exception {
 
         Authelete sdk = Authelete.builder()
                 .security(Security.builder()
@@ -57,10 +57,11 @@ public class Application {
 
 | Parameter                                                                                                                                                                                                                                         | Type                                                                                                                                                                                                                                              | Required                                                                                                                                                                                                                                          | Description                                                                                                                                                                                                                                       |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `serviceId`                                                                                                                                                                                                                                       | *String*                                                                                                                                                                                                                                          | :heavy_check_mark:                                                                                                                                                                                                                                | A service ID.                                                                                                                                                                                                                                     |
 | `developer`                                                                                                                                                                                                                                       | *Optional\<String>*                                                                                                                                                                                                                               | :heavy_minus_sign:                                                                                                                                                                                                                                | The developer of client applications. The default value is null. If this parameter is not set<br/>to `null`, client application of the specified developer are returned. Otherwise, all client<br/>applications that belong to the service are returned.<br/> |
 | `start`                                                                                                                                                                                                                                           | *Optional\<Integer>*                                                                                                                                                                                                                              | :heavy_minus_sign:                                                                                                                                                                                                                                | Start index (inclusive) of the result set. The default value is 0. Must not be a negative number.                                                                                                                                                 |
 | `end`                                                                                                                                                                                                                                             | *Optional\<Integer>*                                                                                                                                                                                                                              | :heavy_minus_sign:                                                                                                                                                                                                                                | End index (exclusive) of the result set. The default value is 5. Must not be a negative number.                                                                                                                                                   |
+| `serviceId`                                                                                                                                                                                                                                       | *String*                                                                                                                                                                                                                                          | :heavy_check_mark:                                                                                                                                                                                                                                | A service ID.                                                                                                                                                                                                                                     |
+| `serverURL`                                                                                                                                                                                                                                       | *String*                                                                                                                                                                                                                                          | :heavy_minus_sign:                                                                                                                                                                                                                                | An optional server URL to use.                                                                                                                                                                                                                    |
 
 ### Response
 
@@ -68,12 +69,13 @@ public class Application {
 
 ### Errors
 
-| Error Type                                                                   | Status Code                                                                  | Content Type                                                                 |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| models/errors/1api1infoGetResponses400Exception                              | 400                                                                          | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 401, 403                                                                     | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 500                                                                          | application/json                                                             |
-| models/errors/APIException                                                   | 4XX, 5XX                                                                     | \*/\*                                                                        |
+| Error Type                          | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| models/errors/BadRequestException   | 400                                 | application/json                    |
+| models/errors/UnauthorizedException | 401                                 | application/json                    |
+| models/errors/ForbiddenException    | 403                                 | application/json                    |
+| models/errors/InternalServerError   | 500                                 | application/json                    |
+| models/errors/APIException          | 4XX, 5XX                            | \*/\*                               |
 
 ## create
 
@@ -82,20 +84,20 @@ Create a new client.
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="client_create_api" method="post" path="/api/{serviceId}/client/create" -->
 ```java
 package hello.world;
 
 import java.lang.Exception;
 import java.util.List;
 import org.openapis.openapi.Authelete;
-import org.openapis.openapi.models.components.*;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400ContentApplication1jsonSchemaException;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400Exception;
-import org.openapis.openapi.models.operations.ClientCreateApiResponse;
+import org.openapis.openapi.models.components.Security;
+import org.openapis.openapi.models.errors.*;
+import org.openapis.openapi.models.operations.*;
 
 public class Application {
 
-    public static void main(String[] args) throws 1api1infoGetResponses400Exception, 1api1infoGetResponses400ContentApplication1jsonSchemaException, 1api1infoGetResponses400ContentApplication1jsonSchemaException, Exception {
+    public static void main(String[] args) throws BadRequestException, UnauthorizedException, ForbiddenException, InternalServerError, Exception {
 
         Authelete sdk = Authelete.builder()
                 .security(Security.builder()
@@ -105,35 +107,35 @@ public class Application {
 
         ClientCreateApiResponse res = sdk.clientManagement().create()
                 .serviceId("<id>")
-                .client(ClientInput.builder()
+                .requestBody(ClientCreateApiRequestBody.builder()
                     .clientName("My Client")
                     .clientIdAlias("my-client")
                     .clientIdAliasEnabled(true)
-                    .clientType(ClientClientType.CONFIDENTIAL)
-                    .applicationType(ApplicationType.WEB)
+                    .clientType(ClientCreateApiClientTypeRequest.CONFIDENTIAL)
+                    .applicationType(ClientCreateApiApplicationTypeRequest.WEB)
                     .grantTypes(List.of(
-                        GrantType.AUTHORIZATION_CODE,
-                        GrantType.REFRESH_TOKEN))
+                        ClientCreateApiGrantTypeRequest.AUTHORIZATION_CODE,
+                        ClientCreateApiGrantTypeRequest.REFRESH_TOKEN))
                     .responseTypes(List.of(
-                        ResponseType.CODE,
-                        ResponseType.TOKEN))
+                        ClientCreateApiResponseTypeRequest.CODE,
+                        ClientCreateApiResponseTypeRequest.TOKEN))
                     .redirectUris(List.of(
                         "https://my-client.example.com/cb1",
                         "https://my-client.example.com/cb2"))
-                    .tokenAuthMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
+                    .tokenAuthMethod(ClientCreateApiTokenAuthMethodRequest.CLIENT_SECRET_BASIC)
                     .attributes(List.of(
-                        Pair.builder()
+                        ClientCreateApiAttributeRequest.builder()
                             .key("attribute1-key")
                             .value("attribute1-value")
                             .build(),
-                        Pair.builder()
+                        ClientCreateApiAttributeRequest.builder()
                             .key("attribute2-key")
                             .value("attribute2-value")
                             .build()))
                     .build())
                 .call();
 
-        if (res.client().isPresent()) {
+        if (res.object().isPresent()) {
             // handle response
         }
     }
@@ -142,10 +144,11 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                        | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `serviceId`                                                      | *String*                                                         | :heavy_check_mark:                                               | A service ID.                                                    |
-| `client`                                                         | [Optional\<ClientInput>](../../models/components/ClientInput.md) | :heavy_minus_sign:                                               | N/A                                                              |
+| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `serviceId`                                                                                    | *String*                                                                                       | :heavy_check_mark:                                                                             | A service ID.                                                                                  |
+| `requestBody`                                                                                  | [Optional\<ClientCreateApiRequestBody>](../../models/operations/ClientCreateApiRequestBody.md) | :heavy_minus_sign:                                                                             | N/A                                                                                            |
+| `serverURL`                                                                                    | *String*                                                                                       | :heavy_minus_sign:                                                                             | An optional server URL to use.                                                                 |
 
 ### Response
 
@@ -153,12 +156,13 @@ public class Application {
 
 ### Errors
 
-| Error Type                                                                   | Status Code                                                                  | Content Type                                                                 |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| models/errors/1api1infoGetResponses400Exception                              | 400                                                                          | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 401, 403                                                                     | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 500                                                                          | application/json                                                             |
-| models/errors/APIException                                                   | 4XX, 5XX                                                                     | \*/\*                                                                        |
+| Error Type                          | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| models/errors/BadRequestException   | 400                                 | application/json                    |
+| models/errors/UnauthorizedException | 401                                 | application/json                    |
+| models/errors/ForbiddenException    | 403                                 | application/json                    |
+| models/errors/InternalServerError   | 500                                 | application/json                    |
+| models/errors/APIException          | 4XX, 5XX                            | \*/\*                               |
 
 ## update
 
@@ -167,20 +171,20 @@ Update a client.
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="client_update_api" method="post" path="/api/{serviceId}/client/update/{clientId}" -->
 ```java
 package hello.world;
 
 import java.lang.Exception;
 import java.util.List;
 import org.openapis.openapi.Authelete;
-import org.openapis.openapi.models.components.*;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400ContentApplication1jsonSchemaException;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400Exception;
-import org.openapis.openapi.models.operations.ClientUpdateApiResponse;
+import org.openapis.openapi.models.components.Security;
+import org.openapis.openapi.models.errors.*;
+import org.openapis.openapi.models.operations.*;
 
 public class Application {
 
-    public static void main(String[] args) throws 1api1infoGetResponses400Exception, 1api1infoGetResponses400ContentApplication1jsonSchemaException, 1api1infoGetResponses400ContentApplication1jsonSchemaException, Exception {
+    public static void main(String[] args) throws BadRequestException, UnauthorizedException, ForbiddenException, InternalServerError, Exception {
 
         Authelete sdk = Authelete.builder()
                 .security(Security.builder()
@@ -191,36 +195,36 @@ public class Application {
         ClientUpdateApiResponse res = sdk.clientManagement().update()
                 .serviceId("<id>")
                 .clientId("<id>")
-                .client(ClientInput.builder()
+                .requestBody(ClientUpdateApiRequestBody.builder()
                     .clientName("My updated client")
                     .clientIdAlias("my-client")
                     .clientIdAliasEnabled(true)
-                    .clientType(ClientClientType.CONFIDENTIAL)
-                    .applicationType(ApplicationType.WEB)
+                    .clientType(ClientUpdateApiClientTypeRequest.CONFIDENTIAL)
+                    .applicationType(ClientUpdateApiApplicationTypeRequest.WEB)
                     .tlsClientCertificateBoundAccessTokens(false)
                     .grantTypes(List.of(
-                        GrantType.AUTHORIZATION_CODE,
-                        GrantType.REFRESH_TOKEN))
+                        ClientUpdateApiGrantTypeRequest.AUTHORIZATION_CODE,
+                        ClientUpdateApiGrantTypeRequest.REFRESH_TOKEN))
                     .responseTypes(List.of(
-                        ResponseType.CODE,
-                        ResponseType.TOKEN))
+                        ClientUpdateApiResponseTypeRequest.CODE,
+                        ClientUpdateApiResponseTypeRequest.TOKEN))
                     .redirectUris(List.of(
                         "https://my-client.example.com/cb1",
                         "https://my-client.example.com/cb2"))
-                    .tokenAuthMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
+                    .tokenAuthMethod(ClientUpdateApiTokenAuthMethodRequest.CLIENT_SECRET_BASIC)
                     .parRequired(false)
                     .requestObjectRequired(false)
                     .defaultMaxAge(0)
-                    .idTokenSignAlg(JwsAlg.RS256)
+                    .idTokenSignAlg(ClientUpdateApiIdTokenSignAlgRequest.RS256)
                     .authTimeRequired(false)
-                    .subjectType(SubjectType.PUBLIC)
+                    .subjectType(ClientUpdateApiSubjectTypeRequest.PUBLIC)
                     .bcUserCodeRequired(false)
                     .attributes(List.of(
-                        Pair.builder()
+                        ClientUpdateApiAttributeRequest.builder()
                             .key("attribute1-key")
                             .value("attribute1-value")
                             .build(),
-                        Pair.builder()
+                        ClientUpdateApiAttributeRequest.builder()
                             .key("attribute2-key")
                             .value("attribute2-value")
                             .build()))
@@ -230,7 +234,7 @@ public class Application {
                     .build())
                 .call();
 
-        if (res.client().isPresent()) {
+        if (res.object().isPresent()) {
             // handle response
         }
     }
@@ -239,11 +243,12 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                        | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `serviceId`                                                      | *String*                                                         | :heavy_check_mark:                                               | A service ID.                                                    |
-| `clientId`                                                       | *String*                                                         | :heavy_check_mark:                                               | A client ID.                                                     |
-| `client`                                                         | [Optional\<ClientInput>](../../models/components/ClientInput.md) | :heavy_minus_sign:                                               | N/A                                                              |
+| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `serviceId`                                                                                    | *String*                                                                                       | :heavy_check_mark:                                                                             | A service ID.                                                                                  |
+| `clientId`                                                                                     | *String*                                                                                       | :heavy_check_mark:                                                                             | A client ID.                                                                                   |
+| `requestBody`                                                                                  | [Optional\<ClientUpdateApiRequestBody>](../../models/operations/ClientUpdateApiRequestBody.md) | :heavy_minus_sign:                                                                             | N/A                                                                                            |
+| `serverURL`                                                                                    | *String*                                                                                       | :heavy_minus_sign:                                                                             | An optional server URL to use.                                                                 |
 
 ### Response
 
@@ -251,12 +256,13 @@ public class Application {
 
 ### Errors
 
-| Error Type                                                                   | Status Code                                                                  | Content Type                                                                 |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| models/errors/1api1infoGetResponses400Exception                              | 400                                                                          | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 401, 403                                                                     | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 500                                                                          | application/json                                                             |
-| models/errors/APIException                                                   | 4XX, 5XX                                                                     | \*/\*                                                                        |
+| Error Type                          | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| models/errors/BadRequestException   | 400                                 | application/json                    |
+| models/errors/UnauthorizedException | 401                                 | application/json                    |
+| models/errors/ForbiddenException    | 403                                 | application/json                    |
+| models/errors/InternalServerError   | 500                                 | application/json                    |
+| models/errors/APIException          | 4XX, 5XX                            | \*/\*                               |
 
 ## delete
 
@@ -265,19 +271,19 @@ Delete a client.
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="client_delete_api" method="delete" path="/api/{serviceId}/client/delete/{clientId}" -->
 ```java
 package hello.world;
 
 import java.lang.Exception;
 import org.openapis.openapi.Authelete;
 import org.openapis.openapi.models.components.Security;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400ContentApplication1jsonSchemaException;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400Exception;
+import org.openapis.openapi.models.errors.*;
 import org.openapis.openapi.models.operations.ClientDeleteApiResponse;
 
 public class Application {
 
-    public static void main(String[] args) throws 1api1infoGetResponses400Exception, 1api1infoGetResponses400ContentApplication1jsonSchemaException, 1api1infoGetResponses400ContentApplication1jsonSchemaException, Exception {
+    public static void main(String[] args) throws BadRequestException, UnauthorizedException, ForbiddenException, InternalServerError, Exception {
 
         Authelete sdk = Authelete.builder()
                 .security(Security.builder()
@@ -297,10 +303,11 @@ public class Application {
 
 ### Parameters
 
-| Parameter          | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `serviceId`        | *String*           | :heavy_check_mark: | A service ID.      |
-| `clientId`         | *String*           | :heavy_check_mark: | The client ID.     |
+| Parameter                      | Type                           | Required                       | Description                    |
+| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
+| `serviceId`                    | *String*                       | :heavy_check_mark:             | A service ID.                  |
+| `clientId`                     | *String*                       | :heavy_check_mark:             | The client ID.                 |
+| `serverURL`                    | *String*                       | :heavy_minus_sign:             | An optional server URL to use. |
 
 ### Response
 
@@ -308,9 +315,10 @@ public class Application {
 
 ### Errors
 
-| Error Type                                                                   | Status Code                                                                  | Content Type                                                                 |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| models/errors/1api1infoGetResponses400Exception                              | 400                                                                          | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 401, 403                                                                     | application/json                                                             |
-| models/errors/1api1infoGetResponses400ContentApplication1jsonSchemaException | 500                                                                          | application/json                                                             |
-| models/errors/APIException                                                   | 4XX, 5XX                                                                     | \*/\*                                                                        |
+| Error Type                          | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| models/errors/BadRequestException   | 400                                 | application/json                    |
+| models/errors/UnauthorizedException | 401                                 | application/json                    |
+| models/errors/ForbiddenException    | 403                                 | application/json                    |
+| models/errors/InternalServerError   | 500                                 | application/json                    |
+| models/errors/APIException          | 4XX, 5XX                            | \*/\*                               |

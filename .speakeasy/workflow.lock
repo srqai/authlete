@@ -1,9 +1,9 @@
-speakeasyVersion: 1.590.0
+speakeasyVersion: 1.592.1
 sources:
     Authlete API Explorer:
         sourceNamespace: authlete-api-explorer
-        sourceRevisionDigest: sha256:6d4507b23d516c2cdfcf67d1d536381c11e9fdde8e76b4280196607fbf1cec73
-        sourceBlobDigest: sha256:cc05106e098a2695ec9207a026a2ba19a1f13899201afab961ce37fcaa2fecb7
+        sourceRevisionDigest: sha256:b84e92abc630698b0692b981f4697200f82c4131370f1ea8846bcfb2eaa40cc7
+        sourceBlobDigest: sha256:c0ba923a7a9d3b117d470db384126c343631046a7225aede9e1de300dbe1451f
         tags:
             - latest
             - 3.0.0
@@ -11,17 +11,17 @@ targets:
     authelete:
         source: Authlete API Explorer
         sourceNamespace: authlete-api-explorer
-        sourceRevisionDigest: sha256:6d4507b23d516c2cdfcf67d1d536381c11e9fdde8e76b4280196607fbf1cec73
-        sourceBlobDigest: sha256:cc05106e098a2695ec9207a026a2ba19a1f13899201afab961ce37fcaa2fecb7
+        sourceRevisionDigest: sha256:b84e92abc630698b0692b981f4697200f82c4131370f1ea8846bcfb2eaa40cc7
+        sourceBlobDigest: sha256:c0ba923a7a9d3b117d470db384126c343631046a7225aede9e1de300dbe1451f
         codeSamplesNamespace: authlete-api-explorer-java-code-samples
-        codeSamplesRevisionDigest: sha256:6be85dc1afb54b0a17d1faac6d9fccb6202e212b074b198307dc0a0ca4f63f5e
+        codeSamplesRevisionDigest: sha256:2bd515dfd742f2cf504da5a2f04cf3a682f76abd9c2a33441aaf26e00d67c25d
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
     sources:
         Authlete API Explorer:
             inputs:
-                - location: ../Downloads/onefixlast.yaml
+                - location: ./specs/spec1.json
             overlays:
                 - location: .speakeasy/speakeasy-modifications-overlay.yaml
             transformations:

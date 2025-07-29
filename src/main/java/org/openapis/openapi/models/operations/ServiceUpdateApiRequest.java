@@ -9,7 +9,6 @@ import jakarta.annotation.Nullable;
 import java.lang.Override;
 import java.lang.String;
 import java.util.Optional;
-import org.openapis.openapi.models.components.ServiceInput;
 import org.openapis.openapi.utils.SpeakeasyMetadata;
 import org.openapis.openapi.utils.Utils;
 
@@ -23,15 +22,15 @@ public class ServiceUpdateApiRequest {
 
 
     @SpeakeasyMetadata("request:mediaType=application/json")
-    private ServiceInput service;
+    private ServiceUpdateApiRequestBody requestBody;
 
     @JsonCreator
     public ServiceUpdateApiRequest(
             @Nonnull String serviceId,
-            @Nullable ServiceInput service) {
+            @Nullable ServiceUpdateApiRequestBody requestBody) {
         this.serviceId = Optional.ofNullable(serviceId)
             .orElseThrow(() -> new IllegalArgumentException("serviceId cannot be null"));
-        this.service = service;
+        this.requestBody = requestBody;
     }
     
     public ServiceUpdateApiRequest(
@@ -46,8 +45,8 @@ public class ServiceUpdateApiRequest {
         return this.serviceId;
     }
 
-    public Optional<ServiceInput> service() {
-        return Optional.ofNullable(this.service);
+    public Optional<ServiceUpdateApiRequestBody> requestBody() {
+        return Optional.ofNullable(this.requestBody);
     }
 
     public static Builder builder() {
@@ -64,8 +63,8 @@ public class ServiceUpdateApiRequest {
     }
 
 
-    public ServiceUpdateApiRequest withService(@Nullable ServiceInput service) {
-        this.service = service;
+    public ServiceUpdateApiRequest withRequestBody(@Nullable ServiceUpdateApiRequestBody requestBody) {
+        this.requestBody = requestBody;
         return this;
     }
 
@@ -81,20 +80,20 @@ public class ServiceUpdateApiRequest {
         ServiceUpdateApiRequest other = (ServiceUpdateApiRequest) o;
         return 
             Utils.enhancedDeepEquals(this.serviceId, other.serviceId) &&
-            Utils.enhancedDeepEquals(this.service, other.service);
+            Utils.enhancedDeepEquals(this.requestBody, other.requestBody);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            serviceId, service);
+            serviceId, requestBody);
     }
     
     @Override
     public String toString() {
         return Utils.toString(ServiceUpdateApiRequest.class,
                 "serviceId", serviceId,
-                "service", service);
+                "requestBody", requestBody);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -102,7 +101,7 @@ public class ServiceUpdateApiRequest {
 
         private String serviceId;
 
-        private ServiceInput service;
+        private ServiceUpdateApiRequestBody requestBody;
 
         private Builder() {
           // force use of static builder() method
@@ -116,14 +115,14 @@ public class ServiceUpdateApiRequest {
             return this;
         }
 
-        public Builder service(@Nullable ServiceInput service) {
-            this.service = service;
+        public Builder requestBody(@Nullable ServiceUpdateApiRequestBody requestBody) {
+            this.requestBody = requestBody;
             return this;
         }
 
         public ServiceUpdateApiRequest build() {
             return new ServiceUpdateApiRequest(
-                serviceId, service);
+                serviceId, requestBody);
         }
 
     }

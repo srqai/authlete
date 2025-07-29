@@ -7,18 +7,22 @@ import static org.openapis.openapi.operations.Operations.RequestOperation;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import java.io.InputStream;
 import java.lang.Exception;
 import java.lang.Object;
 import java.lang.String;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.Map;
 import java.util.Optional;
 import org.openapis.openapi.SDKConfiguration;
 import org.openapis.openapi.SecuritySource;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400ContentApplication1jsonSchemaException;
-import org.openapis.openapi.models.errors.1api1infoGetResponses400Exception;
 import org.openapis.openapi.models.errors.APIException;
+import org.openapis.openapi.models.errors.BadRequestException;
+import org.openapis.openapi.models.errors.ForbiddenException;
+import org.openapis.openapi.models.errors.InternalServerError;
+import org.openapis.openapi.models.errors.UnauthorizedException;
 import org.openapis.openapi.models.operations.ClientAuthorizationUpdateApiFormRequest;
 import org.openapis.openapi.models.operations.ClientAuthorizationUpdateApiFormResponse;
 import org.openapis.openapi.models.operations.ClientAuthorizationUpdateApiFormResponseBody;
@@ -33,15 +37,43 @@ import org.openapis.openapi.utils.Utils;
 
 
 public class ClientAuthorizationUpdateApiFormOperation implements RequestOperation<ClientAuthorizationUpdateApiFormRequest, ClientAuthorizationUpdateApiFormResponse> {
+    
+    /**
+     * CLIENT_AUTHORIZATION_UPDATE_API_FORM_SERVERS contains the list of server urls available to the SDK.
+     */
+    public static final String[] CLIENT_AUTHORIZATION_UPDATE_API_FORM_SERVERS = {
+        /**
+         * 🇺🇸 US Cluster
+         */
+        "https://us.authlete.com",
+        /**
+         * 🇯🇵 Japan Cluster
+         */
+        "https://jp.authlete.com",
+        /**
+         * 🇪🇺 Europe Cluster
+         */
+        "https://eu.authlete.com",
+        /**
+         * 🇧🇷 Brazil Cluster
+         */
+        "https://br.authlete.com",
+    };
 
     private final SDKConfiguration sdkConfiguration;
     private final String baseUrl;
     private final SecuritySource securitySource;
     private final HTTPClient client;
 
-    public ClientAuthorizationUpdateApiFormOperation(@Nonnull SDKConfiguration sdkConfiguration) {
+    public ClientAuthorizationUpdateApiFormOperation(
+        @Nonnull SDKConfiguration sdkConfiguration,
+        @Nullable String serverURL) {
         this.sdkConfiguration = sdkConfiguration;
-        this.baseUrl = this.sdkConfiguration.serverUrl();
+        this.baseUrl = Optional.ofNullable(serverURL)
+                .filter(u -> !u.isBlank())
+                .orElse(Utils.templateUrl(
+                        CLIENT_AUTHORIZATION_UPDATE_API_FORM_SERVERS[0], 
+                        Map.of()));
         this.securitySource = this.sdkConfiguration.securitySource();
         this.client = this.sdkConfiguration.client();
     }
@@ -63,7 +95,7 @@ public class ClientAuthorizationUpdateApiFormOperation implements RequestOperati
                 new TypeReference<Object>() {});
         SerializedBody serializedRequestBody = Utils.serializeRequestBody(
                 convertedRequest, 
-                "1api1Percent7BserviceIdPercent7D1client1authorization1update1Percent7BclientIdPercent7DPostRequestBodyContentApplication1jsonSchema",
+                "requestBody",
                 "form",
                 false);
         req.setBody(Optional.ofNullable(serializedRequestBody));
@@ -159,7 +191,7 @@ public class ClientAuthorizationUpdateApiFormOperation implements RequestOperati
         }
         if (Utils.statusCodeMatches(response.statusCode(), "400")) {
             if (Utils.contentTypeMatches(contentType, "application/json")) {
-                1api1infoGetResponses400Exception out = Utils.mapper().readValue(
+                BadRequestException out = Utils.mapper().readValue(
                     response.body(),
                     new TypeReference<>() {
                     });
@@ -174,9 +206,26 @@ public class ClientAuthorizationUpdateApiFormOperation implements RequestOperati
                     Utils.extractByteArrayFromBody(response));
             }
         }
-        if (Utils.statusCodeMatches(response.statusCode(), "401", "403")) {
+        if (Utils.statusCodeMatches(response.statusCode(), "401")) {
             if (Utils.contentTypeMatches(contentType, "application/json")) {
-                1api1infoGetResponses400ContentApplication1jsonSchemaException out = Utils.mapper().readValue(
+                UnauthorizedException out = Utils.mapper().readValue(
+                    response.body(),
+                    new TypeReference<>() {
+                    });
+                    out.withRawResponse(response);
+                
+                throw out;
+            } else {
+                throw new APIException(
+                    response, 
+                    response.statusCode(), 
+                    "Unexpected content-type received: " + contentType, 
+                    Utils.extractByteArrayFromBody(response));
+            }
+        }
+        if (Utils.statusCodeMatches(response.statusCode(), "403")) {
+            if (Utils.contentTypeMatches(contentType, "application/json")) {
+                ForbiddenException out = Utils.mapper().readValue(
                     response.body(),
                     new TypeReference<>() {
                     });
@@ -193,7 +242,7 @@ public class ClientAuthorizationUpdateApiFormOperation implements RequestOperati
         }
         if (Utils.statusCodeMatches(response.statusCode(), "500")) {
             if (Utils.contentTypeMatches(contentType, "application/json")) {
-                1api1infoGetResponses400ContentApplication1jsonSchemaException out = Utils.mapper().readValue(
+                InternalServerError out = Utils.mapper().readValue(
                     response.body(),
                     new TypeReference<>() {
                     });

@@ -18,17 +18,12 @@ public class ClientGetListApiRequestBuilder {
     private final SDKConfiguration sdkConfiguration;
     private final ClientGetListApiRequest.Builder pojoBuilder;
     private ClientGetListApiRequest request;
+    private String serverURL;
     private boolean _setterCalled;
 
     public ClientGetListApiRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
         this.pojoBuilder = ClientGetListApiRequest.builder();
-    }
-
-    public ClientGetListApiRequestBuilder serviceId(@Nonnull String serviceId) {
-        this.pojoBuilder.serviceId(serviceId);
-        this._setterCalled = true;
-        return this;
     }
 
     public ClientGetListApiRequestBuilder developer(@Nullable String developer) {
@@ -49,6 +44,17 @@ public class ClientGetListApiRequestBuilder {
         return this;
     }
 
+    public ClientGetListApiRequestBuilder serviceId(@Nonnull String serviceId) {
+        this.pojoBuilder.serviceId(serviceId);
+        this._setterCalled = true;
+        return this;
+    }
+
+    public ClientGetListApiRequestBuilder serverURL(@Nullable String serverURL) {
+        this.serverURL = serverURL;
+        return this;
+    }
+
     private ClientGetListApiRequest _buildRequest() {
         if (this._setterCalled) {
             this.request = this.pojoBuilder.build();
@@ -62,7 +68,7 @@ public class ClientGetListApiRequestBuilder {
     */
     public ClientGetListApiResponse call() throws Exception {
         RequestOperation<ClientGetListApiRequest, ClientGetListApiResponse> operation
-              = new ClientGetListApiOperation(sdkConfiguration);
+              = new ClientGetListApiOperation(sdkConfiguration, serverURL);
 
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }

@@ -11,7 +11,6 @@ import jakarta.annotation.Nullable;
 import java.lang.Override;
 import java.lang.String;
 import java.util.Optional;
-import org.openapis.openapi.models.components.CredentialOfferInfo;
 import org.openapis.openapi.utils.Utils;
 
 
@@ -40,14 +39,14 @@ public class VciOfferInfoApiResponseBody {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("info")
-    private CredentialOfferInfo info;
+    private VciOfferInfoApiInfo info;
 
     @JsonCreator
     public VciOfferInfoApiResponseBody(
             @JsonProperty("resultCode") @Nullable String resultCode,
             @JsonProperty("resultMessage") @Nullable String resultMessage,
             @JsonProperty("action") @Nullable VciOfferInfoApiAction action,
-            @JsonProperty("info") @Nullable CredentialOfferInfo info) {
+            @JsonProperty("info") @Nullable VciOfferInfoApiInfo info) {
         this.resultCode = resultCode;
         this.resultMessage = resultMessage;
         this.action = action;
@@ -80,7 +79,7 @@ public class VciOfferInfoApiResponseBody {
         return Optional.ofNullable(this.action);
     }
 
-    public Optional<CredentialOfferInfo> info() {
+    public Optional<VciOfferInfoApiInfo> info() {
         return Optional.ofNullable(this.info);
     }
 
@@ -116,7 +115,7 @@ public class VciOfferInfoApiResponseBody {
     }
 
 
-    public VciOfferInfoApiResponseBody withInfo(@Nullable CredentialOfferInfo info) {
+    public VciOfferInfoApiResponseBody withInfo(@Nullable VciOfferInfoApiInfo info) {
         this.info = info;
         return this;
     }
@@ -163,7 +162,7 @@ public class VciOfferInfoApiResponseBody {
 
         private VciOfferInfoApiAction action;
 
-        private CredentialOfferInfo info;
+        private VciOfferInfoApiInfo info;
 
         private Builder() {
           // force use of static builder() method
@@ -193,7 +192,7 @@ public class VciOfferInfoApiResponseBody {
             return this;
         }
 
-        public Builder info(@Nullable CredentialOfferInfo info) {
+        public Builder info(@Nullable VciOfferInfoApiInfo info) {
             this.info = info;
             return this;
         }

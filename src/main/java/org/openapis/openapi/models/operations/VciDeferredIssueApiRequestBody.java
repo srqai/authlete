@@ -11,7 +11,6 @@ import jakarta.annotation.Nullable;
 import java.lang.Override;
 import java.lang.String;
 import java.util.Optional;
-import org.openapis.openapi.models.components.CredentialIssuanceOrder;
 import org.openapis.openapi.utils.Utils;
 
 
@@ -19,11 +18,11 @@ public class VciDeferredIssueApiRequestBody {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("order")
-    private CredentialIssuanceOrder order;
+    private VciDeferredIssueApiOrder order;
 
     @JsonCreator
     public VciDeferredIssueApiRequestBody(
-            @JsonProperty("order") @Nullable CredentialIssuanceOrder order) {
+            @JsonProperty("order") @Nullable VciDeferredIssueApiOrder order) {
         this.order = order;
     }
     
@@ -31,7 +30,7 @@ public class VciDeferredIssueApiRequestBody {
         this(null);
     }
 
-    public Optional<CredentialIssuanceOrder> order() {
+    public Optional<VciDeferredIssueApiOrder> order() {
         return Optional.ofNullable(this.order);
     }
 
@@ -40,7 +39,7 @@ public class VciDeferredIssueApiRequestBody {
     }
 
 
-    public VciDeferredIssueApiRequestBody withOrder(@Nullable CredentialIssuanceOrder order) {
+    public VciDeferredIssueApiRequestBody withOrder(@Nullable VciDeferredIssueApiOrder order) {
         this.order = order;
         return this;
     }
@@ -74,13 +73,13 @@ public class VciDeferredIssueApiRequestBody {
     @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
 
-        private CredentialIssuanceOrder order;
+        private VciDeferredIssueApiOrder order;
 
         private Builder() {
           // force use of static builder() method
         }
 
-        public Builder order(@Nullable CredentialIssuanceOrder order) {
+        public Builder order(@Nullable VciDeferredIssueApiOrder order) {
             this.order = order;
             return this;
         }

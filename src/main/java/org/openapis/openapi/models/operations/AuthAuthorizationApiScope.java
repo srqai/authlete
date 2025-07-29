@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.annotation.Nullable;
+import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
 import java.util.List;
@@ -17,43 +18,92 @@ import org.openapis.openapi.utils.Utils;
 
 public class AuthAuthorizationApiScope {
     /**
-     * Space-delimited scopes.
+     * The name of the scope.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("scope")
-    private String scope;
+    @JsonProperty("name")
+    private String name;
 
     /**
-     * List of resource indicators.
+     * `true` to mark the scope as default. Scopes marked as default are regarded as requested when an authorization request from a client application does not contain scope request parameter.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("resource")
-    private List<String> resource;
+    @JsonProperty("defaultEntry")
+    private Boolean defaultEntry;
+
+    /**
+     * The description about the scope.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("description")
+    private String description;
+
+    /**
+     * The descriptions about this scope in multiple languages.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("descriptions")
+    private List<AuthAuthorizationApiScopeDescription> descriptions;
+
+    /**
+     * The attributes of the scope.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("attributes")
+    private List<AuthAuthorizationApiScopeAttribute> attributes;
 
     @JsonCreator
     public AuthAuthorizationApiScope(
-            @JsonProperty("scope") @Nullable String scope,
-            @JsonProperty("resource") @Nullable List<String> resource) {
-        this.scope = scope;
-        this.resource = resource;
+            @JsonProperty("name") @Nullable String name,
+            @JsonProperty("defaultEntry") @Nullable Boolean defaultEntry,
+            @JsonProperty("description") @Nullable String description,
+            @JsonProperty("descriptions") @Nullable List<AuthAuthorizationApiScopeDescription> descriptions,
+            @JsonProperty("attributes") @Nullable List<AuthAuthorizationApiScopeAttribute> attributes) {
+        this.name = name;
+        this.defaultEntry = defaultEntry;
+        this.description = description;
+        this.descriptions = descriptions;
+        this.attributes = attributes;
     }
     
     public AuthAuthorizationApiScope() {
-        this(null, null);
+        this(null, null, null,
+            null, null);
     }
 
     /**
-     * Space-delimited scopes.
+     * The name of the scope.
      */
-    public Optional<String> scope() {
-        return Optional.ofNullable(this.scope);
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
     }
 
     /**
-     * List of resource indicators.
+     * `true` to mark the scope as default. Scopes marked as default are regarded as requested when an authorization request from a client application does not contain scope request parameter.
      */
-    public Optional<List<String>> resource() {
-        return Optional.ofNullable(this.resource);
+    public Optional<Boolean> defaultEntry() {
+        return Optional.ofNullable(this.defaultEntry);
+    }
+
+    /**
+     * The description about the scope.
+     */
+    public Optional<String> description() {
+        return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * The descriptions about this scope in multiple languages.
+     */
+    public Optional<List<AuthAuthorizationApiScopeDescription>> descriptions() {
+        return Optional.ofNullable(this.descriptions);
+    }
+
+    /**
+     * The attributes of the scope.
+     */
+    public Optional<List<AuthAuthorizationApiScopeAttribute>> attributes() {
+        return Optional.ofNullable(this.attributes);
     }
 
     public static Builder builder() {
@@ -62,19 +112,46 @@ public class AuthAuthorizationApiScope {
 
 
     /**
-     * Space-delimited scopes.
+     * The name of the scope.
      */
-    public AuthAuthorizationApiScope withScope(@Nullable String scope) {
-        this.scope = scope;
+    public AuthAuthorizationApiScope withName(@Nullable String name) {
+        this.name = name;
         return this;
     }
 
 
     /**
-     * List of resource indicators.
+     * `true` to mark the scope as default. Scopes marked as default are regarded as requested when an authorization request from a client application does not contain scope request parameter.
      */
-    public AuthAuthorizationApiScope withResource(@Nullable List<String> resource) {
-        this.resource = resource;
+    public AuthAuthorizationApiScope withDefaultEntry(@Nullable Boolean defaultEntry) {
+        this.defaultEntry = defaultEntry;
+        return this;
+    }
+
+
+    /**
+     * The description about the scope.
+     */
+    public AuthAuthorizationApiScope withDescription(@Nullable String description) {
+        this.description = description;
+        return this;
+    }
+
+
+    /**
+     * The descriptions about this scope in multiple languages.
+     */
+    public AuthAuthorizationApiScope withDescriptions(@Nullable List<AuthAuthorizationApiScopeDescription> descriptions) {
+        this.descriptions = descriptions;
+        return this;
+    }
+
+
+    /**
+     * The attributes of the scope.
+     */
+    public AuthAuthorizationApiScope withAttributes(@Nullable List<AuthAuthorizationApiScopeAttribute> attributes) {
+        this.attributes = attributes;
         return this;
     }
 
@@ -89,53 +166,91 @@ public class AuthAuthorizationApiScope {
         }
         AuthAuthorizationApiScope other = (AuthAuthorizationApiScope) o;
         return 
-            Utils.enhancedDeepEquals(this.scope, other.scope) &&
-            Utils.enhancedDeepEquals(this.resource, other.resource);
+            Utils.enhancedDeepEquals(this.name, other.name) &&
+            Utils.enhancedDeepEquals(this.defaultEntry, other.defaultEntry) &&
+            Utils.enhancedDeepEquals(this.description, other.description) &&
+            Utils.enhancedDeepEquals(this.descriptions, other.descriptions) &&
+            Utils.enhancedDeepEquals(this.attributes, other.attributes);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            scope, resource);
+            name, defaultEntry, description,
+            descriptions, attributes);
     }
     
     @Override
     public String toString() {
         return Utils.toString(AuthAuthorizationApiScope.class,
-                "scope", scope,
-                "resource", resource);
+                "name", name,
+                "defaultEntry", defaultEntry,
+                "description", description,
+                "descriptions", descriptions,
+                "attributes", attributes);
     }
 
     @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
 
-        private String scope;
+        private String name;
 
-        private List<String> resource;
+        private Boolean defaultEntry;
+
+        private String description;
+
+        private List<AuthAuthorizationApiScopeDescription> descriptions;
+
+        private List<AuthAuthorizationApiScopeAttribute> attributes;
 
         private Builder() {
           // force use of static builder() method
         }
 
         /**
-         * Space-delimited scopes.
+         * The name of the scope.
          */
-        public Builder scope(@Nullable String scope) {
-            this.scope = scope;
+        public Builder name(@Nullable String name) {
+            this.name = name;
             return this;
         }
 
         /**
-         * List of resource indicators.
+         * `true` to mark the scope as default. Scopes marked as default are regarded as requested when an authorization request from a client application does not contain scope request parameter.
          */
-        public Builder resource(@Nullable List<String> resource) {
-            this.resource = resource;
+        public Builder defaultEntry(@Nullable Boolean defaultEntry) {
+            this.defaultEntry = defaultEntry;
+            return this;
+        }
+
+        /**
+         * The description about the scope.
+         */
+        public Builder description(@Nullable String description) {
+            this.description = description;
+            return this;
+        }
+
+        /**
+         * The descriptions about this scope in multiple languages.
+         */
+        public Builder descriptions(@Nullable List<AuthAuthorizationApiScopeDescription> descriptions) {
+            this.descriptions = descriptions;
+            return this;
+        }
+
+        /**
+         * The attributes of the scope.
+         */
+        public Builder attributes(@Nullable List<AuthAuthorizationApiScopeAttribute> attributes) {
+            this.attributes = attributes;
             return this;
         }
 
         public AuthAuthorizationApiScope build() {
             return new AuthAuthorizationApiScope(
-                scope, resource);
+                name, defaultEntry, description,
+                descriptions, attributes);
         }
 
     }

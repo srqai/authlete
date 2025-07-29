@@ -16,12 +16,6 @@ import org.openapis.openapi.utils.Utils;
 
 public class ClientGetListApiRequest {
     /**
-     * A service ID.
-     */
-    @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=serviceId")
-    private String serviceId;
-
-    /**
      * The developer of client applications. The default value is null. If this parameter is not set
      * to `null`, client application of the specified developer are returned. Otherwise, all client
      * applications that belong to the service are returned.
@@ -41,30 +35,29 @@ public class ClientGetListApiRequest {
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=end")
     private Integer end;
 
+    /**
+     * A service ID.
+     */
+    @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=serviceId")
+    private String serviceId;
+
     @JsonCreator
     public ClientGetListApiRequest(
-            @Nonnull String serviceId,
             @Nullable String developer,
             @Nullable Integer start,
-            @Nullable Integer end) {
-        this.serviceId = Optional.ofNullable(serviceId)
-            .orElseThrow(() -> new IllegalArgumentException("serviceId cannot be null"));
+            @Nullable Integer end,
+            @Nonnull String serviceId) {
         this.developer = developer;
         this.start = start;
         this.end = end;
+        this.serviceId = Optional.ofNullable(serviceId)
+            .orElseThrow(() -> new IllegalArgumentException("serviceId cannot be null"));
     }
     
     public ClientGetListApiRequest(
             @Nonnull String serviceId) {
-        this(serviceId, null, null,
-            null);
-    }
-
-    /**
-     * A service ID.
-     */
-    public String serviceId() {
-        return this.serviceId;
+        this(null, null, null,
+            serviceId);
     }
 
     /**
@@ -90,17 +83,15 @@ public class ClientGetListApiRequest {
         return Optional.ofNullable(this.end);
     }
 
-    public static Builder builder() {
-        return new Builder();
-    }
-
-
     /**
      * A service ID.
      */
-    public ClientGetListApiRequest withServiceId(@Nonnull String serviceId) {
-        this.serviceId = Utils.checkNotNull(serviceId, "serviceId");
-        return this;
+    public String serviceId() {
+        return this.serviceId;
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
 
@@ -133,6 +124,15 @@ public class ClientGetListApiRequest {
     }
 
 
+    /**
+     * A service ID.
+     */
+    public ClientGetListApiRequest withServiceId(@Nonnull String serviceId) {
+        this.serviceId = Utils.checkNotNull(serviceId, "serviceId");
+        return this;
+    }
+
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -143,32 +143,30 @@ public class ClientGetListApiRequest {
         }
         ClientGetListApiRequest other = (ClientGetListApiRequest) o;
         return 
-            Utils.enhancedDeepEquals(this.serviceId, other.serviceId) &&
             Utils.enhancedDeepEquals(this.developer, other.developer) &&
             Utils.enhancedDeepEquals(this.start, other.start) &&
-            Utils.enhancedDeepEquals(this.end, other.end);
+            Utils.enhancedDeepEquals(this.end, other.end) &&
+            Utils.enhancedDeepEquals(this.serviceId, other.serviceId);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            serviceId, developer, start,
-            end);
+            developer, start, end,
+            serviceId);
     }
     
     @Override
     public String toString() {
         return Utils.toString(ClientGetListApiRequest.class,
-                "serviceId", serviceId,
                 "developer", developer,
                 "start", start,
-                "end", end);
+                "end", end,
+                "serviceId", serviceId);
     }
 
     @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
-
-        private String serviceId;
 
         private String developer;
 
@@ -176,16 +174,10 @@ public class ClientGetListApiRequest {
 
         private Integer end;
 
+        private String serviceId;
+
         private Builder() {
           // force use of static builder() method
-        }
-
-        /**
-         * A service ID.
-         */
-        public Builder serviceId(@Nonnull String serviceId) {
-            this.serviceId = Utils.checkNotNull(serviceId, "serviceId");
-            return this;
         }
 
         /**
@@ -214,10 +206,18 @@ public class ClientGetListApiRequest {
             return this;
         }
 
+        /**
+         * A service ID.
+         */
+        public Builder serviceId(@Nonnull String serviceId) {
+            this.serviceId = Utils.checkNotNull(serviceId, "serviceId");
+            return this;
+        }
+
         public ClientGetListApiRequest build() {
             return new ClientGetListApiRequest(
-                serviceId, developer, start,
-                end);
+                developer, start, end,
+                serviceId);
         }
 
     }

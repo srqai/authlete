@@ -10,7 +10,6 @@ import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1jose1verifyPostRequestBodyContentApplication1jsonSchema;
 import org.openapis.openapi.operations.JoseVerifyApiFormOperation;
 import org.openapis.openapi.utils.Utils;
 
@@ -18,6 +17,7 @@ public class JoseVerifyApiFormRequestBuilder {
     private final SDKConfiguration sdkConfiguration;
     private final JoseVerifyApiFormRequest.Builder pojoBuilder;
     private JoseVerifyApiFormRequest request;
+    private String serverURL;
     private boolean _setterCalled;
 
     public JoseVerifyApiFormRequestBuilder(SDKConfiguration sdkConfiguration) {
@@ -31,9 +31,14 @@ public class JoseVerifyApiFormRequestBuilder {
         return this;
     }
 
-    public JoseVerifyApiFormRequestBuilder oneapi1Percent7BserviceIdPercent7D1jose1verifyPostRequestBodyContentApplication1jsonSchema(@Nullable 1api1Percent7BserviceIdPercent7D1jose1verifyPostRequestBodyContentApplication1jsonSchema oneapi1Percent7BserviceIdPercent7D1jose1verifyPostRequestBodyContentApplication1jsonSchema) {
-        this.pojoBuilder.oneapi1Percent7BserviceIdPercent7D1jose1verifyPostRequestBodyContentApplication1jsonSchema(oneapi1Percent7BserviceIdPercent7D1jose1verifyPostRequestBodyContentApplication1jsonSchema);
+    public JoseVerifyApiFormRequestBuilder requestBody(@Nullable JoseVerifyApiFormRequestBody requestBody) {
+        this.pojoBuilder.requestBody(requestBody);
         this._setterCalled = true;
+        return this;
+    }
+
+    public JoseVerifyApiFormRequestBuilder serverURL(@Nullable String serverURL) {
+        this.serverURL = serverURL;
         return this;
     }
 
@@ -50,7 +55,7 @@ public class JoseVerifyApiFormRequestBuilder {
     */
     public JoseVerifyApiFormResponse call() throws Exception {
         RequestOperation<JoseVerifyApiFormRequest, JoseVerifyApiFormResponse> operation
-              = new JoseVerifyApiFormOperation(sdkConfiguration);
+              = new JoseVerifyApiFormOperation(sdkConfiguration, serverURL);
 
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }

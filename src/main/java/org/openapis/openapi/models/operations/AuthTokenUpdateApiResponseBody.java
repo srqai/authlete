@@ -14,8 +14,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
-import org.openapis.openapi.models.components.AuthorizationDetails;
-import org.openapis.openapi.models.components.Property;
 import org.openapis.openapi.utils.Utils;
 
 
@@ -60,7 +58,7 @@ public class AuthTokenUpdateApiResponseBody {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("properties")
-    private List<Property> properties;
+    private List<AuthTokenUpdateApiPropertyResponse> properties;
 
     /**
      * The scopes associated with the access token.
@@ -76,7 +74,7 @@ public class AuthTokenUpdateApiResponseBody {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("authorizationDetails")
-    private AuthorizationDetails authorizationDetails;
+    private AuthTokenUpdateApiAuthorizationDetailsResponse authorizationDetails;
 
     /**
      * The token type associated with the access token.
@@ -115,9 +113,9 @@ public class AuthTokenUpdateApiResponseBody {
             @JsonProperty("action") @Nullable AuthTokenUpdateApiAction action,
             @JsonProperty("accessToken") @Nullable String accessToken,
             @JsonProperty("accessTokenExpiresAt") @Nullable Long accessTokenExpiresAt,
-            @JsonProperty("properties") @Nullable List<Property> properties,
+            @JsonProperty("properties") @Nullable List<AuthTokenUpdateApiPropertyResponse> properties,
             @JsonProperty("scopes") @Nullable List<String> scopes,
-            @JsonProperty("authorizationDetails") @Nullable AuthorizationDetails authorizationDetails,
+            @JsonProperty("authorizationDetails") @Nullable AuthTokenUpdateApiAuthorizationDetailsResponse authorizationDetails,
             @JsonProperty("tokenType") @Nullable String tokenType,
             @JsonProperty("forExternalAttachment") @Nullable Boolean forExternalAttachment,
             @JsonProperty("tokenId") @Nullable String tokenId,
@@ -181,7 +179,7 @@ public class AuthTokenUpdateApiResponseBody {
     /**
      * The extra properties associated with the access token.
      */
-    public Optional<List<Property>> properties() {
+    public Optional<List<AuthTokenUpdateApiPropertyResponse>> properties() {
         return Optional.ofNullable(this.properties);
     }
 
@@ -197,7 +195,7 @@ public class AuthTokenUpdateApiResponseBody {
      * request parameter in the preceding device authorization request which is defined in
      * "OAuth 2.0 Rich Authorization Requests".
      */
-    public Optional<AuthorizationDetails> authorizationDetails() {
+    public Optional<AuthTokenUpdateApiAuthorizationDetailsResponse> authorizationDetails() {
         return Optional.ofNullable(this.authorizationDetails);
     }
 
@@ -284,7 +282,7 @@ public class AuthTokenUpdateApiResponseBody {
     /**
      * The extra properties associated with the access token.
      */
-    public AuthTokenUpdateApiResponseBody withProperties(@Nullable List<Property> properties) {
+    public AuthTokenUpdateApiResponseBody withProperties(@Nullable List<AuthTokenUpdateApiPropertyResponse> properties) {
         this.properties = properties;
         return this;
     }
@@ -304,7 +302,7 @@ public class AuthTokenUpdateApiResponseBody {
      * request parameter in the preceding device authorization request which is defined in
      * "OAuth 2.0 Rich Authorization Requests".
      */
-    public AuthTokenUpdateApiResponseBody withAuthorizationDetails(@Nullable AuthorizationDetails authorizationDetails) {
+    public AuthTokenUpdateApiResponseBody withAuthorizationDetails(@Nullable AuthTokenUpdateApiAuthorizationDetailsResponse authorizationDetails) {
         this.authorizationDetails = authorizationDetails;
         return this;
     }
@@ -411,11 +409,11 @@ public class AuthTokenUpdateApiResponseBody {
 
         private Long accessTokenExpiresAt;
 
-        private List<Property> properties;
+        private List<AuthTokenUpdateApiPropertyResponse> properties;
 
         private List<String> scopes;
 
-        private AuthorizationDetails authorizationDetails;
+        private AuthTokenUpdateApiAuthorizationDetailsResponse authorizationDetails;
 
         private String tokenType;
 
@@ -472,7 +470,7 @@ public class AuthTokenUpdateApiResponseBody {
         /**
          * The extra properties associated with the access token.
          */
-        public Builder properties(@Nullable List<Property> properties) {
+        public Builder properties(@Nullable List<AuthTokenUpdateApiPropertyResponse> properties) {
             this.properties = properties;
             return this;
         }
@@ -490,7 +488,7 @@ public class AuthTokenUpdateApiResponseBody {
          * request parameter in the preceding device authorization request which is defined in
          * "OAuth 2.0 Rich Authorization Requests".
          */
-        public Builder authorizationDetails(@Nullable AuthorizationDetails authorizationDetails) {
+        public Builder authorizationDetails(@Nullable AuthTokenUpdateApiAuthorizationDetailsResponse authorizationDetails) {
             this.authorizationDetails = authorizationDetails;
             return this;
         }

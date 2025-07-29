@@ -9,7 +9,6 @@ import jakarta.annotation.Nullable;
 import java.lang.Override;
 import java.lang.String;
 import java.util.Optional;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1jose1verifyPostRequestBodyContentApplication1jsonSchema;
 import org.openapis.openapi.utils.SpeakeasyMetadata;
 import org.openapis.openapi.utils.Utils;
 
@@ -23,15 +22,15 @@ public class JoseVerifyApiFormRequest {
 
 
     @SpeakeasyMetadata("request:mediaType=application/x-www-form-urlencoded")
-    private 1api1Percent7BserviceIdPercent7D1jose1verifyPostRequestBodyContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1jose1verifyPostRequestBodyContentApplication1jsonSchema;
+    private JoseVerifyApiFormRequestBody requestBody;
 
     @JsonCreator
     public JoseVerifyApiFormRequest(
             @Nonnull String serviceId,
-            @Nullable 1api1Percent7BserviceIdPercent7D1jose1verifyPostRequestBodyContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1jose1verifyPostRequestBodyContentApplication1jsonSchema) {
+            @Nullable JoseVerifyApiFormRequestBody requestBody) {
         this.serviceId = Optional.ofNullable(serviceId)
             .orElseThrow(() -> new IllegalArgumentException("serviceId cannot be null"));
-        this.1api1Percent7BserviceIdPercent7D1jose1verifyPostRequestBodyContentApplication1jsonSchema = 1api1Percent7BserviceIdPercent7D1jose1verifyPostRequestBodyContentApplication1jsonSchema;
+        this.requestBody = requestBody;
     }
     
     public JoseVerifyApiFormRequest(
@@ -46,8 +45,8 @@ public class JoseVerifyApiFormRequest {
         return this.serviceId;
     }
 
-    public Optional<1api1Percent7BserviceIdPercent7D1jose1verifyPostRequestBodyContentApplication1jsonSchema> 1api1Percent7BserviceIdPercent7D1jose1verifyPostRequestBodyContentApplication1jsonSchema() {
-        return Optional.ofNullable(this.1api1Percent7BserviceIdPercent7D1jose1verifyPostRequestBodyContentApplication1jsonSchema);
+    public Optional<JoseVerifyApiFormRequestBody> requestBody() {
+        return Optional.ofNullable(this.requestBody);
     }
 
     public static Builder builder() {
@@ -64,8 +63,8 @@ public class JoseVerifyApiFormRequest {
     }
 
 
-    public JoseVerifyApiFormRequest with1api1Percent7BserviceIdPercent7D1jose1verifyPostRequestBodyContentApplication1jsonSchema(@Nullable 1api1Percent7BserviceIdPercent7D1jose1verifyPostRequestBodyContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1jose1verifyPostRequestBodyContentApplication1jsonSchema) {
-        this.1api1Percent7BserviceIdPercent7D1jose1verifyPostRequestBodyContentApplication1jsonSchema = 1api1Percent7BserviceIdPercent7D1jose1verifyPostRequestBodyContentApplication1jsonSchema;
+    public JoseVerifyApiFormRequest withRequestBody(@Nullable JoseVerifyApiFormRequestBody requestBody) {
+        this.requestBody = requestBody;
         return this;
     }
 
@@ -81,20 +80,20 @@ public class JoseVerifyApiFormRequest {
         JoseVerifyApiFormRequest other = (JoseVerifyApiFormRequest) o;
         return 
             Utils.enhancedDeepEquals(this.serviceId, other.serviceId) &&
-            Utils.enhancedDeepEquals(this.1api1Percent7BserviceIdPercent7D1jose1verifyPostRequestBodyContentApplication1jsonSchema, other.1api1Percent7BserviceIdPercent7D1jose1verifyPostRequestBodyContentApplication1jsonSchema);
+            Utils.enhancedDeepEquals(this.requestBody, other.requestBody);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            serviceId, 1api1Percent7BserviceIdPercent7D1jose1verifyPostRequestBodyContentApplication1jsonSchema);
+            serviceId, requestBody);
     }
     
     @Override
     public String toString() {
         return Utils.toString(JoseVerifyApiFormRequest.class,
                 "serviceId", serviceId,
-                "1api1Percent7BserviceIdPercent7D1jose1verifyPostRequestBodyContentApplication1jsonSchema", 1api1Percent7BserviceIdPercent7D1jose1verifyPostRequestBodyContentApplication1jsonSchema);
+                "requestBody", requestBody);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -102,7 +101,7 @@ public class JoseVerifyApiFormRequest {
 
         private String serviceId;
 
-        private 1api1Percent7BserviceIdPercent7D1jose1verifyPostRequestBodyContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1jose1verifyPostRequestBodyContentApplication1jsonSchema;
+        private JoseVerifyApiFormRequestBody requestBody;
 
         private Builder() {
           // force use of static builder() method
@@ -116,14 +115,14 @@ public class JoseVerifyApiFormRequest {
             return this;
         }
 
-        public Builder 1api1Percent7BserviceIdPercent7D1jose1verifyPostRequestBodyContentApplication1jsonSchema(@Nullable 1api1Percent7BserviceIdPercent7D1jose1verifyPostRequestBodyContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1jose1verifyPostRequestBodyContentApplication1jsonSchema) {
-            this.1api1Percent7BserviceIdPercent7D1jose1verifyPostRequestBodyContentApplication1jsonSchema = 1api1Percent7BserviceIdPercent7D1jose1verifyPostRequestBodyContentApplication1jsonSchema;
+        public Builder requestBody(@Nullable JoseVerifyApiFormRequestBody requestBody) {
+            this.requestBody = requestBody;
             return this;
         }
 
         public JoseVerifyApiFormRequest build() {
             return new JoseVerifyApiFormRequest(
-                serviceId, 1api1Percent7BserviceIdPercent7D1jose1verifyPostRequestBodyContentApplication1jsonSchema);
+                serviceId, requestBody);
         }
 
     }

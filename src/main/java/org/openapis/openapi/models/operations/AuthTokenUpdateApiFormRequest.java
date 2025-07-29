@@ -8,7 +8,6 @@ import jakarta.annotation.Nonnull;
 import java.lang.Override;
 import java.lang.String;
 import java.util.Optional;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1auth1token1updatePostRequestBodyContentApplication1jsonSchema;
 import org.openapis.openapi.utils.SpeakeasyMetadata;
 import org.openapis.openapi.utils.Utils;
 
@@ -22,16 +21,16 @@ public class AuthTokenUpdateApiFormRequest {
 
 
     @SpeakeasyMetadata("request:mediaType=application/x-www-form-urlencoded")
-    private 1api1Percent7BserviceIdPercent7D1auth1token1updatePostRequestBodyContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1auth1token1updatePostRequestBodyContentApplication1jsonSchema;
+    private AuthTokenUpdateApiFormRequestBody requestBody;
 
     @JsonCreator
     public AuthTokenUpdateApiFormRequest(
             @Nonnull String serviceId,
-            @Nonnull 1api1Percent7BserviceIdPercent7D1auth1token1updatePostRequestBodyContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1auth1token1updatePostRequestBodyContentApplication1jsonSchema) {
+            @Nonnull AuthTokenUpdateApiFormRequestBody requestBody) {
         this.serviceId = Optional.ofNullable(serviceId)
             .orElseThrow(() -> new IllegalArgumentException("serviceId cannot be null"));
-        this.1api1Percent7BserviceIdPercent7D1auth1token1updatePostRequestBodyContentApplication1jsonSchema = Optional.ofNullable(1api1Percent7BserviceIdPercent7D1auth1token1updatePostRequestBodyContentApplication1jsonSchema)
-            .orElseThrow(() -> new IllegalArgumentException("1api1Percent7BserviceIdPercent7D1auth1token1updatePostRequestBodyContentApplication1jsonSchema cannot be null"));
+        this.requestBody = Optional.ofNullable(requestBody)
+            .orElseThrow(() -> new IllegalArgumentException("requestBody cannot be null"));
     }
 
     /**
@@ -41,8 +40,8 @@ public class AuthTokenUpdateApiFormRequest {
         return this.serviceId;
     }
 
-    public 1api1Percent7BserviceIdPercent7D1auth1token1updatePostRequestBodyContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1auth1token1updatePostRequestBodyContentApplication1jsonSchema() {
-        return this.1api1Percent7BserviceIdPercent7D1auth1token1updatePostRequestBodyContentApplication1jsonSchema;
+    public AuthTokenUpdateApiFormRequestBody requestBody() {
+        return this.requestBody;
     }
 
     public static Builder builder() {
@@ -59,8 +58,8 @@ public class AuthTokenUpdateApiFormRequest {
     }
 
 
-    public AuthTokenUpdateApiFormRequest with1api1Percent7BserviceIdPercent7D1auth1token1updatePostRequestBodyContentApplication1jsonSchema(@Nonnull 1api1Percent7BserviceIdPercent7D1auth1token1updatePostRequestBodyContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1auth1token1updatePostRequestBodyContentApplication1jsonSchema) {
-        this.1api1Percent7BserviceIdPercent7D1auth1token1updatePostRequestBodyContentApplication1jsonSchema = Utils.checkNotNull(1api1Percent7BserviceIdPercent7D1auth1token1updatePostRequestBodyContentApplication1jsonSchema, "1api1Percent7BserviceIdPercent7D1auth1token1updatePostRequestBodyContentApplication1jsonSchema");
+    public AuthTokenUpdateApiFormRequest withRequestBody(@Nonnull AuthTokenUpdateApiFormRequestBody requestBody) {
+        this.requestBody = Utils.checkNotNull(requestBody, "requestBody");
         return this;
     }
 
@@ -76,20 +75,20 @@ public class AuthTokenUpdateApiFormRequest {
         AuthTokenUpdateApiFormRequest other = (AuthTokenUpdateApiFormRequest) o;
         return 
             Utils.enhancedDeepEquals(this.serviceId, other.serviceId) &&
-            Utils.enhancedDeepEquals(this.1api1Percent7BserviceIdPercent7D1auth1token1updatePostRequestBodyContentApplication1jsonSchema, other.1api1Percent7BserviceIdPercent7D1auth1token1updatePostRequestBodyContentApplication1jsonSchema);
+            Utils.enhancedDeepEquals(this.requestBody, other.requestBody);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            serviceId, 1api1Percent7BserviceIdPercent7D1auth1token1updatePostRequestBodyContentApplication1jsonSchema);
+            serviceId, requestBody);
     }
     
     @Override
     public String toString() {
         return Utils.toString(AuthTokenUpdateApiFormRequest.class,
                 "serviceId", serviceId,
-                "1api1Percent7BserviceIdPercent7D1auth1token1updatePostRequestBodyContentApplication1jsonSchema", 1api1Percent7BserviceIdPercent7D1auth1token1updatePostRequestBodyContentApplication1jsonSchema);
+                "requestBody", requestBody);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -97,7 +96,7 @@ public class AuthTokenUpdateApiFormRequest {
 
         private String serviceId;
 
-        private 1api1Percent7BserviceIdPercent7D1auth1token1updatePostRequestBodyContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1auth1token1updatePostRequestBodyContentApplication1jsonSchema;
+        private AuthTokenUpdateApiFormRequestBody requestBody;
 
         private Builder() {
           // force use of static builder() method
@@ -111,14 +110,14 @@ public class AuthTokenUpdateApiFormRequest {
             return this;
         }
 
-        public Builder 1api1Percent7BserviceIdPercent7D1auth1token1updatePostRequestBodyContentApplication1jsonSchema(@Nonnull 1api1Percent7BserviceIdPercent7D1auth1token1updatePostRequestBodyContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1auth1token1updatePostRequestBodyContentApplication1jsonSchema) {
-            this.1api1Percent7BserviceIdPercent7D1auth1token1updatePostRequestBodyContentApplication1jsonSchema = Utils.checkNotNull(1api1Percent7BserviceIdPercent7D1auth1token1updatePostRequestBodyContentApplication1jsonSchema, "1api1Percent7BserviceIdPercent7D1auth1token1updatePostRequestBodyContentApplication1jsonSchema");
+        public Builder requestBody(@Nonnull AuthTokenUpdateApiFormRequestBody requestBody) {
+            this.requestBody = Utils.checkNotNull(requestBody, "requestBody");
             return this;
         }
 
         public AuthTokenUpdateApiFormRequest build() {
             return new AuthTokenUpdateApiFormRequest(
-                serviceId, 1api1Percent7BserviceIdPercent7D1auth1token1updatePostRequestBodyContentApplication1jsonSchema);
+                serviceId, requestBody);
         }
 
     }

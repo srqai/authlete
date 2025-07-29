@@ -6,10 +6,10 @@ package org.openapis.openapi.models.operations;
 import static org.openapis.openapi.operations.Operations.RequestOperation;
 
 import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1auth1token1issuePostRequestBodyContentApplication1jsonSchema;
 import org.openapis.openapi.operations.AuthTokenIssueApiFormOperation;
 import org.openapis.openapi.utils.Utils;
 
@@ -17,6 +17,7 @@ public class AuthTokenIssueApiFormRequestBuilder {
     private final SDKConfiguration sdkConfiguration;
     private final AuthTokenIssueApiFormRequest.Builder pojoBuilder;
     private AuthTokenIssueApiFormRequest request;
+    private String serverURL;
     private boolean _setterCalled;
 
     public AuthTokenIssueApiFormRequestBuilder(SDKConfiguration sdkConfiguration) {
@@ -30,9 +31,14 @@ public class AuthTokenIssueApiFormRequestBuilder {
         return this;
     }
 
-    public AuthTokenIssueApiFormRequestBuilder oneapi1Percent7BserviceIdPercent7D1auth1token1issuePostRequestBodyContentApplication1jsonSchema(@Nonnull 1api1Percent7BserviceIdPercent7D1auth1token1issuePostRequestBodyContentApplication1jsonSchema oneapi1Percent7BserviceIdPercent7D1auth1token1issuePostRequestBodyContentApplication1jsonSchema) {
-        this.pojoBuilder.oneapi1Percent7BserviceIdPercent7D1auth1token1issuePostRequestBodyContentApplication1jsonSchema(oneapi1Percent7BserviceIdPercent7D1auth1token1issuePostRequestBodyContentApplication1jsonSchema);
+    public AuthTokenIssueApiFormRequestBuilder requestBody(@Nonnull AuthTokenIssueApiFormRequestBody requestBody) {
+        this.pojoBuilder.requestBody(requestBody);
         this._setterCalled = true;
+        return this;
+    }
+
+    public AuthTokenIssueApiFormRequestBuilder serverURL(@Nullable String serverURL) {
+        this.serverURL = serverURL;
         return this;
     }
 
@@ -49,7 +55,7 @@ public class AuthTokenIssueApiFormRequestBuilder {
     */
     public AuthTokenIssueApiFormResponse call() throws Exception {
         RequestOperation<AuthTokenIssueApiFormRequest, AuthTokenIssueApiFormResponse> operation
-              = new AuthTokenIssueApiFormOperation(sdkConfiguration);
+              = new AuthTokenIssueApiFormOperation(sdkConfiguration, serverURL);
 
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }

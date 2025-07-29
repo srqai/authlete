@@ -8,7 +8,6 @@ import jakarta.annotation.Nonnull;
 import java.lang.Override;
 import java.lang.String;
 import java.util.Optional;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1client1secret1update1Percent7BclientIdentifierPercent7DPostRequestBodyContentApplication1jsonSchema;
 import org.openapis.openapi.utils.SpeakeasyMetadata;
 import org.openapis.openapi.utils.Utils;
 
@@ -28,19 +27,19 @@ public class ClientSecretUpdateApiFormRequest {
 
 
     @SpeakeasyMetadata("request:mediaType=application/x-www-form-urlencoded")
-    private 1api1Percent7BserviceIdPercent7D1client1secret1update1Percent7BclientIdentifierPercent7DPostRequestBodyContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1client1secret1update1Percent7BclientIdentifierPercent7DPostRequestBodyContentApplication1jsonSchema;
+    private ClientSecretUpdateApiFormRequestBody requestBody;
 
     @JsonCreator
     public ClientSecretUpdateApiFormRequest(
             @Nonnull String serviceId,
             @Nonnull String clientIdentifier,
-            @Nonnull 1api1Percent7BserviceIdPercent7D1client1secret1update1Percent7BclientIdentifierPercent7DPostRequestBodyContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1client1secret1update1Percent7BclientIdentifierPercent7DPostRequestBodyContentApplication1jsonSchema) {
+            @Nonnull ClientSecretUpdateApiFormRequestBody requestBody) {
         this.serviceId = Optional.ofNullable(serviceId)
             .orElseThrow(() -> new IllegalArgumentException("serviceId cannot be null"));
         this.clientIdentifier = Optional.ofNullable(clientIdentifier)
             .orElseThrow(() -> new IllegalArgumentException("clientIdentifier cannot be null"));
-        this.1api1Percent7BserviceIdPercent7D1client1secret1update1Percent7BclientIdentifierPercent7DPostRequestBodyContentApplication1jsonSchema = Optional.ofNullable(1api1Percent7BserviceIdPercent7D1client1secret1update1Percent7BclientIdentifierPercent7DPostRequestBodyContentApplication1jsonSchema)
-            .orElseThrow(() -> new IllegalArgumentException("1api1Percent7BserviceIdPercent7D1client1secret1update1Percent7BclientIdentifierPercent7DPostRequestBodyContentApplication1jsonSchema cannot be null"));
+        this.requestBody = Optional.ofNullable(requestBody)
+            .orElseThrow(() -> new IllegalArgumentException("requestBody cannot be null"));
     }
 
     /**
@@ -57,8 +56,8 @@ public class ClientSecretUpdateApiFormRequest {
         return this.clientIdentifier;
     }
 
-    public 1api1Percent7BserviceIdPercent7D1client1secret1update1Percent7BclientIdentifierPercent7DPostRequestBodyContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1client1secret1update1Percent7BclientIdentifierPercent7DPostRequestBodyContentApplication1jsonSchema() {
-        return this.1api1Percent7BserviceIdPercent7D1client1secret1update1Percent7BclientIdentifierPercent7DPostRequestBodyContentApplication1jsonSchema;
+    public ClientSecretUpdateApiFormRequestBody requestBody() {
+        return this.requestBody;
     }
 
     public static Builder builder() {
@@ -84,8 +83,8 @@ public class ClientSecretUpdateApiFormRequest {
     }
 
 
-    public ClientSecretUpdateApiFormRequest with1api1Percent7BserviceIdPercent7D1client1secret1update1Percent7BclientIdentifierPercent7DPostRequestBodyContentApplication1jsonSchema(@Nonnull 1api1Percent7BserviceIdPercent7D1client1secret1update1Percent7BclientIdentifierPercent7DPostRequestBodyContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1client1secret1update1Percent7BclientIdentifierPercent7DPostRequestBodyContentApplication1jsonSchema) {
-        this.1api1Percent7BserviceIdPercent7D1client1secret1update1Percent7BclientIdentifierPercent7DPostRequestBodyContentApplication1jsonSchema = Utils.checkNotNull(1api1Percent7BserviceIdPercent7D1client1secret1update1Percent7BclientIdentifierPercent7DPostRequestBodyContentApplication1jsonSchema, "1api1Percent7BserviceIdPercent7D1client1secret1update1Percent7BclientIdentifierPercent7DPostRequestBodyContentApplication1jsonSchema");
+    public ClientSecretUpdateApiFormRequest withRequestBody(@Nonnull ClientSecretUpdateApiFormRequestBody requestBody) {
+        this.requestBody = Utils.checkNotNull(requestBody, "requestBody");
         return this;
     }
 
@@ -102,13 +101,13 @@ public class ClientSecretUpdateApiFormRequest {
         return 
             Utils.enhancedDeepEquals(this.serviceId, other.serviceId) &&
             Utils.enhancedDeepEquals(this.clientIdentifier, other.clientIdentifier) &&
-            Utils.enhancedDeepEquals(this.1api1Percent7BserviceIdPercent7D1client1secret1update1Percent7BclientIdentifierPercent7DPostRequestBodyContentApplication1jsonSchema, other.1api1Percent7BserviceIdPercent7D1client1secret1update1Percent7BclientIdentifierPercent7DPostRequestBodyContentApplication1jsonSchema);
+            Utils.enhancedDeepEquals(this.requestBody, other.requestBody);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            serviceId, clientIdentifier, 1api1Percent7BserviceIdPercent7D1client1secret1update1Percent7BclientIdentifierPercent7DPostRequestBodyContentApplication1jsonSchema);
+            serviceId, clientIdentifier, requestBody);
     }
     
     @Override
@@ -116,7 +115,7 @@ public class ClientSecretUpdateApiFormRequest {
         return Utils.toString(ClientSecretUpdateApiFormRequest.class,
                 "serviceId", serviceId,
                 "clientIdentifier", clientIdentifier,
-                "1api1Percent7BserviceIdPercent7D1client1secret1update1Percent7BclientIdentifierPercent7DPostRequestBodyContentApplication1jsonSchema", 1api1Percent7BserviceIdPercent7D1client1secret1update1Percent7BclientIdentifierPercent7DPostRequestBodyContentApplication1jsonSchema);
+                "requestBody", requestBody);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -126,7 +125,7 @@ public class ClientSecretUpdateApiFormRequest {
 
         private String clientIdentifier;
 
-        private 1api1Percent7BserviceIdPercent7D1client1secret1update1Percent7BclientIdentifierPercent7DPostRequestBodyContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1client1secret1update1Percent7BclientIdentifierPercent7DPostRequestBodyContentApplication1jsonSchema;
+        private ClientSecretUpdateApiFormRequestBody requestBody;
 
         private Builder() {
           // force use of static builder() method
@@ -148,14 +147,14 @@ public class ClientSecretUpdateApiFormRequest {
             return this;
         }
 
-        public Builder 1api1Percent7BserviceIdPercent7D1client1secret1update1Percent7BclientIdentifierPercent7DPostRequestBodyContentApplication1jsonSchema(@Nonnull 1api1Percent7BserviceIdPercent7D1client1secret1update1Percent7BclientIdentifierPercent7DPostRequestBodyContentApplication1jsonSchema 1api1Percent7BserviceIdPercent7D1client1secret1update1Percent7BclientIdentifierPercent7DPostRequestBodyContentApplication1jsonSchema) {
-            this.1api1Percent7BserviceIdPercent7D1client1secret1update1Percent7BclientIdentifierPercent7DPostRequestBodyContentApplication1jsonSchema = Utils.checkNotNull(1api1Percent7BserviceIdPercent7D1client1secret1update1Percent7BclientIdentifierPercent7DPostRequestBodyContentApplication1jsonSchema, "1api1Percent7BserviceIdPercent7D1client1secret1update1Percent7BclientIdentifierPercent7DPostRequestBodyContentApplication1jsonSchema");
+        public Builder requestBody(@Nonnull ClientSecretUpdateApiFormRequestBody requestBody) {
+            this.requestBody = Utils.checkNotNull(requestBody, "requestBody");
             return this;
         }
 
         public ClientSecretUpdateApiFormRequest build() {
             return new ClientSecretUpdateApiFormRequest(
-                serviceId, clientIdentifier, 1api1Percent7BserviceIdPercent7D1client1secret1update1Percent7BclientIdentifierPercent7DPostRequestBodyContentApplication1jsonSchema);
+                serviceId, clientIdentifier, requestBody);
         }
 
     }

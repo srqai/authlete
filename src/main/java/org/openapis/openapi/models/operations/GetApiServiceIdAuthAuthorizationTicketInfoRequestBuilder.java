@@ -6,6 +6,7 @@ package org.openapis.openapi.models.operations;
 import static org.openapis.openapi.operations.Operations.RequestOperation;
 
 import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
@@ -16,6 +17,7 @@ public class GetApiServiceIdAuthAuthorizationTicketInfoRequestBuilder {
     private final SDKConfiguration sdkConfiguration;
     private final GetApiServiceIdAuthAuthorizationTicketInfoRequest.Builder pojoBuilder;
     private GetApiServiceIdAuthAuthorizationTicketInfoRequest request;
+    private String serverURL;
     private boolean _setterCalled;
 
     public GetApiServiceIdAuthAuthorizationTicketInfoRequestBuilder(SDKConfiguration sdkConfiguration) {
@@ -29,9 +31,8 @@ public class GetApiServiceIdAuthAuthorizationTicketInfoRequestBuilder {
         return this;
     }
 
-    public GetApiServiceIdAuthAuthorizationTicketInfoRequestBuilder requestBody(@Nonnull GetApiServiceIdAuthAuthorizationTicketInfoRequestBody requestBody) {
-        this.pojoBuilder.requestBody(requestBody);
-        this._setterCalled = true;
+    public GetApiServiceIdAuthAuthorizationTicketInfoRequestBuilder serverURL(@Nullable String serverURL) {
+        this.serverURL = serverURL;
         return this;
     }
 
@@ -48,7 +49,7 @@ public class GetApiServiceIdAuthAuthorizationTicketInfoRequestBuilder {
     */
     public GetApiServiceIdAuthAuthorizationTicketInfoResponse call() throws Exception {
         RequestOperation<GetApiServiceIdAuthAuthorizationTicketInfoRequest, GetApiServiceIdAuthAuthorizationTicketInfoResponse> operation
-              = new GetApiServiceIdAuthAuthorizationTicketInfoOperation(sdkConfiguration);
+              = new GetApiServiceIdAuthAuthorizationTicketInfoOperation(sdkConfiguration, serverURL);
 
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }

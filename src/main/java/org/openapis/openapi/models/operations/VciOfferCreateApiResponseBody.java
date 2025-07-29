@@ -11,7 +11,6 @@ import jakarta.annotation.Nullable;
 import java.lang.Override;
 import java.lang.String;
 import java.util.Optional;
-import org.openapis.openapi.models.components.CredentialOfferInfo;
 import org.openapis.openapi.utils.Utils;
 
 
@@ -40,14 +39,14 @@ public class VciOfferCreateApiResponseBody {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("info")
-    private CredentialOfferInfo info;
+    private VciOfferCreateApiInfo info;
 
     @JsonCreator
     public VciOfferCreateApiResponseBody(
             @JsonProperty("resultCode") @Nullable String resultCode,
             @JsonProperty("resultMessage") @Nullable String resultMessage,
             @JsonProperty("action") @Nullable VciOfferCreateApiAction action,
-            @JsonProperty("info") @Nullable CredentialOfferInfo info) {
+            @JsonProperty("info") @Nullable VciOfferCreateApiInfo info) {
         this.resultCode = resultCode;
         this.resultMessage = resultMessage;
         this.action = action;
@@ -80,7 +79,7 @@ public class VciOfferCreateApiResponseBody {
         return Optional.ofNullable(this.action);
     }
 
-    public Optional<CredentialOfferInfo> info() {
+    public Optional<VciOfferCreateApiInfo> info() {
         return Optional.ofNullable(this.info);
     }
 
@@ -116,7 +115,7 @@ public class VciOfferCreateApiResponseBody {
     }
 
 
-    public VciOfferCreateApiResponseBody withInfo(@Nullable CredentialOfferInfo info) {
+    public VciOfferCreateApiResponseBody withInfo(@Nullable VciOfferCreateApiInfo info) {
         this.info = info;
         return this;
     }
@@ -163,7 +162,7 @@ public class VciOfferCreateApiResponseBody {
 
         private VciOfferCreateApiAction action;
 
-        private CredentialOfferInfo info;
+        private VciOfferCreateApiInfo info;
 
         private Builder() {
           // force use of static builder() method
@@ -193,7 +192,7 @@ public class VciOfferCreateApiResponseBody {
             return this;
         }
 
-        public Builder info(@Nullable CredentialOfferInfo info) {
+        public Builder info(@Nullable VciOfferCreateApiInfo info) {
             this.info = info;
             return this;
         }

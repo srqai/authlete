@@ -14,8 +14,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
-import org.openapis.openapi.models.components.AuthorizationDetails;
-import org.openapis.openapi.models.components.Property;
 import org.openapis.openapi.utils.Utils;
 
 
@@ -59,7 +57,7 @@ public class AuthAuthorizationIssueApiRequestBody {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("properties")
-    private List<Property> properties;
+    private List<AuthAuthorizationIssueApiProperty> properties;
 
     /**
      * Scopes to associate with an access token and/or an authorization code.
@@ -107,7 +105,7 @@ public class AuthAuthorizationIssueApiRequestBody {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("authorizationDetails")
-    private AuthorizationDetails authorizationDetails;
+    private AuthAuthorizationIssueApiAuthorizationDetails authorizationDetails;
 
     /**
      * Additional claims that are added to the payload part of the JWT access token.
@@ -130,13 +128,13 @@ public class AuthAuthorizationIssueApiRequestBody {
             @JsonProperty("authTime") @Nullable Long authTime,
             @JsonProperty("acr") @Nullable String acr,
             @JsonProperty("claims") @Nullable String claims,
-            @JsonProperty("properties") @Nullable List<Property> properties,
+            @JsonProperty("properties") @Nullable List<AuthAuthorizationIssueApiProperty> properties,
             @JsonProperty("scopes") @Nullable List<String> scopes,
             @JsonProperty("sub") @Nullable String sub,
             @JsonProperty("idtHeaderParams") @Nullable String idtHeaderParams,
             @JsonProperty("claimsForTx") @Nullable String claimsForTx,
             @JsonProperty("consentedClaims") @Nullable List<String> consentedClaims,
-            @JsonProperty("authorizationDetails") @Nullable AuthorizationDetails authorizationDetails,
+            @JsonProperty("authorizationDetails") @Nullable AuthAuthorizationIssueApiAuthorizationDetails authorizationDetails,
             @JsonProperty("jwtAtClaims") @Nullable String jwtAtClaims,
             @JsonProperty("accessToken") @Nullable String accessToken) {
         this.ticket = Optional.ofNullable(ticket)
@@ -206,7 +204,7 @@ public class AuthAuthorizationIssueApiRequestBody {
     /**
      * Extra properties to associate with an access token and/or an authorization code.
      */
-    public Optional<List<Property>> properties() {
+    public Optional<List<AuthAuthorizationIssueApiProperty>> properties() {
         return Optional.ofNullable(this.properties);
     }
 
@@ -254,7 +252,7 @@ public class AuthAuthorizationIssueApiRequestBody {
      * request parameter in the preceding device authorization request which is defined in
      * "OAuth 2.0 Rich Authorization Requests".
      */
-    public Optional<AuthorizationDetails> authorizationDetails() {
+    public Optional<AuthAuthorizationIssueApiAuthorizationDetails> authorizationDetails() {
         return Optional.ofNullable(this.authorizationDetails);
     }
 
@@ -326,7 +324,7 @@ public class AuthAuthorizationIssueApiRequestBody {
     /**
      * Extra properties to associate with an access token and/or an authorization code.
      */
-    public AuthAuthorizationIssueApiRequestBody withProperties(@Nullable List<Property> properties) {
+    public AuthAuthorizationIssueApiRequestBody withProperties(@Nullable List<AuthAuthorizationIssueApiProperty> properties) {
         this.properties = properties;
         return this;
     }
@@ -386,7 +384,7 @@ public class AuthAuthorizationIssueApiRequestBody {
      * request parameter in the preceding device authorization request which is defined in
      * "OAuth 2.0 Rich Authorization Requests".
      */
-    public AuthAuthorizationIssueApiRequestBody withAuthorizationDetails(@Nullable AuthorizationDetails authorizationDetails) {
+    public AuthAuthorizationIssueApiRequestBody withAuthorizationDetails(@Nullable AuthAuthorizationIssueApiAuthorizationDetails authorizationDetails) {
         this.authorizationDetails = authorizationDetails;
         return this;
     }
@@ -478,7 +476,7 @@ public class AuthAuthorizationIssueApiRequestBody {
 
         private String claims;
 
-        private List<Property> properties;
+        private List<AuthAuthorizationIssueApiProperty> properties;
 
         private List<String> scopes;
 
@@ -490,7 +488,7 @@ public class AuthAuthorizationIssueApiRequestBody {
 
         private List<String> consentedClaims;
 
-        private AuthorizationDetails authorizationDetails;
+        private AuthAuthorizationIssueApiAuthorizationDetails authorizationDetails;
 
         private String jwtAtClaims;
 
@@ -544,7 +542,7 @@ public class AuthAuthorizationIssueApiRequestBody {
         /**
          * Extra properties to associate with an access token and/or an authorization code.
          */
-        public Builder properties(@Nullable List<Property> properties) {
+        public Builder properties(@Nullable List<AuthAuthorizationIssueApiProperty> properties) {
             this.properties = properties;
             return this;
         }
@@ -598,7 +596,7 @@ public class AuthAuthorizationIssueApiRequestBody {
          * request parameter in the preceding device authorization request which is defined in
          * "OAuth 2.0 Rich Authorization Requests".
          */
-        public Builder authorizationDetails(@Nullable AuthorizationDetails authorizationDetails) {
+        public Builder authorizationDetails(@Nullable AuthAuthorizationIssueApiAuthorizationDetails authorizationDetails) {
             this.authorizationDetails = authorizationDetails;
             return this;
         }

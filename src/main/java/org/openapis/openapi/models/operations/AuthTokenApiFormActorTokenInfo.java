@@ -14,8 +14,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
-import org.openapis.openapi.models.components.AuthorizationDetailsElement;
-import org.openapis.openapi.models.components.Property;
 import org.openapis.openapi.utils.Utils;
 
 
@@ -67,7 +65,7 @@ public class AuthTokenApiFormActorTokenInfo {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("properties")
-    private List<Property> properties;
+    private List<AuthTokenApiFormActorTokenInfoProperty> properties;
 
     /**
      * The array of the resources of the token.
@@ -79,7 +77,7 @@ public class AuthTokenApiFormActorTokenInfo {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("authorizationDetails")
-    private AuthorizationDetailsElement authorizationDetails;
+    private AuthTokenApiFormActorTokenInfoAuthorizationDetails authorizationDetails;
 
     /**
      * The entity ID of the client.
@@ -103,9 +101,9 @@ public class AuthTokenApiFormActorTokenInfo {
             @JsonProperty("subject") @Nullable String subject,
             @JsonProperty("scopes") @Nullable List<String> scopes,
             @JsonProperty("expiresAt") @Nullable Long expiresAt,
-            @JsonProperty("properties") @Nullable List<Property> properties,
+            @JsonProperty("properties") @Nullable List<AuthTokenApiFormActorTokenInfoProperty> properties,
             @JsonProperty("resources") @Nullable List<String> resources,
-            @JsonProperty("authorizationDetails") @Nullable AuthorizationDetailsElement authorizationDetails,
+            @JsonProperty("authorizationDetails") @Nullable AuthTokenApiFormActorTokenInfoAuthorizationDetails authorizationDetails,
             @JsonProperty("clientEntityId") @Nullable String clientEntityId,
             @JsonProperty("clientEntityIdUsed") @Nullable Boolean clientEntityIdUsed) {
         this.clientId = clientId;
@@ -173,7 +171,7 @@ public class AuthTokenApiFormActorTokenInfo {
     /**
      * Extra properties associated with the token
      */
-    public Optional<List<Property>> properties() {
+    public Optional<List<AuthTokenApiFormActorTokenInfoProperty>> properties() {
         return Optional.ofNullable(this.properties);
     }
 
@@ -184,7 +182,7 @@ public class AuthTokenApiFormActorTokenInfo {
         return Optional.ofNullable(this.resources);
     }
 
-    public Optional<AuthorizationDetailsElement> authorizationDetails() {
+    public Optional<AuthTokenApiFormActorTokenInfoAuthorizationDetails> authorizationDetails() {
         return Optional.ofNullable(this.authorizationDetails);
     }
 
@@ -264,7 +262,7 @@ public class AuthTokenApiFormActorTokenInfo {
     /**
      * Extra properties associated with the token
      */
-    public AuthTokenApiFormActorTokenInfo withProperties(@Nullable List<Property> properties) {
+    public AuthTokenApiFormActorTokenInfo withProperties(@Nullable List<AuthTokenApiFormActorTokenInfoProperty> properties) {
         this.properties = properties;
         return this;
     }
@@ -279,7 +277,7 @@ public class AuthTokenApiFormActorTokenInfo {
     }
 
 
-    public AuthTokenApiFormActorTokenInfo withAuthorizationDetails(@Nullable AuthorizationDetailsElement authorizationDetails) {
+    public AuthTokenApiFormActorTokenInfo withAuthorizationDetails(@Nullable AuthTokenApiFormActorTokenInfoAuthorizationDetails authorizationDetails) {
         this.authorizationDetails = authorizationDetails;
         return this;
     }
@@ -366,11 +364,11 @@ public class AuthTokenApiFormActorTokenInfo {
 
         private Long expiresAt;
 
-        private List<Property> properties;
+        private List<AuthTokenApiFormActorTokenInfoProperty> properties;
 
         private List<String> resources;
 
-        private AuthorizationDetailsElement authorizationDetails;
+        private AuthTokenApiFormActorTokenInfoAuthorizationDetails authorizationDetails;
 
         private String clientEntityId;
 
@@ -431,7 +429,7 @@ public class AuthTokenApiFormActorTokenInfo {
         /**
          * Extra properties associated with the token
          */
-        public Builder properties(@Nullable List<Property> properties) {
+        public Builder properties(@Nullable List<AuthTokenApiFormActorTokenInfoProperty> properties) {
             this.properties = properties;
             return this;
         }
@@ -444,7 +442,7 @@ public class AuthTokenApiFormActorTokenInfo {
             return this;
         }
 
-        public Builder authorizationDetails(@Nullable AuthorizationDetailsElement authorizationDetails) {
+        public Builder authorizationDetails(@Nullable AuthTokenApiFormActorTokenInfoAuthorizationDetails authorizationDetails) {
             this.authorizationDetails = authorizationDetails;
             return this;
         }

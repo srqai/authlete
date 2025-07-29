@@ -5,16 +5,24 @@ package org.openapis.openapi.models.operations;
 
 import static org.openapis.openapi.operations.Operations.RequestlessOperation;
 
+import jakarta.annotation.Nullable;
 import java.lang.Exception;
+import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
 import org.openapis.openapi.operations.MiscEchoApiOperation;
 
 public class MiscEchoApiRequestBuilder {
     private final SDKConfiguration sdkConfiguration;
+    private String serverURL;
     private boolean _setterCalled;
 
     public MiscEchoApiRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
+    }
+
+    public MiscEchoApiRequestBuilder serverURL(@Nullable String serverURL) {
+        this.serverURL = serverURL;
+        return this;
     }
 
     /**
@@ -24,7 +32,7 @@ public class MiscEchoApiRequestBuilder {
     */
     public MiscEchoApiResponse call() throws Exception {
         RequestlessOperation<MiscEchoApiResponse> operation
-            = new MiscEchoApiOperation(sdkConfiguration);
+            = new MiscEchoApiOperation(sdkConfiguration, serverURL);
 
         return operation.handleResponse(operation.doRequest());
     }

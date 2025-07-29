@@ -6,10 +6,10 @@ package org.openapis.openapi.models.operations;
 import static org.openapis.openapi.operations.Operations.RequestOperation;
 
 import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
-import org.openapis.openapi.models.components.1api1Percent7BserviceIdPercent7D1device1completePostRequestBodyContentApplication1jsonSchema;
 import org.openapis.openapi.operations.DeviceCompleteApiFormOperation;
 import org.openapis.openapi.utils.Utils;
 
@@ -17,6 +17,7 @@ public class DeviceCompleteApiFormRequestBuilder {
     private final SDKConfiguration sdkConfiguration;
     private final DeviceCompleteApiFormRequest.Builder pojoBuilder;
     private DeviceCompleteApiFormRequest request;
+    private String serverURL;
     private boolean _setterCalled;
 
     public DeviceCompleteApiFormRequestBuilder(SDKConfiguration sdkConfiguration) {
@@ -30,9 +31,14 @@ public class DeviceCompleteApiFormRequestBuilder {
         return this;
     }
 
-    public DeviceCompleteApiFormRequestBuilder oneapi1Percent7BserviceIdPercent7D1device1completePostRequestBodyContentApplication1jsonSchema(@Nonnull 1api1Percent7BserviceIdPercent7D1device1completePostRequestBodyContentApplication1jsonSchema oneapi1Percent7BserviceIdPercent7D1device1completePostRequestBodyContentApplication1jsonSchema) {
-        this.pojoBuilder.oneapi1Percent7BserviceIdPercent7D1device1completePostRequestBodyContentApplication1jsonSchema(oneapi1Percent7BserviceIdPercent7D1device1completePostRequestBodyContentApplication1jsonSchema);
+    public DeviceCompleteApiFormRequestBuilder requestBody(@Nonnull DeviceCompleteApiFormRequestBody requestBody) {
+        this.pojoBuilder.requestBody(requestBody);
         this._setterCalled = true;
+        return this;
+    }
+
+    public DeviceCompleteApiFormRequestBuilder serverURL(@Nullable String serverURL) {
+        this.serverURL = serverURL;
         return this;
     }
 
@@ -49,7 +55,7 @@ public class DeviceCompleteApiFormRequestBuilder {
     */
     public DeviceCompleteApiFormResponse call() throws Exception {
         RequestOperation<DeviceCompleteApiFormRequest, DeviceCompleteApiFormResponse> operation
-              = new DeviceCompleteApiFormOperation(sdkConfiguration);
+              = new DeviceCompleteApiFormOperation(sdkConfiguration, serverURL);
 
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }

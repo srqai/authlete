@@ -15,9 +15,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
-import org.openapis.openapi.models.components.AuthorizationDetails;
-import org.openapis.openapi.models.components.GrantType;
-import org.openapis.openapi.models.components.Property;
 import org.openapis.openapi.utils.Utils;
 
 
@@ -26,7 +23,7 @@ public class AuthTokenCreateApiRequestBody {
      * The grant type of the access token when the access token was created.
      */
     @JsonProperty("grantType")
-    private GrantType grantType;
+    private AuthTokenCreateApiGrantType grantType;
 
     /**
      * The ID of the client application which will be associated with a newly created access token.
@@ -78,7 +75,7 @@ public class AuthTokenCreateApiRequestBody {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("properties")
-    private List<Property> properties;
+    private List<AuthTokenCreateApiPropertyRequest> properties;
 
     /**
      * A boolean request parameter which indicates whether to emulate that the client ID alias is used
@@ -171,7 +168,7 @@ public class AuthTokenCreateApiRequestBody {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("authorizationDetails")
-    private AuthorizationDetails authorizationDetails;
+    private AuthTokenCreateApiAuthorizationDetailsRequest authorizationDetails;
 
     /**
      * The value of the resources to associate with the token. This property represents the value of
@@ -221,20 +218,20 @@ public class AuthTokenCreateApiRequestBody {
 
     @JsonCreator
     public AuthTokenCreateApiRequestBody(
-            @JsonProperty("grantType") @Nonnull GrantType grantType,
+            @JsonProperty("grantType") @Nonnull AuthTokenCreateApiGrantType grantType,
             @JsonProperty("clientId") long clientId,
             @JsonProperty("subject") @Nullable String subject,
             @JsonProperty("scopes") @Nullable List<String> scopes,
             @JsonProperty("accessTokenDuration") @Nullable Long accessTokenDuration,
             @JsonProperty("refreshTokenDuration") @Nullable Long refreshTokenDuration,
-            @JsonProperty("properties") @Nullable List<Property> properties,
+            @JsonProperty("properties") @Nullable List<AuthTokenCreateApiPropertyRequest> properties,
             @JsonProperty("clientIdAliasUsed") @Nullable Boolean clientIdAliasUsed,
             @JsonProperty("accessToken") @Nullable String accessToken,
             @JsonProperty("refreshToken") @Nullable String refreshToken,
             @JsonProperty("accessTokenPersistent") @Nullable Boolean accessTokenPersistent,
             @JsonProperty("certificateThumbprint") @Nullable String certificateThumbprint,
             @JsonProperty("dpopKeyThumbprint") @Nullable String dpopKeyThumbprint,
-            @JsonProperty("authorizationDetails") @Nullable AuthorizationDetails authorizationDetails,
+            @JsonProperty("authorizationDetails") @Nullable AuthTokenCreateApiAuthorizationDetailsRequest authorizationDetails,
             @JsonProperty("resources") @Nullable List<String> resources,
             @JsonProperty("forExternalAttachment") @Nullable Boolean forExternalAttachment,
             @JsonProperty("jwtAtClaims") @Nullable String jwtAtClaims,
@@ -265,7 +262,7 @@ public class AuthTokenCreateApiRequestBody {
     }
     
     public AuthTokenCreateApiRequestBody(
-            @Nonnull GrantType grantType,
+            @Nonnull AuthTokenCreateApiGrantType grantType,
             long clientId) {
         this(grantType, clientId, null,
             null, null, null,
@@ -279,7 +276,7 @@ public class AuthTokenCreateApiRequestBody {
     /**
      * The grant type of the access token when the access token was created.
      */
-    public GrantType grantType() {
+    public AuthTokenCreateApiGrantType grantType() {
         return this.grantType;
     }
 
@@ -332,7 +329,7 @@ public class AuthTokenCreateApiRequestBody {
      * `application/json`, so don't use `GET` method or `application/x-www-form-urlencoded` if you want
      * to specify properties.
      */
-    public Optional<List<Property>> properties() {
+    public Optional<List<AuthTokenCreateApiPropertyRequest>> properties() {
         return Optional.ofNullable(this.properties);
     }
 
@@ -425,7 +422,7 @@ public class AuthTokenCreateApiRequestBody {
      * request parameter in the preceding device authorization request which is defined in
      * "OAuth 2.0 Rich Authorization Requests".
      */
-    public Optional<AuthorizationDetails> authorizationDetails() {
+    public Optional<AuthTokenCreateApiAuthorizationDetailsRequest> authorizationDetails() {
         return Optional.ofNullable(this.authorizationDetails);
     }
 
@@ -483,7 +480,7 @@ public class AuthTokenCreateApiRequestBody {
     /**
      * The grant type of the access token when the access token was created.
      */
-    public AuthTokenCreateApiRequestBody withGrantType(@Nonnull GrantType grantType) {
+    public AuthTokenCreateApiRequestBody withGrantType(@Nonnull AuthTokenCreateApiGrantType grantType) {
         this.grantType = Utils.checkNotNull(grantType, "grantType");
         return this;
     }
@@ -548,7 +545,7 @@ public class AuthTokenCreateApiRequestBody {
      * `application/json`, so don't use `GET` method or `application/x-www-form-urlencoded` if you want
      * to specify properties.
      */
-    public AuthTokenCreateApiRequestBody withProperties(@Nullable List<Property> properties) {
+    public AuthTokenCreateApiRequestBody withProperties(@Nullable List<AuthTokenCreateApiPropertyRequest> properties) {
         this.properties = properties;
         return this;
     }
@@ -655,7 +652,7 @@ public class AuthTokenCreateApiRequestBody {
      * request parameter in the preceding device authorization request which is defined in
      * "OAuth 2.0 Rich Authorization Requests".
      */
-    public AuthTokenCreateApiRequestBody withAuthorizationDetails(@Nullable AuthorizationDetails authorizationDetails) {
+    public AuthTokenCreateApiRequestBody withAuthorizationDetails(@Nullable AuthTokenCreateApiAuthorizationDetailsRequest authorizationDetails) {
         this.authorizationDetails = authorizationDetails;
         return this;
     }
@@ -791,7 +788,7 @@ public class AuthTokenCreateApiRequestBody {
     @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
 
-        private GrantType grantType;
+        private AuthTokenCreateApiGrantType grantType;
 
         private long clientId;
 
@@ -803,7 +800,7 @@ public class AuthTokenCreateApiRequestBody {
 
         private Long refreshTokenDuration;
 
-        private List<Property> properties;
+        private List<AuthTokenCreateApiPropertyRequest> properties;
 
         private Boolean clientIdAliasUsed;
 
@@ -817,7 +814,7 @@ public class AuthTokenCreateApiRequestBody {
 
         private String dpopKeyThumbprint;
 
-        private AuthorizationDetails authorizationDetails;
+        private AuthTokenCreateApiAuthorizationDetailsRequest authorizationDetails;
 
         private List<String> resources;
 
@@ -838,7 +835,7 @@ public class AuthTokenCreateApiRequestBody {
         /**
          * The grant type of the access token when the access token was created.
          */
-        public Builder grantType(@Nonnull GrantType grantType) {
+        public Builder grantType(@Nonnull AuthTokenCreateApiGrantType grantType) {
             this.grantType = Utils.checkNotNull(grantType, "grantType");
             return this;
         }
@@ -897,7 +894,7 @@ public class AuthTokenCreateApiRequestBody {
          * `application/json`, so don't use `GET` method or `application/x-www-form-urlencoded` if you want
          * to specify properties.
          */
-        public Builder properties(@Nullable List<Property> properties) {
+        public Builder properties(@Nullable List<AuthTokenCreateApiPropertyRequest> properties) {
             this.properties = properties;
             return this;
         }
@@ -997,7 +994,7 @@ public class AuthTokenCreateApiRequestBody {
          * request parameter in the preceding device authorization request which is defined in
          * "OAuth 2.0 Rich Authorization Requests".
          */
-        public Builder authorizationDetails(@Nullable AuthorizationDetails authorizationDetails) {
+        public Builder authorizationDetails(@Nullable AuthTokenCreateApiAuthorizationDetailsRequest authorizationDetails) {
             this.authorizationDetails = authorizationDetails;
             return this;
         }

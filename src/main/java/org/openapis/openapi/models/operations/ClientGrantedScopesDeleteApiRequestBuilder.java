@@ -6,6 +6,7 @@ package org.openapis.openapi.models.operations;
 import static org.openapis.openapi.operations.Operations.RequestOperation;
 
 import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
@@ -16,11 +17,18 @@ public class ClientGrantedScopesDeleteApiRequestBuilder {
     private final SDKConfiguration sdkConfiguration;
     private final ClientGrantedScopesDeleteApiRequest.Builder pojoBuilder;
     private ClientGrantedScopesDeleteApiRequest request;
+    private String serverURL;
     private boolean _setterCalled;
 
     public ClientGrantedScopesDeleteApiRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
         this.pojoBuilder = ClientGrantedScopesDeleteApiRequest.builder();
+    }
+
+    public ClientGrantedScopesDeleteApiRequestBuilder subject(@Nonnull String subject) {
+        this.pojoBuilder.subject(subject);
+        this._setterCalled = true;
+        return this;
     }
 
     public ClientGrantedScopesDeleteApiRequestBuilder serviceId(@Nonnull String serviceId) {
@@ -35,9 +43,8 @@ public class ClientGrantedScopesDeleteApiRequestBuilder {
         return this;
     }
 
-    public ClientGrantedScopesDeleteApiRequestBuilder subject(@Nonnull String subject) {
-        this.pojoBuilder.subject(subject);
-        this._setterCalled = true;
+    public ClientGrantedScopesDeleteApiRequestBuilder serverURL(@Nullable String serverURL) {
+        this.serverURL = serverURL;
         return this;
     }
 
@@ -54,7 +61,7 @@ public class ClientGrantedScopesDeleteApiRequestBuilder {
     */
     public ClientGrantedScopesDeleteApiResponse call() throws Exception {
         RequestOperation<ClientGrantedScopesDeleteApiRequest, ClientGrantedScopesDeleteApiResponse> operation
-              = new ClientGrantedScopesDeleteApiOperation(sdkConfiguration);
+              = new ClientGrantedScopesDeleteApiOperation(sdkConfiguration, serverURL);
 
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }

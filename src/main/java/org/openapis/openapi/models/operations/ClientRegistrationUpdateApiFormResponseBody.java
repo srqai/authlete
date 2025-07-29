@@ -11,7 +11,6 @@ import jakarta.annotation.Nullable;
 import java.lang.Override;
 import java.lang.String;
 import java.util.Optional;
-import org.openapis.openapi.models.components.Client;
 import org.openapis.openapi.utils.Utils;
 
 
@@ -48,7 +47,7 @@ public class ClientRegistrationUpdateApiFormResponseBody {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("client")
-    private Client client;
+    private ClientRegistrationUpdateApiFormClient client;
 
     @JsonCreator
     public ClientRegistrationUpdateApiFormResponseBody(
@@ -56,7 +55,7 @@ public class ClientRegistrationUpdateApiFormResponseBody {
             @JsonProperty("resultMessage") @Nullable String resultMessage,
             @JsonProperty("action") @Nullable ClientRegistrationUpdateApiFormAction action,
             @JsonProperty("responseContent") @Nullable String responseContent,
-            @JsonProperty("client") @Nullable Client client) {
+            @JsonProperty("client") @Nullable ClientRegistrationUpdateApiFormClient client) {
         this.resultCode = resultCode;
         this.resultMessage = resultMessage;
         this.action = action;
@@ -98,7 +97,7 @@ public class ClientRegistrationUpdateApiFormResponseBody {
         return Optional.ofNullable(this.responseContent);
     }
 
-    public Optional<Client> client() {
+    public Optional<ClientRegistrationUpdateApiFormClient> client() {
         return Optional.ofNullable(this.client);
     }
 
@@ -144,7 +143,7 @@ public class ClientRegistrationUpdateApiFormResponseBody {
     }
 
 
-    public ClientRegistrationUpdateApiFormResponseBody withClient(@Nullable Client client) {
+    public ClientRegistrationUpdateApiFormResponseBody withClient(@Nullable ClientRegistrationUpdateApiFormClient client) {
         this.client = client;
         return this;
     }
@@ -195,7 +194,7 @@ public class ClientRegistrationUpdateApiFormResponseBody {
 
         private String responseContent;
 
-        private Client client;
+        private ClientRegistrationUpdateApiFormClient client;
 
         private Builder() {
           // force use of static builder() method
@@ -234,7 +233,7 @@ public class ClientRegistrationUpdateApiFormResponseBody {
             return this;
         }
 
-        public Builder client(@Nullable Client client) {
+        public Builder client(@Nullable ClientRegistrationUpdateApiFormClient client) {
             this.client = client;
             return this;
         }

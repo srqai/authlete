@@ -17,6 +17,7 @@ public class ClientFlagUpdateApiRequestBuilder {
     private final SDKConfiguration sdkConfiguration;
     private final ClientFlagUpdateApiRequest.Builder pojoBuilder;
     private ClientFlagUpdateApiRequest request;
+    private String serverURL;
     private boolean _setterCalled;
 
     public ClientFlagUpdateApiRequestBuilder(SDKConfiguration sdkConfiguration) {
@@ -42,6 +43,11 @@ public class ClientFlagUpdateApiRequestBuilder {
         return this;
     }
 
+    public ClientFlagUpdateApiRequestBuilder serverURL(@Nullable String serverURL) {
+        this.serverURL = serverURL;
+        return this;
+    }
+
     private ClientFlagUpdateApiRequest _buildRequest() {
         if (this._setterCalled) {
             this.request = this.pojoBuilder.build();
@@ -55,7 +61,7 @@ public class ClientFlagUpdateApiRequestBuilder {
     */
     public ClientFlagUpdateApiResponse call() throws Exception {
         RequestOperation<ClientFlagUpdateApiRequest, ClientFlagUpdateApiResponse> operation
-              = new ClientFlagUpdateApiOperation(sdkConfiguration);
+              = new ClientFlagUpdateApiOperation(sdkConfiguration, serverURL);
 
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }

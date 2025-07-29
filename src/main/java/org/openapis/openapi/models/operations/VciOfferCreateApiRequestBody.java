@@ -15,7 +15,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
-import org.openapis.openapi.models.components.Property;
 import org.openapis.openapi.utils.Utils;
 
 
@@ -95,7 +94,7 @@ public class VciOfferCreateApiRequestBody {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("properties")
-    private List<Property> properties;
+    private List<VciOfferCreateApiPropertyRequest> properties;
 
     /**
      * Additional claims that are added to the payload part of the JWT
@@ -132,7 +131,7 @@ public class VciOfferCreateApiRequestBody {
             @JsonProperty("subject") @Nullable String subject,
             @JsonProperty("duration") @Nullable Long duration,
             @JsonProperty("context") @Nullable String context,
-            @JsonProperty("properties") @Nullable List<Property> properties,
+            @JsonProperty("properties") @Nullable List<VciOfferCreateApiPropertyRequest> properties,
             @JsonProperty("jwtAtClaims") @Nullable String jwtAtClaims,
             @JsonProperty("authTime") @Nullable Long authTime,
             @JsonProperty("acr") @Nullable String acr) {
@@ -232,7 +231,7 @@ public class VciOfferCreateApiRequestBody {
     /**
      * Extra properties to associate with the credential offer.
      */
-    public Optional<List<Property>> properties() {
+    public Optional<List<VciOfferCreateApiPropertyRequest>> properties() {
         return Optional.ofNullable(this.properties);
     }
 
@@ -356,7 +355,7 @@ public class VciOfferCreateApiRequestBody {
     /**
      * Extra properties to associate with the credential offer.
      */
-    public VciOfferCreateApiRequestBody withProperties(@Nullable List<Property> properties) {
+    public VciOfferCreateApiRequestBody withProperties(@Nullable List<VciOfferCreateApiPropertyRequest> properties) {
         this.properties = properties;
         return this;
     }
@@ -466,7 +465,7 @@ public class VciOfferCreateApiRequestBody {
 
         private String context;
 
-        private List<Property> properties;
+        private List<VciOfferCreateApiPropertyRequest> properties;
 
         private String jwtAtClaims;
 
@@ -560,7 +559,7 @@ public class VciOfferCreateApiRequestBody {
         /**
          * Extra properties to associate with the credential offer.
          */
-        public Builder properties(@Nullable List<Property> properties) {
+        public Builder properties(@Nullable List<VciOfferCreateApiPropertyRequest> properties) {
             this.properties = properties;
             return this;
         }
