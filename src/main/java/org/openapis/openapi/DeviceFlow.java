@@ -25,10 +25,10 @@ import org.openapis.openapi.models.operations.DeviceVerificationApiRequest;
 import org.openapis.openapi.models.operations.DeviceVerificationApiRequestBody;
 import org.openapis.openapi.models.operations.DeviceVerificationApiRequestBuilder;
 import org.openapis.openapi.models.operations.DeviceVerificationApiResponse;
-import org.openapis.openapi.operations.DeviceCompleteApiFormOperation;
-import org.openapis.openapi.operations.DeviceCompleteApiOperation;
-import org.openapis.openapi.operations.DeviceVerificationApiFormOperation;
-import org.openapis.openapi.operations.DeviceVerificationApiOperation;
+import org.openapis.openapi.operations.DeviceCompleteApi;
+import org.openapis.openapi.operations.DeviceCompleteApiForm;
+import org.openapis.openapi.operations.DeviceVerificationApi;
+import org.openapis.openapi.operations.DeviceVerificationApiForm;
 
 
 public class DeviceFlow {
@@ -199,7 +199,7 @@ public class DeviceFlow {
             @Nullable String serverURL) throws Exception {
         DeviceVerificationApiRequest request = new DeviceVerificationApiRequest(serviceId, requestBody);
         RequestOperation<DeviceVerificationApiRequest, DeviceVerificationApiResponse> operation
-              = new DeviceVerificationApiOperation(sdkConfiguration, serverURL);
+              = new DeviceVerificationApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -364,7 +364,7 @@ public class DeviceFlow {
             @Nullable String serverURL) throws Exception {
         DeviceVerificationApiFormRequest request = new DeviceVerificationApiFormRequest(serviceId, requestBody);
         RequestOperation<DeviceVerificationApiFormRequest, DeviceVerificationApiFormResponse> operation
-              = new DeviceVerificationApiFormOperation(sdkConfiguration, serverURL);
+              = new DeviceVerificationApiForm.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -616,7 +616,7 @@ public class DeviceFlow {
             @Nullable String serverURL) throws Exception {
         DeviceCompleteApiRequest request = new DeviceCompleteApiRequest(serviceId, requestBody);
         RequestOperation<DeviceCompleteApiRequest, DeviceCompleteApiResponse> operation
-              = new DeviceCompleteApiOperation(sdkConfiguration, serverURL);
+              = new DeviceCompleteApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -868,7 +868,7 @@ public class DeviceFlow {
             @Nullable String serverURL) throws Exception {
         DeviceCompleteApiFormRequest request = new DeviceCompleteApiFormRequest(serviceId, requestBody);
         RequestOperation<DeviceCompleteApiFormRequest, DeviceCompleteApiFormResponse> operation
-              = new DeviceCompleteApiFormOperation(sdkConfiguration, serverURL);
+              = new DeviceCompleteApiForm.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 

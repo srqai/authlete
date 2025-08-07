@@ -10,7 +10,7 @@ import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
-import org.openapis.openapi.operations.IdtokenReissueApiOperation;
+import org.openapis.openapi.operations.IdtokenReissueApi;
 import org.openapis.openapi.utils.Utils;
 
 public class IdtokenReissueApiRequestBuilder {
@@ -55,8 +55,7 @@ public class IdtokenReissueApiRequestBuilder {
     */
     public IdtokenReissueApiResponse call() throws Exception {
         RequestOperation<IdtokenReissueApiRequest, IdtokenReissueApiResponse> operation
-              = new IdtokenReissueApiOperation(sdkConfiguration, serverURL);
-
+              = new IdtokenReissueApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }
 }

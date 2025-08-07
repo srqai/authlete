@@ -25,10 +25,10 @@ import org.openapis.openapi.models.operations.AuthUserinfoIssueApiRequest;
 import org.openapis.openapi.models.operations.AuthUserinfoIssueApiRequestBody;
 import org.openapis.openapi.models.operations.AuthUserinfoIssueApiRequestBuilder;
 import org.openapis.openapi.models.operations.AuthUserinfoIssueApiResponse;
-import org.openapis.openapi.operations.AuthUserinfoApiFormOperation;
-import org.openapis.openapi.operations.AuthUserinfoApiOperation;
-import org.openapis.openapi.operations.AuthUserinfoIssueApiFormOperation;
-import org.openapis.openapi.operations.AuthUserinfoIssueApiOperation;
+import org.openapis.openapi.operations.AuthUserinfoApi;
+import org.openapis.openapi.operations.AuthUserinfoApiForm;
+import org.openapis.openapi.operations.AuthUserinfoIssueApi;
+import org.openapis.openapi.operations.AuthUserinfoIssueApiForm;
 
 
 public class Userinfo {
@@ -499,7 +499,7 @@ public class Userinfo {
             @Nullable String serverURL) throws Exception {
         AuthUserinfoApiRequest request = new AuthUserinfoApiRequest(serviceId, requestBody);
         RequestOperation<AuthUserinfoApiRequest, AuthUserinfoApiResponse> operation
-              = new AuthUserinfoApiOperation(sdkConfiguration, serverURL);
+              = new AuthUserinfoApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -964,7 +964,7 @@ public class Userinfo {
             @Nullable String serverURL) throws Exception {
         AuthUserinfoApiFormRequest request = new AuthUserinfoApiFormRequest(serviceId, requestBody);
         RequestOperation<AuthUserinfoApiFormRequest, AuthUserinfoApiFormResponse> operation
-              = new AuthUserinfoApiFormOperation(sdkConfiguration, serverURL);
+              = new AuthUserinfoApiForm.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1453,7 +1453,7 @@ public class Userinfo {
             @Nullable String serverURL) throws Exception {
         AuthUserinfoIssueApiRequest request = new AuthUserinfoIssueApiRequest(serviceId, requestBody);
         RequestOperation<AuthUserinfoIssueApiRequest, AuthUserinfoIssueApiResponse> operation
-              = new AuthUserinfoIssueApiOperation(sdkConfiguration, serverURL);
+              = new AuthUserinfoIssueApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1942,7 +1942,7 @@ public class Userinfo {
             @Nullable String serverURL) throws Exception {
         AuthUserinfoIssueApiFormRequest request = new AuthUserinfoIssueApiFormRequest(serviceId, requestBody);
         RequestOperation<AuthUserinfoIssueApiFormRequest, AuthUserinfoIssueApiFormResponse> operation
-              = new AuthUserinfoIssueApiFormOperation(sdkConfiguration, serverURL);
+              = new AuthUserinfoIssueApiForm.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 

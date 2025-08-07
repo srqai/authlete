@@ -10,7 +10,7 @@ import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
-import org.openapis.openapi.operations.ServiceUpdateApiOperation;
+import org.openapis.openapi.operations.ServiceUpdateApi;
 import org.openapis.openapi.utils.Utils;
 
 public class ServiceUpdateApiRequestBuilder {
@@ -55,8 +55,7 @@ public class ServiceUpdateApiRequestBuilder {
     */
     public ServiceUpdateApiResponse call() throws Exception {
         RequestOperation<ServiceUpdateApiRequest, ServiceUpdateApiResponse> operation
-              = new ServiceUpdateApiOperation(sdkConfiguration, serverURL);
-
+              = new ServiceUpdateApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }
 }

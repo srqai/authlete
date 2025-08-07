@@ -24,10 +24,10 @@ import org.openapis.openapi.models.operations.ClientUpdateApiRequest;
 import org.openapis.openapi.models.operations.ClientUpdateApiRequestBody;
 import org.openapis.openapi.models.operations.ClientUpdateApiRequestBuilder;
 import org.openapis.openapi.models.operations.ClientUpdateApiResponse;
-import org.openapis.openapi.operations.ClientCreateApiOperation;
-import org.openapis.openapi.operations.ClientDeleteApiOperation;
-import org.openapis.openapi.operations.ClientGetListApiOperation;
-import org.openapis.openapi.operations.ClientUpdateApiOperation;
+import org.openapis.openapi.operations.ClientCreateApi;
+import org.openapis.openapi.operations.ClientDeleteApi;
+import org.openapis.openapi.operations.ClientGetListApi;
+import org.openapis.openapi.operations.ClientUpdateApi;
 
 
 public class ClientManagement {
@@ -101,7 +101,7 @@ public class ClientManagement {
                 developer, start, end,
                 serviceId);
         RequestOperation<ClientGetListApiRequest, ClientGetListApiResponse> operation
-              = new ClientGetListApiOperation(sdkConfiguration, serverURL);
+              = new ClientGetListApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -145,7 +145,7 @@ public class ClientManagement {
             @Nullable String serverURL) throws Exception {
         ClientCreateApiRequest request = new ClientCreateApiRequest(serviceId, requestBody);
         RequestOperation<ClientCreateApiRequest, ClientCreateApiResponse> operation
-              = new ClientCreateApiOperation(sdkConfiguration, serverURL);
+              = new ClientCreateApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -192,7 +192,7 @@ public class ClientManagement {
             @Nullable ClientUpdateApiRequestBody requestBody, @Nullable String serverURL) throws Exception {
         ClientUpdateApiRequest request = new ClientUpdateApiRequest(serviceId, clientId, requestBody);
         RequestOperation<ClientUpdateApiRequest, ClientUpdateApiResponse> operation
-              = new ClientUpdateApiOperation(sdkConfiguration, serverURL);
+              = new ClientUpdateApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -237,7 +237,7 @@ public class ClientManagement {
             @Nullable String serverURL) throws Exception {
         ClientDeleteApiRequest request = new ClientDeleteApiRequest(serviceId, clientId);
         RequestOperation<ClientDeleteApiRequest, ClientDeleteApiResponse> operation
-              = new ClientDeleteApiOperation(sdkConfiguration, serverURL);
+              = new ClientDeleteApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 

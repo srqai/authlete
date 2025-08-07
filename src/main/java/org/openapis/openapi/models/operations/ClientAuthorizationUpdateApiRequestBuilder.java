@@ -10,7 +10,7 @@ import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
-import org.openapis.openapi.operations.ClientAuthorizationUpdateApiOperation;
+import org.openapis.openapi.operations.ClientAuthorizationUpdateApi;
 import org.openapis.openapi.utils.Utils;
 
 public class ClientAuthorizationUpdateApiRequestBuilder {
@@ -61,8 +61,7 @@ public class ClientAuthorizationUpdateApiRequestBuilder {
     */
     public ClientAuthorizationUpdateApiResponse call() throws Exception {
         RequestOperation<ClientAuthorizationUpdateApiRequest, ClientAuthorizationUpdateApiResponse> operation
-              = new ClientAuthorizationUpdateApiOperation(sdkConfiguration, serverURL);
-
+              = new ClientAuthorizationUpdateApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }
 }

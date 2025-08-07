@@ -10,7 +10,7 @@ import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
-import org.openapis.openapi.operations.ClientSecretRefreshApiOperation;
+import org.openapis.openapi.operations.ClientSecretRefreshApi;
 import org.openapis.openapi.utils.Utils;
 
 public class ClientSecretRefreshApiRequestBuilder {
@@ -55,8 +55,7 @@ public class ClientSecretRefreshApiRequestBuilder {
     */
     public ClientSecretRefreshApiResponse call() throws Exception {
         RequestOperation<ClientSecretRefreshApiRequest, ClientSecretRefreshApiResponse> operation
-              = new ClientSecretRefreshApiOperation(sdkConfiguration, serverURL);
-
+              = new ClientSecretRefreshApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }
 }

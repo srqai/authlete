@@ -10,7 +10,7 @@ import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
-import org.openapis.openapi.operations.PushedAuthReqApiFormOperation;
+import org.openapis.openapi.operations.PushedAuthReqApiForm;
 import org.openapis.openapi.utils.Utils;
 
 public class PushedAuthReqApiFormRequestBuilder {
@@ -55,8 +55,7 @@ public class PushedAuthReqApiFormRequestBuilder {
     */
     public PushedAuthReqApiFormResponse call() throws Exception {
         RequestOperation<PushedAuthReqApiFormRequest, PushedAuthReqApiFormResponse> operation
-              = new PushedAuthReqApiFormOperation(sdkConfiguration, serverURL);
-
+              = new PushedAuthReqApiForm.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }
 }

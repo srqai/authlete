@@ -10,7 +10,7 @@ import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
-import org.openapis.openapi.operations.FederationRegistrationApiFormOperation;
+import org.openapis.openapi.operations.FederationRegistrationApiForm;
 import org.openapis.openapi.utils.Utils;
 
 public class FederationRegistrationApiFormRequestBuilder {
@@ -55,8 +55,7 @@ public class FederationRegistrationApiFormRequestBuilder {
     */
     public FederationRegistrationApiFormResponse call() throws Exception {
         RequestOperation<FederationRegistrationApiFormRequest, FederationRegistrationApiFormResponse> operation
-              = new FederationRegistrationApiFormOperation(sdkConfiguration, serverURL);
-
+              = new FederationRegistrationApiForm.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }
 }

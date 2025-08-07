@@ -17,8 +17,8 @@ import org.openapis.openapi.models.operations.DeviceAuthorizationApiRequest;
 import org.openapis.openapi.models.operations.DeviceAuthorizationApiRequestBody;
 import org.openapis.openapi.models.operations.DeviceAuthorizationApiRequestBuilder;
 import org.openapis.openapi.models.operations.DeviceAuthorizationApiResponse;
-import org.openapis.openapi.operations.DeviceAuthorizationApiFormOperation;
-import org.openapis.openapi.operations.DeviceAuthorizationApiOperation;
+import org.openapis.openapi.operations.DeviceAuthorizationApi;
+import org.openapis.openapi.operations.DeviceAuthorizationApiForm;
 
 
 public class Devices {
@@ -354,7 +354,7 @@ public class Devices {
             @Nullable String serverURL) throws Exception {
         DeviceAuthorizationApiRequest request = new DeviceAuthorizationApiRequest(serviceId, requestBody);
         RequestOperation<DeviceAuthorizationApiRequest, DeviceAuthorizationApiResponse> operation
-              = new DeviceAuthorizationApiOperation(sdkConfiguration, serverURL);
+              = new DeviceAuthorizationApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -684,7 +684,7 @@ public class Devices {
             @Nullable String serverURL) throws Exception {
         DeviceAuthorizationApiFormRequest request = new DeviceAuthorizationApiFormRequest(serviceId, requestBody);
         RequestOperation<DeviceAuthorizationApiFormRequest, DeviceAuthorizationApiFormResponse> operation
-              = new DeviceAuthorizationApiFormOperation(sdkConfiguration, serverURL);
+              = new DeviceAuthorizationApiForm.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 

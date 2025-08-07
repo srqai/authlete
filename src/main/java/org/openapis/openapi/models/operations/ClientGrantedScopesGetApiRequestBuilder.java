@@ -10,7 +10,7 @@ import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
-import org.openapis.openapi.operations.ClientGrantedScopesGetApiOperation;
+import org.openapis.openapi.operations.ClientGrantedScopesGetApi;
 import org.openapis.openapi.utils.Utils;
 
 public class ClientGrantedScopesGetApiRequestBuilder {
@@ -61,8 +61,7 @@ public class ClientGrantedScopesGetApiRequestBuilder {
     */
     public ClientGrantedScopesGetApiResponse call() throws Exception {
         RequestOperation<ClientGrantedScopesGetApiRequest, ClientGrantedScopesGetApiResponse> operation
-              = new ClientGrantedScopesGetApiOperation(sdkConfiguration, serverURL);
-
+              = new ClientGrantedScopesGetApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }
 }

@@ -10,7 +10,7 @@ import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
-import org.openapis.openapi.operations.VciSingleIssueApiOperation;
+import org.openapis.openapi.operations.VciSingleIssueApi;
 import org.openapis.openapi.utils.Utils;
 
 public class VciSingleIssueApiRequestBuilder {
@@ -55,8 +55,7 @@ public class VciSingleIssueApiRequestBuilder {
     */
     public VciSingleIssueApiResponse call() throws Exception {
         RequestOperation<VciSingleIssueApiRequest, VciSingleIssueApiResponse> operation
-              = new VciSingleIssueApiOperation(sdkConfiguration, serverURL);
-
+              = new VciSingleIssueApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }
 }

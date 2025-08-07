@@ -41,14 +41,14 @@ import org.openapis.openapi.models.operations.BackchannelAuthenticationIssueApiR
 import org.openapis.openapi.models.operations.BackchannelAuthenticationIssueApiRequestBody;
 import org.openapis.openapi.models.operations.BackchannelAuthenticationIssueApiRequestBuilder;
 import org.openapis.openapi.models.operations.BackchannelAuthenticationIssueApiResponse;
-import org.openapis.openapi.operations.BackchannelAuthenticationApiFormOperation;
-import org.openapis.openapi.operations.BackchannelAuthenticationApiOperation;
-import org.openapis.openapi.operations.BackchannelAuthenticationCompleteApiFormOperation;
-import org.openapis.openapi.operations.BackchannelAuthenticationCompleteApiOperation;
-import org.openapis.openapi.operations.BackchannelAuthenticationFailApiFormOperation;
-import org.openapis.openapi.operations.BackchannelAuthenticationFailApiOperation;
-import org.openapis.openapi.operations.BackchannelAuthenticationIssueApiFormOperation;
-import org.openapis.openapi.operations.BackchannelAuthenticationIssueApiOperation;
+import org.openapis.openapi.operations.BackchannelAuthenticationApi;
+import org.openapis.openapi.operations.BackchannelAuthenticationApiForm;
+import org.openapis.openapi.operations.BackchannelAuthenticationCompleteApi;
+import org.openapis.openapi.operations.BackchannelAuthenticationCompleteApiForm;
+import org.openapis.openapi.operations.BackchannelAuthenticationFailApi;
+import org.openapis.openapi.operations.BackchannelAuthenticationFailApiForm;
+import org.openapis.openapi.operations.BackchannelAuthenticationIssueApi;
+import org.openapis.openapi.operations.BackchannelAuthenticationIssueApiForm;
 
 
 public class Ciba {
@@ -1026,7 +1026,7 @@ public class Ciba {
             @Nullable String serverURL) throws Exception {
         BackchannelAuthenticationApiRequest request = new BackchannelAuthenticationApiRequest(serviceId, requestBody);
         RequestOperation<BackchannelAuthenticationApiRequest, BackchannelAuthenticationApiResponse> operation
-              = new BackchannelAuthenticationApiOperation(sdkConfiguration, serverURL);
+              = new BackchannelAuthenticationApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1998,7 +1998,7 @@ public class Ciba {
             @Nullable String serverURL) throws Exception {
         BackchannelAuthenticationApiFormRequest request = new BackchannelAuthenticationApiFormRequest(serviceId, requestBody);
         RequestOperation<BackchannelAuthenticationApiFormRequest, BackchannelAuthenticationApiFormResponse> operation
-              = new BackchannelAuthenticationApiFormOperation(sdkConfiguration, serverURL);
+              = new BackchannelAuthenticationApiForm.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2307,7 +2307,7 @@ public class Ciba {
             @Nullable String serverURL) throws Exception {
         BackchannelAuthenticationIssueApiRequest request = new BackchannelAuthenticationIssueApiRequest(serviceId, requestBody);
         RequestOperation<BackchannelAuthenticationIssueApiRequest, BackchannelAuthenticationIssueApiResponse> operation
-              = new BackchannelAuthenticationIssueApiOperation(sdkConfiguration, serverURL);
+              = new BackchannelAuthenticationIssueApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2616,7 +2616,7 @@ public class Ciba {
             @Nullable String serverURL) throws Exception {
         BackchannelAuthenticationIssueApiFormRequest request = new BackchannelAuthenticationIssueApiFormRequest(serviceId, requestBody);
         RequestOperation<BackchannelAuthenticationIssueApiFormRequest, BackchannelAuthenticationIssueApiFormResponse> operation
-              = new BackchannelAuthenticationIssueApiFormOperation(sdkConfiguration, serverURL);
+              = new BackchannelAuthenticationIssueApiForm.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2766,7 +2766,7 @@ public class Ciba {
             @Nullable String serverURL) throws Exception {
         BackchannelAuthenticationFailApiRequest request = new BackchannelAuthenticationFailApiRequest(serviceId, requestBody);
         RequestOperation<BackchannelAuthenticationFailApiRequest, BackchannelAuthenticationFailApiResponse> operation
-              = new BackchannelAuthenticationFailApiOperation(sdkConfiguration, serverURL);
+              = new BackchannelAuthenticationFailApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2916,7 +2916,7 @@ public class Ciba {
             @Nullable String serverURL) throws Exception {
         BackchannelAuthenticationFailApiFormRequest request = new BackchannelAuthenticationFailApiFormRequest(serviceId, requestBody);
         RequestOperation<BackchannelAuthenticationFailApiFormRequest, BackchannelAuthenticationFailApiFormResponse> operation
-              = new BackchannelAuthenticationFailApiFormOperation(sdkConfiguration, serverURL);
+              = new BackchannelAuthenticationFailApiForm.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -3282,7 +3282,7 @@ public class Ciba {
             @Nullable String serverURL) throws Exception {
         BackchannelAuthenticationCompleteApiRequest request = new BackchannelAuthenticationCompleteApiRequest(serviceId, requestBody);
         RequestOperation<BackchannelAuthenticationCompleteApiRequest, BackchannelAuthenticationCompleteApiResponse> operation
-              = new BackchannelAuthenticationCompleteApiOperation(sdkConfiguration, serverURL);
+              = new BackchannelAuthenticationCompleteApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -3648,7 +3648,7 @@ public class Ciba {
             @Nullable String serverURL) throws Exception {
         BackchannelAuthenticationCompleteApiFormRequest request = new BackchannelAuthenticationCompleteApiFormRequest(serviceId, requestBody);
         RequestOperation<BackchannelAuthenticationCompleteApiFormRequest, BackchannelAuthenticationCompleteApiFormResponse> operation
-              = new BackchannelAuthenticationCompleteApiFormOperation(sdkConfiguration, serverURL);
+              = new BackchannelAuthenticationCompleteApiForm.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 

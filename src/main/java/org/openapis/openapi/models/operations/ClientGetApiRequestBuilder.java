@@ -10,7 +10,7 @@ import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
-import org.openapis.openapi.operations.ClientGetApiOperation;
+import org.openapis.openapi.operations.ClientGetApi;
 import org.openapis.openapi.utils.Utils;
 
 public class ClientGetApiRequestBuilder {
@@ -55,8 +55,7 @@ public class ClientGetApiRequestBuilder {
     */
     public ClientGetApiResponse call() throws Exception {
         RequestOperation<ClientGetApiRequest, ClientGetApiResponse> operation
-              = new ClientGetApiOperation(sdkConfiguration, serverURL);
-
+              = new ClientGetApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }
 }

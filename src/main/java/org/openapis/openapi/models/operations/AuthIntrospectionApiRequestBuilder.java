@@ -10,7 +10,7 @@ import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
-import org.openapis.openapi.operations.AuthIntrospectionApiOperation;
+import org.openapis.openapi.operations.AuthIntrospectionApi;
 import org.openapis.openapi.utils.Utils;
 
 public class AuthIntrospectionApiRequestBuilder {
@@ -55,8 +55,7 @@ public class AuthIntrospectionApiRequestBuilder {
     */
     public AuthIntrospectionApiResponse call() throws Exception {
         RequestOperation<AuthIntrospectionApiRequest, AuthIntrospectionApiResponse> operation
-              = new AuthIntrospectionApiOperation(sdkConfiguration, serverURL);
-
+              = new AuthIntrospectionApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }
 }

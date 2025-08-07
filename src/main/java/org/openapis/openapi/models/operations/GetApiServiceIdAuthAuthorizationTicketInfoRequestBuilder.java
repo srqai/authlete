@@ -10,7 +10,7 @@ import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
-import org.openapis.openapi.operations.GetApiServiceIdAuthAuthorizationTicketInfoOperation;
+import org.openapis.openapi.operations.GetApiServiceIdAuthAuthorizationTicketInfo;
 import org.openapis.openapi.utils.Utils;
 
 public class GetApiServiceIdAuthAuthorizationTicketInfoRequestBuilder {
@@ -49,8 +49,7 @@ public class GetApiServiceIdAuthAuthorizationTicketInfoRequestBuilder {
     */
     public GetApiServiceIdAuthAuthorizationTicketInfoResponse call() throws Exception {
         RequestOperation<GetApiServiceIdAuthAuthorizationTicketInfoRequest, GetApiServiceIdAuthAuthorizationTicketInfoResponse> operation
-              = new GetApiServiceIdAuthAuthorizationTicketInfoOperation(sdkConfiguration, serverURL);
-
+              = new GetApiServiceIdAuthAuthorizationTicketInfo.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }
 }

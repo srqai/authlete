@@ -10,7 +10,7 @@ import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
-import org.openapis.openapi.operations.GrantMApiOperation;
+import org.openapis.openapi.operations.GrantMApi;
 import org.openapis.openapi.utils.Utils;
 
 public class GrantMApiRequestBuilder {
@@ -55,8 +55,7 @@ public class GrantMApiRequestBuilder {
     */
     public GrantMApiResponse call() throws Exception {
         RequestOperation<GrantMApiRequest, GrantMApiResponse> operation
-              = new GrantMApiOperation(sdkConfiguration, serverURL);
-
+              = new GrantMApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }
 }

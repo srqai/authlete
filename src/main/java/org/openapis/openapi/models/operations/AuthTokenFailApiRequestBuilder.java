@@ -10,7 +10,7 @@ import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
-import org.openapis.openapi.operations.AuthTokenFailApiOperation;
+import org.openapis.openapi.operations.AuthTokenFailApi;
 import org.openapis.openapi.utils.Utils;
 
 public class AuthTokenFailApiRequestBuilder {
@@ -55,8 +55,7 @@ public class AuthTokenFailApiRequestBuilder {
     */
     public AuthTokenFailApiResponse call() throws Exception {
         RequestOperation<AuthTokenFailApiRequest, AuthTokenFailApiResponse> operation
-              = new AuthTokenFailApiOperation(sdkConfiguration, serverURL);
-
+              = new AuthTokenFailApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }
 }

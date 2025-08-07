@@ -10,7 +10,7 @@ import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
-import org.openapis.openapi.operations.DeviceCompleteApiFormOperation;
+import org.openapis.openapi.operations.DeviceCompleteApiForm;
 import org.openapis.openapi.utils.Utils;
 
 public class DeviceCompleteApiFormRequestBuilder {
@@ -55,8 +55,7 @@ public class DeviceCompleteApiFormRequestBuilder {
     */
     public DeviceCompleteApiFormResponse call() throws Exception {
         RequestOperation<DeviceCompleteApiFormRequest, DeviceCompleteApiFormResponse> operation
-              = new DeviceCompleteApiFormOperation(sdkConfiguration, serverURL);
-
+              = new DeviceCompleteApiForm.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }
 }

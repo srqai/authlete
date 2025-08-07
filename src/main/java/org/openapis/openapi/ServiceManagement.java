@@ -20,9 +20,9 @@ import org.openapis.openapi.models.operations.ServiceGetApiResponse;
 import org.openapis.openapi.models.operations.ServiceGetListApiRequest;
 import org.openapis.openapi.models.operations.ServiceGetListApiRequestBuilder;
 import org.openapis.openapi.models.operations.ServiceGetListApiResponse;
-import org.openapis.openapi.operations.ServiceConfigurationApiOperation;
-import org.openapis.openapi.operations.ServiceGetApiOperation;
-import org.openapis.openapi.operations.ServiceGetListApiOperation;
+import org.openapis.openapi.operations.ServiceConfigurationApi;
+import org.openapis.openapi.operations.ServiceGetApi;
+import org.openapis.openapi.operations.ServiceGetListApi;
 
 
 public class ServiceManagement {
@@ -78,7 +78,7 @@ public class ServiceManagement {
     public ServiceGetApiResponse get(@Nonnull String serviceId, @Nullable String serverURL) throws Exception {
         ServiceGetApiRequest request = new ServiceGetApiRequest(serviceId);
         RequestOperation<ServiceGetApiRequest, ServiceGetApiResponse> operation
-              = new ServiceGetApiOperation(sdkConfiguration, serverURL);
+              = new ServiceGetApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -142,7 +142,7 @@ public class ServiceManagement {
             @Nullable String serverURL) throws Exception {
         ServiceGetListApiRequest request = new ServiceGetListApiRequest(start, end);
         RequestOperation<ServiceGetListApiRequest, ServiceGetListApiResponse> operation
-              = new ServiceGetListApiOperation(sdkConfiguration, serverURL);
+              = new ServiceGetListApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -224,7 +224,7 @@ public class ServiceManagement {
             @Nonnull String serviceId, @Nullable String serverURL) throws Exception {
         ServiceConfigurationApiRequest request = new ServiceConfigurationApiRequest(pretty, patch, serviceId);
         RequestOperation<ServiceConfigurationApiRequest, ServiceConfigurationApiResponse> operation
-              = new ServiceConfigurationApiOperation(sdkConfiguration, serverURL);
+              = new ServiceConfigurationApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 

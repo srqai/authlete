@@ -65,20 +65,20 @@ import org.openapis.openapi.models.operations.VciSingleIssueApiRequest;
 import org.openapis.openapi.models.operations.VciSingleIssueApiRequestBody;
 import org.openapis.openapi.models.operations.VciSingleIssueApiRequestBuilder;
 import org.openapis.openapi.models.operations.VciSingleIssueApiResponse;
-import org.openapis.openapi.operations.VciBatchParseApiFormOperation;
-import org.openapis.openapi.operations.VciBatchParseApiOperation;
-import org.openapis.openapi.operations.VciDeferredIssueApiOperation;
-import org.openapis.openapi.operations.VciDeferredParseApiFormOperation;
-import org.openapis.openapi.operations.VciDeferredParseApiOperation;
-import org.openapis.openapi.operations.VciJwksApiFormOperation;
-import org.openapis.openapi.operations.VciJwksApiOperation;
-import org.openapis.openapi.operations.VciMetadataApiFormOperation;
-import org.openapis.openapi.operations.VciMetadataApiOperation;
-import org.openapis.openapi.operations.VciOfferCreateApiFormOperation;
-import org.openapis.openapi.operations.VciOfferCreateApiOperation;
-import org.openapis.openapi.operations.VciOfferInfoApiFormOperation;
-import org.openapis.openapi.operations.VciOfferInfoApiOperation;
-import org.openapis.openapi.operations.VciSingleIssueApiOperation;
+import org.openapis.openapi.operations.VciBatchParseApi;
+import org.openapis.openapi.operations.VciBatchParseApiForm;
+import org.openapis.openapi.operations.VciDeferredIssueApi;
+import org.openapis.openapi.operations.VciDeferredParseApi;
+import org.openapis.openapi.operations.VciDeferredParseApiForm;
+import org.openapis.openapi.operations.VciJwksApi;
+import org.openapis.openapi.operations.VciJwksApiForm;
+import org.openapis.openapi.operations.VciMetadataApi;
+import org.openapis.openapi.operations.VciMetadataApiForm;
+import org.openapis.openapi.operations.VciOfferCreateApi;
+import org.openapis.openapi.operations.VciOfferCreateApiForm;
+import org.openapis.openapi.operations.VciOfferInfoApi;
+import org.openapis.openapi.operations.VciOfferInfoApiForm;
+import org.openapis.openapi.operations.VciSingleIssueApi;
 
 
 public class VerifiableCredentialIssuer {
@@ -123,7 +123,7 @@ public class VerifiableCredentialIssuer {
             @Nullable String serverURL) throws Exception {
         VciMetadataApiRequest request = new VciMetadataApiRequest(serviceId, requestBody);
         RequestOperation<VciMetadataApiRequest, VciMetadataApiResponse> operation
-              = new VciMetadataApiOperation(sdkConfiguration, serverURL);
+              = new VciMetadataApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -162,7 +162,7 @@ public class VerifiableCredentialIssuer {
             @Nullable String serverURL) throws Exception {
         VciMetadataApiFormRequest request = new VciMetadataApiFormRequest(serviceId, requestBody);
         RequestOperation<VciMetadataApiFormRequest, VciMetadataApiFormResponse> operation
-              = new VciMetadataApiFormOperation(sdkConfiguration, serverURL);
+              = new VciMetadataApiForm.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -201,7 +201,7 @@ public class VerifiableCredentialIssuer {
             @Nullable String serverURL) throws Exception {
         VciJwksApiRequest request = new VciJwksApiRequest(serviceId, requestBody);
         RequestOperation<VciJwksApiRequest, VciJwksApiResponse> operation
-              = new VciJwksApiOperation(sdkConfiguration, serverURL);
+              = new VciJwksApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -240,7 +240,7 @@ public class VerifiableCredentialIssuer {
             @Nullable String serverURL) throws Exception {
         VciJwksApiFormRequest request = new VciJwksApiFormRequest(serviceId, requestBody);
         RequestOperation<VciJwksApiFormRequest, VciJwksApiFormResponse> operation
-              = new VciJwksApiFormOperation(sdkConfiguration, serverURL);
+              = new VciJwksApiForm.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -279,7 +279,7 @@ public class VerifiableCredentialIssuer {
             @Nullable String serverURL) throws Exception {
         VciOfferCreateApiRequest request = new VciOfferCreateApiRequest(serviceId, requestBody);
         RequestOperation<VciOfferCreateApiRequest, VciOfferCreateApiResponse> operation
-              = new VciOfferCreateApiOperation(sdkConfiguration, serverURL);
+              = new VciOfferCreateApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -318,7 +318,7 @@ public class VerifiableCredentialIssuer {
             @Nullable String serverURL) throws Exception {
         VciOfferCreateApiFormRequest request = new VciOfferCreateApiFormRequest(serviceId, requestBody);
         RequestOperation<VciOfferCreateApiFormRequest, VciOfferCreateApiFormResponse> operation
-              = new VciOfferCreateApiFormOperation(sdkConfiguration, serverURL);
+              = new VciOfferCreateApiForm.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -357,7 +357,7 @@ public class VerifiableCredentialIssuer {
             @Nullable String serverURL) throws Exception {
         VciOfferInfoApiRequest request = new VciOfferInfoApiRequest(serviceId, requestBody);
         RequestOperation<VciOfferInfoApiRequest, VciOfferInfoApiResponse> operation
-              = new VciOfferInfoApiOperation(sdkConfiguration, serverURL);
+              = new VciOfferInfoApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -396,7 +396,7 @@ public class VerifiableCredentialIssuer {
             @Nullable String serverURL) throws Exception {
         VciOfferInfoApiFormRequest request = new VciOfferInfoApiFormRequest(serviceId, requestBody);
         RequestOperation<VciOfferInfoApiFormRequest, VciOfferInfoApiFormResponse> operation
-              = new VciOfferInfoApiFormOperation(sdkConfiguration, serverURL);
+              = new VciOfferInfoApiForm.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -435,7 +435,7 @@ public class VerifiableCredentialIssuer {
             @Nullable String serverURL) throws Exception {
         VciSingleIssueApiRequest request = new VciSingleIssueApiRequest(serviceId, requestBody);
         RequestOperation<VciSingleIssueApiRequest, VciSingleIssueApiResponse> operation
-              = new VciSingleIssueApiOperation(sdkConfiguration, serverURL);
+              = new VciSingleIssueApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -474,7 +474,7 @@ public class VerifiableCredentialIssuer {
             @Nullable String serverURL) throws Exception {
         VciBatchParseApiRequest request = new VciBatchParseApiRequest(serviceId, requestBody);
         RequestOperation<VciBatchParseApiRequest, VciBatchParseApiResponse> operation
-              = new VciBatchParseApiOperation(sdkConfiguration, serverURL);
+              = new VciBatchParseApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -513,7 +513,7 @@ public class VerifiableCredentialIssuer {
             @Nullable String serverURL) throws Exception {
         VciBatchParseApiFormRequest request = new VciBatchParseApiFormRequest(serviceId, requestBody);
         RequestOperation<VciBatchParseApiFormRequest, VciBatchParseApiFormResponse> operation
-              = new VciBatchParseApiFormOperation(sdkConfiguration, serverURL);
+              = new VciBatchParseApiForm.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -552,7 +552,7 @@ public class VerifiableCredentialIssuer {
             @Nullable String serverURL) throws Exception {
         VciDeferredParseApiRequest request = new VciDeferredParseApiRequest(serviceId, requestBody);
         RequestOperation<VciDeferredParseApiRequest, VciDeferredParseApiResponse> operation
-              = new VciDeferredParseApiOperation(sdkConfiguration, serverURL);
+              = new VciDeferredParseApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -591,7 +591,7 @@ public class VerifiableCredentialIssuer {
             @Nullable String serverURL) throws Exception {
         VciDeferredParseApiFormRequest request = new VciDeferredParseApiFormRequest(serviceId, requestBody);
         RequestOperation<VciDeferredParseApiFormRequest, VciDeferredParseApiFormResponse> operation
-              = new VciDeferredParseApiFormOperation(sdkConfiguration, serverURL);
+              = new VciDeferredParseApiForm.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -630,7 +630,7 @@ public class VerifiableCredentialIssuer {
             @Nullable String serverURL) throws Exception {
         VciDeferredIssueApiRequest request = new VciDeferredIssueApiRequest(serviceId, requestBody);
         RequestOperation<VciDeferredIssueApiRequest, VciDeferredIssueApiResponse> operation
-              = new VciDeferredIssueApiOperation(sdkConfiguration, serverURL);
+              = new VciDeferredIssueApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 

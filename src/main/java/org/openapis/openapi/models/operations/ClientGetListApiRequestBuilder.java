@@ -11,7 +11,7 @@ import java.lang.Exception;
 import java.lang.Integer;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
-import org.openapis.openapi.operations.ClientGetListApiOperation;
+import org.openapis.openapi.operations.ClientGetListApi;
 import org.openapis.openapi.utils.Utils;
 
 public class ClientGetListApiRequestBuilder {
@@ -68,8 +68,7 @@ public class ClientGetListApiRequestBuilder {
     */
     public ClientGetListApiResponse call() throws Exception {
         RequestOperation<ClientGetListApiRequest, ClientGetListApiResponse> operation
-              = new ClientGetListApiOperation(sdkConfiguration, serverURL);
-
+              = new ClientGetListApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }
 }

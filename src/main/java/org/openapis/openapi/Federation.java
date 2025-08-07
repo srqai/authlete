@@ -17,8 +17,8 @@ import org.openapis.openapi.models.operations.FederationRegistrationApiRequest;
 import org.openapis.openapi.models.operations.FederationRegistrationApiRequestBody;
 import org.openapis.openapi.models.operations.FederationRegistrationApiRequestBuilder;
 import org.openapis.openapi.models.operations.FederationRegistrationApiResponse;
-import org.openapis.openapi.operations.FederationRegistrationApiFormOperation;
-import org.openapis.openapi.operations.FederationRegistrationApiOperation;
+import org.openapis.openapi.operations.FederationRegistrationApi;
+import org.openapis.openapi.operations.FederationRegistrationApiForm;
 
 
 public class Federation {
@@ -174,7 +174,7 @@ public class Federation {
             @Nullable String serverURL) throws Exception {
         FederationRegistrationApiRequest request = new FederationRegistrationApiRequest(serviceId, requestBody);
         RequestOperation<FederationRegistrationApiRequest, FederationRegistrationApiResponse> operation
-              = new FederationRegistrationApiOperation(sdkConfiguration, serverURL);
+              = new FederationRegistrationApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -324,7 +324,7 @@ public class Federation {
             @Nullable String serverURL) throws Exception {
         FederationRegistrationApiFormRequest request = new FederationRegistrationApiFormRequest(serviceId, requestBody);
         RequestOperation<FederationRegistrationApiFormRequest, FederationRegistrationApiFormResponse> operation
-              = new FederationRegistrationApiFormOperation(sdkConfiguration, serverURL);
+              = new FederationRegistrationApiForm.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 

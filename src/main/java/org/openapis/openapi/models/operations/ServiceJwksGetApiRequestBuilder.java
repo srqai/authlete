@@ -11,7 +11,7 @@ import java.lang.Boolean;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
-import org.openapis.openapi.operations.ServiceJwksGetApiOperation;
+import org.openapis.openapi.operations.ServiceJwksGetApi;
 import org.openapis.openapi.utils.Utils;
 
 public class ServiceJwksGetApiRequestBuilder {
@@ -62,8 +62,7 @@ public class ServiceJwksGetApiRequestBuilder {
     */
     public ServiceJwksGetApiResponse call() throws Exception {
         RequestOperation<ServiceJwksGetApiRequest, ServiceJwksGetApiResponse> operation
-              = new ServiceJwksGetApiOperation(sdkConfiguration, serverURL);
-
+              = new ServiceJwksGetApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }
 }

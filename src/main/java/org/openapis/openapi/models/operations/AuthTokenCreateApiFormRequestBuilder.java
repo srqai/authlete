@@ -10,7 +10,7 @@ import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
-import org.openapis.openapi.operations.AuthTokenCreateApiFormOperation;
+import org.openapis.openapi.operations.AuthTokenCreateApiForm;
 import org.openapis.openapi.utils.Utils;
 
 public class AuthTokenCreateApiFormRequestBuilder {
@@ -55,8 +55,7 @@ public class AuthTokenCreateApiFormRequestBuilder {
     */
     public AuthTokenCreateApiFormResponse call() throws Exception {
         RequestOperation<AuthTokenCreateApiFormRequest, AuthTokenCreateApiFormResponse> operation
-              = new AuthTokenCreateApiFormOperation(sdkConfiguration, serverURL);
-
+              = new AuthTokenCreateApiForm.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }
 }

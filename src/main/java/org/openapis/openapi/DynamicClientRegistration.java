@@ -17,8 +17,8 @@ import org.openapis.openapi.models.operations.ClientRegistrationDeleteApiRequest
 import org.openapis.openapi.models.operations.ClientRegistrationDeleteApiRequestBody;
 import org.openapis.openapi.models.operations.ClientRegistrationDeleteApiRequestBuilder;
 import org.openapis.openapi.models.operations.ClientRegistrationDeleteApiResponse;
-import org.openapis.openapi.operations.ClientRegistrationDeleteApiFormOperation;
-import org.openapis.openapi.operations.ClientRegistrationDeleteApiOperation;
+import org.openapis.openapi.operations.ClientRegistrationDeleteApi;
+import org.openapis.openapi.operations.ClientRegistrationDeleteApiForm;
 
 
 public class DynamicClientRegistration {
@@ -381,7 +381,7 @@ public class DynamicClientRegistration {
             @Nullable String serverURL) throws Exception {
         ClientRegistrationDeleteApiRequest request = new ClientRegistrationDeleteApiRequest(serviceId, requestBody);
         RequestOperation<ClientRegistrationDeleteApiRequest, ClientRegistrationDeleteApiResponse> operation
-              = new ClientRegistrationDeleteApiOperation(sdkConfiguration, serverURL);
+              = new ClientRegistrationDeleteApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -738,7 +738,7 @@ public class DynamicClientRegistration {
             @Nullable String serverURL) throws Exception {
         ClientRegistrationDeleteApiFormRequest request = new ClientRegistrationDeleteApiFormRequest(serviceId, requestBody);
         RequestOperation<ClientRegistrationDeleteApiFormRequest, ClientRegistrationDeleteApiFormResponse> operation
-              = new ClientRegistrationDeleteApiFormOperation(sdkConfiguration, serverURL);
+              = new ClientRegistrationDeleteApiForm.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 

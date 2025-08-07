@@ -10,7 +10,7 @@ import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
-import org.openapis.openapi.operations.ClientSecretUpdateApiFormOperation;
+import org.openapis.openapi.operations.ClientSecretUpdateApiForm;
 import org.openapis.openapi.utils.Utils;
 
 public class ClientSecretUpdateApiFormRequestBuilder {
@@ -61,8 +61,7 @@ public class ClientSecretUpdateApiFormRequestBuilder {
     */
     public ClientSecretUpdateApiFormResponse call() throws Exception {
         RequestOperation<ClientSecretUpdateApiFormRequest, ClientSecretUpdateApiFormResponse> operation
-              = new ClientSecretUpdateApiFormOperation(sdkConfiguration, serverURL);
-
+              = new ClientSecretUpdateApiForm.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }
 }

@@ -9,7 +9,7 @@ import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
-import org.openapis.openapi.operations.MiscEchoApiOperation;
+import org.openapis.openapi.operations.MiscEchoApi;
 
 public class MiscEchoApiRequestBuilder {
     private final SDKConfiguration sdkConfiguration;
@@ -32,8 +32,7 @@ public class MiscEchoApiRequestBuilder {
     */
     public MiscEchoApiResponse call() throws Exception {
         RequestlessOperation<MiscEchoApiResponse> operation
-            = new MiscEchoApiOperation(sdkConfiguration, serverURL);
-
+            = new MiscEchoApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest());
     }
 }

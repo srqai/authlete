@@ -10,7 +10,7 @@ import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
-import org.openapis.openapi.operations.JoseVerifyApiOperation;
+import org.openapis.openapi.operations.JoseVerifyApi;
 import org.openapis.openapi.utils.Utils;
 
 public class JoseVerifyApiRequestBuilder {
@@ -55,8 +55,7 @@ public class JoseVerifyApiRequestBuilder {
     */
     public JoseVerifyApiResponse call() throws Exception {
         RequestOperation<JoseVerifyApiRequest, JoseVerifyApiResponse> operation
-              = new JoseVerifyApiOperation(sdkConfiguration, serverURL);
-
+              = new JoseVerifyApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }
 }

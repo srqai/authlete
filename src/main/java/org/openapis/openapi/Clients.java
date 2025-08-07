@@ -77,25 +77,25 @@ import org.openapis.openapi.models.operations.ClientSecretUpdateApiRequest;
 import org.openapis.openapi.models.operations.ClientSecretUpdateApiRequestBody;
 import org.openapis.openapi.models.operations.ClientSecretUpdateApiRequestBuilder;
 import org.openapis.openapi.models.operations.ClientSecretUpdateApiResponse;
-import org.openapis.openapi.operations.ClientAuthorizationDeleteApiOperation;
-import org.openapis.openapi.operations.ClientAuthorizationGetListApiOperation;
-import org.openapis.openapi.operations.ClientAuthorizationUpdateApiFormOperation;
-import org.openapis.openapi.operations.ClientAuthorizationUpdateApiOperation;
-import org.openapis.openapi.operations.ClientExtensionRequestablesScopesDeleteApiOperation;
-import org.openapis.openapi.operations.ClientExtensionRequestablesScopesGetApiOperation;
-import org.openapis.openapi.operations.ClientExtensionRequestablesScopesUpdateApiOperation;
-import org.openapis.openapi.operations.ClientFlagUpdateApiOperation;
-import org.openapis.openapi.operations.ClientGetApiOperation;
-import org.openapis.openapi.operations.ClientGrantedScopesDeleteApiOperation;
-import org.openapis.openapi.operations.ClientGrantedScopesGetApiOperation;
-import org.openapis.openapi.operations.ClientRegistrationApiFormOperation;
-import org.openapis.openapi.operations.ClientRegistrationApiOperation;
-import org.openapis.openapi.operations.ClientRegistrationGetApiOperation;
-import org.openapis.openapi.operations.ClientRegistrationUpdateApiFormOperation;
-import org.openapis.openapi.operations.ClientRegistrationUpdateApiOperation;
-import org.openapis.openapi.operations.ClientSecretRefreshApiOperation;
-import org.openapis.openapi.operations.ClientSecretUpdateApiFormOperation;
-import org.openapis.openapi.operations.ClientSecretUpdateApiOperation;
+import org.openapis.openapi.operations.ClientAuthorizationDeleteApi;
+import org.openapis.openapi.operations.ClientAuthorizationGetListApi;
+import org.openapis.openapi.operations.ClientAuthorizationUpdateApi;
+import org.openapis.openapi.operations.ClientAuthorizationUpdateApiForm;
+import org.openapis.openapi.operations.ClientExtensionRequestablesScopesDeleteApi;
+import org.openapis.openapi.operations.ClientExtensionRequestablesScopesGetApi;
+import org.openapis.openapi.operations.ClientExtensionRequestablesScopesUpdateApi;
+import org.openapis.openapi.operations.ClientFlagUpdateApi;
+import org.openapis.openapi.operations.ClientGetApi;
+import org.openapis.openapi.operations.ClientGrantedScopesDeleteApi;
+import org.openapis.openapi.operations.ClientGrantedScopesGetApi;
+import org.openapis.openapi.operations.ClientRegistrationApi;
+import org.openapis.openapi.operations.ClientRegistrationApiForm;
+import org.openapis.openapi.operations.ClientRegistrationGetApi;
+import org.openapis.openapi.operations.ClientRegistrationUpdateApi;
+import org.openapis.openapi.operations.ClientRegistrationUpdateApiForm;
+import org.openapis.openapi.operations.ClientSecretRefreshApi;
+import org.openapis.openapi.operations.ClientSecretUpdateApi;
+import org.openapis.openapi.operations.ClientSecretUpdateApiForm;
 
 
 public class Clients {
@@ -146,7 +146,7 @@ public class Clients {
             @Nullable String serverURL) throws Exception {
         ClientGetApiRequest request = new ClientGetApiRequest(serviceId, clientId);
         RequestOperation<ClientGetApiRequest, ClientGetApiResponse> operation
-              = new ClientGetApiOperation(sdkConfiguration, serverURL);
+              = new ClientGetApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -193,7 +193,7 @@ public class Clients {
             @Nullable ClientFlagUpdateApiRequestBody requestBody, @Nullable String serverURL) throws Exception {
         ClientFlagUpdateApiRequest request = new ClientFlagUpdateApiRequest(serviceId, clientIdentifier, requestBody);
         RequestOperation<ClientFlagUpdateApiRequest, ClientFlagUpdateApiResponse> operation
-              = new ClientFlagUpdateApiOperation(sdkConfiguration, serverURL);
+              = new ClientFlagUpdateApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -249,7 +249,7 @@ public class Clients {
             @Nullable String serverURL) throws Exception {
         ClientSecretRefreshApiRequest request = new ClientSecretRefreshApiRequest(serviceId, clientIdentifier);
         RequestOperation<ClientSecretRefreshApiRequest, ClientSecretRefreshApiResponse> operation
-              = new ClientSecretRefreshApiOperation(sdkConfiguration, serverURL);
+              = new ClientSecretRefreshApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -310,7 +310,7 @@ public class Clients {
             @Nonnull ClientSecretUpdateApiRequestBody requestBody, @Nullable String serverURL) throws Exception {
         ClientSecretUpdateApiRequest request = new ClientSecretUpdateApiRequest(serviceId, clientIdentifier, requestBody);
         RequestOperation<ClientSecretUpdateApiRequest, ClientSecretUpdateApiResponse> operation
-              = new ClientSecretUpdateApiOperation(sdkConfiguration, serverURL);
+              = new ClientSecretUpdateApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -371,7 +371,7 @@ public class Clients {
             @Nonnull ClientSecretUpdateApiFormRequestBody requestBody, @Nullable String serverURL) throws Exception {
         ClientSecretUpdateApiFormRequest request = new ClientSecretUpdateApiFormRequest(serviceId, clientIdentifier, requestBody);
         RequestOperation<ClientSecretUpdateApiFormRequest, ClientSecretUpdateApiFormResponse> operation
-              = new ClientSecretUpdateApiFormOperation(sdkConfiguration, serverURL);
+              = new ClientSecretUpdateApiForm.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -417,7 +417,7 @@ public class Clients {
      */
     public ClientAuthorizationGetListApiResponse getAuthorizedApplications(@Nonnull ClientAuthorizationGetListApiRequest request, @Nullable String serverURL) throws Exception {
         RequestOperation<ClientAuthorizationGetListApiRequest, ClientAuthorizationGetListApiResponse> operation
-              = new ClientAuthorizationGetListApiOperation(sdkConfiguration, serverURL);
+              = new ClientAuthorizationGetListApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -466,7 +466,7 @@ public class Clients {
             @Nullable ClientAuthorizationUpdateApiRequestBody requestBody, @Nullable String serverURL) throws Exception {
         ClientAuthorizationUpdateApiRequest request = new ClientAuthorizationUpdateApiRequest(serviceId, clientId, requestBody);
         RequestOperation<ClientAuthorizationUpdateApiRequest, ClientAuthorizationUpdateApiResponse> operation
-              = new ClientAuthorizationUpdateApiOperation(sdkConfiguration, serverURL);
+              = new ClientAuthorizationUpdateApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -515,7 +515,7 @@ public class Clients {
             @Nullable ClientAuthorizationUpdateApiFormRequestBody requestBody, @Nullable String serverURL) throws Exception {
         ClientAuthorizationUpdateApiFormRequest request = new ClientAuthorizationUpdateApiFormRequest(serviceId, clientId, requestBody);
         RequestOperation<ClientAuthorizationUpdateApiFormRequest, ClientAuthorizationUpdateApiFormResponse> operation
-              = new ClientAuthorizationUpdateApiFormOperation(sdkConfiguration, serverURL);
+              = new ClientAuthorizationUpdateApiForm.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -575,7 +575,7 @@ public class Clients {
             @Nonnull String clientId, @Nullable String serverURL) throws Exception {
         ClientAuthorizationDeleteApiRequest request = new ClientAuthorizationDeleteApiRequest(subject, serviceId, clientId);
         RequestOperation<ClientAuthorizationDeleteApiRequest, ClientAuthorizationDeleteApiResponse> operation
-              = new ClientAuthorizationDeleteApiOperation(sdkConfiguration, serverURL);
+              = new ClientAuthorizationDeleteApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -704,7 +704,7 @@ public class Clients {
             @Nonnull String clientId, @Nullable String serverURL) throws Exception {
         ClientGrantedScopesGetApiRequest request = new ClientGrantedScopesGetApiRequest(subject, serviceId, clientId);
         RequestOperation<ClientGrantedScopesGetApiRequest, ClientGrantedScopesGetApiResponse> operation
-              = new ClientGrantedScopesGetApiOperation(sdkConfiguration, serverURL);
+              = new ClientGrantedScopesGetApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -788,7 +788,7 @@ public class Clients {
             @Nonnull String clientId, @Nullable String serverURL) throws Exception {
         ClientGrantedScopesDeleteApiRequest request = new ClientGrantedScopesDeleteApiRequest(subject, serviceId, clientId);
         RequestOperation<ClientGrantedScopesDeleteApiRequest, ClientGrantedScopesDeleteApiResponse> operation
-              = new ClientGrantedScopesDeleteApiOperation(sdkConfiguration, serverURL);
+              = new ClientGrantedScopesDeleteApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1079,7 +1079,7 @@ public class Clients {
             @Nullable String serverURL) throws Exception {
         ClientRegistrationApiRequest request = new ClientRegistrationApiRequest(serviceId, requestBody);
         RequestOperation<ClientRegistrationApiRequest, ClientRegistrationApiResponse> operation
-              = new ClientRegistrationApiOperation(sdkConfiguration, serverURL);
+              = new ClientRegistrationApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1370,7 +1370,7 @@ public class Clients {
             @Nullable String serverURL) throws Exception {
         ClientRegistrationApiFormRequest request = new ClientRegistrationApiFormRequest(serviceId, requestBody);
         RequestOperation<ClientRegistrationApiFormRequest, ClientRegistrationApiFormResponse> operation
-              = new ClientRegistrationApiFormOperation(sdkConfiguration, serverURL);
+              = new ClientRegistrationApiForm.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1742,7 +1742,7 @@ public class Clients {
             @Nullable String serverURL) throws Exception {
         ClientRegistrationGetApiRequest request = new ClientRegistrationGetApiRequest(serviceId, requestBody);
         RequestOperation<ClientRegistrationGetApiRequest, ClientRegistrationGetApiResponse> operation
-              = new ClientRegistrationGetApiOperation(sdkConfiguration, serverURL);
+              = new ClientRegistrationGetApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2114,7 +2114,7 @@ public class Clients {
             @Nullable String serverURL) throws Exception {
         ClientRegistrationUpdateApiRequest request = new ClientRegistrationUpdateApiRequest(serviceId, requestBody);
         RequestOperation<ClientRegistrationUpdateApiRequest, ClientRegistrationUpdateApiResponse> operation
-              = new ClientRegistrationUpdateApiOperation(sdkConfiguration, serverURL);
+              = new ClientRegistrationUpdateApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2486,7 +2486,7 @@ public class Clients {
             @Nullable String serverURL) throws Exception {
         ClientRegistrationUpdateApiFormRequest request = new ClientRegistrationUpdateApiFormRequest(serviceId, requestBody);
         RequestOperation<ClientRegistrationUpdateApiFormRequest, ClientRegistrationUpdateApiFormResponse> operation
-              = new ClientRegistrationUpdateApiFormOperation(sdkConfiguration, serverURL);
+              = new ClientRegistrationUpdateApiForm.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2533,7 +2533,7 @@ public class Clients {
             @Nullable String serverURL) throws Exception {
         ClientExtensionRequestablesScopesGetApiRequest request = new ClientExtensionRequestablesScopesGetApiRequest(serviceId, clientId);
         RequestOperation<ClientExtensionRequestablesScopesGetApiRequest, ClientExtensionRequestablesScopesGetApiResponse> operation
-              = new ClientExtensionRequestablesScopesGetApiOperation(sdkConfiguration, serverURL);
+              = new ClientExtensionRequestablesScopesGetApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2585,7 +2585,7 @@ public class Clients {
             @Nonnull ClientExtensionRequestablesScopesUpdateApiRequestBody requestBody, @Nullable String serverURL) throws Exception {
         ClientExtensionRequestablesScopesUpdateApiRequest request = new ClientExtensionRequestablesScopesUpdateApiRequest(serviceId, clientId, requestBody);
         RequestOperation<ClientExtensionRequestablesScopesUpdateApiRequest, ClientExtensionRequestablesScopesUpdateApiResponse> operation
-              = new ClientExtensionRequestablesScopesUpdateApiOperation(sdkConfiguration, serverURL);
+              = new ClientExtensionRequestablesScopesUpdateApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2632,7 +2632,7 @@ public class Clients {
             @Nullable String serverURL) throws Exception {
         ClientExtensionRequestablesScopesDeleteApiRequest request = new ClientExtensionRequestablesScopesDeleteApiRequest(serviceId, clientId);
         RequestOperation<ClientExtensionRequestablesScopesDeleteApiRequest, ClientExtensionRequestablesScopesDeleteApiResponse> operation
-              = new ClientExtensionRequestablesScopesDeleteApiOperation(sdkConfiguration, serverURL);
+              = new ClientExtensionRequestablesScopesDeleteApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 

@@ -10,7 +10,7 @@ import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
-import org.openapis.openapi.operations.AuthUserinfoIssueApiOperation;
+import org.openapis.openapi.operations.AuthUserinfoIssueApi;
 import org.openapis.openapi.utils.Utils;
 
 public class AuthUserinfoIssueApiRequestBuilder {
@@ -55,8 +55,7 @@ public class AuthUserinfoIssueApiRequestBuilder {
     */
     public AuthUserinfoIssueApiResponse call() throws Exception {
         RequestOperation<AuthUserinfoIssueApiRequest, AuthUserinfoIssueApiResponse> operation
-              = new AuthUserinfoIssueApiOperation(sdkConfiguration, serverURL);
-
+              = new AuthUserinfoIssueApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }
 }

@@ -20,9 +20,9 @@ import org.openapis.openapi.models.operations.AuthTokenRevokeApiRequest;
 import org.openapis.openapi.models.operations.AuthTokenRevokeApiRequestBody;
 import org.openapis.openapi.models.operations.AuthTokenRevokeApiRequestBuilder;
 import org.openapis.openapi.models.operations.AuthTokenRevokeApiResponse;
-import org.openapis.openapi.operations.AuthTokenDeleteApiOperation;
-import org.openapis.openapi.operations.AuthTokenRevokeApiFormOperation;
-import org.openapis.openapi.operations.AuthTokenRevokeApiOperation;
+import org.openapis.openapi.operations.AuthTokenDeleteApi;
+import org.openapis.openapi.operations.AuthTokenRevokeApi;
+import org.openapis.openapi.operations.AuthTokenRevokeApiForm;
 
 
 public class TokenOperations {
@@ -77,7 +77,7 @@ public class TokenOperations {
             @Nullable String serverURL) throws Exception {
         AuthTokenDeleteApiRequest request = new AuthTokenDeleteApiRequest(serviceId, accessTokenIdentifier);
         RequestOperation<AuthTokenDeleteApiRequest, AuthTokenDeleteApiResponse> operation
-              = new AuthTokenDeleteApiOperation(sdkConfiguration, serverURL);
+              = new AuthTokenDeleteApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -122,7 +122,7 @@ public class TokenOperations {
             @Nullable String serverURL) throws Exception {
         AuthTokenRevokeApiRequest request = new AuthTokenRevokeApiRequest(serviceId, requestBody);
         RequestOperation<AuthTokenRevokeApiRequest, AuthTokenRevokeApiResponse> operation
-              = new AuthTokenRevokeApiOperation(sdkConfiguration, serverURL);
+              = new AuthTokenRevokeApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -167,7 +167,7 @@ public class TokenOperations {
             @Nullable String serverURL) throws Exception {
         AuthTokenRevokeApiFormRequest request = new AuthTokenRevokeApiFormRequest(serviceId, requestBody);
         RequestOperation<AuthTokenRevokeApiFormRequest, AuthTokenRevokeApiFormResponse> operation
-              = new AuthTokenRevokeApiFormOperation(sdkConfiguration, serverURL);
+              = new AuthTokenRevokeApiForm.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 

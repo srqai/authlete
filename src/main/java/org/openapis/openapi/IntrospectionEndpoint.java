@@ -17,8 +17,8 @@ import org.openapis.openapi.models.operations.AuthIntrospectionApiRequest;
 import org.openapis.openapi.models.operations.AuthIntrospectionApiRequestBody;
 import org.openapis.openapi.models.operations.AuthIntrospectionApiRequestBuilder;
 import org.openapis.openapi.models.operations.AuthIntrospectionApiResponse;
-import org.openapis.openapi.operations.AuthIntrospectionApiFormOperation;
-import org.openapis.openapi.operations.AuthIntrospectionApiOperation;
+import org.openapis.openapi.operations.AuthIntrospectionApi;
+import org.openapis.openapi.operations.AuthIntrospectionApiForm;
 
 
 public class IntrospectionEndpoint {
@@ -558,7 +558,7 @@ public class IntrospectionEndpoint {
             @Nullable String serverURL) throws Exception {
         AuthIntrospectionApiRequest request = new AuthIntrospectionApiRequest(serviceId, requestBody);
         RequestOperation<AuthIntrospectionApiRequest, AuthIntrospectionApiResponse> operation
-              = new AuthIntrospectionApiOperation(sdkConfiguration, serverURL);
+              = new AuthIntrospectionApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1092,7 +1092,7 @@ public class IntrospectionEndpoint {
             @Nullable String serverURL) throws Exception {
         AuthIntrospectionApiFormRequest request = new AuthIntrospectionApiFormRequest(serviceId, requestBody);
         RequestOperation<AuthIntrospectionApiFormRequest, AuthIntrospectionApiFormResponse> operation
-              = new AuthIntrospectionApiFormOperation(sdkConfiguration, serverURL);
+              = new AuthIntrospectionApiForm.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 

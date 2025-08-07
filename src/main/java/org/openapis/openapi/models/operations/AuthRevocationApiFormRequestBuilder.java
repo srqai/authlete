@@ -10,7 +10,7 @@ import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
-import org.openapis.openapi.operations.AuthRevocationApiFormOperation;
+import org.openapis.openapi.operations.AuthRevocationApiForm;
 import org.openapis.openapi.utils.Utils;
 
 public class AuthRevocationApiFormRequestBuilder {
@@ -55,8 +55,7 @@ public class AuthRevocationApiFormRequestBuilder {
     */
     public AuthRevocationApiFormResponse call() throws Exception {
         RequestOperation<AuthRevocationApiFormRequest, AuthRevocationApiFormResponse> operation
-              = new AuthRevocationApiFormOperation(sdkConfiguration, serverURL);
-
+              = new AuthRevocationApiForm.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }
 }

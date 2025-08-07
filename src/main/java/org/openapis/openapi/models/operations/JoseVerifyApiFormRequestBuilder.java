@@ -10,7 +10,7 @@ import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
-import org.openapis.openapi.operations.JoseVerifyApiFormOperation;
+import org.openapis.openapi.operations.JoseVerifyApiForm;
 import org.openapis.openapi.utils.Utils;
 
 public class JoseVerifyApiFormRequestBuilder {
@@ -55,8 +55,7 @@ public class JoseVerifyApiFormRequestBuilder {
     */
     public JoseVerifyApiFormResponse call() throws Exception {
         RequestOperation<JoseVerifyApiFormRequest, JoseVerifyApiFormResponse> operation
-              = new JoseVerifyApiFormOperation(sdkConfiguration, serverURL);
-
+              = new JoseVerifyApiForm.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }
 }

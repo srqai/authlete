@@ -11,7 +11,7 @@ import java.lang.Boolean;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
-import org.openapis.openapi.operations.ServiceConfigurationApiOperation;
+import org.openapis.openapi.operations.ServiceConfigurationApi;
 import org.openapis.openapi.utils.Utils;
 
 public class ServiceConfigurationApiRequestBuilder {
@@ -62,8 +62,7 @@ public class ServiceConfigurationApiRequestBuilder {
     */
     public ServiceConfigurationApiResponse call() throws Exception {
         RequestOperation<ServiceConfigurationApiRequest, ServiceConfigurationApiResponse> operation
-              = new ServiceConfigurationApiOperation(sdkConfiguration, serverURL);
-
+              = new ServiceConfigurationApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }
 }

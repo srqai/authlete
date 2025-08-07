@@ -28,11 +28,11 @@ import org.openapis.openapi.models.operations.PushedAuthReqApiRequest;
 import org.openapis.openapi.models.operations.PushedAuthReqApiRequestBody;
 import org.openapis.openapi.models.operations.PushedAuthReqApiRequestBuilder;
 import org.openapis.openapi.models.operations.PushedAuthReqApiResponse;
-import org.openapis.openapi.operations.AuthAuthorizationIssueApiFormOperation;
-import org.openapis.openapi.operations.AuthAuthorizationIssueApiOperation;
-import org.openapis.openapi.operations.GetApiServiceIdAuthAuthorizationTicketInfoOperation;
-import org.openapis.openapi.operations.PushedAuthReqApiFormOperation;
-import org.openapis.openapi.operations.PushedAuthReqApiOperation;
+import org.openapis.openapi.operations.AuthAuthorizationIssueApi;
+import org.openapis.openapi.operations.AuthAuthorizationIssueApiForm;
+import org.openapis.openapi.operations.GetApiServiceIdAuthAuthorizationTicketInfo;
+import org.openapis.openapi.operations.PushedAuthReqApi;
+import org.openapis.openapi.operations.PushedAuthReqApiForm;
 
 
 public class Authorization {
@@ -419,7 +419,7 @@ public class Authorization {
             @Nullable String serverURL) throws Exception {
         AuthAuthorizationIssueApiRequest request = new AuthAuthorizationIssueApiRequest(serviceId, requestBody);
         RequestOperation<AuthAuthorizationIssueApiRequest, AuthAuthorizationIssueApiResponse> operation
-              = new AuthAuthorizationIssueApiOperation(sdkConfiguration, serverURL);
+              = new AuthAuthorizationIssueApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -800,7 +800,7 @@ public class Authorization {
             @Nullable String serverURL) throws Exception {
         AuthAuthorizationIssueApiFormRequest request = new AuthAuthorizationIssueApiFormRequest(serviceId, requestBody);
         RequestOperation<AuthAuthorizationIssueApiFormRequest, AuthAuthorizationIssueApiFormResponse> operation
-              = new AuthAuthorizationIssueApiFormOperation(sdkConfiguration, serverURL);
+              = new AuthAuthorizationIssueApiForm.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -845,7 +845,7 @@ public class Authorization {
             @Nullable String serverURL) throws Exception {
         PushedAuthReqApiRequest request = new PushedAuthReqApiRequest(serviceId, requestBody);
         RequestOperation<PushedAuthReqApiRequest, PushedAuthReqApiResponse> operation
-              = new PushedAuthReqApiOperation(sdkConfiguration, serverURL);
+              = new PushedAuthReqApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -890,7 +890,7 @@ public class Authorization {
             @Nullable String serverURL) throws Exception {
         PushedAuthReqApiFormRequest request = new PushedAuthReqApiFormRequest(serviceId, requestBody);
         RequestOperation<PushedAuthReqApiFormRequest, PushedAuthReqApiFormResponse> operation
-              = new PushedAuthReqApiFormOperation(sdkConfiguration, serverURL);
+              = new PushedAuthReqApiForm.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -925,7 +925,7 @@ public class Authorization {
     public GetApiServiceIdAuthAuthorizationTicketInfoResponse getTicketInfo(@Nonnull String serviceId, @Nullable String serverURL) throws Exception {
         GetApiServiceIdAuthAuthorizationTicketInfoRequest request = new GetApiServiceIdAuthAuthorizationTicketInfoRequest(serviceId);
         RequestOperation<GetApiServiceIdAuthAuthorizationTicketInfoRequest, GetApiServiceIdAuthAuthorizationTicketInfoResponse> operation
-              = new GetApiServiceIdAuthAuthorizationTicketInfoOperation(sdkConfiguration, serverURL);
+              = new GetApiServiceIdAuthAuthorizationTicketInfo.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 

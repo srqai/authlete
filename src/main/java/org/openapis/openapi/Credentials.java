@@ -21,9 +21,9 @@ import org.openapis.openapi.models.operations.VciJwtissuerApiRequest;
 import org.openapis.openapi.models.operations.VciJwtissuerApiRequestBody;
 import org.openapis.openapi.models.operations.VciJwtissuerApiRequestBuilder;
 import org.openapis.openapi.models.operations.VciJwtissuerApiResponse;
-import org.openapis.openapi.operations.VciBatchIssueApiOperation;
-import org.openapis.openapi.operations.VciJwtissuerApiFormOperation;
-import org.openapis.openapi.operations.VciJwtissuerApiOperation;
+import org.openapis.openapi.operations.VciBatchIssueApi;
+import org.openapis.openapi.operations.VciJwtissuerApi;
+import org.openapis.openapi.operations.VciJwtissuerApiForm;
 
 
 public class Credentials {
@@ -68,7 +68,7 @@ public class Credentials {
             @Nullable String serverURL) throws Exception {
         VciJwtissuerApiRequest request = new VciJwtissuerApiRequest(serviceId, requestBody);
         RequestOperation<VciJwtissuerApiRequest, VciJwtissuerApiResponse> operation
-              = new VciJwtissuerApiOperation(sdkConfiguration, serverURL);
+              = new VciJwtissuerApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -107,7 +107,7 @@ public class Credentials {
             @Nullable String serverURL) throws Exception {
         VciJwtissuerApiFormRequest request = new VciJwtissuerApiFormRequest(serviceId, requestBody);
         RequestOperation<VciJwtissuerApiFormRequest, VciJwtissuerApiFormResponse> operation
-              = new VciJwtissuerApiFormOperation(sdkConfiguration, serverURL);
+              = new VciJwtissuerApiForm.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -146,7 +146,7 @@ public class Credentials {
             @Nullable String serverURL) throws Exception {
         VciBatchIssueApiRequest request = new VciBatchIssueApiRequest(serviceId, requestBody);
         RequestOperation<VciBatchIssueApiRequest, VciBatchIssueApiResponse> operation
-              = new VciBatchIssueApiOperation(sdkConfiguration, serverURL);
+              = new VciBatchIssueApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 

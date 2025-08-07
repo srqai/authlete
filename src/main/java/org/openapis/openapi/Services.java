@@ -19,9 +19,9 @@ import org.openapis.openapi.models.operations.ServiceUpdateApiRequest;
 import org.openapis.openapi.models.operations.ServiceUpdateApiRequestBody;
 import org.openapis.openapi.models.operations.ServiceUpdateApiRequestBuilder;
 import org.openapis.openapi.models.operations.ServiceUpdateApiResponse;
-import org.openapis.openapi.operations.ServiceCreateApiOperation;
-import org.openapis.openapi.operations.ServiceDeleteApiOperation;
-import org.openapis.openapi.operations.ServiceUpdateApiOperation;
+import org.openapis.openapi.operations.ServiceCreateApi;
+import org.openapis.openapi.operations.ServiceDeleteApi;
+import org.openapis.openapi.operations.ServiceUpdateApi;
 
 
 public class Services {
@@ -66,7 +66,7 @@ public class Services {
      */
     public ServiceCreateApiResponse create(@Nullable ServiceCreateApiRequest request, @Nullable String serverURL) throws Exception {
         RequestOperation<ServiceCreateApiRequest, ServiceCreateApiResponse> operation
-              = new ServiceCreateApiOperation(sdkConfiguration, serverURL);
+              = new ServiceCreateApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -110,7 +110,7 @@ public class Services {
             @Nullable String serverURL) throws Exception {
         ServiceUpdateApiRequest request = new ServiceUpdateApiRequest(serviceId, requestBody);
         RequestOperation<ServiceUpdateApiRequest, ServiceUpdateApiResponse> operation
-              = new ServiceUpdateApiOperation(sdkConfiguration, serverURL);
+              = new ServiceUpdateApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -151,7 +151,7 @@ public class Services {
     public ServiceDeleteApiResponse delete(@Nonnull String serviceId, @Nullable String serverURL) throws Exception {
         ServiceDeleteApiRequest request = new ServiceDeleteApiRequest(serviceId);
         RequestOperation<ServiceDeleteApiRequest, ServiceDeleteApiResponse> operation
-              = new ServiceDeleteApiOperation(sdkConfiguration, serverURL);
+              = new ServiceDeleteApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 

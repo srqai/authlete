@@ -12,7 +12,7 @@ import java.lang.String;
 import org.openapis.openapi.models.operations.HskGetApiRequest;
 import org.openapis.openapi.models.operations.HskGetApiRequestBuilder;
 import org.openapis.openapi.models.operations.HskGetApiResponse;
-import org.openapis.openapi.operations.HskGetApiOperation;
+import org.openapis.openapi.operations.HskGetApi;
 
 
 public class SecurityKeys {
@@ -57,7 +57,7 @@ public class SecurityKeys {
             @Nullable String serverURL) throws Exception {
         HskGetApiRequest request = new HskGetApiRequest(serviceId, handle);
         RequestOperation<HskGetApiRequest, HskGetApiResponse> operation
-              = new HskGetApiOperation(sdkConfiguration, serverURL);
+              = new HskGetApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 

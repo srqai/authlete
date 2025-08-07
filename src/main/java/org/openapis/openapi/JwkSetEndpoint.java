@@ -13,7 +13,7 @@ import java.lang.String;
 import org.openapis.openapi.models.operations.ServiceJwksGetApiRequest;
 import org.openapis.openapi.models.operations.ServiceJwksGetApiRequestBuilder;
 import org.openapis.openapi.models.operations.ServiceJwksGetApiResponse;
-import org.openapis.openapi.operations.ServiceJwksGetApiOperation;
+import org.openapis.openapi.operations.ServiceJwksGetApi;
 
 
 public class JwkSetEndpoint {
@@ -104,7 +104,7 @@ public class JwkSetEndpoint {
             @Nonnull String serviceId, @Nullable String serverURL) throws Exception {
         ServiceJwksGetApiRequest request = new ServiceJwksGetApiRequest(includePrivateKeys, pretty, serviceId);
         RequestOperation<ServiceJwksGetApiRequest, ServiceJwksGetApiResponse> operation
-              = new ServiceJwksGetApiOperation(sdkConfiguration, serverURL);
+              = new ServiceJwksGetApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 

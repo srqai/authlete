@@ -10,7 +10,7 @@ import java.lang.Exception;
 import java.lang.Integer;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
-import org.openapis.openapi.operations.ServiceGetListApiOperation;
+import org.openapis.openapi.operations.ServiceGetListApi;
 
 public class ServiceGetListApiRequestBuilder {
     private final SDKConfiguration sdkConfiguration;
@@ -54,8 +54,7 @@ public class ServiceGetListApiRequestBuilder {
     */
     public ServiceGetListApiResponse call() throws Exception {
         RequestOperation<ServiceGetListApiRequest, ServiceGetListApiResponse> operation
-              = new ServiceGetListApiOperation(sdkConfiguration, serverURL);
-
+              = new ServiceGetListApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }
 }

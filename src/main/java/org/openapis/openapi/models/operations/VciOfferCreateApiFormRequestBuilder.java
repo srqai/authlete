@@ -10,7 +10,7 @@ import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
-import org.openapis.openapi.operations.VciOfferCreateApiFormOperation;
+import org.openapis.openapi.operations.VciOfferCreateApiForm;
 import org.openapis.openapi.utils.Utils;
 
 public class VciOfferCreateApiFormRequestBuilder {
@@ -55,8 +55,7 @@ public class VciOfferCreateApiFormRequestBuilder {
     */
     public VciOfferCreateApiFormResponse call() throws Exception {
         RequestOperation<VciOfferCreateApiFormRequest, VciOfferCreateApiFormResponse> operation
-              = new VciOfferCreateApiFormOperation(sdkConfiguration, serverURL);
-
+              = new VciOfferCreateApiForm.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }
 }

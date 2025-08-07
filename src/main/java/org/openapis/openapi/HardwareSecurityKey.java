@@ -12,7 +12,7 @@ import java.lang.String;
 import org.openapis.openapi.models.operations.HskDeleteApiRequest;
 import org.openapis.openapi.models.operations.HskDeleteApiRequestBuilder;
 import org.openapis.openapi.models.operations.HskDeleteApiResponse;
-import org.openapis.openapi.operations.HskDeleteApiOperation;
+import org.openapis.openapi.operations.HskDeleteApi;
 
 
 public class HardwareSecurityKey {
@@ -57,7 +57,7 @@ public class HardwareSecurityKey {
             @Nullable String serverURL) throws Exception {
         HskDeleteApiRequest request = new HskDeleteApiRequest(serviceId, handle);
         RequestOperation<HskDeleteApiRequest, HskDeleteApiResponse> operation
-              = new HskDeleteApiOperation(sdkConfiguration, serverURL);
+              = new HskDeleteApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 

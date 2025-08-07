@@ -10,7 +10,7 @@ import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
-import org.openapis.openapi.operations.BackchannelAuthenticationIssueApiOperation;
+import org.openapis.openapi.operations.BackchannelAuthenticationIssueApi;
 import org.openapis.openapi.utils.Utils;
 
 public class BackchannelAuthenticationIssueApiRequestBuilder {
@@ -55,8 +55,7 @@ public class BackchannelAuthenticationIssueApiRequestBuilder {
     */
     public BackchannelAuthenticationIssueApiResponse call() throws Exception {
         RequestOperation<BackchannelAuthenticationIssueApiRequest, BackchannelAuthenticationIssueApiResponse> operation
-              = new BackchannelAuthenticationIssueApiOperation(sdkConfiguration, serverURL);
-
+              = new BackchannelAuthenticationIssueApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }
 }

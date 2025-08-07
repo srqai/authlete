@@ -10,7 +10,7 @@ import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
-import org.openapis.openapi.operations.HskGetApiOperation;
+import org.openapis.openapi.operations.HskGetApi;
 import org.openapis.openapi.utils.Utils;
 
 public class HskGetApiRequestBuilder {
@@ -55,8 +55,7 @@ public class HskGetApiRequestBuilder {
     */
     public HskGetApiResponse call() throws Exception {
         RequestOperation<HskGetApiRequest, HskGetApiResponse> operation
-              = new HskGetApiOperation(sdkConfiguration, serverURL);
-
+              = new HskGetApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }
 }

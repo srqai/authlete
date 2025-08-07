@@ -10,7 +10,7 @@ import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
-import org.openapis.openapi.operations.DeviceCompleteApiOperation;
+import org.openapis.openapi.operations.DeviceCompleteApi;
 import org.openapis.openapi.utils.Utils;
 
 public class DeviceCompleteApiRequestBuilder {
@@ -55,8 +55,7 @@ public class DeviceCompleteApiRequestBuilder {
     */
     public DeviceCompleteApiResponse call() throws Exception {
         RequestOperation<DeviceCompleteApiRequest, DeviceCompleteApiResponse> operation
-              = new DeviceCompleteApiOperation(sdkConfiguration, serverURL);
-
+              = new DeviceCompleteApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }
 }

@@ -13,7 +13,7 @@ import org.openapis.openapi.models.operations.GrantMApiRequest;
 import org.openapis.openapi.models.operations.GrantMApiRequestBody;
 import org.openapis.openapi.models.operations.GrantMApiRequestBuilder;
 import org.openapis.openapi.models.operations.GrantMApiResponse;
-import org.openapis.openapi.operations.GrantMApiOperation;
+import org.openapis.openapi.operations.GrantMApi;
 
 
 public class GrantManagementEndpoints {
@@ -67,7 +67,7 @@ public class GrantManagementEndpoints {
             @Nullable String serverURL) throws Exception {
         GrantMApiRequest request = new GrantMApiRequest(serviceId, requestBody);
         RequestOperation<GrantMApiRequest, GrantMApiResponse> operation
-              = new GrantMApiOperation(sdkConfiguration, serverURL);
+              = new GrantMApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 

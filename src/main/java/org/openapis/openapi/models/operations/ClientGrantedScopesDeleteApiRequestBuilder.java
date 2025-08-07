@@ -10,7 +10,7 @@ import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
-import org.openapis.openapi.operations.ClientGrantedScopesDeleteApiOperation;
+import org.openapis.openapi.operations.ClientGrantedScopesDeleteApi;
 import org.openapis.openapi.utils.Utils;
 
 public class ClientGrantedScopesDeleteApiRequestBuilder {
@@ -61,8 +61,7 @@ public class ClientGrantedScopesDeleteApiRequestBuilder {
     */
     public ClientGrantedScopesDeleteApiResponse call() throws Exception {
         RequestOperation<ClientGrantedScopesDeleteApiRequest, ClientGrantedScopesDeleteApiResponse> operation
-              = new ClientGrantedScopesDeleteApiOperation(sdkConfiguration, serverURL);
-
+              = new ClientGrantedScopesDeleteApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }
 }

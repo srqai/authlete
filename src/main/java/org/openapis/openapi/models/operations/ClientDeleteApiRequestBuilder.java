@@ -10,7 +10,7 @@ import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
-import org.openapis.openapi.operations.ClientDeleteApiOperation;
+import org.openapis.openapi.operations.ClientDeleteApi;
 import org.openapis.openapi.utils.Utils;
 
 public class ClientDeleteApiRequestBuilder {
@@ -55,8 +55,7 @@ public class ClientDeleteApiRequestBuilder {
     */
     public ClientDeleteApiResponse call() throws Exception {
         RequestOperation<ClientDeleteApiRequest, ClientDeleteApiResponse> operation
-              = new ClientDeleteApiOperation(sdkConfiguration, serverURL);
-
+              = new ClientDeleteApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }
 }

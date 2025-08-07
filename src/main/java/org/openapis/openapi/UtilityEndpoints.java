@@ -12,8 +12,8 @@ import org.openapis.openapi.models.operations.InfoApiRequestBuilder;
 import org.openapis.openapi.models.operations.InfoApiResponse;
 import org.openapis.openapi.models.operations.MiscEchoApiRequestBuilder;
 import org.openapis.openapi.models.operations.MiscEchoApiResponse;
-import org.openapis.openapi.operations.InfoApiOperation;
-import org.openapis.openapi.operations.MiscEchoApiOperation;
+import org.openapis.openapi.operations.InfoApi;
+import org.openapis.openapi.operations.MiscEchoApi;
 
 
 public class UtilityEndpoints {
@@ -57,7 +57,7 @@ public class UtilityEndpoints {
      */
     public InfoApiResponse getInfo(@Nullable String serverURL) throws Exception {
         RequestlessOperation<InfoApiResponse> operation
-            = new InfoApiOperation(sdkConfiguration, serverURL);
+            = new InfoApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest());
     }
 
@@ -95,7 +95,7 @@ public class UtilityEndpoints {
      */
     public MiscEchoApiResponse echo(@Nullable String serverURL) throws Exception {
         RequestlessOperation<MiscEchoApiResponse> operation
-            = new MiscEchoApiOperation(sdkConfiguration, serverURL);
+            = new MiscEchoApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest());
     }
 

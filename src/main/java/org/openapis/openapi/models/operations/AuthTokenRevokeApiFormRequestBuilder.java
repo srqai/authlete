@@ -10,7 +10,7 @@ import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
-import org.openapis.openapi.operations.AuthTokenRevokeApiFormOperation;
+import org.openapis.openapi.operations.AuthTokenRevokeApiForm;
 import org.openapis.openapi.utils.Utils;
 
 public class AuthTokenRevokeApiFormRequestBuilder {
@@ -55,8 +55,7 @@ public class AuthTokenRevokeApiFormRequestBuilder {
     */
     public AuthTokenRevokeApiFormResponse call() throws Exception {
         RequestOperation<AuthTokenRevokeApiFormRequest, AuthTokenRevokeApiFormResponse> operation
-              = new AuthTokenRevokeApiFormOperation(sdkConfiguration, serverURL);
-
+              = new AuthTokenRevokeApiForm.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }
 }

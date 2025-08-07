@@ -25,10 +25,10 @@ import org.openapis.openapi.models.operations.AuthTokenIssueApiRequest;
 import org.openapis.openapi.models.operations.AuthTokenIssueApiRequestBody;
 import org.openapis.openapi.models.operations.AuthTokenIssueApiRequestBuilder;
 import org.openapis.openapi.models.operations.AuthTokenIssueApiResponse;
-import org.openapis.openapi.operations.AuthTokenApiFormOperation;
-import org.openapis.openapi.operations.AuthTokenApiOperation;
-import org.openapis.openapi.operations.AuthTokenIssueApiFormOperation;
-import org.openapis.openapi.operations.AuthTokenIssueApiOperation;
+import org.openapis.openapi.operations.AuthTokenApi;
+import org.openapis.openapi.operations.AuthTokenApiForm;
+import org.openapis.openapi.operations.AuthTokenIssueApi;
+import org.openapis.openapi.operations.AuthTokenIssueApiForm;
 
 
 public class TokenEndpoint {
@@ -1384,7 +1384,7 @@ public class TokenEndpoint {
             @Nullable String serverURL) throws Exception {
         AuthTokenApiRequest request = new AuthTokenApiRequest(serviceId, requestBody);
         RequestOperation<AuthTokenApiRequest, AuthTokenApiResponse> operation
-              = new AuthTokenApiOperation(sdkConfiguration, serverURL);
+              = new AuthTokenApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2734,7 +2734,7 @@ public class TokenEndpoint {
             @Nullable String serverURL) throws Exception {
         AuthTokenApiFormRequest request = new AuthTokenApiFormRequest(serviceId, requestBody);
         RequestOperation<AuthTokenApiFormRequest, AuthTokenApiFormResponse> operation
-              = new AuthTokenApiFormOperation(sdkConfiguration, serverURL);
+              = new AuthTokenApiForm.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2983,7 +2983,7 @@ public class TokenEndpoint {
             @Nullable String serverURL) throws Exception {
         AuthTokenIssueApiRequest request = new AuthTokenIssueApiRequest(serviceId, requestBody);
         RequestOperation<AuthTokenIssueApiRequest, AuthTokenIssueApiResponse> operation
-              = new AuthTokenIssueApiOperation(sdkConfiguration, serverURL);
+              = new AuthTokenIssueApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -3232,7 +3232,7 @@ public class TokenEndpoint {
             @Nullable String serverURL) throws Exception {
         AuthTokenIssueApiFormRequest request = new AuthTokenIssueApiFormRequest(serviceId, requestBody);
         RequestOperation<AuthTokenIssueApiFormRequest, AuthTokenIssueApiFormResponse> operation
-              = new AuthTokenIssueApiFormOperation(sdkConfiguration, serverURL);
+              = new AuthTokenIssueApiForm.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 

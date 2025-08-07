@@ -10,7 +10,7 @@ import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
-import org.openapis.openapi.operations.DeviceAuthorizationApiOperation;
+import org.openapis.openapi.operations.DeviceAuthorizationApi;
 import org.openapis.openapi.utils.Utils;
 
 public class DeviceAuthorizationApiRequestBuilder {
@@ -55,8 +55,7 @@ public class DeviceAuthorizationApiRequestBuilder {
     */
     public DeviceAuthorizationApiResponse call() throws Exception {
         RequestOperation<DeviceAuthorizationApiRequest, DeviceAuthorizationApiResponse> operation
-              = new DeviceAuthorizationApiOperation(sdkConfiguration, serverURL);
-
+              = new DeviceAuthorizationApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }
 }

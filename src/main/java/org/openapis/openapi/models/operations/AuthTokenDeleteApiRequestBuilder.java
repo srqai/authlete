@@ -10,7 +10,7 @@ import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
-import org.openapis.openapi.operations.AuthTokenDeleteApiOperation;
+import org.openapis.openapi.operations.AuthTokenDeleteApi;
 import org.openapis.openapi.utils.Utils;
 
 public class AuthTokenDeleteApiRequestBuilder {
@@ -55,8 +55,7 @@ public class AuthTokenDeleteApiRequestBuilder {
     */
     public AuthTokenDeleteApiResponse call() throws Exception {
         RequestOperation<AuthTokenDeleteApiRequest, AuthTokenDeleteApiResponse> operation
-              = new AuthTokenDeleteApiOperation(sdkConfiguration, serverURL);
-
+              = new AuthTokenDeleteApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }
 }

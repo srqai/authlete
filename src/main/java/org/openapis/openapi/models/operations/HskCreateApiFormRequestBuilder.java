@@ -10,7 +10,7 @@ import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
-import org.openapis.openapi.operations.HskCreateApiFormOperation;
+import org.openapis.openapi.operations.HskCreateApiForm;
 import org.openapis.openapi.utils.Utils;
 
 public class HskCreateApiFormRequestBuilder {
@@ -55,8 +55,7 @@ public class HskCreateApiFormRequestBuilder {
     */
     public HskCreateApiFormResponse call() throws Exception {
         RequestOperation<HskCreateApiFormRequest, HskCreateApiFormResponse> operation
-              = new HskCreateApiFormOperation(sdkConfiguration, serverURL);
-
+              = new HskCreateApiForm.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }
 }

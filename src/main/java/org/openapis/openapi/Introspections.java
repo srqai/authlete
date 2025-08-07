@@ -17,8 +17,8 @@ import org.openapis.openapi.models.operations.AuthIntrospectionStandardApiReques
 import org.openapis.openapi.models.operations.AuthIntrospectionStandardApiRequestBody;
 import org.openapis.openapi.models.operations.AuthIntrospectionStandardApiRequestBuilder;
 import org.openapis.openapi.models.operations.AuthIntrospectionStandardApiResponse;
-import org.openapis.openapi.operations.AuthIntrospectionStandardApiFormOperation;
-import org.openapis.openapi.operations.AuthIntrospectionStandardApiOperation;
+import org.openapis.openapi.operations.AuthIntrospectionStandardApi;
+import org.openapis.openapi.operations.AuthIntrospectionStandardApiForm;
 
 
 public class Introspections {
@@ -351,7 +351,7 @@ public class Introspections {
             @Nullable String serverURL) throws Exception {
         AuthIntrospectionStandardApiRequest request = new AuthIntrospectionStandardApiRequest(serviceId, requestBody);
         RequestOperation<AuthIntrospectionStandardApiRequest, AuthIntrospectionStandardApiResponse> operation
-              = new AuthIntrospectionStandardApiOperation(sdkConfiguration, serverURL);
+              = new AuthIntrospectionStandardApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -678,7 +678,7 @@ public class Introspections {
             @Nullable String serverURL) throws Exception {
         AuthIntrospectionStandardApiFormRequest request = new AuthIntrospectionStandardApiFormRequest(serviceId, requestBody);
         RequestOperation<AuthIntrospectionStandardApiFormRequest, AuthIntrospectionStandardApiFormResponse> operation
-              = new AuthIntrospectionStandardApiFormOperation(sdkConfiguration, serverURL);
+              = new AuthIntrospectionStandardApiForm.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 

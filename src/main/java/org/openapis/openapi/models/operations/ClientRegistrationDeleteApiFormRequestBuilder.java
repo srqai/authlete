@@ -10,7 +10,7 @@ import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
-import org.openapis.openapi.operations.ClientRegistrationDeleteApiFormOperation;
+import org.openapis.openapi.operations.ClientRegistrationDeleteApiForm;
 import org.openapis.openapi.utils.Utils;
 
 public class ClientRegistrationDeleteApiFormRequestBuilder {
@@ -55,8 +55,7 @@ public class ClientRegistrationDeleteApiFormRequestBuilder {
     */
     public ClientRegistrationDeleteApiFormResponse call() throws Exception {
         RequestOperation<ClientRegistrationDeleteApiFormRequest, ClientRegistrationDeleteApiFormResponse> operation
-              = new ClientRegistrationDeleteApiFormOperation(sdkConfiguration, serverURL);
-
+              = new ClientRegistrationDeleteApiForm.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }
 }

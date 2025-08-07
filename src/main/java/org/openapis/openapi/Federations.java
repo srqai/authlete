@@ -13,7 +13,7 @@ import org.openapis.openapi.models.operations.FederationConfigurationApiRequest;
 import org.openapis.openapi.models.operations.FederationConfigurationApiRequestBody;
 import org.openapis.openapi.models.operations.FederationConfigurationApiRequestBuilder;
 import org.openapis.openapi.models.operations.FederationConfigurationApiResponse;
-import org.openapis.openapi.operations.FederationConfigurationApiOperation;
+import org.openapis.openapi.operations.FederationConfigurationApi;
 
 
 public class Federations {
@@ -303,7 +303,7 @@ public class Federations {
             @Nullable String serverURL) throws Exception {
         FederationConfigurationApiRequest request = new FederationConfigurationApiRequest(serviceId, requestBody);
         RequestOperation<FederationConfigurationApiRequest, FederationConfigurationApiResponse> operation
-              = new FederationConfigurationApiOperation(sdkConfiguration, serverURL);
+              = new FederationConfigurationApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 

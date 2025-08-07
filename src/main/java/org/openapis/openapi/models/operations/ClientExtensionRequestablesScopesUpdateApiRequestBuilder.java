@@ -10,7 +10,7 @@ import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
-import org.openapis.openapi.operations.ClientExtensionRequestablesScopesUpdateApiOperation;
+import org.openapis.openapi.operations.ClientExtensionRequestablesScopesUpdateApi;
 import org.openapis.openapi.utils.Utils;
 
 public class ClientExtensionRequestablesScopesUpdateApiRequestBuilder {
@@ -61,8 +61,7 @@ public class ClientExtensionRequestablesScopesUpdateApiRequestBuilder {
     */
     public ClientExtensionRequestablesScopesUpdateApiResponse call() throws Exception {
         RequestOperation<ClientExtensionRequestablesScopesUpdateApiRequest, ClientExtensionRequestablesScopesUpdateApiResponse> operation
-              = new ClientExtensionRequestablesScopesUpdateApiOperation(sdkConfiguration, serverURL);
-
+              = new ClientExtensionRequestablesScopesUpdateApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }
 }

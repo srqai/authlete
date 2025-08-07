@@ -10,7 +10,7 @@ import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
-import org.openapis.openapi.operations.HskDeleteApiOperation;
+import org.openapis.openapi.operations.HskDeleteApi;
 import org.openapis.openapi.utils.Utils;
 
 public class HskDeleteApiRequestBuilder {
@@ -55,8 +55,7 @@ public class HskDeleteApiRequestBuilder {
     */
     public HskDeleteApiResponse call() throws Exception {
         RequestOperation<HskDeleteApiRequest, HskDeleteApiResponse> operation
-              = new HskDeleteApiOperation(sdkConfiguration, serverURL);
-
+              = new HskDeleteApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }
 }

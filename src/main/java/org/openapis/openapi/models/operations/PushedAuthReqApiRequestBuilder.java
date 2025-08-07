@@ -10,7 +10,7 @@ import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
-import org.openapis.openapi.operations.PushedAuthReqApiOperation;
+import org.openapis.openapi.operations.PushedAuthReqApi;
 import org.openapis.openapi.utils.Utils;
 
 public class PushedAuthReqApiRequestBuilder {
@@ -55,8 +55,7 @@ public class PushedAuthReqApiRequestBuilder {
     */
     public PushedAuthReqApiResponse call() throws Exception {
         RequestOperation<PushedAuthReqApiRequest, PushedAuthReqApiResponse> operation
-              = new PushedAuthReqApiOperation(sdkConfiguration, serverURL);
-
+              = new PushedAuthReqApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }
 }

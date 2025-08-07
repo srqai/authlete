@@ -9,7 +9,7 @@ import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
-import org.openapis.openapi.operations.InfoApiOperation;
+import org.openapis.openapi.operations.InfoApi;
 
 public class InfoApiRequestBuilder {
     private final SDKConfiguration sdkConfiguration;
@@ -32,8 +32,7 @@ public class InfoApiRequestBuilder {
     */
     public InfoApiResponse call() throws Exception {
         RequestlessOperation<InfoApiResponse> operation
-            = new InfoApiOperation(sdkConfiguration, serverURL);
-
+            = new InfoApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest());
     }
 }

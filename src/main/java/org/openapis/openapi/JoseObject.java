@@ -17,8 +17,8 @@ import org.openapis.openapi.models.operations.JoseVerifyApiRequest;
 import org.openapis.openapi.models.operations.JoseVerifyApiRequestBody;
 import org.openapis.openapi.models.operations.JoseVerifyApiRequestBuilder;
 import org.openapis.openapi.models.operations.JoseVerifyApiResponse;
-import org.openapis.openapi.operations.JoseVerifyApiFormOperation;
-import org.openapis.openapi.operations.JoseVerifyApiOperation;
+import org.openapis.openapi.operations.JoseVerifyApi;
+import org.openapis.openapi.operations.JoseVerifyApiForm;
 
 
 public class JoseObject {
@@ -68,7 +68,7 @@ public class JoseObject {
             @Nullable String serverURL) throws Exception {
         JoseVerifyApiRequest request = new JoseVerifyApiRequest(serviceId, requestBody);
         RequestOperation<JoseVerifyApiRequest, JoseVerifyApiResponse> operation
-              = new JoseVerifyApiOperation(sdkConfiguration, serverURL);
+              = new JoseVerifyApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -112,7 +112,7 @@ public class JoseObject {
             @Nullable String serverURL) throws Exception {
         JoseVerifyApiFormRequest request = new JoseVerifyApiFormRequest(serviceId, requestBody);
         RequestOperation<JoseVerifyApiFormRequest, JoseVerifyApiFormResponse> operation
-              = new JoseVerifyApiFormOperation(sdkConfiguration, serverURL);
+              = new JoseVerifyApiForm.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 

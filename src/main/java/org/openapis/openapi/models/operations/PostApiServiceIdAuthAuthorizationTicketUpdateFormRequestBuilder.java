@@ -10,7 +10,7 @@ import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
-import org.openapis.openapi.operations.PostApiServiceIdAuthAuthorizationTicketUpdateFormOperation;
+import org.openapis.openapi.operations.PostApiServiceIdAuthAuthorizationTicketUpdateForm;
 import org.openapis.openapi.utils.Utils;
 
 public class PostApiServiceIdAuthAuthorizationTicketUpdateFormRequestBuilder {
@@ -55,8 +55,7 @@ public class PostApiServiceIdAuthAuthorizationTicketUpdateFormRequestBuilder {
     */
     public PostApiServiceIdAuthAuthorizationTicketUpdateFormResponse call() throws Exception {
         RequestOperation<PostApiServiceIdAuthAuthorizationTicketUpdateFormRequest, PostApiServiceIdAuthAuthorizationTicketUpdateFormResponse> operation
-              = new PostApiServiceIdAuthAuthorizationTicketUpdateFormOperation(sdkConfiguration, serverURL);
-
+              = new PostApiServiceIdAuthAuthorizationTicketUpdateForm.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }
 }

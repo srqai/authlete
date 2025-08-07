@@ -20,9 +20,9 @@ import org.openapis.openapi.models.operations.HskCreateApiResponse;
 import org.openapis.openapi.models.operations.HskGetListApiRequest;
 import org.openapis.openapi.models.operations.HskGetListApiRequestBuilder;
 import org.openapis.openapi.models.operations.HskGetListApiResponse;
-import org.openapis.openapi.operations.HskCreateApiFormOperation;
-import org.openapis.openapi.operations.HskCreateApiOperation;
-import org.openapis.openapi.operations.HskGetListApiOperation;
+import org.openapis.openapi.operations.HskCreateApi;
+import org.openapis.openapi.operations.HskCreateApiForm;
+import org.openapis.openapi.operations.HskGetListApi;
 
 
 public class HardwareSecurityKeys {
@@ -67,7 +67,7 @@ public class HardwareSecurityKeys {
             @Nullable String serverURL) throws Exception {
         HskCreateApiRequest request = new HskCreateApiRequest(serviceId, requestBody);
         RequestOperation<HskCreateApiRequest, HskCreateApiResponse> operation
-              = new HskCreateApiOperation(sdkConfiguration, serverURL);
+              = new HskCreateApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -106,7 +106,7 @@ public class HardwareSecurityKeys {
             @Nullable String serverURL) throws Exception {
         HskCreateApiFormRequest request = new HskCreateApiFormRequest(serviceId, requestBody);
         RequestOperation<HskCreateApiFormRequest, HskCreateApiFormResponse> operation
-              = new HskCreateApiFormOperation(sdkConfiguration, serverURL);
+              = new HskCreateApiForm.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -141,7 +141,7 @@ public class HardwareSecurityKeys {
     public HskGetListApiResponse list(@Nonnull String serviceId, @Nullable String serverURL) throws Exception {
         HskGetListApiRequest request = new HskGetListApiRequest(serviceId);
         RequestOperation<HskGetListApiRequest, HskGetListApiResponse> operation
-              = new HskGetListApiOperation(sdkConfiguration, serverURL);
+              = new HskGetListApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 

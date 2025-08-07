@@ -48,16 +48,16 @@ import org.openapis.openapi.models.operations.IdtokenReissueApiRequest;
 import org.openapis.openapi.models.operations.IdtokenReissueApiRequestBody;
 import org.openapis.openapi.models.operations.IdtokenReissueApiRequestBuilder;
 import org.openapis.openapi.models.operations.IdtokenReissueApiResponse;
-import org.openapis.openapi.operations.AuthRevocationApiFormOperation;
-import org.openapis.openapi.operations.AuthRevocationApiOperation;
-import org.openapis.openapi.operations.AuthTokenCreateApiFormOperation;
-import org.openapis.openapi.operations.AuthTokenCreateApiOperation;
-import org.openapis.openapi.operations.AuthTokenFailApiFormOperation;
-import org.openapis.openapi.operations.AuthTokenFailApiOperation;
-import org.openapis.openapi.operations.AuthTokenGetListApiOperation;
-import org.openapis.openapi.operations.AuthTokenUpdateApiFormOperation;
-import org.openapis.openapi.operations.AuthTokenUpdateApiOperation;
-import org.openapis.openapi.operations.IdtokenReissueApiOperation;
+import org.openapis.openapi.operations.AuthRevocationApi;
+import org.openapis.openapi.operations.AuthRevocationApiForm;
+import org.openapis.openapi.operations.AuthTokenCreateApi;
+import org.openapis.openapi.operations.AuthTokenCreateApiForm;
+import org.openapis.openapi.operations.AuthTokenFailApi;
+import org.openapis.openapi.operations.AuthTokenFailApiForm;
+import org.openapis.openapi.operations.AuthTokenGetListApi;
+import org.openapis.openapi.operations.AuthTokenUpdateApi;
+import org.openapis.openapi.operations.AuthTokenUpdateApiForm;
+import org.openapis.openapi.operations.IdtokenReissueApi;
 
 
 public class Tokens {
@@ -312,7 +312,7 @@ public class Tokens {
             @Nullable String serverURL) throws Exception {
         AuthTokenFailApiRequest request = new AuthTokenFailApiRequest(serviceId, requestBody);
         RequestOperation<AuthTokenFailApiRequest, AuthTokenFailApiResponse> operation
-              = new AuthTokenFailApiOperation(sdkConfiguration, serverURL);
+              = new AuthTokenFailApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -561,7 +561,7 @@ public class Tokens {
             @Nullable String serverURL) throws Exception {
         AuthTokenFailApiFormRequest request = new AuthTokenFailApiFormRequest(serviceId, requestBody);
         RequestOperation<AuthTokenFailApiFormRequest, AuthTokenFailApiFormResponse> operation
-              = new AuthTokenFailApiFormOperation(sdkConfiguration, serverURL);
+              = new AuthTokenFailApiForm.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -999,7 +999,7 @@ public class Tokens {
             @Nullable String serverURL) throws Exception {
         AuthRevocationApiRequest request = new AuthRevocationApiRequest(serviceId, requestBody);
         RequestOperation<AuthRevocationApiRequest, AuthRevocationApiResponse> operation
-              = new AuthRevocationApiOperation(sdkConfiguration, serverURL);
+              = new AuthRevocationApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1437,7 +1437,7 @@ public class Tokens {
             @Nullable String serverURL) throws Exception {
         AuthRevocationApiFormRequest request = new AuthRevocationApiFormRequest(serviceId, requestBody);
         RequestOperation<AuthRevocationApiFormRequest, AuthRevocationApiFormResponse> operation
-              = new AuthRevocationApiFormOperation(sdkConfiguration, serverURL);
+              = new AuthRevocationApiForm.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1493,7 +1493,7 @@ public class Tokens {
             @Nullable String serverURL) throws Exception {
         IdtokenReissueApiRequest request = new IdtokenReissueApiRequest(serviceId, requestBody);
         RequestOperation<IdtokenReissueApiRequest, IdtokenReissueApiResponse> operation
-              = new IdtokenReissueApiOperation(sdkConfiguration, serverURL);
+              = new IdtokenReissueApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1533,7 +1533,7 @@ public class Tokens {
      */
     public AuthTokenGetListApiResponse list(@Nonnull AuthTokenGetListApiRequest request, @Nullable String serverURL) throws Exception {
         RequestOperation<AuthTokenGetListApiRequest, AuthTokenGetListApiResponse> operation
-              = new AuthTokenGetListApiOperation(sdkConfiguration, serverURL);
+              = new AuthTokenGetListApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1578,7 +1578,7 @@ public class Tokens {
             @Nullable String serverURL) throws Exception {
         AuthTokenCreateApiRequest request = new AuthTokenCreateApiRequest(serviceId, requestBody);
         RequestOperation<AuthTokenCreateApiRequest, AuthTokenCreateApiResponse> operation
-              = new AuthTokenCreateApiOperation(sdkConfiguration, serverURL);
+              = new AuthTokenCreateApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1623,7 +1623,7 @@ public class Tokens {
             @Nullable String serverURL) throws Exception {
         AuthTokenCreateApiFormRequest request = new AuthTokenCreateApiFormRequest(serviceId, requestBody);
         RequestOperation<AuthTokenCreateApiFormRequest, AuthTokenCreateApiFormResponse> operation
-              = new AuthTokenCreateApiFormOperation(sdkConfiguration, serverURL);
+              = new AuthTokenCreateApiForm.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1668,7 +1668,7 @@ public class Tokens {
             @Nullable String serverURL) throws Exception {
         AuthTokenUpdateApiRequest request = new AuthTokenUpdateApiRequest(serviceId, requestBody);
         RequestOperation<AuthTokenUpdateApiRequest, AuthTokenUpdateApiResponse> operation
-              = new AuthTokenUpdateApiOperation(sdkConfiguration, serverURL);
+              = new AuthTokenUpdateApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1713,7 +1713,7 @@ public class Tokens {
             @Nullable String serverURL) throws Exception {
         AuthTokenUpdateApiFormRequest request = new AuthTokenUpdateApiFormRequest(serviceId, requestBody);
         RequestOperation<AuthTokenUpdateApiFormRequest, AuthTokenUpdateApiFormResponse> operation
-              = new AuthTokenUpdateApiFormOperation(sdkConfiguration, serverURL);
+              = new AuthTokenUpdateApiForm.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 

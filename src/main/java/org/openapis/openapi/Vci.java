@@ -17,8 +17,8 @@ import org.openapis.openapi.models.operations.VciSingleParseApiRequest;
 import org.openapis.openapi.models.operations.VciSingleParseApiRequestBody;
 import org.openapis.openapi.models.operations.VciSingleParseApiRequestBuilder;
 import org.openapis.openapi.models.operations.VciSingleParseApiResponse;
-import org.openapis.openapi.operations.VciSingleParseApiFormOperation;
-import org.openapis.openapi.operations.VciSingleParseApiOperation;
+import org.openapis.openapi.operations.VciSingleParseApi;
+import org.openapis.openapi.operations.VciSingleParseApiForm;
 
 
 public class Vci {
@@ -63,7 +63,7 @@ public class Vci {
             @Nullable String serverURL) throws Exception {
         VciSingleParseApiRequest request = new VciSingleParseApiRequest(serviceId, requestBody);
         RequestOperation<VciSingleParseApiRequest, VciSingleParseApiResponse> operation
-              = new VciSingleParseApiOperation(sdkConfiguration, serverURL);
+              = new VciSingleParseApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -102,7 +102,7 @@ public class Vci {
             @Nullable String serverURL) throws Exception {
         VciSingleParseApiFormRequest request = new VciSingleParseApiFormRequest(serviceId, requestBody);
         RequestOperation<VciSingleParseApiFormRequest, VciSingleParseApiFormResponse> operation
-              = new VciSingleParseApiFormOperation(sdkConfiguration, serverURL);
+              = new VciSingleParseApiForm.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 

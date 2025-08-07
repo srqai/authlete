@@ -17,8 +17,8 @@ import org.openapis.openapi.models.operations.AuthAuthorizationFailApiRequest;
 import org.openapis.openapi.models.operations.AuthAuthorizationFailApiRequestBody;
 import org.openapis.openapi.models.operations.AuthAuthorizationFailApiRequestBuilder;
 import org.openapis.openapi.models.operations.AuthAuthorizationFailApiResponse;
-import org.openapis.openapi.operations.AuthAuthorizationFailApiFormOperation;
-import org.openapis.openapi.operations.AuthAuthorizationFailApiOperation;
+import org.openapis.openapi.operations.AuthAuthorizationFailApi;
+import org.openapis.openapi.operations.AuthAuthorizationFailApiForm;
 
 
 public class AuthorizationEndpoints {
@@ -396,7 +396,7 @@ public class AuthorizationEndpoints {
             @Nullable String serverURL) throws Exception {
         AuthAuthorizationFailApiRequest request = new AuthAuthorizationFailApiRequest(serviceId, requestBody);
         RequestOperation<AuthAuthorizationFailApiRequest, AuthAuthorizationFailApiResponse> operation
-              = new AuthAuthorizationFailApiOperation(sdkConfiguration, serverURL);
+              = new AuthAuthorizationFailApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -768,7 +768,7 @@ public class AuthorizationEndpoints {
             @Nullable String serverURL) throws Exception {
         AuthAuthorizationFailApiFormRequest request = new AuthAuthorizationFailApiFormRequest(serviceId, requestBody);
         RequestOperation<AuthAuthorizationFailApiFormRequest, AuthAuthorizationFailApiFormResponse> operation
-              = new AuthAuthorizationFailApiFormOperation(sdkConfiguration, serverURL);
+              = new AuthAuthorizationFailApiForm.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 

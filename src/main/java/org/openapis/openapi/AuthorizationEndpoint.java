@@ -25,10 +25,10 @@ import org.openapis.openapi.models.operations.PostApiServiceIdAuthAuthorizationT
 import org.openapis.openapi.models.operations.PostApiServiceIdAuthAuthorizationTicketUpdateRequestBody;
 import org.openapis.openapi.models.operations.PostApiServiceIdAuthAuthorizationTicketUpdateRequestBuilder;
 import org.openapis.openapi.models.operations.PostApiServiceIdAuthAuthorizationTicketUpdateResponse;
-import org.openapis.openapi.operations.AuthAuthorizationApiFormOperation;
-import org.openapis.openapi.operations.AuthAuthorizationApiOperation;
-import org.openapis.openapi.operations.PostApiServiceIdAuthAuthorizationTicketUpdateFormOperation;
-import org.openapis.openapi.operations.PostApiServiceIdAuthAuthorizationTicketUpdateOperation;
+import org.openapis.openapi.operations.AuthAuthorizationApi;
+import org.openapis.openapi.operations.AuthAuthorizationApiForm;
+import org.openapis.openapi.operations.PostApiServiceIdAuthAuthorizationTicketUpdate;
+import org.openapis.openapi.operations.PostApiServiceIdAuthAuthorizationTicketUpdateForm;
 
 
 public class AuthorizationEndpoint {
@@ -1675,7 +1675,7 @@ public class AuthorizationEndpoint {
             @Nullable String serverURL) throws Exception {
         AuthAuthorizationApiRequest request = new AuthAuthorizationApiRequest(serviceId, requestBody);
         RequestOperation<AuthAuthorizationApiRequest, AuthAuthorizationApiResponse> operation
-              = new AuthAuthorizationApiOperation(sdkConfiguration, serverURL);
+              = new AuthAuthorizationApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -3316,7 +3316,7 @@ public class AuthorizationEndpoint {
             @Nullable String serverURL) throws Exception {
         AuthAuthorizationApiFormRequest request = new AuthAuthorizationApiFormRequest(serviceId, requestBody);
         RequestOperation<AuthAuthorizationApiFormRequest, AuthAuthorizationApiFormResponse> operation
-              = new AuthAuthorizationApiFormOperation(sdkConfiguration, serverURL);
+              = new AuthAuthorizationApiForm.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -3355,7 +3355,7 @@ public class AuthorizationEndpoint {
             @Nullable String serverURL) throws Exception {
         PostApiServiceIdAuthAuthorizationTicketUpdateRequest request = new PostApiServiceIdAuthAuthorizationTicketUpdateRequest(serviceId, requestBody);
         RequestOperation<PostApiServiceIdAuthAuthorizationTicketUpdateRequest, PostApiServiceIdAuthAuthorizationTicketUpdateResponse> operation
-              = new PostApiServiceIdAuthAuthorizationTicketUpdateOperation(sdkConfiguration, serverURL);
+              = new PostApiServiceIdAuthAuthorizationTicketUpdate.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -3394,7 +3394,7 @@ public class AuthorizationEndpoint {
             @Nullable String serverURL) throws Exception {
         PostApiServiceIdAuthAuthorizationTicketUpdateFormRequest request = new PostApiServiceIdAuthAuthorizationTicketUpdateFormRequest(serviceId, requestBody);
         RequestOperation<PostApiServiceIdAuthAuthorizationTicketUpdateFormRequest, PostApiServiceIdAuthAuthorizationTicketUpdateFormResponse> operation
-              = new PostApiServiceIdAuthAuthorizationTicketUpdateFormOperation(sdkConfiguration, serverURL);
+              = new PostApiServiceIdAuthAuthorizationTicketUpdateForm.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(request));
     }
 

@@ -10,7 +10,7 @@ import jakarta.annotation.Nullable;
 import java.lang.Exception;
 import java.lang.String;
 import org.openapis.openapi.SDKConfiguration;
-import org.openapis.openapi.operations.ClientFlagUpdateApiOperation;
+import org.openapis.openapi.operations.ClientFlagUpdateApi;
 import org.openapis.openapi.utils.Utils;
 
 public class ClientFlagUpdateApiRequestBuilder {
@@ -61,8 +61,7 @@ public class ClientFlagUpdateApiRequestBuilder {
     */
     public ClientFlagUpdateApiResponse call() throws Exception {
         RequestOperation<ClientFlagUpdateApiRequest, ClientFlagUpdateApiResponse> operation
-              = new ClientFlagUpdateApiOperation(sdkConfiguration, serverURL);
-
+              = new ClientFlagUpdateApi.Sync(sdkConfiguration, serverURL);
         return operation.handleResponse(operation.doRequest(this._buildRequest()));
     }
 }
